@@ -116,6 +116,13 @@ public class World {
 		for(Entity entity : entities) {
 			entity.update(delta, window, camera, this);
 		}
+		
+		for(int i = 0; i < entities.size(); i++) {
+			entities.get(i).collideWithTiles(this);
+			for(int j = i+1; j < entities.size(); j++) {
+				entities.get(i).collideWithEntity(entities.get(j));
+			}
+		}
 	}
 	
 	public void correctCamera(Camera camera, Window window) {
