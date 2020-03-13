@@ -11,6 +11,7 @@ import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Model;
 import svarog.render.Shader;
+import svarog.render.Texture;
 import svarog.world.World;
 
 public class Entity {
@@ -23,9 +24,9 @@ public class Entity {
 	
 	private static final float[] textureArray = new float[] {
 			0, 0,
-			1, 0,	
+			0, 1,	
 			1, 1,
-			0, 1,
+			1, 0,
 	};
 	
 	private static final int[] indicesArray = new int[] {
@@ -34,24 +35,50 @@ public class Entity {
 	};
 	
 	private Model model;
-	private Animation texture;
-	private Transform transform;
+	private Animation animation;
+	private Texture texture;
+	protected Transform transform;
 	private AABB bounding_box;
 	
 	
 	public Entity(Animation animation, Transform transform) {		
 		model = new Model(verticesArray, textureArray, indicesArray);
-		this.texture = animation;
+		this.animation = animation;
 		
 		this.transform = transform;
-		transform.scale = new Vector3f(1,1,0);
 		
-		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(1,1));
+		if(transform.scale.x < 1)
+			transform.scale.x = 1;
+		if(transform.scale.y < 1)
+			transform.scale.y = 1;
+			
+		
+		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x-0.1f,transform.scale.y-0.1f));
 	}
+	
+	public Entity(Texture texture, Transform transform) {		
+		model = new Model(verticesArray, textureArray, indicesArray);
+		this.texture = texture;
+		
+		this.transform = transform;
+		
+		if(transform.scale.x < 1)
+			transform.scale.x = 1;
+		if(transform.scale.y < 1)
+			transform.scale.y = 1;
+			
+		
+		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x-0.1f,transform.scale.y-0.1f));
+	}
+	
+	
+	
 	
 	public void move(Vector2f direction) {
 		transform.position.add(new Vector3f(direction, 0));
 		bounding_box.getCenter().set(transform.position.x, transform.position.y);
+		
+		direction = null;
 	}
 	
 	public void update(float delta, Window window, Camera camera, World world) {	
@@ -123,8 +150,6 @@ public class Entity {
 		}
 		////////////////////////////////////////////////////////////////////////////////
 		
-		camera.getPosition().lerp(transform.position.mul(-world.getScale(), new Vector3f()), 0.05f); // Ustawienie poruszania siê kamery za graczem
-		
 		window = null;
 		camera = null;
 		world = null;
@@ -137,7 +162,12 @@ public class Entity {
 		shader.bind();
 		shader.setUniform("sampler", 0);
 		shader.setUniform("projection", transform.getProjection(target));
-		this.texture.bind(0);
+		
+		if(animation == null)
+			this.texture.bind(0);
+		else
+			this.animation.bind(0);
+		
 		this.model.render();
 		
 		shader = null;

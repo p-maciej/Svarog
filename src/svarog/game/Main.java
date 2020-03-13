@@ -57,7 +57,7 @@ public class Main {
 		
 		World world = new World();											// World initialization
 		
-		world.fillWorld(new Texture("grass.png"));
+		world.fillWorld(new Texture("grass_map_1.png"));
 		
 		Tile test2 = new Tile(new Texture("wall.png")).setSolid();
 		
@@ -72,22 +72,23 @@ public class Main {
 		
 	
 		world.getTile(7, 5).setSolid().setTexture(new Texture("house.png", 0, 0, 32), (byte)1);
+		world.getTile(10, 10).setSolid().setTexture(new Texture("avatar.png"), (byte)1);
 		
-		Tile h2 = new Tile(new Texture("house.png", 0, 1, 32)).setSolid();
-		Tile h3 = new Tile(new Texture("house.png", 1, 0, 32)).setSolid();
-		Tile h4 = new Tile(new Texture("house.png")).setSolid();
 		
-		world.setTile(h2, 8, 5);
-		world.setTile(h3, 7, 6);
-		world.setTile(h4, 9, 6);
+		
+		for(int i = 0; i < 8; i++)
+			for(int j = 0; j < 4; j++)
+				world.getTile(12+i, 12+j).setSolid().setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)1);
+
 		
 		//////////////////////////////////////////////
-		
+		world.addEntity(new Player(new Transform().setScale(1, 1.25f)));
+		//world.addEntity(new Entity(, new Transform().setPosition(10, 10)));
 		
 		world.setBoundingBoxes();
 		
 
-		Player player = new Player(new Transform());
+		
 		
 		
 		double frame_cap = 1.0/60.0; 										// 60fps - frame limit
@@ -120,7 +121,7 @@ public class Main {
 					System.out.println("TRUE");
 				}
 				
-				player.update((float)0.3, window, camera, world);
+				world.update((float)0.3, window, camera);
 				
 				world.correctCamera(camera, window);						// This sets correct camera position on world
 				
@@ -140,7 +141,6 @@ public class Main {
 
 				
 				world.render(shader, camera, window);						// world rendering
-				player.render(shader, camera, world);
 				window.swapBuffers(); 
 				//frames++;
 				

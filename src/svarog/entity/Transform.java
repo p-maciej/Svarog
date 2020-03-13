@@ -13,8 +13,22 @@ public class Transform {
 	}
 	
 	public Matrix4f getProjection(Matrix4f target) {
-		target.scale(scale);
 		target.translate(position);
+		target.scale(scale);
 		return target;
+	}
+	
+	public Transform setPosition(int x, int y) {
+		position.x = x;
+		position.y = -y;
+		
+		return this;
+	}
+	
+	public Transform setScale(float x, float y) {
+		scale.x = x;
+		scale.y = y;
+		
+		return this;
 	}
 }

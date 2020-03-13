@@ -6,15 +6,16 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_S;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_W;
 
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 
 import svarog.io.Window;
-import svarog.render.Animation;
 import svarog.render.Camera;
+import svarog.render.Texture;
 import svarog.world.World;
 
 public class Player extends Entity {
 	public Player(Transform transform) {
-		super(new Animation(4, 3, "player/idle/player"), transform);
+		super(new Texture("avatar.png"), transform);
 	}
 	
 	@Override
@@ -38,6 +39,8 @@ public class Player extends Entity {
 		}
 		
 		move(movement);
+		
+		camera.getPosition().lerp(transform.position.mul(-world.getScale(), new Vector3f()), 0.05f);
 		
 		super.update(delta, window, camera, world);
 		/////////////////////////////////////////////////////////////////

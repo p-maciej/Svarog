@@ -6,8 +6,9 @@ import static org.lwjgl.opengl.GL11.GL_TEXTURE_MAG_FILTER;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_MIN_FILTER;
 import static org.lwjgl.opengl.GL11.GL_UNSIGNED_BYTE;
 import static org.lwjgl.opengl.GL11.glBindTexture;
-import static org.lwjgl.opengl.GL11.glGenTextures;
 import static org.lwjgl.opengl.GL11.glDeleteTextures;
+import static org.lwjgl.opengl.GL11.glGenTextures;
+import static org.lwjgl.opengl.GL11.glRotatef;
 import static org.lwjgl.opengl.GL11.glTexImage2D;
 import static org.lwjgl.opengl.GL11.glTexParameterf;
 import static org.lwjgl.opengl.GL13.GL_TEXTURE0;
@@ -36,17 +37,19 @@ public class Texture {
 			width = image.getWidth();
 			height = image.getHeight();
 			
+		
 			ByteBuffer pixels = BufferUtils.createByteBuffer(width*height*4);
 			
 			for(int i = 0; i < width; i++) {
 				for(int j = 0; j < height; j++) {
-					int pixel = image.getRGB(j, i);
+					int pixel = image.getRGB(i, j);
 					pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
 					pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
 					pixels.put((byte)(pixel & 0xFF)); 			// blue
 					pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
 				}
 			}
+			
 			
 			pixels.flip();
 			
@@ -56,7 +59,9 @@ public class Texture {
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 			
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+			glRotatef(90, 0f, 0f, 1f);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, height, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+			
 			
 			pixels.clear();
 			image.flush();
@@ -77,7 +82,7 @@ public class Texture {
 			
 			for(int i = tileInWidth*tileSize; i < tileInWidth*tileSize + tileSize; i++) {
 				for(int j = tileInHeight*tileSize; j < tileInHeight*tileSize + tileSize; j++) {
-					int pixel = image.getRGB(j, i);
+					int pixel = image.getRGB(i, j);
 					pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
 					pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
 					pixels.put((byte)(pixel & 0xFF)); 			// blue

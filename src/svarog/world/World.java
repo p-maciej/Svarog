@@ -1,10 +1,14 @@
 package svarog.world;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import svarog.collision.AABB;
+import svarog.entity.Entity;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Model;
@@ -23,9 +27,9 @@ public class World {
 	
 	private static final float[] texture = new float[] {
 			0, 0,
-			1, 0,	
+			0, 1,	
 			1, 1,
-			0, 1,
+			1, 0,
 	};
 	
 	private static final int[] indices = new int[] {
@@ -41,14 +45,18 @@ public class World {
 	private int scale;
 	private AABB[][] bounding_boxes;
 	
+	private List<Entity> entities;
+	
 	private Matrix4f world;
 	
 	public World() {
+		entities = new ArrayList<Entity>();
+		
 		model = new Model(vertices, texture, indices);
 		
-		width = 50;
-		height = 40;
-		scale = 16;
+		width = 32;
+		height = 22;
+		scale = 20;
 		
 		tiles = new Tile[width][height];
 		bounding_boxes = new AABB[width][height];
@@ -67,6 +75,11 @@ public class World {
 				if(t != null)
 					renderTile(t, i-posX, -j-posY, shader, world, camera);
 			}
+		}
+		
+		
+		for(Entity entity : entities) {
+			entity.render(shader, camera, this);
 		}
 		
 		shader = null;
@@ -97,6 +110,12 @@ public class World {
 		shader = null;
 		world = null;
 		camera = null;
+	}
+	
+	public void update(float delta, Window window, Camera camera) {
+		for(Entity entity : entities) {
+			entity.update(delta, window, camera, this);
+		}
 	}
 	
 	public void correctCamera(Camera camera, Window window) {
@@ -153,6 +172,10 @@ public class World {
 					bounding_boxes[x][y] = new AABB(new Vector2f(x*2, -y*2), new Vector2f(1,1));
 				else
 					bounding_boxes[x][y] = null;
+	}
+	
+	public void addEntity(Entity entity) {
+		entities.add(entity);
 	}
 	
 	public int getScale() {
