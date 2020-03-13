@@ -21,7 +21,6 @@ import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
-import svarog.world.Tile;
 import svarog.world.World;
 
 public class Main {
@@ -58,31 +57,17 @@ public class Main {
 		
 		world.fillWorld(new Texture("grass_map_1.png"));
 		
-		Tile test2 = new Tile(new Texture("wall.png")).setSolid();
-		
-		world.setTile(test2, 5, 0);
-		world.setTile(test2, 6, 0);
-		world.setTile(test2, 7, 0);
-		world.setTile(test2, 7, 1);
-		world.setTile(test2, 7, 2);
-		
-		
-		////////// Test ///////
-		
-	
-		world.getTile(7, 5).setSolid().setTexture(new Texture("house.png", 0, 0, 32), (byte)1);
-		//world.getTile(10, 10).setSolid().setTexture(new Texture("avatar.png"), (byte)1);
-		
-		
-		
 		for(int i = 0; i < 8; i++)
 			for(int j = 0; j < 4; j++)
 				world.getTile(12+i, 12+j).setSolid().setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)1);
 
 		
 		//////////////////////////////////////////////
-		world.addEntity(new Player(new Transform().setScale(1, 1.25f)));
+		
+		world.addEntity(new Player(new Transform().setPosition(15,  5)));
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10)));
+		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(20, 20)));
+		
 		
 		world.setBoundingBoxes();
 		

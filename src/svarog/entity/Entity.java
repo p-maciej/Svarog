@@ -76,7 +76,14 @@ public class Entity {
 			transform.scale.y = 1;
 			
 		
-		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x-0.1f,transform.scale.y-0.1f));
+		float diff = (float)texture.height / (float)texture.width;
+
+		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x,transform.scale.y));
+		
+		if(texture.height > texture.width)
+			transform.scale.y = diff;
+		else
+			transform.scale.x = diff;
 	}
 	
 	
@@ -103,16 +110,8 @@ public class Entity {
 
 		AABB box = null;
 		for(int i = 0; i < boxes.length; i++) {
-			if(boxes[i] != null) {
+			if(boxes[i] != null)
 				if(box == null) box = boxes[i];
-
-				Vector2f length1 = box.getCenter().sub(transform.position.x, transform.position.y, new Vector2f());
-				Vector2f length2 = boxes[i].getCenter().sub(transform.position.x, transform.position.y, new Vector2f());
-
-				if(length1.lengthSquared() > length2.lengthSquared()) {
-					box = boxes[i];
-				}
-			}
 		}
 		if(box != null) {
 			Collision data = bounding_box.getCollision(box);
@@ -160,20 +159,21 @@ public class Entity {
 				entity.transform.position.set(entity.bounding_box.getCenter().x, entity.bounding_box.getCenter().y, 0);
 			}
 		}
+		entity = null;
 	}
 	
 	public void update(float delta, Window window, Camera camera, World world) {	
 		////////// Blocking player to go outside of the map /////////////////////////
-		if(transform.position.x < 0)
+		if(transform.position.x < 1)
 			transform.position.add(new Vector3f(1*delta, 0,0));
 		
-		if(transform.position.x > world.getWidth()*2-2)
+		if(transform.position.x > world.getWidth()*2-3)
 			transform.position.add(new Vector3f(-1*delta, 0,0));
 		
-		if(transform.position.y > 0)
+		if(transform.position.y > -1)
 			transform.position.add(new Vector3f(0, -1*delta,0));
 		
-		if(transform.position.y < -(world.getHeight()*2-2))
+		if(transform.position.y < -(world.getHeight()*2-3))
 			transform.position.add(new Vector3f(0, 1*delta,0));
 		///////////////////////////////////////////////////////////////
 
