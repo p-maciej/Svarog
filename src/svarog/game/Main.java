@@ -16,6 +16,7 @@ import static org.lwjgl.opengl.GL11.glEnable;
 import org.lwjgl.opengl.GL;
 
 import svarog.entity.Player;
+import svarog.entity.Transform;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -86,7 +87,7 @@ public class Main {
 		world.setBoundingBoxes();
 		
 
-		Player player = new Player();
+		Player player = new Player(new Transform());
 		
 		
 		double frame_cap = 1.0/60.0; 										// 60fps - frame limit
@@ -139,7 +140,7 @@ public class Main {
 
 				
 				world.render(shader, camera, window);						// world rendering
-				player.render(shader, camera);
+				player.render(shader, camera, world);
 				window.swapBuffers(); 
 				//frames++;
 				

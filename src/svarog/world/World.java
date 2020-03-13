@@ -170,4 +170,8 @@ public class World {
 	public Tile[][] getTiles() {
 		return tiles;
 	}
+	
+	public Matrix4f getWorld() {
+		return world;
+	}
 }
