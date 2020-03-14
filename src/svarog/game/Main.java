@@ -75,9 +75,9 @@ public class Main {
 		//////////////////////////////////////////////
 		
 		
-		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10)).setIsStatic(false));
-		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(20, 20)));
-		world.addEntity(new Player(new Transform().setPosition(15,  5)));
+		//world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), false).setIsStatic(false));
+		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), true));
+		world.addEntity(new Player(new Transform().setPosition(15,  5), false));
 		
 		
 		world.setBoundingBoxes();

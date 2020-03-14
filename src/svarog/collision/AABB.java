@@ -19,6 +19,8 @@ public class AABB {
 		
 		distance.sub(this.half_extent.add(box.half_extent, new Vector2f()));
 		
+		
+		box = null;
 		return new Collision(distance, distance.x < 0 && distance.y < 0);
 	}
 	
@@ -45,5 +47,8 @@ public class AABB {
 				center.add(0, -data.distance.y);
 			}
 		}
+		
+		box = null;
+		data = null;
 	}
 }

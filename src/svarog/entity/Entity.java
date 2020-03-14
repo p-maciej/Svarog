@@ -41,65 +41,68 @@ public class Entity {
 	private Animation animation;
 	private Texture texture;
 	protected Transform transform;
+	protected Transform textureTransform;
 	private AABB bounding_box;
 	//////////////
 	
 	//// Properties ////
 	private int id;
 	private boolean isStatic = true;
+	private boolean fullBoundingBox;
 	
 	
-	public Entity(Animation animation, Transform transform) {	
+	public Entity(Animation animation, Transform transform, boolean fullBoundingBox) {	
 		id = auto_increment;
 		auto_increment++;
 		
 		model = new Model(verticesArray, textureArray, indicesArray);
 		this.animation = animation;
-		
 		this.transform = transform;
+		this.setFullBoundingBox(fullBoundingBox);
 		
-		if(transform.scale.x < 1)
-			transform.scale.x = 1;
-		if(transform.scale.y < 1)
-			transform.scale.y = 1;
-			
-		
-		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x,transform.scale.y));
+		setEntityProperties();
 	}
 	
-	public Entity(Texture texture, Transform transform) {		
+	public Entity(Texture texture, Transform transform, boolean fullBoundingBox) {		
 		id = auto_increment;
 		auto_increment++;
 		
 		model = new Model(verticesArray, textureArray, indicesArray);
 		this.texture = texture;
-		
 		this.transform = transform;
-		
-		this.transform.position.x *= 2;
-		this.transform.position.y *= 2;
-		
-		if(transform.scale.x < 1)
-			transform.scale.x = 1;
-		if(transform.scale.y < 1)
-			transform.scale.y = 1;
-			
+		this.setFullBoundingBox(fullBoundingBox);
 		
 		float diff = (float)texture.height / (float)texture.width;
 		if(texture.height > texture.width)
-			transform.scale.y = diff;
+			transform.getScale().y = diff;
 		else
-			transform.scale.x = diff;
+			transform.getScale().x = diff;
 		
-		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x,transform.scale.y));		
+		setEntityProperties();	
+	}
+	
+	private void setEntityProperties() {
+		this.transform.getPosition().x *= 2;
+		this.transform.getPosition().y *= 2;
+		
+		if(transform.getScale().x < 1)
+			transform.getScale().x = 1;
+		if(transform.getScale().y < 1)
+			transform.getScale().y = 1;	
+		
+		float offset = 0;
+		if(fullBoundingBox == false)
+			offset = -1;
+			
+		bounding_box = new AABB(new Vector2f(transform.getPosition().x, transform.getPosition().y), new Vector2f(transform.getScale().x,transform.getScale().y+offset));
 	}
 	
 	
 	
 	
 	public void move(Vector2f direction) {
-		transform.position.add(new Vector3f(direction, 0));
-		bounding_box.getCenter().set(transform.position.x, transform.position.y);
+		transform.getPosition().add(new Vector3f(direction, 0));
+		bounding_box.getCenter().add(direction);
 		direction = null;
 	}
 	
@@ -113,13 +116,11 @@ public class Entity {
 					
 					if(collision.isIntersecting) {
 						bounding_box.correctPosition(box, collision);
-						transform.position.set(bounding_box.getCenter(), 0);
+						transform.getPosition().set(bounding_box.getCenter(), 0);
 					}	
 				}
 			}
 		}
-		
-		
 
 		world = null;
 	}
@@ -137,11 +138,11 @@ public class Entity {
 					}
 					
 					bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
-					transform.position.set(bounding_box.getCenter(), 0);
+					transform.getPosition().set(bounding_box.getCenter(), 0);
 					
 					if(world.getEntity(i).isStatic == false) {
 						world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
-						world.getEntity(i).transform.position.set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
+						world.getEntity(i).transform.getPosition().set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
 					}
 				}
 			}
@@ -152,17 +153,17 @@ public class Entity {
 	
 	public void update(float delta, Window window, Camera camera, World world) {	
 		////////// Blocking player to go outside of the map /////////////////////////
-		if(transform.position.x < 1)
-			transform.position.add(new Vector3f(1*delta, 0,0));
+		if(transform.getPosition().x < 1)
+			transform.getPosition().add(new Vector3f(1*delta, 0,0));
 		
-		if(transform.position.x > world.getWidth()*2-3)
-			transform.position.add(new Vector3f(-1*delta, 0,0));
+		if(transform.getPosition().x > world.getWidth()*2-3)
+			transform.getPosition().add(new Vector3f(-1*delta, 0,0));
 		
-		if(transform.position.y > -1)
-			transform.position.add(new Vector3f(0, -1*delta,0));
+		if(transform.getPosition().y > -1)
+			transform.getPosition().add(new Vector3f(0, -1*delta,0));
 		
-		if(transform.position.y < -(world.getHeight()*2-3))
-			transform.position.add(new Vector3f(0, 1*delta,0));
+		if(transform.getPosition().y < -(world.getHeight()*2-3))
+			transform.getPosition().add(new Vector3f(0, 1*delta,0));
 		///////////////////////////////////////////////////////////////
 
 		////////////////////////////////////////////////////////////////////////////////
@@ -176,10 +177,16 @@ public class Entity {
 		Matrix4f target = camera.getProjection();
 		target.mul(world.getWorld());
 		
+		Transform temp = new Transform().set(transform);
 		
+		if(fullBoundingBox == false)
+			temp.getPosition().y += 1f;
+			
 		shader.bind();
 		shader.setUniform("sampler", 0);
-		shader.setUniform("projection", transform.getProjection(target));
+		shader.setUniform("projection", temp.getProjection(target));
+		
+		
 		
 		if(animation == null)
 			this.texture.bind(0);
@@ -191,10 +198,17 @@ public class Entity {
 		shader = null;
 		camera = null;
 		world = null;
+		target = null;
 	}
 	
 	public Entity setIsStatic(boolean state) {
 		this.isStatic = state;
+		
+		return this;
+	}
+	
+	public Entity setFullBoundingBox(boolean state) {
+		this.fullBoundingBox = state;
 		
 		return this;
 	}

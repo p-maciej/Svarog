@@ -14,8 +14,8 @@ import svarog.render.Texture;
 import svarog.world.World;
 
 public class Player extends Entity {
-	public Player(Transform transform) {
-		super(new Texture("avatar.png"), transform);
+	public Player(Transform transform, boolean fullBoundingBox) {
+		super(new Texture("avatar.png"), transform, fullBoundingBox);
 	}
 	
 	@Override
@@ -40,7 +40,7 @@ public class Player extends Entity {
 		
 		move(movement);
 		
-		camera.getPosition().lerp(transform.position.mul(-world.getScale(), new Vector3f()), 0.05f);
+		camera.getPosition().lerp(transform.getPosition().mul(-world.getScale(), new Vector3f()), 0.05f);
 		
 		super.update(delta, window, camera, world);
 		/////////////////////////////////////////////////////////////////
