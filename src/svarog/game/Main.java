@@ -8,6 +8,7 @@ import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
+import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.opengl.GL11.glBlendFunc;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glEnable;
@@ -29,12 +30,12 @@ public class Main {
 	public static void main(String[] args) {
 		Window.setCallbacks();
 	
-		if(!glfwInit()) { // Library init
+		if(!glfwInit()) { 													// Library init
 			throw new IllegalStateException("Failed to initialize GLFW");
 		}
 		
 		Window window = new Window(); 
-		window.setSize(1100, 800);
+		window.setSize(1000, 800);
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
 		
 		
@@ -55,6 +56,7 @@ public class Main {
 		
 		
 		World world = new World();											// World initialization
+		world.calculateView(window);
 		
 		world.fillWorld(new Texture("grass_map_1.png"));
 		
@@ -70,12 +72,9 @@ public class Main {
 		for(int i = 0; i < 8; i++)
 			for(int j = 0; j < 4; j++)
 				world.getTile(12+i, 12+j).setSolid().setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)1);
-
-		
-		//////////////////////////////////////////////
 		
 		
-		//world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), false).setIsStatic(false));
+		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), true).setIsStatic(false));
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), true));
 		world.addEntity(new Player(new Transform().setPosition(15,  5), false));
 		
@@ -84,6 +83,13 @@ public class Main {
 		
 
 		while(window.processProgram()) {									// This works while program is running
+			if(window.hasResized()) {
+				camera.setProjection(window.getWidth(), window.getHeight());
+				world.calculateView(window);
+				glViewport(0, 0, window.getWidth(), window.getHeight());
+			}
+			
+			
 			if(window.getInput().isKeyPressed(GLFW_KEY_ESCAPE)) {		// If esc pressed then...
 				System.exit(0);
 			}
@@ -97,7 +103,7 @@ public class Main {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 				
-			world.render(shader, camera, window);						// world rendering
+			world.render(shader, camera);						// world rendering
 			window.swapBuffers(); 
 			
 		}

@@ -4,14 +4,17 @@ import static org.lwjgl.glfw.GLFW.glfwGetPrimaryMonitor;
 import static org.lwjgl.glfw.GLFW.glfwGetVideoMode;
 import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowSizeCallback;
 import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
 import static org.lwjgl.glfw.GLFW.glfwSetWindowPos;
 import static org.lwjgl.glfw.GLFW.glfwShowWindow;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
+import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWWindowSizeCallback;
 
 public class Window {
 	private long window;
@@ -20,6 +23,9 @@ public class Window {
 	private int height;
 	
 	private boolean fullscreen;
+	private boolean hasResized;
+	private GLFWWindowSizeCallback windowSize;
+	
 	private Input input;
 	
 	public Window() {
@@ -35,6 +41,8 @@ public class Window {
 	public Window(int width, int height, boolean fullscreen) {
 		setSize(width, height);
 		setFullscreen(fullscreen);
+		
+		hasResized = false;
 	}
 	
 	public void createWindow(String title) {
@@ -52,6 +60,12 @@ public class Window {
 		glfwMakeContextCurrent(window);
 		
 		input = new Input(window);
+		
+		setLoacalCallbacks();
+	}
+	
+	public void cleanUp() {
+		glfwFreeCallbacks(window);
 	}
 	
 	public boolean processProgram() {
@@ -63,6 +77,7 @@ public class Window {
 	}
 	
 	public void update() {
+		hasResized = false;
 		input.update();
 		glfwPollEvents();
 	}
@@ -98,6 +113,24 @@ public class Window {
 			}
 			
 		});
+	}
+	
+	private void setLoacalCallbacks() {
+		windowSize = new GLFWWindowSizeCallback() {
+			
+			@Override
+			public void invoke(long argWindow, int argWidth, int argHeight) {
+				width = argWidth;
+				height = argHeight;
+				hasResized = true;
+			}
+		};
+		
+		glfwSetWindowSizeCallback(window, windowSize);
+	}
+	
+	public boolean hasResized() {
+		return hasResized;
 	}
 	
 	public Input getInput() {
