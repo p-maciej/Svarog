@@ -15,6 +15,8 @@ import svarog.render.Texture;
 import svarog.world.World;
 
 public class Entity {
+	private static int auto_increment = 0;
+	
 	private static final float[] verticesArray = new float[] {
 			-1f, 1f, 0,
 			1f, 1f, 0,			
@@ -43,10 +45,14 @@ public class Entity {
 	//////////////
 	
 	//// Properties ////
+	private int id;
 	private boolean isStatic = true;
 	
 	
-	public Entity(Animation animation, Transform transform) {		
+	public Entity(Animation animation, Transform transform) {	
+		id = auto_increment;
+		auto_increment++;
+		
 		model = new Model(verticesArray, textureArray, indicesArray);
 		this.animation = animation;
 		
@@ -58,10 +64,13 @@ public class Entity {
 			transform.scale.y = 1;
 			
 		
-		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x-0.1f,transform.scale.y-0.1f));
+		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x,transform.scale.y));
 	}
 	
 	public Entity(Texture texture, Transform transform) {		
+		id = auto_increment;
+		auto_increment++;
+		
 		model = new Model(verticesArray, textureArray, indicesArray);
 		this.texture = texture;
 		
@@ -77,13 +86,12 @@ public class Entity {
 			
 		
 		float diff = (float)texture.height / (float)texture.width;
-
-		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x,transform.scale.y));
-		
 		if(texture.height > texture.width)
 			transform.scale.y = diff;
 		else
 			transform.scale.x = diff;
+		
+		bounding_box = new AABB(new Vector2f(transform.position.x, transform.position.y), new Vector2f(transform.scale.x,transform.scale.y));		
 	}
 	
 	
@@ -92,74 +100,54 @@ public class Entity {
 	public void move(Vector2f direction) {
 		transform.position.add(new Vector3f(direction, 0));
 		bounding_box.getCenter().set(transform.position.x, transform.position.y);
-		
 		direction = null;
 	}
 	
-	public void collideWithTiles(World world) {
-		/////////// Blocking player to enter solid tiles //////////////////////////////
-		AABB[] boxes = new AABB[25];
-		for(int i = 0; i < 5; i++) {
-			for(int j = 0; j < 5; j++) {
-				boxes[i + j * 5] = world.getTileBoundingBox(
-							(int)(((transform.position.x / 2) + 0.5f) - (5/2)) + i,
-							(int)(((-transform.position.y / 2) + 0.5f) - (5/2)) + j
-						);
-			}
-		}
-
-		AABB box = null;
-		for(int i = 0; i < boxes.length; i++) {
-			if(boxes[i] != null)
-				if(box == null) box = boxes[i];
-		}
-		if(box != null) {
-			Collision data = bounding_box.getCollision(box);
-			if(data.isIntersecting) {
-				bounding_box.correctPosition(box, data);
-				transform.position.set(bounding_box.getCenter(), 0);
-			}
-			
-			for(int i = 0; i < boxes.length; i++) {
-				if(boxes[i] != null) {
-					if(box == null) box = boxes[i];
+	public void collideWithTiles(World world) {	
+		for(int x = 0; x < world.getWidth(); x++) {
+			for(int y = 0; y < world.getHeight(); y++) {
+				AABB box = world.getTileBoundingBox(x, y);
+				
+				if(box != null) {
+					Collision collision = box.getCollision(bounding_box);
 					
-					Vector2f length1 = box.getCenter().sub(transform.position.x, transform.position.y, new Vector2f());
-					Vector2f length2 = boxes[i].getCenter().sub(transform.position.x, transform.position.y, new Vector2f());
-					
-					if(length1.lengthSquared() > length2.lengthSquared()) {
-						box = boxes[i];
-					}
+					if(collision.isIntersecting) {
+						bounding_box.correctPosition(box, collision);
+						transform.position.set(bounding_box.getCenter(), 0);
+					}	
 				}
 			}
-			
-			data = bounding_box.getCollision(box);
-			if(data.isIntersecting) {
-				bounding_box.correctPosition(box, data);
-				transform.position.set(bounding_box.getCenter(), 0);
-			}
 		}
+		
+		
+
 		world = null;
 	}
 	
-	public void collideWithEntity(Entity entity) {
-		Collision collision = bounding_box.getCollision(entity.bounding_box);
-		
-		if(collision.isIntersecting) {
-			if(!isStatic) {
-				collision.distance.x /= 2;
-				collision.distance.y /= 2;
-			}
-			
-			bounding_box.correctPosition(entity.bounding_box, collision);
-			transform.position.set(bounding_box.getCenter().x, bounding_box.getCenter().y, 0);
-			
-			if(!isStatic) {
-				entity.bounding_box.correctPosition(bounding_box, collision);
-				entity.transform.position.set(entity.bounding_box.getCenter().x, entity.bounding_box.getCenter().y, 0);
+	public void collideWithEntities(World world) {
+		for(int i = 0; i < world.numberOfEntities(); i++) {
+			if(world.getEntity(i).id != this.id) {
+				
+				Collision collision = bounding_box.getCollision(world.getEntity(i).getBoduningBox());
+				
+				if(collision.isIntersecting) {
+					if(world.getEntity(i).isStatic == false) {
+						collision.distance.x /= 2;
+						collision.distance.y /= 2;
+					}
+					
+					bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
+					transform.position.set(bounding_box.getCenter(), 0);
+					
+					if(world.getEntity(i).isStatic == false) {
+						world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
+						world.getEntity(i).transform.position.set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
+					}
+				}
 			}
 		}
-		entity = null;
+		
+		world = null;
 	}
 	
 	public void update(float delta, Window window, Camera camera, World world) {	
@@ -188,6 +176,7 @@ public class Entity {
 		Matrix4f target = camera.getProjection();
 		target.mul(world.getWorld());
 		
+		
 		shader.bind();
 		shader.setUniform("sampler", 0);
 		shader.setUniform("projection", transform.getProjection(target));
@@ -204,11 +193,17 @@ public class Entity {
 		world = null;
 	}
 	
-	public void setIsStatic(boolean state) {
+	public Entity setIsStatic(boolean state) {
 		this.isStatic = state;
+		
+		return this;
 	}
 	
 	public boolean isStatic() {
 		return isStatic;
+	}
+	
+	public AABB getBoduningBox() {
+		return bounding_box;
 	}
 }

@@ -13,6 +13,7 @@ public class AABB {
 	
 	public Collision getCollision(AABB box) {
 		Vector2f distance = box.center.sub(this.center, new Vector2f());
+
 		distance.x = (float)Math.abs(distance.x);
 		distance.y = (float)Math.abs(distance.y);
 		
