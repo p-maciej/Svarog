@@ -57,7 +57,7 @@ public class Main {
 		
 		World world = new World();											// World initialization
 		world.calculateView(window);
-		
+		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
 		world.fillWorld(new Texture("grass_map_1.png"));
 		
 		Tile test2 = new Tile(new Texture("wall.png")).setSolid();
@@ -84,7 +84,7 @@ public class Main {
 
 		while(window.processProgram()) {									// This works while program is running
 			if(window.hasResized()) {
-				camera.setProjection(window.getWidth(), window.getHeight());
+				camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
 				world.calculateView(window);
 				glViewport(0, 0, window.getWidth(), window.getHeight());
 			}
@@ -103,7 +103,7 @@ public class Main {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 				
-			world.render(shader, camera);						// world rendering
+			world.render(shader, camera, window);						// world rendering
 			window.swapBuffers(); 
 			
 		}

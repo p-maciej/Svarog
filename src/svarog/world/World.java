@@ -67,7 +67,7 @@ public class World {
 		world.scale(scale);
 	}
 	
-	public void render(Shader shader, Camera camera) {		
+	public void render(Shader shader, Camera camera, Window window) {		
 		int posX = (int)camera.getPosition().x / (scale*2);
 		int posY = (int)camera.getPosition().y / (scale*2);
 		
@@ -77,8 +77,7 @@ public class World {
 				if(t != null)
 					renderTile(t, i-posX-(viewX/2)+1, -j-posY+(viewY/2), shader, world, camera);
 			}
-		}
-		
+		}	
 		
 		for(Entity entity : entities) {
 			entity.render(shader, camera, this);
