@@ -105,7 +105,7 @@ public class Entity {
 	// Moves character trough the map
 	public void move(Vector2f direction) {
 		transform.getPosition().add(new Vector3f(direction, 0));
-		bounding_box.getCenter().add(direction);
+		bounding_box.getCenter().set(transform.getPosition().x, transform.getPosition().y);
 		direction = null;
 	}
 	

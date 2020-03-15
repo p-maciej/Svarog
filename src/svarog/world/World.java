@@ -182,14 +182,14 @@ public class World {
 		int w = -width * scale * 2;
 		int h = height * scale * 2;
 		
-		if(position.x > -(window.getWidth()/2)+scale)
+		if(position.x > -(window.getWidth()/2)+scale) // Left border - add higher value, more offset
 			position.x = -(window.getWidth()/2)+scale;
-		if(position.x < w + (window.getWidth()/2)+scale)
+		if(position.x < w + (window.getWidth()/2)+scale) // Right border - subtract
 			position.x = w + (window.getWidth()/2)+scale;
 		
-		if(position.y < (window.getHeight()/2)-scale)
+		if(position.y < (window.getHeight()/2)-scale) // Top border - subtract
 			position.y = (window.getHeight()/2)-scale;
-		if(position.y > h-(window.getHeight()/2)-scale)
+		if(position.y > h-(window.getHeight()/2)-scale) // Bottom border - add
 			position.y = h-(window.getHeight()/2)-scale;
 	}
 	

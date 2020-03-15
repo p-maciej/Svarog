@@ -78,30 +78,34 @@ public class Texture {
 			image = ImageIO.read(new File("./resources/textures/" + filename));
 			width = height = tileSize;
 			
-			ByteBuffer pixels = BufferUtils.createByteBuffer(tileSize*tileSize*4);
-			
-			for(int i = tileInWidth*tileSize; i < tileInWidth*tileSize + tileSize; i++) {
-				for(int j = tileInHeight*tileSize; j < tileInHeight*tileSize + tileSize; j++) {
-					int pixel = image.getRGB(i, j);
-					pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
-					pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
-					pixels.put((byte)(pixel & 0xFF)); 			// blue
-					pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
+			if(width%tileSize == 0 && height%tileSize == 0) {	
+				ByteBuffer pixels = BufferUtils.createByteBuffer(tileSize*tileSize*4);
+				
+				for(int i = tileInWidth*tileSize; i < tileInWidth*tileSize + tileSize; i++) {
+					for(int j = tileInHeight*tileSize; j < tileInHeight*tileSize + tileSize; j++) {
+						int pixel = image.getRGB(i, j);
+						pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
+						pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
+						pixels.put((byte)(pixel & 0xFF)); 			// blue
+						pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
+					}
 				}
+				
+				pixels.flip();
+				
+				id = glGenTextures();
+				glBindTexture(GL_TEXTURE_2D, id);
+				
+				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+				
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tileSize, tileSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+				
+				pixels.clear();
+				image.flush();
+			} else {
+				throw new IllegalStateException("Wrong tile size or texture size!");
 			}
-			
-			pixels.flip();
-			
-			id = glGenTextures();
-			glBindTexture(GL_TEXTURE_2D, id);
-			
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tileSize, tileSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-			
-			pixels.clear();
-			image.flush();
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
