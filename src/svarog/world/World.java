@@ -1,7 +1,12 @@
 package svarog.world;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
@@ -110,6 +115,33 @@ public class World {
 		shader = null;
 		world = null;
 		camera = null;
+	}
+	
+	public void setSolidTilesFromMap(String filename) {
+		BufferedImage image;
+
+		try {
+			image = ImageIO.read(new File("./resources/world_maps/" + filename));
+			width = image.getWidth();
+			height = image.getHeight();
+			
+		
+			if(width == this.getWidth() && height == this.getHeight()) {				
+				for(int i = 0; i < width; i++) {
+					for(int j = 0; j < height; j++) {
+						int pixel = image.getRGB(i, j);
+						
+						if(((pixel >> 16) & 0xFF) == 0 && ((pixel >> 8) & 0xFF) == 0 && (pixel & 0xFF) == 0) {
+							tiles[i][j].setSolid();
+						}
+					}
+				}
+			} else {
+				throw new IllegalStateException("Wrong map size!");
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void update(float delta, Window window, Camera camera) { // World update

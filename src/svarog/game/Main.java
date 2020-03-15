@@ -72,13 +72,14 @@ public class Main {
 		
 		for(int i = 0; i < 8; i++)
 			for(int j = 0; j < 4; j++)
-				world.getTile(12+i, 12+j).setSolid().setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)1);
+				world.getTile(12+i, 12+j).setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)1);
 		
 		
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), true).setIsStatic(false));
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), true));
 		world.addEntity(new Player(new Transform().setPosition(15,  5), false));
 		
+		world.setSolidTilesFromMap("map1.png");
 		
 		world.setBoundingBoxes();
 		
