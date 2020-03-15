@@ -51,6 +51,7 @@ public class Entity {
 	private boolean fullBoundingBox;
 	
 	
+	// Animation constructor
 	public Entity(Animation animation, Transform transform, boolean fullBoundingBox) {	
 		id = auto_increment;
 		auto_increment++;
@@ -63,6 +64,7 @@ public class Entity {
 		setEntityProperties();
 	}
 	
+	// Texture constructor
 	public Entity(Texture texture, Transform transform, boolean fullBoundingBox) {		
 		id = auto_increment;
 		auto_increment++;
@@ -81,6 +83,7 @@ public class Entity {
 		setEntityProperties();	
 	}
 	
+	// This sets correct scale of entity
 	private void setEntityProperties() {
 		this.transform.getPosition().x *= 2;
 		this.transform.getPosition().y *= 2;
@@ -99,13 +102,14 @@ public class Entity {
 	
 	
 	
-	
+	// Moves character trough the map
 	public void move(Vector2f direction) {
 		transform.getPosition().add(new Vector3f(direction, 0));
 		bounding_box.getCenter().add(direction);
 		direction = null;
 	}
 	
+	// Enables collision with world (map)
 	public void collideWithTiles(World world) {	
 		for(int x = 0; x < world.getWidth(); x++) {
 			for(int y = 0; y < world.getHeight(); y++) {
@@ -114,7 +118,7 @@ public class Entity {
 				if(box != null) {
 					Collision collision = box.getCollision(bounding_box);
 					
-					if(collision.isIntersecting) {
+					if(collision.isIntersecting()) {
 						bounding_box.correctPosition(box, collision);
 						transform.getPosition().set(bounding_box.getCenter(), 0);
 					}	
@@ -125,16 +129,17 @@ public class Entity {
 		world = null;
 	}
 	
+	// Enables collision with another entities
 	public void collideWithEntities(World world) {
 		for(int i = 0; i < world.numberOfEntities(); i++) {
 			if(world.getEntity(i).id != this.id) {
 				
 				Collision collision = bounding_box.getCollision(world.getEntity(i).getBoduningBox());
 				
-				if(collision.isIntersecting) {
+				if(collision.isIntersecting()) {
 					if(world.getEntity(i).isStatic == false) {
-						collision.distance.x /= 2;
-						collision.distance.y /= 2;
+						collision.getDistance().x /= 2;
+						collision.getDistance().y /= 2;
 					}
 					
 					bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
@@ -152,7 +157,7 @@ public class Entity {
 	}
 	
 	public void update(float delta, Window window, Camera camera, World world) {	
-		////////// Blocking player to go outside of the map /////////////////////////
+		////////// Blocking player to go outside of the map ///////////
 		if(transform.getPosition().x < 1)
 			transform.getPosition().add(new Vector3f(1*delta, 0,0));
 		
@@ -166,13 +171,13 @@ public class Entity {
 			transform.getPosition().add(new Vector3f(0, 1*delta,0));
 		///////////////////////////////////////////////////////////////
 
-		////////////////////////////////////////////////////////////////////////////////
 		
 		window = null;
 		camera = null;
 		world = null;
 	}
 	
+	// Character rendering
 	public void render(Shader shader, Camera camera, World world) {
 		Matrix4f target = camera.getProjection();
 		target.mul(world.getWorld());
@@ -180,7 +185,7 @@ public class Entity {
 		Transform temp = new Transform().set(transform);
 		
 		if(fullBoundingBox == false)
-			temp.getPosition().y += 1f;
+			temp.getPosition().y += 1f; // This sets offset in texture rendering when entity should walk like on foots
 			
 		shader.bind();
 		shader.setUniform("sampler", 0);
@@ -203,13 +208,11 @@ public class Entity {
 	
 	public Entity setIsStatic(boolean state) {
 		this.isStatic = state;
-		
 		return this;
 	}
 	
 	public Entity setFullBoundingBox(boolean state) {
 		this.fullBoundingBox = state;
-		
 		return this;
 	}
 	

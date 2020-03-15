@@ -8,10 +8,11 @@ import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.opengl.GL11.glBlendFunc;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glEnable;
+import static org.lwjgl.opengl.GL11.glViewport;
+import static org.lwjgl.opengl.GL11.glClearColor;
 
 import org.lwjgl.opengl.GL;
 
@@ -46,7 +47,7 @@ public class Main {
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);					// 
 		
 		glEnable(GL_TEXTURE_2D);											// Allows load textures
-		Camera camera = new Camera(window.getWidth(), window.getHeight());	// Creating camera width size of window
+		Camera camera = new Camera(600, 400);	// Creating camera width size of window
 
 		
 
@@ -81,8 +82,11 @@ public class Main {
 		
 		world.setBoundingBoxes();
 		
-
+		long lastNanos = System.nanoTime();
 		while(window.processProgram()) {									// This works while program is running
+			syncFrameRate(60, lastNanos);									// Fps limiter
+            lastNanos = System.nanoTime();
+			glClearColor(0.2f, 0.2f, 0.2f, 1f);
 			if(window.hasResized()) {
 				camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
 				world.calculateView(window);
@@ -90,12 +94,12 @@ public class Main {
 			}
 			
 			
-			if(window.getInput().isKeyPressed(GLFW_KEY_ESCAPE)) {		// If esc pressed then...
+			if(window.getInput().isKeyPressed(GLFW_KEY_ESCAPE)) {			// If esc pressed then...
 				System.exit(0);
 			}
 				
 			world.update((float)0.2, window, camera);
-			world.correctCamera(camera, window);						// This sets correct camera position on world
+			world.correctCamera(camera, window);							// This sets correct camera position on world
 				
 			window.update();										
 			
@@ -103,11 +107,21 @@ public class Main {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 				
-			world.render(shader, camera, window);						// world rendering
+			world.render(shader, camera, window);							// world rendering
 			window.swapBuffers(); 
 			
 		}
 		
 		glfwTerminate();
 	}
+	
+	private static void syncFrameRate(float fps, long lastNanos) {
+        long targetNanos = lastNanos + (long) (1_000_000_000.0f / fps) - 1_000_000L;  // subtract 1 ms to skip the last sleep call
+        try {
+        	while (System.nanoTime() < targetNanos) {
+        		Thread.sleep(1);
+        	}
+        }
+        catch (InterruptedException ignore) {}
+    }
 }

@@ -34,17 +34,17 @@ public class AABB {
 
 	public void correctPosition(AABB box, Collision data) {
 		Vector2f correction = box.center.sub(center, new Vector2f());
-		if(data.distance.x > data.distance.y) {
+		if(data.getDistance().x > data.getDistance().y) {
 			if(correction.x > 0) {
-				center.add(data.distance.x, 0);
+				center.add(data.getDistance().x, 0);
 			}else{
-				center.add(-data.distance.x, 0);
+				center.add(-data.getDistance().x, 0);
 			}
 		}else{
 			if(correction.y > 0) {
-				center.add(0, data.distance.y);
+				center.add(0, data.getDistance().y);
 			}else{
-				center.add(0, -data.distance.y);
+				center.add(0, -data.getDistance().y);
 			}
 		}
 		

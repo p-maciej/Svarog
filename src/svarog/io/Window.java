@@ -50,7 +50,7 @@ public class Window {
 		
 		if(window == 0)
 			throw new IllegalStateException("Failed to create window");
-	
+		
 		if(!fullscreen) {
 			GLFWVidMode vid = glfwGetVideoMode(glfwGetPrimaryMonitor());
 			glfwSetWindowPos(window, (vid.width()-width)/2, (vid.height()-height)/2);
@@ -102,8 +102,16 @@ public class Window {
 	public void setFullscreen(boolean fullscreen) {
 		this.fullscreen = fullscreen;
 	}
-
 	
+	
+	public boolean hasResized() {
+		return hasResized;
+	}
+	
+	public Input getInput() {
+		return input;
+	}
+
 	public static void setCallbacks() {
 		glfwSetErrorCallback(new GLFWErrorCallback() {
 
@@ -127,13 +135,5 @@ public class Window {
 		};
 		
 		glfwSetWindowSizeCallback(window, windowSize);
-	}
-	
-	public boolean hasResized() {
-		return hasResized;
-	}
-	
-	public Input getInput() {
-		return input;
 	}
 }

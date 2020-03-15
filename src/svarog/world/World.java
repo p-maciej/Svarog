@@ -69,18 +69,18 @@ public class World {
 	
 	public void render(Shader shader, Camera camera, Window window) {		
 		int posX = (int)camera.getPosition().x / (scale*2);
-		int posY = (int)camera.getPosition().y / (scale*2);
+		int posY = (int)camera.getPosition().y / (scale*2);	
 		
 		for(int i = 0; i < viewX; i++) {
 			for(int j = 0; j < viewY; j++) {
 				Tile t = getTile(i-posX-(viewX/2)+1, j+posY-(viewY/2));
 				if(t != null)
-					renderTile(t, i-posX-(viewX/2)+1, -j-posY+(viewY/2), shader, world, camera);
+					renderTile(t, i-posX-(viewX/2)+1, -j-posY+(viewY/2), shader, world, camera); // Tile rendering
 			}
 		}	
 		
 		for(Entity entity : entities) {
-			entity.render(shader, camera, this);
+			entity.render(shader, camera, this); // Entities rendering
 		}
 		
 		shader = null;
@@ -90,7 +90,7 @@ public class World {
 	public void renderTile(Tile tile, int x, int y, Shader shader, Matrix4f world, Camera camera) {
 		shader.bind();
 		
-		for(byte i = 0; i < 3; i++) {
+		for(byte i = 0; i < 3; i++) { // Rendering every layer of tile
 			if(tile.getTexture(i) != null)
 				tile.getTexture(i).bind(0);
 			
@@ -112,7 +112,7 @@ public class World {
 		camera = null;
 	}
 	
-	public void update(float delta, Window window, Camera camera) {
+	public void update(float delta, Window window, Camera camera) { // World update
 		for(Entity entity : entities) {
 			entity.update(delta, window, camera, this);
 			entity.collideWithTiles(this);
@@ -124,24 +124,18 @@ public class World {
 		return entities.get(i);
 	}
 	
+	public void addEntity(Entity entity) {
+		entities.add(entity);
+	}
+	
 	public int numberOfEntities() {
 		return entities.size();
 	}
 	
-	public void correctCamera(Camera camera, Window window) {
-		Vector3f position = camera.getPosition();
-		int w = -width * scale * 2;
-		int h = height * scale * 2;
-		
-		if(position.x > -(window.getWidth()/2)+scale)
-			position.x = -(window.getWidth()/2)+scale;
-		if(position.x < w + (window.getWidth()/2)+scale)
-			position.x = w + (window.getWidth()/2)+scale;
-		
-		if(position.y < (window.getHeight()/2)-scale)
-			position.y = (window.getHeight()/2)-scale;
-		if(position.y > h-(window.getHeight()/2)-scale)
-			position.y = h-(window.getHeight()/2)-scale;
+	public void fillWorld(Texture texture) {
+		for(int i = 0; i < width; i++)
+			for(int j = 0; j < height; j++)
+				tiles[i][j] = new Tile(texture);
 	}
 	
 	public void setTile(Tile tile, int x, int y) {
@@ -151,12 +145,6 @@ public class World {
 			bounding_boxes[x][y] = new AABB(new Vector2f(x*2, -y*2), new Vector2f(1,1));
 		else
 			bounding_boxes[x][y] = null;
-	}
-	
-	public void fillWorld(Texture texture) {
-		for(int i = 0; i < width; i++)
-			for(int j = 0; j < height; j++)
-				tiles[i][j] = new Tile(texture);
 	}
 	
 	public Tile getTile(int x, int y) {
@@ -189,8 +177,20 @@ public class World {
 		viewY = (window.getHeight() / (scale*2)) + 4;
 	}
 	
-	public void addEntity(Entity entity) {
-		entities.add(entity);
+	public void correctCamera(Camera camera, Window window) {
+		Vector3f position = camera.getPosition();
+		int w = -width * scale * 2;
+		int h = height * scale * 2;
+		
+		if(position.x > -(window.getWidth()/2)+scale)
+			position.x = -(window.getWidth()/2)+scale;
+		if(position.x < w + (window.getWidth()/2)+scale)
+			position.x = w + (window.getWidth()/2)+scale;
+		
+		if(position.y < (window.getHeight()/2)-scale)
+			position.y = (window.getHeight()/2)-scale;
+		if(position.y > h-(window.getHeight()/2)-scale)
+			position.y = h-(window.getHeight()/2)-scale;
 	}
 	
 	public int getScale() {

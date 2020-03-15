@@ -3,7 +3,7 @@ package svarog.world;
 import svarog.render.Texture;
 
 public class Tile {
-	public static int auto_increment = 0;
+	private static int auto_increment = 0;
 	
 	private int id;
 	private boolean solid;

@@ -11,7 +11,6 @@ public class Camera {
 	
 	public Camera(int width, int height) {
 		position = new Vector3f(0,0,0);
-		//setProjection(width, height);
 	}
 	
 	public void setPosition(Vector3f position) {
@@ -30,15 +29,11 @@ public class Camera {
 		return projection.translate(position, new Matrix4f());
 	}
 	
-	public void setProjection1(int width, int height) {
-		projection = new Matrix4f().setOrtho2D(-width/2, width/2, -height/2, height/2);
-	}
-	
 	public void setProjection(int width, int height, Window window, int scale, int worldWidth, int worldHeight) {
 		projection = new Matrix4f().setOrtho2D(-width/2, width/2, -height/2, height/2);
 		
 		
-		int widthOffset = (window.getWidth()-worldWidth*(scale/2)*4)/2;
+		int widthOffset = (window.getWidth()-worldWidth*(scale/2)*4)/2;		// This set world to center of the window
 		int heightOffset = (window.getHeight()-worldHeight*(scale/2)*4)/2;
 		
 		Vector3f offset = new Vector3f(0, 0, 0);

@@ -3,6 +3,8 @@ package svarog.entity;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
+
+// This class determines the position and size of the element
 public class Transform {
 	private Vector3f position;
 	private Vector3f scale;
