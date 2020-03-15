@@ -56,7 +56,7 @@ public class Main {
 		Shader shader = new Shader("shader");								// This loads files named shader.vs and shader.fs
 		
 		
-		World world = new World();											// World initialization
+		World world = new World(42, 30);											// World initialization
 		world.calculateView(window);
 		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
 		world.fillWorld(new Texture("grass_map_1.png"));
@@ -73,6 +73,10 @@ public class Main {
 		for(int i = 0; i < 8; i++)
 			for(int j = 0; j < 4; j++)
 				world.getTile(12+i, 12+j).setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)1);
+		
+		for(int i = 0; i < 8; i++)
+			for(int j = 0; j < 4; j++)
+				world.getTile(20+i, 7+j).setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)(j < 3 ? 2 : 1));
 		
 		
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), true).setIsStatic(false));

@@ -42,6 +42,7 @@ public class World {
 			2,3,0
 	};
 	
+	private static final int scale = 20;
 	
 	private int viewX;
 	private int viewY;
@@ -49,21 +50,19 @@ public class World {
 	private Tile[][] tiles;
 	private int width;
 	private int height;
-	private int scale;
 	private AABB[][] bounding_boxes;
 	
 	private List<Entity> entities;
 	
 	private Matrix4f world;
 	
-	public World() {
+	public World(int width, int height) {
 		entities = new ArrayList<Entity>();
 		
 		model = new Model(vertices, texture, indices);
 		
-		width = 32;
-		height = 22;
-		scale = 20;
+		this.width = width;
+		this.height = height;
 		
 		tiles = new Tile[width][height];
 		bounding_boxes = new AABB[width][height];
@@ -80,7 +79,7 @@ public class World {
 			for(int j = 0; j < viewY; j++) {
 				Tile t = getTile(i-posX-(viewX/2)+1, j+posY-(viewY/2));
 				if(t != null)
-					renderTile(t, i-posX-(viewX/2)+1, -j-posY+(viewY/2), shader, world, camera); // Tile rendering
+					renderTile(t, i-posX-(viewX/2)+1, -j-posY+(viewY/2), shader, world, camera, false); // Rendering first 2 layers of map
 			}
 		}	
 		
@@ -88,16 +87,41 @@ public class World {
 			entity.render(shader, camera, this); // Entities rendering
 		}
 		
+		for(int i = 0; i < viewX; i++) {
+			for(int j = 0; j < viewY; j++) {
+				Tile t = getTile(i-posX-(viewX/2)+1, j+posY-(viewY/2));
+				if(t != null)
+					renderTile(t, i-posX-(viewX/2)+1, -j-posY+(viewY/2), shader, world, camera, true); // Rendering last layer(3)
+			}
+		}
+		
 		shader = null;
 		camera = null;
 	}
 	
-	public void renderTile(Tile tile, int x, int y, Shader shader, Matrix4f world, Camera camera) {
+	public void renderTile(Tile tile, int x, int y, Shader shader, Matrix4f world, Camera camera, boolean topLayer) {
 		shader.bind();
 		
-		for(byte i = 0; i < 3; i++) { // Rendering every layer of tile
-			if(tile.getTexture(i) != null)
-				tile.getTexture(i).bind(0);
+		if(!topLayer) {
+			for(byte i = 0; i < 2; i++) { // Rendering every layer of tile
+				if(tile.getTexture(i) != null) {
+					tile.getTexture(i).bind(0);
+				
+					Matrix4f tile_position = new Matrix4f().translate(new Vector3f(x*2, y*2, 0));
+					Matrix4f target = new Matrix4f();
+					
+					camera.getProjection().mul(world, target);
+					target.mul(tile_position);
+					
+					shader.setUniform("sampler", 0);
+					shader.setUniform("projection", target);
+					
+					this.model.render();
+				}
+			}
+		} else {
+			if(tile.getTexture((byte)2) != null) {
+				tile.getTexture((byte)2).bind(0);
 			
 				Matrix4f tile_position = new Matrix4f().translate(new Vector3f(x*2, y*2, 0));
 				Matrix4f target = new Matrix4f();
@@ -109,6 +133,7 @@ public class World {
 				shader.setUniform("projection", target);
 				
 				this.model.render();
+			}
 		}
 		
 		tile = null;
@@ -121,11 +146,10 @@ public class World {
 		BufferedImage image;
 
 		try {
-			image = ImageIO.read(new File("./resources/world_maps/" + filename));
-			width = image.getWidth();
-			height = image.getHeight();
-			
-		
+			image = ImageIO.read(new File("./resources/textures/maps/masks/" + filename));
+			int width = image.getWidth();
+			int height = image.getHeight();
+
 			if(width == this.getWidth() && height == this.getHeight()) {				
 				for(int i = 0; i < width; i++) {
 					for(int j = 0; j < height; j++) {
