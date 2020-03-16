@@ -20,9 +20,6 @@ import static org.lwjgl.opengl.GL20.glUniform1i;
 import static org.lwjgl.opengl.GL20.glUniformMatrix4fv;
 import static org.lwjgl.opengl.GL20.glUseProgram;
 import static org.lwjgl.opengl.GL20.glValidateProgram;
-import static org.lwjgl.opengl.GL20.glDeleteProgram;
-import static org.lwjgl.opengl.GL20.glDeleteShader;
-import static org.lwjgl.opengl.GL20.glDetachShader;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -111,14 +108,5 @@ public class Shader {
 		}
 		
 		return string.toString();
-	}
-	
-	protected void finalize() throws Throwable {
-		glDetachShader(program, vS);
-		glDetachShader(program, fS);
-		glDeleteShader(vS);
-		glDeleteShader(fS);
-		glDeleteProgram(program);
-		super.finalize();
 	}
 }

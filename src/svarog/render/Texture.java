@@ -6,7 +6,6 @@ import static org.lwjgl.opengl.GL11.GL_TEXTURE_MAG_FILTER;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_MIN_FILTER;
 import static org.lwjgl.opengl.GL11.GL_UNSIGNED_BYTE;
 import static org.lwjgl.opengl.GL11.glBindTexture;
-import static org.lwjgl.opengl.GL11.glDeleteTextures;
 import static org.lwjgl.opengl.GL11.glGenTextures;
 import static org.lwjgl.opengl.GL11.glRotatef;
 import static org.lwjgl.opengl.GL11.glTexImage2D;
@@ -122,10 +121,5 @@ public class Texture {
 	
 	public String getFilename() {
 		return filename;
-	}
-	
-	protected void finalize() throws Throwable {
-		glDeleteTextures(id);
-		super.finalize();
 	}
 }

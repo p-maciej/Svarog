@@ -8,7 +8,6 @@ import static org.lwjgl.opengl.GL15.GL_ELEMENT_ARRAY_BUFFER;
 import static org.lwjgl.opengl.GL15.GL_STATIC_DRAW;
 import static org.lwjgl.opengl.GL15.glBindBuffer;
 import static org.lwjgl.opengl.GL15.glBufferData;
-import static org.lwjgl.opengl.GL15.glDeleteBuffers;
 import static org.lwjgl.opengl.GL15.glGenBuffers;
 import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
 import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
@@ -72,12 +71,5 @@ public class Model {
 		buffer.flip();
 		
 		return buffer;
-	}
-	
-	protected void finalize() throws Throwable {
-		glDeleteBuffers(v_id);
-		glDeleteBuffers(t_id);
-		glDeleteBuffers(i_id);
-		super.finalize();
 	}
 }
