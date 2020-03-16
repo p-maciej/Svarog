@@ -14,11 +14,11 @@ import svarog.render.Texture;
 import svarog.world.World;
 
 public class Player extends Entity {
-	private boolean firstUpdate;
+	private boolean setCamWithoutAnimation;
 	
 	public Player(Transform transform, boolean fullBoundingBox) {
 		super(new Texture("avatar.png"), transform, fullBoundingBox);
-		firstUpdate = true;
+		setCamWithoutAnimation = true;
 	}
 	
 	@Override
@@ -43,9 +43,9 @@ public class Player extends Entity {
 		
 		move(movement);
 		
-		if(firstUpdate == true) {
+		if(setCamWithoutAnimation == true) {
 			camera.setPosition(transform.getPosition().mul(-world.getScale(), new Vector3f()));
-			firstUpdate = false;
+			setCamWithoutAnimation = false;
 		}
 		else {
 			camera.getPosition().lerp(transform.getPosition().mul(-world.getScale(), new Vector3f()), 0.05f); // Camera movement
@@ -57,5 +57,17 @@ public class Player extends Entity {
 		window = null;
 		camera = null;
 		world = null;
+	}
+	
+	public int getPositionX() {
+		return (int)(transform.getPosition().x/2);
+	}
+	
+	public int getPositionY() {
+		return (int)(transform.getPosition().y/2*(-1));
+	}
+
+	public void setSetCamWithoutAnimation(boolean setCamWithoutAnimation) {
+		this.setCamWithoutAnimation = setCamWithoutAnimation;
 	}
 }

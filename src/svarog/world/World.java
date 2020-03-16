@@ -14,6 +14,7 @@ import org.joml.Vector3f;
 
 import svarog.collision.AABB;
 import svarog.entity.Entity;
+import svarog.entity.Player;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Model;
@@ -47,20 +48,25 @@ public class World {
 	private int viewX;
 	private int viewY;
 	
+	private int id;
+	private int playerId;
 	private Tile[][] tiles;
 	private int width;
 	private int height;
 	private AABB[][] bounding_boxes;
 	
 	private List<Entity> entities;
+	private List<Door> doors;
 	
 	private Matrix4f world;
 	
-	public World(int width, int height) {
+	public World(int id, int width, int height) {
 		entities = new ArrayList<Entity>();
+		doors = new ArrayList<Door>();
 		
 		model = new Model(vertices, texture, indices);
 		
+		this.setId(id);
 		this.width = width;
 		this.height = height;
 		
@@ -177,15 +183,41 @@ public class World {
 	}
 	
 	public Entity getEntity(int i) {
-		return entities.get(i);
+		if(entities.size() > i)
+			return entities.get(i);
+		else
+			return null;
 	}
 	
 	public void addEntity(Entity entity) {
-		entities.add(entity);
+		this.entities.add(entity);
+		
+		if(entity instanceof Player)
+			playerId = entities.size() - 1;
+			
 	}
 	
 	public int numberOfEntities() {
 		return entities.size();
+	}
+	
+	public Door getDoor(int i) {
+		if(doors.size() > i)
+			return doors.get(i);
+		else
+			return null;
+	}
+	
+	public int numberOfDoors() {
+		return doors.size();
+	}
+	
+	public void addDoor(Door door) {
+		this.doors.add(door);
+	}
+	
+	public Player getPlayer() {
+		return (Player)this.entities.get(playerId);
 	}
 	
 	public void fillWorld(Texture texture) {
@@ -247,6 +279,14 @@ public class World {
 			position.y = (window.getHeight()/2)-scale;
 		if(position.y > h-(window.getHeight()/2)-scale) // Bottom border - add
 			position.y = h-(window.getHeight()/2)-scale;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public int getScale() {

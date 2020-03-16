@@ -1,7 +1,5 @@
 package svarog.game;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_1;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_2;
 import static org.lwjgl.glfw.GLFW.glfwInit;
 import static org.lwjgl.glfw.GLFW.glfwTerminate;
 import static org.lwjgl.opengl.GL11.GL_ALPHA;
@@ -26,14 +24,14 @@ import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
+import svarog.world.Door;
 import svarog.world.Tile;
 import svarog.world.World;
 
 public class Main {
-	private static int currentWorldId = 1;
 	
-	private static World testWorld1(Camera camera, Window window) {
-		World world = new World(42, 30);											// World initialization
+	private static World testWorld1(Player player, Camera camera, Window window) {
+		World world = new World(1, 42, 30);											// World initialization
 		world.calculateView(window);
 		
 		world.fillWorld(new Texture("grass_map_1.png"));
@@ -58,23 +56,32 @@ public class Main {
 			for(int j = 0; j < 4; j++)
 				world.getTile(20+i, 7+j).setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)(j < 3 ? 2 : 1));
 		
+		world.getTile(15, 0).setTexture(new Texture("door.png"), (byte)1);
+		world.getTile(41, 29).setTexture(new Texture("door.png"), (byte)1);
+		
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), true).setIsStatic(false));
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), true));
-		world.addEntity(new Player(new Transform().setPosition(15,  5), false));
+		world.addEntity(player);
 		
 		world.setSolidTilesFromMap("map1.png");
 		
 		world.setBoundingBoxes();
 		
+		
+		world.addDoor(new Door(15, 0, 15, 27));
+		world.addDoor(new Door(41, 29, 41, 2));
+		
 		return world;
 	}
 	
-	private static World testWorld2(Camera camera, Window window) {
-		World world = new World(42, 30);											// World initialization
+	private static World testWorld2(Player player, Camera camera, Window window) {
+		World world = new World(2, 42, 30);											// World initialization
 		world.calculateView(window);
 		
 		world.fillWorld(new Texture("grass_map_1.png"));
 		
+		world.getTile(15, 29).setTexture(new Texture("door.png"), (byte)1);
+		world.getTile(41, 0).setTexture(new Texture("door.png"), (byte)1);
 
 		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
 
@@ -85,10 +92,10 @@ public class Main {
 		
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), true).setIsStatic(false));
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), true));
-		world.addEntity(new Player(new Transform().setPosition(10,  2), false));
+		world.addEntity(player);
 		
-		//world.setSolidTilesFromMap("map1.png");
-		
+		world.addDoor(new Door(15, 29, 15, 1));
+		world.addDoor(new Door(41, 0, 41, 28));
 		world.setBoundingBoxes();
 		
 		return world;
@@ -117,9 +124,11 @@ public class Main {
 		Shader shader = new Shader("shader");								// This loads files named shader.vs and shader.fs
 		Camera camera = new Camera(window.getWidth(), window.getHeight());	// Creating camera width size of window
 
-		World currentWorld = testWorld1(camera, window);
+		Player player = new Player(new Transform().setPosition(15, 5), false);
+				
+		World currentWorld = testWorld1(player, camera, window);
 		
-		
+
 
 		
 		long lastNanos = Timer.getNanoTime();
@@ -138,22 +147,6 @@ public class Main {
 			if(window.getInput().isKeyPressed(GLFW_KEY_ESCAPE)) {			// If esc pressed then...
 				System.exit(0);
 			}
-			
-			if(window.getInput().isKeyPressed(GLFW_KEY_1)) {
-				if(currentWorldId != 1) {
-					currentWorld = testWorld1(camera, window);
-					currentWorldId = 1;
-					continue;
-				}
-			}
-			
-			if(window.getInput().isKeyPressed(GLFW_KEY_2)) {
-				if(currentWorldId != 2) {
-					currentWorld = testWorld2(camera, window);
-					currentWorldId = 2;
-					continue;
-				}
-			}
 				
 			currentWorld.update((float)0.2, window, camera);
 			currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
@@ -167,6 +160,18 @@ public class Main {
 			currentWorld.render(shader, camera, window);							// world rendering
 			window.swapBuffers(); 
 			
+			for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
+				if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
+					player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
+					player.setSetCamWithoutAnimation(true);
+					if(currentWorld.getId() == 1) {
+						currentWorld = testWorld2(player, camera, window);
+					}
+					else if(currentWorld.getId() == 2) {
+						currentWorld = testWorld1(player, camera, window);
+					}
+				}
+			}
 		}
 		
 		glfwTerminate();

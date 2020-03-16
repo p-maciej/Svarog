@@ -109,6 +109,11 @@ public class Entity {
 		direction = null;
 	}
 	
+	public void setPosition(int x, int y) {
+		transform.setPosition(x*2, y*2);
+		bounding_box.getCenter().set(transform.getPosition().x, transform.getPosition().y);
+	}
+	
 	// Enables collision with world (map)
 	public void collideWithTiles(World world) {	
 		for(int x = 0; x < world.getWidth(); x++) {
@@ -161,13 +166,13 @@ public class Entity {
 		if(transform.getPosition().x < 1)
 			transform.getPosition().add(new Vector3f(1*delta, 0,0));
 		
-		if(transform.getPosition().x > world.getWidth()*2-3)
+		if(transform.getPosition().x > world.getWidth()*2-1.8f)
 			transform.getPosition().add(new Vector3f(-1*delta, 0,0));
 		
 		if(transform.getPosition().y > -1)
 			transform.getPosition().add(new Vector3f(0, -1*delta,0));
 		
-		if(transform.getPosition().y < -(world.getHeight()*2-3))
+		if(transform.getPosition().y < -(world.getHeight()*2-1.6f))
 			transform.getPosition().add(new Vector3f(0, 1*delta,0));
 		///////////////////////////////////////////////////////////////
 
