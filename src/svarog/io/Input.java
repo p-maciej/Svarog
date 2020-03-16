@@ -1,10 +1,7 @@
 package svarog.io;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_LAST;
 import static org.lwjgl.glfw.GLFW.glfwGetKey;
-import static org.lwjgl.glfw.GLFW.glfwGetKeyName;
 import static org.lwjgl.glfw.GLFW.glfwGetMouseButton;
-
-import java.util.Arrays;
 
 public class Input {
 	private long window;
@@ -14,7 +11,9 @@ public class Input {
 	Input(long window) {
 		this.window = window;
 		this.keys = new boolean[GLFW_KEY_LAST];
-		Arrays.fill(keys, Boolean.FALSE);
+
+		for(int i = 0; i < GLFW_KEY_LAST; i++)
+			this.keys[i] = false;
 	}
 
 	public boolean isKeyDown(int key) {
@@ -29,15 +28,12 @@ public class Input {
 		return (isKeyDown(key) && !keys[key]);
 	}
 	
-	public boolean isKeyReleased(int key) { // not working
+	public boolean isKeyReleased(int key) {
 		return (!isKeyDown(key) && keys[key]);
 	}
 	
 	public void update() {
-		for(int i = 0; i < GLFW_KEY_LAST; i++)
-			if(glfwGetKeyName(i, -1) != null) {
-			    keys[i] = isKeyDown(i);
-			}
-
+		for(int i = 32; i < GLFW_KEY_LAST; i++)
+			keys[i] = isKeyDown(i);
 	}
 }

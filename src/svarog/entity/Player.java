@@ -24,7 +24,9 @@ public class Player extends Entity {
 	@Override
 	public void update(float delta, Window window, Camera camera, World world) {
 		Vector2f movement = new Vector2f();
+		
 		///////////// WASD Player movement ////////////////////
+		
 		if(window.getInput().isKeyDown(GLFW_KEY_A)) {
 			movement.add(-1*delta, 0);
 		}

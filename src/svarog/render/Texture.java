@@ -112,6 +112,18 @@ public class Texture {
 		filename = null;
 	}
 	
+	public Texture(ByteBuffer pixels, int tileSize) {
+		id = glGenTextures();
+		glBindTexture(GL_TEXTURE_2D, id);
+				
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+				
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tileSize, tileSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+				
+		pixels = null;
+	}
+	
 	public void bind(int sampler) {
 		if(sampler >= 0 && sampler <= 31) {
 			glActiveTexture(GL_TEXTURE0 + sampler);

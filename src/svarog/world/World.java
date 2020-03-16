@@ -3,6 +3,7 @@ package svarog.world;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.imageio.ImageIO;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
+import org.lwjgl.BufferUtils;
 
 import svarog.collision.AABB;
 import svarog.entity.Entity;
@@ -146,6 +148,45 @@ public class World {
 		shader = null;
 		world = null;
 		camera = null;
+	}
+	
+	public void loadMap(String filename, int tileSize) {
+		BufferedImage image;
+		
+		try {
+			image = ImageIO.read(new File("./resources/textures/maps/" + filename));
+			
+			if(image.getWidth()%tileSize == 0 && image.getHeight()%tileSize == 0) {	
+				if(image.getWidth()/tileSize == this.getWidth() && image.getHeight()/tileSize == this.getHeight()) {
+					for(int x = 0; x < this.getWidth(); x++) {
+						for(int y = 0; y < this.getHeight(); y++) {
+							ByteBuffer pixels = BufferUtils.createByteBuffer(tileSize*tileSize*4);
+							for(int i = x*tileSize; i < x*tileSize + tileSize; i++) {
+								for(int j = y*tileSize; j < y*tileSize + tileSize; j++) {
+									int pixel = image.getRGB(i, j);
+									pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
+									pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
+									pixels.put((byte)(pixel & 0xFF)); 			// blue
+									pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
+								}
+							}
+							pixels.flip();
+	
+							setTile(new Tile(new Texture(pixels, tileSize)), x, y);
+							
+							pixels.clear();
+						}
+					}
+				} else
+					throw new IllegalStateException("Wrong map size!");			
+			} else
+				throw new IllegalStateException("Wrong tile size!");
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		filename = null;
 	}
 	
 	public void setSolidTilesFromMap(String filename) {

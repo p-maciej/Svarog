@@ -1,5 +1,4 @@
 package svarog.game;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 import static org.lwjgl.glfw.GLFW.glfwInit;
 import static org.lwjgl.glfw.GLFW.glfwTerminate;
 import static org.lwjgl.opengl.GL11.GL_ALPHA;
@@ -25,51 +24,37 @@ import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
 import svarog.world.Door;
-import svarog.world.Tile;
 import svarog.world.World;
 
 public class Main {
 	
 	private static World testWorld1(Player player, Camera camera, Window window) {
-		World world = new World(1, 42, 30);											// World initialization
+		World world = new World(1, 120, 80);											// World initialization
 		world.calculateView(window);
 		
 		world.fillWorld(new Texture("grass_map_1.png"));
 		
-		Tile test2 = new Tile(new Texture("wall.png")).setSolid();
-		
-		world.setTile(test2, 5, 0);
-		world.setTile(test2, 6, 0);
-		world.setTile(test2, 7, 0);
-		world.setTile(test2, 7, 1);
-		world.setTile(test2, 7, 2);
-		
 		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
 
+		world.loadMap("start_map.png", 32);
+		world.getTile(60, 28).setTexture(new Texture("door.png"), (byte)2);
+		world.getTile(60, 27).setTexture(new Texture("door.png"), (byte)2);
+		world.getTile(60, 26).setTexture(new Texture("door.png"), (byte)2);
+		world.getTile(60, 25).setTexture(new Texture("door.png"), (byte)2);
+		world.getTile(60, 24).setTexture(new Texture("door.png"), (byte)2);
 		
-		
-		for(int i = 0; i < 8; i++)
-			for(int j = 0; j < 4; j++)
-				world.getTile(12+i, 12+j).setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)1);
-		
-		for(int i = 0; i < 8; i++)
-			for(int j = 0; j < 4; j++)
-				world.getTile(20+i, 7+j).setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)(j < 3 ? 2 : 1));
-		
-		world.getTile(15, 0).setTexture(new Texture("door.png"), (byte)1);
-		world.getTile(41, 29).setTexture(new Texture("door.png"), (byte)1);
-		
-		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), true).setIsStatic(false));
-		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), true));
 		world.addEntity(player);
 		
-		world.setSolidTilesFromMap("map1.png");
+		world.setSolidTilesFromMap("start_map.png");
 		
 		world.setBoundingBoxes();
 		
 		
-		world.addDoor(new Door(15, 0, 15, 27));
-		world.addDoor(new Door(41, 29, 41, 2));
+		world.addDoor(new Door(60, 28, 1, 20));
+		world.addDoor(new Door(60, 27, 1, 20));
+		world.addDoor(new Door(60, 26, 1, 20));
+		world.addDoor(new Door(60, 25, 1, 20));
+		world.addDoor(new Door(60, 24, 1, 20));
 		
 		return world;
 	}
@@ -80,8 +65,7 @@ public class Main {
 		
 		world.fillWorld(new Texture("grass_map_1.png"));
 		
-		world.getTile(15, 29).setTexture(new Texture("door.png"), (byte)1);
-		world.getTile(41, 0).setTexture(new Texture("door.png"), (byte)1);
+		world.getTile(0, 20).setTexture(new Texture("door.png"), (byte)1);
 
 		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
 
@@ -94,8 +78,8 @@ public class Main {
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), true));
 		world.addEntity(player);
 		
-		world.addDoor(new Door(15, 29, 15, 1));
-		world.addDoor(new Door(41, 0, 41, 28));
+		world.addDoor(new Door(0, 20, 59, 26));
+		
 		world.setBoundingBoxes();
 		
 		return world;
@@ -124,7 +108,7 @@ public class Main {
 		Shader shader = new Shader("shader");								// This loads files named shader.vs and shader.fs
 		Camera camera = new Camera(window.getWidth(), window.getHeight());	// Creating camera width size of window
 
-		Player player = new Player(new Transform().setPosition(15, 5), false);
+		Player player = new Player(new Transform().setPosition(40, 30), false);
 				
 		World currentWorld = testWorld1(player, camera, window);
 		
@@ -144,15 +128,10 @@ public class Main {
 			}
 			
 			
-			if(window.getInput().isKeyPressed(GLFW_KEY_ESCAPE)) {			// If esc pressed then...
-				System.exit(0);
-			}
-				
 			currentWorld.update((float)0.2, window, camera);
 			currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
-				
-			window.update();										
-			
+									
+			window.update();	
 
 			glClear(GL_COLOR_BUFFER_BIT);
 
