@@ -38,8 +38,8 @@ public class Entity {
 	
 	/// Model ////
 	private Model model;
-	private Animation animation;
-	private Texture texture;
+	protected Animation animation;
+	protected Texture texture;
 	protected Transform transform;
 	protected Transform textureTransform;
 	private AABB bounding_box;
@@ -50,6 +50,14 @@ public class Entity {
 	private boolean isStatic = true;
 	private boolean fullBoundingBox;
 	
+	protected Direction currentDirection;
+	
+	protected enum Direction {
+		left,
+		right,
+		down,
+		up	
+	}
 	
 	// Animation constructor
 	public Entity(Animation animation, Transform transform, boolean fullBoundingBox) {	
@@ -60,6 +68,12 @@ public class Entity {
 		this.animation = animation;
 		this.transform = transform;
 		this.setFullBoundingBox(fullBoundingBox);
+		
+		float diff = (float)animation.getHeight() / (float)animation.getWidth();
+		if(animation.getHeight() > animation.getWidth())
+			transform.getScale().y = diff;
+		else
+			transform.getScale().x = diff;
 		
 		setEntityProperties();
 	}
@@ -227,5 +241,16 @@ public class Entity {
 	
 	public AABB getBoduningBox() {
 		return bounding_box;
+	}
+	
+	protected void setAnimation(Direction direction, Animation animation) {
+		texture = null;
+		this.animation = animation;
+		this.currentDirection = direction;
+	}
+	
+	protected void setTexture(Texture texture) {
+		animation = null;
+		this.texture = texture;
 	}
 }

@@ -54,7 +54,7 @@ public class Main {
 		world.addDoor(new Door(60, 27, 1, 20));
 		world.addDoor(new Door(60, 26, 1, 20));
 		world.addDoor(new Door(60, 25, 1, 20));
-		world.addDoor(new Door(60, 24, 1, 20));
+		//world.addDoor(new Door(60, 24, 1, 20));
 		
 		
 		return world;
@@ -76,7 +76,7 @@ public class Main {
 				world.getTile(7+i, 15+j).setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)(j < 3 ? 2 : 1));
 		
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), true).setIsStatic(false));
-		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), true));
+		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), false));
 		world.addEntity(player);
 		
 		world.addDoor(new Door(0, 20, 59, 26));
@@ -109,7 +109,7 @@ public class Main {
 		Shader shader = new Shader("shader");								// This loads files named shader.vs and shader.fs
 		Camera camera = new Camera(window.getWidth(), window.getHeight());	// Creating camera width size of window
 
-		Player player = new Player(new Transform().setPosition(40, 30), false);
+		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 30), false);
 				
 		World currentWorld = testWorld1(player, camera, window);
 		
