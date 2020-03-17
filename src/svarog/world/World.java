@@ -45,7 +45,7 @@ public class World {
 			2,3,0
 	};
 	
-	private static final int scale = 20;
+	private static final int scale = 21;
 	
 	private int viewX;
 	private int viewY;

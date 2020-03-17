@@ -35,37 +35,6 @@ public class Player extends Entity {
 		super.setIsStatic(false); // Non-static - default setting for player 
 	}
 	
-	private int getNewPressedKey(int[] lastPressedKeys, int[] pressedKeys) {
-		int pressed = 0;
-		for(int i = 0; i < 4; i++) {
-			if(pressedKeys[i] != -1)
-				pressed++;
-			
-			if(lastKeysPressed[i] != pressedKeys[i] && pressedKeys[i] != -1) {
-				return pressedKeys[i];
-			}
-		}
-		
-		if(pressed == 1) {
-			for(int i = 0; i < 4; i++) {
-				if(pressedKeys[i] != -1)
-					return pressedKeys[i];
-			}
-		}
-		
-		if(pressed == 0) {
-			return 0;
-		}
-		
-		return lastPressedKey;
-	}
-	
-	private void setLastKeysPressed(int[] keysPressed) {
-		for(int i = 0; i < 4; i++) {
-			lastKeysPressed[i] = keysPressed[i];
-		}
-	}
-	
 	@Override
 	public void update(float delta, Window window, Camera camera, World world) {
 		Vector2f movement = new Vector2f();
@@ -164,6 +133,38 @@ public class Player extends Entity {
 		window = null;
 		camera = null;
 		world = null;
+	}
+	
+	
+	private int getNewPressedKey(int[] lastPressedKeys, int[] pressedKeys) {
+		int pressed = 0;
+		for(int i = 0; i < 4; i++) {
+			if(pressedKeys[i] != -1)
+				pressed++;
+			
+			if(lastKeysPressed[i] != pressedKeys[i] && pressedKeys[i] != -1) {
+				return pressedKeys[i];
+			}
+		}
+		
+		if(pressed == 1) {
+			for(int i = 0; i < 4; i++) {
+				if(pressedKeys[i] != -1)
+					return pressedKeys[i];
+			}
+		}
+		
+		if(pressed == 0) {
+			return 0;
+		}
+		
+		return lastPressedKey;
+	}
+	
+	private void setLastKeysPressed(int[] keysPressed) {
+		for(int i = 0; i < 4; i++) {
+			lastKeysPressed[i] = keysPressed[i];
+		}
 	}
 	
 	public int getPositionX() {
