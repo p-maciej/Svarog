@@ -31,6 +31,8 @@ public class Player extends Entity {
 		
 		setCamWithoutAnimation = true;
 		lastPressedKey = GLFW_KEY_LAST;
+		
+		super.setIsStatic(false); // Non-static - default setting for player 
 	}
 	
 	private int getNewPressedKey(int[] lastPressedKeys, int[] pressedKeys) {

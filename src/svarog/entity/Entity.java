@@ -130,67 +130,70 @@ public class Entity {
 	
 	// Enables collision with world (map)
 	public void collideWithTiles(World world) {	
-		for(int x = 0; x < world.getWidth(); x++) {
-			for(int y = 0; y < world.getHeight(); y++) {
-				AABB box = world.getTileBoundingBox(x, y);
-				
-				if(box != null) {
-					Collision collision = box.getCollision(bounding_box);
+		if(!this.isStatic()) {
+			for(int x = 0; x < world.getWidth(); x++) {
+				for(int y = 0; y < world.getHeight(); y++) {
+					AABB box = world.getTileBoundingBox(x, y);
 					
-					if(collision.isIntersecting()) {
-						bounding_box.correctPosition(box, collision);
-						transform.getPosition().set(bounding_box.getCenter(), 0);
-					}	
+					if(box != null) {
+						Collision collision = box.getCollision(bounding_box);
+						
+						if(collision.isIntersecting()) {
+							bounding_box.correctPosition(box, collision);
+							transform.getPosition().set(bounding_box.getCenter(), 0);
+						}	
+					}
 				}
 			}
 		}
-
 		world = null;
 	}
 	
 	// Enables collision with another entities
 	public void collideWithEntities(World world) {
-		for(int i = 0; i < world.numberOfEntities(); i++) {
-			if(world.getEntity(i).id != this.id) {
-				
-				Collision collision = bounding_box.getCollision(world.getEntity(i).getBoduningBox());
-				
-				if(collision.isIntersecting()) {
-					if(world.getEntity(i).isStatic == false) {
-						collision.getDistance().x /= 2;
-						collision.getDistance().y /= 2;
-					}
+		if(!this.isStatic()) { 
+			for(int i = 0; i < world.numberOfEntities(); i++) {
+				if(world.getEntity(i).id != this.id) {
 					
-					bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
-					transform.getPosition().set(bounding_box.getCenter(), 0);
+					Collision collision = bounding_box.getCollision(world.getEntity(i).getBoduningBox());
 					
-					if(world.getEntity(i).isStatic == false) {
-						world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
-						world.getEntity(i).transform.getPosition().set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
+					if(collision.isIntersecting()) {
+						if(world.getEntity(i).isStatic == false) {
+							collision.getDistance().x /= 2;
+							collision.getDistance().y /= 2;
+						}
+						
+						bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
+						transform.getPosition().set(bounding_box.getCenter(), 0);
+						
+						if(world.getEntity(i).isStatic == false) {
+							world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
+							world.getEntity(i).transform.getPosition().set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
+						}
 					}
 				}
 			}
 		}
-		
 		world = null;
 	}
 	
 	public void update(float delta, Window window, Camera camera, World world) {	
-		////////// Blocking player to go outside of the map ///////////
-		if(transform.getPosition().x < 1)
-			transform.getPosition().add(new Vector3f(1*delta, 0,0));
-		
-		if(transform.getPosition().x > world.getWidth()*2-1.8f)
-			transform.getPosition().add(new Vector3f(-1*delta, 0,0));
-		
-		if(transform.getPosition().y > -1)
-			transform.getPosition().add(new Vector3f(0, -1*delta,0));
-		
-		if(transform.getPosition().y < -(world.getHeight()*2-1.6f))
-			transform.getPosition().add(new Vector3f(0, 1*delta,0));
-		///////////////////////////////////////////////////////////////
+		if(!this.isStatic()) {
+			////////// Blocking player to go outside of the map ///////////
+			if(transform.getPosition().x < 1)
+				transform.getPosition().add(new Vector3f(1*delta, 0,0));
+			
+			if(transform.getPosition().x > world.getWidth()*2-1.8f)
+				transform.getPosition().add(new Vector3f(-1*delta, 0,0));
+			
+			if(transform.getPosition().y > -1)
+				transform.getPosition().add(new Vector3f(0, -1*delta,0));
+			
+			if(transform.getPosition().y < -(world.getHeight()*2-1.6f))
+				transform.getPosition().add(new Vector3f(0, 1*delta,0));
+			///////////////////////////////////////////////////////////////
 
-		
+		}
 		window = null;
 		camera = null;
 		world = null;

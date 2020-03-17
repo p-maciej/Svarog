@@ -4,6 +4,7 @@ import static org.lwjgl.opengl.GL11.GL_RGBA;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_MAG_FILTER;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_MIN_FILTER;
+import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL11.GL_UNSIGNED_BYTE;
 import static org.lwjgl.opengl.GL11.glBindTexture;
 import static org.lwjgl.opengl.GL11.glGenTextures;
@@ -67,14 +68,7 @@ public class Texture {
 		}
 	}
 	
-	
-	public Texture(String filename, int tileInWidth, int tileInHeight, int tileSize) {
-		BufferedImage image;
-		
-		try {
-			image = ImageIO.read(new File("./resources/textures/" + filename));
-			width = height = tileSize;
-			
+	public Texture(BufferedImage image, int tileInWidth, int tileInHeight, int tileSize) {
 			if(width%tileSize == 0 && height%tileSize == 0) {	
 				ByteBuffer pixels = BufferUtils.createByteBuffer(tileSize*tileSize*4);
 				
@@ -87,7 +81,6 @@ public class Texture {
 						pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
 					}
 				}
-				
 				pixels.flip();
 				
 				id = glGenTextures();
@@ -103,11 +96,6 @@ public class Texture {
 			} else {
 				throw new IllegalStateException("Wrong tile size or texture size!");
 			}
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		
-		filename = null;
 	}
 	
 	public Texture(ByteBuffer pixels, int tileSize) {
@@ -131,5 +119,19 @@ public class Texture {
 	
 	public String getFilename() {
 		return filename;
+	}
+	
+	public static BufferedImage getImageBuffer(String filename) {
+		BufferedImage image;
+			
+		try {
+			image = ImageIO.read(new File("./resources/textures/" + filename));
+				
+			return image;
+		} catch(IOException e) {
+		 	e.printStackTrace();
+		}
+		
+		return null;
 	}
 }

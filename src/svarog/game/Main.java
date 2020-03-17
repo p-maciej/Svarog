@@ -13,6 +13,8 @@ import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 
+import java.awt.image.BufferedImage;
+
 import org.lwjgl.opengl.GL;
 
 import svarog.entity.Entity;
@@ -71,9 +73,10 @@ public class Main {
 		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
 
 		
+		BufferedImage home = Texture.getImageBuffer("home1_map_1.png");
 		for(int i = 0; i < 8; i++)
 			for(int j = 0; j < 4; j++)
-				world.getTile(7+i, 15+j).setTexture(new Texture("home1_map_1.png", i, j, 32), (byte)(j < 3 ? 2 : 1));
+				world.getTile(7+i, 15+j).setTexture(new Texture(home, i, j, 32), (byte)(j < 3 ? 2 : 1));
 		
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(10, 10), true).setIsStatic(false));
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), false));
