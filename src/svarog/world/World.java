@@ -174,7 +174,7 @@ public class World {
 	
 							setTile(new Tile(new Texture(pixels, tileSize)), x, y);
 							
-							pixels.clear();
+							pixels = null;
 						}
 					}
 				} else
@@ -187,6 +187,7 @@ public class World {
 		}
 		
 		filename = null;
+		image = null;
 	}
 	
 	public void setSolidTilesFromMap(String filename) {
@@ -213,6 +214,8 @@ public class World {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
+		
+		image = null;
 	}
 	
 	public void update(float delta, Window window, Camera camera) { // World update

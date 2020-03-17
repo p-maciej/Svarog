@@ -56,6 +56,7 @@ public class Main {
 		world.addDoor(new Door(60, 25, 1, 20));
 		world.addDoor(new Door(60, 24, 1, 20));
 		
+		
 		return world;
 	}
 	
@@ -145,9 +146,11 @@ public class Main {
 					player.setSetCamWithoutAnimation(true);
 					if(currentWorld.getId() == 1) {
 						currentWorld = testWorld2(player, camera, window);
+						System.gc();
 					}
 					else if(currentWorld.getId() == 2) {
 						currentWorld = testWorld1(player, camera, window);
+						System.gc();
 					}
 				}
 			}
