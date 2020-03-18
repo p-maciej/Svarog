@@ -45,7 +45,7 @@ public class World {
 			2,3,0
 	};
 	
-	private static final int scale = 21;
+	private static final float scale = 20f;
 	
 	private int viewX;
 	private int viewY;
@@ -80,8 +80,8 @@ public class World {
 	}
 	
 	public void render(Shader shader, Camera camera, Window window) {		
-		int posX = (int)camera.getPosition().x / (scale*2);
-		int posY = (int)camera.getPosition().y / (scale*2);	
+		int posX = (int)(camera.getPosition().x / (scale*2));
+		int posY = (int)(camera.getPosition().y / (scale*2));	
 		
 		for(int i = 0; i < viewX; i++) {
 			for(int j = 0; j < viewY; j++) {
@@ -123,6 +123,7 @@ public class World {
 					
 					shader.setUniform("sampler", 0);
 					shader.setUniform("projection", target);
+					shader.setUniform("sharpness", 1.0f);
 					
 					this.model.render();
 				}
@@ -139,6 +140,7 @@ public class World {
 				
 				shader.setUniform("sampler", 0);
 				shader.setUniform("projection", target);
+				shader.setUniform("sharpness", 1.0f);
 				
 				this.model.render();
 			}
@@ -305,14 +307,14 @@ public class World {
 	}
 	
 	public void calculateView(Window window) {
-		viewX = (window.getWidth() / (scale*2)) + 4;
-		viewY = (window.getHeight() / (scale*2)) + 4;
+		viewX = (int)((window.getWidth() / (scale*2)) + 4);
+		viewY = (int)((window.getHeight() / (scale*2)) + 4);
 	}
 	
 	public void correctCamera(Camera camera, Window window) {
 		Vector3f position = camera.getPosition();
-		int w = -width * scale * 2;
-		int h = height * scale * 2;
+		int w = (int)(-width * scale * 2);
+		int h = (int)(height * scale * 2);
 		
 		if(position.x > -(window.getWidth()/2)+scale) // Left border - add higher value, more offset
 			position.x = -(window.getWidth()/2)+scale;
@@ -333,7 +335,7 @@ public class World {
 		this.id = id;
 	}
 	
-	public int getScale() {
+	public float getScale() {
 		return scale;
 	}
 	

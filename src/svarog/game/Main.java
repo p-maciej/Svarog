@@ -44,7 +44,8 @@ public class Main {
 		
 		glEnable(GL_TEXTURE_2D);											// Allows load textures
 
-		Shader shader = new Shader("shader");								// This loads files named shader.vs and shader.fs
+		Shader shader = new Shader("pixelart");								// This loads files named shader.vs and shader.fs
+		
 		Camera camera = new Camera(window.getWidth(), window.getHeight());	// Creating camera width size of window
 
 		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 30), false);

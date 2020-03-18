@@ -17,6 +17,8 @@ import static org.lwjgl.opengl.GL20.glGetUniformLocation;
 import static org.lwjgl.opengl.GL20.glLinkProgram;
 import static org.lwjgl.opengl.GL20.glShaderSource;
 import static org.lwjgl.opengl.GL20.glUniform1i;
+import static org.lwjgl.opengl.GL20.glUniform1f;
+import static org.lwjgl.opengl.GL20.glUniform4fv;
 import static org.lwjgl.opengl.GL20.glUniformMatrix4fv;
 import static org.lwjgl.opengl.GL20.glUseProgram;
 import static org.lwjgl.opengl.GL20.glValidateProgram;
@@ -28,6 +30,7 @@ import java.io.IOException;
 import java.nio.FloatBuffer;
 
 import org.joml.Matrix4f;
+import org.joml.Vector4f;
 import org.lwjgl.BufferUtils;
 
 public class Shader {
@@ -80,6 +83,20 @@ public class Shader {
 		int location = glGetUniformLocation(program, name);
 		if(location != -1)
 			glUniform1i(location, value);
+	}
+	
+	public void setUniform(String name, float value) {
+		int location = glGetUniformLocation(program, name);
+		if(location != -1)
+			glUniform1f(location, value);
+	}
+	
+	public void setUniform(String name, Vector4f value) {
+		int location = glGetUniformLocation(program, name);
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(4);
+		value.get(buffer);
+		if(location != -1)
+			glUniform4fv(location, buffer);
 	}
 	
 	public void setUniform(String name, Matrix4f value) {

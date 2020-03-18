@@ -212,7 +212,7 @@ public class Entity {
 		shader.bind();
 		shader.setUniform("sampler", 0);
 		shader.setUniform("projection", temp.getProjection(target));
-		
+		shader.setUniform("sharpness", 1.0f);
 		
 		
 		if(animation == null)
