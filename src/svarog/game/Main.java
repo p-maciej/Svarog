@@ -14,7 +14,6 @@ import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 
 import org.lwjgl.opengl.GL;
-
 import svarog.entity.Player;
 import svarog.entity.Transform;
 import svarog.io.Timer;
@@ -51,46 +50,53 @@ public class Main {
 		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 30), false);
 				
 		World currentWorld = StartWorld.getWorld(player, camera, window);
-
 		
 		long lastNanos = Timer.getNanoTime();
-		while(window.processProgram()) {									// This works while program is running
+		int nextFrameLoadWorld = 0;
+		while(window.processProgram()) {										// This works while program is running
 			Timer.syncFrameRate(60, lastNanos);									// Fps limiter
             lastNanos = Timer.getNanoTime();
             
-			glClearColor(0.2f, 0.2f, 0.2f, 1f);
-			if(window.hasResized()) {
-				camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight());
-				currentWorld.calculateView(window);
-				glViewport(0, 0, window.getWidth(), window.getHeight());
-			}
-			
-			
-			currentWorld.update((float)0.2, window, camera);
-			currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
-									
-			window.update();	
+            if(nextFrameLoadWorld != 0) {
+            	glClearColor(0f, 0f, 0f, 1f);
+            	window.update();
+            	glClear(GL_COLOR_BUFFER_BIT);
+            	window.swapBuffers(); 
+            	
 
-			glClear(GL_COLOR_BUFFER_BIT);
-
-				
-			currentWorld.render(shader, camera, window);							// world rendering
-			window.swapBuffers(); 
-			
-			for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
-				if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
-					player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
-					player.setSetCamWithoutAnimation(true);
-					if(currentWorld.getId() == 1) {
-						currentWorld = SecondTestWorld.getWorld(player, camera, window);
-						System.gc();
-					}
-					else if(currentWorld.getId() == 2) {
-						currentWorld = StartWorld.getWorld(player, camera, window);
-						System.gc();
-					}
+            	
+            	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
+            	nextFrameLoadWorld = 0;
+            } else {
+				glClearColor(0.2f, 0.2f, 0.2f, 1f);
+				if(window.hasResized()) {
+					camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight());
+					currentWorld.calculateView(window);
+					glViewport(0, 0, window.getWidth(), window.getHeight());
 				}
-			}
+				
+				
+				currentWorld.update((float)0.2, window, camera);
+				currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
+										
+				window.update();	
+	
+				glClear(GL_COLOR_BUFFER_BIT);
+	
+					
+				currentWorld.render(shader, camera, window);							// world rendering
+				window.swapBuffers(); 
+				
+				for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
+					if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
+						player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
+						player.setSetCamWithoutAnimation(true);
+						nextFrameLoadWorld = currentWorld.getDoor(i).getWorldIdDestination();
+						break;
+					} else 
+						nextFrameLoadWorld = 0;
+				}
+            }
 		}
 		
 		glfwTerminate();

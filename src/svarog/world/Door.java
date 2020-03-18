@@ -1,12 +1,14 @@
 package svarog.world;
 
 public class Door {
+	private int worldIdDestination;
 	private int positionX;
 	private int positionY;
 	private int destinationX;
 	private int destinationY;
 	
-	public Door(int positionX, int positionY, int destinationX, int destinationY) {
+	public Door(int worldIdDestination, int positionX, int positionY, int destinationX, int destinationY) {
+		this.setWorldIdDestination(worldIdDestination);
 		this.setPositionX(positionX);
 		this.setPositionY(positionY);
 		this.setDestinationX(destinationX);
@@ -43,5 +45,13 @@ public class Door {
 
 	public void setDestinationY(int destinationY) {
 		this.destinationY = destinationY;
+	}
+
+	public int getWorldIdDestination() {
+		return worldIdDestination;
+	}
+
+	public void setWorldIdDestination(int worldIdDestination) {
+		this.worldIdDestination = worldIdDestination;
 	}
 }

@@ -30,10 +30,10 @@ abstract class StartWorld {
 		world.setBoundingBoxes();
 		
 		
-		world.addDoor(new Door(60, 28, 1, 20));
-		world.addDoor(new Door(60, 27, 1, 20));
-		world.addDoor(new Door(60, 26, 1, 20));
-		world.addDoor(new Door(60, 25, 1, 20));
+		world.addDoor(new Door(2, 60, 28, 1, 20));
+		world.addDoor(new Door(2, 60, 27, 1, 20));
+		world.addDoor(new Door(2, 60, 26, 1, 20));
+		world.addDoor(new Door(2, 60, 25, 1, 20));
 		//world.addDoor(new Door(60, 24, 1, 20));
 		
 		

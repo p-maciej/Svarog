@@ -32,7 +32,7 @@ abstract class SecondTestWorld {
 		world.addEntity(new Entity(new Texture("player.png"), new Transform().setPosition(18, 17), false));
 		world.addEntity(player);
 		
-		world.addDoor(new Door(0, 20, 59, 26));
+		world.addDoor(new Door(1, 0, 20, 59, 26));
 		
 		world.setBoundingBoxes();
 		
