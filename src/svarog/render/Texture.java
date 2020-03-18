@@ -1,15 +1,17 @@
 package svarog.render;
-import static org.lwjgl.opengl.GL11.GL_NEAREST;
+import static org.lwjgl.opengl.GL11.GL_LINEAR;
 import static org.lwjgl.opengl.GL11.GL_RGBA;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_MAG_FILTER;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_MIN_FILTER;
+import static org.lwjgl.opengl.GL11.GL_TEXTURE_WRAP_S;
+import static org.lwjgl.opengl.GL11.GL_TEXTURE_WRAP_T;
 import static org.lwjgl.opengl.GL11.GL_UNSIGNED_BYTE;
 import static org.lwjgl.opengl.GL11.glBindTexture;
 import static org.lwjgl.opengl.GL11.glGenTextures;
-import static org.lwjgl.opengl.GL11.glRotatef;
 import static org.lwjgl.opengl.GL11.glTexImage2D;
 import static org.lwjgl.opengl.GL11.glTexParameterf;
+import static org.lwjgl.opengl.GL12.GL_CLAMP_TO_EDGE;
 import static org.lwjgl.opengl.GL13.GL_TEXTURE0;
 import static org.lwjgl.opengl.GL13.glActiveTexture;
 
@@ -55,10 +57,11 @@ public class Texture {
 			id = glGenTextures();
 			glBindTexture(GL_TEXTURE_2D, id);
 			
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 			
-			glRotatef(90, 0f, 0f, 1f);
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, height, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
 			
 			
@@ -69,14 +72,7 @@ public class Texture {
 		}
 	}
 	
-	
-	public Texture(String filename, int tileInWidth, int tileInHeight, int tileSize) {
-		BufferedImage image;
-		
-		try {
-			image = ImageIO.read(new File("./resources/textures/" + filename));
-			width = height = tileSize;
-			
+	public Texture(BufferedImage image, int tileInWidth, int tileInHeight, int tileSize) {
 			if(width%tileSize == 0 && height%tileSize == 0) {	
 				ByteBuffer pixels = BufferUtils.createByteBuffer(tileSize*tileSize*4);
 				
@@ -89,14 +85,15 @@ public class Texture {
 						pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
 					}
 				}
-				
 				pixels.flip();
 				
 				id = glGenTextures();
 				glBindTexture(GL_TEXTURE_2D, id);
 				
-				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 				
 				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tileSize, tileSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
 				
@@ -105,20 +102,17 @@ public class Texture {
 			} else {
 				throw new IllegalStateException("Wrong tile size or texture size!");
 			}
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		
-		filename = null;
 	}
 	
 	public Texture(ByteBuffer pixels, int tileSize) {
 		id = glGenTextures();
 		glBindTexture(GL_TEXTURE_2D, id);
 				
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-				
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tileSize, tileSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
 				
 		pixels = null;
@@ -133,5 +127,19 @@ public class Texture {
 	
 	public String getFilename() {
 		return filename;
+	}
+	
+	public static BufferedImage getImageBuffer(String filename) {
+		BufferedImage image;
+			
+		try {
+			image = ImageIO.read(new File("./resources/textures/" + filename));
+				
+			return image;
+		} catch(IOException e) {
+		 	e.printStackTrace();
+		}
+		
+		return null;
 	}
 }

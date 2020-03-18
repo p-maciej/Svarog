@@ -10,6 +10,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import svarog.io.Window;
+import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.world.World;
@@ -19,42 +20,19 @@ public class Player extends Entity {
 	
 	private int[] lastKeysPressed = new int[4];
 	private int lastPressedKey;
+	private String texturesPath;
+	private String fileName;
 	
-	public Player(Transform transform, boolean fullBoundingBox) {
-		super(new Texture("avatar.png"), transform, fullBoundingBox);
+	public Player(String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
+		super(new Texture("animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
+		
+		this.texturesPath = texturePath;
+		this.fileName = filename;
+		
 		setCamWithoutAnimation = true;
 		lastPressedKey = GLFW_KEY_LAST;
-	}
-	
-	private int getNewPressedKey(int[] lastPressedKeys, int[] pressedKeys) {
-		int pressed = 0;
-		for(int i = 0; i < 4; i++) {
-			if(pressedKeys[i] != -1)
-				pressed++;
-			
-			if(lastKeysPressed[i] != pressedKeys[i] && pressedKeys[i] != -1) {
-				return pressedKeys[i];
-			}
-		}
 		
-		if(pressed == 1) {
-			for(int i = 0; i < 4; i++) {
-				if(pressedKeys[i] != -1)
-					return pressedKeys[i];
-			}
-		}
-		
-		if(pressed == 0) {
-			return 0;
-		}
-		
-		return lastPressedKey;
-	}
-	
-	private void setLastKeysPressed(int[] keysPressed) {
-		for(int i = 0; i < 4; i++) {
-			lastKeysPressed[i] = keysPressed[i];
-		}
+		super.setIsStatic(false); // Non-static - default setting for player 
 	}
 	
 	@Override
@@ -100,33 +78,44 @@ public class Player extends Entity {
 		
 		if(direction == 65) {
 			movement.add(-1*delta, 0);
+			
+			if(super.currentDirection != Direction.left) {
+				super.setAnimation(Direction.left, new Animation(4, 8, this.texturesPath + "walking/left/" + this.fileName));
+			}
 		} else if(direction == 68) {
 			movement.add(1*delta, 0);
+			
+			if(super.currentDirection != Direction.right) {
+				super.setAnimation(Direction.right, new Animation(4, 8, this.texturesPath + "walking/right/" + this.fileName));
+			}
 		} else if(direction == 87) {
 			movement.add(0, 1*delta);
+			
+			if(super.currentDirection != Direction.up) {
+				super.setAnimation(Direction.up, new Animation(4, 8, this.texturesPath + "walking/up/" + this.fileName));
+			}
 		} else if(direction == 83) {
 			movement.add(0, -1*delta);
+			
+			if(super.currentDirection != Direction.down) {
+				super.setAnimation(Direction.down, new Animation(4, 8, this.texturesPath + "walking/down/" + this.fileName));
+			}
+		} else if(direction == 0) {
+			if(super.currentDirection == Direction.left && super.texture == null) {
+				super.setTexture(new Texture("animations/" + this.texturesPath + "idle/left/" + this.fileName + ".png"));
+			}
+			if(super.currentDirection == Direction.right && super.texture == null) {
+				super.setTexture(new Texture("animations/" + this.texturesPath + "idle/right/" + this.fileName + ".png"));
+			}
+			if(super.currentDirection == Direction.up && super.texture == null) {
+				super.setTexture(new Texture("animations/" + this.texturesPath + "idle/up/" + this.fileName + ".png"));
+			}
+			if(super.currentDirection == Direction.down && super.texture == null) {
+				super.setTexture(new Texture("animations/" + this.texturesPath + "idle/down/" + this.fileName + ".png"));
+			}
 		}
 		
 		lastPressedKey = direction;
-		
-		/*
-		if(window.getInput().isKeyDown(GLFW_KEY_A)) {
-			movement.add(-1*delta, 0);
-		}
-		
-		if(window.getInput().isKeyDown(GLFW_KEY_D)) {
-			movement.add(1*delta, 0);
-		}
-		
-		if(window.getInput().isKeyDown(GLFW_KEY_W)) {
-			movement.add(0, 1*delta);
-		}
-		
-		if(window.getInput().isKeyDown(GLFW_KEY_S)) {
-			movement.add(0, -1*delta);
-		}
-		*/
 		
 		move(movement);
 		
@@ -135,7 +124,7 @@ public class Player extends Entity {
 			setCamWithoutAnimation = false;
 		}
 		else {
-			camera.getPosition().lerp(transform.getPosition().mul(-world.getScale(), new Vector3f()), 0.05f); // Camera movement
+			camera.getPosition().lerp(transform.getPosition().mul(-world.getScale(), new Vector3f()), 0.25f); // Camera movement
 		}
 		
 		super.update(delta, window, camera, world);
@@ -144,6 +133,38 @@ public class Player extends Entity {
 		window = null;
 		camera = null;
 		world = null;
+	}
+	
+	
+	private int getNewPressedKey(int[] lastPressedKeys, int[] pressedKeys) {
+		int pressed = 0;
+		for(int i = 0; i < 4; i++) {
+			if(pressedKeys[i] != -1)
+				pressed++;
+			
+			if(lastKeysPressed[i] != pressedKeys[i] && pressedKeys[i] != -1) {
+				return pressedKeys[i];
+			}
+		}
+		
+		if(pressed == 1) {
+			for(int i = 0; i < 4; i++) {
+				if(pressedKeys[i] != -1)
+					return pressedKeys[i];
+			}
+		}
+		
+		if(pressed == 0) {
+			return 0;
+		}
+		
+		return lastPressedKey;
+	}
+	
+	private void setLastKeysPressed(int[] keysPressed) {
+		for(int i = 0; i < 4; i++) {
+			lastKeysPressed[i] = keysPressed[i];
+		}
 	}
 	
 	public int getPositionX() {

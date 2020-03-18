@@ -5,6 +5,7 @@ import static org.lwjgl.glfw.GLFW.glfwGetVideoMode;
 import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
 import static org.lwjgl.glfw.GLFW.glfwSetWindowSizeCallback;
+import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
 import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
 import static org.lwjgl.glfw.GLFW.glfwSetWindowPos;
 import static org.lwjgl.glfw.GLFW.glfwShowWindow;
@@ -51,14 +52,15 @@ public class Window {
 		if(window == 0)
 			throw new IllegalStateException("Failed to create window");
 		
+		
 		if(!fullscreen) {
 			GLFWVidMode vid = glfwGetVideoMode(glfwGetPrimaryMonitor());
 			glfwSetWindowPos(window, (vid.width()-width)/2, (vid.height()-height)/2);
 		}
 		
-		glfwShowWindow(window);
 		glfwMakeContextCurrent(window);
-		
+		glfwSwapInterval(1);
+		glfwShowWindow(window);
 		input = new Input(window);
 		
 		setLoacalCallbacks();

@@ -44,4 +44,12 @@ public class Animation {
 
 		frames[pointer].bind(sampler);
 	}
+	
+	public int getWidth() {
+		return this.frames[0].width;
+	}
+	
+	public int getHeight() {
+		return this.frames[0].height;
+	}
 }

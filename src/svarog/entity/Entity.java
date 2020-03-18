@@ -38,8 +38,8 @@ public class Entity {
 	
 	/// Model ////
 	private Model model;
-	private Animation animation;
-	private Texture texture;
+	protected Animation animation;
+	protected Texture texture;
 	protected Transform transform;
 	protected Transform textureTransform;
 	private AABB bounding_box;
@@ -50,6 +50,14 @@ public class Entity {
 	private boolean isStatic = true;
 	private boolean fullBoundingBox;
 	
+	protected Direction currentDirection;
+	
+	protected enum Direction {
+		left,
+		right,
+		down,
+		up	
+	}
 	
 	// Animation constructor
 	public Entity(Animation animation, Transform transform, boolean fullBoundingBox) {	
@@ -60,6 +68,12 @@ public class Entity {
 		this.animation = animation;
 		this.transform = transform;
 		this.setFullBoundingBox(fullBoundingBox);
+		
+		float diff = (float)animation.getHeight() / (float)animation.getWidth();
+		if(animation.getHeight() > animation.getWidth())
+			transform.getScale().y = diff;
+		else
+			transform.getScale().x = diff;
 		
 		setEntityProperties();
 	}
@@ -116,67 +130,70 @@ public class Entity {
 	
 	// Enables collision with world (map)
 	public void collideWithTiles(World world) {	
-		for(int x = 0; x < world.getWidth(); x++) {
-			for(int y = 0; y < world.getHeight(); y++) {
-				AABB box = world.getTileBoundingBox(x, y);
-				
-				if(box != null) {
-					Collision collision = box.getCollision(bounding_box);
+		if(!this.isStatic()) {
+			for(int x = 0; x < world.getWidth(); x++) {
+				for(int y = 0; y < world.getHeight(); y++) {
+					AABB box = world.getTileBoundingBox(x, y);
 					
-					if(collision.isIntersecting()) {
-						bounding_box.correctPosition(box, collision);
-						transform.getPosition().set(bounding_box.getCenter(), 0);
-					}	
+					if(box != null) {
+						Collision collision = box.getCollision(bounding_box);
+						
+						if(collision.isIntersecting()) {
+							bounding_box.correctPosition(box, collision);
+							transform.getPosition().set(bounding_box.getCenter(), 0);
+						}	
+					}
 				}
 			}
 		}
-
 		world = null;
 	}
 	
 	// Enables collision with another entities
 	public void collideWithEntities(World world) {
-		for(int i = 0; i < world.numberOfEntities(); i++) {
-			if(world.getEntity(i).id != this.id) {
-				
-				Collision collision = bounding_box.getCollision(world.getEntity(i).getBoduningBox());
-				
-				if(collision.isIntersecting()) {
-					if(world.getEntity(i).isStatic == false) {
-						collision.getDistance().x /= 2;
-						collision.getDistance().y /= 2;
-					}
+		if(!this.isStatic()) { 
+			for(int i = 0; i < world.numberOfEntities(); i++) {
+				if(world.getEntity(i).id != this.id) {
 					
-					bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
-					transform.getPosition().set(bounding_box.getCenter(), 0);
+					Collision collision = bounding_box.getCollision(world.getEntity(i).getBoduningBox());
 					
-					if(world.getEntity(i).isStatic == false) {
-						world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
-						world.getEntity(i).transform.getPosition().set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
+					if(collision.isIntersecting()) {
+						if(world.getEntity(i).isStatic == false) {
+							collision.getDistance().x /= 2;
+							collision.getDistance().y /= 2;
+						}
+						
+						bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
+						transform.getPosition().set(bounding_box.getCenter(), 0);
+						
+						if(world.getEntity(i).isStatic == false) {
+							world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
+							world.getEntity(i).transform.getPosition().set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
+						}
 					}
 				}
 			}
 		}
-		
 		world = null;
 	}
 	
 	public void update(float delta, Window window, Camera camera, World world) {	
-		////////// Blocking player to go outside of the map ///////////
-		if(transform.getPosition().x < 1)
-			transform.getPosition().add(new Vector3f(1*delta, 0,0));
-		
-		if(transform.getPosition().x > world.getWidth()*2-1.8f)
-			transform.getPosition().add(new Vector3f(-1*delta, 0,0));
-		
-		if(transform.getPosition().y > -1)
-			transform.getPosition().add(new Vector3f(0, -1*delta,0));
-		
-		if(transform.getPosition().y < -(world.getHeight()*2-1.6f))
-			transform.getPosition().add(new Vector3f(0, 1*delta,0));
-		///////////////////////////////////////////////////////////////
+		if(!this.isStatic()) {
+			////////// Blocking player to go outside of the map ///////////
+			if(transform.getPosition().x < 1)
+				transform.getPosition().add(new Vector3f(1*delta, 0,0));
+			
+			if(transform.getPosition().x > world.getWidth()*2-1.8f)
+				transform.getPosition().add(new Vector3f(-1*delta, 0,0));
+			
+			if(transform.getPosition().y > -1)
+				transform.getPosition().add(new Vector3f(0, -1*delta,0));
+			
+			if(transform.getPosition().y < -(world.getHeight()*2-1.6f))
+				transform.getPosition().add(new Vector3f(0, 1*delta,0));
+			///////////////////////////////////////////////////////////////
 
-		
+		}
 		window = null;
 		camera = null;
 		world = null;
@@ -195,7 +212,7 @@ public class Entity {
 		shader.bind();
 		shader.setUniform("sampler", 0);
 		shader.setUniform("projection", temp.getProjection(target));
-		
+		shader.setUniform("sharpness", 1.0f);
 		
 		
 		if(animation == null)
@@ -227,5 +244,16 @@ public class Entity {
 	
 	public AABB getBoduningBox() {
 		return bounding_box;
+	}
+	
+	protected void setAnimation(Direction direction, Animation animation) {
+		texture = null;
+		this.animation = animation;
+		this.currentDirection = direction;
+	}
+	
+	protected void setTexture(Texture texture) {
+		animation = null;
+		this.texture = texture;
 	}
 }
