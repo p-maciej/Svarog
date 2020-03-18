@@ -1,6 +1,6 @@
 #version 330 core
 
-varying mediump vec2 tex_coords;
+in mediump vec2 tex_coords;
 uniform sampler2D sampler;
 uniform float sharpness;
 
