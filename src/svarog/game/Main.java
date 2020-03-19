@@ -45,7 +45,7 @@ public class Main {
 
 		Shader shader = new Shader("pixelart");
 		
-		Camera camera = new Camera(window.getWidth(), window.getHeight());	// Creating camera width size of window
+		Camera camera = new Camera();	// Creating camera width size of window
 
 		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 30), false);
 				

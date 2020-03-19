@@ -9,7 +9,7 @@ public class Camera {
 	private Matrix4f projection;
 	
 	
-	public Camera(int width, int height) {
+	public Camera() {
 		position = new Vector3f(0,0,0);
 	}
 	
