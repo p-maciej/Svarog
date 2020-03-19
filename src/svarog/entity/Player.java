@@ -75,43 +75,51 @@ public class Player extends Entity {
 		direction = getNewPressedKey(lastKeysPressed, keysPressed);
 		setLastKeysPressed(keysPressed);
 		
-		
 		if(direction == 65) {
 			movement.add(-1*delta, 0);
 			
-			if(super.currentDirection != Direction.left) {
-				super.setAnimation(Direction.left, new Animation(4, 8, this.texturesPath + "walking/left/" + this.fileName));
-			}
+			if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]) && super.texture == null)
+				setTexture(Direction.left);
+			else
+				if(super.currentDirection != Direction.left)
+					setAnimation(Direction.left);
+			
 		} else if(direction == 68) {
 			movement.add(1*delta, 0);
 			
-			if(super.currentDirection != Direction.right) {
-				super.setAnimation(Direction.right, new Animation(4, 8, this.texturesPath + "walking/right/" + this.fileName));
-			}
+			if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]) && super.texture == null)
+				setTexture(Direction.right);
+			else
+				if(super.currentDirection != Direction.right)
+					setAnimation(Direction.right);
 		} else if(direction == 87) {
 			movement.add(0, 1*delta);
 			
-			if(super.currentDirection != Direction.up) {
-				super.setAnimation(Direction.up, new Animation(4, 8, this.texturesPath + "walking/up/" + this.fileName));
-			}
+			if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]) && super.texture == null)
+				setTexture(Direction.up);
+			else
+				if(super.currentDirection != Direction.up)
+					setAnimation(Direction.up);
 		} else if(direction == 83) {
 			movement.add(0, -1*delta);
 			
-			if(super.currentDirection != Direction.down) {
-				super.setAnimation(Direction.down, new Animation(4, 8, this.texturesPath + "walking/down/" + this.fileName));
-			}
+			if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]) && super.texture == null)
+				setTexture(Direction.down);
+			else
+				if(super.currentDirection != Direction.down)
+					setAnimation(Direction.down);
 		} else if(direction == 0) {
 			if(super.currentDirection == Direction.left && super.texture == null) {
-				super.setTexture(new Texture("animations/" + this.texturesPath + "idle/left/" + this.fileName + ".png"));
+				setTexture(Direction.left);
 			}
 			if(super.currentDirection == Direction.right && super.texture == null) {
-				super.setTexture(new Texture("animations/" + this.texturesPath + "idle/right/" + this.fileName + ".png"));
+				setTexture(Direction.right);
 			}
 			if(super.currentDirection == Direction.up && super.texture == null) {
-				super.setTexture(new Texture("animations/" + this.texturesPath + "idle/up/" + this.fileName + ".png"));
+				setTexture(Direction.up);
 			}
 			if(super.currentDirection == Direction.down && super.texture == null) {
-				super.setTexture(new Texture("animations/" + this.texturesPath + "idle/down/" + this.fileName + ".png"));
+				setTexture(Direction.down);
 			}
 		}
 		
@@ -135,6 +143,29 @@ public class Player extends Entity {
 		world = null;
 	}
 	
+	private void setAnimation(Direction direction) {
+		if(direction == Direction.left) {
+			super.setAnimation(Direction.left, new Animation(4, 8, this.texturesPath + "walking/left/" + this.fileName));
+		} else 	if(direction == Direction.right) {
+			super.setAnimation(Direction.right, new Animation(4, 8, this.texturesPath + "walking/right/" + this.fileName));
+		} else 	if(direction == Direction.up) {
+			super.setAnimation(Direction.up, new Animation(4, 8, this.texturesPath + "walking/up/" + this.fileName));
+		} else 	if(direction == Direction.down) {
+			super.setAnimation(Direction.down, new Animation(4, 8, this.texturesPath + "walking/down/" + this.fileName));
+		}
+	}
+	
+	private void setTexture(Direction direction) {
+		if(direction == Direction.left) {
+			super.setTexture(new Texture("animations/" + this.texturesPath + "idle/left/" + this.fileName + ".png"));
+		} else if(direction == Direction.right) {
+			super.setTexture(new Texture("animations/" + this.texturesPath + "idle/right/" + this.fileName + ".png"));
+		} else if(direction == Direction.up) {
+			super.setTexture(new Texture("animations/" + this.texturesPath + "idle/up/" + this.fileName + ".png"));
+		} else if(direction == Direction.down) {
+			super.setTexture(new Texture("animations/" + this.texturesPath + "idle/down/" + this.fileName + ".png"));
+		}
+	}
 	
 	private int getNewPressedKey(int[] lastPressedKeys, int[] pressedKeys) {
 		int pressed = 0;

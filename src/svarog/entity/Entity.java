@@ -51,6 +51,7 @@ public class Entity {
 	private boolean fullBoundingBox;
 	
 	protected Direction currentDirection;
+	protected boolean[] isColliding = new boolean[2];
 	
 	protected enum Direction {
 		left,
@@ -130,6 +131,7 @@ public class Entity {
 	
 	// Enables collision with world (map)
 	public void collideWithTiles(World world) {	
+		isColliding[0] = false;
 		if(!this.isStatic()) {
 			for(int x = 0; x < world.getWidth(); x++) {
 				for(int y = 0; y < world.getHeight(); y++) {
@@ -141,7 +143,8 @@ public class Entity {
 						if(collision.isIntersecting()) {
 							bounding_box.correctPosition(box, collision);
 							transform.getPosition().set(bounding_box.getCenter(), 0);
-						}	
+							isColliding[0] = true;
+						}
 					}
 				}
 			}
@@ -151,6 +154,7 @@ public class Entity {
 	
 	// Enables collision with another entities
 	public void collideWithEntities(World world) {
+		isColliding[1] = false;
 		if(!this.isStatic()) { 
 			for(int i = 0; i < world.numberOfEntities(); i++) {
 				if(world.getEntity(i).id != this.id) {
@@ -166,9 +170,14 @@ public class Entity {
 						bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
 						transform.getPosition().set(bounding_box.getCenter(), 0);
 						
+						
+						
 						if(world.getEntity(i).isStatic == false) {
+							isColliding[1] = false;
 							world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
 							world.getEntity(i).transform.getPosition().set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
+						} else {
+							isColliding[1] = true;
 						}
 					}
 				}
