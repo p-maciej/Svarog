@@ -45,7 +45,7 @@ public class World {
 			2,3,0
 	};
 	
-	private static final float scale = 20f;
+	private static final float scale = 16f;
 	
 	private int viewX;
 	private int viewY;
@@ -123,7 +123,7 @@ public class World {
 					
 					shader.setUniform("sampler", 0);
 					shader.setUniform("projection", target);
-					shader.setUniform("sharpness", 1.0f);
+					shader.setUniform("sharpness", 1f);
 					
 					this.model.render();
 				}

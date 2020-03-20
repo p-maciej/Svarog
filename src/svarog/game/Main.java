@@ -16,10 +16,12 @@ import static org.lwjgl.opengl.GL11.glViewport;
 import org.lwjgl.opengl.GL;
 import svarog.entity.Player;
 import svarog.entity.Transform;
+import svarog.gui.GuiRenderer;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Shader;
+import svarog.render.Texture;
 import svarog.world.World;
 
 public class Main {
@@ -51,6 +53,13 @@ public class Main {
 				
 		World currentWorld = StartWorld.getWorld(player, camera, window);
 		
+		/////// GUI test //////////
+		Shader guiShader = new Shader("shader");
+		Camera guiCamera = new Camera();
+		GuiRenderer guiRenderer = new GuiRenderer();
+		guiCamera.setProjection(window.getWidth(), window.getHeight());
+		Texture gui = new Texture("gui.png");
+		///////////////////////////////////
 		long lastNanos = Timer.getNanoTime();
 		int nextFrameLoadWorld = 0;
 		while(window.processProgram()) {										// This works while program is running
@@ -85,6 +94,9 @@ public class Main {
 	
 					
 				currentWorld.render(shader, camera, window);							// world rendering
+				
+				guiRenderer.renderGuiObject(guiShader, gui, guiCamera);
+				
 				window.swapBuffers(); 
 				
 				for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
