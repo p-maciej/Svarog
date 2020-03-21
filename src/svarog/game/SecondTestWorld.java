@@ -23,7 +23,7 @@ abstract class SecondTestWorld {
 		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
 
 		
-		BufferedImage home = Texture.getImageBuffer("home1_map_1.png");
+		BufferedImage home = Texture.getImageBuffer("textures/home1_map_1.png");
 		for(int i = 0; i < 8; i++)
 			for(int j = 0; j < 4; j++)
 				world.getTile(7+i, 15+j).setTexture(new Texture(home, i, j, 32), (byte)(j < 3 ? 2 : 1));

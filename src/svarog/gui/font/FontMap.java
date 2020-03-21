@@ -4,18 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import svarog.io.TextLoader;
-import svarog.io.strings.IntAttribute;
 import svarog.io.strings.StringUtils;
 
 public class FontMap {
 	List<Character> characters;
 	TextLoader text;
-
-	FontMap() {
-		characters = new ArrayList<Character>();
-	}
 	
-	public FontMap(String file) {
+	FontMap(String file) {
 		characters = new ArrayList<Character>();
 		
 		text = new TextLoader(file);
@@ -23,44 +18,44 @@ public class FontMap {
 		loadCharacters();
 	}
 	
-	int getWidth(char ch) throws Exception {
+	int getWidth(char ch) {
 		for(int i = 0; i < characters.size(); i++)
 			if(characters.get(i).getCharacter() == ch)
-				return characters.get(i).getAttributeNameValue("width");
+				return characters.get(i).getWidth();
 		
-		throw new Exception("Attribute doesn't exists");
+		return -1;
 	}
 	
-	int getHeight(char ch) throws Exception {
+	int getHeight(char ch) {
 		for(int i = 0; i < characters.size(); i++)
 			if(characters.get(i).getCharacter() == ch)
-				return characters.get(i).getAttributeNameValue("height");
+				return characters.get(i).getHeight();
 		
-		throw new Exception("Attribute doesn't exists");
+		return -1;
 	}
 	
-	int getX(char ch) throws Exception {
+	int getX(char ch) {
 		for(int i = 0; i < characters.size(); i++)
 			if(characters.get(i).getCharacter() == ch)
-				return characters.get(i).getAttributeNameValue("x");
+				return characters.get(i).getX();
 		
-		throw new Exception("Attribute doesn't exists");
+		return -1;
 	}
 	
-	int getY(char ch) throws Exception {
+	int getY(char ch) {
 		for(int i = 0; i < characters.size(); i++)
 			if(characters.get(i).getCharacter() == ch)
-				return characters.get(i).getAttributeNameValue("y");
+				return characters.get(i).getY();
 		
-		throw new Exception("Attribute doesn't exists");
+		return -1;
 	}
 	
-	int getId(char ch) throws Exception {
+	int getId(char ch) {
 		for(int i = 0; i < characters.size(); i++)
 			if(characters.get(i).getCharacter() == ch)
 				return characters.get(i).getCharacter();
 		
-		throw new Exception("Attribute doesn't exists");
+		return -1;
 	}
 	
 	private void loadCharacters() {
@@ -68,10 +63,10 @@ public class FontMap {
 			String line = text.getLine(i);
 			
 			Character character = new Character((char)getAttribute(line, "id", '='));
-			character.addAttribute(new IntAttribute("x", getAttribute(line, "x", '=')));
-			character.addAttribute(new IntAttribute("y", getAttribute(line, "y", '=')));
-			character.addAttribute(new IntAttribute("width", getAttribute(line, "width", '=')));
-			character.addAttribute(new IntAttribute("height", getAttribute(line, "height", '=')));
+			character.setX(getAttribute(line, "x", '='));
+			character.setY(getAttribute(line, "y", '='));
+			character.setWidth(getAttribute(line, "width", '='));
+			character.setHeight(getAttribute(line, "height", '='));
 			characters.add(character);	
 		}
 	}
@@ -79,6 +74,4 @@ public class FontMap {
 	private int getAttribute(String line, String attributeName, char spacer) {
 		return Integer.parseInt(StringUtils.getAttributeValue(line, StringUtils.getStartIndexAttribute(line, attributeName, spacer)));
 	}
-	
-
 }

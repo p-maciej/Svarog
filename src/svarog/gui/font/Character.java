@@ -1,31 +1,57 @@
 package svarog.gui.font;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import svarog.io.strings.IntAttribute;
-
 public class Character {
 	char character;
-	List<IntAttribute> attributes;
+
+	int x;
+	int y;
+	int width;
+	int height;
 	
 	Character(char character) {
-		attributes = new ArrayList<IntAttribute>();
 		this.setCharacter(character);
 	}
+	
+	int getX() {
+		return x;
+	}
 
-	void addAttribute(IntAttribute attribute) {
-		attributes.add(attribute);
+
+	void setX(int x) {
+		this.x = x;
 	}
-	
-	int getAttributeNameValue(String attributeName) throws Exception {
-		for(int i = 0; i < attributes.size(); i++)
-			if(attributes.get(i).getName() == attributeName)
-				return attributes.get(i).getValue();
-		
-		throw new Exception("Attribute doesn't exists");
+
+
+	int getY() {
+		return y;
 	}
-	
+
+
+	void setY(int y) {
+		this.y = y;
+	}
+
+
+	int getWidth() {
+		return width;
+	}
+
+
+	void setWidth(int width) {
+		this.width = width;
+	}
+
+
+	int getHeight() {
+		return height;
+	}
+
+
+	void setHeight(int height) {
+		this.height = height;
+	}
+
+
 	char getCharacter() {
 		return character;
 	}

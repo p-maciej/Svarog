@@ -36,11 +36,12 @@ public class StringUtils {
 	
 	public static String getAttributeValue(String line, int startIndex) {
 		String value = "";
-		while(line.charAt(startIndex) != SPACE) {
-			value += line.charAt(startIndex);
-			startIndex++;
+		if(startIndex > 0) {
+			while(line.charAt(startIndex) != SPACE) {
+				value += line.charAt(startIndex);
+				startIndex++;
+			}
 		}
-		
 		return value;
 	}
 }
