@@ -3,7 +3,7 @@ package svarog.gui.font;
 import java.util.ArrayList;
 import java.util.List;
 
-import svarog.io.IntAttribute;
+import svarog.io.strings.IntAttribute;
 
 public class Character {
 	char character;

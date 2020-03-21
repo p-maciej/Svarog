@@ -1,4 +1,4 @@
-package svarog.io;
+package svarog.io.strings;
 
 public class IntAttribute {
 	String name;
