@@ -11,22 +11,28 @@ public class Color {
 		this.setB(blue);
 	}
 
+	public void set(Color color) {
+		this.setR(color.getR());
+		this.setG(color.getG());
+		this.setB(color.getB());
+	}
+	
 	public byte getR() {
 		return R;
 	}
 	public void setR(byte r) {
-		R = r;
+		this.R = r;
 	}
 	public byte getG() {
 		return G;
 	}
 	public void setG(byte g) {
-		G = g;
+		this.G = g;
 	}
 	public byte getB() {
 		return B;
 	}
 	public void setB(byte b) {
-		B = b;
+		this.B = b;
 	}
 }
