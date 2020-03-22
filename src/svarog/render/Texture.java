@@ -54,19 +54,7 @@ public class Texture {
 			
 			pixels.flip();
 			
-			id = glGenTextures();
-			glBindTexture(GL_TEXTURE_2D, id);
-			
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-			
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, height, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-			
-			
-			pixels.clear();
-			image.flush();
+			textureInit(pixels, width, height);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -87,18 +75,7 @@ public class Texture {
 				}
 				pixels.flip();
 				
-				id = glGenTextures();
-				glBindTexture(GL_TEXTURE_2D, id);
-				
-				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-				
-				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tileSize, tileSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-				
-				pixels.clear();
-				image.flush();
+				textureInit(pixels, tileSize, tileSize);
 			} else {
 				throw new IllegalStateException("Wrong tile size or texture size!");
 			}
@@ -107,34 +84,14 @@ public class Texture {
 	public Texture(ByteBuffer pixels, int tileSize) {
 		this.width = this.height = tileSize;
 		
-		id = glGenTextures();
-		glBindTexture(GL_TEXTURE_2D, id);
-		
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tileSize, tileSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-				
-		pixels = null;
+		textureInit(pixels, tileSize, tileSize);
 	}
 	
 	public Texture(ByteBuffer pixels, int width, int height) {
 		this.width = width;
 		this.height = height;
 		
-		id = glGenTextures();
-		glBindTexture(GL_TEXTURE_2D, id);
-				
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, height, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-				
-		pixels = null;
+		textureInit(pixels, width, height);
 	}
 	
 	public void bind(int sampler) {
@@ -168,5 +125,17 @@ public class Texture {
 
 	public int getHeight() {
 		return height;
+	}
+	
+	private void textureInit(ByteBuffer buffer, int width, int height) {
+		id = glGenTextures();
+		glBindTexture(GL_TEXTURE_2D, id);
+				
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, height, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
 	}
 }
