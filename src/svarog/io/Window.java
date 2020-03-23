@@ -11,11 +11,19 @@ import static org.lwjgl.glfw.GLFW.glfwSetWindowPos;
 import static org.lwjgl.glfw.GLFW.glfwShowWindow;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
+import static org.lwjgl.opengl.GL11.GL_ALPHA;
+import static org.lwjgl.opengl.GL11.GL_BLEND;
+import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
+import static org.lwjgl.opengl.GL11.glBlendFunc;
+import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.glfw.GLFWWindowSizeCallback;
+import org.lwjgl.opengl.GL;
 
 public class Window {
 	private long window;
@@ -64,6 +72,14 @@ public class Window {
 		input = new Input(window);
 		
 		setLoacalCallbacks();
+	}
+	
+	public void glInit() {
+		GL.createCapabilities();
+		glEnable(GL_BLEND);													// Allows transparency in opengl
+		glEnable(GL_ALPHA);													//
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);					// 
+		glEnable(GL_TEXTURE_2D);											// Allows load textures
 	}
 	
 	public void cleanUp() {

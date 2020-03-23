@@ -28,6 +28,7 @@ public class TextureObject extends GuiObject {
 		this.texture = texture;
 	}
 	
+	@Override
 	Texture getTexture() {
 		return texture;
 	}

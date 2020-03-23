@@ -3,7 +3,9 @@ package svarog.gui;
 import org.joml.Vector2f;
 
 import svarog.entity.Transform;
+import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
+import svarog.render.Texture;
 
 public class GuiObject {
 	private static int auto_increment = 0; // for the moment
@@ -14,6 +16,7 @@ public class GuiObject {
 	private Transform transform;
 	private Vector2f relativeTransform;
 	private stickTo stickTo;
+	private State state;
 
 	private static final float scale = 16f;
 	
@@ -116,5 +119,18 @@ public class GuiObject {
 
 	public Vector2f getMove() {
 		return relativeTransform;
+	}
+
+	public State getState() {
+		return state;
+	}
+	
+	Texture getTexture() {
+		return null;
+	}
+
+	public GuiObject setState(State state) {
+		this.state = state;
+		return this;
 	}
 }

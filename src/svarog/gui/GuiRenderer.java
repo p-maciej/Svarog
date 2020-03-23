@@ -41,8 +41,12 @@ public class GuiRenderer {
 		BottomRight
 	}
 	
+	public static enum State {
+		staticImage,
+		dynamicImage
+	}
+	
 	private Model model;
-	private Shader shader;
 	private Camera camera;
 	
 	private int windowWidth;
@@ -50,12 +54,13 @@ public class GuiRenderer {
 	
 	private List<GuiObject> objects;
 	
-	public GuiRenderer(Window window, Camera camera, Shader shader) {
+	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
 		
 		this.model = new Model(verticesArray, textureArray, indicesArray);
-		this.camera = camera;
-		this.shader = shader;
+		this.camera = new Camera();
+		
+		camera.setProjection(window.getWidth(), window.getHeight());
 		
 		this.windowWidth = window.getWidth();
 		this.windowHeight = window.getHeight();
@@ -96,23 +101,41 @@ public class GuiRenderer {
 		}
 	}
 	
-	public void renderGuiObjects() {
-		Matrix4f projection = camera.getProjection();
-		
+	public void renderGuiObjects(Shader shader) {	
+		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
-			if(object instanceof TextureObject)
-				((TextureObject) object).getTexture().bind(0);
-			
-			shader.bind();
-			shader.setUniform("sampler", 0);
-			shader.setUniform("projection", object.getTransform().getProjection(projection));
-			model.render();	
+			if(object.getState() == State.dynamicImage) {
+				Matrix4f projection = camera.getProjection();
+					((TextureObject) object).getTexture().bind(0);
+					
+				shader.bind();
+				shader.setUniform("sampler", 0);
+				shader.setUniform("projection", object.getTransform().getProjection(projection));
+				model.render();	
+			}
+		}
+		
+		// Then render everything else in adding order
+		for(GuiObject object : objects) {
+			if(object.getState() != State.dynamicImage) {
+				Matrix4f projection = camera.getProjection();
+					((TextureObject) object).getTexture().bind(0);
+					
+				shader.bind();
+				shader.setUniform("sampler", 0);
+				shader.setUniform("projection", object.getTransform().getProjection(projection));
+				model.render();	
+			}
 		}
 
 	}
 	
 	public void addGuiObject(GuiObject object) {
 		objects.add(object);
+	}
+	
+	public void addGuiObject(GuiObject object, State state) {
+		objects.add(object.setState(state));
 	}
 	
 	public float getRight() {
@@ -132,8 +155,16 @@ public class GuiRenderer {
 	}
 	
 	public void update(Window window) {
+		camera.setProjection(window.getWidth(), window.getHeight());
 		this.windowHeight = window.getHeight();
 		this.windowWidth = window.getWidth();
 		updatePositions();
+	}
+	
+	public void deleteDynamicElements() {
+		for(int i = 0; i < objects.size(); i++)
+			if(objects.get(i).getState() != null)
+				if(objects.get(i).getState() == State.dynamicImage)
+					objects.remove(i);
 	}
 }

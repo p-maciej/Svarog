@@ -1,24 +1,21 @@
 package svarog.game;
 import static org.lwjgl.glfw.GLFW.glfwInit;
 import static org.lwjgl.glfw.GLFW.glfwTerminate;
-import static org.lwjgl.opengl.GL11.GL_ALPHA;
-import static org.lwjgl.opengl.GL11.GL_BLEND;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
-import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
-import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL11.glBlendFunc;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
-import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 
-import org.joml.Vector2f;
-import org.lwjgl.opengl.GL;
+import java.nio.ByteBuffer;
+
 import svarog.entity.Player;
 import svarog.entity.Transform;
+import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
+import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.TextureObject;
+import svarog.gui.font.Color;
+import svarog.gui.font.Font;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -37,14 +34,7 @@ public class Main {
 		Window window = new Window(); 
 		window.setSize(1000, 800);
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
-		
-		
-		GL.createCapabilities();
-		
-		glEnable(GL_BLEND);													// Allows transparency in opengl
-		glEnable(GL_ALPHA);													//
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);					// 
-		glEnable(GL_TEXTURE_2D);											// Allows load textures
+		window.glInit();
 
 		Shader shader = new Shader("pixelart");
 		Camera camera = new Camera();	// Creating camera width size of window
@@ -53,16 +43,21 @@ public class Main {
 				
 		World currentWorld = StartWorld.getWorld(player, camera, window);
 		
+		
 		/////// GUI test //////////
 		Shader guiShader = new Shader("shader");
-		Camera guiCamera = new Camera();
-		GuiRenderer guiRenderer = new GuiRenderer(window, guiCamera, guiShader);
-		guiCamera.setProjection(window.getWidth(), window.getHeight());
+		GuiRenderer guiRenderer = new GuiRenderer(window);
+		
+		GuiPanels panels = new GuiPanels();
+		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
+		panels.updateDynamicGuiElements(guiRenderer, window);
+		
+		Font verdana = new Font("verdana_20");
+		ByteBuffer test = verdana.getStringBuffer("Napis w rogu ekranu", new Color((byte)255, (byte)255, (byte)255));
+		TextureObject demo = new TextureObject(new Texture(test, verdana.getStringWidth(), verdana.getStringHeight()), stickTo.BottomLeft);
+		demo.move(15, 15);
+		guiRenderer.addGuiObject(demo);
 
-		TextureObject redBlock = new TextureObject(new Texture("redblock.png"));
-		redBlock.move(new Vector2f(100, -100));
-		guiRenderer.addGuiObject(redBlock);
-		///////////////////////////////////
 		
 		guiRenderer.updatePositions();
 		
@@ -76,22 +71,23 @@ public class Main {
             	glClearColor(0f, 0f, 0f, 1f);
             	window.update();
             	glClear(GL_COLOR_BUFFER_BIT);
-            	window.swapBuffers(); 
-            	
-
-            	
+            	window.swapBuffers();  	
             	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
             	nextFrameLoadWorld = 0;
             } else {
 				glClearColor(0.2f, 0.2f, 0.2f, 1f);
 				if(window.hasResized()) {
 					camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight());
-					guiCamera.setProjection(window.getWidth(), window.getHeight());
 					
+					guiRenderer.deleteDynamicElements();
+					panels.updateDynamicGuiElements(guiRenderer, window);
 					guiRenderer.update(window);
+					
 					currentWorld.calculateView(window);
 					glViewport(0, 0, window.getWidth(), window.getHeight());
 				}
+				
+				
 				
 				
 				currentWorld.update((float)0.2, window, camera);
@@ -104,7 +100,7 @@ public class Main {
 					
 				currentWorld.render(shader, camera, window);							// world rendering
 				
-				guiRenderer.renderGuiObjects();
+				guiRenderer.renderGuiObjects(guiShader);
 				
 				window.swapBuffers(); 
 				
