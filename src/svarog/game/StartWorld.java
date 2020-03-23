@@ -9,7 +9,7 @@ import svarog.world.World;
 
 abstract class StartWorld {
 	public static World getWorld(Player player, Camera camera, Window window) {
-		World world = new World(1, 120, 80);
+		World world = new World(1, 120, 90);
 		world.calculateView(window);
 		
 		world.fillWorld(new Texture("grass_map_1.png"));
