@@ -13,10 +13,12 @@ import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 
+import org.joml.Vector2f;
 import org.lwjgl.opengl.GL;
 import svarog.entity.Player;
 import svarog.entity.Transform;
 import svarog.gui.GuiRenderer;
+import svarog.gui.TextureObject;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -42,11 +44,9 @@ public class Main {
 		glEnable(GL_BLEND);													// Allows transparency in opengl
 		glEnable(GL_ALPHA);													//
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);					// 
-		
 		glEnable(GL_TEXTURE_2D);											// Allows load textures
 
 		Shader shader = new Shader("pixelart");
-		
 		Camera camera = new Camera();	// Creating camera width size of window
 
 		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 30), false);
@@ -56,10 +56,16 @@ public class Main {
 		/////// GUI test //////////
 		Shader guiShader = new Shader("shader");
 		Camera guiCamera = new Camera();
-		GuiRenderer guiRenderer = new GuiRenderer();
+		GuiRenderer guiRenderer = new GuiRenderer(window, guiCamera, guiShader);
 		guiCamera.setProjection(window.getWidth(), window.getHeight());
-		Texture gui = new Texture("gui.png");
+
+		TextureObject redBlock = new TextureObject(new Texture("redblock.png"));
+		redBlock.move(new Vector2f(100, -100));
+		guiRenderer.addGuiObject(redBlock);
 		///////////////////////////////////
+		
+		guiRenderer.updatePositions();
+		
 		long lastNanos = Timer.getNanoTime();
 		int nextFrameLoadWorld = 0;
 		while(window.processProgram()) {										// This works while program is running
@@ -80,6 +86,9 @@ public class Main {
 				glClearColor(0.2f, 0.2f, 0.2f, 1f);
 				if(window.hasResized()) {
 					camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight());
+					guiCamera.setProjection(window.getWidth(), window.getHeight());
+					
+					guiRenderer.update(window);
 					currentWorld.calculateView(window);
 					glViewport(0, 0, window.getWidth(), window.getHeight());
 				}
@@ -95,7 +104,7 @@ public class Main {
 					
 				currentWorld.render(shader, camera, window);							// world rendering
 				
-				guiRenderer.renderGuiObject(guiShader, gui, guiCamera);
+				guiRenderer.renderGuiObjects();
 				
 				window.swapBuffers(); 
 				
