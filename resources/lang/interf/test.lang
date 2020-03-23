@@ -1,8 +1,8 @@
-<?xml version="1.0"?>
+ï»¿<?xml version="1.0"?>
 <file>
     <variable>
         <key>SELL</key>
-        <translation> sprzedaj </translation>
+        <translation>sprzedaj</translation>
     </variable>
     <variable>
         <key>BUY</key>
@@ -10,6 +10,6 @@
     </variable>
     <variable>
         <key>Play</key>
-        <translation> graj¿æ¹ñê€ó </translation>
+        <translation>grajÂ¿Ã¦Â¹Ã±Ãªâ‚¬Ã³</translation>
     </variable>
 </file>
