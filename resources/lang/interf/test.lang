@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<file>
+    <variable>
+        <key>SELL</key>
+        <translation> sprzedaj </translation>
+    </variable>
+    <variable>
+        <key>BUY</key>
+        <translation>kup</translation>
+    </variable>
+    <variable>
+        <key>Play</key>
+        <translation> graj¿æ¹ñê€ó </translation>
+    </variable>
+</file>
