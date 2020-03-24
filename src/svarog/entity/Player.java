@@ -127,20 +127,16 @@ public class Player extends Entity {
 		
 		move(movement);
 		
-		if(true) {
+		if(setCamWithoutAnimation) {
 			camera.setPosition(transform.getPosition().mul(-world.getScale(), new Vector3f()));
 			setCamWithoutAnimation = false;
 		}
 		else {
-			camera.getPosition().lerp(transform.getPosition().mul(-world.getScale(), new Vector3f()), 0.1f); // Camera movement
+			camera.getPosition().lerp(transform.getPosition().mul(-world.getScale(), new Vector3f()), 0.6f); // Camera movement
 		}
 		
 		super.update(delta, window, camera, world);
 		/////////////////////////////////////////////////////////
-		
-		window = null;
-		camera = null;
-		world = null;
 	}
 	
 	private void setAnimation(Direction direction) {

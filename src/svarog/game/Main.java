@@ -6,8 +6,6 @@ import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
 
-import java.nio.ByteBuffer;
-
 import svarog.entity.Player;
 import svarog.entity.Transform;
 import svarog.gui.GuiPanels;
@@ -15,6 +13,7 @@ import svarog.gui.GuiRenderer;
 import svarog.gui.TextureObject;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
+import svarog.gui.font.TextBlock;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -53,11 +52,11 @@ public class Main {
 		panels.updateDynamicGuiElements(guiRenderer, window);
 		
 		Font verdana = new Font("verdana_20");
-		ByteBuffer test = verdana.getStringBuffer("Tekst w innym miejscu", new Color((byte)255, (byte)255, (byte)255));
-		TextureObject demo = new TextureObject(new Texture(test, verdana.getStringWidth(), verdana.getStringHeight()), GuiRenderer.stickTo.BottomLeft);
+		TextBlock test = verdana.getTextBlock("Tekst w innym miejscu", new Color((byte)255, (byte)255, (byte)255));
+		TextureObject demo = new TextureObject(new Texture(test.getBuffer(), test.getWidth(), test.getHeight()), GuiRenderer.stickTo.BottomLeft);
 		demo.move(100, -20);
-		ByteBuffer test2 = verdana.getStringBuffer("Tekst", new Color((byte)255, (byte)255, (byte)255));
-		TextureObject demo2 = new TextureObject(new Texture(test2, verdana.getStringWidth(), verdana.getStringHeight()), GuiRenderer.stickTo.TopRight);
+		TextBlock test2 = verdana.getTextBlock("Tekst", new Color((byte)255, (byte)255, (byte)255));
+		TextureObject demo2 = new TextureObject(new Texture(test2.getBuffer(), test2.getWidth(), test2.getHeight()), GuiRenderer.stickTo.TopRight);
 		demo2.move(-20, 35);
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	

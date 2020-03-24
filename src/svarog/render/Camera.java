@@ -34,7 +34,6 @@ public class Camera {
 		return projection.translate(position, new Matrix4f());
 	}
 	
-	//Na razie zostawiæ potem przy dzia³aj¹cej responsywnoœci usunê -- JG
 	public void setProjection(int width, int height) {
 		projection = new Matrix4f().setOrtho2D(-width/2, width/2, -height/2, height/2);
 	}

@@ -7,19 +7,15 @@ import org.lwjgl.BufferUtils;
 import svarog.render.Texture;
 
 public class Font {
-	private String text;
 	private FontMap fontMap;
 	private BufferedImage fontImage;
-
-	private int stringWidth;
-	private int stringHeight;
 
 	public Font(String font) {
 		fontMap = new FontMap("fonts/"+font+".fnt");
 		fontImage = Texture.getImageBuffer("fonts/" + font + ".png");
 	}
 	
-	public ByteBuffer getStringBuffer(String string, Color color) {
+	public TextBlock getTextBlock(String string, Color color) {
 		int width[] = new int[string.length()];
 		int height[] = new int[string.length()];
 		int x[] = new int[string.length()];
@@ -37,9 +33,6 @@ public class Font {
 			stringWidth += width[i];
 			stringHeight = height[i] > stringHeight ? height[i] : stringHeight;
 		}
-
-		this.stringWidth = stringWidth;
-		this.stringHeight = stringHeight;
 		
 		ByteBuffer pixels = BufferUtils.createByteBuffer(stringWidth*stringHeight*4);
 		
@@ -62,24 +55,8 @@ public class Font {
 			}
 		}
 		pixels.flip();
-		return pixels;
-	}
-	
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public String getText() {
-		return text;
-	}
-	
-	
-	public int getStringHeight() {
-		return stringHeight;
-	}
-
-	public int getStringWidth() {
-		return stringWidth;
-	}
-	
+		
+		
+		return new TextBlock(pixels, stringWidth, stringHeight);
+	}	
 }

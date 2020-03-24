@@ -203,9 +203,6 @@ public class Entity {
 			///////////////////////////////////////////////////////////////
 
 		}
-		window = null;
-		camera = null;
-		world = null;
 	}
 	
 	// Character rendering
