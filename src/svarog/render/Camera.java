@@ -49,11 +49,13 @@ public class Camera {
 		Vector3f offset = new Vector3f(0, 0, 0);
 		if(widthOffset > 0)
 			offset.x = -widthOffset;
+		else 
+			offset.x += -centerOffset.x/2;
 		if(heightOffset > 0)
 			offset.y = heightOffset;
-
-		offset.x += -centerOffset.x/2;
-		offset.y += centerOffset.y/2;
+		else
+			offset.y += centerOffset.y/2;
+			
 		
 		projection.translate(offset);
 		
