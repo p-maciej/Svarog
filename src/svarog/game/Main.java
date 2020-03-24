@@ -35,7 +35,7 @@ public class Main {
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
 		window.glInit();
 
-		Shader shader = new Shader("pixelart");
+		Shader shader = new Shader("shader");
 		Camera camera = new Camera();
 
 		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
@@ -108,7 +108,7 @@ public class Main {
 				currentWorld.update((float)0.2, window, camera);
 				currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
 										
-				window.update();	
+					
 				
 				glClear(GL_COLOR_BUFFER_BIT);
 	
@@ -117,7 +117,9 @@ public class Main {
 				
 				guiRenderer.renderGuiObjects(guiShader);
 				
-				window.swapBuffers(); 
+				
+				window.update();
+				
 				
 				for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
 					if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
@@ -128,6 +130,8 @@ public class Main {
 					} else 
 						nextFrameLoadWorld = 0;
 				}
+				
+				window.swapBuffers();
             }
 		}
 		

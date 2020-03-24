@@ -106,13 +106,14 @@ public class Window {
 	
 	public void swapBuffers() {
 		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 	
 	public void update() {
 		hasResized = false;
 		input.update();
 		glfwGetCursorPos(window, cursorPositionX, cursorPositionY);
-		glfwPollEvents();
+		
 	}
 	
 	public void setSize(int width, int height) {
