@@ -27,7 +27,13 @@ abstract class StartWorld {
 		
 		world.setBoundingBoxes();
 		
+		//Show door texture
+		world.getTile(60, 28).setTexture(new Texture("textures/door.png"), (byte)1);
+		world.getTile(60, 27).setTexture(new Texture("textures/door.png"), (byte)1);
+		world.getTile(60, 26).setTexture(new Texture("textures/door.png"), (byte)1);
+		world.getTile(60, 25).setTexture(new Texture("textures/door.png"), (byte)1);
 		
+		//adding door object
 		world.addDoor(new Door(2, 60, 28, 1, 20));
 		world.addDoor(new Door(2, 60, 27, 1, 20));
 		world.addDoor(new Door(2, 60, 26, 1, 20));
