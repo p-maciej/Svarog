@@ -1,5 +1,6 @@
 package svarog.render;
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import svarog.io.Window;
@@ -38,7 +39,7 @@ public class Camera {
 		projection = new Matrix4f().setOrtho2D(-width/2, width/2, -height/2, height/2);
 	}
 	
-	public void setProjection(int width, int height, Window window, float scale, int worldWidth, int worldHeight) {
+	public void setProjection(int width, int height, Window window, float scale, int worldWidth, int worldHeight, Vector2f centerOffset) {
 		projection = new Matrix4f().setOrtho2D(-width/2, width/2, -height/2, height/2);
 		
 		
@@ -51,6 +52,9 @@ public class Camera {
 		if(heightOffset > 0)
 			offset.y = heightOffset;
 
+		offset.x += -centerOffset.x/2;
+		offset.y += centerOffset.y/2;
+		
 		projection.translate(offset);
 		
 		offset = null;

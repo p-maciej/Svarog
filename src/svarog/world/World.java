@@ -56,6 +56,7 @@ public class World {
 	private int width;
 	private int height;
 	private AABB[][] bounding_boxes;
+	private Vector2f worldOffset;
 	
 	private List<Entity> entities;
 	private List<Door> doors;
@@ -65,7 +66,7 @@ public class World {
 	public World(int id, int width, int height) {
 		entities = new ArrayList<Entity>();
 		doors = new ArrayList<Door>();
-		
+		worldOffset = new Vector2f();
 		model = new Model(vertices, texture, indices);
 		
 		this.setId(id);
@@ -307,8 +308,8 @@ public class World {
 	}
 	
 	public void calculateView(Window window) {
-		viewX = (int)((window.getWidth() / (scale*2)) + 4);
-		viewY = (int)((window.getHeight() / (scale*2)) + 4);
+		viewX = (int)(((window.getWidth()-worldOffset.x) / (scale*2)) + 4);
+		viewY = (int)(((window.getHeight()-worldOffset.y) / (scale*2)) + 4);
 	}
 	
 	public void correctCamera(Camera camera, Window window) {
@@ -316,15 +317,15 @@ public class World {
 		int w = (int)(-width * scale * 2);
 		int h = (int)(height * scale * 2);
 		
-		if(position.x > -(window.getWidth()/2)+scale) // Left border - add higher value, more offset
-			position.x = -(window.getWidth()/2)+scale;
-		if(position.x < w + (window.getWidth()/2)+scale) // Right border - subtract
-			position.x = w + (window.getWidth()/2)+scale;
+		if(position.x > -(window.getWidth()/2)+scale+worldOffset.x/2) // Left border - add higher value, more offset
+			position.x = -(window.getWidth()/2)+scale+worldOffset.x/2;
+		if(position.x < w + (window.getWidth()/2)+scale-worldOffset.x/2) // Right border - subtract
+			position.x = w + (window.getWidth()/2)+scale-worldOffset.x/2;
 		
-		if(position.y < (window.getHeight()/2)-scale) // Top border - subtract
-			position.y = (window.getHeight()/2)-scale;
-		if(position.y > h-(window.getHeight()/2)-scale) // Bottom border - add
-			position.y = h-(window.getHeight()/2)-scale;
+		if(position.y < (window.getHeight()/2)-scale-worldOffset.y/2) // Top border - subtract
+			position.y = (window.getHeight()/2)-scale-worldOffset.y/2;
+		if(position.y > h-(window.getHeight()/2)-scale+worldOffset.y/2) // Bottom border - add
+			position.y = h-(window.getHeight()/2)-scale+worldOffset.y/2;
 	}
 	
 	public int getId() {
@@ -353,5 +354,13 @@ public class World {
 	
 	public Matrix4f getWorld() {
 		return world;
+	}
+
+	public Vector2f getWorldOffset() {
+		return worldOffset;
+	}
+
+	public void setWorldOffset(Vector2f worldOffset) {
+		this.worldOffset.set(worldOffset);
 	}
 }

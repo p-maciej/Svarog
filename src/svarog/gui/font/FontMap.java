@@ -23,7 +23,7 @@ public class FontMap {
 			if(characters.get(i).getCharacter() == ch)
 				return characters.get(i).getWidth();
 		
-		return -1;
+		return 0;
 	}
 	
 	int getHeight(char ch) {
@@ -31,7 +31,7 @@ public class FontMap {
 			if(characters.get(i).getCharacter() == ch)
 				return characters.get(i).getHeight();
 		
-		return -1;
+		return 0;
 	}
 	
 	int getX(char ch) {
@@ -39,7 +39,7 @@ public class FontMap {
 			if(characters.get(i).getCharacter() == ch)
 				return characters.get(i).getX();
 		
-		return -1;
+		return 0;
 	}
 	
 	int getY(char ch) {
@@ -47,7 +47,7 @@ public class FontMap {
 			if(characters.get(i).getCharacter() == ch)
 				return characters.get(i).getY();
 		
-		return -1;
+		return 0;
 	}
 	
 	int getId(char ch) {
@@ -55,7 +55,7 @@ public class FontMap {
 			if(characters.get(i).getCharacter() == ch)
 				return characters.get(i).getCharacter();
 		
-		return -1;
+		return 0;
 	}
 	
 	private void loadCharacters() {

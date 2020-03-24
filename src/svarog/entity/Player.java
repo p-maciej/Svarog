@@ -24,7 +24,7 @@ public class Player extends Entity {
 	private String fileName;
 	
 	public Player(String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
-		super(new Texture("animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
+		super(new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
 		
 		this.texturesPath = texturePath;
 		this.fileName = filename;
@@ -157,13 +157,13 @@ public class Player extends Entity {
 	
 	private void setTexture(Direction direction) {
 		if(direction == Direction.left) {
-			super.setTexture(new Texture("animations/" + this.texturesPath + "idle/left/" + this.fileName + ".png"));
+			super.setTexture(new Texture("textures/animations/" + this.texturesPath + "idle/left/" + this.fileName + ".png"));
 		} else if(direction == Direction.right) {
-			super.setTexture(new Texture("animations/" + this.texturesPath + "idle/right/" + this.fileName + ".png"));
+			super.setTexture(new Texture("textures/animations/" + this.texturesPath + "idle/right/" + this.fileName + ".png"));
 		} else if(direction == Direction.up) {
-			super.setTexture(new Texture("animations/" + this.texturesPath + "idle/up/" + this.fileName + ".png"));
+			super.setTexture(new Texture("textures/animations/" + this.texturesPath + "idle/up/" + this.fileName + ".png"));
 		} else if(direction == Direction.down) {
-			super.setTexture(new Texture("animations/" + this.texturesPath + "idle/down/" + this.fileName + ".png"));
+			super.setTexture(new Texture("textures/animations/" + this.texturesPath + "idle/down/" + this.fileName + ".png"));
 		}
 	}
 	

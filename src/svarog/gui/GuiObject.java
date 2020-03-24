@@ -90,11 +90,11 @@ public class GuiObject {
 	}
 	
 	public void move(Vector2f direction) {
-		this.relativeTransform.add(direction.x, direction.y);
+		this.relativeTransform.add(direction.x, -direction.y);
 	}
 	
 	public void move(float X, float Y) {
-		this.relativeTransform.add(X, Y);
+		this.relativeTransform.add(X, -Y);
 	}
 
 	public static float getScale() {

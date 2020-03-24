@@ -1,5 +1,7 @@
 package svarog.game;
 
+import org.joml.Vector2f;
+
 import svarog.entity.Player;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -12,17 +14,13 @@ abstract class StartWorld {
 		World world = new World(1, 120, 90);
 		world.calculateView(window);
 		
-		world.fillWorld(new Texture("grass_map_1.png"));
-		
-		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
+		world.fillWorld(new Texture("textures/grass_map_1.png"));
+		Vector2f offset = new Vector2f(350, 70);
+		world.setWorldOffset(offset);
+		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight(), world.getWorldOffset());
 
 		world.loadMap("start_map.png", 32);
-		world.getTile(60, 28).setTexture(new Texture("door.png"), (byte)2);
-		world.getTile(60, 27).setTexture(new Texture("door.png"), (byte)2);
-		world.getTile(60, 26).setTexture(new Texture("door.png"), (byte)2);
-		world.getTile(60, 25).setTexture(new Texture("door.png"), (byte)2);
-		world.getTile(60, 24).setTexture(new Texture("door.png"), (byte)2);
-		
+
 		world.addEntity(player);
 		
 		world.setSolidTilesFromMap("start_map.png");

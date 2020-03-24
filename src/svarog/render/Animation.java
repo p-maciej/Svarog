@@ -20,7 +20,7 @@ public class Animation {
 
 		this.frames = new Texture[amount];
 		for(int i = 0; i < amount; i++) {
-			this.frames[i] = new Texture("animations/" + filename + "_" + i + ".png");
+			this.frames[i] = new Texture("textures/animations/" + filename + "_" + i + ".png");
 		}
 	}
 

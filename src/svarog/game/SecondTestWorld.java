@@ -2,6 +2,8 @@ package svarog.game;
 
 import java.awt.image.BufferedImage;
 
+import org.joml.Vector2f;
+
 import svarog.entity.Entity;
 import svarog.entity.Player;
 import svarog.entity.Transform;
@@ -19,8 +21,9 @@ abstract class SecondTestWorld {
 		world.fillWorld(new Texture("grass_map_1.png"));
 		
 		world.getTile(0, 20).setTexture(new Texture("door.png"), (byte)1);
-
-		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight());
+		Vector2f offset = new Vector2f(350, 70);
+		world.setWorldOffset(offset);
+		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight(), world.getWorldOffset());
 
 		
 		BufferedImage home = Texture.getImageBuffer("textures/home1_map_1.png");

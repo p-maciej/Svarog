@@ -34,7 +34,7 @@ public class Texture {
 		BufferedImage image;
 		this.filename = filename;
 		try {
-			image = ImageIO.read(new File("./resources/textures/" + filename));
+			image = ImageIO.read(new File("./resources/" + filename));
 			width = image.getWidth();
 			height = image.getHeight();
 			

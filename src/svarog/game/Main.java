@@ -12,7 +12,6 @@ import svarog.entity.Player;
 import svarog.entity.Transform;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
-import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.TextureObject;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
@@ -32,34 +31,50 @@ public class Main {
 		}
 		
 		Window window = new Window(); 
-		window.setSize(1000, 800);
+		window.setSize(1200, 800);
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
 		window.glInit();
 
 		Shader shader = new Shader("pixelart");
-		Camera camera = new Camera();	// Creating camera width size of window
+		Camera camera = new Camera();
 
-		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 30), false);
+		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
 				
 		World currentWorld = StartWorld.getWorld(player, camera, window);
 		
 		
-		/////// GUI test //////////
+		/////// GUI  ////////////////////////////////////////////////////////////////////////
 		Shader guiShader = new Shader("shader");
 		GuiRenderer guiRenderer = new GuiRenderer(window);
 		
 		GuiPanels panels = new GuiPanels();
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
+		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
 		panels.updateDynamicGuiElements(guiRenderer, window);
 		
 		Font verdana = new Font("verdana_20");
-		ByteBuffer test = verdana.getStringBuffer("Napis w rogu ekranu", new Color((byte)255, (byte)255, (byte)255));
-		TextureObject demo = new TextureObject(new Texture(test, verdana.getStringWidth(), verdana.getStringHeight()), stickTo.BottomLeft);
-		demo.move(15, 15);
+		ByteBuffer test = verdana.getStringBuffer("Tekst w innym miejscu", new Color((byte)255, (byte)255, (byte)255));
+		TextureObject demo = new TextureObject(new Texture(test, verdana.getStringWidth(), verdana.getStringHeight()), GuiRenderer.stickTo.BottomLeft);
+		demo.move(100, -20);
+		ByteBuffer test2 = verdana.getStringBuffer("Tekst", new Color((byte)255, (byte)255, (byte)255));
+		TextureObject demo2 = new TextureObject(new Texture(test2, verdana.getStringWidth(), verdana.getStringHeight()), GuiRenderer.stickTo.TopRight);
+		demo2.move(-20, 35);
+		
+		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
+		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
+		TextureObject bottomBorderRightPanel = new TextureObject(new Texture("images/border_right_panel.png"), GuiRenderer.stickTo.BottomRight);
+		bottomBorderRightPanel.move(0, -70);
+		TextureObject topBorderRightPanel = new TextureObject(new Texture("images/border_right_panel.png"), GuiRenderer.stickTo.TopRight);
+		
+		guiRenderer.addGuiObject(bottomCorner1);
+		guiRenderer.addGuiObject(bottomCorner2);
+		guiRenderer.addGuiObject(bottomBorderRightPanel);
+		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addGuiObject(demo);
-
+		guiRenderer.addGuiObject(demo2);
 		
 		guiRenderer.updatePositions();
+		////////////////////////////////////////////////////////////////////////////////////
 		
 		long lastNanos = Timer.getNanoTime();
 		int nextFrameLoadWorld = 0;
@@ -77,7 +92,7 @@ public class Main {
             } else {
 				glClearColor(0.2f, 0.2f, 0.2f, 1f);
 				if(window.hasResized()) {
-					camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight());
+					camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), currentWorld.getWorldOffset());
 					
 					guiRenderer.deleteDynamicElements();
 					panels.updateDynamicGuiElements(guiRenderer, window);
