@@ -9,6 +9,14 @@ public class HP {
 		this.maxHP = hp;
 	}
 	
+	public void SetHP(int hp) {
+		if(hp<=maxHP) {
+			this.hp = hp;
+		}else {
+			this.hp = maxHP;
+		}
+	}
+	
 	public void SetMaxHP(int hp) {
 		this.hp = hp;
 		this.maxHP = hp;
@@ -16,7 +24,11 @@ public class HP {
 	
 	public void AddHP(int health) {
 		if(health>0) {
-			hp = hp + health;
+			if(maxHP >= hp + health) {
+				hp = hp + health;
+			}else {
+				hp = maxHP;
+			}
 		}else {
 			hp = 0;
 		}
