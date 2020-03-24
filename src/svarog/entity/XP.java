@@ -20,6 +20,10 @@ public class XP {
 		return xp;
 	}
 	
+	public Level GetLevel() {
+		return this.level;
+	}
+	
 	public void AddXP(int points) {
 		xp = xp + points;
 		CheckLvlStatus();

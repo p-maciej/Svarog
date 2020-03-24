@@ -3,7 +3,7 @@ package svarog.entity;
 public class Level {
 	private int level = 0;
 	
-	public Level(int level) {
+	Level(int level) {
 		this.level = level;
 	}
 
@@ -11,7 +11,7 @@ public class Level {
 		return level;
 	}
 
-	public void setLevel(int level) {
+	void setLevel(int level) {
 		this.level = level;
 	}
 }
