@@ -4,8 +4,6 @@ public class XP {
 	private int xp = 0;
 	private Level level= new Level(0);
 	
-	private int[] level_barriers = {0,20,40,80,160,320};
-	
 	public XP(int xp) {
 		this.xp = xp;
 		CheckLvlStatus();
@@ -20,8 +18,8 @@ public class XP {
 		return xp;
 	}
 	
-	public Level GetLevel() {
-		return this.level;
+	public int GetLevel() {
+		return this.level.getLevel();
 	}
 	
 	public void AddXP(int points) {
@@ -31,7 +29,7 @@ public class XP {
 	
 	private void CheckLvlStatus() {
 		int iter = 1;
-		for(int i: level_barriers) {
+		for(int i = 20; ; i = i * 2) {
 			if(this.xp > i) {
 				this.level.setLevel(iter);
 			}else {
@@ -39,5 +37,16 @@ public class XP {
 			}
 			iter++;
 		}
+	}
+	
+	public int PointsToNextLvl() {
+		int toNextLvl=0;
+		for(int i = 20; ; i = i*2 ) {
+			if(xp < i){
+				toNextLvl = i - xp;
+				break;
+			}
+		}
+		return toNextLvl;
 	}
 }
