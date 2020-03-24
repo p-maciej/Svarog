@@ -6,8 +6,7 @@ import static org.lwjgl.glfw.GLFW.glfwGetMouseButton;
 public class Input {
 	private long window;
 	private boolean keys[];
-	
-	
+
 	Input(long window) {
 		this.window = window;
 		this.keys = new boolean[GLFW_KEY_LAST];

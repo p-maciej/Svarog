@@ -8,6 +8,7 @@ import static org.lwjgl.glfw.GLFW.glfwSetWindowSizeCallback;
 import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
 import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
 import static org.lwjgl.glfw.GLFW.glfwSetWindowPos;
+import static org.lwjgl.glfw.GLFW.glfwGetCursorPos;
 import static org.lwjgl.glfw.GLFW.glfwShowWindow;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
@@ -18,8 +19,12 @@ import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.glBlendFunc;
 import static org.lwjgl.opengl.GL11.glEnable;
+
+import java.nio.DoubleBuffer;
+
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 
+import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.glfw.GLFWWindowSizeCallback;
@@ -37,20 +42,29 @@ public class Window {
 	
 	private Input input;
 	
+	DoubleBuffer cursorPositionX;
+	DoubleBuffer cursorPositionY;
+	
 	public Window() {
 		setSize(640, 480);
 		setFullscreen(false);
+		
+		cursorPositionX = BufferUtils.createDoubleBuffer(1);
+		cursorPositionY = BufferUtils.createDoubleBuffer(1);
 	}
 	
 	public Window(int width, int height) {
 		setSize(width, height);
 		setFullscreen(false);
+		cursorPositionX = BufferUtils.createDoubleBuffer(1);
+		cursorPositionY = BufferUtils.createDoubleBuffer(1);
 	}
 	
 	public Window(int width, int height, boolean fullscreen) {
 		setSize(width, height);
 		setFullscreen(fullscreen);
-		
+		cursorPositionX = BufferUtils.createDoubleBuffer(1);
+		cursorPositionY = BufferUtils.createDoubleBuffer(1);
 		hasResized = false;
 	}
 	
@@ -97,6 +111,7 @@ public class Window {
 	public void update() {
 		hasResized = false;
 		input.update();
+		glfwGetCursorPos(window, cursorPositionX, cursorPositionY);
 		glfwPollEvents();
 	}
 	
@@ -128,6 +143,14 @@ public class Window {
 	
 	public Input getInput() {
 		return input;
+	}
+	
+	public double getCursorPositionX() {
+		return cursorPositionX.get(0);
+	}
+	
+	public double getCursorPositionY() {
+		return cursorPositionY.get(0);
 	}
 
 	public static void setCallbacks() {

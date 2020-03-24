@@ -109,7 +109,7 @@ public class Main {
 				currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
 										
 				window.update();	
-	
+				
 				glClear(GL_COLOR_BUFFER_BIT);
 	
 					
