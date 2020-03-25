@@ -2,6 +2,9 @@ package svarog.gui.font;
 
 import java.awt.image.BufferedImage;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.lwjgl.BufferUtils;
 
 import svarog.render.Texture;
@@ -9,13 +12,50 @@ import svarog.render.Texture;
 public class Font {
 	private FontMap fontMap;
 	private BufferedImage fontImage;
-
+	private List<CharacterBuffer> characters;
+	
 	public Font(String font) {
+		characters = new ArrayList<CharacterBuffer>();
 		fontMap = new FontMap("fonts/"+font+".fnt");
 		fontImage = Texture.getImageBuffer("fonts/" + font + ".png");
+		
+		cacheCharacters();
 	}
 	
-	public TextBlock getTextBlock(String string, Color color) {
+	CharacterBuffer getCharacterBuffer(char ch) {
+		for(CharacterBuffer character : characters)
+			if(character.getAscii() == ch)
+				return character;
+
+		return null;
+	}
+	
+	private void cacheCharacters() {
+		for(int i = 0; i < fontMap.getNumerOfCharacters(); i++) {
+			int width = fontMap.getWidth(i);
+			int height = fontMap.getHeight(i);
+			int startX = fontMap.getX(i);
+			int startY = fontMap.getY(i);
+			
+			ByteBuffer buffer = BufferUtils.createByteBuffer(width*height*4);
+			
+			for(int x = startX; x < startX+width; x++) {
+				for(int y = startY; y < startY+height; y++) {
+					int pixel = fontImage.getRGB(x, y);
+					buffer.put(((byte)((pixel >> 16) & 0xFF))); // red
+					buffer.put(((byte)((pixel >> 8) & 0xFF)));  // green
+					buffer.put((byte)(pixel & 0xFF)); 			// blue
+					buffer.put(((byte)((pixel >> 24) & 0xFF))); // alpha
+				}
+			}
+			
+			characters.add(new CharacterBuffer(buffer, (char)fontMap.getCharAscii(i), width, height));
+		}
+	}
+	
+	
+	
+	public ByteBuffer getTextBlock(String string, Color color) {
 		int width[] = new int[string.length()];
 		int height[] = new int[string.length()];
 		int x[] = new int[string.length()];
@@ -57,6 +97,6 @@ public class Font {
 		pixels.flip();
 		
 		
-		return new TextBlock(pixels, stringWidth, stringHeight);
+		return pixels;
 	}	
 }

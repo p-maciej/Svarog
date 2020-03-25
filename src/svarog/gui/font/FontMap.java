@@ -58,6 +58,30 @@ public class FontMap {
 		return 0;
 	}
 	
+	int getWidth(int id) {
+		return characters.get(id).getWidth();
+	}
+	
+	int getHeight(int id) {
+		return characters.get(id).getHeight();
+	}
+	
+	int getX(int id) {
+		return characters.get(id).getX();
+	}
+	
+	int getY(int id) {
+		return characters.get(id).getY();
+	}
+	
+	int getCharAscii(int id) {
+		return characters.get(id).getCharacter();
+	}
+	
+	int getNumerOfCharacters() {
+		return characters.size();
+	}
+	
 	private void loadCharacters() {
 		for(int i = 1; i <= text.getNumberOfLines(); i++) {
 			String line = text.getLine(i);

@@ -6,6 +6,8 @@ import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
 
+import org.joml.Vector2f;
+
 import svarog.entity.Player;
 import svarog.entity.Transform;
 import svarog.gui.GuiPanels;
@@ -13,6 +15,7 @@ import svarog.gui.GuiRenderer;
 import svarog.gui.TextureObject;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
+import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.io.Timer;
 import svarog.io.Window;
@@ -52,12 +55,20 @@ public class Main {
 		panels.updateDynamicGuiElements(guiRenderer, window);
 		
 		Font verdana = new Font("verdana_20");
-		TextBlock test = verdana.getTextBlock("Tekst w innym miejscu", new Color((byte)255, (byte)255, (byte)255));
-		TextureObject demo = new TextureObject(new Texture(test.getBuffer(), test.getWidth(), test.getHeight()), GuiRenderer.stickTo.BottomLeft);
-		demo.move(100, -20);
+		//TextBlock test = verdana.getTextBlock("Tekst w innym miejscu", new Color((byte)255, (byte)255, (byte)255));
+
+
+		TextBlock test = new TextBlock(400, new Vector2f());
+		test.setString(verdana, "12 as jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj fklkdsjfl ksjdlfk");
+		//Line line = test.setString(verdana, "ab");
+		//TextureObject test1 = new TextureObject(new Texture(line.getLine(), (int)line.getWidth(), (int)line.getHeight()));
+
+		
+		//TextureObject demo = new TextureObject(new Texture(test.getBuffer(), test.getWidth(), test.getHeight()), GuiRenderer.stickTo.BottomLeft);
+		/*demo.move(100, -20);
 		TextBlock test2 = verdana.getTextBlock("Tekst", new Color((byte)255, (byte)255, (byte)255));
 		TextureObject demo2 = new TextureObject(new Texture(test2.getBuffer(), test2.getWidth(), test2.getHeight()), GuiRenderer.stickTo.TopRight);
-		demo2.move(-20, 35);
+		demo2.move(-20, 35);*/
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
@@ -69,8 +80,10 @@ public class Main {
 		guiRenderer.addGuiObject(bottomCorner2);
 		guiRenderer.addGuiObject(bottomBorderRightPanel);
 		guiRenderer.addGuiObject(topBorderRightPanel);
-		guiRenderer.addGuiObject(demo);
-		guiRenderer.addGuiObject(demo2);
+		guiRenderer.addTextBlock(test);
+		//guiRenderer.addTextBlock(test);
+		//guiRenderer.addGuiObject(demo);
+		//guiRenderer.addGuiObject(demo2);
 		
 		guiRenderer.updatePositions();
 		////////////////////////////////////////////////////////////////////////////////////
