@@ -8,7 +8,7 @@ public class CharacterBuffer {
 	private int width;
 	private int height;
 	
-	public CharacterBuffer(ByteBuffer character, char ascii, int width, int height) {
+	CharacterBuffer(ByteBuffer character, char ascii, int width, int height) {
 		this.setBuffer(character);
 		this.setWidth(width);
 		this.setHeight(height);

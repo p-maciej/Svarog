@@ -54,21 +54,13 @@ public class Main {
 		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
 		panels.updateDynamicGuiElements(guiRenderer, window);
 		
-		Font verdana = new Font("verdana_20");
-		//TextBlock test = verdana.getTextBlock("Tekst w innym miejscu", new Color((byte)255, (byte)255, (byte)255));
-
+		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
+		Line test1 = new Line(GuiRenderer.stickTo.BottomLeft);
+		test1.setString("Tekst w innym miejscu", verdana);
+		test1.move(95, -25);
 
 		TextBlock test = new TextBlock(400, new Vector2f());
 		test.setString(verdana, "12 as jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj fklkdsjfl ksjdlfk");
-		//Line line = test.setString(verdana, "ab");
-		//TextureObject test1 = new TextureObject(new Texture(line.getLine(), (int)line.getWidth(), (int)line.getHeight()));
-
-		
-		//TextureObject demo = new TextureObject(new Texture(test.getBuffer(), test.getWidth(), test.getHeight()), GuiRenderer.stickTo.BottomLeft);
-		/*demo.move(100, -20);
-		TextBlock test2 = verdana.getTextBlock("Tekst", new Color((byte)255, (byte)255, (byte)255));
-		TextureObject demo2 = new TextureObject(new Texture(test2.getBuffer(), test2.getWidth(), test2.getHeight()), GuiRenderer.stickTo.TopRight);
-		demo2.move(-20, 35);*/
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
@@ -81,9 +73,7 @@ public class Main {
 		guiRenderer.addGuiObject(bottomBorderRightPanel);
 		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addTextBlock(test);
-		//guiRenderer.addTextBlock(test);
-		//guiRenderer.addGuiObject(demo);
-		//guiRenderer.addGuiObject(demo2);
+		guiRenderer.addGuiObject(test1);
 		
 		guiRenderer.updatePositions();
 		////////////////////////////////////////////////////////////////////////////////////

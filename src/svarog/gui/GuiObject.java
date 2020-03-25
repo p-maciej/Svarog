@@ -25,9 +25,9 @@ public class GuiObject {
 		relativeTransform = new Vector2f();
 		
 		this.id = auto_increment++;
-		this.setWidth(10);
-		this.setHeight(10);
-		this.configureTransform(new Vector2f());
+		this.setSize(10, 10);
+		this.configureTransform();
+		this.setPosition(new Vector2f());
 	}
 	
 	protected GuiObject(int width, int height, stickTo stickTo) {
@@ -35,10 +35,10 @@ public class GuiObject {
 		relativeTransform = new Vector2f();
 		
 		this.id = auto_increment++;
-		this.setWidth(width);
-		this.setHeight(height);
+		this.setSize(width, height);
 		this.setStickTo(stickTo);
-		this.configureTransform(new Vector2f());
+		this.configureTransform();
+		this.setPosition(new Vector2f());
 	}
 
 	protected GuiObject(int width, int height, Vector2f position) {
@@ -46,9 +46,9 @@ public class GuiObject {
 		relativeTransform = new Vector2f();
 		
 		this.id = auto_increment++;
-		this.setWidth(width);
-		this.setHeight(height);
-		this.configureTransform(position);
+		this.setSize(width, height);
+		this.configureTransform();
+		this.setPosition(position);
 	}
 
 	public float getHeight() {
@@ -56,18 +56,15 @@ public class GuiObject {
 	}
 
 
-	public void setHeight(int height) {
+	public void setSize(int width, int height) {
+		this.width = width;
 		this.height = height;
+		configureTransform();
 	}
 
 
 	public float getWidth() {
 		return width*(scale/16);
-	}
-
-
-	public void setWidth(int width) {
-		this.width = width;
 	}
 
 
@@ -101,12 +98,10 @@ public class GuiObject {
 		return scale;
 	}
 	
-	private void configureTransform(Vector2f position) {
+	private void configureTransform() {
 		transform.setScale(scale*2, scale*2);
 		this.transform.getScale().x = getWidth()/2 * (scale/16);
 		this.transform.getScale().y = getHeight()/2 * (scale/16);
-		
-		setPosition(position);
 	}
 
 	public stickTo getStickTo() {

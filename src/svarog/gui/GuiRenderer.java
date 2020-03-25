@@ -110,49 +110,55 @@ public class GuiRenderer {
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
 			if(object.getState() == State.dynamicImage) {
-				if(object instanceof TextureObject) {
-					Matrix4f projection = camera.getProjection();
-					((TextureObject) object).getTexture().bind(0);
-					
-					shader.bind();
-					shader.setUniform("sampler", 0);
-					shader.setUniform("projection", object.getTransform().getProjection(projection));
-					model.render();
-				}
+				renderGuiObject(object, shader);
 			}
 		}
 		
 		// Then render everything else in adding order
 		for(GuiObject object : objects) {
 			if(object.getState() != State.dynamicImage) {
-				if(object instanceof TextureObject) {
-					Matrix4f projection = camera.getProjection();
-					((TextureObject) object).getTexture().bind(0);
-					
-					shader.bind();
-					shader.setUniform("sampler", 0);
-					shader.setUniform("projection", object.getTransform().getProjection(projection));
-					model.render();	
-				}
+				renderGuiObject(object, shader);
 			}
 		}
 
 		
 		for(TextBlock block : textBlocks) {
-				for(int i = 0; i < block.getLines().size(); i++) {
-					Matrix4f projection = camera.getProjection();
-					Line line = block.getLines().get(i);
-					Texture temp = new Texture(line.getLine(), (int)line.getWidth(), (int)line.getHeight());
+			for(int i = 0; i < block.getLines().size(); i++) {
+				Matrix4f projection = camera.getProjection();
+				Line line = block.getLines().get(i);
+				Texture temp = new Texture(line.getLine(), (int)line.getWidth(), (int)line.getHeight());
 					
-					line.getTransform().getPosition().x = block.getPosition().x + line.getWidth()/2;
-					line.getTransform().getPosition().y = block.getPosition().y + -i*line.getHeight();
+				line.getTransform().getPosition().x = block.getPosition().x + line.getWidth()/2;
+				line.getTransform().getPosition().y = block.getPosition().y + -i*line.getHeight();
 					
-					temp.bind(0);
-					shader.bind();
-					shader.setUniform("sampler", 0);
-					shader.setUniform("projection", line.getTransform().getProjection(projection));
-					model.render();
-				}
+				temp.bind(0);
+				shader.bind();
+				shader.setUniform("sampler", 0);
+				shader.setUniform("projection", line.getTransform().getProjection(projection));
+				model.render();
+			}
+		}
+	}
+	
+	private void renderGuiObject(GuiObject object, Shader shader) {
+		if(object instanceof TextureObject) {
+			Matrix4f projection = camera.getProjection();
+			((TextureObject) object).getTexture().bind(0);
+			
+			shader.bind();
+			shader.setUniform("sampler", 0);
+			shader.setUniform("projection", object.getTransform().getProjection(projection));
+			model.render();	
+		} else if(object instanceof Line) {
+			Matrix4f projection = camera.getProjection();
+			Line line = ((Line)object);
+			Texture temp = new Texture(line.getLine(), (int)line.getWidth(), (int)line.getHeight());
+			
+			temp.bind(0);
+			shader.bind();
+			shader.setUniform("sampler", 0);
+			shader.setUniform("projection", line.getTransform().getProjection(projection));
+			model.render();
 		}
 	}
 	

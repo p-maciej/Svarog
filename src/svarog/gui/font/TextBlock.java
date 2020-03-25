@@ -36,14 +36,18 @@ public class TextBlock {
 
 	public void setString(Font font, String string) {
 		this.string = string;
-		addLine(font);
+		addLines(font);
 	}
 
-	private void addLine(Font font) {
+	private void addLines(Font font) {
 		int lineWidth = 0;
-		
-		int wordHeight = font.getCharacterBuffer(string.charAt(0)).getHeight();
+		int wordHeight = 0;
 		int lineChars = 0;
+		
+		if(string.length() > 0)
+			wordHeight = font.getCharacterBuffer(string.charAt(0)).getHeight();
+		
+		
 		for(int i = 0; i < string.length(); i++) {	
 			Word word = attemptToAddWord(font, i, lineWidth);
 			i = word.getLastIndex();
@@ -70,7 +74,6 @@ public class TextBlock {
 
 		for(int j = i-lineChars; j < i; j++) {
 			CharacterBuffer character = font.getCharacterBuffer(string.charAt(j));
-			
 			for(int n = 0; n < character.getBuffer().limit(); n++)
 				line.put(character.getBuffer().get(n));
 		}
