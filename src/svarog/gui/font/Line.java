@@ -41,15 +41,17 @@ public class Line extends GuiObject {
 		
 		for(int i = 0; i < string.length(); i++) {
 			CharacterBuffer character = font.getCharacterBuffer(string.charAt(i));
-			lineWidth += character.getWidth();
+			if(character != null)
+				lineWidth += character.getWidth();
 		}
 		
 		ByteBuffer line = BufferUtils.createByteBuffer(lineWidth*lineHeight*4);
 
 		for(int i = 0; i < string.length(); i++) {
 			CharacterBuffer character = font.getCharacterBuffer(string.charAt(i));
-			for(int n = 0; n < character.getBuffer().limit(); n++)
-				line.put(character.getBuffer().get(n));
+			if(character != null)
+				for(int n = 0; n < character.getBuffer().limit(); n++)
+					line.put(character.getBuffer().get(n));
 		}
 
 		line.flip();

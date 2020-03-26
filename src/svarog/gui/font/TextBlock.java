@@ -74,8 +74,9 @@ public class TextBlock {
 
 		for(int j = i-lineChars; j < i; j++) {
 			CharacterBuffer character = font.getCharacterBuffer(string.charAt(j));
-			for(int n = 0; n < character.getBuffer().limit(); n++)
-				line.put(character.getBuffer().get(n));
+			if(character != null)
+				for(int n = 0; n < character.getBuffer().limit(); n++)
+					line.put(character.getBuffer().get(n));
 		}
 		line.flip();
 
@@ -89,14 +90,18 @@ public class TextBlock {
 		for(int i = index; i < string.length(); i++) {
 			if(string.charAt(i) != SPACE) {
 				CharacterBuffer character = font.getCharacterBuffer(string.charAt(i));
-				wordWidth += character.getWidth();
-				wordLength++;
-				lastIndex = i;
+				if(character != null) {
+					wordWidth += character.getWidth();
+					wordLength++;
+					lastIndex = i;
+				}
 			} else {
 				CharacterBuffer character = font.getCharacterBuffer(string.charAt(i));
-				wordWidth += character.getWidth();
-				wordLength++;
-				lastIndex = i;
+				if(character != null) {
+					wordWidth += character.getWidth();
+					wordLength++;
+					lastIndex = i;
+				}
 				break;
 			}
 		}

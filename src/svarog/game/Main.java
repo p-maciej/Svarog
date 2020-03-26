@@ -56,11 +56,11 @@ public class Main {
 		
 		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
 		Line test1 = new Line(GuiRenderer.stickTo.BottomLeft);
-		test1.setString("Tekst w innym miejscu", verdana);
+		test1.setString("Tekst w innym miejscuê", verdana);
 		test1.move(95, -25);
 
 		TextBlock test = new TextBlock(400, new Vector2f());
-		test.setString(verdana, "12 as jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj fklkdsjfl ksjdlfk");
+		test.setString(verdana, "12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj fklkdsjfl ksjdlfk");
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
