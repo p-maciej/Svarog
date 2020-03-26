@@ -12,6 +12,7 @@ import svarog.render.Camera;
 import svarog.render.Model;
 import svarog.render.Shader;
 import svarog.render.Texture;
+import svarog.render.Transform;
 import svarog.world.World;
 
 public class Entity {

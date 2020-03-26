@@ -2,10 +2,10 @@ package svarog.gui;
 
 import org.joml.Vector2f;
 
-import svarog.entity.Transform;
 import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.render.Texture;
+import svarog.render.Transform;
 
 public class GuiObject {
 	private static int auto_increment = 0; // for the moment

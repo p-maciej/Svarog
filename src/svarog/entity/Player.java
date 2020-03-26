@@ -13,6 +13,7 @@ import svarog.io.Window;
 import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
+import svarog.render.Transform;
 import svarog.world.World;
 
 public class Player extends Entity {

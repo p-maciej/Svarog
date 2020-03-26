@@ -6,10 +6,10 @@ import org.joml.Vector2f;
 
 import svarog.entity.Entity;
 import svarog.entity.Player;
-import svarog.entity.Transform;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Texture;
+import svarog.render.Transform;
 import svarog.world.Door;
 import svarog.world.World;
 

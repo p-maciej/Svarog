@@ -9,7 +9,6 @@ import static org.lwjgl.opengl.GL11.glViewport;
 import org.joml.Vector2f;
 
 import svarog.entity.Player;
-import svarog.entity.Transform;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
 import svarog.gui.TextureObject;
@@ -22,6 +21,7 @@ import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
+import svarog.render.Transform;
 import svarog.world.World;
 
 public class Main {
@@ -58,7 +58,7 @@ public class Main {
 		
 		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
 		Line test1 = new Line(GuiRenderer.stickTo.BottomLeft);
-		test1.setString("Tekst w innym miejscuê", verdana);
+		test1.setString("Tekst w innym miejscu", verdana);
 		test1.move(95, -25);
 
 		TextBlock test = new TextBlock(400, new Vector2f());
