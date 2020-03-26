@@ -26,8 +26,8 @@ import svarog.world.World;
 
 public class Main {
 	public static void main(String[] args) {
+		///////////////// INIT ///////////////////////////////////////////////////////////////
 		Window.setCallbacks();
-	
 		if(!glfwInit()) { 													// Library init
 			throw new IllegalStateException("Failed to initialize GLFW");
 		}
@@ -36,15 +36,17 @@ public class Main {
 		window.setSize(1200, 800);
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
 		window.glInit();
-
+		//////////////////////////////////////////////////////////////////////////////////////
+		
+		//////////////// WORLD ///////////////////////////////////////////////////////////////
 		Shader shader = new Shader("shader");
 		Camera camera = new Camera();
 
 		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
-				
-		World currentWorld = StartWorld.getWorld(player, camera, window);
-		
-		
+		World currentWorld = new World(1, 0, 0);
+		//= StartWorld.getWorld(player, camera, window);
+		/////////////////////////////////////////////////////////////////////////////////////
+
 		/////// GUI  ////////////////////////////////////////////////////////////////////////
 		Shader guiShader = new Shader("shader");
 		GuiRenderer guiRenderer = new GuiRenderer(window);
@@ -78,18 +80,39 @@ public class Main {
 		guiRenderer.updatePositions();
 		////////////////////////////////////////////////////////////////////////////////////
 		
+		////////// LOADING SCREEN //////////////////////////////////////////////////////////
+		GuiRenderer loadingScreen = new GuiRenderer(window);
+		
+		TextureObject background = new TextureObject(new Texture("textures/loading_screen.png"));	
+		TextureObject loading_text = new TextureObject(new Texture("textures/animations/loading/loading_3.png"));
+		loadingScreen.addGuiObject(background);
+		loadingScreen.addGuiObject(loading_text);
+		////////////////////////////////////////////////////////////////////////////////////
+		
+		/////////////////////// LOCAL VARIABLES ////////////////////////////////////////////
 		long lastNanos = Timer.getNanoTime();
-		int nextFrameLoadWorld = 0;
+		int nextFrameLoadWorld = 1;
+		////////////////////////////////////////////////////////////////////////////////////
+		
 		while(window.processProgram()) {										// This works while program is running
 			Timer.syncFrameRate(60, lastNanos);									// Fps limiter
             lastNanos = Timer.getNanoTime();
             
             if(nextFrameLoadWorld != 0) {
-            	glClearColor(0f, 0f, 0f, 1f);
-            	window.update();
             	glClear(GL_COLOR_BUFFER_BIT);
+            	glClearColor(0f, 0f, 0f, 1f);
+            	long start = Timer.getNanoTime();
+            	loadingScreen.update(window);
+            	loadingScreen.renderGuiObjects(guiShader);
+            	
+            	window.update();
+            	
             	window.swapBuffers();  	
+            	camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), currentWorld.getWorldOffset());
             	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
+            	long stop = Timer.getNanoTime();
+            	
+            	Timer.sleep(stop - start, 1000000000);
             	nextFrameLoadWorld = 0;
             } else {
 				glClearColor(0.2f, 0.2f, 0.2f, 1f);
@@ -105,12 +128,9 @@ public class Main {
 				}
 				
 				
-				
-				
 				currentWorld.update((float)0.2, window, camera);
 				currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
-										
-					
+
 				
 				glClear(GL_COLOR_BUFFER_BIT);
 	

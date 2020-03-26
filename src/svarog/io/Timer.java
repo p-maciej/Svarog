@@ -1,5 +1,7 @@
 package svarog.io;
 
+import java.util.concurrent.TimeUnit;
+
 public class Timer {
 	public static double getTime() {
 		return (double)System.nanoTime() / (double)1000000000L;
@@ -17,5 +19,14 @@ public class Timer {
 	
 	public static long getNanoTime() {
 		return System.nanoTime();
+	}
+	
+	public static void sleep(long nanos, long diff) {
+    	if(nanos < diff)
+			try {
+				Thread.sleep(TimeUnit.NANOSECONDS.toMillis(diff - nanos));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 	}
 }
