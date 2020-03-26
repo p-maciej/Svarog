@@ -63,6 +63,9 @@ public class World {
 	
 	private Matrix4f world;
 	
+	private int mouseOverX;
+	private int mouseOverY;
+	
 	public World(int id, int width, int height) {
 		entities = new ArrayList<Entity>();
 		doors = new ArrayList<Door>();
@@ -82,10 +85,18 @@ public class World {
 	
 	public void render(Shader shader, Camera camera, Window window) {		
 		int posX = (int)(camera.getPosition().x / (scale*2));
-		int posY = (int)(camera.getPosition().y / (scale*2));	
-		
+		int posY = (int)(camera.getPosition().y / (scale*2));
+
+		//position of coursor on the World
+		int x = (-(int)((camera.getPosition().x)) - (int)window.getWidth()/2 + (int)(worldOffset.x/2) + 16 + (int)window.getCursorPositionX());
+		int y = ((int)((camera.getPosition().y)) - (int)window.getHeight()/2 + (int)(worldOffset.y/2) + 16 + (int)window.getCursorPositionY());
+
 		for(int i = 0; i < viewX; i++) {
 			for(int j = 0; j < viewY; j++) {
+				if((i-posX-(viewX/2)+1)*32 < x && (i-posX-(viewX/2)+1+1)*32 > x && (j+posY-(viewY/2))*32 < y && (j+posY-(viewY/2)+1)*32 > y) {
+					mouseOverX = i-posX-(viewX/2)+1;
+					mouseOverY = j+posY-(viewY/2);
+				}
 				Tile t = getTile(i-posX-(viewX/2)+1, j+posY-(viewY/2));
 				if(t != null)
 					renderTile(t, i-posX-(viewX/2)+1, -j-posY+(viewY/2), shader, world, camera, false); // Rendering first 2 layers of map
@@ -103,10 +114,11 @@ public class World {
 					renderTile(t, i-posX-(viewX/2)+1, -j-posY+(viewY/2), shader, world, camera, true); // Rendering last layer(3)
 			}
 		}
-		
+
 		shader = null;
 		camera = null;
 	}
+
 	
 	public void renderTile(Tile tile, int x, int y, Shader shader, Matrix4f world, Camera camera, boolean topLayer) {
 		shader.bind();
@@ -120,7 +132,7 @@ public class World {
 					Matrix4f target = new Matrix4f();
 					
 					camera.getProjection().mul(world, target);
-					target.mul(tile_position);
+					target.mul(tile_position);				
 					
 					shader.setUniform("sampler", 0);
 					shader.setUniform("projection", target);
@@ -362,5 +374,13 @@ public class World {
 
 	public void setWorldOffset(Vector2f worldOffset) {
 		this.worldOffset.set(worldOffset);
+	}
+	
+	public int getMouseOverX() {
+		return mouseOverX;
+	}
+	
+	public int getMouseOverY() {
+		return mouseOverY;
 	}
 }

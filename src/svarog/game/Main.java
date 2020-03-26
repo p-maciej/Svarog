@@ -139,6 +139,7 @@ public class Main {
 				
 				guiRenderer.renderGuiObjects(guiShader);
 				
+				currentWorld.getTile(currentWorld.getMouseOverX(), currentWorld.getMouseOverY()).setTexture(new Texture("textures/door.png"), (byte)1);
 				
 				window.update();
 				
