@@ -286,12 +286,14 @@ public class World {
 	}
 	
 	public void setTile(Tile tile, int x, int y) {
-		tiles[x][y] = tile;
-		
-		if(tile.isSolid())
-			bounding_boxes[x][y] = new AABB(new Vector2f(x*2, -y*2), new Vector2f(1,1));
-		else
-			bounding_boxes[x][y] = null;
+		if(x >= 0 && x < width && y >= 0 && y <= height) {
+			tiles[x][y] = tile;
+			
+			if(tile.isSolid())
+				bounding_boxes[x][y] = new AABB(new Vector2f(x*2, -y*2), new Vector2f(1,1));
+			else
+				bounding_boxes[x][y] = null;
+		}
 	}
 	
 	public Tile getTile(int x, int y) {
