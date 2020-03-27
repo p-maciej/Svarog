@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 import org.joml.Vector2f;
 
+import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.Player;
 import svarog.io.Window;
@@ -31,8 +32,16 @@ abstract class SecondTestWorld {
 			for(int j = 0; j < 4; j++)
 				world.getTile(7+i, 15+j).setTexture(new Texture(home, i, j, 32), (byte)(j < 3 ? 2 : 1));
 		
+		Enemy Dziekan = new Enemy("", "avatar", new Transform().setPosition(10, 11), true, 10, 100, 200);
+		
+		world.addEntity(Dziekan);
+		
 		world.addEntity(new Entity(new Texture("textures/player.png"), new Transform().setPosition(10, 10), true).setIsStatic(false));
-		world.addEntity(new Entity(new Texture("textures/player.png"), new Transform().setPosition(18, 17), false));
+		world.addEntity(new Entity(new Texture("textures/player.png"), new Transform().setPosition(18, 17), false));		
+		
+		for(int i = 0; i < 100; i++) {
+			//System.out.println(Dziekan.GetRandomAttack());
+		}
 		world.addEntity(player);
 		
 		world.addDoor(new Door(1, 0, 20, 59, 26));

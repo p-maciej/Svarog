@@ -245,6 +245,10 @@ public class Entity {
 		return this;
 	}
 	
+	public Transform getTransform() {
+		return transform;
+	}
+	
 	public boolean isStatic() {
 		return isStatic;
 	}

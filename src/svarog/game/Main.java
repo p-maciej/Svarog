@@ -8,6 +8,7 @@ import static org.lwjgl.opengl.GL11.glViewport;
 
 import org.joml.Vector2f;
 
+import svarog.entity.Entity;
 import svarog.entity.Player;
 import svarog.gui.Button;
 import svarog.gui.GuiPanels;
@@ -146,6 +147,10 @@ public class Main {
 				
 				if(guiRenderer.getMouseOverObjectId() == button1.getId() && window.getInput().isMouseButtonPressed(0))
 					System.out.println("CLICK!");
+				
+				if(currentWorld.IsOverEntity(currentWorld.getEntity(0), camera, window) && window.getInput().isMouseButtonPressed(0)) {
+					System.out.println("ATTACK!!!");
+				}
 				
 				window.update();
 				

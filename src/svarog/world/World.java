@@ -83,6 +83,19 @@ public class World {
 		world.scale(scale);
 	}
 	
+	public boolean IsOverEntity(Entity entity, Camera camera, Window window) {
+		int posX = (int)entity.getTransform().getPosition().x*16;
+		int posY = (int)-entity.getTransform().getPosition().y*16;
+		
+		int x = (-(int)((camera.getPosition().x)) - (int)window.getWidth()/2 + (int)(worldOffset.x/2) + 16 + (int)window.getCursorPositionX());
+		int y = ((int)((camera.getPosition().y)) - (int)window.getHeight()/2 + (int)(worldOffset.y/2) + 16 + (int)window.getCursorPositionY());
+		
+		if(posX < x && (posX + 32) > x  && (posY -32) < y && (posY + 32) > y) {
+			return true;
+		}
+		return false;
+	}
+	
 	public void render(Shader shader, Camera camera, Window window) {		
 		int posX = (int)(camera.getPosition().x / (scale*2));
 		int posY = (int)(camera.getPosition().y / (scale*2));
