@@ -4,10 +4,11 @@ import org.joml.Vector2f;
 
 import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
+import svarog.objects.MouseInteraction;
 import svarog.render.Texture;
 import svarog.render.Transform;
 
-public class GuiObject {
+public class GuiObject implements MouseInteraction {
 	private static int auto_increment = 0; // for the moment
 	
 	private int id;
@@ -17,6 +18,11 @@ public class GuiObject {
 	private Vector2f relativeTransform;
 	private stickTo stickTo;
 	private State state;
+	
+	private boolean isClickable = false;
+	private boolean isMovable = false;
+	private boolean isOverAllowed = false;
+	private String overDescription = "";
 
 	private static final float scale = 16f;
 	
@@ -128,4 +134,41 @@ public class GuiObject {
 		this.state = state;
 		return this;
 	}
+
+	@Override
+	public boolean isClickable() {
+		return isClickable;
+	}
+
+	@Override
+	public boolean isMovable() {
+		return isMovable;
+	}
+
+	@Override
+	public boolean isOverAllowed() {
+		return isOverAllowed;
+	}
+
+	@Override
+	public String mouseOverDescription() {
+		return overDescription;
+	}
+
+	public void setOverDescription(String overDescription) {
+		this.overDescription = overDescription;
+	}
+
+	public void setClickable(boolean isClickable) {
+		this.isClickable = isClickable;
+	}
+
+	public void setMovable(boolean isMovable) {
+		this.isMovable = isMovable;
+	}
+
+	public void setOverAllowed(boolean isOverAllowed) {
+		this.isOverAllowed = isOverAllowed;
+	}
+
 }

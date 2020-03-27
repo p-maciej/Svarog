@@ -58,6 +58,8 @@ public class GuiRenderer {
 	private List<GuiObject> objects;
 	private List<TextBlock> textBlocks;
 
+	private int mouseOverObjectId;
+	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
 		this.textBlocks = new ArrayList<TextBlock>();
@@ -106,18 +108,19 @@ public class GuiRenderer {
 		}
 	}
 	
-	public void renderGuiObjects(Shader shader) {	
+	public void renderGuiObjects(Shader shader, Window window) {	
+		mouseOverObjectId = -1;
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
 			if(object.getState() == State.dynamicImage) {
-				renderGuiObject(object, shader);
+				renderGuiObject(object, shader, window);
 			}
 		}
 		
 		// Then render everything else in adding order
 		for(GuiObject object : objects) {
 			if(object.getState() != State.dynamicImage) {
-				renderGuiObject(object, shader);
+				renderGuiObject(object, shader, window);
 			}
 		}
 
@@ -140,8 +143,19 @@ public class GuiRenderer {
 		}
 	}
 	
-	private void renderGuiObject(GuiObject object, Shader shader) {
-		if(object instanceof TextureObject) {
+	private void renderGuiObject(GuiObject object, Shader shader, Window window) {
+		if(object instanceof Button) {
+			Matrix4f projection = camera.getProjection();
+			((Button) object).getTexture().bind(0);
+			
+			if(((Button) object).isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY()))
+				mouseOverObjectId = object.getId();
+
+			shader.bind();
+			shader.setUniform("sampler", 0);
+			shader.setUniform("projection", object.getTransform().getProjection(projection));
+			model.render();	
+		} else if(object instanceof TextureObject) {
 			Matrix4f projection = camera.getProjection();
 			((TextureObject) object).getTexture().bind(0);
 			
@@ -202,5 +216,9 @@ public class GuiRenderer {
 			if(objects.get(i).getState() != null)
 				if(objects.get(i).getState() == State.dynamicImage)
 					objects.remove(i);
+	}
+
+	public int getMouseOverObjectId() {
+		return mouseOverObjectId;
 	}
 }

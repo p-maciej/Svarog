@@ -9,9 +9,11 @@ import static org.lwjgl.opengl.GL11.glViewport;
 import org.joml.Vector2f;
 
 import svarog.entity.Player;
+import svarog.gui.Button;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
 import svarog.gui.TextureObject;
+import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
@@ -70,10 +72,14 @@ public class Main {
 		bottomBorderRightPanel.move(0, -70);
 		TextureObject topBorderRightPanel = new TextureObject(new Texture("images/border_right_panel.png"), GuiRenderer.stickTo.TopRight);
 		
+		Button button1 = new Button(new Texture("images/button.png"), stickTo.TopRight);
+		button1.move(-100, 100);
+		
 		guiRenderer.addGuiObject(bottomCorner1);
 		guiRenderer.addGuiObject(bottomCorner2);
 		guiRenderer.addGuiObject(bottomBorderRightPanel);
 		guiRenderer.addGuiObject(topBorderRightPanel);
+		guiRenderer.addGuiObject(button1);
 		guiRenderer.addTextBlock(test);
 		guiRenderer.addGuiObject(test1);
 		
@@ -103,7 +109,7 @@ public class Main {
             	glClearColor(0f, 0f, 0f, 1f);
             	long start = Timer.getNanoTime();
             	loadingScreen.update(window);
-            	loadingScreen.renderGuiObjects(guiShader);
+            	loadingScreen.renderGuiObjects(guiShader, window);
             	
             	window.update();
             	
@@ -133,13 +139,13 @@ public class Main {
 
 				
 				glClear(GL_COLOR_BUFFER_BIT);
-	
 					
 				currentWorld.render(shader, camera, window);							// world rendering
 				
-				guiRenderer.renderGuiObjects(guiShader);
+				guiRenderer.renderGuiObjects(guiShader, window);
 				
-				currentWorld.getTile(currentWorld.getMouseOverX(), currentWorld.getMouseOverY()).setTexture(new Texture("textures/door.png"), (byte)1);
+				if(guiRenderer.getMouseOverObjectId() == button1.getId() && window.getInput().isMouseButtonPressed(0))
+					System.out.println("CLICK!");
 				
 				window.update();
 				
