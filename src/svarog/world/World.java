@@ -84,13 +84,13 @@ public class World {
 	}
 	
 	public boolean IsOverEntity(Entity entity, Camera camera, Window window) {
-		int posX = (int)entity.getTransform().getPosition().x*16;
-		int posY = (int)-entity.getTransform().getPosition().y*16;
+		int posX = (int)(entity.getTransform().getPosition().x*scale);
+		int posY = (int)(-entity.getTransform().getPosition().y*scale);
 		
-		int x = (-(int)((camera.getPosition().x)) - (int)window.getWidth()/2 + (int)(worldOffset.x/2) + 16 + (int)window.getCursorPositionX());
-		int y = ((int)((camera.getPosition().y)) - (int)window.getHeight()/2 + (int)(worldOffset.y/2) + 16 + (int)window.getCursorPositionY());
+		int x = (-(int)((camera.getPosition().x)) - (int)(window.getWidth()/2) + (int)(worldOffset.x/2) + (int)scale + (int)window.getCursorPositionX());
+		int y = ((int)((camera.getPosition().y)) - (int)(window.getHeight()/2) + (int)(worldOffset.y/2) + (int)scale + (int)window.getCursorPositionY());
 		
-		if(posX < x && (posX + 32) > x  && (posY -32) < y && (posY + 32) > y) {
+		if(posX < x && (posX + scale*2) > x  && (posY -scale*2) < y && (posY + scale*2) > y) {
 			return true;
 		}
 		return false;
@@ -101,12 +101,12 @@ public class World {
 		int posY = (int)(camera.getPosition().y / (scale*2));
 
 		//position of coursor on the World
-		int x = (-(int)((camera.getPosition().x)) - (int)window.getWidth()/2 + (int)(worldOffset.x/2) + 16 + (int)window.getCursorPositionX());
-		int y = ((int)((camera.getPosition().y)) - (int)window.getHeight()/2 + (int)(worldOffset.y/2) + 16 + (int)window.getCursorPositionY());
+		int x = (-(int)((camera.getPosition().x)) - (int)window.getWidth()/2 + (int)(worldOffset.x/2) + (int)scale + (int)window.getCursorPositionX());
+		int y = ((int)((camera.getPosition().y)) - (int)window.getHeight()/2 + (int)(worldOffset.y/2) + (int)scale + (int)window.getCursorPositionY());
 
 		for(int i = 0; i < viewX; i++) {
 			for(int j = 0; j < viewY; j++) {
-				if((i-posX-(viewX/2)+1)*32 < x && (i-posX-(viewX/2)+1+1)*32 > x && (j+posY-(viewY/2))*32 < y && (j+posY-(viewY/2)+1)*32 > y) {
+				if((i-posX-(viewX/2)+1)*scale*2 < x && (i-posX-(viewX/2)+1+1)*scale*2 > x && (j+posY-(viewY/2))*scale*2 < y && (j+posY-(viewY/2)+1)*scale*2 > y) {
 					mouseOverX = i-posX-(viewX/2)+1;
 					mouseOverY = j+posY-(viewY/2);
 				}
