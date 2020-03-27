@@ -141,6 +141,11 @@ public class GuiRenderer {
 				model.render();
 			}
 		}
+		
+		if(mouseOverObjectId == -1)
+			window.setCursor(Window.Cursor.Arrow);
+		else 
+			window.setCursor(Window.Cursor.Pointer);
 	}
 	
 	private void renderGuiObject(GuiObject object, Shader shader, Window window) {

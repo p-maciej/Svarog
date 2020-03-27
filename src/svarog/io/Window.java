@@ -12,6 +12,10 @@ import static org.lwjgl.glfw.GLFW.glfwGetCursorPos;
 import static org.lwjgl.glfw.GLFW.glfwShowWindow;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
+import static org.lwjgl.glfw.GLFW.glfwCreateStandardCursor;
+import static org.lwjgl.glfw.GLFW.glfwSetCursor;
+import static org.lwjgl.glfw.GLFW.GLFW_ARROW_CURSOR;
+import static org.lwjgl.glfw.GLFW.GLFW_HAND_CURSOR;
 import static org.lwjgl.opengl.GL11.GL_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_BLEND;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
@@ -42,8 +46,15 @@ public class Window {
 	
 	private Input input;
 	
-	DoubleBuffer cursorPositionX;
-	DoubleBuffer cursorPositionY;
+	long cursor;
+	
+	private DoubleBuffer cursorPositionX;
+	private DoubleBuffer cursorPositionY;
+	
+	public enum Cursor {
+		Arrow,
+		Pointer
+	}
 	
 	public Window() {
 		setSize(640, 480);
@@ -66,6 +77,15 @@ public class Window {
 		cursorPositionX = BufferUtils.createDoubleBuffer(1);
 		cursorPositionY = BufferUtils.createDoubleBuffer(1);
 		hasResized = false;
+	}
+	
+	public void setCursor(Cursor cursor) {
+		if(cursor == Cursor.Pointer)
+			this.cursor = glfwCreateStandardCursor(GLFW_HAND_CURSOR);
+		else 
+			this.cursor = glfwCreateStandardCursor(GLFW_ARROW_CURSOR);
+		
+		glfwSetCursor(window, this.cursor);
 	}
 	
 	public void createWindow(String title) {
