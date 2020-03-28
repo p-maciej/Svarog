@@ -8,7 +8,6 @@ import static org.lwjgl.opengl.GL11.glViewport;
 
 import org.joml.Vector2f;
 
-import svarog.entity.Entity;
 import svarog.entity.Player;
 import svarog.gui.Button;
 import svarog.gui.GuiPanels;
