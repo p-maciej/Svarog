@@ -6,14 +6,13 @@ import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
 
-import org.joml.Vector2f;
-
 import svarog.entity.Player;
 import svarog.gui.Button;
+import svarog.gui.Group;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
-import svarog.gui.TextureObject;
 import svarog.gui.GuiRenderer.stickTo;
+import svarog.gui.TextureObject;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
@@ -58,13 +57,17 @@ public class Main {
 		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
 		panels.updateDynamicGuiElements(guiRenderer, window);
 		
+		Group group1 = new Group();
 		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
 		Line test1 = new Line(GuiRenderer.stickTo.BottomLeft);
 		test1.setString("Tekst w innym miejscu", verdana);
 		test1.move(95, -25);
 
-		TextBlock test = new TextBlock(400, new Vector2f());
+		TextBlock test = new TextBlock(400, stickTo.TopLeft);
 		test.setString(verdana, "12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj fklkdsjfl ksjdlfk");
+		test.move(15, 15);
+		group1.addTextBlock(test);
+		group1.addTextureObject(test1);
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
@@ -80,8 +83,7 @@ public class Main {
 		guiRenderer.addGuiObject(bottomBorderRightPanel);
 		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addGuiObject(button1);
-		guiRenderer.addTextBlock(test);
-		guiRenderer.addGuiObject(test1);
+		guiRenderer.addGroup(group1);
 		
 		guiRenderer.updatePositions();
 		////////////////////////////////////////////////////////////////////////////////////

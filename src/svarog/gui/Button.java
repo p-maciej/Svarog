@@ -24,6 +24,6 @@ public class Button extends TextureObject implements MouseInteraction {
 	}
 	
 	public boolean isClicked() {
-		return GuiRenderer.clickedObjectId == super.getId() ? true : false;
+		return GuiRenderer.getClickedObjectId() == super.getId() ? true : false;
 	}
 }

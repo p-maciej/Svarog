@@ -56,13 +56,15 @@ public class GuiRenderer {
 	
 	private List<GuiObject> objects;
 	private List<TextBlock> textBlocks;
+	private List<Group> groups;
 
-	static int clickedObjectId;
-	static int mouseOverObjectId;
+	private static int clickedObjectId;
+	private static int mouseOverObjectId;
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
 		this.textBlocks = new ArrayList<TextBlock>();
+		this.groups = new ArrayList<Group>();
 		
 		this.model = new Model(verticesArray, textureArray, indicesArray);
 		this.camera = new Camera();
@@ -74,43 +76,103 @@ public class GuiRenderer {
 	}
 	
 	public void updatePositions() {
+		for(Group group : groups) {
+			for(GuiObject object : group.getTextureObjectList()) {
+				if(object.getStickTo() != null) {
+					setObjectStickTo(object);
+				}
+				
+				object.getTransform().getPosition().add(object.getMove().x+group.getPosition().x, object.getMove().y+group.getPosition().y, 0);
+			}
+			
+			for(TextBlock textBlock : group.getTextBlockList()) {
+				if(textBlock.getStickTo() != null) {
+					setTextBlockStickTo(textBlock);
+				}
+				
+				textBlock.getPosition().add(textBlock.getMove().x+group.getPosition().x, textBlock.getMove().y+group.getPosition().y);
+			}
+		}
+		
 		for(GuiObject object : objects) {
 			if(object.getStickTo() != null) {
-				switch(object.getStickTo()) {
-					case Top:
-						object.setPosition(0, getTop() - object.getHeight()/2);
-						break;
-					case Bottom:
-						object.setPosition(0, getBottom() + object.getHeight()/2);
-						break;
-					case BottomLeft:
-						object.setPosition(getLeft() + object.getWidth()/2, getBottom() + object.getHeight()/2);
-						break;
-					case BottomRight:
-						object.setPosition(getRight() - object.getWidth()/2, getBottom() + object.getHeight()/2);
-						break;
-					case Left:
-						object.setPosition(getLeft() + object.getWidth()/2, 0);
-						break;
-					case Right:
-						object.setPosition(getRight() - object.getWidth()/2, 0);
-						break;
-					case TopLeft:
-						object.setPosition(getLeft() + object.getWidth()/2, getTop() - object.getHeight()/2);
-						break;
-					case TopRight:
-						object.setPosition(getRight() - object.getWidth()/2, getTop() - object.getHeight()/2);
-						break;
-				}
+				setObjectStickTo(object);
 			}
 			
 			object.getTransform().getPosition().add(object.getMove().x, object.getMove().y, 0);
 		}
+		
+		for(TextBlock textBlock : textBlocks) {
+			if(textBlock.getStickTo() != null) {
+				setTextBlockStickTo(textBlock);
+			}
+			
+			textBlock.getPosition().add(textBlock.getMove().x, textBlock.getMove().y);
+		}
 	}
 	
-	public void renderGuiObjects(Shader shader, Window window) {	
+	private void setObjectStickTo(GuiObject object) {
+		switch(object.getStickTo()) {
+			case Top:
+				object.setPosition(0, getTop() - object.getHeight()/2);
+				break;
+			case Bottom:
+				object.setPosition(0, getBottom() + object.getHeight()/2);
+				break;
+			case BottomLeft:
+				object.setPosition(getLeft() + object.getWidth()/2, getBottom() + object.getHeight()/2);
+				break;
+			case BottomRight:
+				object.setPosition(getRight() - object.getWidth()/2, getBottom() + object.getHeight()/2);
+				break;
+			case Left:
+				object.setPosition(getLeft() + object.getWidth()/2, 0);
+				break;
+			case Right:
+				object.setPosition(getRight() - object.getWidth()/2, 0);
+				break;
+			case TopLeft:
+				object.setPosition(getLeft() + object.getWidth()/2, getTop() - object.getHeight()/2);
+				break;
+			case TopRight:
+				object.setPosition(getRight() - object.getWidth()/2, getTop() - object.getHeight()/2);
+				break;
+		}
+	}
+	
+	private void setTextBlockStickTo(TextBlock object) {
+		switch(object.getStickTo()) {
+			case Top:
+				object.setPosition(0, getTop() - 10);
+				break;
+			case Bottom:
+				object.setPosition(0, getBottom() + object.getHeight());
+				break;
+			case BottomLeft:
+				object.setPosition(getLeft(), getBottom() + object.getHeight());
+				break;
+			case BottomRight:
+				object.setPosition(getRight() - object.getMaxWidth(), getBottom() + object.getHeight());
+				break;
+			case Left:
+				object.setPosition(getLeft(), 0);
+				break;
+			case Right:
+				object.setPosition(getRight() - object.getMaxWidth(), 0);
+				break;
+			case TopLeft:
+				object.setPosition(getLeft(), getTop() - 10);
+				break;
+			case TopRight:
+				object.setPosition(getRight() - object.getMaxWidth(), getTop() - 10);
+				break;
+		}
+	}
+	
+	public void renderGuiObjects(Shader shader, Window window) {
 		clickedObjectId = -1;
 		mouseOverObjectId = -1;
+		
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
 			if(object.getState() == State.dynamicImage) {
@@ -124,21 +186,28 @@ public class GuiRenderer {
 				renderGuiObject(object, shader, window);
 			}
 		}
-
 		
+		// After that textBlocks, they supposed to cover textures
 		for(TextBlock block : textBlocks) {
-			for(int i = 0; i < block.getLines().size(); i++) {
-				Matrix4f projection = camera.getProjection();
-				Line line = block.getLines().get(i);
-					
-				line.getTransform().getPosition().x = block.getPosition().x + line.getWidth()/2;
-				line.getTransform().getPosition().y = block.getPosition().y + -i*line.getHeight();
-					
-				line.getTexture().bind(0);
-				shader.bind();
-				shader.setUniform("sampler", 0);
-				shader.setUniform("projection", line.getTransform().getProjection(projection));
-				model.render();
+			renderTextBlock(block, shader, window);
+		}
+		
+		// Then render groups, they usually will be moving or not windows inside the game
+		for(Group group : groups) {
+			for(TextureObject object : group.getTextureObjectList()) { // i'm not sure that we need this <----
+				if(object.getState() == State.dynamicImage) {
+					renderGuiObject(object, shader, window);
+				}
+			}
+			
+			for(TextureObject object : group.getTextureObjectList()) {
+				if(object.getState() != State.dynamicImage) {
+					renderGuiObject(object, shader, window);
+				}
+			}
+			
+			for(TextBlock block : group.getTextBlockList()) {
+				renderTextBlock(block, shader, window);
 			}
 		}
 		
@@ -146,6 +215,22 @@ public class GuiRenderer {
 			window.setCursor(Window.Cursor.Arrow);
 		else 
 			window.setCursor(Window.Cursor.Pointer);
+	}
+	
+	private void renderTextBlock(TextBlock block, Shader shader, Window window) {
+		for(int i = 0; i < block.getLines().size(); i++) {
+			Matrix4f projection = camera.getProjection();
+			Line line = block.getLines().get(i);
+					
+			line.getTransform().getPosition().x = block.getPosition().x + line.getWidth()/2;
+			line.getTransform().getPosition().y = block.getPosition().y + -i*line.getHeight();
+					
+			line.getTexture().bind(0);
+			shader.bind();
+			shader.setUniform("sampler", 0);
+			shader.setUniform("projection", line.getTransform().getProjection(projection));
+			model.render();
+		}
 	}
 	
 	private void renderGuiObject(GuiObject object, Shader shader, Window window) {
@@ -178,6 +263,10 @@ public class GuiRenderer {
 		textBlocks.add(textBlock);
 	}
 	
+	public void addGroup(Group group) {
+		groups.add(group);
+	}
+	
 	public float getRight() {
 		return windowWidth/2;
 	}
@@ -208,7 +297,7 @@ public class GuiRenderer {
 					objects.remove(i);
 	}
 
-	public int getClickedObjectId() {
+	protected static int getClickedObjectId() {
 		return clickedObjectId;
 	}
 }

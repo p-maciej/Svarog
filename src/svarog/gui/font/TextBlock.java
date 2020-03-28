@@ -7,16 +7,32 @@ import java.util.List;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
+import svarog.gui.GuiRenderer;
+
 public class TextBlock {
 	private static final char SPACE = 32; 
 	private List<Line> lines;
 	private String string;
 	private int maxWidth;
 	private Vector2f position;
+	private Vector2f relativeTransform;
+	private GuiRenderer.stickTo stickTo;
+	private int lineHeight;
 	
 	public TextBlock(int maxWidth, Vector2f position) {
 		lines = new ArrayList<Line>();
 		this.position = new Vector2f();
+		this.relativeTransform = new Vector2f();
+		
+		this.setMaxWidth(maxWidth);
+		this.setPosition(position);
+	}
+	
+	public TextBlock(int maxWidth, GuiRenderer.stickTo stickTo) {
+		lines = new ArrayList<Line>();
+		this.position = new Vector2f();
+		this.relativeTransform = new Vector2f();
+		this.stickTo = stickTo;
 		
 		this.setMaxWidth(maxWidth);
 		this.setPosition(position);
@@ -45,7 +61,7 @@ public class TextBlock {
 		int lineChars = 0;
 		
 		if(string.length() > 0)
-			wordHeight = font.getCharacterBuffer(string.charAt(0)).getHeight();
+			lineHeight = wordHeight = font.getCharacterBuffer(string.charAt(0)).getHeight();
 		
 		
 		for(int i = 0; i < string.length(); i++) {	
@@ -130,6 +146,33 @@ public class TextBlock {
 		this.position.set(position);
 	}
 	
+	public void setPosition(float X, float Y) {
+		this.position.set(new Vector2f(X, Y));
+	}
+	
+	public GuiRenderer.stickTo getStickTo() {
+		return stickTo;
+	}
+
+	public void setStickTo(GuiRenderer.stickTo stickTo) {
+		this.stickTo = stickTo;
+	}
+
+	public int getHeight() {
+		return lineHeight*lines.size();
+	}
+	
+	public void move(Vector2f direction) {
+		this.relativeTransform.add(direction.x, -direction.y);
+	}
+	
+	public void move(float X, float Y) {
+		this.relativeTransform.add(X, -Y);
+	}
+	
+	public Vector2f getMove() {
+		return relativeTransform;
+	}
 	////////////// NEW CLASS /////////////////////
 	private class Word {
 		private int wordWidth;
