@@ -144,7 +144,7 @@ public class Main {
 				
 				guiRenderer.renderGuiObjects(guiShader, window);
 				
-				if(guiRenderer.getMouseOverObjectId() == button1.getId() && window.getInput().isMouseButtonPressed(0))
+				if(button1.isClicked())
 					System.out.println("CLICK!");
 				
 				if(currentWorld.IsOverEntity(currentWorld.getEntity(0), camera, window) && window.getInput().isMouseButtonPressed(0)) {

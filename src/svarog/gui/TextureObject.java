@@ -28,8 +28,20 @@ public class TextureObject extends GuiObject {
 		this.texture = texture;
 	}
 	
+	public TextureObject(Vector2f position) {
+		super(0, 0, position);
+	}
+	
+	public TextureObject(stickTo stickTo) {
+		super(0, 0, stickTo);
+	}
+	
 	@Override
-	Texture getTexture() {
+	public Texture getTexture() {
 		return texture;
+	}
+	
+	protected void setTexture(Texture texture) {
+		this.texture = texture;
 	}
 }

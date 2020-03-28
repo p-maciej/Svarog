@@ -5,32 +5,26 @@ import java.nio.ByteBuffer;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
-import svarog.gui.GuiObject;
 import svarog.gui.GuiRenderer.stickTo;
+import svarog.gui.TextureObject;
+import svarog.render.Texture;
 
-public class Line extends GuiObject {
-	ByteBuffer line;
-	
-	
-	public Line() {
-		super();
-	}
+public class Line extends TextureObject {
 	
 	public Line(ByteBuffer buffer, int width, int height) {
-		super(width, height, new Vector2f());
-		this.setLine(buffer);
+		super(new Texture(buffer, width, height), new Vector2f());
 	}
 	
 	public Line(Vector2f position) {
-		super(0, 0, position);
+		super(position);
 	}
 	
 	public Line(int X, int Y) {
-		super(0, 0, new Vector2f(X, Y));
+		super(new Vector2f(X, Y));
 	}
 	
 	public Line(stickTo stickTo) {
-		super(0, 0, stickTo);
+		super(stickTo);
 	}
 	
 	public void setString(String string, Font font) {
@@ -56,15 +50,7 @@ public class Line extends GuiObject {
 
 		line.flip();
 		
-		this.setLine(line);
+		super.setTexture(new Texture(line, lineWidth, lineHeight));
 		super.setSize(lineWidth, lineHeight);
-	}
-
-	public ByteBuffer getLine() {
-		return line;
-	}
-
-	void setLine(ByteBuffer line) {
-		this.line = line;
 	}
 }

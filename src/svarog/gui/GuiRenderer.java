@@ -11,7 +11,6 @@ import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Model;
 import svarog.render.Shader;
-import svarog.render.Texture;
 
 public class GuiRenderer {
 	private static final float[] verticesArray = new float[] {
@@ -58,7 +57,8 @@ public class GuiRenderer {
 	private List<GuiObject> objects;
 	private List<TextBlock> textBlocks;
 
-	private int mouseOverObjectId;
+	static int clickedObjectId;
+	static int mouseOverObjectId;
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
@@ -109,6 +109,7 @@ public class GuiRenderer {
 	}
 	
 	public void renderGuiObjects(Shader shader, Window window) {	
+		clickedObjectId = -1;
 		mouseOverObjectId = -1;
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
@@ -129,12 +130,11 @@ public class GuiRenderer {
 			for(int i = 0; i < block.getLines().size(); i++) {
 				Matrix4f projection = camera.getProjection();
 				Line line = block.getLines().get(i);
-				Texture temp = new Texture(line.getLine(), (int)line.getWidth(), (int)line.getHeight());
 					
 				line.getTransform().getPosition().x = block.getPosition().x + line.getWidth()/2;
 				line.getTransform().getPosition().y = block.getPosition().y + -i*line.getHeight();
 					
-				temp.bind(0);
+				line.getTexture().bind(0);
 				shader.bind();
 				shader.setUniform("sampler", 0);
 				shader.setUniform("projection", line.getTransform().getProjection(projection));
@@ -149,36 +149,21 @@ public class GuiRenderer {
 	}
 	
 	private void renderGuiObject(GuiObject object, Shader shader, Window window) {
-		if(object instanceof Button) {
 			Matrix4f projection = camera.getProjection();
-			((Button) object).getTexture().bind(0);
+			object.getTexture().bind(0);
 			
-			if(((Button) object).isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY()))
-				mouseOverObjectId = object.getId();
-
+			if(object.isClickable()) {
+				if(object.isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY())) {
+					mouseOverObjectId = object.getId();
+					if(window.getInput().isMouseButtonPressed(0)) {
+						clickedObjectId = object.getId();
+					}
+				}
+			}
 			shader.bind();
 			shader.setUniform("sampler", 0);
 			shader.setUniform("projection", object.getTransform().getProjection(projection));
 			model.render();	
-		} else if(object instanceof TextureObject) {
-			Matrix4f projection = camera.getProjection();
-			((TextureObject) object).getTexture().bind(0);
-			
-			shader.bind();
-			shader.setUniform("sampler", 0);
-			shader.setUniform("projection", object.getTransform().getProjection(projection));
-			model.render();	
-		} else if(object instanceof Line) {
-			Matrix4f projection = camera.getProjection();
-			Line line = ((Line)object);
-			Texture temp = new Texture(line.getLine(), (int)line.getWidth(), (int)line.getHeight());
-			
-			temp.bind(0);
-			shader.bind();
-			shader.setUniform("sampler", 0);
-			shader.setUniform("projection", line.getTransform().getProjection(projection));
-			model.render();
-		}
 	}
 	
 	public void addGuiObject(GuiObject object) {
@@ -223,7 +208,7 @@ public class GuiRenderer {
 					objects.remove(i);
 	}
 
-	public int getMouseOverObjectId() {
-		return mouseOverObjectId;
+	public int getClickedObjectId() {
+		return clickedObjectId;
 	}
 }

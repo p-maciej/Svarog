@@ -4,11 +4,12 @@ import org.joml.Vector2f;
 
 import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
+import svarog.io.Window;
 import svarog.objects.MouseInteraction;
 import svarog.render.Texture;
 import svarog.render.Transform;
 
-public class GuiObject implements MouseInteraction {
+public abstract class GuiObject implements MouseInteraction {
 	private static int auto_increment = 0; // for the moment
 	
 	private int id;
@@ -19,10 +20,10 @@ public class GuiObject implements MouseInteraction {
 	private stickTo stickTo;
 	private State state;
 	
-	private boolean isClickable = false;
-	private boolean isMovable = false;
-	private boolean isOverAllowed = false;
-	private String overDescription = "";
+	private boolean isClickable;
+	private boolean isMovable;
+	private boolean isOverAllowed;
+	private String overDescription;
 
 	private static final float scale = 16f;
 	
@@ -126,9 +127,7 @@ public class GuiObject implements MouseInteraction {
 		return state;
 	}
 	
-	Texture getTexture() {
-		return null;
-	}
+	abstract Texture getTexture();
 
 	public GuiObject setState(State state) {
 		this.state = state;
@@ -170,5 +169,15 @@ public class GuiObject implements MouseInteraction {
 	public void setOverAllowed(boolean isOverAllowed) {
 		this.isOverAllowed = isOverAllowed;
 	}
-
+	
+	public boolean isMouseOver(Window window, double x, double y) {
+		float posX = window.getWidth()/2 + getTransform().getPosition().x - getWidth()/2;
+		float posY = window.getHeight()/2 - getTransform().getPosition().y - getHeight()/2;
+		
+		
+		if(x > posX && y > posY && y < posY+getHeight() && x < posX+getWidth())
+			return true;
+		else
+			return false;
+	}
 }
