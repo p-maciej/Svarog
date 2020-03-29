@@ -24,7 +24,7 @@ public class NPC extends Entity {
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
-		super.setIsStatic(false); // Non-static - default setting for player 
+		super.setIsStatic(true); // static - default setting for NPC  
 	}
 	
 	public NPC(String texturePath, String filename, Transform transform, boolean fullBoundingBox, List<Item> items) {
@@ -33,7 +33,7 @@ public class NPC extends Entity {
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
-		super.setIsStatic(false); // Non-static - default setting for player 
+		super.setIsStatic(true); // static - default setting for NPC 
 		
 		this.items = items;
 	}

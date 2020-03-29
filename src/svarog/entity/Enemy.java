@@ -18,6 +18,7 @@ public class Enemy extends Entity {
 	//private String texturesPath;
 	//private String fileName;
 	
+	private HP hp = new HP(20);
 	private int maxAttack;
 	private int minAttack;
 	private int xpForKilling;
@@ -28,19 +29,20 @@ public class Enemy extends Entity {
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
-		super.setIsStatic(false); // Non-static - default setting for player 
+		super.setIsStatic(false); // Non-static - default setting for Enemy
 	}
 	
-	public Enemy(String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling) {
+	public Enemy(String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp) {
 		super(new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
-		super.setIsStatic(false); // Non-static - default setting for player 
+		super.setIsStatic(false); // Non-static - default setting for Enemy
 		
 		this.maxAttack = maxAttack;
 		this.minAttack = minAttack;
 		this.xpForKilling = xpForKilling;
+		this.hp.SetMaxHP(hp);
 	}
 	
 	public Enemy(String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, List<Item> items) {
@@ -74,10 +76,16 @@ public class Enemy extends Entity {
 	public void SetXpForKilling(int xpForKilling) {
 		this.xpForKilling = xpForKilling;
 	}
-	public void SetAttackRewardXP(int minAttack, int maxAttack, int xpForKilling) {
+	public void SetAttackRewardXP(int minAttack, int maxAttack, int xpForKilling, int hp) {
 		this.minAttack = minAttack;
 		this.xpForKilling = xpForKilling;
 		this.maxAttack = maxAttack;
+		this.hp.SetHP(hp);
+	}
+	
+	//Changers
+	public void DecreaseEnemyHP(int damage) {
+		this.hp.DecreaseHP(damage);
 	}
 	
 	//Getters
@@ -92,5 +100,8 @@ public class Enemy extends Entity {
 	}
 	public int GetMaxAttack() {
 		return maxAttack;
+	}
+	public int GetEnemyHP() {
+		return this.hp.GetHP();
 	}
 }

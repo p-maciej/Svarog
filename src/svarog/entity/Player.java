@@ -24,9 +24,11 @@ public class Player extends Entity {
 	private String texturesPath;
 	private String fileName;
 	
-	//HP, Level, NPC //
-	HP hp = new HP(100);
-	XP xp = new XP(0);
+	//HP, Level, NPC, MinAttack, MaxAttack//
+	private HP hp = new HP(100);
+	private XP xp = new XP(0);
+	private int maxAttack;
+	private int minAttack;
 	
 	public Player(String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
 		super(new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
@@ -229,5 +231,50 @@ public class Player extends Entity {
 
 	public void setSetCamWithoutAnimation(boolean setCamWithoutAnimation) {
 		this.setCamWithoutAnimation = setCamWithoutAnimation;
+	}
+	
+	public void setHpXpAttack(int hp, int xp, int minAttack, int maxAttack) {
+		this.hp.SetHP(hp);
+		this.xp.setXP(xp);
+		this.setAttack(minAttack, maxAttack);
+	}
+	
+	public void setAttack(int minAttack, int maxAttack) {
+		this.minAttack = minAttack;
+		this.maxAttack = maxAttack;
+	}
+	
+	public int getMaxAttack() {
+		return maxAttack;
+	}
+
+	public void setMaxAttack(int maxAttack) {
+		if(minAttack > maxAttack) {
+			this.minAttack = maxAttack;
+		}
+		this.maxAttack = maxAttack;
+	}
+
+	public int getRandomAttack() {
+		return (int)((maxAttack-minAttack)*Math.random() + minAttack);
+	}
+	
+	public int getMinAttack() {
+		return minAttack;
+	}
+	
+	public int getHP() {
+		return hp.GetHP();
+	}
+	
+	public void FullyRecoverHP() {
+		hp.SetHP(hp.getMaxHP());
+	}
+
+	public void setMinAttack(int minAttack) {
+		if(minAttack > maxAttack) {
+			this.maxAttack = minAttack;
+		}
+		this.minAttack = minAttack;
 	}
 }

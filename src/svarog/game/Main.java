@@ -6,6 +6,7 @@ import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
 
+import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.Player;
 import svarog.gui.Button;
@@ -45,6 +46,8 @@ public class Main {
 		Camera camera = new Camera();
 
 		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
+		player.setHpXpAttack(100, 0, 50, 60);
+
 		World currentWorld = new World(1, 0, 0);
 		//= StartWorld.getWorld(player, camera, window);
 		/////////////////////////////////////////////////////////////////////////////////////
@@ -80,11 +83,15 @@ public class Main {
 		Button button1 = new Button(new Texture("images/button.png"), stickTo.TopRight);
 		button1.move(-100, 100);
 		
+		Button healBtn = new Button(new Texture("images/button.png"), stickTo.TopRight);
+		healBtn.move(-100, 200);
+		
 		guiRenderer.addGuiObject(bottomCorner1);
 		guiRenderer.addGuiObject(bottomCorner2);
 		guiRenderer.addGuiObject(bottomBorderRightPanel);
 		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addGuiObject(button1);
+		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(group1);
 		
 		guiRenderer.updatePositions();
@@ -155,8 +162,29 @@ public class Main {
 					}
 				}
 				
-				if(currentWorld.isOverEntity(currentWorld.getEntity(0), camera, window) && window.getInput().isMouseButtonPressed(0)) {
-					System.out.println("ATTACK!!!");
+				//Quick check if attack system is working properly, please don't remove, just comment, thanks
+				for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) {
+					if(currentWorld.getEntity(i) instanceof Enemy) {
+						if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
+							while(((Enemy) (currentWorld.getEntity(i))).GetEnemyHP()>0) {
+								System.out.println("Enemy HP (before attack): " + ((Enemy) (currentWorld.getEntity(i))).GetEnemyHP());
+								((Enemy) (currentWorld.getEntity(i))).DecreaseEnemyHP(player.getRandomAttack());
+								System.out.println("Enemy HP:  (after attack): " + ((Enemy) (currentWorld.getEntity(i))).GetEnemyHP());
+								if(((Enemy) (currentWorld.getEntity(i))).GetEnemyHP()<0) {
+									System.out.println("Enemy "+ (currentWorld.getEntity(i)).getName() + " died, you WON!!!");
+									(currentWorld.getEntity(i)).setPosition(1,1);
+								}else {
+									System.out.println("Player HP (before attack): " + player.getHP());
+									player.DecreasePlayerHP(((Enemy) (currentWorld.getEntity(i))).GetRandomAttack());
+									System.out.println("Player HP (after attack): " + player.getHP());
+									if(player.getHP()<0) {
+										System.out.println("Player died, " + (currentWorld.getEntity(i)).getName() + " was killing more people than ever.");
+										break;
+									}
+								}
+							}
+						}
+					}
 				}
 				
 				guiRenderer.renderGuiObjects(guiShader, window);
@@ -164,7 +192,10 @@ public class Main {
 				if(button1.isClicked())
 					System.out.println("CLICK!");
 				
-
+				if(healBtn.isClicked()) {
+					player.FullyRecoverHP();
+					System.out.println("Health of player was fully recovered: " + player.getHP() + "hp.");
+				}
 				
 				window.update();
 				

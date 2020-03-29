@@ -283,13 +283,6 @@ public class World {
 			
 	}
 	
-	public void removeEntity(int index) {
-		
-		if(entities.get(index) instanceof Player) {
-			this.entities.remove(index);
-		}
-	}
-	
 	public int numberOfEntities() {
 		return entities.size();
 	}
