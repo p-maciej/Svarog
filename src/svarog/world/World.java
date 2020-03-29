@@ -266,6 +266,15 @@ public class World {
 			return null;
 	}
 	
+	public Entity getEntityById(int id) {
+		for(Entity entity : entities) {
+			if(entity.getId() == id)
+				return entity;
+		}
+		
+		return null;
+	}
+	
 	public void addEntity(Entity entity) {
 		this.entities.add(entity);
 		

@@ -6,6 +6,7 @@ import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
 
+import svarog.entity.Entity;
 import svarog.entity.Player;
 import svarog.gui.Button;
 import svarog.gui.Group;
@@ -146,9 +147,12 @@ public class Main {
 				
 				if(currentWorld.getMouseOverEntityId() >= 0) {
 					Line name = new Line(0, 0);
-					name.setString(currentWorld.getEntity(currentWorld.getMouseOverEntityId()).getName(), verdana);
+					Entity ent = currentWorld.getEntityById(currentWorld.getMouseOverEntityId());
+					if(ent != null) {
+						name.setString(ent.getName(), verdana);
 					
-					guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
+						guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
+					}
 				}
 				
 				if(currentWorld.isOverEntity(currentWorld.getEntity(0), camera, window) && window.getInput().isMouseButtonPressed(0)) {
