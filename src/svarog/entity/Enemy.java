@@ -7,8 +7,10 @@ import svarog.render.Texture;
 import svarog.render.Transform;
 
 public class Enemy extends Entity {
-	private String texturesPath;
-	private String fileName;
+	
+	//Animacja potem siê ogarnie
+	//private String texturesPath;
+	//private String fileName;
 	private int maxAttack;
 	private int minAttack;
 	private int xpForKilling;
@@ -17,16 +19,16 @@ public class Enemy extends Entity {
 	public Enemy(String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
 		super(new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
 		
-		this.texturesPath = texturePath;
-		this.fileName = filename;
+		//this.texturesPath = texturePath;
+		//this.fileName = filename;
 		
 		super.setIsStatic(false); // Non-static - default setting for player 
 	}
 	
 	public Enemy(String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling) {
 		super(new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
-		this.texturesPath = texturePath;
-		this.fileName = filename;
+		//this.texturesPath = texturePath;
+		//this.fileName = filename;
 		
 		super.setIsStatic(false); // Non-static - default setting for player 
 		
