@@ -54,7 +54,7 @@ public class Entity {
 	protected Direction currentDirection;
 	protected boolean[] isColliding = new boolean[2];
 	
-	private String enitityName;
+	private String entityName;
 	
 	protected enum Direction {
 		left,
@@ -68,6 +68,7 @@ public class Entity {
 		id = auto_increment;
 		auto_increment++;
 		
+		this.entityName = new String();
 		model = new Model(verticesArray, textureArray, indicesArray);
 		this.animation = animation;
 		this.transform = transform;
@@ -87,6 +88,7 @@ public class Entity {
 		id = auto_increment;
 		auto_increment++;
 		
+		this.entityName = new String();
 		model = new Model(verticesArray, textureArray, indicesArray);
 		this.texture = texture;
 		this.transform = transform;
@@ -275,10 +277,10 @@ public class Entity {
 	}
 
 	public String getName() {
-		return enitityName;
+		return entityName;
 	}
 
-	public void setName(String enitityName) {
-		this.enitityName = enitityName;
+	public void setName(String entityName) {
+		this.entityName = entityName;
 	}
 }
