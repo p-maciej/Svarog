@@ -2,10 +2,12 @@ package svarog.game;
 
 import org.joml.Vector2f;
 
+import svarog.entity.Entity;
 import svarog.entity.Player;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Texture;
+import svarog.render.Transform;
 import svarog.world.Door;
 import svarog.world.World;
 
@@ -22,7 +24,13 @@ abstract class StartWorld {
 		world.loadMap("start_map.png", 32);
 
 		world.addEntity(player);
+		Entity ent1 = new Entity(new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
+		ent1.setName("Maciej");
+		Entity ent2 = new Entity(new Texture("textures/player.png"), new Transform().setPosition(46, 27), true);
+		ent2.setName("Dawid");
 		
+		world.addEntity(ent1);
+		world.addEntity(ent2);
 		world.setSolidTilesFromMap("start_map.png");
 		
 		world.setBoundingBoxes();

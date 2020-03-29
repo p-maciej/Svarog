@@ -25,7 +25,6 @@ public class Enemy extends Entity {
 	
 	public Enemy(String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling) {
 		super(new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
-		//System.out.println();
 		this.texturesPath = texturePath;
 		this.fileName = filename;
 		

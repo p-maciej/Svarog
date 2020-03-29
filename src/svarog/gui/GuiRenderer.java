@@ -1,16 +1,21 @@
 package svarog.gui;
 
+import java.awt.image.BufferedImage;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.joml.Matrix4f;
+import org.lwjgl.BufferUtils;
 
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.io.Window;
+import svarog.io.Window.Cursor;
 import svarog.render.Camera;
 import svarog.render.Model;
 import svarog.render.Shader;
+import svarog.render.Texture;
 
 public class GuiRenderer {
 	private static final float[] verticesArray = new float[] {
@@ -45,7 +50,8 @@ public class GuiRenderer {
 	
 	public static enum State {
 		staticImage,
-		dynamicImage
+		dynamicImage,
+		guiPanel
 	}
 	
 	private Model model;
@@ -61,6 +67,11 @@ public class GuiRenderer {
 	private static int clickedObjectId;
 	private static int mouseOverObjectId;
 	
+	
+	private TextureObject bubbleLeft;
+	private TextureObject bubbleRight;
+	private BufferedImage bubbleCenter;
+	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
 		this.textBlocks = new ArrayList<TextBlock>();
@@ -73,6 +84,10 @@ public class GuiRenderer {
 		
 		this.windowWidth = window.getWidth();
 		this.windowHeight = window.getHeight();
+		
+		bubbleLeft = new TextureObject(new Texture("images/bubble/left.png"));
+		bubbleRight = new TextureObject(new Texture("images/bubble/right.png"));
+		bubbleCenter = Texture.getImageBuffer("images/bubble/center.png");
 	}
 	
 	public void updatePositions() {
@@ -175,6 +190,12 @@ public class GuiRenderer {
 		
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
+			if(object.getState() == State.guiPanel) {
+				renderGuiObject(object, shader, window);
+			}
+		}
+		
+		for(GuiObject object : objects) {
 			if(object.getState() == State.dynamicImage) {
 				renderGuiObject(object, shader, window);
 			}
@@ -182,7 +203,7 @@ public class GuiRenderer {
 		
 		// Then render everything else in adding order
 		for(GuiObject object : objects) {
-			if(object.getState() != State.dynamicImage) {
+			if(object.getState() == State.staticImage || object.getState() == null) {
 				renderGuiObject(object, shader, window);
 			}
 		}
@@ -211,10 +232,8 @@ public class GuiRenderer {
 			}
 		}
 		
-		if(mouseOverObjectId == -1)
-			window.setCursor(Window.Cursor.Arrow);
-		else 
-			window.setCursor(Window.Cursor.Pointer);
+		if(mouseOverObjectId >= 0)
+			window.requestCursor(Cursor.Pointer);
 	}
 	
 	private void renderTextBlock(TextBlock block, Shader shader, Window window) {
@@ -283,11 +302,47 @@ public class GuiRenderer {
 		return -windowHeight/2;
 	}
 	
+	public void showBubble(Line line, double posX, double posY) {
+		int Xoffest = 35;
+		int Yoffset = 20;
+		bubbleLeft.setPosition((float)posX+Xoffest, (float)posY+Yoffset);
+		this.addGuiObject(bubbleLeft, State.dynamicImage);
+		
+		ByteBuffer contentBackground = BufferUtils.createByteBuffer((int)(bubbleCenter.getHeight()*line.getWidth()*4));
+		
+		for(int i = 0; i < line.getWidth(); i++) {
+			for(int j = 0; j < bubbleCenter.getHeight(); j++) {
+				int pixel = bubbleCenter.getRGB(0, j);
+				contentBackground.put(((byte)((pixel >> 16) & 0xFF)));
+				contentBackground.put(((byte)((pixel >> 8) & 0xFF)));
+				contentBackground.put((byte)(pixel & 0xFF));
+				contentBackground.put(((byte)((pixel >> 24) & 0xFF)));
+			}
+		}
+		contentBackground.flip();
+		
+		TextureObject center = new TextureObject(new Texture(contentBackground, line.getWidth(), bubbleCenter.getHeight()), (float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+Xoffest), (float)(posY+Yoffset));
+		this.addGuiObject(center, State.dynamicImage);
+		
+		line.setPosition((float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+Xoffest), (float)(posY+Yoffset));
+		this.addGuiObject(line, State.dynamicImage);
+		
+		bubbleRight.setPosition((float)posX+Xoffest+line.getWidth()+bubbleLeft.getWidth()-3, (float)posY+Yoffset);
+		this.addGuiObject(bubbleRight, State.dynamicImage);
+	}
+	
 	public void update(Window window) {
 		camera.setProjection(window.getWidth(), window.getHeight());
 		this.windowHeight = window.getHeight();
 		this.windowWidth = window.getWidth();
 		updatePositions();
+	}
+	
+	public void deleteGuiPanels() {
+		for(int i = 0; i < objects.size(); i++)
+			if(objects.get(i).getState() != null)
+				if(objects.get(i).getState() == State.guiPanel)
+					objects.remove(i);
 	}
 	
 	public void deleteDynamicElements() {

@@ -1,21 +1,22 @@
 package svarog.io;
+import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
+import static org.lwjgl.glfw.GLFW.GLFW_ARROW_CURSOR;
+import static org.lwjgl.glfw.GLFW.GLFW_HAND_CURSOR;
+import static org.lwjgl.glfw.GLFW.glfwCreateStandardCursor;
 import static org.lwjgl.glfw.GLFW.glfwCreateWindow;
+import static org.lwjgl.glfw.GLFW.glfwGetCursorPos;
 import static org.lwjgl.glfw.GLFW.glfwGetPrimaryMonitor;
 import static org.lwjgl.glfw.GLFW.glfwGetVideoMode;
 import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
-import static org.lwjgl.glfw.GLFW.glfwSetWindowSizeCallback;
-import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
+import static org.lwjgl.glfw.GLFW.glfwSetCursor;
 import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
 import static org.lwjgl.glfw.GLFW.glfwSetWindowPos;
-import static org.lwjgl.glfw.GLFW.glfwGetCursorPos;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowSizeCallback;
 import static org.lwjgl.glfw.GLFW.glfwShowWindow;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
+import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
-import static org.lwjgl.glfw.GLFW.glfwCreateStandardCursor;
-import static org.lwjgl.glfw.GLFW.glfwSetCursor;
-import static org.lwjgl.glfw.GLFW.GLFW_ARROW_CURSOR;
-import static org.lwjgl.glfw.GLFW.GLFW_HAND_CURSOR;
 import static org.lwjgl.opengl.GL11.GL_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_BLEND;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
@@ -25,8 +26,8 @@ import static org.lwjgl.opengl.GL11.glBlendFunc;
 import static org.lwjgl.opengl.GL11.glEnable;
 
 import java.nio.DoubleBuffer;
-
-import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -56,7 +57,11 @@ public class Window {
 		Pointer
 	}
 	
+	private List<Cursor> cursorRequest;
+	
 	public Window() {
+		cursorRequest = new ArrayList<Window.Cursor>();
+		
 		setSize(640, 480);
 		setFullscreen(false);
 		
@@ -65,6 +70,8 @@ public class Window {
 	}
 	
 	public Window(int width, int height) {
+		cursorRequest = new ArrayList<Window.Cursor>();
+		
 		setSize(width, height);
 		setFullscreen(false);
 		cursorPositionX = BufferUtils.createDoubleBuffer(1);
@@ -72,6 +79,8 @@ public class Window {
 	}
 	
 	public Window(int width, int height, boolean fullscreen) {
+		cursorRequest = new ArrayList<Window.Cursor>();
+		
 		setSize(width, height);
 		setFullscreen(fullscreen);
 		cursorPositionX = BufferUtils.createDoubleBuffer(1);
@@ -79,7 +88,7 @@ public class Window {
 		hasResized = false;
 	}
 	
-	public void setCursor(Cursor cursor) {
+	private void setCursor(Cursor cursor) {
 		if(cursor == Cursor.Pointer)
 			this.cursor = glfwCreateStandardCursor(GLFW_HAND_CURSOR);
 		else 
@@ -129,11 +138,28 @@ public class Window {
 		glfwPollEvents();
 	}
 	
+	public void requestCursor(Cursor cursor) {
+		cursorRequest.add(cursor);
+	}
+	
 	public void update() {
 		hasResized = false;
 		input.update();
 		glfwGetCursorPos(window, cursorPositionX, cursorPositionY);
 		
+		boolean cursorSet = false;
+		for(Cursor cursor : cursorRequest) {
+			if(cursor == Cursor.Pointer) {
+				setCursor(cursor);
+				cursorSet = true;
+				break;
+			}
+		}
+		
+		if(cursorSet == false)
+			setCursor(Cursor.Arrow);
+		
+		cursorRequest.clear();
 	}
 	
 	public void setSize(int width, int height) {
@@ -173,6 +199,15 @@ public class Window {
 	public double getCursorPositionY() {
 		return cursorPositionY.get(0);
 	}
+	
+	public double getRelativePositionCursorX() {
+		return -this.getWidth()/2 + this.getCursorPositionX();
+	}
+	
+	public double getRelativePositionCursorY() {
+		return this.getHeight()/2 - this.getCursorPositionY();
+	}
+
 
 	public static void setCallbacks() {
 		glfwSetErrorCallback(new GLFWErrorCallback() {

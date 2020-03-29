@@ -66,6 +66,8 @@ public class World {
 	private int mouseOverX;
 	private int mouseOverY;
 	
+	private int mouseOverEntityId;
+	
 	public World(int id, int width, int height) {
 		entities = new ArrayList<Entity>();
 		doors = new ArrayList<Door>();
@@ -83,20 +85,8 @@ public class World {
 		world.scale(scale);
 	}
 	
-	public boolean IsOverEntity(Entity entity, Camera camera, Window window) {
-		int posX = (int)(entity.getTransform().getPosition().x*scale);
-		int posY = (int)(-entity.getTransform().getPosition().y*scale);
-		
-		int x = (-(int)((camera.getPosition().x)) - (int)(window.getWidth()/2) + (int)(worldOffset.x/2) + (int)scale + (int)window.getCursorPositionX());
-		int y = ((int)((camera.getPosition().y)) - (int)(window.getHeight()/2) + (int)(worldOffset.y/2) + (int)scale + (int)window.getCursorPositionY());
-		
-		if(posX < x && (posX + scale*2) > x  && (posY -scale*2) < y && (posY + scale*2) > y) {
-			return true;
-		}
-		return false;
-	}
-	
-	public void render(Shader shader, Camera camera, Window window) {		
+	public void render(Shader shader, Camera camera, Window window) {	
+		mouseOverEntityId = -1;
 		int posX = (int)(camera.getPosition().x / (scale*2));
 		int posY = (int)(camera.getPosition().y / (scale*2));
 
@@ -118,6 +108,8 @@ public class World {
 		
 		for(Entity entity : entities) {
 			entity.render(shader, camera, this); // Entities rendering
+			if(isOverEntity(entity, camera, window))
+				mouseOverEntityId = entity.getId();
 		}
 		
 		for(int i = 0; i < viewX; i++) {
@@ -127,9 +119,9 @@ public class World {
 					renderTile(t, i-posX-(viewX/2)+1, -j-posY+(viewY/2), shader, world, camera, true); // Rendering last layer(3)
 			}
 		}
-
-		shader = null;
-		camera = null;
+		
+		if(mouseOverEntityId >= 0)
+			window.requestCursor(Window.Cursor.Pointer);
 	}
 
 	
@@ -252,6 +244,19 @@ public class World {
 			entity.collideWithTiles(this);
 			entity.collideWithEntities(this);
 		}
+	}
+	
+	public boolean isOverEntity(Entity entity, Camera camera, Window window) {
+		int posX = (int)(entity.getTransform().getPosition().x*scale);
+		int posY = (int)(-entity.getTransform().getPosition().y*scale);
+		
+		int x = (-(int)((camera.getPosition().x)) - (int)(window.getWidth()/2) + (int)(worldOffset.x/2) + (int)scale + (int)window.getCursorPositionX());
+		int y = ((int)((camera.getPosition().y)) - (int)(window.getHeight()/2) + (int)(worldOffset.y/2) + (int)scale + (int)window.getCursorPositionY());
+		
+		if(posX < x && (posX + scale*2) > x  && (posY -scale*2) < y && (posY + scale*2) > y) {
+			return true;
+		}
+		return false;
 	}
 	
 	public Entity getEntity(int i) {
@@ -397,5 +402,9 @@ public class World {
 	
 	public int getMouseOverY() {
 		return mouseOverY;
+	}
+
+	public int getMouseOverEntityId() {
+		return mouseOverEntityId;
 	}
 }

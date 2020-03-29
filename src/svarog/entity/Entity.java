@@ -54,6 +54,8 @@ public class Entity {
 	protected Direction currentDirection;
 	protected boolean[] isColliding = new boolean[2];
 	
+	private String enitityName;
+	
 	protected enum Direction {
 		left,
 		right,
@@ -257,6 +259,10 @@ public class Entity {
 		return bounding_box;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
 	protected void setAnimation(Direction direction, Animation animation) {
 		texture = null;
 		this.animation = animation;
@@ -266,5 +272,13 @@ public class Entity {
 	protected void setTexture(Texture texture) {
 		animation = null;
 		this.texture = texture;
+	}
+
+	public String getName() {
+		return enitityName;
+	}
+
+	public void setName(String enitityName) {
+		this.enitityName = enitityName;
 	}
 }

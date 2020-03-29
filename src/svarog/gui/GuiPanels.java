@@ -73,10 +73,10 @@ public class GuiPanels {
 	
 	public void updateDynamicGuiElements(GuiRenderer guiRenderer, Window window) {		
 		TextureObject redBlock = new TextureObject(new Texture(bottomPanel(window.getWidth()-140), window.getWidth()-140, bottomPanel.getHeight()), GuiRenderer.stickTo.Bottom);
-		guiRenderer.addGuiObject(redBlock, GuiRenderer.State.dynamicImage);
+		guiRenderer.addGuiObject(redBlock, GuiRenderer.State.guiPanel);
 		
 		TextureObject rightPanel = new TextureObject(new Texture(rightPanel(window.getHeight()-270), rightImage.getWidth(), window.getHeight()-270), GuiRenderer.stickTo.Right);
 		rightPanel.move(0, -35);
-		guiRenderer.addGuiObject(rightPanel, GuiRenderer.State.dynamicImage);
+		guiRenderer.addGuiObject(rightPanel, GuiRenderer.State.guiPanel);
 	}
 }

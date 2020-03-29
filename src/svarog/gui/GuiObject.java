@@ -13,8 +13,8 @@ public abstract class GuiObject implements MouseInteraction {
 	private static int auto_increment = 0; // for the moment
 	
 	private int id;
-	private float width;
-	private float height;
+	private int width;
+	private int height;
 	private Transform transform;
 	private Vector2f relativeTransform;
 	private stickTo stickTo;
@@ -58,8 +58,8 @@ public abstract class GuiObject implements MouseInteraction {
 		this.setPosition(position);
 	}
 
-	public float getHeight() {
-		return height*(scale/16);
+	public int getHeight() {
+		return (int)(height*(scale/16));
 	}
 
 
@@ -70,8 +70,8 @@ public abstract class GuiObject implements MouseInteraction {
 	}
 
 
-	public float getWidth() {
-		return width*(scale/16);
+	public int getWidth() {
+		return (int)(width*(scale/16));
 	}
 
 

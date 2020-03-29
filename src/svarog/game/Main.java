@@ -58,7 +58,8 @@ public class Main {
 		panels.updateDynamicGuiElements(guiRenderer, window);
 		
 		Group group1 = new Group();
-		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
+		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)255));
+		Font pressStart = new Font("PressStart", new Color((byte)255, (byte)255, (byte)255));
 		Line test1 = new Line(GuiRenderer.stickTo.BottomLeft);
 		test1.setString("Tekst w innym miejscu", verdana);
 		test1.move(95, -25);
@@ -126,15 +127,14 @@ public class Main {
 				glClearColor(0.2f, 0.2f, 0.2f, 1f);
 				if(window.hasResized()) {
 					camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), currentWorld.getWorldOffset());
-					
-					guiRenderer.deleteDynamicElements();
+					guiRenderer.deleteGuiPanels();
 					panels.updateDynamicGuiElements(guiRenderer, window);
 					guiRenderer.update(window);
 					
 					currentWorld.calculateView(window);
 					glViewport(0, 0, window.getWidth(), window.getHeight());
 				}
-				
+				guiRenderer.deleteDynamicElements();
 				
 				currentWorld.update((float)0.2, window, camera);
 				currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
@@ -144,14 +144,23 @@ public class Main {
 					
 				currentWorld.render(shader, camera, window);							// world rendering
 				
+				if(currentWorld.getMouseOverEntityId() >= 0) {
+					Line name = new Line(0, 0);
+					name.setString(currentWorld.getEntity(currentWorld.getMouseOverEntityId()).getName(), verdana);
+					
+					guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
+				}
+				
+				if(currentWorld.isOverEntity(currentWorld.getEntity(0), camera, window) && window.getInput().isMouseButtonPressed(0)) {
+					System.out.println("ATTACK!!!");
+				}
+				
 				guiRenderer.renderGuiObjects(guiShader, window);
 				
 				if(button1.isClicked())
 					System.out.println("CLICK!");
 				
-				if(currentWorld.IsOverEntity(currentWorld.getEntity(0), camera, window) && window.getInput().isMouseButtonPressed(0)) {
-					System.out.println("ATTACK!!!");
-				}
+
 				
 				window.update();
 				
