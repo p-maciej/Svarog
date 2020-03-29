@@ -2,7 +2,9 @@ package svarog.game;
 
 import org.joml.Vector2f;
 
+import svarog.entity.Enemy;
 import svarog.entity.Entity;
+import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -23,14 +25,23 @@ abstract class StartWorld {
 
 		world.loadMap("start_map.png", 32);
 
-		world.addEntity(player);
+		
 		Entity ent1 = new Entity(new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
 		ent1.setName("Maciej");
 		Entity ent2 = new Entity(new Texture("textures/player.png"), new Transform().setPosition(46, 27), true);
 		ent2.setName("Dawid");
+		Enemy ArchEnemy = new Enemy("", "avatar", new Transform().setPosition(46, 29), true, 10, 100, 200);
+		ArchEnemy.setName("Ten Zly");
+		NPC npc01 = new NPC("", "npc01", new Transform().setPosition(46, 25), false);
+		npc01.setName("Sklepikarz");
 		
 		world.addEntity(ent1);
 		world.addEntity(ent2);
+		world.addEntity(npc01);
+		world.addEntity(ArchEnemy);
+		
+		world.addEntity(player); //We always should add player at the end, otherwise he will be rendered under entities ;)
+		
 		world.setSolidTilesFromMap("start_map.png");
 		
 		world.setBoundingBoxes();

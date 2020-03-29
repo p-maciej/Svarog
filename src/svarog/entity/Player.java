@@ -24,6 +24,10 @@ public class Player extends Entity {
 	private String texturesPath;
 	private String fileName;
 	
+	//HP, Level, NPC //
+	HP hp = new HP(100);
+	XP xp = new XP(0);
+	
 	public Player(String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
 		super(new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
 		
@@ -193,6 +197,26 @@ public class Player extends Entity {
 		for(int i = 0; i < 4; i++) {
 			lastKeysPressed[i] = keysPressed[i];
 		}
+	}
+	
+	public void SetPlayerHP(int hp) {
+		this.hp.SetHP(hp);
+	}
+	
+	public void SetPlayerXP(int xp) {
+		this.xp.setXP(xp);
+	}
+	
+	public void AddPlayerXP(int xp) {
+		this.xp.AddXP(xp);
+	}
+	
+	public void DecreasePlayerHP(int damage) {
+		this.hp.DecreaseHP(damage);
+	}
+	
+	public void AddPlayerHP(int health) {
+		this.hp.AddHP(health);
 	}
 	
 	public int getPositionX() {

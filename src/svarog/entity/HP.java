@@ -30,13 +30,13 @@ public class HP {
 				hp = maxHP;
 			}
 		}else {
-			hp = 0;
+			hp = -1;
 		}
 	}
 	
 	public void DecreaseHP(int damage) {
 		if(damage>hp) {
-			hp = 0;
+			hp = -1;
 		}else {
 			hp = hp - damage;
 		}
