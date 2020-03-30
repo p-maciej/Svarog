@@ -71,6 +71,9 @@ public class GuiRenderer {
 	private TextureObject bubbleLeft;
 	private TextureObject bubbleRight;
 	private BufferedImage bubbleCenter;
+
+	private static int bubbleXoffest = 35;
+	private static int bubbleYoffset = 20;
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
@@ -84,10 +87,6 @@ public class GuiRenderer {
 		
 		this.windowWidth = window.getWidth();
 		this.windowHeight = window.getHeight();
-		
-		bubbleLeft = new TextureObject(new Texture("images/bubble/left.png"));
-		bubbleRight = new TextureObject(new Texture("images/bubble/right.png"));
-		bubbleCenter = Texture.getImageBuffer("images/bubble/center.png");
 	}
 	
 	public void updatePositions() {
@@ -214,17 +213,9 @@ public class GuiRenderer {
 		}
 		
 		// Then render groups, they usually will be moving or not windows inside the game
-		for(Group group : groups) {
-			for(TextureObject object : group.getTextureObjectList()) { // i'm not sure that we need this <----
-				if(object.getState() == State.dynamicImage) {
-					renderGuiObject(object, shader, window);
-				}
-			}
-			
+		for(Group group : groups) {		
 			for(TextureObject object : group.getTextureObjectList()) {
-				if(object.getState() != State.dynamicImage) {
-					renderGuiObject(object, shader, window);
-				}
+				renderGuiObject(object, shader, window);
 			}
 			
 			for(TextBlock block : group.getTextBlockList()) {
@@ -303,32 +294,36 @@ public class GuiRenderer {
 	}
 	
 	public void showBubble(Line line, double posX, double posY) {
-		int Xoffest = 35;
-		int Yoffset = 20;
-		bubbleLeft.setPosition((float)posX+Xoffest, (float)posY+Yoffset);
-		this.addGuiObject(bubbleLeft, State.dynamicImage);
-		
-		ByteBuffer contentBackground = BufferUtils.createByteBuffer((int)(bubbleCenter.getHeight()*line.getWidth()*4));
-		
-		for(int i = 0; i < line.getWidth(); i++) {
-			for(int j = 0; j < bubbleCenter.getHeight(); j++) {
-				int pixel = bubbleCenter.getRGB(0, j);
-				contentBackground.put(((byte)((pixel >> 16) & 0xFF)));
-				contentBackground.put(((byte)((pixel >> 8) & 0xFF)));
-				contentBackground.put((byte)(pixel & 0xFF));
-				contentBackground.put(((byte)((pixel >> 24) & 0xFF)));
+		if(bubbleLeft != null && bubbleRight != null && bubbleCenter != null) {
+			Group group = new Group(State.dynamicImage);
+			bubbleLeft.setPosition((float)posX+bubbleXoffest, (float)posY+bubbleYoffset);
+			group.addTextureObject(bubbleLeft);
+			
+			ByteBuffer contentBackground = BufferUtils.createByteBuffer((int)(bubbleCenter.getHeight()*line.getWidth()*4));
+			
+			for(int i = 0; i < line.getWidth(); i++) {
+				for(int j = 0; j < bubbleCenter.getHeight(); j++) {
+					int pixel = bubbleCenter.getRGB(0, j);
+					contentBackground.put(((byte)((pixel >> 16) & 0xFF)));
+					contentBackground.put(((byte)((pixel >> 8) & 0xFF)));
+					contentBackground.put((byte)(pixel & 0xFF));
+					contentBackground.put(((byte)((pixel >> 24) & 0xFF)));
+				}
 			}
-		}
-		contentBackground.flip();
-		
-		TextureObject center = new TextureObject(new Texture(contentBackground, line.getWidth(), bubbleCenter.getHeight()), (float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+Xoffest), (float)(posY+Yoffset));
-		this.addGuiObject(center, State.dynamicImage);
-		
-		line.setPosition((float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+Xoffest), (float)(posY+Yoffset));
-		this.addGuiObject(line, State.dynamicImage);
-		
-		bubbleRight.setPosition((float)posX+Xoffest+line.getWidth()+bubbleLeft.getWidth()-3, (float)posY+Yoffset);
-		this.addGuiObject(bubbleRight, State.dynamicImage);
+			contentBackground.flip();
+			
+			TextureObject center = new TextureObject(new Texture(contentBackground, line.getWidth(), bubbleCenter.getHeight()), (float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest), (float)(posY+bubbleYoffset));
+			group.addTextureObject(center);
+			
+			line.setPosition((float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest), (float)(posY+bubbleYoffset-bubbleCenter.getHeight()/2 +line.getHeight()/2+3));
+			group.addTextureObject(line);
+			
+			bubbleRight.setPosition((float)posX+bubbleXoffest+line.getWidth()+bubbleLeft.getWidth()-3, (float)posY+bubbleYoffset);
+			group.addTextureObject(bubbleRight);
+			
+			this.addGroup(group);
+		} else 
+			throw new IllegalStateException("Bubble textures isn't declared!");
 	}
 	
 	public void update(Window window) {
@@ -351,8 +346,30 @@ public class GuiRenderer {
 				if(objects.get(i).getState() == State.dynamicImage)
 					objects.remove(i);
 	}
+	
+	public void deleteDynamicGroups() {
+		for(int i = 0; i < groups.size(); i++)
+			if(groups.get(i).getState() != null)
+				if(groups.get(i).getState() == State.dynamicImage)
+					groups.remove(i);
+	}
 
 	public static int getClickedObjectId() {
 		return clickedObjectId;
+	}
+	
+	
+	public void setBubbleLeft(BufferedImage bubbleLeft) {
+		TextureObject tempBubbleLeft = new TextureObject(new Texture(bubbleLeft));
+		this.bubbleLeft = tempBubbleLeft;
+	}
+
+	public void setBubbleRight(BufferedImage bubbleRight) {
+		TextureObject tempBubbleRight = new TextureObject(new Texture(bubbleRight));
+		this.bubbleRight = tempBubbleRight;
+	}
+
+	public void setBubbleCenter(BufferedImage bubbleCenter) {
+		this.bubbleCenter = bubbleCenter;
 	}
 }

@@ -56,6 +56,10 @@ public class Main {
 		Shader guiShader = new Shader("shader");
 		GuiRenderer guiRenderer = new GuiRenderer(window);
 		
+		guiRenderer.setBubbleLeft(Texture.getImageBuffer("images/bubble/left.png"));
+		guiRenderer.setBubbleRight(Texture.getImageBuffer("images/bubble/right.png"));
+		guiRenderer.setBubbleCenter(Texture.getImageBuffer("images/bubble/center.png"));
+		
 		GuiPanels panels = new GuiPanels();
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
 		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
@@ -109,6 +113,8 @@ public class Main {
 		/////////////////////// LOCAL VARIABLES ////////////////////////////////////////////
 		long lastNanos = Timer.getNanoTime();
 		int nextFrameLoadWorld = 1;
+		int currentEntityId = -1;
+		long startNanos = 0;
 		////////////////////////////////////////////////////////////////////////////////////
 		
 		while(window.processProgram()) {										// This works while program is running
@@ -142,25 +148,40 @@ public class Main {
 					currentWorld.calculateView(window);
 					glViewport(0, 0, window.getWidth(), window.getHeight());
 				}
-				guiRenderer.deleteDynamicElements();
+				glClear(GL_COLOR_BUFFER_BIT);
+				
+				guiRenderer.deleteDynamicGroups();
 				
 				currentWorld.update((float)0.2, window, camera);
 				currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
 
 				
-				glClear(GL_COLOR_BUFFER_BIT);
+
 					
 				currentWorld.render(shader, camera, window);							// world rendering
 				
+				
+				
 				if(currentWorld.getMouseOverEntityId() >= 0) {
-					Line name = new Line(0, 0);
-					Entity ent = currentWorld.getEntityById(currentWorld.getMouseOverEntityId());
-					if(ent != null) {
-						name.setString(ent.getName(), verdana);
-					
-						guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
+					if(currentWorld.getMouseOverEntityId() != currentEntityId) {
+						startNanos = Timer.getNanoTime();
+						currentEntityId = currentWorld.getMouseOverEntityId();
 					}
+					
+					if(Timer.getDelay(startNanos, Timer.getNanoTime(), 0.4)) {
+						Line name = new Line(0, 0);
+						Entity ent = currentWorld.getEntityById(currentWorld.getMouseOverEntityId());
+						if(ent != null) {
+							name.setString(ent.getName(), verdana);
+						
+							guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
+						}
+					}
+				} else {
+					if(currentEntityId != -1)
+						currentEntityId = -1;
 				}
+				
 				
 				//Quick check if attack system is working properly, please don't remove, just comment, thanks
 				for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) {
@@ -197,7 +218,7 @@ public class Main {
 					System.out.println("Health of player was fully recovered: " + player.getHP() + "hp.");
 				}
 				
-				window.update();
+				
 				
 				
 				for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
@@ -210,6 +231,7 @@ public class Main {
 						nextFrameLoadWorld = 0;
 				}
 				
+				window.update();
 				window.swapBuffers();
             }
 		}

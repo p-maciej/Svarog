@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.joml.Vector2f;
 
+import svarog.gui.GuiRenderer.State;
 import svarog.gui.font.TextBlock;
 
 public class Group {
@@ -16,9 +17,20 @@ public class Group {
 	private List<TextBlock> textBlocks;
 	
 	
+	private State state;
+	
 	public Group() {
 		id = auto_increment++;
 		
+		textureObjects = new ArrayList<TextureObject>();
+		textBlocks = new ArrayList<TextBlock>();
+		relativePosition = new Vector2f();
+	}
+	
+	public Group(State state) {
+		id = auto_increment++;
+		
+		this.state = state;
 		textureObjects = new ArrayList<TextureObject>();
 		textBlocks = new ArrayList<TextBlock>();
 		relativePosition = new Vector2f();
@@ -62,5 +74,9 @@ public class Group {
 	
 	public Vector2f getPosition() {
 		return relativePosition;
+	}
+
+	public State getState() {
+		return state;
 	}
 }
