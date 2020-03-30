@@ -39,7 +39,6 @@ public class Entity {
 	
 	/// Model ////
 	private Model model;
-	protected Animation animation;
 	protected Texture texture;
 	protected Transform transform;
 	protected Transform textureTransform;
@@ -70,7 +69,7 @@ public class Entity {
 		
 		this.entityName = new String();
 		model = new Model(verticesArray, textureArray, indicesArray);
-		this.animation = animation;
+		//this.animation = animation;
 		this.transform = transform;
 		this.setFullBoundingBox(fullBoundingBox);
 		
@@ -225,12 +224,7 @@ public class Entity {
 		shader.setUniform("projection", temp.getProjection(target));
 		shader.setUniform("sharpness", 1.0f);
 		
-		
-		if(animation == null)
-			this.texture.bind(0);
-		else
-			this.animation.bind(0);
-		
+		this.texture.bind(0);
 		this.model.render();
 		
 		shader = null;
@@ -264,18 +258,12 @@ public class Entity {
 	public int getId() {
 		return id;
 	}
-	
-	protected void setAnimation(Direction direction, Animation animation) {
-		texture = null;
-		this.animation = animation;
+
+	protected void setTexture(Direction direction, Texture texture) {
 		this.currentDirection = direction;
-	}
-	
-	protected void setTexture(Texture texture) {
-		animation = null;
 		this.texture = texture;
 	}
-
+	
 	public String getName() {
 		return entityName;
 	}

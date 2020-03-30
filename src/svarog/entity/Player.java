@@ -85,7 +85,7 @@ public class Player extends Entity {
 		if(direction == 65) {
 			movement.add(-1*delta, 0);
 			
-			if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]) && super.texture == null)
+			if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]))
 				setTexture(Direction.left);
 			else
 				if(super.currentDirection != Direction.left)
@@ -94,7 +94,7 @@ public class Player extends Entity {
 		} else if(direction == 68) {
 			movement.add(1*delta, 0);
 			
-			if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]) && super.texture == null)
+			if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]))
 				setTexture(Direction.right);
 			else
 				if(super.currentDirection != Direction.right)
@@ -102,7 +102,7 @@ public class Player extends Entity {
 		} else if(direction == 87) {
 			movement.add(0, 1*delta);
 			
-			if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]) && super.texture == null)
+			if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]))
 				setTexture(Direction.up);
 			else
 				if(super.currentDirection != Direction.up)
@@ -110,22 +110,22 @@ public class Player extends Entity {
 		} else if(direction == 83) {
 			movement.add(0, -1*delta);
 			
-			if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]) && super.texture == null)
+			if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]))
 				setTexture(Direction.down);
 			else
 				if(super.currentDirection != Direction.down)
 					setAnimation(Direction.down);
 		} else if(direction == 0) {
-			if(super.currentDirection == Direction.left && super.texture == null) {
+			if(super.currentDirection == Direction.left) {
 				setTexture(Direction.left);
 			}
-			if(super.currentDirection == Direction.right && super.texture == null) {
+			if(super.currentDirection == Direction.right) {
 				setTexture(Direction.right);
 			}
-			if(super.currentDirection == Direction.up && super.texture == null) {
+			if(super.currentDirection == Direction.up) {
 				setTexture(Direction.up);
 			}
-			if(super.currentDirection == Direction.down && super.texture == null) {
+			if(super.currentDirection == Direction.down) {
 				setTexture(Direction.down);
 			}
 		}
@@ -148,25 +148,25 @@ public class Player extends Entity {
 	
 	private void setAnimation(Direction direction) {
 		if(direction == Direction.left) {
-			super.setAnimation(Direction.left, new Animation(4, 8, this.texturesPath + "walking/left/" + this.fileName));
+			super.setTexture(Direction.left, new Animation(4, 8, this.texturesPath + "walking/left/" + this.fileName));
 		} else 	if(direction == Direction.right) {
-			super.setAnimation(Direction.right, new Animation(4, 8, this.texturesPath + "walking/right/" + this.fileName));
+			super.setTexture(Direction.right, new Animation(4, 8, this.texturesPath + "walking/right/" + this.fileName));
 		} else 	if(direction == Direction.up) {
-			super.setAnimation(Direction.up, new Animation(4, 8, this.texturesPath + "walking/up/" + this.fileName));
+			super.setTexture(Direction.up, new Animation(4, 8, this.texturesPath + "walking/up/" + this.fileName));
 		} else 	if(direction == Direction.down) {
-			super.setAnimation(Direction.down, new Animation(4, 8, this.texturesPath + "walking/down/" + this.fileName));
+			super.setTexture(Direction.down, new Animation(4, 8, this.texturesPath + "walking/down/" + this.fileName));
 		}
 	}
 	
 	private void setTexture(Direction direction) {
 		if(direction == Direction.left) {
-			super.setTexture(new Texture("textures/animations/" + this.texturesPath + "idle/left/" + this.fileName + ".png"));
+			super.setTexture(Direction.left, new Texture("textures/animations/" + this.texturesPath + "idle/left/" + this.fileName + ".png"));
 		} else if(direction == Direction.right) {
-			super.setTexture(new Texture("textures/animations/" + this.texturesPath + "idle/right/" + this.fileName + ".png"));
+			super.setTexture(Direction.right, new Texture("textures/animations/" + this.texturesPath + "idle/right/" + this.fileName + ".png"));
 		} else if(direction == Direction.up) {
-			super.setTexture(new Texture("textures/animations/" + this.texturesPath + "idle/up/" + this.fileName + ".png"));
+			super.setTexture(Direction.up, new Texture("textures/animations/" + this.texturesPath + "idle/up/" + this.fileName + ".png"));
 		} else if(direction == Direction.down) {
-			super.setTexture(new Texture("textures/animations/" + this.texturesPath + "idle/down/" + this.fileName + ".png"));
+			super.setTexture(Direction.down, new Texture("textures/animations/" + this.texturesPath + "idle/down/" + this.fileName + ".png"));
 		}
 	}
 	

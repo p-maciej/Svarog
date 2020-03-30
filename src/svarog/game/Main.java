@@ -63,7 +63,7 @@ public class Main {
 		
 		Group group1 = new Group();
 		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)255));
-		Font pressStart = new Font("PressStart", new Color((byte)255, (byte)255, (byte)255));
+		//Font pressStart = new Font("PressStart", new Color((byte)255, (byte)255, (byte)255));
 		Line test1 = new Line(GuiRenderer.stickTo.BottomLeft);
 		test1.setString("Tekst w innym miejscu", verdana);
 		test1.move(95, -25);
