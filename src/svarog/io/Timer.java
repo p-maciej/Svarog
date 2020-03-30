@@ -29,4 +29,11 @@ public class Timer {
 				e.printStackTrace();
 			}
 	}
+	
+	public static boolean getDelay(long startNanos, long nanosNow, double delayInSeconds) {
+		if(nanosNow - startNanos > delayInSeconds*1000000000)
+			return true;
+		else 
+			return false;
+	}
 }
