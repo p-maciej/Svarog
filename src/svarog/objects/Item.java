@@ -6,7 +6,7 @@ import svarog.gui.GuiRenderer;
 import svarog.gui.TextureObject;
 import svarog.render.Texture;
 
-public class Item extends TextureObject{
+public class Item extends TextureObject implements Movable, MouseInteraction{
 
 	ItemInfo itemInfo;
 	
@@ -58,4 +58,29 @@ public class Item extends TextureObject{
 	public ItemInfo getItemInfo() {
 		return itemInfo;
 	}
+
+	@Override
+	public float getPositionX() {
+		// TODO Auto-generated method stub
+		return super.getTransform().getPosition().x;
+	}
+
+	@Override
+	public float getPositionY() {
+		// TODO Auto-generated method stub
+		return super.getTransform().getPosition().y;
+	}
+
+	@Override
+	public void setPositionX(float X) {
+		// TODO Auto-generated method stub
+		super.setPosition(X, super.getTransform().getPosition().y);
+	}
+
+	@Override
+	public void setPositionY(float Y) {
+		// TODO Auto-generated method stub
+		super.setPosition(super.getTransform().getPosition().x, Y);
+	}
+
 }
