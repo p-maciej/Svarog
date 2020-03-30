@@ -352,7 +352,7 @@ public class GuiRenderer {
 					objects.remove(i);
 	}
 
-	protected static int getClickedObjectId() {
+	public static int getClickedObjectId() {
 		return clickedObjectId;
 	}
 }

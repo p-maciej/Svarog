@@ -1,4 +1,4 @@
-package svarog.gui;
+package svarog.objects;
 
 public class ItemInfo {
 	private int hpRegeneration;

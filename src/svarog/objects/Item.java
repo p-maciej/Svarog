@@ -1,7 +1,9 @@
-package svarog.gui;
+package svarog.objects;
 
 import org.joml.Vector2f;
 
+import svarog.gui.GuiRenderer;
+import svarog.gui.TextureObject;
 import svarog.render.Texture;
 
 public class Item extends TextureObject{

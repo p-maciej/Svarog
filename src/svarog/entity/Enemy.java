@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.joml.Vector2f;
 
-import svarog.gui.Item;
-import svarog.gui.ItemInfo;
+import svarog.objects.Item;
+import svarog.objects.ItemInfo;
 import svarog.render.Texture;
 import svarog.render.Transform;
 
