@@ -85,7 +85,7 @@ public class Main {
 		bottomBorderRightPanel.move(0, -70);
 		TextureObject topBorderRightPanel = new TextureObject(new Texture("images/border_right_panel.png"), GuiRenderer.stickTo.TopRight);
 		
-		Button button1 = new Button(new Texture("images/button.png"), stickTo.TopRight);
+		Button button1 = new Button(new Texture("images/button.png"), new Texture("images/button_hover.png"), stickTo.TopRight);
 		button1.move(-100, 100);
 		
 		Button healBtn = new Button(new Texture("images/button.png"), stickTo.TopRight);

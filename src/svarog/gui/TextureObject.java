@@ -44,4 +44,7 @@ public class TextureObject extends GuiObject {
 	protected void setTexture(Texture texture) {
 		this.texture = texture;
 	}
+
+	@Override
+	void update() {}
 }

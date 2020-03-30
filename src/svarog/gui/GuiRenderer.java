@@ -66,8 +66,7 @@ public class GuiRenderer {
 
 	private static int clickedObjectId;
 	private static int mouseOverObjectId;
-	
-	
+
 	private TextureObject bubbleLeft;
 	private TextureObject bubbleRight;
 	private BufferedImage bubbleCenter;
@@ -245,16 +244,20 @@ public class GuiRenderer {
 	
 	private void renderGuiObject(GuiObject object, Shader shader, Window window) {
 			Matrix4f projection = camera.getProjection();
-			object.getTexture().bind(0);
 			
 			if(object.isClickable()) {
 				if(object.isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY())) {
-					mouseOverObjectId = object.getId();
+						mouseOverObjectId = object.getId();
+						
 					if(window.getInput().isMouseButtonPressed(0)) {
 						clickedObjectId = object.getId();
 					}
 				}
 			}
+			object.update();
+			
+			object.getTexture().bind(0);
+			
 			shader.bind();
 			shader.setUniform("sampler", 0);
 			shader.setUniform("projection", object.getTransform().getProjection(projection));
@@ -358,6 +361,9 @@ public class GuiRenderer {
 		return clickedObjectId;
 	}
 	
+	public static int getMouseOverObjectId() {
+		return mouseOverObjectId;
+	}
 	
 	public void setBubbleLeft(BufferedImage bubbleLeft) {
 		TextureObject tempBubbleLeft = new TextureObject(new Texture(bubbleLeft));

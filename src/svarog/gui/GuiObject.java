@@ -128,6 +128,8 @@ public abstract class GuiObject implements MouseInteraction {
 	}
 	
 	abstract Texture getTexture();
+	
+	abstract void update();
 
 	public GuiObject setState(State state) {
 		this.state = state;
