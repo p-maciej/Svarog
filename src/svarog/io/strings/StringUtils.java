@@ -37,7 +37,7 @@ public class StringUtils {
 	public static String getAttributeValue(String line, int startIndex) {
 		String value = "";
 		if(startIndex > 0) {
-			while(line.charAt(startIndex) != SPACE) {
+			while(line.charAt(startIndex) != SPACE && startIndex+1 != line.length()) {
 				value += line.charAt(startIndex);
 				startIndex++;
 			}

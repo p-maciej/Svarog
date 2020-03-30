@@ -31,7 +31,7 @@ abstract class StartWorld {
 		Entity ent2 = new Entity(new Texture("textures/player.png"), new Transform().setPosition(46, 27), true);
 		ent2.setName("Dawid");
 		Enemy ArchEnemy = new Enemy("", "avatar", new Transform().setPosition(46, 29), true, 1, 50, 20, 150);
-		ArchEnemy.setName("Ten Zly");
+		ArchEnemy.setName("Ten Z³y");
 		NPC npc01 = new NPC("", "npc01", new Transform().setPosition(46, 25), true);
 		npc01.setName("Sklepikarz");
 		
