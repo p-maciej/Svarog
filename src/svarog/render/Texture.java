@@ -35,14 +35,11 @@ public class Texture {
 		this.filename = filename;
 		try {
 			image = ImageIO.read(new File("./resources/" + filename));
-			width = image.getWidth();
-			height = image.getHeight();
-			
 		
-			ByteBuffer pixels = BufferUtils.createByteBuffer(width*height*4);
+			ByteBuffer pixels = BufferUtils.createByteBuffer(image.getWidth()*image.getHeight()*4);
 			
-			for(int i = 0; i < width; i++) {
-				for(int j = 0; j < height; j++) {
+			for(int i = 0; i < image.getWidth(); i++) {
+				for(int j = 0; j < image.getHeight(); j++) {
 					int pixel = image.getRGB(i, j);
 					pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
 					pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
@@ -54,7 +51,7 @@ public class Texture {
 			
 			pixels.flip();
 			
-			textureInit(pixels, width, height);
+			textureInit(pixels, image.getWidth(), image.getHeight());
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -81,20 +78,35 @@ public class Texture {
 			}
 	}
 	
+	public Texture(BufferedImage image) {	
+		ByteBuffer pixels = BufferUtils.createByteBuffer(image.getWidth()*image.getHeight()*4);
+			
+		for(int i = 0; i < image.getWidth(); i++) {
+			for(int j = 0; j < image.getHeight(); j++) {
+				int pixel = image.getRGB(i, j);
+				pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
+				pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
+				pixels.put((byte)(pixel & 0xFF)); 			// blue
+				pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
+			}
+		}
+		pixels.flip();
+
+		textureInit(pixels, image.getWidth(), image.getHeight());
+}
+	
 	public Texture(ByteBuffer pixels, int tileSize) {
-		this.width = this.height = tileSize;
-		
 		textureInit(pixels, tileSize, tileSize);
 	}
 	
 	public Texture(ByteBuffer pixels, int width, int height) {
-		this.width = width;
-		this.height = height;
-		
 		textureInit(pixels, width, height);
 	}
 	
 	private void textureInit(ByteBuffer buffer, int width, int height) {
+		this.width = width;
+		this.height = height;
+		
 		id = glGenTextures();
 		glBindTexture(GL_TEXTURE_2D, id);
 				
