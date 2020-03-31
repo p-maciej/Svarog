@@ -20,30 +20,12 @@ import svarog.entity.Player;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Model;
+import svarog.render.RenderProperties;
 import svarog.render.Shader;
 import svarog.render.Texture;
 
-public class World {
+public class World implements RenderProperties {
 	private Model model;
-	
-	private static final float[] vertices = new float[] {
-			-1f, 1f, 0,
-			1f, 1f, 0,			
-			1f, -1f, 0,
-			-1f, -1f, 0,
-	};
-	
-	private static final float[] texture = new float[] {
-			0, 0,
-			0, 1,	
-			1, 1,
-			1, 0,
-	};
-	
-	private static final int[] indices = new int[] {
-			0,1,2,
-			2,3,0
-	};
 	
 	private static final float scale = 16f;
 	
@@ -72,7 +54,7 @@ public class World {
 		entities = new ArrayList<Entity>();
 		doors = new ArrayList<Door>();
 		worldOffset = new Vector2f();
-		model = new Model(vertices, texture, indices);
+		model = new Model(verticesArray, textureArray, indicesArray);
 		
 		this.setId(id);
 		this.width = width;

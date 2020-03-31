@@ -10,32 +10,14 @@ import svarog.io.Window;
 import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Model;
+import svarog.render.RenderProperties;
 import svarog.render.Shader;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.world.World;
 
-public class Entity {
+public class Entity implements RenderProperties {
 	private static int auto_increment = 0;
-	
-	private static final float[] verticesArray = new float[] {
-			-1f, 1f, 0,
-			1f, 1f, 0,			
-			1f, -1f, 0,
-			-1f, -1f, 0,
-	};
-	
-	private static final float[] textureArray = new float[] {
-			0, 0,
-			0, 1,	
-			1, 1,
-			1, 0,
-	};
-	
-	private static final int[] indicesArray = new int[] {
-			0,1,2,
-			2,3,0
-	};
 	
 	/// Model ////
 	private Model model;

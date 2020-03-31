@@ -14,28 +14,11 @@ import svarog.io.Window;
 import svarog.io.Window.Cursor;
 import svarog.render.Camera;
 import svarog.render.Model;
+import svarog.render.RenderProperties;
 import svarog.render.Shader;
 import svarog.render.Texture;
 
-public class GuiRenderer {
-	private static final float[] verticesArray = new float[] {
-			-1f, 1f, 0,
-			1f, 1f, 0,			
-			1f, -1f, 0,
-			-1f, -1f, 0,
-	};
-	
-	private static final float[] textureArray = new float[] {
-			0, 0,
-			0, 1,	
-			1, 1,
-			1, 0,
-	};
-	
-	private static final int[] indicesArray = new int[] {
-			0,1,2,
-			2,3,0
-	};
+public class GuiRenderer implements RenderProperties {
 	
 	public static enum stickTo {
 		Top,
