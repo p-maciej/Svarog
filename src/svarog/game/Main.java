@@ -6,6 +6,8 @@ import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
 
+import org.joml.Vector2f;
+
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.Player;
@@ -15,6 +17,8 @@ import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.TextureObject;
+import svarog.gui.Tile;
+import svarog.gui.TileSheet;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
@@ -98,6 +102,26 @@ public class Main {
 		guiRenderer.addGuiObject(button1);
 		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(group1);
+		
+		
+		
+		/// Tiles on GUI ///////////////////////////
+		TileSheet tileSheet = new TileSheet();
+		Texture tileTexture = new Texture("images/guiTile.png");
+		
+		Group tileGroup = new Group();
+		tileGroup.setMove(new Vector2f(-25, 150));
+		tileGroup.setStickTo(stickTo.BottomRight);
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 6; j++) {
+				tileGroup.addTextureObject(new Tile(tileTexture, (byte)0, i*50, -j*50));
+			}
+		}
+
+		tileSheet.addTileGroup(tileGroup);
+		////////////////////////////////////////////
+		
+		guiRenderer.setTileSheet(tileSheet);
 		
 		guiRenderer.updatePositions();
 		////////////////////////////////////////////////////////////////////////////////////

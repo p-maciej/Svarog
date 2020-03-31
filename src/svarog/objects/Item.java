@@ -8,8 +8,9 @@ import svarog.render.Texture;
 
 public class Item extends TextureObject implements Movable, MouseInteraction{
 
-	ItemInfo itemInfo;
-	
+	private ItemInfo itemInfo;
+	private int itemType;
+
 	public Item(Texture texture, svarog.gui.GuiRenderer.stickTo stickTo, ItemInfo itemInfo) {
 		super(texture, stickTo);
 		this.itemInfo = itemInfo;
@@ -61,26 +62,29 @@ public class Item extends TextureObject implements Movable, MouseInteraction{
 
 	@Override
 	public float getPositionX() {
-		// TODO Auto-generated method stub
 		return super.getTransform().getPosition().x;
 	}
 
 	@Override
 	public float getPositionY() {
-		// TODO Auto-generated method stub
 		return super.getTransform().getPosition().y;
 	}
 
 	@Override
 	public void setPositionX(float X) {
-		// TODO Auto-generated method stub
 		super.setPosition(X, super.getTransform().getPosition().y);
 	}
 
 	@Override
 	public void setPositionY(float Y) {
-		// TODO Auto-generated method stub
 		super.setPosition(super.getTransform().getPosition().x, Y);
 	}
 
+	public int getItemType() { /// I've added just getter and setter for now. A need this for Tile class for gui.
+		return itemType;
+	}
+
+	public void setItemType(int itemType) {
+		this.itemType = itemType;
+	}
 }

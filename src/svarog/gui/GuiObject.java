@@ -16,6 +16,7 @@ public abstract class GuiObject implements MouseInteraction {
 	private int width;
 	private int height;
 	private Transform transform;
+	private Vector2f position;
 	private Vector2f relativeTransform;
 	private stickTo stickTo;
 	private State state;
@@ -30,6 +31,7 @@ public abstract class GuiObject implements MouseInteraction {
 	protected GuiObject() {
 		transform = new Transform();
 		relativeTransform = new Vector2f();
+		position = new Vector2f();
 		
 		this.id = auto_increment++;
 		this.setSize(10, 10);
@@ -40,6 +42,7 @@ public abstract class GuiObject implements MouseInteraction {
 	protected GuiObject(int width, int height, stickTo stickTo) {
 		transform = new Transform();
 		relativeTransform = new Vector2f();
+		position = new Vector2f();
 		
 		this.id = auto_increment++;
 		this.setSize(width, height);
@@ -51,6 +54,7 @@ public abstract class GuiObject implements MouseInteraction {
 	protected GuiObject(int width, int height, Vector2f position) {
 		transform = new Transform();
 		relativeTransform = new Vector2f();
+		this.position = new Vector2f();
 		
 		this.id = auto_increment++;
 		this.setSize(width, height);
@@ -82,23 +86,40 @@ public abstract class GuiObject implements MouseInteraction {
 	public Transform getTransform() {
 		return transform;
 	}
+	
+	public Vector2f getPosition() {
+		return position;
+	}
 
 	public void setPosition(Vector2f position) {
+		this.position.x = position.x;
+		this.position.y = position.y;
+		setTransformPosition(position);
+	}
+	
+	public void setTransformPosition(Vector2f position) {
 		this.transform.getPosition().x = position.x;
 		this.transform.getPosition().y = position.y;
 	}
 	
 	public void setPosition(float X, float Y) {
+		this.position.x = X;
+		this.position.y = Y;
+		setTranformPosition(X, Y);
+	}
+	
+	public void setTranformPosition(float X, float Y) {
 		this.transform.getPosition().x = X;
 		this.transform.getPosition().y = Y;
 	}
 	
+	
 	public void move(Vector2f direction) {
-		this.relativeTransform.add(direction.x, -direction.y);
+		this.relativeTransform.set(direction.x, -direction.y);
 	}
 	
 	public void move(float X, float Y) {
-		this.relativeTransform.add(X, -Y);
+		this.relativeTransform.set(X, -Y);
 	}
 
 	public static float getScale() {

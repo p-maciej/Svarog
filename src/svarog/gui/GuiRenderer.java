@@ -54,13 +54,16 @@ public class GuiRenderer implements RenderProperties {
 	private TextureObject bubbleRight;
 	private BufferedImage bubbleCenter;
 
-	private static int bubbleXoffest = 35;
+	private static int bubbleXoffest = 35; // I thing we can make setter for this to be customizable
 	private static int bubbleYoffset = 20;
+	
+	private TileSheet tileSheet;
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
 		this.textBlocks = new ArrayList<TextBlock>();
 		this.groups = new ArrayList<Group>();
+		this.tileSheet = new TileSheet();
 		
 		this.model = new Model(verticesArray, textureArray, indicesArray);
 		this.camera = new Camera();
@@ -90,7 +93,32 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		
+		for(Group group : tileSheet.getTileGroupsList()) {			
+			if(group.getStickTo() != null) {
+				setGroupStickTo(group);
+				group.getPosition().add(group.getMove().x, group.getMove().y);
+			} else {
+				group.getPosition().set(group.getMove().x, group.getMove().y);
+			}
+			
+			for(GuiObject object : group.getTextureObjectList()) {
+				if(object.getStickTo() != null) {
+					setObjectStickTo(object);
+				}
+				
+				object.getTransform().getPosition().set(object.getPosition().x + object.getMove().x+group.getPosition().x, object.getPosition().y + object.getMove().y+group.getPosition().y, 0);
+			}
+		}
+		
 		for(GuiObject object : objects) {
+			if(object.getStickTo() != null) {
+				setObjectStickTo(object);
+			}
+			
+			object.getTransform().getPosition().add(object.getMove().x, object.getMove().y, 0);
+		}
+		
+		for(Tile object : tileSheet.getTilesList()) {
 			if(object.getStickTo() != null) {
 				setObjectStickTo(object);
 			}
@@ -132,6 +160,35 @@ public class GuiRenderer implements RenderProperties {
 				break;
 			case TopRight:
 				object.setPosition(getRight() - object.getWidth()/2, getTop() - object.getHeight()/2);
+				break;
+		}
+	}
+	
+	private void setGroupStickTo(Group object) {
+		switch(object.getStickTo()) {
+			case Top:
+				object.setPosition(0, getBottom());
+				break;
+			case Bottom:
+				object.setPosition(0, getTop() - object.getGroupHeight());
+				break;
+			case BottomLeft:
+				object.setPosition(getLeft(), getTop() - object.getGroupHeight());
+				break;
+			case BottomRight:
+				object.setPosition(getRight() - object.getGroupWidth(), getTop() - object.getGroupHeight());
+				break;
+			case Left:
+				object.setPosition(getLeft(), 0);
+				break;
+			case Right:
+				object.setPosition(getRight() - object.getGroupWidth(), 0);
+				break;
+			case TopLeft:
+				object.setPosition(getLeft(), getBottom());
+				break;
+			case TopRight:
+				object.setPosition(getRight()-object.getGroupWidth(), getBottom());
 				break;
 		}
 	}
@@ -205,6 +262,18 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		
+		// Render tiles
+		for(Tile object : tileSheet.getTilesList()) {	
+			renderGuiObject(object, shader, window);
+		}
+		
+		// And groups of tiles
+		for(Group group : tileSheet.getTileGroupsList()) {
+			for(TextureObject object : group.getTextureObjectList()) {
+				renderGuiObject(object, shader, window);
+			}
+		}
+		
 		if(mouseOverObjectId >= 0)
 			window.requestCursor(Cursor.Pointer);
 	}
@@ -245,38 +314,6 @@ public class GuiRenderer implements RenderProperties {
 			shader.setUniform("sampler", 0);
 			shader.setUniform("projection", object.getTransform().getProjection(projection));
 			model.render();	
-	}
-	
-	public void addGuiObject(GuiObject object) {
-		objects.add(object);
-	}
-	
-	public void addGuiObject(GuiObject object, State state) {
-		objects.add(object.setState(state));
-	}
-	
-	public void addTextBlock(TextBlock textBlock) {
-		textBlocks.add(textBlock);
-	}
-	
-	public void addGroup(Group group) {
-		groups.add(group);
-	}
-	
-	public float getRight() {
-		return windowWidth/2;
-	}
-	
-	public float getLeft() {
-		return -windowWidth/2;
-	}
-	
-	public float getTop() {
-		return windowHeight/2;
-	}
-	
-	public float getBottom() {
-		return -windowHeight/2;
 	}
 	
 	public void showBubble(Line line, double posX, double posY) {
@@ -360,5 +397,42 @@ public class GuiRenderer implements RenderProperties {
 
 	public void setBubbleCenter(BufferedImage bubbleCenter) {
 		this.bubbleCenter = bubbleCenter;
+	}
+
+	public void setTileSheet(TileSheet tileSheet) {
+		this.tileSheet = tileSheet;
+	}
+	
+	
+	public void addGuiObject(GuiObject object) {
+		objects.add(object);
+	}
+	
+	public void addGuiObject(GuiObject object, State state) {
+		objects.add(object.setState(state));
+	}
+	
+	public void addTextBlock(TextBlock textBlock) {
+		textBlocks.add(textBlock);
+	}
+	
+	public void addGroup(Group group) {
+		groups.add(group);
+	}
+	
+	public float getRight() {
+		return windowWidth/2;
+	}
+	
+	public float getLeft() {
+		return -windowWidth/2;
+	}
+	
+	public float getTop() {
+		return windowHeight/2;
+	}
+	
+	public float getBottom() {
+		return -windowHeight/2;
 	}
 }

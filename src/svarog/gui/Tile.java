@@ -1,47 +1,45 @@
 package svarog.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.joml.Vector2f;
 
+import svarog.gui.GuiRenderer.stickTo;
+import svarog.objects.Item;
 import svarog.render.Texture;
 
-public class Tile {
-	private static int auto_increment = 0;
-	
-	private int id;
+public class Tile extends TextureObject {
 	private byte tileType;
-	private Texture texture;
-	private Vector2f position;
 	
-	public Tile(byte tileType, Vector2f position) {
-		this.position = new Vector2f();
-		
-		this.id = auto_increment++;
-		this.setPosition(position);
-		this.setTileType(tileType);
-	}
+	private List<Integer> puttableItemTypes;
+	
+	private Item puttedItem;
 	
 	public Tile(Texture texture, byte tileType, Vector2f position) {
-		this.position = new Vector2f();
+		super(texture, position);
 		
-		this.id = auto_increment++;
-		this.setTexture(texture);
-		this.setPosition(position);
+		setPuttableItemTypes(new ArrayList<Integer>());
+		
 		this.setTileType(tileType);
 	}
 	
 	public Tile(Texture texture, byte tileType, int X, int Y) {
-		this.position = new Vector2f();
+		super(texture, X, Y);
 		
-		this.id = auto_increment++;
-		this.setTexture(texture);
-		this.setPosition(new Vector2f(X, Y));
+		setPuttableItemTypes(new ArrayList<Integer>());
+		
 		this.setTileType(tileType);
 	}
 	
-	public int getId() {
-		return id;
+	public Tile(Texture texture, byte tileType, stickTo stickTo) {
+		super(texture, stickTo);
+
+		setPuttableItemTypes(new ArrayList<Integer>());
+		
+		this.setTileType(tileType);
 	}
-	
+
 	public int getTileType() {
 		return tileType;
 	}
@@ -49,24 +47,27 @@ public class Tile {
 	public void setTileType(byte tileType) {
 		this.tileType = tileType;
 	}
-	
-	public Texture getTexture() {
-		return texture;
+
+	public void setPuttableItemTypes(List<Integer> puttableItemTypes) {
+		this.puttableItemTypes = puttableItemTypes;
 	}
 	
-	public void setTexture(Texture texture) {
-		this.texture = texture;
+	public void putItem(Item object) throws Exception {
+		boolean hasBeenPutted = false;
+		for(Integer type : puttableItemTypes) {
+			if(type == object.getItemType()) {
+				this.puttedItem = object;
+				hasBeenPutted = true;
+				break;
+			}
+		}
+		
+		if(hasBeenPutted == false) {
+			throw new Exception("Cannot put item in this tile");
+		}
 	}
-	
-	public Vector2f getPosition() {
-		return position;
-	}
-	
-	public void setPosition(Vector2f position) {
-		this.position = position;
-	}
-	
-	public void setPosition(int X, int Y) {
-		this.position = new Vector2f(X, Y);
+
+	public Item getPuttedItem() {
+		return puttedItem;
 	}
 }
