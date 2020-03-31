@@ -6,6 +6,7 @@ public class ItemInfo {
 	private int lvlRequired;
 	private String name;
 	private String description;
+	private int itemType;
 	
 	public ItemInfo() {
 		this.hpRegeneration = 0;
@@ -13,14 +14,16 @@ public class ItemInfo {
 		this.lvlRequired = 0;
 		this.name = "name";
 		this.description = "description";
+		this.itemType = -1;
 	}
-	
-	public ItemInfo(int hpRegeneration, int attackBonus, int lvlRequired, String name, String description) {
+
+	public ItemInfo(int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
 		this.hpRegeneration = hpRegeneration;
 		this.attackBonus = attackBonus;
 		this.lvlRequired = lvlRequired;
 		this.name = name;
 		this.description = description;
+		this.itemType = itemType;
 	}
 
 	public int getHpRegeneration() {
@@ -63,5 +66,12 @@ public class ItemInfo {
 		this.description = description;
 	}
 	
+	public int getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(int itemType) {
+		this.itemType = itemType;
+	}
 	
 }

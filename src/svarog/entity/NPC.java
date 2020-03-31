@@ -42,8 +42,8 @@ public class NPC extends Entity {
 		items.add(item);
 	}
 	
-	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description) {
-		items.add(new Item(texture, position, itemInfo, hpRegeneration, attackBonus, lvlRequired, name, description));
+	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
+		items.add(new Item(texture, position, itemInfo, hpRegeneration, attackBonus, lvlRequired, name, description, itemType));
 	}
 }
 
