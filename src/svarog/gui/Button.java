@@ -15,6 +15,7 @@ public class Button extends TextureObject implements MouseInteraction {
 	public Button(Texture texture, Vector2f position) {
 		super(texture, position);
 		super.setClickable(true);
+		super.setOverable(true);
 		this.hoverTexture = this.copy = texture;
 		this.hover = false;
 	}
@@ -22,6 +23,7 @@ public class Button extends TextureObject implements MouseInteraction {
 	public Button(Texture texture, stickTo stickTo) {
 		super(texture, stickTo);
 		super.setClickable(true);
+		super.setOverable(true);
 		this.hoverTexture = this.copy = texture;
 		this.hover = false;
 	}
@@ -29,6 +31,7 @@ public class Button extends TextureObject implements MouseInteraction {
 	public Button(Texture texture, float X, float Y) {
 		super(texture, X, Y);
 		super.setClickable(true);
+		super.setOverable(true);
 		this.hoverTexture = this.copy = texture;
 		this.hover = false;
 	}
@@ -36,6 +39,7 @@ public class Button extends TextureObject implements MouseInteraction {
 	public Button(Texture texture, Texture hoverTexture, Vector2f position) {
 		super(texture, position);
 		super.setClickable(true);
+		super.setOverable(true);
 		this.copy = texture;
 		this.hoverTexture = hoverTexture;
 		this.hover = false;
@@ -44,6 +48,7 @@ public class Button extends TextureObject implements MouseInteraction {
 	public Button(Texture texture, Texture hoverTexture, stickTo stickTo) {
 		super(texture, stickTo);
 		super.setClickable(true);
+		super.setOverable(true);
 		this.copy = texture;
 		this.hoverTexture = hoverTexture;
 		this.hover = false;
@@ -52,6 +57,7 @@ public class Button extends TextureObject implements MouseInteraction {
 	public Button(Texture texture, Texture hoverTexture, float X, float Y) {
 		super(texture, X, Y);
 		super.setClickable(true);
+		super.setOverable(true);
 		this.copy = texture;
 		this.hoverTexture = hoverTexture;
 		this.hover = false;

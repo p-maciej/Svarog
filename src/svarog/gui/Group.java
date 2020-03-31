@@ -140,4 +140,9 @@ public class Group {
 	public void setMove(Vector2f move) {
 		this.move = move;
 	}
+	
+	List<TextureObject> getObjects() {
+		return textureObjects;
+	}
+	
 }

@@ -6,6 +6,9 @@ import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.joml.Vector2f;
 
 import svarog.entity.Enemy;
@@ -25,6 +28,8 @@ import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.io.Timer;
 import svarog.io.Window;
+import svarog.objects.Item;
+import svarog.objects.ItemInfo;
 import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
@@ -124,6 +129,20 @@ public class Main {
 		guiRenderer.setTileSheet(tileSheet);
 		
 		guiRenderer.updatePositions();
+		
+		
+		Item fancyItem = new Item(new Texture("textures/item.png"), new ItemInfo());
+		fancyItem.setItemType(0);
+		
+		List<Integer> puttables = new ArrayList<Integer>();
+		puttables.add(0);
+		
+		try {
+			guiRenderer.getTileSheet().getTile(31).setPuttableItemTypes(puttables);
+			guiRenderer.getTileSheet().getTile(31).putItem(fancyItem);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		////////////////////////////////////////////////////////////////////////////////////
 		
 		////////// LOADING SCREEN //////////////////////////////////////////////////////////

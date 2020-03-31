@@ -12,6 +12,7 @@ import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.io.Window;
 import svarog.io.Window.Cursor;
+import svarog.objects.Item;
 import svarog.render.Camera;
 import svarog.render.Model;
 import svarog.render.RenderProperties;
@@ -49,6 +50,7 @@ public class GuiRenderer implements RenderProperties {
 
 	private static int clickedObjectId;
 	private static int mouseOverObjectId;
+	private static boolean setPointer;
 
 	private TextureObject bubbleLeft;
 	private TextureObject bubbleRight;
@@ -225,6 +227,7 @@ public class GuiRenderer implements RenderProperties {
 	public void renderGuiObjects(Shader shader, Window window) {
 		clickedObjectId = -1;
 		mouseOverObjectId = -1;
+		setPointer = false;
 		
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
@@ -271,10 +274,13 @@ public class GuiRenderer implements RenderProperties {
 		for(Group group : tileSheet.getTileGroupsList()) {
 			for(TextureObject object : group.getTextureObjectList()) {
 				renderGuiObject(object, shader, window);
+				Item temp = ((Tile)object).getPuttedItem();
+				if(temp != null) 
+					renderGuiObject(temp, shader, window);
 			}
 		}
-		
-		if(mouseOverObjectId >= 0)
+
+		if(setPointer == true)
 			window.requestCursor(Cursor.Pointer);
 	}
 	
@@ -297,13 +303,17 @@ public class GuiRenderer implements RenderProperties {
 	private void renderGuiObject(GuiObject object, Shader shader, Window window) {
 			Matrix4f projection = camera.getProjection();
 			
-			if(object.isClickable()) {
+			if(object.isOverable()) {
 				if(object.isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY())) {
+					if(object.isOverable())
 						mouseOverObjectId = object.getId();
 						
-					if(window.getInput().isMouseButtonPressed(0)) {
+					if(object.isClickable() && window.getInput().isMouseButtonPressed(0)) {
 						clickedObjectId = object.getId();
 					}
+					
+					if(object.isClickable())
+						setPointer = true;
 				}
 			}
 			object.update();
@@ -403,6 +413,9 @@ public class GuiRenderer implements RenderProperties {
 		this.tileSheet = tileSheet;
 	}
 	
+	public TileSheet getTileSheet() {
+		return tileSheet;
+	}
 	
 	public void addGuiObject(GuiObject object) {
 		objects.add(object);

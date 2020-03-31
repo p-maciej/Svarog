@@ -168,7 +168,7 @@ public abstract class GuiObject implements MouseInteraction {
 	}
 
 	@Override
-	public boolean isOverAllowed() {
+	public boolean isOverable() {
 		return isOverAllowed;
 	}
 
@@ -189,14 +189,13 @@ public abstract class GuiObject implements MouseInteraction {
 		this.isMovable = isMovable;
 	}
 
-	public void setOverAllowed(boolean isOverAllowed) {
+	public void setOverable(boolean isOverAllowed) {
 		this.isOverAllowed = isOverAllowed;
 	}
 	
 	public boolean isMouseOver(Window window, double x, double y) {
 		float posX = window.getWidth()/2 + getTransform().getPosition().x - getWidth()/2;
 		float posY = window.getHeight()/2 - getTransform().getPosition().y - getHeight()/2;
-		
 		
 		if(x > posX && y > posY && y < posY+getHeight() && x < posX+getWidth())
 			return true;

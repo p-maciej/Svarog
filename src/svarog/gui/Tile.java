@@ -18,7 +18,7 @@ public class Tile extends TextureObject {
 	
 	public Tile(Texture texture, byte tileType, Vector2f position) {
 		super(texture, position);
-		
+		super.setOverable(true);
 		setPuttableItemTypes(new ArrayList<Integer>());
 		
 		this.setTileType(tileType);
@@ -26,7 +26,7 @@ public class Tile extends TextureObject {
 	
 	public Tile(Texture texture, byte tileType, int X, int Y) {
 		super(texture, X, Y);
-		
+		super.setOverable(true);
 		setPuttableItemTypes(new ArrayList<Integer>());
 		
 		this.setTileType(tileType);
@@ -34,7 +34,7 @@ public class Tile extends TextureObject {
 	
 	public Tile(Texture texture, byte tileType, stickTo stickTo) {
 		super(texture, stickTo);
-
+		super.setOverable(true);
 		setPuttableItemTypes(new ArrayList<Integer>());
 		
 		this.setTileType(tileType);
@@ -56,6 +56,7 @@ public class Tile extends TextureObject {
 		boolean hasBeenPutted = false;
 		for(Integer type : puttableItemTypes) {
 			if(type == object.getItemType()) {
+				object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
 				this.puttedItem = object;
 				hasBeenPutted = true;
 				break;

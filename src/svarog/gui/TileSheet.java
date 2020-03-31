@@ -28,4 +28,20 @@ public class TileSheet {
 	List<Group> getTileGroupsList() {
 		return tileGroups;
 	}
+	
+	public Tile getTile(int id) {
+		for(Tile tile : tiles) {
+			if(tile.getId() == id)
+				return tile;
+		}
+		
+		for(Group group : tileGroups) {
+			for(TextureObject tile : group.getObjects()) {
+				if(tile.getId() == id)
+					return (Tile)tile;
+			}
+		}
+		
+		return null;
+	}
 }
