@@ -29,7 +29,25 @@ public class TileSheet {
 		return tileGroups;
 	}
 	
-	public Tile getTile(int id) {
+	/// For saves, data etc ///
+	public Tile getTile(int tileId) {
+		for(Tile tile : tiles) {
+			if(tile.getTileId() == tileId)
+				return tile;
+		}
+		
+		for(Group group : tileGroups) {
+			for(TextureObject tile : group.getObjects()) {
+				if(((Tile)tile).getTileId() == tileId)
+					return (Tile)tile;
+			}
+		}
+		
+		return null;
+	}
+	
+	/// For mouse interaction etc ////
+	public Tile getTileByObjectId(int id) {
 		for(Tile tile : tiles) {
 			if(tile.getId() == id)
 				return tile;

@@ -16,25 +16,30 @@ public class Tile extends TextureObject {
 	
 	private Item puttedItem;
 	
-	public Tile(Texture texture, byte tileType, Vector2f position) {
+	private int tileId;
+	
+	public Tile(int tileId, Texture texture, byte tileType, Vector2f position) {
 		super(texture, position);
 		super.setOverable(true);
+		this.setTileId(tileId);
 		setPuttableItemTypes(new ArrayList<Integer>());
 		
 		this.setTileType(tileType);
 	}
 	
-	public Tile(Texture texture, byte tileType, int X, int Y) {
+	public Tile(int tileId, Texture texture, byte tileType, int X, int Y) {
 		super(texture, X, Y);
 		super.setOverable(true);
+		this.setTileId(tileId);
 		setPuttableItemTypes(new ArrayList<Integer>());
 		
 		this.setTileType(tileType);
 	}
 	
-	public Tile(Texture texture, byte tileType, stickTo stickTo) {
+	public Tile(int tileId, Texture texture, byte tileType, stickTo stickTo) {
 		super(texture, stickTo);
 		super.setOverable(true);
+		this.setTileId(tileId);
 		setPuttableItemTypes(new ArrayList<Integer>());
 		
 		this.setTileType(tileType);
@@ -70,5 +75,13 @@ public class Tile extends TextureObject {
 
 	public Item getPuttedItem() {
 		return puttedItem;
+	}
+
+	public int getTileId() {
+		return tileId;
+	}
+
+	public void setTileId(int tileId) {
+		this.tileId = tileId;
 	}
 }

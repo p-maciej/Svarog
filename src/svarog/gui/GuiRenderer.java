@@ -116,6 +116,10 @@ public class GuiRenderer implements RenderProperties {
 				} else {
 					object.getTransform().getPosition().set(object.getPosition().x +group.getTransform().x, object.getPosition().y +group.getTransform().y, 0);
 				}
+				
+				if(((Tile)object).getPuttedItem() != null) {
+					((Tile)object).getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+				}
 			}
 		}
 		/////////////////////////////////////////
@@ -138,6 +142,10 @@ public class GuiRenderer implements RenderProperties {
 				object.getTransform().getPosition().add(object.getPosition().x, object.getPosition().y, 0);
 			} else {
 				object.getTransform().getPosition().set(object.getPosition().x, object.getPosition().y, 0);
+			}
+			
+			if(object.getPuttedItem() != null) {
+				object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
 			}
 		}
 		////////////////////////////////////////////////////

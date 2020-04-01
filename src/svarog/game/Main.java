@@ -9,8 +9,6 @@ import static org.lwjgl.opengl.GL11.glViewport;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.joml.Vector2f;
-
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.Player;
@@ -115,11 +113,12 @@ public class Main {
 		Texture tileTexture = new Texture("images/guiTile.png");
 		
 		Group tileGroup = new Group();
-		tileGroup.move(new Vector2f(-25, 150));
+		tileGroup.move(-25, 150);
 		tileGroup.setStickTo(stickTo.BottomRight);
-		for(int i = 0; i < 5; i++) {
-			for(int j = 0; j < 6; j++) {
-				tileGroup.addTextureObject(new Tile(tileTexture, (byte)0, i*50, -j*50));
+		int tileId = 0;
+		for(int i = 0; i < 6; i++) {
+			for(int j = 0; j < 5; j++) {
+				tileGroup.addTextureObject(new Tile(tileId++, tileTexture, (byte)0, j*50, -i*50));
 			}
 		}
 
@@ -137,7 +136,7 @@ public class Main {
 		List<Integer> puttables = new ArrayList<Integer>();
 		puttables.add(0);
 		
-		Tile tile = guiRenderer.getTileSheet().getTile(31);
+		Tile tile = guiRenderer.getTileSheet().getTile(2);
 		try {
 			tile.setPuttableItemTypes(puttables);
 			tile.putItem(fancyItem);
