@@ -17,7 +17,6 @@ public abstract class GuiObject implements MouseInteraction {
 	private int height;
 	private Transform transform;
 	private Vector2f position;
-	private Vector2f relativeTransform;
 	private stickTo stickTo;
 	private State state;
 	
@@ -30,7 +29,6 @@ public abstract class GuiObject implements MouseInteraction {
 	
 	protected GuiObject() {
 		transform = new Transform();
-		relativeTransform = new Vector2f();
 		position = new Vector2f();
 		
 		this.id = auto_increment++;
@@ -41,7 +39,6 @@ public abstract class GuiObject implements MouseInteraction {
 	
 	protected GuiObject(int width, int height, stickTo stickTo) {
 		transform = new Transform();
-		relativeTransform = new Vector2f();
 		position = new Vector2f();
 		
 		this.id = auto_increment++;
@@ -53,7 +50,6 @@ public abstract class GuiObject implements MouseInteraction {
 
 	protected GuiObject(int width, int height, Vector2f position) {
 		transform = new Transform();
-		relativeTransform = new Vector2f();
 		this.position = new Vector2f();
 		
 		this.id = auto_increment++;
@@ -65,7 +61,6 @@ public abstract class GuiObject implements MouseInteraction {
 	public int getHeight() {
 		return (int)(height*(scale/16));
 	}
-
 
 	public void setSize(int width, int height) {
 		this.width = width;
@@ -113,13 +108,12 @@ public abstract class GuiObject implements MouseInteraction {
 		this.transform.getPosition().y = Y;
 	}
 	
-	
 	public void move(Vector2f direction) {
-		this.relativeTransform.set(direction.x, -direction.y);
+		this.position.add(direction.x, -direction.y);
 	}
 	
 	public void move(float X, float Y) {
-		this.relativeTransform.set(X, -Y);
+		this.position.add(X, -Y);
 	}
 
 	public static float getScale() {
@@ -138,10 +132,6 @@ public abstract class GuiObject implements MouseInteraction {
 
 	public void setStickTo(stickTo stickTo) {
 		this.stickTo = stickTo;
-	}
-
-	public Vector2f getMove() {
-		return relativeTransform;
 	}
 
 	public State getState() {

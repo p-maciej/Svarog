@@ -115,7 +115,7 @@ public class Main {
 		Texture tileTexture = new Texture("images/guiTile.png");
 		
 		Group tileGroup = new Group();
-		tileGroup.setMove(new Vector2f(-25, 150));
+		tileGroup.move(new Vector2f(-25, 150));
 		tileGroup.setStickTo(stickTo.BottomRight);
 		for(int i = 0; i < 5; i++) {
 			for(int j = 0; j < 6; j++) {
@@ -137,9 +137,10 @@ public class Main {
 		List<Integer> puttables = new ArrayList<Integer>();
 		puttables.add(0);
 		
+		Tile tile = guiRenderer.getTileSheet().getTile(31);
 		try {
-			guiRenderer.getTileSheet().getTile(31).setPuttableItemTypes(puttables);
-			guiRenderer.getTileSheet().getTile(31).putItem(fancyItem);
+			tile.setPuttableItemTypes(puttables);
+			tile.putItem(fancyItem);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

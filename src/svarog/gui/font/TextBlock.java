@@ -14,15 +14,15 @@ public class TextBlock {
 	private List<Line> lines;
 	private String string;
 	private int maxWidth;
+	private Vector2f transform;
 	private Vector2f position;
-	private Vector2f relativeTransform;
 	private GuiRenderer.stickTo stickTo;
 	private int lineHeight;
 	
 	public TextBlock(int maxWidth, Vector2f position) {
 		lines = new ArrayList<Line>();
+		this.transform = new Vector2f();
 		this.position = new Vector2f();
-		this.relativeTransform = new Vector2f();
 		
 		this.setMaxWidth(maxWidth);
 		this.setPosition(position);
@@ -30,12 +30,12 @@ public class TextBlock {
 	
 	public TextBlock(int maxWidth, GuiRenderer.stickTo stickTo) {
 		lines = new ArrayList<Line>();
+		this.transform = new Vector2f();
 		this.position = new Vector2f();
-		this.relativeTransform = new Vector2f();
 		this.stickTo = stickTo;
 		
 		this.setMaxWidth(maxWidth);
-		this.setPosition(position);
+		this.setPosition(transform);
 	}
 
 	public List<Line> getLines() {
@@ -138,16 +138,16 @@ public class TextBlock {
 		this.maxWidth = maxWidth;
 	}
 
-	public Vector2f getPosition() {
-		return position;
+	public Vector2f getTranform() {
+		return transform;
 	}
 
-	public void setPosition(Vector2f position) {
-		this.position.set(position);
+	public void setTransformPosition(Vector2f position) {
+		this.transform.set(position);
 	}
 	
-	public void setPosition(float X, float Y) {
-		this.position.set(new Vector2f(X, Y));
+	public void setTransformPosition(float X, float Y) {
+		this.transform.set(new Vector2f(X, Y));
 	}
 	
 	public GuiRenderer.stickTo getStickTo() {
@@ -162,16 +162,26 @@ public class TextBlock {
 		return lineHeight*lines.size();
 	}
 	
+	public void setPosition(Vector2f direction) {
+		this.position.set(direction.x, -direction.y);
+		setTransformPosition(direction);
+	}
+	
+	public void setPosition(float X, float Y) {
+		this.position.set(X, -Y);
+		setTransformPosition(X, Y);
+	}
+	
 	public void move(Vector2f direction) {
-		this.relativeTransform.add(direction.x, -direction.y);
+		this.position.add(direction.x, -direction.y);
 	}
 	
 	public void move(float X, float Y) {
-		this.relativeTransform.add(X, -Y);
+		this.position.add(X, -Y);
 	}
 	
-	public Vector2f getMove() {
-		return relativeTransform;
+	public Vector2f getPosition() {
+		return position;
 	}
 	////////////// NEW CLASS /////////////////////
 	private class Word {

@@ -12,8 +12,8 @@ import svarog.gui.font.TextBlock;
 public class Group {
 	private static int auto_increment = 0;
 	private int id;
-	private Vector2f relativePosition;
-	private Vector2f move;
+	private Vector2f transform;
+	private Vector2f position;
 	
 	private List<TextureObject> textureObjects;
 	private List<TextBlock> textBlocks;
@@ -32,8 +32,8 @@ public class Group {
 		
 		textureObjects = new ArrayList<TextureObject>();
 		textBlocks = new ArrayList<TextBlock>();
-		relativePosition = new Vector2f();
-		move = new Vector2f();
+		transform = new Vector2f();
+		position = new Vector2f();
 	}
 	
 	public Group(State state) {
@@ -42,8 +42,8 @@ public class Group {
 		this.state = state;
 		textureObjects = new ArrayList<TextureObject>();
 		textBlocks = new ArrayList<TextBlock>();
-		relativePosition = new Vector2f();
-		move = new Vector2f();
+		transform = new Vector2f();
+		position = new Vector2f();
 	}
 	
 	public void addTextureObject(TextureObject textureObject) {
@@ -74,16 +74,38 @@ public class Group {
 		return textBlocks;
 	}
 	
+	public void setTransformPosition(Vector2f position) {
+		this.position.set(position.x, -position.y);
+	}
+	
+	public void setTransformPosition(float X, float Y) {
+		this.transform.set(X, -Y);
+	}
+	
 	public void setPosition(Vector2f direction) {
-		this.relativePosition.set(direction.x, -direction.y);
+		this.position.set(direction.x, -direction.y);
+		setTransformPosition(direction);
 	}
 	
 	public void setPosition(float X, float Y) {
-		this.relativePosition.set(X, -Y);
+		this.position.set(X, -Y);
+		setTransformPosition(X, Y);
+	}
+	
+	public void move(Vector2f direction) {
+		this.position.add(direction.x, direction.y);
+	}
+	
+	public void move(float X, float Y) {
+		this.position.add(X, Y);
+	}
+	
+	public Vector2f getTransform() {
+		return transform;
 	}
 	
 	public Vector2f getPosition() {
-		return relativePosition;
+		return position;
 	}
 
 	public State getState() {
@@ -131,14 +153,6 @@ public class Group {
 
 	public void setStickTo(stickTo stickTo) {
 		this.stickTo = stickTo;
-	}
-
-	public Vector2f getMove() {
-		return move;
-	}
-
-	public void setMove(Vector2f move) {
-		this.move = move;
 	}
 	
 	List<TextureObject> getObjects() {

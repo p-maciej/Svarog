@@ -77,151 +77,81 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	public void updatePositions() {
+		
+		/// GROUPS /////////
 		for(Group group : groups) {
 			for(GuiObject object : group.getTextureObjectList()) {
 				if(object.getStickTo() != null) {
 					setObjectStickTo(object);
+					object.getTransform().getPosition().add(object.getPosition().x+group.getTransform().x, object.getPosition().y+group.getTransform().y, 0);
+				} else {
+					object.getTransform().getPosition().set(object.getPosition().x+group.getTransform().x, object.getPosition().y+group.getTransform().y, 0);
 				}
-				
-				object.getTransform().getPosition().add(object.getMove().x+group.getPosition().x, object.getMove().y+group.getPosition().y, 0);
 			}
 			
 			for(TextBlock textBlock : group.getTextBlockList()) {
 				if(textBlock.getStickTo() != null) {
 					setTextBlockStickTo(textBlock);
+					textBlock.getTranform().add(textBlock.getPosition().x+group.getTransform().x, textBlock.getPosition().y+group.getTransform().y);
+				} else {
+					textBlock.getTranform().set(textBlock.getPosition().x+group.getTransform().x, textBlock.getPosition().y+group.getTransform().y);
 				}
-				
-				textBlock.getPosition().add(textBlock.getMove().x+group.getPosition().x, textBlock.getMove().y+group.getPosition().y);
 			}
 		}
+		////////////////////
 		
+		////// GROUPS FROM TILESHEET /////////////
 		for(Group group : tileSheet.getTileGroupsList()) {			
 			if(group.getStickTo() != null) {
 				setGroupStickTo(group);
-				group.getPosition().add(group.getMove().x, group.getMove().y);
+				group.getTransform().add(group.getPosition().x, group.getPosition().y);
 			} else {
-				group.getPosition().set(group.getMove().x, group.getMove().y);
+				group.getTransform().set(group.getPosition().x, group.getPosition().y);
 			}
 			
 			for(GuiObject object : group.getTextureObjectList()) {
 				if(object.getStickTo() != null) {
 					setObjectStickTo(object);
+					object.getTransform().getPosition().add(object.getPosition().x +group.getTransform().x, object.getPosition().y +group.getTransform().y, 0);
+				} else {
+					object.getTransform().getPosition().set(object.getPosition().x +group.getTransform().x, object.getPosition().y +group.getTransform().y, 0);
 				}
-				
-				object.getTransform().getPosition().set(object.getPosition().x + object.getMove().x+group.getPosition().x, object.getPosition().y + object.getMove().y+group.getPosition().y, 0);
 			}
 		}
+		/////////////////////////////////////////
 		
+		//// ORDINARY OBJECTS///////////////////
 		for(GuiObject object : objects) {
 			if(object.getStickTo() != null) {
 				setObjectStickTo(object);
-			}
-			
-			object.getTransform().getPosition().add(object.getMove().x, object.getMove().y, 0);
+				object.getTransform().getPosition().add(object.getPosition().x, object.getPosition().y, 0);
+			} else {
+				object.getTransform().getPosition().set(object.getPosition().x, object.getPosition().y, 0);
+			}	
 		}
+		//////////////////////////////////////
 		
+		//////////// TILES FROM TILESHEET ///////////////////
 		for(Tile object : tileSheet.getTilesList()) {
 			if(object.getStickTo() != null) {
 				setObjectStickTo(object);
+				object.getTransform().getPosition().add(object.getPosition().x, object.getPosition().y, 0);
+			} else {
+				object.getTransform().getPosition().set(object.getPosition().x, object.getPosition().y, 0);
 			}
-			
-			object.getTransform().getPosition().add(object.getMove().x, object.getMove().y, 0);
 		}
+		////////////////////////////////////////////////////
 		
+		//////// TEXTBLOCKS ////////////////////////
 		for(TextBlock textBlock : textBlocks) {
 			if(textBlock.getStickTo() != null) {
 				setTextBlockStickTo(textBlock);
-			}
-			
-			textBlock.getPosition().add(textBlock.getMove().x, textBlock.getMove().y);
+				textBlock.getTranform().add(textBlock.getPosition().x, textBlock.getPosition().y);
+			} else {
+				textBlock.getTranform().set(textBlock.getPosition().y, textBlock.getPosition().y);
+			}	
 		}
-	}
-	
-	private void setObjectStickTo(GuiObject object) {
-		switch(object.getStickTo()) {
-			case Top:
-				object.setPosition(0, getTop() - object.getHeight()/2);
-				break;
-			case Bottom:
-				object.setPosition(0, getBottom() + object.getHeight()/2);
-				break;
-			case BottomLeft:
-				object.setPosition(getLeft() + object.getWidth()/2, getBottom() + object.getHeight()/2);
-				break;
-			case BottomRight:
-				object.setPosition(getRight() - object.getWidth()/2, getBottom() + object.getHeight()/2);
-				break;
-			case Left:
-				object.setPosition(getLeft() + object.getWidth()/2, 0);
-				break;
-			case Right:
-				object.setPosition(getRight() - object.getWidth()/2, 0);
-				break;
-			case TopLeft:
-				object.setPosition(getLeft() + object.getWidth()/2, getTop() - object.getHeight()/2);
-				break;
-			case TopRight:
-				object.setPosition(getRight() - object.getWidth()/2, getTop() - object.getHeight()/2);
-				break;
-		}
-	}
-	
-	private void setGroupStickTo(Group object) {
-		switch(object.getStickTo()) {
-			case Top:
-				object.setPosition(0, getBottom());
-				break;
-			case Bottom:
-				object.setPosition(0, getTop() - object.getGroupHeight());
-				break;
-			case BottomLeft:
-				object.setPosition(getLeft(), getTop() - object.getGroupHeight());
-				break;
-			case BottomRight:
-				object.setPosition(getRight() - object.getGroupWidth(), getTop() - object.getGroupHeight());
-				break;
-			case Left:
-				object.setPosition(getLeft(), 0);
-				break;
-			case Right:
-				object.setPosition(getRight() - object.getGroupWidth(), 0);
-				break;
-			case TopLeft:
-				object.setPosition(getLeft(), getBottom());
-				break;
-			case TopRight:
-				object.setPosition(getRight()-object.getGroupWidth(), getBottom());
-				break;
-		}
-	}
-	
-	private void setTextBlockStickTo(TextBlock object) {
-		switch(object.getStickTo()) {
-			case Top:
-				object.setPosition(0, getTop() - 10);
-				break;
-			case Bottom:
-				object.setPosition(0, getBottom() + object.getHeight());
-				break;
-			case BottomLeft:
-				object.setPosition(getLeft(), getBottom() + object.getHeight());
-				break;
-			case BottomRight:
-				object.setPosition(getRight() - object.getMaxWidth(), getBottom() + object.getHeight());
-				break;
-			case Left:
-				object.setPosition(getLeft(), 0);
-				break;
-			case Right:
-				object.setPosition(getRight() - object.getMaxWidth(), 0);
-				break;
-			case TopLeft:
-				object.setPosition(getLeft(), getTop() - 10);
-				break;
-			case TopRight:
-				object.setPosition(getRight() - object.getMaxWidth(), getTop() - 10);
-				break;
-		}
+		///////////////////////////////////////////
 	}
 	
 	public void renderGuiObjects(Shader shader, Window window) {
@@ -289,8 +219,8 @@ public class GuiRenderer implements RenderProperties {
 			Matrix4f projection = camera.getProjection();
 			Line line = block.getLines().get(i);
 					
-			line.getTransform().getPosition().x = block.getPosition().x + line.getWidth()/2;
-			line.getTransform().getPosition().y = block.getPosition().y + -i*line.getHeight();
+			line.getTransform().getPosition().x = block.getTranform().x + line.getWidth()/2;
+			line.getTransform().getPosition().y = block.getTranform().y + -i*line.getHeight();
 					
 			line.getTexture().bind(0);
 			shader.bind();
@@ -385,6 +315,93 @@ public class GuiRenderer implements RenderProperties {
 			if(groups.get(i).getState() != null)
 				if(groups.get(i).getState() == State.dynamicImage)
 					groups.remove(i);
+	}
+	
+	private void setObjectStickTo(GuiObject object) {
+		switch(object.getStickTo()) {
+			case Top:
+				object.setTranformPosition(0, getTop() - object.getHeight()/2);
+				break;
+			case Bottom:
+				object.setTranformPosition(0, getBottom() + object.getHeight()/2);
+				break;
+			case BottomLeft:
+				object.setTranformPosition(getLeft() + object.getWidth()/2, getBottom() + object.getHeight()/2);
+				break;
+			case BottomRight:
+				object.setTranformPosition(getRight() - object.getWidth()/2, getBottom() + object.getHeight()/2);
+				break;
+			case Left:
+				object.setTranformPosition(getLeft() + object.getWidth()/2, 0);
+				break;
+			case Right:
+				object.setTranformPosition(getRight() - object.getWidth()/2, 0);
+				break;
+			case TopLeft:
+				object.setTranformPosition(getLeft() + object.getWidth()/2, getTop() - object.getHeight()/2);
+				break;
+			case TopRight:
+				object.setTranformPosition(getRight() - object.getWidth()/2, getTop() - object.getHeight()/2);
+				break;
+		}
+	}
+	
+	private void setGroupStickTo(Group object) {
+		switch(object.getStickTo()) {
+			case Top:
+				object.setTransformPosition(0, getBottom());
+				break;
+			case Bottom:
+				object.setTransformPosition(0, getTop() - object.getGroupHeight());
+				break;
+			case BottomLeft:
+				object.setTransformPosition(getLeft(), getTop() - object.getGroupHeight());
+				break;
+			case BottomRight:
+				object.setTransformPosition(getRight() - object.getGroupWidth(), getTop() - object.getGroupHeight());
+				break;
+			case Left:
+				object.setTransformPosition(getLeft(), 0);
+				break;
+			case Right:
+				object.setTransformPosition(getRight() - object.getGroupWidth(), 0);
+				break;
+			case TopLeft:
+				object.setTransformPosition(getLeft(), getBottom());
+				break;
+			case TopRight:
+				object.setTransformPosition(getRight()-object.getGroupWidth(), getBottom());
+				break;
+		}
+	}
+	
+	private void setTextBlockStickTo(TextBlock object) {
+		switch(object.getStickTo()) {
+			case Top:
+				object.setTransformPosition(0, getTop() - 10);
+				break;
+			case Bottom:
+				object.setTransformPosition(0, getBottom() + object.getHeight());
+				break;
+			case BottomLeft:
+				object.setTransformPosition(getLeft(), getBottom() + object.getHeight());
+				break;
+			case BottomRight:
+				object.setTransformPosition(getRight() - object.getMaxWidth(), getBottom() + object.getHeight());
+				break;
+			case Left:
+				object.setTransformPosition(getLeft(), 0);
+				break;
+			case Right:
+				object.setTransformPosition(getRight() - object.getMaxWidth(), 0);
+				break;
+			case TopLeft:
+				object.setTransformPosition(getLeft(), getTop() - 10);
+				break;
+			case TopRight:
+				object.setTransformPosition(getRight() - object.getMaxWidth(), getTop() - 10);
+				break;
+		}
 	}
 
 	public static int getClickedObjectId() {
