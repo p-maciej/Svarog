@@ -115,14 +115,31 @@ public class Main {
 		Group tileGroup = new Group();
 		tileGroup.move(-25, 150);
 		tileGroup.setStickTo(stickTo.BottomRight);
+		List<Integer> puttables = new ArrayList<Integer>();
+		puttables.add(0);
 		int tileId = 0;
 		for(int i = 0; i < 6; i++) {
 			for(int j = 0; j < 5; j++) {
-				tileGroup.addTextureObject(new Tile(tileId++, tileTexture, (byte)0, j*50, -i*50));
+				Tile tile = new Tile(tileId++, tileTexture, (byte)0, j*50, -i*50);
+				if(tileId!=1) // first tile not allowed for type 0
+					tile.setPuttableItemTypes(puttables);
+				tileGroup.addTextureObject(tile);
 			}
 		}
 
 		tileSheet.addTileGroup(tileGroup);
+		
+		
+		Group tileGroup2 = new Group();
+		tileGroup2.setStickTo(stickTo.Bottom);
+		tileGroup2.move(0, 10);
+		for(int i = 0; i < 6; i++) {
+				Tile tile = new Tile(tileId++, tileTexture, (byte)0, i*50, 0);
+				tile.setPuttableItemTypes(puttables);
+				tileGroup2.addTextureObject(tile);
+		}
+		
+		tileSheet.addTileGroup(tileGroup2);
 		////////////////////////////////////////////
 		
 		guiRenderer.setTileSheet(tileSheet);
@@ -133,13 +150,19 @@ public class Main {
 		Item fancyItem = new Item(new Texture("textures/item.png"), new ItemInfo());
 		fancyItem.setItemType(0);
 		
-		List<Integer> puttables = new ArrayList<Integer>();
-		puttables.add(0);
+		Item fancyItem2 = new Item(new Texture("textures/item.png"), new ItemInfo());
+		fancyItem2.setItemType(0);
 		
-		Tile tile = guiRenderer.getTileSheet().getTile(2);
 		try {
-			tile.setPuttableItemTypes(puttables);
-			tile.putItem(fancyItem);
+			guiRenderer.getTileSheet().getTile(2).putItem(fancyItem);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			guiRenderer.getTileSheet().getTile(3).putItem(fancyItem2);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

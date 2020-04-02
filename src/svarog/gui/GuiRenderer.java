@@ -50,6 +50,7 @@ public class GuiRenderer implements RenderProperties {
 
 	private static int clickedObjectId;
 	private static int mouseOverObjectId;
+	private static int draggingFromObjectId;
 	private static boolean setPointer;
 
 	private TextureObject bubbleLeft;
@@ -74,6 +75,8 @@ public class GuiRenderer implements RenderProperties {
 		
 		this.windowWidth = window.getWidth();
 		this.windowHeight = window.getHeight();
+		
+		draggingFromObjectId = -1;
 	}
 	
 	public void updatePositions() {
@@ -217,6 +220,23 @@ public class GuiRenderer implements RenderProperties {
 					renderGuiObject(temp, shader, window);
 			}
 		}
+		
+		// Render items
+		for(Group group : tileSheet.getTileGroupsList()) {
+			for(TextureObject object : group.getTextureObjectList()) {
+				Item temp = ((Tile)object).getPuttedItem();
+				if(temp != null)  {
+					renderGuiObject(temp, shader, window);
+				}
+			}
+		}
+		
+		// Drag and drop for groups
+		for(Group group : tileSheet.getTileGroupsList()) {
+			for(TextureObject object : group.getTextureObjectList()) {
+				dragAndDrop((Tile)object, window);
+			}
+		}
 
 		if(setPointer == true)
 			window.requestCursor(Cursor.Pointer);
@@ -241,6 +261,7 @@ public class GuiRenderer implements RenderProperties {
 	private void renderGuiObject(GuiObject object, Shader shader, Window window) {
 			Matrix4f projection = camera.getProjection();
 			
+			// Mouse interaction //
 			if(object.isOverable()) {
 				if(object.isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY())) {
 					if(object.isOverable())
@@ -254,6 +275,8 @@ public class GuiRenderer implements RenderProperties {
 						setPointer = true;
 				}
 			}
+			/////////////////////
+			
 			object.update();
 			
 			object.getTexture().bind(0);
@@ -262,6 +285,46 @@ public class GuiRenderer implements RenderProperties {
 			shader.setUniform("sampler", 0);
 			shader.setUniform("projection", object.getTransform().getProjection(projection));
 			model.render();	
+	}
+	
+	private void dragAndDrop(Tile object, Window window) {
+		// Drag and drop //
+		if(object != null) {
+			if((object.getId() == mouseOverObjectId && draggingFromObjectId == -1) || draggingFromObjectId == object.getId()) {
+				if(window.getInput().isMouseButtonDown(0)) {
+					if(((Tile) object).getPuttedItem() != null) {
+						if(draggingFromObjectId == -1)
+							draggingFromObjectId = object.getId();
+						
+						if(draggingFromObjectId != mouseOverObjectId)
+							object.getPuttedItem().setPosition((float)window.getRelativePositionCursorX(), (float)window.getRelativePositionCursorY());
+					}
+				} else if(window.getInput().isMouseButtonReleased(0) && draggingFromObjectId != -1) {
+					if(mouseOverObjectId != draggingFromObjectId) {
+						Tile tile = tileSheet.getTileByObjectId(mouseOverObjectId);
+						if(tile != null) {
+							if(tile.getPuttedItem() == null) {
+								try {
+									tile.putItem(object.getPuttedItem());
+									tile.getPuttedItem().setPosition(tile.getTransform().getPosition().x, tile.getTransform().getPosition().y);
+									object.removePuttedItem();
+								} catch (Exception e) {
+									object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+								}
+							} else {
+								object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+							}
+						} else {
+							object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+						}
+					} else {
+						object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+					}
+					draggingFromObjectId = -1;
+				}
+			}
+		}
+		//////////////////
 	}
 	
 	public void showBubble(Line line, double posX, double posY) {
@@ -360,7 +423,7 @@ public class GuiRenderer implements RenderProperties {
 				object.setTransformPosition(0, getBottom());
 				break;
 			case Bottom:
-				object.setTransformPosition(0, getTop() - object.getGroupHeight());
+				object.setTransformPosition(0, getTop() + object.getGroupHeight());
 				break;
 			case BottomLeft:
 				object.setTransformPosition(getLeft(), getTop() - object.getGroupHeight());

@@ -76,6 +76,10 @@ public class Tile extends TextureObject {
 	public Item getPuttedItem() {
 		return puttedItem;
 	}
+	
+	void removePuttedItem() {
+		puttedItem = null;
+	}
 
 	public int getTileId() {
 		return tileId;
