@@ -51,6 +51,7 @@ public class GuiRenderer implements RenderProperties {
 	private static int clickedObjectId;
 	private static int mouseOverObjectId;
 	private static int draggingFromObjectId;
+	private static boolean objectDraggedOut;
 	private static boolean setPointer;
 
 	private TextureObject bubbleLeft;
@@ -77,6 +78,7 @@ public class GuiRenderer implements RenderProperties {
 		this.windowHeight = window.getHeight();
 		
 		draggingFromObjectId = -1;
+		objectDraggedOut = false;
 	}
 	
 	public void updatePositions() {
@@ -138,21 +140,6 @@ public class GuiRenderer implements RenderProperties {
 		}
 		//////////////////////////////////////
 		
-		//////////// TILES FROM TILESHEET ///////////////////
-		for(Tile object : tileSheet.getTilesList()) {
-			if(object.getStickTo() != null) {
-				setObjectStickTo(object);
-				object.getTransform().getPosition().add(object.getPosition().x, object.getPosition().y, 0);
-			} else {
-				object.getTransform().getPosition().set(object.getPosition().x, object.getPosition().y, 0);
-			}
-			
-			if(object.getPuttedItem() != null) {
-				object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
-			}
-		}
-		////////////////////////////////////////////////////
-		
 		//////// TEXTBLOCKS ////////////////////////
 		for(TextBlock textBlock : textBlocks) {
 			if(textBlock.getStickTo() != null) {
@@ -204,11 +191,6 @@ public class GuiRenderer implements RenderProperties {
 			for(TextBlock block : group.getTextBlockList()) {
 				renderTextBlock(block, shader, window);
 			}
-		}
-		
-		// Render tiles
-		for(Tile object : tileSheet.getTilesList()) {	
-			renderGuiObject(object, shader, window);
 		}
 		
 		// And groups of tiles
@@ -288,7 +270,6 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	private void dragAndDrop(Tile object, Window window) {
-		// Drag and drop //
 		if(object != null) {
 			if((object.getId() == mouseOverObjectId && draggingFromObjectId == -1) || draggingFromObjectId == object.getId()) {
 				if(window.getInput().isMouseButtonDown(0)) {
@@ -296,8 +277,10 @@ public class GuiRenderer implements RenderProperties {
 						if(draggingFromObjectId == -1)
 							draggingFromObjectId = object.getId();
 						
-						if(draggingFromObjectId != mouseOverObjectId)
+						if((draggingFromObjectId != mouseOverObjectId) || objectDraggedOut == true) {
 							object.getPuttedItem().setPosition((float)window.getRelativePositionCursorX(), (float)window.getRelativePositionCursorY());
+							objectDraggedOut = true;
+						}
 					}
 				} else if(window.getInput().isMouseButtonReleased(0) && draggingFromObjectId != -1) {
 					if(mouseOverObjectId != draggingFromObjectId) {
@@ -321,10 +304,10 @@ public class GuiRenderer implements RenderProperties {
 						object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
 					}
 					draggingFromObjectId = -1;
+					objectDraggedOut = false;
 				}
 			}
 		}
-		//////////////////
 	}
 	
 	public void showBubble(Line line, double posX, double posY) {
@@ -481,6 +464,10 @@ public class GuiRenderer implements RenderProperties {
 	
 	public static int getMouseOverObjectId() {
 		return mouseOverObjectId;
+	}
+	
+	public static int getDraggingFromObjectId() {
+		return draggingFromObjectId;
 	}
 	
 	public void setBubbleLeft(BufferedImage bubbleLeft) {

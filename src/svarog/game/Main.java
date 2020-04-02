@@ -111,6 +111,7 @@ public class Main {
 		/// Tiles on GUI ///////////////////////////
 		TileSheet tileSheet = new TileSheet();
 		Texture tileTexture = new Texture("images/guiTile.png");
+		Texture tileTexture_hover = new Texture("images/guiTile_hover.png");
 		
 		Group tileGroup = new Group();
 		tileGroup.move(-25, 150);
@@ -120,7 +121,7 @@ public class Main {
 		int tileId = 0;
 		for(int i = 0; i < 6; i++) {
 			for(int j = 0; j < 5; j++) {
-				Tile tile = new Tile(tileId++, tileTexture, (byte)0, j*50, -i*50);
+				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, j*50, -i*50);
 				if(tileId!=1) // first tile not allowed for type 0
 					tile.setPuttableItemTypes(puttables);
 				tileGroup.addTextureObject(tile);
@@ -134,7 +135,7 @@ public class Main {
 		tileGroup2.setStickTo(stickTo.Bottom);
 		tileGroup2.move(0, 10);
 		for(int i = 0; i < 6; i++) {
-				Tile tile = new Tile(tileId++, tileTexture, (byte)0, i*50, 0);
+				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, i*50, 0);
 				tile.setPuttableItemTypes(puttables);
 				tileGroup2.addTextureObject(tile);
 		}
