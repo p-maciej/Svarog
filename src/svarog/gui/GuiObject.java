@@ -138,9 +138,9 @@ public abstract class GuiObject implements MouseInteraction {
 		return state;
 	}
 	
-	abstract Texture getTexture();
+	protected abstract Texture getTexture();
 	
-	abstract void update();
+	protected abstract void update();
 
 	public GuiObject setState(State state) {
 		this.state = state;

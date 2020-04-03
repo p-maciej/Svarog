@@ -46,5 +46,5 @@ public class TextureObject extends GuiObject {
 	}
 
 	@Override
-	void update() {}
+	protected void update() {}
 }

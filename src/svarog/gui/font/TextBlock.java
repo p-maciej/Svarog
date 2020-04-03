@@ -7,35 +7,25 @@ import java.util.List;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
+import svarog.gui.GuiObject;
 import svarog.gui.GuiRenderer;
+import svarog.render.Texture;
 
-public class TextBlock {
+public class TextBlock  extends GuiObject {
 	private static final char SPACE = 32; 
 	private List<Line> lines;
 	private String string;
-	private int maxWidth;
-	private Vector2f transform;
-	private Vector2f position;
-	private GuiRenderer.stickTo stickTo;
 	private int lineHeight;
 	
 	public TextBlock(int maxWidth, Vector2f position) {
+		super(maxWidth, 0, position);
 		lines = new ArrayList<Line>();
-		this.transform = new Vector2f();
-		this.position = new Vector2f();
-		
-		this.setMaxWidth(maxWidth);
-		this.setPosition(position);
 	}
 	
 	public TextBlock(int maxWidth, GuiRenderer.stickTo stickTo) {
-		lines = new ArrayList<Line>();
-		this.transform = new Vector2f();
-		this.position = new Vector2f();
-		this.stickTo = stickTo;
+		super(maxWidth, 0, stickTo);
 		
-		this.setMaxWidth(maxWidth);
-		this.setPosition(transform);
+		lines = new ArrayList<Line>();
 	}
 
 	public List<Line> getLines() {
@@ -53,6 +43,7 @@ public class TextBlock {
 	public void setString(Font font, String string) {
 		this.string = string;
 		addLines(font);
+		super.setSize(super.getWidth(), lineHeight*lines.size());
 	}
 
 	private void addLines(Font font) {
@@ -121,8 +112,8 @@ public class TextBlock {
 				break;
 			}
 		}
-		if(wordWidth < maxWidth)
-			if(lineWidth+wordWidth < maxWidth)
+		if(wordWidth < super.getWidth())
+			if(lineWidth+wordWidth < super.getWidth())
 				return new Word(wordWidth, lastIndex, wordLength, false);
 			else 
 				return new Word(0, lastIndex, wordLength, false);
@@ -130,59 +121,10 @@ public class TextBlock {
 			throw new IllegalStateException("Box is to small");
 	}
 	
-	public int getMaxWidth() {
-		return maxWidth;
-	}
-
-	public void setMaxWidth(int maxWidth) {
-		this.maxWidth = maxWidth;
-	}
-
-	public Vector2f getTranform() {
-		return transform;
-	}
-
-	public void setTransformPosition(Vector2f position) {
-		this.transform.set(position);
-	}
+	protected Texture getTexture() { return null; }
 	
-	public void setTransformPosition(float X, float Y) {
-		this.transform.set(new Vector2f(X, Y));
-	}
+	protected void update() {}
 	
-	public GuiRenderer.stickTo getStickTo() {
-		return stickTo;
-	}
-
-	public void setStickTo(GuiRenderer.stickTo stickTo) {
-		this.stickTo = stickTo;
-	}
-
-	public int getHeight() {
-		return lineHeight*lines.size();
-	}
-	
-	public void setPosition(Vector2f direction) {
-		this.position.set(direction.x, -direction.y);
-		setTransformPosition(direction);
-	}
-	
-	public void setPosition(float X, float Y) {
-		this.position.set(X, -Y);
-		setTransformPosition(X, Y);
-	}
-	
-	public void move(Vector2f direction) {
-		this.position.add(direction.x, -direction.y);
-	}
-	
-	public void move(float X, float Y) {
-		this.position.add(X, -Y);
-	}
-	
-	public Vector2f getPosition() {
-		return position;
-	}
 	////////////// NEW CLASS /////////////////////
 	private class Word {
 		private int wordWidth;

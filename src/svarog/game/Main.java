@@ -12,7 +12,9 @@ import java.util.List;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.Player;
+import svarog.gui.Answer;
 import svarog.gui.Button;
+import svarog.gui.Dialog;
 import svarog.gui.Group;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
@@ -61,6 +63,10 @@ public class Main {
 		/////////////////////////////////////////////////////////////////////////////////////
 
 		/////// GUI  ////////////////////////////////////////////////////////////////////////
+		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
+		Font pressStart = new Font("font", new Color((byte)255, (byte)255, (byte)255));
+		Font pressStartY = new Font("font", new Color((byte)255, (byte)255, (byte)0));
+		
 		Shader guiShader = new Shader("shader");
 		GuiRenderer guiRenderer = new GuiRenderer(window);
 		
@@ -68,14 +74,17 @@ public class Main {
 		guiRenderer.setBubbleRight(Texture.getImageBuffer("images/bubble/right.png"));
 		guiRenderer.setBubbleCenter(Texture.getImageBuffer("images/bubble/center.png"));
 		
+		guiRenderer.setTopDialog(Texture.getImageBuffer("images/dialog/dialog_top.png"));
+		guiRenderer.setCenterDialog(Texture.getImageBuffer("images/dialog/dialog_center.png"));
+		guiRenderer.setDialogFont(pressStart);
+		guiRenderer.setAnswerFont(pressStartY);
+		
 		GuiPanels panels = new GuiPanels();
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
 		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
 		panels.updateDynamicGuiElements(guiRenderer, window);
 		
 		Group group1 = new Group();
-		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
-		Font pressStart = new Font("font", new Color((byte)255, (byte)255, (byte)255));
 		Line test1 = new Line(GuiRenderer.stickTo.BottomLeft);
 		test1.setString("Tekst w innym miejscu", verdana);
 		test1.move(95, -25);
@@ -106,7 +115,13 @@ public class Main {
 		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(group1);
 		
-		
+		Dialog dialog = new Dialog();
+		dialog.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac. In hendrerit, nulla ut vulputate maximus, tortor arcu varius diam, ac molestie arcu nisi id odio. ");
+		List<Answer> ans = new ArrayList<Answer>();
+		ans.add(new Answer(0, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac.", 1));
+		ans.add(new Answer(1, "Test2", 1));
+		dialog.setAnswers(ans);
+		guiRenderer.showDialog(dialog);
 		
 		/// Tiles on GUI ///////////////////////////
 		TileSheet tileSheet = new TileSheet();

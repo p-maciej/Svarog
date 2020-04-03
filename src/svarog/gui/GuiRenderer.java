@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
 import svarog.gui.font.Line;
+import svarog.gui.font.Font;
 import svarog.gui.font.TextBlock;
 import svarog.io.Window;
 import svarog.io.Window.Cursor;
@@ -60,8 +62,18 @@ public class GuiRenderer implements RenderProperties {
 
 	private static int bubbleXoffest = 35; // I thing we can make setter for this to be customizable
 	private static int bubbleYoffset = 20;
+	private static int worldXOffset = -350;
+	private static int worldYOffset = 70;
 	
 	private TileSheet tileSheet;
+	
+	private int dialogId;
+	private Button dialogButton;
+	
+	private Font dialogFont;
+	private Font answerFont;
+	private TextureObject dialogTop;
+	private BufferedImage dialogCenter;
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
@@ -85,6 +97,13 @@ public class GuiRenderer implements RenderProperties {
 		
 		/// GROUPS /////////
 		for(Group group : groups) {
+			if(group.getStickTo() != null) {
+				setGroupStickTo(group);
+				group.getTransform().add(group.getPosition().x, group.getPosition().y);
+			} else {
+				group.getTransform().set(group.getPosition().x, group.getPosition().y);
+			}
+			
 			for(GuiObject object : group.getTextureObjectList()) {
 				if(object.getStickTo() != null) {
 					setObjectStickTo(object);
@@ -97,9 +116,9 @@ public class GuiRenderer implements RenderProperties {
 			for(TextBlock textBlock : group.getTextBlockList()) {
 				if(textBlock.getStickTo() != null) {
 					setTextBlockStickTo(textBlock);
-					textBlock.getTranform().add(textBlock.getPosition().x+group.getTransform().x, textBlock.getPosition().y+group.getTransform().y);
+					textBlock.getTransform().getPosition().add(textBlock.getPosition().x+group.getTransform().x, textBlock.getPosition().y+group.getTransform().y, 0);
 				} else {
-					textBlock.getTranform().set(textBlock.getPosition().x+group.getTransform().x, textBlock.getPosition().y+group.getTransform().y);
+					textBlock.getTransform().getPosition().set(textBlock.getPosition().x+group.getTransform().x, textBlock.getPosition().y+group.getTransform().y, 0);
 				}
 			}
 		}
@@ -144,9 +163,9 @@ public class GuiRenderer implements RenderProperties {
 		for(TextBlock textBlock : textBlocks) {
 			if(textBlock.getStickTo() != null) {
 				setTextBlockStickTo(textBlock);
-				textBlock.getTranform().add(textBlock.getPosition().x, textBlock.getPosition().y);
+				textBlock.getTransform().getPosition().add(textBlock.getPosition().x, textBlock.getPosition().y, 0);
 			} else {
-				textBlock.getTranform().set(textBlock.getPosition().y, textBlock.getPosition().y);
+				textBlock.getTransform().getPosition().set(textBlock.getPosition().y, textBlock.getPosition().y, 0);
 			}	
 		}
 		///////////////////////////////////////////
@@ -220,6 +239,12 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 
+		if(dialogButton != null) {
+			if(dialogButton.isClicked()) {
+				removeGroup(dialogId);
+			}
+		}
+		
 		if(setPointer == true)
 			window.requestCursor(Cursor.Pointer);
 	}
@@ -229,8 +254,8 @@ public class GuiRenderer implements RenderProperties {
 			Matrix4f projection = camera.getProjection();
 			Line line = block.getLines().get(i);
 					
-			line.getTransform().getPosition().x = block.getTranform().x + line.getWidth()/2;
-			line.getTransform().getPosition().y = block.getTranform().y + -i*line.getHeight();
+			line.getTransform().getPosition().x = block.getTransform().getPosition().x + line.getWidth()/2;
+			line.getTransform().getPosition().y = block.getTransform().getPosition().y + -i*line.getHeight();
 					
 			line.getTexture().bind(0);
 			shader.bind();
@@ -432,30 +457,110 @@ public class GuiRenderer implements RenderProperties {
 	private void setTextBlockStickTo(TextBlock object) {
 		switch(object.getStickTo()) {
 			case Top:
-				object.setTransformPosition(0, getTop() - 10);
-				break;
+				object.setTranformPosition(0, getTop() - 10);
+				break; 
 			case Bottom:
-				object.setTransformPosition(0, getBottom() + object.getHeight());
+				object.setTranformPosition(0, getBottom() + object.getHeight());
 				break;
 			case BottomLeft:
-				object.setTransformPosition(getLeft(), getBottom() + object.getHeight());
+				object.setTranformPosition(getLeft(), getBottom() + object.getHeight());
 				break;
 			case BottomRight:
-				object.setTransformPosition(getRight() - object.getMaxWidth(), getBottom() + object.getHeight());
+				object.setTranformPosition(getRight() - object.getWidth(), getBottom() + object.getHeight());
 				break;
 			case Left:
-				object.setTransformPosition(getLeft(), 0);
+				object.setTranformPosition(getLeft(), 0);
 				break;
 			case Right:
-				object.setTransformPosition(getRight() - object.getMaxWidth(), 0);
+				object.setTranformPosition(getRight() - object.getWidth(), 0);
 				break;
 			case TopLeft:
-				object.setTransformPosition(getLeft(), getTop() - 10);
+				object.setTranformPosition(getLeft(), getTop() - 10);
 				break;
 			case TopRight:
-				object.setTransformPosition(getRight() - object.getMaxWidth(), getTop() - 10);
+				object.setTranformPosition(getRight() - object.getWidth(), getTop() - 10);
 				break;
 		}
+	}
+	
+	private void createDialog(Dialog dialog) {
+		Group group = new Group();
+		
+		int yOffset = 36;
+		int interspace = 8;
+		TextBlock content = new TextBlock(550, new Vector2f());
+		content.setString(dialogFont, dialog.getContent());
+		
+		int height = content.getHeight()-dialogTop.getHeight()+yOffset;
+		int top = 0;
+		int left = -dialogTop.getWidth()/2+15;
+		
+		
+		
+		for(int i = dialog.getAnswers().size()-1; i >= 0; i--) {
+			Answer answer = dialog.getAnswers().get(i);
+			
+			TextBlock ans = new TextBlock(535, new Vector2f());
+			ans.setString(answerFont, answer.getContent());
+			top -= ans.getHeight()+interspace;
+			height += ans.getHeight()+interspace;
+			ans.move(left+15, top);
+			
+			group.addTextBlock(ans);
+		}
+
+		top -= content.getHeight()+interspace;
+		
+		ByteBuffer center = BufferUtils.createByteBuffer(height*dialogTop.getWidth()*4);
+		
+		for(int j = 0; j < dialogTop.getWidth(); j++) {
+			for(int i = 0; i < height; i++) {
+				int pixel = dialogCenter.getRGB(j, 0);
+				center.put(((byte)((pixel >> 16) & 0xFF)));
+				center.put(((byte)((pixel >> 8) & 0xFF)));
+				center.put((byte)(pixel & 0xFF));
+				center.put(((byte)((pixel >> 24) & 0xFF)));
+			}
+		}
+		center.flip();
+		
+		TextureObject centerTexture = new TextureObject(new Texture(center, dialogTop.getWidth(), height));	
+		
+
+		content.move(left, top);
+		centerTexture.move(0, -height/2);
+		dialogTop.move(0, -height-dialogTop.getHeight()/2);
+
+		Button closeDialog = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(-left, -top+10));
+		dialogButton = closeDialog;
+		
+		
+		group.addTextureObject(dialogTop);	
+		group.addTextureObject(centerTexture);
+		group.addTextBlock(content);
+		group.addTextureObject(closeDialog);
+		
+		dialogId = group.getId();
+		group.setStickTo(stickTo.Bottom);
+		group.move(worldXOffset/2, worldYOffset);
+		groups.add(group);
+	}
+	
+	public void setTopDialog(BufferedImage topDialog) {
+		TextureObject tempDialogTop = new TextureObject(new Texture(topDialog));
+		this.dialogTop = tempDialogTop;
+	}
+	
+	public void setCenterDialog(BufferedImage centerImage) {
+		this.dialogCenter = centerImage;
+	}
+	
+	public void showDialog(Dialog dialog) {
+		createDialog(dialog);
+	}
+	
+	public void closeDialog() {
+		removeGroup(dialogId);
 	}
 
 	public static int getClickedObjectId() {
@@ -522,5 +627,19 @@ public class GuiRenderer implements RenderProperties {
 	
 	public float getBottom() {
 		return -windowHeight/2;
+	}
+	
+	public void removeGroup(int groupId) {
+		for(int i = 0; i < groups.size(); i++)
+			if(groups.get(i).getId() == groupId)
+				groups.remove(i);
+	}
+
+	public void setDialogFont(Font dialogFont) {
+		this.dialogFont = dialogFont;
+	}
+
+	public void setAnswerFont(Font answerFont) {
+		this.answerFont = answerFont;
 	}
 }
