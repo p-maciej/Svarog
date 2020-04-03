@@ -91,7 +91,7 @@ public class World implements RenderProperties {
 		for(Entity entity : entities) {
 			entity.render(shader, camera, this); // Entities rendering
 			if(isOverEntity(entity, camera, window))
-				mouseOverEntityId = entity.getId();
+				mouseOverEntityId = entity.getObjectId();
 		}
 		
 		for(int i = 0; i < viewX; i++) {
@@ -250,7 +250,7 @@ public class World implements RenderProperties {
 	
 	public Entity getEntityById(int id) {
 		for(Entity entity : entities) {
-			if(entity.getId() == id)
+			if(entity.getObjectId() == id)
 				return entity;
 		}
 		

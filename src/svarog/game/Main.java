@@ -54,12 +54,11 @@ public class Main {
 		Shader shader = new Shader("shader");
 		Camera camera = new Camera();
 
-		Player player = new Player("player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
+		Player player = new Player(0, "player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
 		player.setName("Ty");
 		player.setHpXpAttack(100, 0, 50, 60);
 
 		World currentWorld = new World(1, 0, 0);
-		//= StartWorld.getWorld(player, camera, window);
 		/////////////////////////////////////////////////////////////////////////////////////
 
 		/////// GUI  ////////////////////////////////////////////////////////////////////////
@@ -114,14 +113,6 @@ public class Main {
 		guiRenderer.addGuiObject(button1);
 		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(group1);
-		
-		Dialog dialog = new Dialog();
-		dialog.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac. In hendrerit, nulla ut vulputate maximus, tortor arcu varius diam, ac molestie arcu nisi id odio. ");
-		List<Answer> ans = new ArrayList<Answer>();
-		ans.add(new Answer(0, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac.", 1));
-		ans.add(new Answer(1, "Test2", 1));
-		dialog.setAnswers(ans);
-		guiRenderer.showDialog(dialog);
 		
 		/// Tiles on GUI ///////////////////////////
 		TileSheet tileSheet = new TileSheet();
@@ -198,6 +189,7 @@ public class Main {
 		int nextFrameLoadWorld = 1;
 		int currentEntityId = -1;
 		long startNanos = 0;
+		Dialog dialog = null;
 		////////////////////////////////////////////////////////////////////////////////////
 		
 		while(window.processProgram()) {										// This works while program is running
@@ -289,6 +281,18 @@ public class Main {
 							}
 						}
 					}
+					
+					if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
+						if(currentWorld.getEntity(i).getId() == 4) {
+							dialog = new Dialog();
+							dialog.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac. In hendrerit, nulla ut vulputate maximus, tortor arcu varius diam, ac molestie arcu nisi id odio. ");
+							List<Answer> ans = new ArrayList<Answer>();
+							ans.add(new Answer(0, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac.", 1));
+							ans.add(new Answer(1, "Test2", 1));
+							dialog.setAnswers(ans);
+							guiRenderer.showDialog(dialog);
+						}
+					}
 				}
 				
 				guiRenderer.renderGuiObjects(guiShader, window);
@@ -301,19 +305,20 @@ public class Main {
 					System.out.println("Health of player was fully recovered: " + player.getHP() + "hp.");
 				}
 				
-				if(dialog.clickedAnswer() != null) {
-					if(dialog.clickedAnswer().getId() == 0) {
-						guiRenderer.closeDialog();
-						Dialog dialog1 = new Dialog();
-						dialog1.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ");
-						List<Answer> ans1 = new ArrayList<Answer>();
-						ans1.add(new Answer(0, "Ala ma kota", 1));
-						ans1.add(new Answer(1, "Tekst saukdhskajhdksajhdkjsahkjd 1", 1));
-						dialog1.setAnswers(ans1);
-						guiRenderer.showDialog(dialog1);
+				if(dialog != null) {
+					if(dialog.clickedAnswer() != null) {
+						if(dialog.clickedAnswer().getId() == 0) {
+							guiRenderer.closeDialog();
+							Dialog dialog1 = new Dialog();
+							dialog1.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ");
+							List<Answer> ans1 = new ArrayList<Answer>();
+							ans1.add(new Answer(0, "Ala ma kota", 1));
+							ans1.add(new Answer(1, "Tekst saukdhskajhdksajhdkjsahkjd 1", 1));
+							dialog1.setAnswers(ans1);
+							guiRenderer.showDialog(dialog1);
+						}
 					}
 				}
-				
 				
 				for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
 					if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {

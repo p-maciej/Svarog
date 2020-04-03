@@ -30,8 +30,8 @@ public class Player extends Entity {
 	private int maxAttack;
 	private int minAttack;
 	
-	public Player(String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
-		super(new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
+	public Player(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
+		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
 		
 		this.texturesPath = texturePath;
 		this.fileName = filename;

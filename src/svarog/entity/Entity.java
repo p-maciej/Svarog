@@ -29,6 +29,7 @@ public class Entity implements RenderProperties {
 	
 	//// Properties ////
 	private int id;
+	private int objectId;
 	private boolean isStatic = true;
 	private boolean fullBoundingBox;
 	
@@ -45,9 +46,9 @@ public class Entity implements RenderProperties {
 	}
 	
 	// Animation constructor
-	public Entity(Animation animation, Transform transform, boolean fullBoundingBox) {	
-		id = auto_increment;
-		auto_increment++;
+	public Entity(int id, Animation animation, Transform transform, boolean fullBoundingBox) {	
+		objectId = auto_increment++;
+		this.setId(id);
 		
 		this.entityName = new String();
 		model = new Model(verticesArray, textureArray, indicesArray);
@@ -65,9 +66,9 @@ public class Entity implements RenderProperties {
 	}
 	
 	// Texture constructor
-	public Entity(Texture texture, Transform transform, boolean fullBoundingBox) {		
-		id = auto_increment;
-		auto_increment++;
+	public Entity(int id, Texture texture, Transform transform, boolean fullBoundingBox) {		
+		objectId = auto_increment++;
+		this.setId(id);
 		
 		this.entityName = new String();
 		model = new Model(verticesArray, textureArray, indicesArray);
@@ -240,6 +241,10 @@ public class Entity implements RenderProperties {
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	protected void setTexture(Direction direction, Texture texture) {
 		this.currentDirection = direction;
@@ -252,5 +257,9 @@ public class Entity implements RenderProperties {
 
 	public void setName(String entityName) {
 		this.entityName = entityName;
+	}
+
+	public int getObjectId() {
+		return objectId;
 	}
 }

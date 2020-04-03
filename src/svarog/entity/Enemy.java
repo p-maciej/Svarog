@@ -23,8 +23,8 @@ public class Enemy extends Entity {
 	private int minAttack;
 	private int xpForKilling;
 	
-	public Enemy(String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
-		super(new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
+	public Enemy(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
+		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
 		
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
@@ -32,8 +32,8 @@ public class Enemy extends Entity {
 		super.setIsStatic(false); // Non-static - default setting for Enemy
 	}
 	
-	public Enemy(String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp) {
-		super(new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
+	public Enemy(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp) {
+		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
@@ -45,8 +45,8 @@ public class Enemy extends Entity {
 		this.hp.SetMaxHP(hp);
 	}
 	
-	public Enemy(String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, List<Item> items) {
-		super(new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
+	public Enemy(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, List<Item> items) {
+		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		

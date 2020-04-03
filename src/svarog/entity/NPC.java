@@ -18,8 +18,8 @@ public class NPC extends Entity {
 	
 	private List<Item> items = new ArrayList<Item>();
 
-	public NPC(String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
-		super(new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
+	public NPC(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
+		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
 		
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
@@ -27,8 +27,8 @@ public class NPC extends Entity {
 		super.setIsStatic(true); // static - default setting for NPC  
 	}
 	
-	public NPC(String texturePath, String filename, Transform transform, boolean fullBoundingBox, List<Item> items) {
-		super(new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
+	public NPC(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox, List<Item> items) {
+		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
 		
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
