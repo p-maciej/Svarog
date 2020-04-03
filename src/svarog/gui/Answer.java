@@ -1,18 +1,21 @@
 package svarog.gui;
 
 public class Answer {
+	private int objectId;
 	private int id;
 	private String content;
 	private int leadsTo;
 	
 	public Answer() {
 		this.setId(-1);
+		this.setObjectId(-1);
 		this.setContent("");
 		this.setLeadsTo(-1);
 	}
 	
 	public Answer(int id, String content, int leadsTo) {
 		this.setId(id);
+		this.setObjectId(-1);
 		this.setContent(content);
 		this.setLeadsTo(leadsTo);
 	}
@@ -39,5 +42,13 @@ public class Answer {
 
 	public void setLeadsTo(int leadsTo) {
 		this.leadsTo = leadsTo;
+	}
+
+	public int getObjectId() {
+		return objectId;
+	}
+
+	public void setObjectId(int objectId) {
+		this.objectId = objectId;
 	}
 }

@@ -32,4 +32,12 @@ public class Dialog {
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
 	} 
+	
+	public Answer clickedAnswer() {	
+		for(Answer answer : answers)
+			if(answer.getObjectId() == GuiRenderer.getClickedObjectId())
+				return answer;
+		
+		return null;
+	}
 }

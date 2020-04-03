@@ -9,6 +9,7 @@ import org.lwjgl.BufferUtils;
 
 import svarog.gui.GuiObject;
 import svarog.gui.GuiRenderer;
+import svarog.io.Window;
 import svarog.render.Texture;
 
 public class TextBlock  extends GuiObject {
@@ -19,6 +20,17 @@ public class TextBlock  extends GuiObject {
 	
 	public TextBlock(int maxWidth, Vector2f position) {
 		super(maxWidth, 0, position);
+		lines = new ArrayList<Line>();
+	}
+	
+	public TextBlock(int maxWidth, Vector2f position, boolean clickable) {
+		super(maxWidth, 0, position);
+		
+		if(clickable == true) {
+			super.setClickable(true);
+			super.setOverable(true);
+		}
+			
 		lines = new ArrayList<Line>();
 	}
 	
@@ -119,6 +131,17 @@ public class TextBlock  extends GuiObject {
 				return new Word(0, lastIndex, wordLength, false);
 		else
 			throw new IllegalStateException("Box is to small");
+	}
+	
+	@Override
+	public boolean isMouseOver(Window window, double x, double y) {
+		float posX = window.getWidth()/2 + getTransform().getPosition().x;
+		float posY = window.getHeight()/2 - getTransform().getPosition().y - 10;
+		
+		if(x > posX && y > posY && y < posY+getHeight() && x < posX+getWidth())
+			return true;
+		else
+			return false;
 	}
 	
 	protected Texture getTexture() { return null; }

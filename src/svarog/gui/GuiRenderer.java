@@ -244,12 +244,27 @@ public class GuiRenderer implements RenderProperties {
 				removeGroup(dialogId);
 			}
 		}
-		
+
 		if(setPointer == true)
 			window.requestCursor(Cursor.Pointer);
 	}
 	
 	private void renderTextBlock(TextBlock block, Shader shader, Window window) {
+		// Mouse interaction //
+		if(block.isOverable()) {
+			if(block.isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY())) {
+				if(block.isOverable())
+					mouseOverObjectId = block.getId();
+					
+				if(block.isClickable() && window.getInput().isMouseButtonPressed(0)) {
+					clickedObjectId = block.getId();
+				}
+				
+				if(block.isClickable())
+					setPointer = true;
+			}
+		}
+		/////////////////////
 		for(int i = 0; i < block.getLines().size(); i++) {
 			Matrix4f projection = camera.getProjection();
 			Line line = block.getLines().get(i);
@@ -500,12 +515,12 @@ public class GuiRenderer implements RenderProperties {
 		for(int i = dialog.getAnswers().size()-1; i >= 0; i--) {
 			Answer answer = dialog.getAnswers().get(i);
 			
-			TextBlock ans = new TextBlock(535, new Vector2f());
+			TextBlock ans = new TextBlock(535, new Vector2f(), true);
 			ans.setString(answerFont, answer.getContent());
 			top -= ans.getHeight()+interspace;
 			height += ans.getHeight()+interspace;
 			ans.move(left+15, top);
-			
+			answer.setObjectId(ans.getId());
 			group.addTextBlock(ans);
 		}
 
@@ -557,9 +572,11 @@ public class GuiRenderer implements RenderProperties {
 	
 	public void showDialog(Dialog dialog) {
 		createDialog(dialog);
+		updatePositions();
 	}
 	
 	public void closeDialog() {
+		dialogTop.setPosition(0,0);
 		removeGroup(dialogId);
 	}
 

@@ -301,7 +301,18 @@ public class Main {
 					System.out.println("Health of player was fully recovered: " + player.getHP() + "hp.");
 				}
 				
-				
+				if(dialog.clickedAnswer() != null) {
+					if(dialog.clickedAnswer().getId() == 0) {
+						guiRenderer.closeDialog();
+						Dialog dialog1 = new Dialog();
+						dialog1.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ");
+						List<Answer> ans1 = new ArrayList<Answer>();
+						ans1.add(new Answer(0, "Ala ma kota", 1));
+						ans1.add(new Answer(1, "Tekst saukdhskajhdksajhdkjsahkjd 1", 1));
+						dialog1.setAnswers(ans1);
+						guiRenderer.showDialog(dialog1);
+					}
+				}
 				
 				
 				for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
