@@ -12,11 +12,11 @@ import svarog.gui.GuiRenderer;
 import svarog.io.Window;
 import svarog.render.Texture;
 
-public class TextBlock  extends GuiObject {
+public class TextBlock extends GuiObject {
 	private static final char SPACE = 32; 
-	private List<Line> lines;
-	private String string;
-	private int lineHeight;
+	protected List<Line> lines;
+	protected String string;
+	protected int lineHeight;
 	
 	public TextBlock(int maxWidth, Vector2f position) {
 		super(maxWidth, 0, position);
@@ -54,11 +54,12 @@ public class TextBlock  extends GuiObject {
 
 	public void setString(Font font, String string) {
 		this.string = string;
-		addLines(font);
+		this.lines = addLines(font);
 		super.setSize(super.getWidth(), lineHeight*lines.size());
 	}
 
-	private void addLines(Font font) {
+	protected List<Line> addLines(Font font) {
+		List<Line> lines = new ArrayList<Line>();
 		int lineWidth = 0;
 		int wordHeight = 0;
 		int lineChars = 0;
@@ -76,19 +77,21 @@ public class TextBlock  extends GuiObject {
 				lineChars += word.getWordLength();
 					
 				if(i == string.length()-1) {
-					addLine(i+1, wordHeight, lineWidth, lineChars, font);
+					lines.add(addLine(i+1, wordHeight, lineWidth, lineChars, font));
 				}
 			} else {
 				i = i-(word.getWordLength()-1);
-				addLine(i, wordHeight, lineWidth, lineChars, font);
+				lines.add(addLine(i, wordHeight, lineWidth, lineChars, font));
 				lineChars = 0;
 				lineWidth = 0;
 				i--;
 			}
 		}
+		
+		return lines;
 	}
 	
-	private void addLine(int i, int lineHeight, int lineWidth, int lineChars, Font font) {
+	private Line addLine(int i, int lineHeight, int lineWidth, int lineChars, Font font) {
 		ByteBuffer line = BufferUtils.createByteBuffer(lineWidth*lineHeight*4);
 
 		for(int j = i-lineChars; j < i; j++) {
@@ -99,7 +102,7 @@ public class TextBlock  extends GuiObject {
 		}
 		line.flip();
 
-		lines.add(new Line(line, lineWidth, lineHeight));
+		return new Line(line, lineWidth, lineHeight);
 	}
 	
 	private Word attemptToAddWord(Font font, int index, int lineWidth) {
@@ -146,7 +149,7 @@ public class TextBlock  extends GuiObject {
 	
 	protected Texture getTexture() { return null; }
 	
-	protected void update() {}
+	public void update() {}
 	
 	////////////// NEW CLASS /////////////////////
 	private class Word {

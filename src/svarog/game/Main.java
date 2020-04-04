@@ -65,6 +65,7 @@ public class Main {
 		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
 		Font pressStart = new Font("font", new Color((byte)255, (byte)255, (byte)255));
 		Font pressStartY = new Font("font", new Color((byte)255, (byte)255, (byte)0));
+		Font pressStartR = new Font("font", new Color((byte)255, (byte)0, (byte)0));
 		
 		Shader guiShader = new Shader("shader");
 		GuiRenderer guiRenderer = new GuiRenderer(window);
@@ -77,6 +78,7 @@ public class Main {
 		guiRenderer.setCenterDialog(Texture.getImageBuffer("images/dialog/dialog_center.png"));
 		guiRenderer.setDialogFont(pressStart);
 		guiRenderer.setAnswerFont(pressStartY);
+		guiRenderer.setAnswerHoverFont(pressStartR);
 		
 		GuiPanels panels = new GuiPanels();
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
@@ -307,7 +309,6 @@ public class Main {
 				
 				if(dialog != null) {
 					if(dialog.clickedAnswer() != null) {
-						System.out.println(dialog.clickedAnswer().getId());
 						if(dialog.clickedAnswer().getId() == 0) {
 							guiRenderer.closeDialog();
 							Dialog dialog1 = new Dialog(2);

@@ -72,6 +72,7 @@ public class GuiRenderer implements RenderProperties {
 	
 	private Font dialogFont;
 	private Font answerFont;
+	private Font answerHoverFont;
 	private TextureObject dialogTop;
 	private BufferedImage dialogCenter;
 	
@@ -267,6 +268,9 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		/////////////////////
+		
+		block.update();
+		
 		for(int i = 0; i < block.getLines().size(); i++) {
 			Matrix4f projection = camera.getProjection();
 			Line line = block.getLines().get(i);
@@ -501,6 +505,7 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	private void createDialog(Dialog dialog) {
+		if(dialogTop != null && dialogCenter != null && answerFont != null && answerHoverFont != null && dialogFont != null) {
 			Group group = new Group();
 			
 			int yOffset = 36;
@@ -517,8 +522,8 @@ public class GuiRenderer implements RenderProperties {
 			for(int i = dialog.getAnswers().size()-1; i >= 0; i--) {
 				Answer answer = dialog.getAnswers().get(i);
 				
-				TextBlock ans = new TextBlock(535, new Vector2f(), true);
-				ans.setString(answerFont, answer.getContent());
+				TextBlockButton ans = new TextBlockButton(535, new Vector2f());
+				ans.setString(answerFont, answerHoverFont, answer.getContent());
 				top -= ans.getHeight()+interspace;
 				height += ans.getHeight()+interspace;
 				ans.move(left+15, top);
@@ -561,6 +566,8 @@ public class GuiRenderer implements RenderProperties {
 			group.setStickTo(stickTo.Bottom);
 			group.move(worldXOffset/2, worldYOffset);
 			groups.add(group);
+		} else
+			throw new IllegalStateException("Set all of required textures and fonts for dialog in renderer!");
 	}
 	
 	public void setTopDialog(BufferedImage topDialog) {
@@ -574,7 +581,6 @@ public class GuiRenderer implements RenderProperties {
 	
 	public void showDialog(Dialog dialog) {
 		if(dialogId == -1) {
-			System.out.println("ct");
 			createDialog(dialog);
 			updatePositions();
 		}
@@ -672,5 +678,9 @@ public class GuiRenderer implements RenderProperties {
 
 	public void setAnswerFont(Font answerFont) {
 		this.answerFont = answerFont;
+	}
+
+	public void setAnswerHoverFont(Font answerHoverFont) {
+		this.answerHoverFont = answerHoverFont;
 	}
 }
