@@ -3,7 +3,6 @@ package svarog.game;
 import org.joml.Vector2f;
 
 import svarog.entity.Enemy;
-import svarog.entity.Entity;
 import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.io.Window;
@@ -26,13 +25,13 @@ abstract class StartWorld {
 		world.loadMap("start_map.png", 32);
 
 		
-		Entity ent1 = new Entity(1, new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
+		NPC ent1 = new NPC(1, new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
 		ent1.setName("Maciej");
-		Entity ent2 = new Entity(2, new Texture("textures/player.png"), new Transform().setPosition(46, 27), true);
+		NPC ent2 = new NPC(2, new Texture("textures/player.png"), new Transform().setPosition(46, 27), true);
 		ent2.setName("Dawid");
-		Enemy ArchEnemy = new Enemy(3, "", "avatar", new Transform().setPosition(46, 29), true, 1, 50, 20, 150);
+		Enemy ArchEnemy = new Enemy(3, new Texture("textures/avatar.png"), new Transform().setPosition(46, 29), true, 1, 50, 20, 150);
 		ArchEnemy.setName("Ten Z³y");
-		NPC npc01 = new NPC(4, "", "npc01", new Transform().setPosition(46, 25), true);
+		NPC npc01 = new NPC(4, new Texture("textures/npc01.png"), new Transform().setPosition(46, 25), true);
 		npc01.setName("Sklepikarz");
 		
 		world.addEntity(ent1);

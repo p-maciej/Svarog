@@ -9,6 +9,7 @@ import svarog.objects.Item;
 import svarog.objects.ItemInfo;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.world.World;
 
 public class Enemy extends Entity {
 	
@@ -23,17 +24,20 @@ public class Enemy extends Entity {
 	private int minAttack;
 	private int xpForKilling;
 	
-	public Enemy(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
-		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
-		
+	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox) {
+		super(id, texture, transform, fullBoundingBox);
+		super.setClickable(true);
+		super.setOverable(true);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
 		super.setIsStatic(false); // Non-static - default setting for Enemy
 	}
 	
-	public Enemy(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp) {
-		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
+	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp) {
+		super(id, texture, transform, fullBoundingBox);
+		super.setClickable(true);
+		super.setOverable(true);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
@@ -45,8 +49,10 @@ public class Enemy extends Entity {
 		this.hp.SetMaxHP(hp);
 	}
 	
-	public Enemy(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, List<Item> items) {
-		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
+	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, List<Item> items) {
+		super(id, texture, transform, fullBoundingBox);
+		super.setClickable(true);
+		super.setOverable(true);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
@@ -103,5 +109,10 @@ public class Enemy extends Entity {
 	}
 	public int GetEnemyHP() {
 		return this.hp.GetHP();
+	}
+	
+	@Override
+	public boolean isClicked() {
+		return World.getClickedEntityId() == super.getId() ? true : false;
 	}
 }

@@ -7,6 +7,7 @@ import org.joml.Vector3f;
 import svarog.collision.AABB;
 import svarog.collision.Collision;
 import svarog.io.Window;
+import svarog.objects.MouseInteraction;
 import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Model;
@@ -16,7 +17,7 @@ import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.world.World;
 
-public class Entity implements RenderProperties {
+public abstract class Entity implements RenderProperties, MouseInteraction {
 	private static int auto_increment = 0;
 	
 	/// Model ////
@@ -37,6 +38,11 @@ public class Entity implements RenderProperties {
 	protected boolean[] isColliding = new boolean[2];
 	
 	private String entityName;
+	
+	
+	private boolean isClickable;
+	private boolean isMovable;
+	private boolean isOverable;
 	
 	protected enum Direction {
 		left,
@@ -261,5 +267,37 @@ public class Entity implements RenderProperties {
 
 	public int getObjectId() {
 		return objectId;
+	}
+	
+	public abstract boolean isClicked();
+
+	@Override
+	public boolean isClickable() {
+		return isClickable;
+	}
+
+	@Override
+	public boolean isMovable() {
+		return isMovable;
+	}
+
+	@Override
+	public boolean isOverable() {
+		return isOverable;
+	}
+
+	@Override
+	public void setClickable(boolean isClickable) {
+		this.isClickable = isClickable;
+	}
+
+	@Override
+	public void setMovable(boolean isMovable) {
+		this.isMovable = isMovable;
+	}
+
+	@Override
+	public void setOverable(boolean isOverable) {
+		this.isOverable = isOverable;
 	}
 }

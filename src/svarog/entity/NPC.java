@@ -9,6 +9,7 @@ import svarog.objects.Item;
 import svarog.objects.ItemInfo;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.world.World;
 
 public class NPC extends Entity {
 
@@ -18,18 +19,20 @@ public class NPC extends Entity {
 	
 	private List<Item> items = new ArrayList<Item>();
 
-	public NPC(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
-		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
-		
+	public NPC(int id, Texture texture, Transform transform, boolean fullBoundingBox) {
+		super(id, texture, transform, fullBoundingBox);
+		super.setOverable(true);
+		super.setClickable(true);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
 		super.setIsStatic(true); // static - default setting for NPC  
 	}
 	
-	public NPC(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox, List<Item> items) {
-		super(id, new Texture("textures/" + texturePath + "" + filename + ".png"), transform, fullBoundingBox);
-		
+	public NPC(int id, Texture texture, Transform transform, boolean fullBoundingBox, List<Item> items) {
+		super(id, texture, transform, fullBoundingBox);
+		super.setOverable(true);
+		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
@@ -44,6 +47,11 @@ public class NPC extends Entity {
 	
 	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
 		items.add(new Item(texture, position, itemInfo, hpRegeneration, attackBonus, lvlRequired, name, description, itemType));
+	}
+
+	@Override
+	public boolean isClicked() {
+		return World.getClickedEntityId() == super.getId() ? true : false;
 	}
 }
 

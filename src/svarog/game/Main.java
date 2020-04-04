@@ -239,15 +239,15 @@ public class Main {
 				
 				
 				
-				if(currentWorld.getMouseOverEntityId() >= 0) {
-					if(currentWorld.getMouseOverEntityId() != currentEntityId) {
+				if(World.getMouseOverEntityId() >= 0) {
+					if(World.getMouseOverEntityId() != currentEntityId) {
 						startNanos = Timer.getNanoTime();
-						currentEntityId = currentWorld.getMouseOverEntityId();
+						currentEntityId = World.getMouseOverEntityId();
 					}
 					
 					if(Timer.getDelay(startNanos, Timer.getNanoTime(), 0.4)) {
 						Line name = new Line(0, 0);
-						Entity ent = currentWorld.getEntityById(currentWorld.getMouseOverEntityId());
+						Entity ent = currentWorld.getEntityById(World.getMouseOverEntityId());
 						if(ent != null) {
 							name.setString(ent.getName(), pressStart);
 						
@@ -262,9 +262,9 @@ public class Main {
 				
 				//Quick check if attack system is working properly, please don't remove, just comment, thanks
 				for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) {
-					if(currentWorld.getEntity(i) instanceof Enemy) {
-						if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
-							while(((Enemy) (currentWorld.getEntity(i))).GetEnemyHP()>0) {
+					if(currentWorld.getEntity(i).isClicked()) {
+						if(currentWorld.getEntity(i) instanceof Enemy) {
+							while(((Enemy) (currentWorld.getEntity(i))).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
 								System.out.println("Enemy HP (before attack): " + ((Enemy) (currentWorld.getEntity(i))).GetEnemyHP());
 								((Enemy) (currentWorld.getEntity(i))).DecreaseEnemyHP(player.getRandomAttack());
 								System.out.println("Enemy HP:  (after attack): " + ((Enemy) (currentWorld.getEntity(i))).GetEnemyHP());

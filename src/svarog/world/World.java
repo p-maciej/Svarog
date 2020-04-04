@@ -48,7 +48,8 @@ public class World implements RenderProperties {
 	private int mouseOverX;
 	private int mouseOverY;
 	
-	private int mouseOverEntityId;
+	private static int mouseOverEntityId;
+	private static int clickedEntityId;
 	
 	public World(int id, int width, int height) {
 		entities = new ArrayList<Entity>();
@@ -69,6 +70,8 @@ public class World implements RenderProperties {
 	
 	public void render(Shader shader, Camera camera, Window window) {	
 		mouseOverEntityId = -1;
+		clickedEntityId = -1;
+		
 		int posX = (int)(camera.getPosition().x / (scale*2));
 		int posY = (int)(camera.getPosition().y / (scale*2));
 
@@ -90,8 +93,15 @@ public class World implements RenderProperties {
 		
 		for(Entity entity : entities) {
 			entity.render(shader, camera, this); // Entities rendering
-			if(isOverEntity(entity, camera, window))
-				mouseOverEntityId = entity.getObjectId();
+			if(entity.isOverable()) {
+				if(isOverEntity(entity, camera, window)) {
+					mouseOverEntityId = entity.getObjectId();
+					
+					if(entity.isClickable())
+						if(window.getInput().isMouseButtonPressed(0))
+							clickedEntityId = mouseOverEntityId;
+				}
+			}
 		}
 		
 		for(int i = 0; i < viewX; i++) {
@@ -395,7 +405,11 @@ public class World implements RenderProperties {
 		return mouseOverY;
 	}
 
-	public int getMouseOverEntityId() {
+	public static int getMouseOverEntityId() {
 		return mouseOverEntityId;
+	}
+
+	public static int getClickedEntityId() {
+		return clickedEntityId;
 	}
 }

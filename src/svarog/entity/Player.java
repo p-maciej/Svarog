@@ -277,4 +277,9 @@ public class Player extends Entity {
 		}
 		this.minAttack = minAttack;
 	}
+
+	@Override
+	public boolean isClicked() {
+		return false;
+	}
 }

@@ -23,7 +23,6 @@ public abstract class GuiObject implements MouseInteraction {
 	private boolean isClickable;
 	private boolean isMovable;
 	private boolean isOverAllowed;
-	private String overDescription;
 
 	private static final float scale = 16f;
 	
@@ -160,15 +159,6 @@ public abstract class GuiObject implements MouseInteraction {
 	@Override
 	public boolean isOverable() {
 		return isOverAllowed;
-	}
-
-	@Override
-	public String mouseOverDescription() {
-		return overDescription;
-	}
-
-	public void setOverDescription(String overDescription) {
-		this.overDescription = overDescription;
 	}
 
 	public void setClickable(boolean isClickable) {
