@@ -7,15 +7,15 @@ public class Answer {
 	private int leadsTo;
 	
 	public Answer() {
-		this.setId(-1);
-		this.setObjectId(-1);
+		this.setId(-2);
+		this.setObjectId(-2);
 		this.setContent("");
-		this.setLeadsTo(-1);
+		this.setLeadsTo(-2);
 	}
 	
 	public Answer(int id, String content, int leadsTo) {
 		this.setId(id);
-		this.setObjectId(-1);
+		this.setObjectId(-2);
 		this.setContent(content);
 		this.setLeadsTo(leadsTo);
 	}

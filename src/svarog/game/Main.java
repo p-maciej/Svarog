@@ -283,8 +283,8 @@ public class Main {
 					}
 					
 					if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
-						if(currentWorld.getEntity(i).getId() == 4) {
-							dialog = new Dialog();
+						if(currentWorld.getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
+							dialog = new Dialog(1);
 							dialog.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac. In hendrerit, nulla ut vulputate maximus, tortor arcu varius diam, ac molestie arcu nisi id odio. ");
 							List<Answer> ans = new ArrayList<Answer>();
 							ans.add(new Answer(0, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac.", 1));
@@ -307,9 +307,10 @@ public class Main {
 				
 				if(dialog != null) {
 					if(dialog.clickedAnswer() != null) {
+						System.out.println(dialog.clickedAnswer().getId());
 						if(dialog.clickedAnswer().getId() == 0) {
 							guiRenderer.closeDialog();
-							Dialog dialog1 = new Dialog();
+							Dialog dialog1 = new Dialog(2);
 							dialog1.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ");
 							List<Answer> ans1 = new ArrayList<Answer>();
 							ans1.add(new Answer(0, "Ala ma kota", 1));

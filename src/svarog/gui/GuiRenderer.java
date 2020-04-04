@@ -91,6 +91,8 @@ public class GuiRenderer implements RenderProperties {
 		
 		draggingFromObjectId = -1;
 		objectDraggedOut = false;
+		
+		dialogId = -1;
 	}
 	
 	public void updatePositions() {
@@ -241,7 +243,7 @@ public class GuiRenderer implements RenderProperties {
 
 		if(dialogButton != null) {
 			if(dialogButton.isClicked()) {
-				removeGroup(dialogId);
+				closeDialog();
 			}
 		}
 
@@ -499,66 +501,66 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	private void createDialog(Dialog dialog) {
-		Group group = new Group();
-		
-		int yOffset = 36;
-		int interspace = 8;
-		TextBlock content = new TextBlock(550, new Vector2f());
-		content.setString(dialogFont, dialog.getContent());
-		
-		int height = content.getHeight()-dialogTop.getHeight()+yOffset;
-		int top = 0;
-		int left = -dialogTop.getWidth()/2+15;
-		
-		
-		
-		for(int i = dialog.getAnswers().size()-1; i >= 0; i--) {
-			Answer answer = dialog.getAnswers().get(i);
+			Group group = new Group();
 			
-			TextBlock ans = new TextBlock(535, new Vector2f(), true);
-			ans.setString(answerFont, answer.getContent());
-			top -= ans.getHeight()+interspace;
-			height += ans.getHeight()+interspace;
-			ans.move(left+15, top);
-			answer.setObjectId(ans.getId());
-			group.addTextBlock(ans);
-		}
-
-		top -= content.getHeight()+interspace;
-		
-		ByteBuffer center = BufferUtils.createByteBuffer(height*dialogTop.getWidth()*4);
-		
-		for(int j = 0; j < dialogTop.getWidth(); j++) {
-			for(int i = 0; i < height; i++) {
-				int pixel = dialogCenter.getRGB(j, 0);
-				center.put(((byte)((pixel >> 16) & 0xFF)));
-				center.put(((byte)((pixel >> 8) & 0xFF)));
-				center.put((byte)(pixel & 0xFF));
-				center.put(((byte)((pixel >> 24) & 0xFF)));
+			int yOffset = 36;
+			int interspace = 8;
+			TextBlock content = new TextBlock(550, new Vector2f());
+			content.setString(dialogFont, dialog.getContent());
+			
+			int height = content.getHeight()-dialogTop.getHeight()+yOffset;
+			int top = 0;
+			int left = -dialogTop.getWidth()/2+15;
+			
+			
+			
+			for(int i = dialog.getAnswers().size()-1; i >= 0; i--) {
+				Answer answer = dialog.getAnswers().get(i);
+				
+				TextBlock ans = new TextBlock(535, new Vector2f(), true);
+				ans.setString(answerFont, answer.getContent());
+				top -= ans.getHeight()+interspace;
+				height += ans.getHeight()+interspace;
+				ans.move(left+15, top);
+				answer.setObjectId(ans.getId());
+				group.addTextBlock(ans);
 			}
-		}
-		center.flip();
-		
-		TextureObject centerTexture = new TextureObject(new Texture(center, dialogTop.getWidth(), height));	
-		
-
-		content.move(left, top);
-		centerTexture.move(0, -height/2);
-		dialogTop.move(0, -height-dialogTop.getHeight()/2);
-
-		Button closeDialog = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(-left, -top+10));
-		dialogButton = closeDialog;
-		
-		
-		group.addTextureObject(dialogTop);	
-		group.addTextureObject(centerTexture);
-		group.addTextBlock(content);
-		group.addTextureObject(closeDialog);
-		
-		dialogId = group.getId();
-		group.setStickTo(stickTo.Bottom);
-		group.move(worldXOffset/2, worldYOffset);
-		groups.add(group);
+	
+			top -= content.getHeight()+interspace;
+			
+			ByteBuffer center = BufferUtils.createByteBuffer(height*dialogTop.getWidth()*4);
+			
+			for(int j = 0; j < dialogTop.getWidth(); j++) {
+				for(int i = 0; i < height; i++) {
+					int pixel = dialogCenter.getRGB(j, 0);
+					center.put(((byte)((pixel >> 16) & 0xFF)));
+					center.put(((byte)((pixel >> 8) & 0xFF)));
+					center.put((byte)(pixel & 0xFF));
+					center.put(((byte)((pixel >> 24) & 0xFF)));
+				}
+			}
+			center.flip();
+			
+			TextureObject centerTexture = new TextureObject(new Texture(center, dialogTop.getWidth(), height));	
+			
+	
+			content.move(left, top);
+			centerTexture.move(0, -height/2);
+			dialogTop.setPosition(0, height+dialogTop.getHeight()/2);
+	
+			Button closeDialog = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(-left, -top+10));
+			dialogButton = closeDialog;
+			
+			
+			group.addTextureObject(dialogTop);	
+			group.addTextureObject(centerTexture);
+			group.addTextBlock(content);
+			group.addTextureObject(closeDialog);
+			
+			dialogId = group.getId();
+			group.setStickTo(stickTo.Bottom);
+			group.move(worldXOffset/2, worldYOffset);
+			groups.add(group);
 	}
 	
 	public void setTopDialog(BufferedImage topDialog) {
@@ -571,13 +573,25 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	public void showDialog(Dialog dialog) {
-		createDialog(dialog);
-		updatePositions();
+		if(dialogId == -1) {
+			System.out.println("ct");
+			createDialog(dialog);
+			updatePositions();
+		}
 	}
 	
-	public void closeDialog() {
-		dialogTop.setPosition(0,0);
-		removeGroup(dialogId);
+	public void closeDialog() {	
+		if(dialogId >= 0) {
+			removeGroup(dialogId);
+			dialogId = -1;
+		}
+	}
+	
+	public boolean isDialogOpen() {
+		if(dialogId >= 0)
+			return true;
+		else 
+			return false;
 	}
 
 	public static int getClickedObjectId() {

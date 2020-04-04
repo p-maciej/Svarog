@@ -6,13 +6,16 @@ import java.util.List;
 public class Dialog {
 	private String content;
 	private List<Answer> answers;
+	private int id;
 	
-	public Dialog() {
+	public Dialog(int dialogId) {
+		this.setId(dialogId);
 		this.setContent("");
 		this.setAnswers(new ArrayList<Answer>());
 	}
 	
-	public Dialog(String content, List<Answer> answers) {
+	public Dialog(int dialogId, String content, List<Answer> answers) {
+		this.setId(dialogId);
 		this.setContent(content);
 		this.setAnswers(answers);
 	}
@@ -33,11 +36,19 @@ public class Dialog {
 		this.answers = answers;
 	} 
 	
-	public Answer clickedAnswer() {	
+	public Answer clickedAnswer() {
 		for(Answer answer : answers)
 			if(answer.getObjectId() == GuiRenderer.getClickedObjectId())
 				return answer;
 		
 		return null;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
