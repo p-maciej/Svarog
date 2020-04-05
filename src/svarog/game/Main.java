@@ -36,39 +36,52 @@ import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.world.World;
 
+
+
 public class Main {
-	public static void main(String[] args) {
-		///////////////// INIT ///////////////////////////////////////////////////////////////
-		Window.setCallbacks();
-		if(!glfwInit()) { 													// Library init
-			throw new IllegalStateException("Failed to initialize GLFW");
-		}
-		
-		Window window = new Window(); 
+	private static Window window;
+	private static Shader shader;
+	private static Camera camera;
+	private static Player player;
+	private static World currentWorld;
+	private static Shader guiShader;
+	private static GuiRenderer guiRenderer;
+	private static Font verdana;
+	private static Font pressStart;
+	private static Font pressStartY;
+	private static Font pressStartR;
+	private static GuiPanels panels;
+	private static TileSheet tileSheet;
+	private static GuiRenderer loadingScreen;
+	private static Button button1;
+	private static Button healBtn;
+	
+	private static void windowInit() {
+		window = new Window();
 		window.setSize(1200, 800);
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
 		window.glInit();
-		//////////////////////////////////////////////////////////////////////////////////////
-		
+	}
+	
+	private static void worldInit() {	
 		//////////////// WORLD ///////////////////////////////////////////////////////////////
-		Shader shader = new Shader("shader");
-		Camera camera = new Camera();
+		shader = new Shader("shader");
+		camera = new Camera();
 
-		Player player = new Player(0, "player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
+		player = new Player(0, "player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
 		player.setName("Ty");
 		player.setHpXpAttack(100, 0, 50, 60);
 
-		World currentWorld = new World(1, 0, 0);
+		currentWorld = new World(1, 0, 0);
 		/////////////////////////////////////////////////////////////////////////////////////
-
-		/////// GUI  ////////////////////////////////////////////////////////////////////////
-		Font verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
-		Font pressStart = new Font("font", new Color((byte)255, (byte)255, (byte)255));
-		Font pressStartY = new Font("font", new Color((byte)255, (byte)255, (byte)0));
-		Font pressStartR = new Font("font", new Color((byte)255, (byte)0, (byte)0));
 		
-		Shader guiShader = new Shader("shader");
-		GuiRenderer guiRenderer = new GuiRenderer(window);
+		/////// GUI  ////////////////////////////////////////////////////////////////////////
+		verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
+		pressStart = new Font("font", new Color((byte)255, (byte)255, (byte)255));
+		pressStartY = new Font("font", new Color((byte)255, (byte)255, (byte)0));
+		pressStartR = new Font("font", new Color((byte)255, (byte)0, (byte)0));
+		
+		guiRenderer = new GuiRenderer(window);
 		
 		guiRenderer.setBubbleLeft(Texture.getImageBuffer("images/bubble/left.png"));
 		guiRenderer.setBubbleRight(Texture.getImageBuffer("images/bubble/right.png"));
@@ -80,7 +93,7 @@ public class Main {
 		guiRenderer.setAnswerFont(pressStartY);
 		guiRenderer.setAnswerHoverFont(pressStartR);
 		
-		GuiPanels panels = new GuiPanels();
+		panels = new GuiPanels();
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
 		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
 		panels.updateDynamicGuiElements(guiRenderer, window);
@@ -102,10 +115,10 @@ public class Main {
 		bottomBorderRightPanel.move(0, -70);
 		TextureObject topBorderRightPanel = new TextureObject(new Texture("images/border_right_panel.png"), GuiRenderer.stickTo.TopRight);
 		
-		Button button1 = new Button(new Texture("images/button.png"), new Texture("images/button_hover.png"), stickTo.TopRight);
+		button1 = new Button(new Texture("images/button.png"), new Texture("images/button_hover.png"), stickTo.TopRight);
 		button1.move(-100, 100);
 		
-		Button healBtn = new Button(new Texture("images/button.png"), stickTo.TopRight);
+		healBtn = new Button(new Texture("images/button.png"), stickTo.TopRight);
 		healBtn.move(-100, 200);
 		
 		guiRenderer.addGuiObject(bottomCorner1);
@@ -117,7 +130,7 @@ public class Main {
 		guiRenderer.addGroup(group1);
 		
 		/// Tiles on GUI ///////////////////////////
-		TileSheet tileSheet = new TileSheet();
+		tileSheet = new TileSheet();
 		Texture tileTexture = new Texture("images/guiTile.png");
 		Texture tileTexture_hover = new Texture("images/guiTile_hover.png");
 		
@@ -176,21 +189,37 @@ public class Main {
 			e.printStackTrace();
 		}
 		////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	private static void loadingScreen() {
+		guiShader = new Shader("shader");
 		
 		////////// LOADING SCREEN //////////////////////////////////////////////////////////
-		GuiRenderer loadingScreen = new GuiRenderer(window);
+		loadingScreen = new GuiRenderer(window);
 		
 		TextureObject background = new TextureObject(new Texture("textures/loading_screen.png"));	
 		TextureObject loading_text = new TextureObject(new Texture("textures/animations/loading/loading_3.png"));
 		loadingScreen.addGuiObject(background);
 		loadingScreen.addGuiObject(loading_text);
 		////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	public static void main(String[] args) {
+		///////////////// INIT ///////////////////////////////////////////////////////////////
+		Window.setCallbacks();
+		if(!glfwInit()) { 													// Library init
+			throw new IllegalStateException("Failed to initialize GLFW");
+		}
+		//////////////////////////////////////////////////////////////////////////////////////
+		
+		windowInit();
 		
 		/////////////////////// LOCAL VARIABLES ////////////////////////////////////////////
 		long lastNanos = Timer.getNanoTime();
 		int nextFrameLoadWorld = 1;
 		int currentEntityId = -1;
 		long startNanos = 0;
+		boolean programInit = true;
 		Dialog dialog = null;
 		////////////////////////////////////////////////////////////////////////////////////
 		
@@ -202,8 +231,21 @@ public class Main {
             	glClear(GL_COLOR_BUFFER_BIT);
             	glClearColor(0f, 0f, 0f, 1f);
             	long start = Timer.getNanoTime();
-            	loadingScreen.update(window);
-            	loadingScreen.renderGuiObjects(guiShader, window);
+            	
+            	if(programInit == true) {
+            		loadingScreen();
+            		
+                	loadingScreen.update(window);
+                	loadingScreen.renderGuiObjects(guiShader, window);
+                	
+                	worldInit();
+                	
+                	programInit = false;
+            	} else {
+                	loadingScreen.update(window);
+                	loadingScreen.renderGuiObjects(guiShader, window);
+            	}
+
             	
             	window.update();
             	
