@@ -70,16 +70,6 @@ public class Item extends TextureObject implements Movable, MouseInteraction{
 		return super.getTransform().getPosition().y;
 	}
 
-	@Override
-	public void setPositionX(float X) {
-		super.setPosition(X, super.getTransform().getPosition().y);
-	}
-
-	@Override
-	public void setPositionY(float Y) {
-		super.setPosition(super.getTransform().getPosition().x, Y);
-	}
-
 	public int getItemType() { /// I've added just getter and setter for now. A need this for Tile class for gui.
 		return itemInfo.getItemType();
 	}
