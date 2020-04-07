@@ -1,0 +1,38 @@
+<?xml version = "1.0"?>
+<class>
+   <dialog id = "0">
+      <content>Chcesz questa?</content>
+      <ans>2</ans>
+      <q>0</q>
+      <answer>TAK</answer>
+      <id>0</id>
+      <leadsTo>1</leadsTo>
+      <answer>NIE</answer>
+      <id>1</id>
+      <leadsTo>2</leadsTo>
+   </dialog>
+   <dialog id = "1">
+      <content>Bierz questa</content>
+      <ans>1</ans>
+      <q>1</q>
+      <answer>Bywaj</answer>
+      <id>0</id>
+      <leadsTo>1</leadsTo>
+      <questID>1</questID>
+      <taskID>1</taskID>
+      <title>Zabij 2 wilki</title>
+      <description>Zabij 2 wilki i przynies ich skore</description>
+      <toKill>2</toKill>
+      <toCollect>2</toCollect>
+      <killID>12</killID>
+      <collectID>13</collectID>
+   </dialog>
+   <dialog id = "2">
+      <content>To nie dostaniesz XD</content>
+      <ans>1</ans>
+      <answer>Bywaj</answer>
+      <id>0</id>
+      <leadsTo>1</leadsTo>
+      <q>0</q>
+   </dialog>
+</class>

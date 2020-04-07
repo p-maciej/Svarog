@@ -26,6 +26,7 @@ import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
+import svarog.interactions.InteractionsMaster;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
@@ -55,6 +56,11 @@ public class Main {
 	private static GuiRenderer loadingScreen;
 	private static Button button1;
 	private static Button healBtn;
+	
+	//JG GLOBLA VARIABLES
+	public static int ans1 = 0;
+	public static Dialog dialog = null;
+	public static Dialog dialog1 = null;
 	
 	private static void windowInit() {
 		window = new Window();
@@ -193,6 +199,8 @@ public class Main {
 	
 	private static void loadingScreen() {
 		guiShader = new Shader("shader");
+	
+		
 		
 		////////// LOADING SCREEN //////////////////////////////////////////////////////////
 		loadingScreen = new GuiRenderer(window);
@@ -213,6 +221,9 @@ public class Main {
 		//////////////////////////////////////////////////////////////////////////////////////
 		
 		windowInit();
+		
+		////////////TESTING INTERACTIONSMASTER ////////
+		InteractionsMaster interactionsMaster = new InteractionsMaster("quest01.quest");
 		
 		/////////////////////// LOCAL VARIABLES ////////////////////////////////////////////
 		long lastNanos = Timer.getNanoTime();
@@ -326,7 +337,7 @@ public class Main {
 						}
 					}
 					
-					if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
+					/*if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
 						if(currentWorld.getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
 							dialog = new Dialog(1);
 							dialog.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac. In hendrerit, nulla ut vulputate maximus, tortor arcu varius diam, ac molestie arcu nisi id odio. ");
@@ -336,8 +347,10 @@ public class Main {
 							dialog.setAnswers(ans);
 							guiRenderer.showDialog(dialog);
 						}
-					}
+					}*/
 				}
+				
+				interactionsMaster.ChceckInteractions(currentWorld, camera, window, guiRenderer);
 				
 				guiRenderer.renderGuiObjects(guiShader, window);
 				
@@ -349,7 +362,7 @@ public class Main {
 					System.out.println("Health of player was fully recovered: " + player.getHP() + "hp.");
 				}
 				
-				if(dialog != null) {
+				/*if(dialog != null) {
 					if(dialog.clickedAnswer() != null) {
 						if(dialog.clickedAnswer().getId() == 0) {
 							guiRenderer.closeDialog();
@@ -362,7 +375,7 @@ public class Main {
 							guiRenderer.showDialog(dialog1);
 						}
 					}
-				}
+				}*/
 				
 				for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
 					if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
