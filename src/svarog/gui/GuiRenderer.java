@@ -427,9 +427,11 @@ public class GuiRenderer implements RenderProperties {
 			content.setString(dialogFont, dialog.getContent());
 			
 			int height = content.getHeight()-dialogTop.getHeight()+yOffset;
+			if(height < 0)
+				height = 0;
+			
 			int top = 0;
 			int left = -dialogTop.getWidth()/2+15;
-			
 			
 			
 			for(int i = dialog.getAnswers().size()-1; i >= 0; i--) {
@@ -446,32 +448,34 @@ public class GuiRenderer implements RenderProperties {
 	
 			top -= content.getHeight()+interspace;
 			
-			ByteBuffer center = BufferUtils.createByteBuffer(height*dialogTop.getWidth()*4);
+			if(height*dialogTop.getWidth()*4 > 0) {
+				ByteBuffer center = BufferUtils.createByteBuffer(height*dialogTop.getWidth()*4);
 			
-			for(int j = 0; j < dialogTop.getWidth(); j++) {
-				for(int i = 0; i < height; i++) {
-					int pixel = dialogCenter.getRGB(j, 0);
-					center.put(((byte)((pixel >> 16) & 0xFF)));
-					center.put(((byte)((pixel >> 8) & 0xFF)));
-					center.put((byte)(pixel & 0xFF));
-					center.put(((byte)((pixel >> 24) & 0xFF)));
+				for(int j = 0; j < dialogTop.getWidth(); j++) {
+					for(int i = 0; i < height; i++) {
+						int pixel = dialogCenter.getRGB(j, 0);
+						center.put(((byte)((pixel >> 16) & 0xFF)));
+						center.put(((byte)((pixel >> 8) & 0xFF)));
+						center.put((byte)(pixel & 0xFF));
+						center.put(((byte)((pixel >> 24) & 0xFF)));
+					}
 				}
+				center.flip();
+				
+				TextureObject centerTexture = new TextureObject(new Texture(center, dialogTop.getWidth(), height));	
+				centerTexture.move(0, -height/2);
+				group.addTextureObject(centerTexture);
 			}
-			center.flip();
-			
-			TextureObject centerTexture = new TextureObject(new Texture(center, dialogTop.getWidth(), height));	
-			
 	
 			content.move(left, top);
-			centerTexture.move(0, -height/2);
+			
 			dialogTop.setPosition(0, height+dialogTop.getHeight()/2);
-	
 			Button closeDialog = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(-left, -top+10));
 			dialogButton = closeDialog;
 			
 			
 			group.addTextureObject(dialogTop);	
-			group.addTextureObject(centerTexture);
+			
 			group.addTextBlock(content);
 			group.addTextureObject(closeDialog);
 			

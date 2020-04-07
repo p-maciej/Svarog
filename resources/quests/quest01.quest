@@ -28,7 +28,7 @@
       <collectID>13</collectID>
    </dialog>
    <dialog id = "2">
-      <content>To nie dostaniesz XD</content>
+      <content>To nie dostaniesz</content>
       <ans>1</ans>
       <answer>Bywaj</answer>
       <id>0</id>
