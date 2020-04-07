@@ -12,7 +12,6 @@ import java.util.List;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.Player;
-import svarog.gui.Answer;
 import svarog.gui.Button;
 import svarog.gui.Dialog;
 import svarog.gui.Group;
@@ -77,7 +76,7 @@ public class Main {
 		player = new Player(0, "player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
 		player.setName("Ty");
 		player.setHpXpAttack(100, 0, 50, 60);
-
+		
 		currentWorld = new World(1, 0, 0);
 		/////////////////////////////////////////////////////////////////////////////////////
 		
@@ -231,7 +230,6 @@ public class Main {
 		int currentEntityId = -1;
 		long startNanos = 0;
 		boolean programInit = true;
-		Dialog dialog = null;
 		////////////////////////////////////////////////////////////////////////////////////
 		
 		while(window.processProgram()) {										// This works while program is running

@@ -12,11 +12,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import svarog.entity.Enemy;
 import svarog.game.Main;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
-import svarog.gui.GuiObject;
 import svarog.gui.GuiRenderer;
 import svarog.io.Window;
 import svarog.render.Camera;
