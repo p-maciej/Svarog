@@ -17,6 +17,7 @@ import svarog.gui.Dialog;
 import svarog.gui.Group;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
+import svarog.gui.GuiWindow;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
@@ -55,6 +56,7 @@ public class Main {
 	private static GuiRenderer loadingScreen;
 	private static Button button1;
 	private static Button healBtn;
+	private static GuiWindow quests;
 	
 	//JG GLOBLA VARIABLES
 	public static int ans1 = 0;
@@ -133,6 +135,14 @@ public class Main {
 		guiRenderer.addGuiObject(button1);
 		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(group1);
+		
+		
+		/// Windows on GUI /////////////////////////
+		quests = new GuiWindow("Questy", pressStart, new TextureObject(new Texture("images/window1.png")));
+		quests.setStickTo(stickTo.TopRight);
+		quests.move(-520, -275);
+		
+		////////////////////////////////////////////
 		
 		/// Tiles on GUI ///////////////////////////
 		tileSheet = new TileSheet();
@@ -353,7 +363,7 @@ public class Main {
 				guiRenderer.renderGuiObjects(guiShader, window);
 				
 				if(button1.isClicked())
-					System.out.println("CLICK!");
+					guiRenderer.addWindow(quests);
 				
 				if(healBtn.isClicked()) {
 					player.FullyRecoverHP();

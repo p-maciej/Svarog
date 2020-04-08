@@ -49,11 +49,13 @@ public class GuiRenderer implements RenderProperties {
 	private List<GuiObject> objects;
 	private List<TextBlock> textBlocks;
 	private List<Group> groups;
+	private List<GuiWindow> windows; 
 
 	private static int clickedObjectId;
 	private static int mouseOverObjectId;
 	private static int draggingFromObjectId;
 	private static boolean objectDraggedOut;
+	private static int draggingWindowId;
 	private static boolean setPointer;
 
 	private TextureObject bubbleLeft;
@@ -81,6 +83,7 @@ public class GuiRenderer implements RenderProperties {
 		this.textBlocks = new ArrayList<TextBlock>();
 		this.groups = new ArrayList<Group>();
 		this.tileSheet = new TileSheet();
+		this.windows = new ArrayList<GuiWindow>();
 		
 		this.model = new Model(verticesArray, textureArray, indicesArray);
 		this.camera = new Camera();
@@ -92,6 +95,7 @@ public class GuiRenderer implements RenderProperties {
 		
 		draggingFromObjectId = -1;
 		objectDraggedOut = false;
+		draggingWindowId = -1;
 		
 		dialogId = -1;
 	}
@@ -151,6 +155,58 @@ public class GuiRenderer implements RenderProperties {
 		}
 		/////////////////////////////////////////
 		
+		for(GuiWindow item : windows) {
+			if(item.getBackgroundElements().getStickTo() != null) {
+				setGroupStickTo(item.getBackgroundElements());
+				item.getBackgroundElements().getTransform().add(item.getBackgroundElements().getPosition().x, item.getBackgroundElements().getPosition().y);
+			} else {
+				item.getBackgroundElements().getTransform().set(item.getBackgroundElements().getPosition().x, item.getBackgroundElements().getPosition().y);
+			}
+			
+			for(GuiObject object : item.getBackgroundElements().getTextureObjectList()) {
+				if(object.getStickTo() != null) {
+					setObjectStickTo(object);
+					object.getTransform().getPosition().add(object.getPosition().x+item.getBackgroundElements().getTransform().x, object.getPosition().y+item.getBackgroundElements().getTransform().y, 0);
+				} else {
+					object.getTransform().getPosition().set(object.getPosition().x+item.getBackgroundElements().getTransform().x, object.getPosition().y+item.getBackgroundElements().getTransform().y, 0);
+				}
+			}
+			
+			for(TextBlock textBlock : item.getBackgroundElements().getTextBlockList()) {
+				if(textBlock.getStickTo() != null) {
+					setTextBlockStickTo(textBlock);
+					textBlock.getTransform().getPosition().add(textBlock.getPosition().x+item.getBackgroundElements().getTransform().x, textBlock.getPosition().y+item.getBackgroundElements().getTransform().y, 0);
+				} else {
+					textBlock.getTransform().getPosition().set(textBlock.getPosition().x+item.getBackgroundElements().getTransform().x, textBlock.getPosition().y+item.getBackgroundElements().getTransform().y, 0);
+				}
+			}
+			
+			if(item.getContentElements().getStickTo() != null) {
+				setGroupStickTo(item.getContentElements());
+				item.getContentElements().getTransform().add(item.getContentElements().getPosition().x, item.getContentElements().getPosition().y);
+			} else {
+				item.getContentElements().getTransform().set(item.getContentElements().getPosition().x, item.getContentElements().getPosition().y);
+			}
+			
+			for(GuiObject object : item.getContentElements().getTextureObjectList()) {
+				if(object.getStickTo() != null) {
+					setObjectStickTo(object);
+					object.getTransform().getPosition().add(object.getPosition().x+item.getContentElements().getTransform().x, object.getPosition().y+item.getContentElements().getTransform().y, 0);
+				} else {
+					object.getTransform().getPosition().set(object.getPosition().x+item.getContentElements().getTransform().x, object.getPosition().y+item.getContentElements().getTransform().y, 0);
+				}
+			}
+			
+			for(TextBlock textBlock : item.getContentElements().getTextBlockList()) {
+				if(textBlock.getStickTo() != null) {
+					setTextBlockStickTo(textBlock);
+					textBlock.getTransform().getPosition().add(textBlock.getPosition().x+item.getContentElements().getTransform().x, textBlock.getPosition().y+item.getContentElements().getTransform().y, 0);
+				} else {
+					textBlock.getTransform().getPosition().set(textBlock.getPosition().x+item.getContentElements().getTransform().x, textBlock.getPosition().y+item.getContentElements().getTransform().y, 0);
+				}
+			}
+		}
+		
 		//// ORDINARY OBJECTS///////////////////
 		for(GuiObject object : objects) {
 			if(object.getStickTo() != null) {
@@ -178,6 +234,7 @@ public class GuiRenderer implements RenderProperties {
 		clickedObjectId = -1;
 		mouseOverObjectId = -1;
 		setPointer = false;
+		int windowToRemove = -1;
 		
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
@@ -225,6 +282,43 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		
+		for(GuiWindow item : windows) {		
+			for(TextureObject object : item.getBackgroundElements().getTextureObjectList()) {
+				renderGuiObject(object, shader, window);
+				
+				if(object.isOverable() && object.isMovable()) {
+					if((mouseOverObjectId == object.getId() && window.getInput().isMouseButtonDown(0)) || draggingWindowId >= 0) {
+						draggingWindowId = object.getId();
+						if(item.getStickTo() != null)
+							item.setStickTo(null);
+						
+						if(window.getCursorPositionX()+item.getWidth()/2 < window.getWidth()-350 && window.getCursorPositionY()+item.getHeight() - 15 < window.getHeight()-70 && window.getCursorPositionY()-15 > 0 && window.getCursorPositionX()-item.getWidth()/2 > 0) {
+							item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
+						}
+						updatePositions();
+					}
+					if(draggingWindowId >= 0 && window.getInput().isMouseButtonReleased(0)) {
+						draggingWindowId = -1;
+					}
+				}
+			}
+			
+			for(TextBlock block : item.getBackgroundElements().getTextBlockList()) {
+				renderTextBlock(block, shader, window);
+			}
+			
+			for(TextureObject object : item.getContentElements().getTextureObjectList()) {
+				renderGuiObject(object, shader, window);
+			}
+			
+			for(TextBlock block : item.getContentElements().getTextBlockList()) {
+				renderTextBlock(block, shader, window);
+			}
+			
+			if(item.getCloseButton().isClicked())
+				windowToRemove = item.getId();
+		}
+		
 		// Render items
 		for(Group group : tileSheet.getTileGroupsList()) {
 			for(TextureObject object : group.getTextureObjectList()) {
@@ -250,6 +344,9 @@ public class GuiRenderer implements RenderProperties {
 
 		if(setPointer == true)
 			window.requestCursor(Cursor.Pointer);
+		
+		if(windowToRemove != -1)
+			this.removeWindow(windowToRemove);
 	}
 	
 	private void renderTextBlock(TextBlock block, Shader shader, Window window) {
@@ -654,6 +751,19 @@ public class GuiRenderer implements RenderProperties {
 		groups.add(group);
 	}
 	
+	public void addWindow(GuiWindow window) {
+		boolean add = true;
+		for(GuiWindow wind : windows) {
+			if(wind.getId() == window.getId())
+				add = false;
+		}
+		
+		if(add) {
+			windows.add(window);
+			updatePositions();
+		}
+	}
+	
 	public float getRight() {
 		return windowWidth/2;
 	}
@@ -674,6 +784,12 @@ public class GuiRenderer implements RenderProperties {
 		for(int i = 0; i < groups.size(); i++)
 			if(groups.get(i).getId() == groupId)
 				groups.remove(i);
+	}
+	
+	public void removeWindow(int windowId) {
+		for(int i = 0; i < windows.size(); i++)
+			if(windows.get(i).getId() == windowId)
+				windows.remove(i);
 	}
 
 	public void setDialogFont(Font dialogFont) {
