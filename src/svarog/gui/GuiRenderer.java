@@ -156,53 +156,28 @@ public class GuiRenderer implements RenderProperties {
 		/////////////////////////////////////////
 		
 		for(GuiWindow item : windows) {
-			if(item.getBackgroundElements().getStickTo() != null) {
-				setGroupStickTo(item.getBackgroundElements());
-				item.getBackgroundElements().getTransform().add(item.getBackgroundElements().getPosition().x, item.getBackgroundElements().getPosition().y);
+			if(item.getElements().getStickTo() != null) {
+				setGroupStickTo(item.getElements());
+				item.getElements().getTransform().add(item.getElements().getPosition().x, item.getElements().getPosition().y);
 			} else {
-				item.getBackgroundElements().getTransform().set(item.getBackgroundElements().getPosition().x, item.getBackgroundElements().getPosition().y);
+				item.getElements().getTransform().set(item.getElements().getPosition().x, item.getElements().getPosition().y);
 			}
 			
-			for(GuiObject object : item.getBackgroundElements().getTextureObjectList()) {
+			for(GuiObject object : item.getElements().getTextureObjectList()) {
 				if(object.getStickTo() != null) {
 					setObjectStickTo(object);
-					object.getTransform().getPosition().add(object.getPosition().x+item.getBackgroundElements().getTransform().x, object.getPosition().y+item.getBackgroundElements().getTransform().y, 0);
+					object.getTransform().getPosition().add(object.getPosition().x+item.getElements().getTransform().x, object.getPosition().y+item.getElements().getTransform().y, 0);
 				} else {
-					object.getTransform().getPosition().set(object.getPosition().x+item.getBackgroundElements().getTransform().x, object.getPosition().y+item.getBackgroundElements().getTransform().y, 0);
+					object.getTransform().getPosition().set(object.getPosition().x+item.getElements().getTransform().x, object.getPosition().y+item.getElements().getTransform().y, 0);
 				}
 			}
 			
-			for(TextBlock textBlock : item.getBackgroundElements().getTextBlockList()) {
+			for(TextBlock textBlock : item.getElements().getTextBlockList()) {
 				if(textBlock.getStickTo() != null) {
 					setTextBlockStickTo(textBlock);
-					textBlock.getTransform().getPosition().add(textBlock.getPosition().x+item.getBackgroundElements().getTransform().x, textBlock.getPosition().y+item.getBackgroundElements().getTransform().y, 0);
+					textBlock.getTransform().getPosition().add(textBlock.getPosition().x+item.getElements().getTransform().x, textBlock.getPosition().y+item.getElements().getTransform().y, 0);
 				} else {
-					textBlock.getTransform().getPosition().set(textBlock.getPosition().x+item.getBackgroundElements().getTransform().x, textBlock.getPosition().y+item.getBackgroundElements().getTransform().y, 0);
-				}
-			}
-			
-			if(item.getContentElements().getStickTo() != null) {
-				setGroupStickTo(item.getContentElements());
-				item.getContentElements().getTransform().add(item.getContentElements().getPosition().x, item.getContentElements().getPosition().y);
-			} else {
-				item.getContentElements().getTransform().set(item.getContentElements().getPosition().x, item.getContentElements().getPosition().y);
-			}
-			
-			for(GuiObject object : item.getContentElements().getTextureObjectList()) {
-				if(object.getStickTo() != null) {
-					setObjectStickTo(object);
-					object.getTransform().getPosition().add(object.getPosition().x+item.getContentElements().getTransform().x, object.getPosition().y+item.getContentElements().getTransform().y, 0);
-				} else {
-					object.getTransform().getPosition().set(object.getPosition().x+item.getContentElements().getTransform().x, object.getPosition().y+item.getContentElements().getTransform().y, 0);
-				}
-			}
-			
-			for(TextBlock textBlock : item.getContentElements().getTextBlockList()) {
-				if(textBlock.getStickTo() != null) {
-					setTextBlockStickTo(textBlock);
-					textBlock.getTransform().getPosition().add(textBlock.getPosition().x+item.getContentElements().getTransform().x, textBlock.getPosition().y+item.getContentElements().getTransform().y, 0);
-				} else {
-					textBlock.getTransform().getPosition().set(textBlock.getPosition().x+item.getContentElements().getTransform().x, textBlock.getPosition().y+item.getContentElements().getTransform().y, 0);
+					textBlock.getTransform().getPosition().set(textBlock.getPosition().x+item.getElements().getTransform().x, textBlock.getPosition().y+item.getElements().getTransform().y, 0);
 				}
 			}
 		}
@@ -283,7 +258,7 @@ public class GuiRenderer implements RenderProperties {
 		}
 		
 		for(GuiWindow item : windows) {		
-			for(TextureObject object : item.getBackgroundElements().getTextureObjectList()) {
+			for(TextureObject object : item.getElements().getTextureObjectList()) {
 				renderGuiObject(object, shader, window);
 				
 				if(object.isOverable() && object.isMovable()) {
@@ -303,15 +278,7 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 			
-			for(TextBlock block : item.getBackgroundElements().getTextBlockList()) {
-				renderTextBlock(block, shader, window);
-			}
-			
-			for(TextureObject object : item.getContentElements().getTextureObjectList()) {
-				renderGuiObject(object, shader, window);
-			}
-			
-			for(TextBlock block : item.getContentElements().getTextBlockList()) {
+			for(TextBlock block : item.getElements().getTextBlockList()) {
 				renderTextBlock(block, shader, window);
 			}
 			

@@ -15,8 +15,7 @@ public class GuiWindow {
 	private int height;
 	private String title;
 	
-	private Group backgroundElements;
-	private Group content;
+	private Group elements;
 	
 	private Vector2f position;
 	private stickTo stickTo;
@@ -33,8 +32,7 @@ public class GuiWindow {
 		this.setWindowFont(font);
 		
 		position = new Vector2f();
-		backgroundElements = new Group();
-		content = new Group();
+		elements = new Group();
 		this.setStickTo(stickTo);
 		
 		addStaticElements();
@@ -48,8 +46,7 @@ public class GuiWindow {
 		this.setWindowFont(font);
 		
 		setPosition(position);
-		backgroundElements = new Group();
-		content = new Group();
+		elements = new Group();
 		
 		addStaticElements();
 	}
@@ -62,10 +59,9 @@ public class GuiWindow {
 		this.setWindowFont(font);
 		
 		position = new Vector2f();
-		backgroundElements = new Group();
-		content = new Group();
+		elements = new Group();
 		
-		backgroundElements.addTextureObject(backgroundTexture);
+		elements.addTextureObject(backgroundTexture);
 		
 		addStaticElements();
 	}
@@ -73,7 +69,7 @@ public class GuiWindow {
 	private void addStaticElements() {
 		Button closeDialog = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(getWidth()/2-15, getHeight()/2-15));
 		closeButton = closeDialog;
-		backgroundElements.addTextureObject(closeDialog);
+		elements.addTextureObject(closeDialog);
 		
 		Line title = new Line(0, getHeight()/2-15);
 		title.setString(this.title, windowFont);
@@ -81,23 +77,15 @@ public class GuiWindow {
 		title.setMovable(true);
 		title.setClickable(true);
 		
-		backgroundElements.addTextureObject(title);
+		elements.addTextureObject(title);
 	}
 	
-	public void addBackgroundTextureObject(TextureObject object) {
-		backgroundElements.addTextureObject(object);
+	public void addTextureObject(TextureObject object) {
+		elements.addTextureObject(object);
 	}
 	
-	public void addBackgroundTextBlock(TextBlock object) {
-		backgroundElements.addTextBlock(object);
-	}
-	
-	public void addContentTextureObject(TextureObject object) {
-		content.addTextureObject(object);
-	}
-	
-	public void addContentTextBlock(TextBlock object) {
-		content.addTextBlock(object);
+	public void addTextBlock(TextBlock object) {
+		elements.addTextBlock(object);
 	}
 
 	public int getWidth() {
@@ -116,21 +104,14 @@ public class GuiWindow {
 		this.height = height;
 	}
 	
-	Group getBackgroundElements() {
-		return backgroundElements;
-	}
-	
-	Group getContentElements() {
-		return content;
+	Group getElements() {
+		return elements;
 	}
 	
 	private void setRelativePositions() {
-		content.setStickTo(stickTo);
-		backgroundElements.setStickTo(stickTo);
+		elements.setStickTo(stickTo);
 	
-		
-		content.setPosition(position);
-		backgroundElements.setPosition(position);
+		elements.setPosition(position);
 	}
 
 	public stickTo getStickTo() {
