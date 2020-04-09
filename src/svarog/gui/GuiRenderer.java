@@ -180,6 +180,17 @@ public class GuiRenderer implements RenderProperties {
 					textBlock.getTransform().getPosition().set(textBlock.getPosition().x+item.getElements().getTransform().x, textBlock.getPosition().y+item.getElements().getTransform().y, 0);
 				}
 			}
+			
+			if(item instanceof PagedGuiWindow) {
+				for(TextBlock textBlock : ((PagedGuiWindow) item).getTextBlocks()) {
+					if(textBlock.getStickTo() != null) {
+						setTextBlockStickTo(textBlock);
+						textBlock.getTransform().getPosition().add(textBlock.getPosition().x+item.getElements().getTransform().x, textBlock.getPosition().y+item.getElements().getTransform().y, 0);
+					} else {
+						textBlock.getTransform().getPosition().set(textBlock.getPosition().x+item.getElements().getTransform().x, textBlock.getPosition().y+item.getElements().getTransform().y, 0);
+					}
+				}
+			}
 		}
 		
 		//// ORDINARY OBJECTS///////////////////
@@ -276,10 +287,27 @@ public class GuiRenderer implements RenderProperties {
 						draggingWindowId = -1;
 					}
 				}
+				
+				if(object instanceof Button && item instanceof PagedGuiWindow) {
+					if(((Button) object).isClicked() && clickedObjectId == ((PagedGuiWindow)item).getPageLeft().getId()) {
+						((PagedGuiWindow)item).previousPage();
+						updatePositions();
+					}
+					if(((Button) object).isClicked() && clickedObjectId == ((PagedGuiWindow)item).getPageRight().getId()) {
+						((PagedGuiWindow)item).nextPage();
+						updatePositions();
+					}
+				}
 			}
 			
 			for(TextBlock block : item.getElements().getTextBlockList()) {
 				renderTextBlock(block, shader, window);
+			}
+			
+			if(item instanceof PagedGuiWindow) {
+				for(TextBlock block : ((PagedGuiWindow) item).getTextBlocks()) {
+					renderTextBlock(block, shader, window);
+				}
 			}
 			
 			if(item.getCloseButton().isClicked())
@@ -371,7 +399,8 @@ public class GuiRenderer implements RenderProperties {
 			
 			object.update();
 			
-			object.getTexture().bind(0);
+			if(object.getTexture() != null)
+				object.getTexture().bind(0);
 			
 			shader.bind();
 			shader.setUniform("sampler", 0);

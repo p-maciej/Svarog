@@ -50,6 +50,13 @@ public class Group {
 		textureObjects.add(textureObject);
 	}
 	
+	public void removeTextureObject(int id) {
+		for(TextureObject object : textureObjects) {
+			if(object.getId() == id)
+				textureObjects.remove(object);
+		}
+	}
+	
 	public void addTextBlock(TextBlock textBlock) {
 		textBlocks.add(textBlock);
 	}

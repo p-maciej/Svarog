@@ -9,6 +9,8 @@ import static org.lwjgl.opengl.GL11.glViewport;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joml.Vector2f;
+
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.Player;
@@ -17,8 +19,8 @@ import svarog.gui.Dialog;
 import svarog.gui.Group;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
-import svarog.gui.GuiWindow;
 import svarog.gui.GuiRenderer.stickTo;
+import svarog.gui.PagedGuiWindow;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
 import svarog.gui.TileSheet;
@@ -56,7 +58,7 @@ public class Main {
 	private static GuiRenderer loadingScreen;
 	private static Button button1;
 	private static Button healBtn;
-	private static GuiWindow quests;
+	private static PagedGuiWindow quests;
 	
 	//JG GLOBLA VARIABLES
 	public static int ans1 = 0;
@@ -138,9 +140,37 @@ public class Main {
 		
 		
 		/// Windows on GUI /////////////////////////
-		quests = new GuiWindow("Questy", pressStart, new TextureObject(new Texture("images/window1.png")));
+		quests = new PagedGuiWindow("Questy", pressStart, new TextureObject(new Texture("images/window1.png")));
 		quests.setStickTo(stickTo.TopRight);
 		quests.move(-520, -275);
+		
+		
+		TextBlock blck1 = new TextBlock(280, new Vector2f());
+		blck1.setString(pressStart, "test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj ");
+		
+		quests.addTextBlock(blck1);
+		
+		TextBlock blck2 = new TextBlock(280, new Vector2f());
+		blck2.setString(pressStart, "1111 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
+		
+		quests.addTextBlock(blck2);
+		
+		TextBlock blck3 = new TextBlock(280, new Vector2f());
+		blck3.setString(pressStart, "1111 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
+		
+		quests.addTextBlock(blck3);
+		
+		TextBlock blck4 = new TextBlock(280, new Vector2f());
+		blck4.setString(pressStart, "1111 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
+		
+		quests.addTextBlock(blck4);
+		
+		TextBlock blck5 = new TextBlock(280, new Vector2f());
+		blck5.setString(pressStart, "1234 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
+		
+		quests.addTextBlock(blck5);
+		
+		quests.setPageContent();
 		
 		////////////////////////////////////////////
 		

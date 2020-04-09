@@ -22,7 +22,7 @@ public class GuiWindow {
 	
 	private Button closeButton;
 	
-	private Font windowFont;
+	protected Font windowFont;
 	
 	public GuiWindow(String title, Font font, int width, int height, stickTo stickTo) {
 		this.id = auto_increment++;
