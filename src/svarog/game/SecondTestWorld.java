@@ -48,6 +48,9 @@ abstract class SecondTestWorld {
 		
 		world.setBoundingBoxes();
 		
+		
+		world.setBuffers();
+		
 		return world;
 	}
 }

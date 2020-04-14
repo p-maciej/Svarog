@@ -19,9 +19,10 @@ public class Tile {
 	}
 	
 	public void setTexture(Texture texture, byte layer) {
-		if(layer == 0 || layer == 1 || layer == 2)
-			this.texture[layer] = texture;
-		else
+		if(layer == 0 || layer == 1 || layer == 2) {
+			texture.prepare();
+			this.texture[layer] = texture;	
+		} else
 			throw new IllegalStateException("Layer number out of range");
 	}
 	

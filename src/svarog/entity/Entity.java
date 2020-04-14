@@ -82,8 +82,8 @@ public abstract class Entity implements RenderProperties, MouseInteraction {
 		this.transform = transform;
 		this.setFullBoundingBox(fullBoundingBox);
 		
-		float diff = (float)texture.height / (float)texture.width;
-		if(texture.height > texture.width)
+		float diff = (float)texture.getHeight() / (float)texture.getWidth();
+		if(texture.getHeight() > texture.getWidth())
 			transform.getScale().y = diff;
 		else
 			transform.getScale().x = diff;
@@ -198,6 +198,10 @@ public abstract class Entity implements RenderProperties, MouseInteraction {
 		}
 	}
 	
+	public void prepare() {
+		texture.prepare();
+	}
+	
 	// Character rendering
 	public void render(Shader shader, Camera camera, World world) {
 		Matrix4f target = camera.getProjection();
@@ -253,6 +257,7 @@ public abstract class Entity implements RenderProperties, MouseInteraction {
 	}
 
 	protected void setTexture(Direction direction, Texture texture) {
+		texture.prepare();
 		this.currentDirection = direction;
 		this.texture = texture;
 	}

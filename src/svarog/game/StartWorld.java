@@ -24,6 +24,7 @@ abstract class StartWorld {
 
 		world.loadMap("start_map.png", 32);
 
+		world.setBuffers();
 		
 		NPC ent1 = new NPC(1, new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
 		ent1.setName("Maciej");

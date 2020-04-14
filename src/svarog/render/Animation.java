@@ -22,6 +22,14 @@ public class Animation extends Texture {
 		this.frames = new Texture[amount];
 		for(int i = 0; i < amount; i++) {
 			this.frames[i] = new Texture("textures/animations/" + filename + "_" + i + ".png");
+			this.frames[i].prepare();
+		}
+	}
+	
+	@Override
+	public void prepare() {
+		for(int i = 0; i < frames.length; i++) {
+			this.frames[i].prepare();
 		}
 	}
 	

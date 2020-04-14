@@ -24,6 +24,8 @@ import svarog.render.RenderProperties;
 import svarog.render.Shader;
 import svarog.render.Texture;
 
+import svarog.world.Tile;
+
 public class World implements RenderProperties {
 	private Model model;
 	
@@ -115,8 +117,21 @@ public class World implements RenderProperties {
 		if(mouseOverEntityId >= 0)
 			window.requestCursor(Window.Cursor.Pointer);
 	}
-
 	
+	public void setBuffers() {
+		for(int x = 0; x < this.getWidth(); x++) {
+			for(int y = 0; y < this.getHeight(); y++) {
+				for(byte layer = 0; layer < 3; layer++) {
+					Texture ly = tiles[x][y].getTexture(layer);
+					
+					if(ly != null) {
+						ly.prepare();
+					}
+				}
+			}
+		}
+	}
+
 	public void renderTile(Tile tile, int x, int y, Shader shader, Matrix4f world, Camera camera, boolean topLayer) {
 		shader.bind();
 		
@@ -268,6 +283,7 @@ public class World implements RenderProperties {
 	}
 	
 	public void addEntity(Entity entity) {
+		entity.prepare();
 		this.entities.add(entity);
 		
 		if(entity instanceof Player)

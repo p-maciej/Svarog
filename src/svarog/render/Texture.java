@@ -25,10 +25,12 @@ import javax.imageio.ImageIO;
 import org.lwjgl.BufferUtils;
 
 public class Texture {
-	public int id;
-	public int width;
-	public int height;
-	public String filename;
+	private int id;
+	private int width;
+	private int height;
+	private String filename;
+	
+	private ByteBuffer buffer;
 	
 	public Texture(String filename) {
 		BufferedImage image;
@@ -36,22 +38,23 @@ public class Texture {
 		try {
 			image = ImageIO.read(new File("./resources/" + filename));
 		
-			ByteBuffer pixels = BufferUtils.createByteBuffer(image.getWidth()*image.getHeight()*4);
+			this.buffer = BufferUtils.createByteBuffer(image.getWidth()*image.getHeight()*4);
 			
 			for(int i = 0; i < image.getWidth(); i++) {
 				for(int j = 0; j < image.getHeight(); j++) {
 					int pixel = image.getRGB(i, j);
-					pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
-					pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
-					pixels.put((byte)(pixel & 0xFF)); 			// blue
-					pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
+					this.buffer.put(((byte)((pixel >> 16) & 0xFF))); // red
+					this.buffer.put(((byte)((pixel >> 8) & 0xFF)));  // green
+					this.buffer.put((byte)(pixel & 0xFF)); 			// blue
+					this.buffer.put(((byte)((pixel >> 24) & 0xFF))); // alpha
 				}
 			}
 			
+			this.buffer.flip();
 			
-			pixels.flip();
+			this.width = image.getWidth();
+			this.height = image.getHeight();
 			
-			textureInit(pixels, image.getWidth(), image.getHeight());
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -59,54 +62,56 @@ public class Texture {
 	
 	public Texture(BufferedImage image, int tileInWidth, int tileInHeight, int tileSize) {
 			if(width%tileSize == 0 && height%tileSize == 0) {	
-				ByteBuffer pixels = BufferUtils.createByteBuffer(tileSize*tileSize*4);
+				this.buffer = BufferUtils.createByteBuffer(tileSize*tileSize*4);
 				
 				for(int i = tileInWidth*tileSize; i < tileInWidth*tileSize + tileSize; i++) {
 					for(int j = tileInHeight*tileSize; j < tileInHeight*tileSize + tileSize; j++) {
 						int pixel = image.getRGB(i, j);
-						pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
-						pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
-						pixels.put((byte)(pixel & 0xFF)); 			// blue
-						pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
+						this.buffer.put(((byte)((pixel >> 16) & 0xFF))); // red
+						this.buffer.put(((byte)((pixel >> 8) & 0xFF)));  // green
+						this.buffer.put((byte)(pixel & 0xFF)); 			// blue
+						this.buffer.put(((byte)((pixel >> 24) & 0xFF))); // alpha
 					}
 				}
-				pixels.flip();
+				this.buffer.flip();
 				
-				textureInit(pixels, tileSize, tileSize);
+				this.width = this.height = tileSize;
+				
 			} else {
 				throw new IllegalStateException("Wrong tile size or texture size!");
 			}
 	}
 	
 	public Texture(BufferedImage image) {	
-		ByteBuffer pixels = BufferUtils.createByteBuffer(image.getWidth()*image.getHeight()*4);
+		this.buffer = BufferUtils.createByteBuffer(image.getWidth()*image.getHeight()*4);
 			
 		for(int i = 0; i < image.getWidth(); i++) {
 			for(int j = 0; j < image.getHeight(); j++) {
 				int pixel = image.getRGB(i, j);
-				pixels.put(((byte)((pixel >> 16) & 0xFF))); // red
-				pixels.put(((byte)((pixel >> 8) & 0xFF)));  // green
-				pixels.put((byte)(pixel & 0xFF)); 			// blue
-				pixels.put(((byte)((pixel >> 24) & 0xFF))); // alpha
+				this.buffer.put(((byte)((pixel >> 16) & 0xFF))); // red
+				this.buffer.put(((byte)((pixel >> 8) & 0xFF)));  // green
+				this.buffer.put((byte)(pixel & 0xFF)); 			// blue
+				this.buffer.put(((byte)((pixel >> 24) & 0xFF))); // alpha
 			}
 		}
-		pixels.flip();
-
-		textureInit(pixels, image.getWidth(), image.getHeight());
+		this.buffer.flip();
+		
+		this.width = image.getWidth();
+		this.height = image.getHeight();
 }
 	
 	public Texture(ByteBuffer pixels, int tileSize) {
-		textureInit(pixels, tileSize, tileSize);
+		this.buffer = pixels;
+		this.width = this.height = tileSize;
 	}
 	
 	public Texture(ByteBuffer pixels, int width, int height) {
-		textureInit(pixels, width, height);
+		this.buffer = pixels;
+		this.width = width;
+		this.height = height;
 	}
 	
 	private void textureInit(ByteBuffer buffer, int width, int height) {
-		this.width = width;
-		this.height = height;
-		
 		id = glGenTextures();
 		glBindTexture(GL_TEXTURE_2D, id);
 				
@@ -116,6 +121,10 @@ public class Texture {
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, height, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+	}
+	
+	public void prepare() {
+		textureInit(buffer, this.getWidth(), this.getHeight());
 	}
 	
 	public void bind(int sampler) {
