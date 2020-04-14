@@ -273,6 +273,18 @@ public class GuiRenderer implements RenderProperties {
 				renderGuiObject(object, shader, window);
 				
 				if(object.isOverable() && object.isMovable()) {
+					boolean update = false;
+					
+					if(item.getPosition().x < -(window.getWidth()/2)) {
+						item.setPosition(-(window.getWidth()/2)+item.getWidth()/2, item.getPosition().y);
+						update = true;
+					}
+
+					if(item.getPosition().y-item.getHeight()/2 < -(window.getHeight()/2)) {
+						item.setPosition(item.getPosition().x, -(window.getHeight()/2)+item.getHeight()/2);
+						update = true;
+					}
+					
 					if((mouseOverObjectId == object.getId() && window.getInput().isMouseButtonDown(0)) || draggingWindowId >= 0) {
 						draggingWindowId = object.getId();
 						if(item.getStickTo() != null)
@@ -281,11 +293,15 @@ public class GuiRenderer implements RenderProperties {
 						if(window.getCursorPositionX()+item.getWidth()/2 < window.getWidth()-350 && window.getCursorPositionY()+item.getHeight() - 15 < window.getHeight()-70 && window.getCursorPositionY()-15 > 0 && window.getCursorPositionX()-item.getWidth()/2 > 0) {
 							item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
 						}
-						updatePositions();
+						
+						update = true;
 					}
 					if(draggingWindowId >= 0 && window.getInput().isMouseButtonReleased(0)) {
 						draggingWindowId = -1;
 					}
+					
+					if(update)
+						updatePositions();
 				}
 				
 				if(object instanceof Button && item instanceof PagedGuiWindow) {
