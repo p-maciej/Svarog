@@ -33,6 +33,7 @@ import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
 import svarog.objects.ItemInfo;
+import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
@@ -245,7 +246,7 @@ public class Main {
 		loadingScreen = new GuiRenderer(window);
 		
 		TextureObject background = new TextureObject(new Texture("textures/loading_screen.png"));	
-		TextureObject loading_text = new TextureObject(new Texture("textures/animations/loading/loading_3.png"));
+		TextureObject loading_text = new TextureObject(new Animation(4, 5, "loading/loading"));
 		loadingScreen.addGuiObject(background);
 		loadingScreen.addGuiObject(loading_text);
 		////////////////////////////////////////////////////////////////////////////////////
@@ -270,6 +271,8 @@ public class Main {
 		int currentEntityId = -1;
 		long startNanos = 0;
 		boolean programInit = true;
+		long start = -1;
+		boolean worldLoaded = false;
 		////////////////////////////////////////////////////////////////////////////////////
 		
 		while(window.processProgram()) {										// This works while program is running
@@ -279,9 +282,14 @@ public class Main {
             if(nextFrameLoadWorld != 0) {
             	glClear(GL_COLOR_BUFFER_BIT);
             	glClearColor(0f, 0f, 0f, 1f);
-            	long start = Timer.getNanoTime();
             	
+            	
+                if(start == -1) {
+                	start = Timer.getNanoTime();
+                }
+                
             	if(programInit == true) {
+            		
             		loadingScreen();
             		
                 	loadingScreen.update(window);
@@ -294,18 +302,36 @@ public class Main {
                 	loadingScreen.update(window);
                 	loadingScreen.renderGuiObjects(guiShader, window);
             	}
-
-            	
             	window.update();
+            	window.swapBuffers(); 
             	
-            	window.swapBuffers();  	
-            	camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), currentWorld.getWorldOffset());
-            	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
+            	
+            	if(worldLoaded == false) {
+
+	            	camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), currentWorld.getWorldOffset());
+	            	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
+	            	worldLoaded = true;
+            	}
+            	
             	long stop = Timer.getNanoTime();
             	
-            	Timer.sleep(stop - start, 1000000000);
-            	nextFrameLoadWorld = 0;
+            	if(Timer.getDelay(start, stop, 1)) {
+	            	nextFrameLoadWorld = 0;
+	            	start = -1;
+            	}
             } else {
+            	if(WorldLoader.worldLoader != null) {
+	        		try {
+	        			WorldLoader.worldLoader.join();
+	        		} catch (InterruptedException e) {
+	        			e.printStackTrace();
+	        		}
+	        		currentWorld.setBuffers();
+	        		
+	        		WorldLoader.worldLoader = null;
+            	}
+        		
+            	
 				glClearColor(0.2f, 0.2f, 0.2f, 1f);
 				if(window.hasResized()) {
 					camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), currentWorld.getWorldOffset());
@@ -420,6 +446,7 @@ public class Main {
 						player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
 						player.setSetCamWithoutAnimation(true);
 						nextFrameLoadWorld = currentWorld.getDoor(i).getWorldIdDestination();
+						worldLoaded = false;
 						break;
 					} else 
 						nextFrameLoadWorld = 0;

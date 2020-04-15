@@ -12,7 +12,8 @@ import svarog.render.Transform;
 import svarog.world.Door;
 import svarog.world.World;
 
-abstract class StartWorld {
+abstract class StartWorld implements Runnable {
+	
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(1, 120, 90);
 		world.calculateView(window);
@@ -22,9 +23,20 @@ abstract class StartWorld {
 		world.setWorldOffset(offset);
 		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight(), world.getWorldOffset());
 
-		world.loadMap("start_map.png", 32);
 
-		world.setBuffers();
+
+		WorldLoader.worldLoader = new Thread(new Runnable() {
+		    @Override
+		    public void run() {
+		    	world.loadMap("start_map.png", 32);
+		    	
+				world.setSolidTilesFromMap("start_map.png");
+				
+				world.setBoundingBoxes();
+		    }
+		});  
+		
+		WorldLoader.worldLoader.start();
 		
 		NPC ent1 = new NPC(1, new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
 		ent1.setName("Maciej");
@@ -42,9 +54,7 @@ abstract class StartWorld {
 		
 		world.addEntity(player); //We always should add player at the end, otherwise he will be rendered under entities ;)
 		
-		world.setSolidTilesFromMap("start_map.png");
-		
-		world.setBoundingBoxes();
+
 		
 		//Show door texture
 		world.getTile(60, 28).setTexture(new Texture("textures/door.png"), (byte)1);
@@ -58,8 +68,7 @@ abstract class StartWorld {
 		world.addDoor(new Door(2, 60, 26, 1, 20));
 		world.addDoor(new Door(2, 60, 25, 1, 20));
 		//world.addDoor(new Door(60, 24, 1, 20));
-		
-		
+
 		return world;
 	}
 }
