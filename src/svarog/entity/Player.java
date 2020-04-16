@@ -2,9 +2,9 @@ package svarog.entity;
 
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_A;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_LAST;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_S;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_W;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_LAST;
 
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -14,7 +14,7 @@ import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
-import svarog.world.World;
+import svarog.world.WorldRenderer;
 
 public class Player extends Entity {
 	private boolean setCamWithoutAnimation;
@@ -43,7 +43,7 @@ public class Player extends Entity {
 	}
 	
 	@Override
-	public void update(float delta, Window window, Camera camera, World world) {
+	public void update(float delta, Window window, Camera camera, WorldRenderer world) {
 		Vector2f movement = new Vector2f();
 		
 		///////////// WASD Player movement ////////////////////
@@ -135,11 +135,11 @@ public class Player extends Entity {
 		move(movement);
 		
 		if(setCamWithoutAnimation) {
-			camera.setPosition(transform.getPosition().mul(-world.getScale(), new Vector3f()));
+			camera.setPosition(transform.getPosition().mul(-WorldRenderer.getScale(), new Vector3f()));
 			setCamWithoutAnimation = false;
 		}
 		else {
-			camera.getPosition().lerp(transform.getPosition().mul(-world.getScale(), new Vector3f()), 0.6f); // Camera movement
+			camera.getPosition().lerp(transform.getPosition().mul(-WorldRenderer.getScale(), new Vector3f()), 0.6f); // Camera movement
 		}
 		
 		super.update(delta, window, camera, world);

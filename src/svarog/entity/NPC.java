@@ -9,7 +9,7 @@ import svarog.objects.Item;
 import svarog.objects.ItemInfo;
 import svarog.render.Texture;
 import svarog.render.Transform;
-import svarog.world.World;
+import svarog.world.WorldRenderer;
 
 public class NPC extends Entity {
 
@@ -51,7 +51,7 @@ public class NPC extends Entity {
 
 	@Override
 	public boolean isClicked() {
-		return World.getClickedEntityId() == super.getId() ? true : false;
+		return WorldRenderer.getClickedEntityId() == super.getId() ? true : false;
 	}
 }
 

@@ -1,7 +1,5 @@
 package svarog.game;
 
-import org.joml.Vector2f;
-
 import svarog.entity.Enemy;
 import svarog.entity.NPC;
 import svarog.entity.Player;
@@ -16,13 +14,8 @@ abstract class StartWorld implements Runnable {
 	
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(1, 120, 90);
-		world.calculateView(window);
 		
 		world.fillWorld(new Texture("textures/grass_map_1.png"));
-		Vector2f offset = new Vector2f(350, 70);
-		world.setWorldOffset(offset);
-		camera.setProjection(window.getWidth(), window.getHeight(), window, world.getScale(), world.getWidth(), world.getHeight(), world.getWorldOffset());
-
 
 
 		WorldLoader.worldLoader = new Thread(new Runnable() {

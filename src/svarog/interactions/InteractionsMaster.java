@@ -18,7 +18,7 @@ import svarog.gui.Dialog;
 import svarog.gui.GuiRenderer;
 import svarog.io.Window;
 import svarog.render.Camera;
-import svarog.world.World;
+import svarog.world.WorldRenderer;
 
 public class InteractionsMaster {
 	private List<Dialog> dialogs = new ArrayList<>();
@@ -81,12 +81,12 @@ public class InteractionsMaster {
 		}
 	}
 	
-	public void ChceckInteractions(World currentWorld, Camera camera, Window window, GuiRenderer guiRenderer) {
+	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer) {
 		//Dialog dialog = null;
 		//int answer2 = 0;
-		for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) {
-			if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
-				if(currentWorld.getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
+		for(int i=0; i < currentWorld.getWorld().numberOfEntities() - 1 ; i++) {
+			if(currentWorld.isOverEntity(currentWorld.getWorld().getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
+				if(currentWorld.getWorld().getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
 					Main.dialog = dialogs.get(0);
 					guiRenderer.showDialog(Main.dialog);
 					Main.ans1 = 1;

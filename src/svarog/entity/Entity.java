@@ -16,6 +16,7 @@ import svarog.render.Shader;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.world.World;
+import svarog.world.WorldRenderer;
 
 public abstract class Entity implements RenderProperties, MouseInteraction {
 	private static int auto_increment = 0;
@@ -179,19 +180,19 @@ public abstract class Entity implements RenderProperties, MouseInteraction {
 		world = null;
 	}
 	
-	public void update(float delta, Window window, Camera camera, World world) {	
+	public void update(float delta, Window window, Camera camera, WorldRenderer world) {	
 		if(!this.isStatic()) {
 			////////// Blocking player to go outside of the map ///////////
 			if(transform.getPosition().x < 1)
 				transform.getPosition().add(new Vector3f(1*delta, 0,0));
 			
-			if(transform.getPosition().x > world.getWidth()*2-1.8f)
+			if(transform.getPosition().x > world.getWorld().getWidth()*2-1.8f)
 				transform.getPosition().add(new Vector3f(-1*delta, 0,0));
 			
 			if(transform.getPosition().y > -1)
 				transform.getPosition().add(new Vector3f(0, -1*delta,0));
 			
-			if(transform.getPosition().y < -(world.getHeight()*2-1.6f))
+			if(transform.getPosition().y < -(world.getWorld().getHeight()*2-1.6f))
 				transform.getPosition().add(new Vector3f(0, 1*delta,0));
 			///////////////////////////////////////////////////////////////
 

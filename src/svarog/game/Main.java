@@ -39,6 +39,7 @@ import svarog.render.Shader;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.world.World;
+import svarog.world.WorldRenderer;
 
 
 
@@ -60,6 +61,7 @@ public class Main {
 	private static Button button1;
 	private static Button healBtn;
 	private static PagedGuiWindow quests;
+	private static WorldRenderer worldRenderer;
 	
 	//JG GLOBLA VARIABLES
 	public static int ans1 = 0;
@@ -78,11 +80,19 @@ public class Main {
 		shader = new Shader("shader");
 		camera = new Camera();
 
+		
+
+		
 		player = new Player(0, "player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
 		player.setName("Ty");
 		player.setHpXpAttack(100, 0, 50, 60);
 		
 		currentWorld = new World(1, 0, 0);
+		
+		worldRenderer = new WorldRenderer(currentWorld);
+		
+		Vector2f offset = new Vector2f(350, 70);
+		worldRenderer.setWorldOffset(offset);
 		/////////////////////////////////////////////////////////////////////////////////////
 		
 		/////// GUI  ////////////////////////////////////////////////////////////////////////
@@ -306,10 +316,11 @@ public class Main {
             	window.swapBuffers(); 
             	
             	
-            	if(worldLoaded == false) {
-
-	            	camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), currentWorld.getWorldOffset());
+            	if(worldLoaded == false) {            	
 	            	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
+	            	worldRenderer.setWorld(currentWorld);
+	            	worldRenderer.calculateView(window);
+	            	camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
 	            	worldLoaded = true;
             	}
             	
@@ -326,7 +337,7 @@ public class Main {
 	        		} catch (InterruptedException e) {
 	        			e.printStackTrace();
 	        		}
-	        		currentWorld.setBuffers();
+	        		worldRenderer.setBuffers();
 	        		
 	        		WorldLoader.worldLoader = null;
             	}
@@ -334,37 +345,37 @@ public class Main {
             	
 				glClearColor(0.2f, 0.2f, 0.2f, 1f);
 				if(window.hasResized()) {
-					camera.setProjection(window.getWidth(), window.getHeight(), window, currentWorld.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), currentWorld.getWorldOffset());
+					camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
 					guiRenderer.deleteGuiPanels();
 					panels.updateDynamicGuiElements(guiRenderer, window);
 					guiRenderer.update(window);
 					
-					currentWorld.calculateView(window);
+					worldRenderer.calculateView(window);
 					glViewport(0, 0, window.getWidth(), window.getHeight());
 				}
 				glClear(GL_COLOR_BUFFER_BIT);
 				
 				guiRenderer.deleteDynamicGroups();
 				
-				currentWorld.update((float)0.2, window, camera);
-				currentWorld.correctCamera(camera, window);							// This sets correct camera position on world
+				worldRenderer.update((float)0.2, window, camera);
+				worldRenderer.correctCamera(camera, window);							// This sets correct camera position on world
 
 				
 
 					
-				currentWorld.render(shader, camera, window);							// world rendering
+				worldRenderer.render(shader, camera, window);							// world rendering
 				
 				
 				
-				if(World.getMouseOverEntityId() >= 0) {
-					if(World.getMouseOverEntityId() != currentEntityId) {
+				if(WorldRenderer.getMouseOverEntityId() >= 0) {
+					if(WorldRenderer.getMouseOverEntityId() != currentEntityId) {
 						startNanos = Timer.getNanoTime();
-						currentEntityId = World.getMouseOverEntityId();
+						currentEntityId = WorldRenderer.getMouseOverEntityId();
 					}
 					
 					if(Timer.getDelay(startNanos, Timer.getNanoTime(), 0.4)) {
 						Line name = new Line(0, 0);
-						Entity ent = currentWorld.getEntityById(World.getMouseOverEntityId());
+						Entity ent = currentWorld.getEntityById(WorldRenderer.getMouseOverEntityId());
 						if(ent != null) {
 							name.setString(ent.getName(), pressStart);
 						
@@ -414,7 +425,7 @@ public class Main {
 					}*/
 				}
 				
-				interactionsMaster.ChceckInteractions(currentWorld, camera, window, guiRenderer);
+				interactionsMaster.ChceckInteractions(worldRenderer, camera, window, guiRenderer);
 				
 				guiRenderer.renderGuiObjects(guiShader, window);
 				
