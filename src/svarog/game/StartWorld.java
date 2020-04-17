@@ -8,28 +8,17 @@ import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.world.Door;
+import svarog.world.Tile;
 import svarog.world.World;
 
 abstract class StartWorld implements Runnable {
 	
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(1, 120, 90);
-		
-		world.fillWorld(new Texture("textures/grass_map_1.png"));
 
-
-		WorldLoader.worldLoader = new Thread(new Runnable() {
-		    @Override
-		    public void run() {
-		    	world.loadMap("start_map.png", 32);
-		    	
-				world.setSolidTilesFromMap("start_map.png");
-				
-				world.setBoundingBoxes();
-		    }
-		});  
-		
-		WorldLoader.worldLoader.start();
+		world.loadMap("start_map.png", 32);
+    	
+		world.setSolidTilesFromMap("start_map.png");
 		
 		NPC ent1 = new NPC(1, new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
 		ent1.setName("Maciej");
@@ -50,10 +39,10 @@ abstract class StartWorld implements Runnable {
 
 		
 		//Show door texture
-		world.getTile(60, 28).setTexture(new Texture("textures/door.png"), (byte)1);
-		world.getTile(60, 27).setTexture(new Texture("textures/door.png"), (byte)1);
-		world.getTile(60, 26).setTexture(new Texture("textures/door.png"), (byte)1);
-		world.getTile(60, 25).setTexture(new Texture("textures/door.png"), (byte)1);
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 60, 28);
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 60, 27);
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 60, 26);
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 60, 25);
 		
 		//adding door object
 		world.addDoor(new Door(2, 60, 28, 1, 20));

@@ -9,21 +9,27 @@ public class Tile {
 	private boolean solid;
 	Texture[] texture = new Texture[3];
 	
+	public Tile() {
+		this.id = auto_increment++;		
+		this.solid = false;
+	}
+	
 	
 	public Tile(Texture texture) {
-		this.id = auto_increment;
-		auto_increment++;
+		this.id = auto_increment++;
 		
 		this.texture[0] = texture;
 		this.solid = false;
 	}
 	
-	public void setTexture(Texture texture, byte layer) {
+	public Tile setTexture(Texture texture, byte layer) {
 		if(layer == 0 || layer == 1 || layer == 2) {
 			texture.prepare();
 			this.texture[layer] = texture;	
 		} else
 			throw new IllegalStateException("Layer number out of range");
+		
+		return this;
 	}
 	
 	public Texture getTexture(byte layer) {

@@ -21,7 +21,7 @@ import svarog.render.Texture;
 
 import svarog.world.Tile;
 
-public class World{
+public class World implements Runnable {
 	private int id;
 	private int playerId;
 	private Tile[][] tiles;
@@ -34,9 +34,25 @@ public class World{
 	
 	private Matrix4f world;
 	
+	
+	
+	// Multithreading Variables //
+	private Texture fillWorldTexture;
+	private String mapFileName;
+	private int tileSize;
+	private String mapBoundingFileName;
+	
+	private Thread worldThread;
+	
+	
+	private List<QueuedTile> tileQueue; 
+	/////////////////////////////
+	
+	
 	public World(int id, int width, int height) {
 		entities = new ArrayList<Entity>();
 		doors = new ArrayList<Door>();
+		tileQueue = new ArrayList<QueuedTile>();
 		
 		this.setId(id);
 		this.width = width;
@@ -50,6 +66,11 @@ public class World{
 	}
 	
 	public void loadMap(String filename, int tileSize) {
+		this.mapFileName = filename;
+		this.tileSize = tileSize;
+	}
+	
+	private void loadMapInt(String filename, int tileSize) {
 		BufferedImage image;
 		
 		try {
@@ -71,7 +92,7 @@ public class World{
 							}
 							pixels.flip();
 	
-							setTile(new Tile(new Texture(pixels, tileSize)), x, y);
+							tiles[x][y] = new Tile(new Texture(pixels, tileSize));
 							
 							pixels = null;
 						}
@@ -90,6 +111,10 @@ public class World{
 	}
 	
 	public void setSolidTilesFromMap(String filename) {
+		this.mapBoundingFileName = filename;
+	}
+	
+	private void setSolidTilesFromMapInt(String filename) {
 		BufferedImage image;
 
 		try {
@@ -166,6 +191,10 @@ public class World{
 	}
 	
 	public void fillWorld(Texture texture) {
+		fillWorldTexture = texture;
+	}
+	
+	private void fillWorldInt(Texture texture) {
 		for(int i = 0; i < width; i++)
 			for(int j = 0; j < height; j++)
 				tiles[i][j] = new Tile(texture);
@@ -182,7 +211,7 @@ public class World{
 		}
 	}
 	
-	public Tile getTile(int x, int y) {
+	Tile getTile(int x, int y) {
 		try {
 			return tiles[x][y];
 		} catch(ArrayIndexOutOfBoundsException e) {
@@ -198,7 +227,7 @@ public class World{
 		}
 	}
 	
-	public void setBoundingBoxes() {
+	private void setBoundingBoxes() {
 		for(int x = 0; x < width; x++)
 			for(int y = 0; y < height; y++)
 				if(tiles[x][y].isSolid())
@@ -233,5 +262,72 @@ public class World{
 	
 	List<Entity> getEntities() {
 		return entities;
+	}
+	
+	public void addTile(Tile tile, int x, int y) {
+		tileQueue.add(new QueuedTile(tile, x, y));
+	}
+
+	@Override
+	public void run() {
+		if(fillWorldTexture != null)
+			this.fillWorldInt(fillWorldTexture);
+		
+		if(mapFileName != null && tileSize > 0)
+			this.loadMapInt(mapFileName, tileSize);
+		
+		if(mapBoundingFileName != null) {
+			this.setSolidTilesFromMapInt(mapBoundingFileName);
+			this.setBoundingBoxes();
+		}
+	}
+	
+	public void start() {
+		  if (worldThread == null) {
+			   worldThread = new Thread(this, "world");
+			   worldThread.start();
+		  }
+	}
+	
+	public void join(WorldRenderer renderer) throws InterruptedException {
+		  if (worldThread != null) {
+			   worldThread.join();
+			   setQueuedTiles();
+			   renderer.setBuffers();
+		  }
+	}
+	
+	private void setQueuedTiles() {
+		for(QueuedTile tile : tileQueue) {
+			for(byte i = 0; i < 3; i++) {
+				if(tile.getTile().getTexture(i) != null) {
+					tiles[tile.getX()][tile.getY()].setTexture(tile.getTile().getTexture(i), i);
+				}
+			}	
+		}
+	}
+	
+	private class QueuedTile {
+		private Tile tile;
+		private int x;
+		private int y;
+		
+		public QueuedTile(Tile tile, int x, int y) {
+			this.tile = tile;
+			this.x = x;
+			this.y = y;
+		}
+
+		public Tile getTile() {
+			return tile;
+		}
+
+		public int getX() {
+			return x;
+		}
+
+		public int getY() {
+			return y;
+		}
 	}
 }

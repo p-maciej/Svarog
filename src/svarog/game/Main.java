@@ -283,6 +283,7 @@ public class Main {
 		boolean programInit = true;
 		long start = -1;
 		boolean worldLoaded = false;
+		boolean joinThread = false;
 		////////////////////////////////////////////////////////////////////////////////////
 		
 		while(window.processProgram()) {										// This works while program is running
@@ -318,10 +319,12 @@ public class Main {
             	
             	if(worldLoaded == false) {            	
 	            	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
+	            	currentWorld.start();
 	            	worldRenderer.setWorld(currentWorld);
 	            	worldRenderer.calculateView(window);
 	            	camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
 	            	worldLoaded = true;
+	            	joinThread = true;
             	}
             	
             	long stop = Timer.getNanoTime();
@@ -331,15 +334,15 @@ public class Main {
 	            	start = -1;
             	}
             } else {
-            	if(WorldLoader.worldLoader != null) {
+            	if(joinThread == true) {
 	        		try {
-	        			WorldLoader.worldLoader.join();
+	        			currentWorld.join(worldRenderer);
 	        		} catch (InterruptedException e) {
 	        			e.printStackTrace();
 	        		}
-	        		worldRenderer.setBuffers();
 	        		
-	        		WorldLoader.worldLoader = null;
+	        		
+	        		joinThread = false;
             	}
         		
             	

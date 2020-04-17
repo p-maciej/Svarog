@@ -7,7 +7,7 @@ import svarog.world.World;
 
 public abstract class WorldLoader {	
 	
-	public static Thread worldLoader; 
+	//public static Thread worldLoader; 
 	
 	public static World getWorld(int id, Player player, Camera camera, Window window) { // You need to add new if statement if you want doors to shift to particular world
 		if(id == 1)
