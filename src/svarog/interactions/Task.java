@@ -1,38 +1,39 @@
 package svarog.interactions;
 
-//TODO
-//I will rebuild code here, some of it sucks, but give me 48h from 9:55 07.04.2020 ~JG
-
 public class Task {
+	
+	public enum doState{
+		kill,
+		collect
+	}
+	
 	private int taskID;
 	private static int globalTaskID;
 	
+	doState state;
+
 	private String title;
 	private String description;
-	private int toKill;
-	private int toCollect;
-	private int killID;
-	private int collectID;
+	private int toDo;
+	private int doItemID;
 	
 	public Task() {
 		setTaskID(-1);
 		setTitle("title");
 		setDescription("description");
-		setToKill(0);
-		setToCollect(0);
-		setKillID(-1);
-		setCollectID(-1);
+		setToDo(0);
+		setDoItemID(0);
+		setState(doState.kill);
 		globalTaskID++;
 	}
 	
-	public Task(int taskID, String title, String description, int toKill, int toCollect, int killID, int collectID) {
+	public Task(int taskID, String title, String description, int toDo, int doItemID, doState state) {
 		this.setTaskID(taskID);
 		this.title = title;
 		this.description = description;
-		this.toKill = toKill;
-		this.toCollect = toCollect;
-		this.killID = killID;
-		this.collectID = collectID;
+		this.toDo = toDo;
+		this.doItemID = doItemID;
+		this.state = state;
 		globalTaskID++;
 	}
 	
@@ -56,36 +57,20 @@ public class Task {
 		this.description = description;
 	}
 
-	public int getToKill() {
-		return toKill;
+	public int getToDo() {
+		return toDo;
 	}
 
-	public void setToKill(int toKill) {
-		this.toKill = toKill;
+	public void setToDo(int toDo) {
+		this.toDo = toDo;
 	}
 
-	public int getToCollect() {
-		return toCollect;
+	public int getDoItemID() {
+		return doItemID;
 	}
 
-	public void setToCollect(int toCollect) {
-		this.toCollect = toCollect;
-	}
-
-	public int getKillID() {
-		return killID;
-	}
-
-	public void setKillID(int killID) {
-		this.killID = killID;
-	}
-
-	public int getCollectID() {
-		return collectID;
-	}
-
-	public void setCollectID(int collectID) {
-		this.collectID = collectID;
+	public void setDoItemID(int doItemID) {
+		this.doItemID = doItemID;
 	}
 
 	public String getTitle() {
@@ -96,4 +81,11 @@ public class Task {
 		this.title = title;
 	}
 	
+	public doState getState() {
+		return state;
+	}
+
+	public void setState(doState state) {
+		this.state = state;
+	}
 }

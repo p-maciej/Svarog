@@ -20,13 +20,13 @@ import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.world.WorldRenderer;
 
-public class InteractionsMaster {
+public class Interactions {
 	private List<Dialog> dialogs = new ArrayList<>();
 	private List<Quest> quest = new ArrayList<>();
 	
 	private static final String path = "resources/quests/";
 	
-	public InteractionsMaster(String file) {
+	public Interactions(String file) {
 		Reader(file);
 	}
 	

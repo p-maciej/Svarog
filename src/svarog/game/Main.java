@@ -28,7 +28,7 @@ import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
-import svarog.interactions.InteractionsMaster;
+import svarog.interactions.Interactions;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
@@ -273,7 +273,7 @@ public class Main {
 		windowInit();
 		
 		////////////TESTING INTERACTIONSMASTER ////////
-		InteractionsMaster interactionsMaster = new InteractionsMaster("quest01.quest");
+		Interactions interactions = new Interactions("quest01.quest");
 		
 		/////////////////////// LOCAL VARIABLES ////////////////////////////////////////////
 		long lastNanos = Timer.getNanoTime();
@@ -428,7 +428,7 @@ public class Main {
 					}*/
 				}
 				
-				interactionsMaster.ChceckInteractions(worldRenderer, camera, window, guiRenderer);
+				interactions.ChceckInteractions(worldRenderer, camera, window, guiRenderer);
 				
 				guiRenderer.renderGuiObjects(guiShader, window);
 				

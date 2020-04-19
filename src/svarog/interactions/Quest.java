@@ -3,18 +3,26 @@ package svarog.interactions;
 import java.util.ArrayList;
 import java.util.List;
 
+import svarog.interactions.Task.doState;
+
 public class Quest {
 	
 	private int questID;
-	private List<Task> tasks = new ArrayList<Task>();;
+	private List<Task> tasks;
 	
 	Quest(int questID){
-		this.questID = questID;
+		this.setQuestID(questID);
+		this.setTask(new ArrayList<Task>());
 	}
 	
-	Quest(int questID, int taskID, String title, String description, int toKill, int toCollect, int killID, int collectID){
+	Quest(int questID, List<Task> tasks){
+		this.setQuestID(questID);
+		this.setTask(tasks);
+	}
+	
+	Quest(int questID, int taskID, String title, String description, int toDo, int doItemID, doState state){
 		this.questID = questID;
-		tasks.add(new Task(taskID, title, description, toKill, toCollect, killID, collectID));
+		tasks.add(new Task(taskID, title, description, toDo, doItemID, state));
 	}
 	
 	public int getQuestID() {
@@ -25,8 +33,12 @@ public class Quest {
 		this.questID = questID;
 	}
 
-	public void addTask(int taskID, String title, String description, int toKill, int toCollect, int killID, int collectID) {
-		tasks.add(new Task(taskID, title, description, toKill, toCollect, killID, collectID));
+	public void addTask(int taskID, String title, String description, int toDo, int doItemID, doState state) {
+		tasks.add(new Task(taskID, title, description, toDo, doItemID, state));
+	}
+	
+	public void setTask(List<Task>tasks) {
+		this.tasks = tasks;
 	}
 	
 	public Task getTaskAt(int i) {
