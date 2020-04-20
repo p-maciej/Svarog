@@ -1,6 +1,6 @@
 #How to write good quests 101
 
-''' xml (quest)
+#xml (quest)
 
 <?xml version = "1.0"?>
 <class>
@@ -48,7 +48,7 @@
    </dialog>
 </class>
 
-'''
+
 
 First you must declare  <dialog> i=with its id (its local number so start from 0 and go on)
 
