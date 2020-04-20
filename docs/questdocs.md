@@ -1,7 +1,8 @@
-#How to write good quests 101
+# How to write good quests 101
 
-#xml (quest)
+# xml (quest)
 
+```xml
 <?xml version = "1.0"?>
 <class>
    <dialog id = "0">
@@ -47,26 +48,39 @@
       <q>0</q>
    </dialog>
 </class>
+```
 
 
+First you must declare  ```<dialog>``` i=with its id (its local number so start from 0 and go on)
 
-First you must declare  <dialog> i=with its id (its local number so start from 0 and go on)
+Next you give it a ```<content>```
+#
+Next how many answers will be ? ```<ans>```
+#
+If it will be any quest? ```<q>``` -- 0 if no, 1 if yes
+#
+Answer content ```<answer>```
+#
+answer id ```<id>``` -- remember to start from 0
+#
+where answer leads (to which dialog) ```<leadsTo>```
+#
+Quest global ID ```<questID>```
+#
+number of tasks in quest ```<t>```
+#
+task ID ```<taskID>```
+#
+title of task ```<title>```
+#
+description of task ```<description>```
+#
+How many things player have to do ```<toDo>```
+#
+item/entity global ID, which player had to interact with ```<doItemID>```
+#
+doState enum for now there is 2 states kill and collect if you have more ideas msg me ```<state>```
 
-Next you give it a <content>
-Next how many answers will be ? <ans>
-If it will be any quest? <q> -- 0 if no, 1 if yes
-Answer content <answer>
-answer id <id> -- remember to start from 0
-where answer leads (to which dialog) <leadsTo>
-Quest global ID <questID>
-number of tasks in quest <t>
-task ID <taskID>
-title of task <title>
-description of task <description>
-How many things player have to do <toDo>
-item/entity global ID, which player had to interact with <doItemID>
-doState enum for now there is 2 states kill and collect if you have more ideas msg me <state>
+# Doc ver 0.7
 
-#Doc ver 0.7
-
-#Author JG
+# Author JG
