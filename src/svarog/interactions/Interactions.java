@@ -86,8 +86,10 @@ public class Interactions {
 					dialogs.add(new Dialog(Integer.parseInt(eElement.getAttribute("id")),
 							eElement.getElementsByTagName("content").item(0).getTextContent(),
 							answers));
-					quests.add(new Quest(Integer.parseInt(eElement.getElementsByTagName("questID").item(0).getTextContent()),
-							tasks));
+					if(eElement.getElementsByTagName("questID").item(0) != null) {
+						quests.add(new Quest(Integer.parseInt(eElement.getElementsByTagName("questID").item(0).getTextContent()),
+								tasks));
+					}
 				}
 			}
 		} catch (Exception e) {
