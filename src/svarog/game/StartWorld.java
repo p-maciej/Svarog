@@ -39,16 +39,16 @@ abstract class StartWorld implements Runnable {
 
 		
 		//Show door texture
-		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 60, 28);
-		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 60, 27);
-		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 60, 26);
-		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 60, 25);
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 119, 16);
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 119, 15);
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 119, 14);
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 119, 13);
 		
 		//adding door object
-		world.addDoor(new Door(2, 60, 28, 1, 20));
-		world.addDoor(new Door(2, 60, 27, 1, 20));
-		world.addDoor(new Door(2, 60, 26, 1, 20));
-		world.addDoor(new Door(2, 60, 25, 1, 20));
+		world.addDoor(new Door(2, 119, 16, 1, 20));
+		world.addDoor(new Door(2, 119, 15, 1, 20));
+		world.addDoor(new Door(2, 119, 14, 1, 20));
+		world.addDoor(new Door(2, 119, 13, 1, 20));
 		//world.addDoor(new Door(60, 24, 1, 20));
 
 		return world;
