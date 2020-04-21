@@ -1,6 +1,4 @@
 package svarog.entity;
-
-import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
@@ -10,19 +8,15 @@ import svarog.io.Window;
 import svarog.objects.MouseInteraction;
 import svarog.render.Animation;
 import svarog.render.Camera;
-import svarog.render.Model;
-import svarog.render.RenderProperties;
-import svarog.render.Shader;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.world.World;
 import svarog.world.WorldRenderer;
 
-public abstract class Entity implements RenderProperties, MouseInteraction {
+public abstract class Entity implements MouseInteraction {
 	private static int auto_increment = 0;
 	
 	/// Model ////
-	private Model model;
 	protected Texture texture;
 	protected Transform transform;
 	protected Transform textureTransform;
@@ -58,7 +52,6 @@ public abstract class Entity implements RenderProperties, MouseInteraction {
 		this.setId(id);
 		
 		this.entityName = new String();
-		model = new Model(verticesArray, textureArray, indicesArray);
 		//this.animation = animation;
 		this.transform = transform;
 		this.setFullBoundingBox(fullBoundingBox);
@@ -78,7 +71,6 @@ public abstract class Entity implements RenderProperties, MouseInteraction {
 		this.setId(id);
 		
 		this.entityName = new String();
-		model = new Model(verticesArray, textureArray, indicesArray);
 		this.texture = texture;
 		this.transform = transform;
 		this.setFullBoundingBox(fullBoundingBox);
@@ -199,34 +191,6 @@ public abstract class Entity implements RenderProperties, MouseInteraction {
 		}
 	}
 	
-	public void prepare() {
-		texture.prepare();
-	}
-	
-	// Character rendering
-	public void render(Shader shader, Camera camera, World world) {
-		Matrix4f target = camera.getProjection();
-		target.mul(world.getWorld());
-		
-		Transform temp = new Transform().set(transform);
-		
-		if(fullBoundingBox == false)
-			temp.getPosition().y += 1f; // This sets offset in texture rendering when entity should walk like on foots
-			
-		shader.bind();
-		shader.setUniform("sampler", 0);
-		shader.setUniform("projection", temp.getProjection(target));
-		shader.setUniform("sharpness", 1.0f);
-		
-		this.texture.bind(0);
-		this.model.render();
-		
-		shader = null;
-		camera = null;
-		world = null;
-		target = null;
-	}
-	
 	public Entity setIsStatic(boolean state) {
 		this.isStatic = state;
 		return this;
@@ -235,6 +199,10 @@ public abstract class Entity implements RenderProperties, MouseInteraction {
 	public Entity setFullBoundingBox(boolean state) {
 		this.fullBoundingBox = state;
 		return this;
+	}
+	
+	public boolean getFullBoundingBox() {
+		return fullBoundingBox;
 	}
 	
 	public Transform getTransform() {
@@ -273,6 +241,10 @@ public abstract class Entity implements RenderProperties, MouseInteraction {
 
 	public int getObjectId() {
 		return objectId;
+	}
+	
+	public Texture getTexture() {
+		return texture;
 	}
 	
 	public abstract boolean isClicked();

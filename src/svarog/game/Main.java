@@ -62,6 +62,7 @@ public class Main {
 	private static Button healBtn;
 	private static PagedGuiWindow quests;
 	private static WorldRenderer worldRenderer;
+	private static TextureObject loading_text;
 	
 	//JG GLOBLA VARIABLES
 	public static int ans1 = 0;
@@ -246,7 +247,7 @@ public class Main {
 		}
 		////////////////////////////////////////////////////////////////////////////////////
 	}
-	static TextureObject loading_text;
+
 	private static void loadingScreen() {
 		guiShader = new Shader("shader");
 	
