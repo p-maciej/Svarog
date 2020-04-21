@@ -68,8 +68,8 @@ public class Enemy extends Entity {
 		items.add(item);
 	}
 	
-	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
-		items.add(new Item(texture, position, itemInfo, hpRegeneration, attackBonus, lvlRequired, name, description, itemType));
+	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
+		items.add(new Item(texture, position, itemInfo, globalID, localID, hpRegeneration, attackBonus, lvlRequired, name, description, itemType));
 	}
 	
 	//Setters

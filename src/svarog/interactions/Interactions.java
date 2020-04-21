@@ -23,7 +23,7 @@ import svarog.world.WorldRenderer;
 
 public class Interactions {
 	private List<Dialog> dialogs = new ArrayList<>();
-	private List<Quest> quest = new ArrayList<>();
+	private List<Quest> quests = new ArrayList<>();
 	
 	private static final String path = "resources/quests/";
 	
@@ -86,6 +86,8 @@ public class Interactions {
 					dialogs.add(new Dialog(Integer.parseInt(eElement.getAttribute("id")),
 							eElement.getElementsByTagName("content").item(0).getTextContent(),
 							answers));
+					quests.add(new Quest(Integer.parseInt(eElement.getElementsByTagName("questID").item(0).getTextContent()),
+							tasks));
 				}
 			}
 		} catch (Exception e) {
@@ -144,7 +146,7 @@ public class Interactions {
 	}
 	
 	public Quest getQuestAt(int i) {
-		return quest.get(i);
+		return quests.get(i);
 	}
 	
 }
