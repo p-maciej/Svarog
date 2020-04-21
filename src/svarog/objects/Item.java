@@ -30,9 +30,9 @@ public class Item extends TextureObject implements Movable, MouseInteraction{
 		this.itemInfo = itemInfo;
 	}
 	
-	public Item(Texture texture, Vector2f position, ItemInfo itemInfo, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
+	public Item(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
 		super(texture, position);
-		this.itemInfo = new ItemInfo(hpRegeneration, attackBonus, lvlRequired, name, description, itemType);
+		this.itemInfo = new ItemInfo(globalID, localID, hpRegeneration, attackBonus, lvlRequired, name, description, itemType);
 	}
 	
 	public boolean isClicked() {

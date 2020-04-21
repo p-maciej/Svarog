@@ -51,4 +51,8 @@ public class Animation extends Texture {
 		
 		frames[pointer].bind(sampler);
 	}
+	
+	public void resetLastTime() {
+		this.lastTime = Timer.getTime();
+	}
 }

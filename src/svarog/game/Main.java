@@ -62,6 +62,7 @@ public class Main {
 	private static Button healBtn;
 	private static PagedGuiWindow quests;
 	private static WorldRenderer worldRenderer;
+	private static TextureObject loading_text;
 	
 	//JG GLOBLA VARIABLES
 	public static int ans1 = 0;
@@ -246,17 +247,15 @@ public class Main {
 		}
 		////////////////////////////////////////////////////////////////////////////////////
 	}
-	
+
 	private static void loadingScreen() {
 		guiShader = new Shader("shader");
 	
-		
-		
 		////////// LOADING SCREEN //////////////////////////////////////////////////////////
 		loadingScreen = new GuiRenderer(window);
 		
 		TextureObject background = new TextureObject(new Texture("textures/loading_screen.png"));	
-		TextureObject loading_text = new TextureObject(new Animation(4, 5, "loading/loading"));
+		loading_text = new TextureObject(new Animation(4, 5, "loading/loading"));
 		loadingScreen.addGuiObject(background);
 		loadingScreen.addGuiObject(loading_text);
 		////////////////////////////////////////////////////////////////////////////////////
@@ -297,10 +296,12 @@ public class Main {
             	
                 if(start == -1) {
                 	start = Timer.getNanoTime();
+                	
+                	if(loading_text != null)
+                		((Animation)loading_text.getTexture()).resetLastTime();
                 }
                 
-            	if(programInit == true) {
-            		
+            	if(programInit == true) {		
             		loadingScreen();
             		
                 	loadingScreen.update(window);
@@ -340,8 +341,7 @@ public class Main {
 	        		} catch (InterruptedException e) {
 	        			e.printStackTrace();
 	        		}
-	        		
-	        		
+
 	        		joinThread = false;
             	}
         		

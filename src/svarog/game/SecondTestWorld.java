@@ -37,6 +37,7 @@ abstract class SecondTestWorld {
 		for(int i = 0; i < 100; i++) {
 			//System.out.println(Dziekan.GetRandomAttack());
 		}
+		
 		world.addEntity(player);
 		
 		world.addDoor(new Door(1, 0, 20, 59, 26));

@@ -159,7 +159,7 @@ public class World implements Runnable {
 	}
 	
 	public void addEntity(Entity entity) {
-		entity.prepare();
+		entity.getTexture().prepare();
 		this.entities.add(entity);
 		
 		if(entity instanceof Player)

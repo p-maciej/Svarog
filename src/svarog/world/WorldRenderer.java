@@ -11,6 +11,7 @@ import svarog.render.Model;
 import svarog.render.RenderProperties;
 import svarog.render.Shader;
 import svarog.render.Texture;
+import svarog.render.Transform;
 
 public class WorldRenderer implements RenderProperties {
 	static final float scale = 16f;
@@ -68,7 +69,7 @@ public class WorldRenderer implements RenderProperties {
 		}	
 		
 		for(Entity entity : world.getEntities()) {
-			entity.render(shader, camera, world); // Entities rendering
+			renderEntity(entity, shader, camera, world); // Entities rendering
 			if(entity.isOverable()) {
 				if(isOverEntity(entity, camera, window)) {
 					mouseOverEntityId = entity.getObjectId();
@@ -130,11 +131,24 @@ public class WorldRenderer implements RenderProperties {
 				this.model.render();
 			}
 		}
+	}
+	
+	public void renderEntity(Entity entity, Shader shader, Camera camera, World world) {
+		Matrix4f target = camera.getProjection();
+		target.mul(world.getWorld());
 		
-		tile = null;
-		shader = null;
-		world = null;
-		camera = null;
+		Transform temp = new Transform().set(entity.getTransform());
+		
+		if(entity.getFullBoundingBox() == false)
+			temp.getPosition().y += 1f; // This sets offset in texture rendering when entity should walk like on foots
+			
+		shader.bind();
+		shader.setUniform("sampler", 0);
+		shader.setUniform("projection", temp.getProjection(target));
+		shader.setUniform("sharpness", 1.0f);
+		
+		entity.getTexture().bind(0);
+		this.model.render();
 	}
 	
 	public void setBuffers() {
