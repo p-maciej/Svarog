@@ -776,6 +776,10 @@ public class GuiRenderer implements RenderProperties {
 		}
 	}
 	
+	public void removeTextureObject(TextureObject object) {
+		objects.remove(object);
+	}
+	
 	public float getRight() {
 		return windowWidth/2;
 	}
