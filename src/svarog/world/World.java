@@ -23,7 +23,6 @@ import svarog.world.Tile;
 
 public class World implements Runnable {
 	private int id;
-	private int playerId;
 	private Tile[][] tiles;
 	private int width;
 	private int height;
@@ -160,11 +159,7 @@ public class World implements Runnable {
 	
 	public void addEntity(Entity entity) {
 		entity.getTexture().prepare();
-		this.entities.add(entity);
-		
-		if(entity instanceof Player)
-			playerId = entities.size() - 1;
-			
+		this.entities.add(entity);	
 	}
 	
 	public int numberOfEntities() {
@@ -186,8 +181,14 @@ public class World implements Runnable {
 		this.doors.add(door);
 	}
 	
+	
 	public Player getPlayer() {
-		return (Player)this.entities.get(playerId);
+		for(Entity i: entities) {
+			if(i instanceof Player) {
+				return (Player)(i);
+			}
+		}
+		return null;
 	}
 	
 	public void fillWorld(Texture texture) {
@@ -260,7 +261,7 @@ public class World implements Runnable {
 		return world;
 	}
 	
-	List<Entity> getEntities() {
+	public List<Entity> getEntities() {
 		return entities;
 	}
 	

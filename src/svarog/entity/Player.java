@@ -14,6 +14,7 @@ import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.world.World;
 import svarog.world.WorldRenderer;
 
 public class Player extends Entity {
@@ -194,6 +195,27 @@ public class Player extends Entity {
 		
 		return lastPressedKey;
 	}
+	
+	public void fight(Enemy enemy, World world, int enemyWorldID) {
+		while((enemy).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
+			System.out.println("Enemy HP (before attack): " + (enemy).GetEnemyHP());
+			(enemy).DecreaseEnemyHP(this.getRandomAttack());
+			System.out.println("Enemy HP:  (after attack): " + (enemy).GetEnemyHP());
+			if((enemy).GetEnemyHP()<0) {
+				System.out.println("Enemy "+ (enemy).getName() + " died, you WON!!!");
+				world.getEntities().remove(enemyWorldID);
+			}else {
+				System.out.println("Player HP (before attack): " + this.getHP());
+				this.DecreasePlayerHP((enemy).GetRandomAttack());
+				System.out.println("Player HP (after attack): " + this.getHP());
+				if(this.getHP()<0) {
+					System.out.println("Player died, " + (enemy).getName() + " was killing more people than ever.");
+					break;
+				}
+			}
+		}
+	}
+	
 	
 	private void setLastKeysPressed(int[] keysPressed) {
 		for(int i = 0; i < 4; i++) {

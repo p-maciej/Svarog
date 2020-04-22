@@ -395,23 +395,7 @@ public class Main {
 				for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) {
 					if(currentWorld.getEntity(i).isClicked()) {
 						if(currentWorld.getEntity(i) instanceof Enemy) {
-							while(((Enemy) (currentWorld.getEntity(i))).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
-								System.out.println("Enemy HP (before attack): " + ((Enemy) (currentWorld.getEntity(i))).GetEnemyHP());
-								((Enemy) (currentWorld.getEntity(i))).DecreaseEnemyHP(player.getRandomAttack());
-								System.out.println("Enemy HP:  (after attack): " + ((Enemy) (currentWorld.getEntity(i))).GetEnemyHP());
-								if(((Enemy) (currentWorld.getEntity(i))).GetEnemyHP()<0) {
-									System.out.println("Enemy "+ (currentWorld.getEntity(i)).getName() + " died, you WON!!!");
-									(currentWorld.getEntity(i)).setPosition(1,1);
-								}else {
-									System.out.println("Player HP (before attack): " + player.getHP());
-									player.DecreasePlayerHP(((Enemy) (currentWorld.getEntity(i))).GetRandomAttack());
-									System.out.println("Player HP (after attack): " + player.getHP());
-									if(player.getHP()<0) {
-										System.out.println("Player died, " + (currentWorld.getEntity(i)).getName() + " was killing more people than ever.");
-										break;
-									}
-								}
-							}
+							player.fight((Enemy)currentWorld.getEntity(i), currentWorld, i);
 						}
 					}
 					
