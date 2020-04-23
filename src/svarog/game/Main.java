@@ -14,6 +14,7 @@ import org.joml.Vector2f;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.Player;
+import svarog.gui.Arena;
 import svarog.gui.Button;
 import svarog.gui.Dialog;
 import svarog.gui.Group;
@@ -59,6 +60,7 @@ public class Main {
 	private static TileSheet tileSheet;
 	private static GuiRenderer loadingScreen;
 	private static Button button1;
+	private static Button button2;
 	private static Button healBtn;
 	private static PagedGuiWindow quests;
 	private static WorldRenderer worldRenderer;
@@ -114,6 +116,9 @@ public class Main {
 		guiRenderer.setAnswerFont(pressStartY);
 		guiRenderer.setAnswerHoverFont(pressStartR);
 		
+		
+		guiRenderer.setArenaLogBackground(Texture.getImageBuffer("images/arena/log_background.png"));
+		
 		panels = new GuiPanels();
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
 		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
@@ -139,14 +144,18 @@ public class Main {
 		button1 = new Button(new Texture("images/button.png"), new Texture("images/button_hover.png"), stickTo.TopRight);
 		button1.move(-100, 100);
 		
+		button2 = new Button(new Texture("images/button.png"), new Texture("images/button_hover.png"), stickTo.TopRight);
+		button2.move(-100, 180);
+		
 		healBtn = new Button(new Texture("images/button.png"), stickTo.TopRight);
-		healBtn.move(-100, 200);
+		healBtn.move(-100, 250);
 		
 		guiRenderer.addGuiObject(bottomCorner1);
 		guiRenderer.addGuiObject(bottomCorner2);
 		guiRenderer.addGuiObject(bottomBorderRightPanel);
 		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addGuiObject(button1);
+		guiRenderer.addGuiObject(button2);
 		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(group1);
 		
@@ -350,8 +359,9 @@ public class Main {
 				if(window.hasResized()) {
 					camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
 					guiRenderer.deleteGuiPanels();
+					guiRenderer.deleteGuiPanelGroups();
 					panels.updateDynamicGuiElements(guiRenderer, window);
-					guiRenderer.update(window);
+					guiRenderer.updateAfterResize(window);
 					
 					worldRenderer.calculateView(window);
 					glViewport(0, 0, window.getWidth(), window.getHeight());
@@ -418,6 +428,21 @@ public class Main {
 				
 				if(button1.isClicked())
 					guiRenderer.addWindow(quests);
+				
+				if(button2.isClicked()) {
+					Arena arena = new Arena(player, currentWorld.getEntity(0));
+					List<TextBlock> log = new ArrayList<TextBlock>();
+					TextBlock tbx = new TextBlock(250, new Vector2f());
+					tbx.setString(pressStart, "Killed yourself");
+					
+					TextBlock tbx2 = new TextBlock(250, new Vector2f());
+					tbx2.setString(pressStart, "Suicide");
+					
+					log.add(tbx);
+					log.add(tbx2);
+					arena.setLog(log);
+					guiRenderer.showArena(arena);
+				}
 				
 				if(healBtn.isClicked()) {
 					player.FullyRecoverHP();

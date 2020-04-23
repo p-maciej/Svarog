@@ -78,6 +78,14 @@ public class GuiRenderer implements RenderProperties {
 	private TextureObject dialogTop;
 	private BufferedImage dialogCenter;
 	
+	//// Arena ////////
+	private Arena arena;
+	
+	private BufferedImage arenaLogBackground;
+	private Button closeArenaButton;
+	private Group arenaGroup;
+	///////////////////
+	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
 		this.textBlocks = new ArrayList<TextBlock>();
@@ -352,6 +360,12 @@ public class GuiRenderer implements RenderProperties {
 				closeDialog();
 			}
 		}
+		
+		if(closeArenaButton != null) {
+			if(closeArenaButton.isClicked()) {
+				closeArena();
+			}
+		}
 
 		if(setPointer == true)
 			window.requestCursor(Cursor.Pointer);
@@ -505,6 +519,14 @@ public class GuiRenderer implements RenderProperties {
 		updatePositions();
 	}
 	
+	public void updateAfterResize(Window window) {
+		this.windowHeight = window.getHeight();
+		this.windowWidth = window.getWidth();
+		showArena();
+		
+		update(window);
+	}
+	
 	public void deleteGuiPanels() {
 		for(int i = 0; i < objects.size(); i++)
 			if(objects.get(i).getState() != null)
@@ -523,6 +545,13 @@ public class GuiRenderer implements RenderProperties {
 		for(int i = 0; i < groups.size(); i++)
 			if(groups.get(i).getState() != null)
 				if(groups.get(i).getState() == State.dynamicImage)
+					groups.remove(i);
+	}
+	
+	public void deleteGuiPanelGroups() {
+		for(int i = 0; i < groups.size(); i++)
+			if(groups.get(i).getState() != null)
+				if(groups.get(i).getState() == State.guiPanel)
 					groups.remove(i);
 	}
 	
@@ -818,5 +847,80 @@ public class GuiRenderer implements RenderProperties {
 
 	public void setAnswerHoverFont(Font answerHoverFont) {
 		this.answerHoverFont = answerHoverFont;
+	}
+	
+	private void showArena() {
+		if(arena != null) {
+			if(arenaLogBackground != null) {
+				Group group = new Group(State.guiPanel);
+				
+				ByteBuffer logBackground = BufferUtils.createByteBuffer((arenaLogBackground.getWidth()*(windowHeight-70)*4));
+				
+				for(int i = 0; i <  arenaLogBackground.getWidth(); i++) {
+					for(int j = 0; j < windowHeight-70; j++) {
+						int pixel = arenaLogBackground.getRGB(i, 0);
+						logBackground.put(((byte)((pixel >> 16) & 0xFF)));
+						logBackground.put(((byte)((pixel >> 8) & 0xFF)));
+						logBackground.put((byte)(pixel & 0xFF));
+						logBackground.put(((byte)((pixel >> 24) & 0xFF)));
+					}
+				}
+				logBackground.flip();
+				
+				TextureObject log = new TextureObject(new Texture(logBackground, arenaLogBackground.getWidth(), windowHeight-70));
+				log.setStickTo(stickTo.TopLeft);
+				group.addTextureObject(log);
+				
+				int tempHeight = 0;
+				int minIndex = 0;
+				for(int i = arena.getLog().size()-1; i >= 0; i--) {
+					tempHeight += arena.getLog().get(i).getHeight();
+					if(tempHeight < windowHeight-70)
+						minIndex = i;
+					else 
+						break;
+				}
+				
+				tempHeight = 10;
+				for(int i = minIndex; i < arena.getLog().size() ; i++) {
+					TextBlock tempBlock = arena.getLog().get(i);
+					tempBlock.setStickTo(stickTo.TopLeft);
+					tempBlock.setPosition(10, -tempHeight);
+					tempHeight += tempBlock.getHeight();
+					group.addTextBlock(tempBlock);
+				}
+				
+				Button closeArena = new Button(new Texture("images/dialog/close_dialog.png"), stickTo.TopRight);
+				closeArena.move(-360, 10);
+				
+				closeArenaButton = closeArena;
+				
+				group.addTextureObject(closeArena);
+				
+				this.arenaGroup = group;
+				this.addGroup(group);
+			} else 
+				throw new IllegalStateException("Arena textures isn't declared!");
+		}
+	}
+	
+	public void showArena(Arena arena) {
+		if(this.arena == null) {
+			this.arena = arena;
+			showArena();
+			updatePositions();
+		}
+	}
+	
+	public void closeArena() {
+		if(arenaGroup != null) {
+			this.arena = null;
+			groups.remove(arenaGroup);
+			arenaGroup = null;
+		}
+	}
+
+	public void setArenaLogBackground(BufferedImage arenaLogBackground) {
+		this.arenaLogBackground = arenaLogBackground;
 	}
 }

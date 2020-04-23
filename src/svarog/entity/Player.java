@@ -171,6 +171,20 @@ public class Player extends Entity {
 		}
 	}
 	
+	public Texture getPlayerTexture(Direction direction) {
+		if(direction == Direction.left) {
+			return new Texture("textures/animations/" + this.texturesPath + "idle/left/" + this.fileName + ".png");
+		} else if(direction == Direction.right) {
+			return new Texture("textures/animations/" + this.texturesPath + "idle/right/" + this.fileName + ".png");
+		} else if(direction == Direction.up) {
+			return new Texture("textures/animations/" + this.texturesPath + "idle/up/" + this.fileName + ".png");
+		} else if(direction == Direction.down) {
+			return new Texture("textures/animations/" + this.texturesPath + "idle/down/" + this.fileName + ".png");
+		}
+		
+		return null;
+	}
+	
 	private int getNewPressedKey(int[] lastPressedKeys, int[] pressedKeys) {
 		int pressed = 0;
 		for(int i = 0; i < 4; i++) {

@@ -39,7 +39,7 @@ public abstract class Entity implements MouseInteraction {
 	private boolean isMovable;
 	private boolean isOverable;
 	
-	protected enum Direction {
+	public static enum Direction {
 		left,
 		right,
 		down,
