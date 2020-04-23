@@ -181,7 +181,6 @@ public class World implements Runnable {
 		this.doors.add(door);
 	}
 	
-	
 	public Player getPlayer() {
 		for(Entity i: entities) {
 			if(i instanceof Player) {
@@ -261,8 +260,19 @@ public class World implements Runnable {
 		return world;
 	}
 	
-	public List<Entity> getEntities() {
+	List<Entity> getEntities() {
 		return entities;
+	}
+	
+	public void removeEntity(Entity entity) {
+		entities.remove(entity);
+	}
+	
+	public void removeEntity(int entityId) {
+		for(int i = 0; i < this.numberOfEntities(); i++) {
+			if(entities.get(i).getId() == entityId)
+				entities.remove(i);
+		}
 	}
 	
 	public void addTile(Tile tile, int x, int y) {

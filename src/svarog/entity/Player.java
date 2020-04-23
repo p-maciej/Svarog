@@ -203,7 +203,7 @@ public class Player extends Entity {
 			System.out.println("Enemy HP:  (after attack): " + (enemy).GetEnemyHP());
 			if((enemy).GetEnemyHP()<0) {
 				System.out.println("Enemy "+ (enemy).getName() + " died, you WON!!!");
-				world.getEntities().remove(enemyWorldID);
+				world.removeEntity(enemy);
 			}else {
 				System.out.println("Player HP (before attack): " + this.getHP());
 				this.DecreasePlayerHP((enemy).GetRandomAttack());

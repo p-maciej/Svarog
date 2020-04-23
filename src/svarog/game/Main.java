@@ -392,7 +392,7 @@ public class Main {
 				
 				
 				//Quick check if attack system is working properly, please don't remove, just comment, thanks
-				for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) {
+				for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
 					if(currentWorld.getEntity(i).isClicked()) {
 						if(currentWorld.getEntity(i) instanceof Enemy) {
 							player.fight((Enemy)currentWorld.getEntity(i), currentWorld, i);
