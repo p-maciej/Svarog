@@ -31,6 +31,11 @@ public class Player extends Entity {
 	private int maxAttack;
 	private int minAttack;
 	
+	//Money, Inventory //
+	private int money = 0;
+	private Inventory inventory;
+	
+	
 	public Player(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
 		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
 		
@@ -312,6 +317,15 @@ public class Player extends Entity {
 			this.maxAttack = minAttack;
 		}
 		this.minAttack = minAttack;
+	}
+	
+	public int getMoney() {
+		return money;
+	}
+
+	//ERROR04 -- mo¿liwa wartoœæ ujemna ale w teorii jest to mo¿liwe sooo to tak na razie zostawiam
+	public void setMoney(int money) {
+		this.money = money;
 	}
 
 	@Override
