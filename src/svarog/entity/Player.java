@@ -25,6 +25,8 @@ public class Player extends Entity {
 	private String texturesPath;
 	private String fileName;
 	
+	private boolean movementLock;
+	
 	//HP, Level, NPC, MinAttack, MaxAttack//
 	private HP hp = new HP(100);
 	private XP xp = new XP(0);
@@ -45,111 +47,114 @@ public class Player extends Entity {
 		setCamWithoutAnimation = true;
 		lastPressedKey = GLFW_KEY_LAST;
 		
+		this.setMovementLock(false);
 		super.setIsStatic(false); // Non-static - default setting for player 
 	}
 	
 	@Override
 	public void update(float delta, Window window, Camera camera, WorldRenderer world) {
-		Vector2f movement = new Vector2f();
-		
-		///////////// WASD Player movement ////////////////////
-		
-		int direction = 0;
-		int keysPressed[] = new int[4];
-		
-		if(window.getInput().isKeyDown(GLFW_KEY_A)) {
-			keysPressed[0] = GLFW_KEY_A;
-		}
-		else {
-			keysPressed[0] = -1;
-		}
-		
-		if(window.getInput().isKeyDown(GLFW_KEY_D)) {
-			keysPressed[1] = GLFW_KEY_D;
-		}
-		else {
-			keysPressed[1] = -1;
-		}
-		
-		if(window.getInput().isKeyDown(GLFW_KEY_W)) {
-			keysPressed[2] = GLFW_KEY_W;
-		}
-		else {
-			keysPressed[2] = -1;
-		}
-		
-		if(window.getInput().isKeyDown(GLFW_KEY_S)) {
-			keysPressed[3] = GLFW_KEY_S;
-		}
-		else {
-			keysPressed[3] = -1;
-		}
-		
-		direction = getNewPressedKey(lastKeysPressed, keysPressed);
-		setLastKeysPressed(keysPressed);
-		
-		if(direction == 65) {
-			movement.add(-1*delta, 0);
+		if(movementLock == false) {
+			Vector2f movement = new Vector2f();
 			
-			if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]))
-				setTexture(Direction.left);
-			else
-				if(super.currentDirection != Direction.left)
-					setAnimation(Direction.left);
+			///////////// WASD Player movement ////////////////////
 			
-		} else if(direction == 68) {
-			movement.add(1*delta, 0);
+			int direction = 0;
+			int keysPressed[] = new int[4];
 			
-			if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]))
-				setTexture(Direction.right);
-			else
-				if(super.currentDirection != Direction.right)
-					setAnimation(Direction.right);
-		} else if(direction == 87) {
-			movement.add(0, 1*delta);
-			
-			if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]))
-				setTexture(Direction.up);
-			else
-				if(super.currentDirection != Direction.up)
-					setAnimation(Direction.up);
-		} else if(direction == 83) {
-			movement.add(0, -1*delta);
-			
-			if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]))
-				setTexture(Direction.down);
-			else
-				if(super.currentDirection != Direction.down)
-					setAnimation(Direction.down);
-		} else if(direction == 0) {
-			if(super.currentDirection == Direction.left) {
-				setTexture(Direction.left);
+			if(window.getInput().isKeyDown(GLFW_KEY_A)) {
+				keysPressed[0] = GLFW_KEY_A;
 			}
-			if(super.currentDirection == Direction.right) {
-				setTexture(Direction.right);
+			else {
+				keysPressed[0] = -1;
 			}
-			if(super.currentDirection == Direction.up) {
-				setTexture(Direction.up);
+			
+			if(window.getInput().isKeyDown(GLFW_KEY_D)) {
+				keysPressed[1] = GLFW_KEY_D;
 			}
-			if(super.currentDirection == Direction.down) {
-				setTexture(Direction.down);
+			else {
+				keysPressed[1] = -1;
 			}
+			
+			if(window.getInput().isKeyDown(GLFW_KEY_W)) {
+				keysPressed[2] = GLFW_KEY_W;
+			}
+			else {
+				keysPressed[2] = -1;
+			}
+			
+			if(window.getInput().isKeyDown(GLFW_KEY_S)) {
+				keysPressed[3] = GLFW_KEY_S;
+			}
+			else {
+				keysPressed[3] = -1;
+			}
+			
+			direction = getNewPressedKey(lastKeysPressed, keysPressed);
+			setLastKeysPressed(keysPressed);
+			
+			if(direction == 65) {
+				movement.add(-1*delta, 0);
+				
+				if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]))
+					setTexture(Direction.left);
+				else
+					if(super.currentDirection != Direction.left)
+						setAnimation(Direction.left);
+				
+			} else if(direction == 68) {
+				movement.add(1*delta, 0);
+				
+				if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]))
+					setTexture(Direction.right);
+				else
+					if(super.currentDirection != Direction.right)
+						setAnimation(Direction.right);
+			} else if(direction == 87) {
+				movement.add(0, 1*delta);
+				
+				if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]))
+					setTexture(Direction.up);
+				else
+					if(super.currentDirection != Direction.up)
+						setAnimation(Direction.up);
+			} else if(direction == 83) {
+				movement.add(0, -1*delta);
+				
+				if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]))
+					setTexture(Direction.down);
+				else
+					if(super.currentDirection != Direction.down)
+						setAnimation(Direction.down);
+			} else if(direction == 0) {
+				if(super.currentDirection == Direction.left) {
+					setTexture(Direction.left);
+				}
+				if(super.currentDirection == Direction.right) {
+					setTexture(Direction.right);
+				}
+				if(super.currentDirection == Direction.up) {
+					setTexture(Direction.up);
+				}
+				if(super.currentDirection == Direction.down) {
+					setTexture(Direction.down);
+				}
+			}
+			
+			lastPressedKey = direction;
+			
+			move(movement);
+			
+			if(setCamWithoutAnimation) {
+				camera.setPosition(transform.getPosition().mul(-WorldRenderer.getScale(), new Vector3f()));
+				setCamWithoutAnimation = false;
+			}
+			else {
+				camera.getPosition().lerp(transform.getPosition().mul(-WorldRenderer.getScale(), new Vector3f()), 0.6f); // Camera movement
+			}
+			
+			super.update(delta, window, camera, world);
+			/////////////////////////////////////////////////////////
 		}
-		
-		lastPressedKey = direction;
-		
-		move(movement);
-		
-		if(setCamWithoutAnimation) {
-			camera.setPosition(transform.getPosition().mul(-WorldRenderer.getScale(), new Vector3f()));
-			setCamWithoutAnimation = false;
-		}
-		else {
-			camera.getPosition().lerp(transform.getPosition().mul(-WorldRenderer.getScale(), new Vector3f()), 0.6f); // Camera movement
-		}
-		
-		super.update(delta, window, camera, world);
-		/////////////////////////////////////////////////////////
 	}
 	
 	private void setAnimation(Direction direction) {
@@ -331,5 +336,13 @@ public class Player extends Entity {
 	@Override
 	public boolean isClicked() {
 		return false;
+	}
+
+	public boolean isMovementLocked() {
+		return movementLock;
+	}
+
+	public void setMovementLock(boolean movementLock) {
+		this.movementLock = movementLock;
 	}
 }
