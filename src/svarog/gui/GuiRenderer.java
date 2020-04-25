@@ -81,6 +81,7 @@ public class GuiRenderer implements RenderProperties {
 	//// Arena ////////
 	private Arena arena;
 	
+	private TextureObject arenaImage;
 	private BufferedImage arenaLogBackground;
 	private Button closeArenaButton;
 	private Group arenaGroup;
@@ -854,6 +855,7 @@ public class GuiRenderer implements RenderProperties {
 			if(arenaLogBackground != null) {
 				Group group = new Group(State.guiPanel);
 				
+				/// LOG ///
 				ByteBuffer logBackground = BufferUtils.createByteBuffer((arenaLogBackground.getWidth()*(windowHeight-70)*4));
 				
 				for(int i = 0; i <  arenaLogBackground.getWidth(); i++) {
@@ -889,13 +891,51 @@ public class GuiRenderer implements RenderProperties {
 					tempHeight += tempBlock.getHeight();
 					group.addTextBlock(tempBlock);
 				}
+				/////////
 				
+				/// MAIN BACKGROUND ///
+				int arenaWidth = windowWidth-arenaLogBackground.getWidth()-350;
+				int arenaHeight = windowHeight-70;
+				ByteBuffer arenaBackground = BufferUtils.createByteBuffer(arenaWidth*arenaHeight*4);
+				
+				for(int i = 0; i < arenaWidth; i++) {
+					for(int j = 0; j < arenaHeight; j++) {
+						arenaBackground.put((byte)(141));
+						arenaBackground.put((byte)(88));
+						arenaBackground.put((byte)(50));
+						arenaBackground.put((byte)(255)); // Color of choose
+					}
+				}
+				arenaBackground.flip();
+				
+				TextureObject arenaBg = new TextureObject(new Texture(arenaBackground, arenaWidth, arenaHeight));
+				arenaBg.setStickTo(stickTo.TopLeft);
+				arenaBg.setPosition(arenaLogBackground.getWidth(), 0);
+				group.addTextureObject(arenaBg);
+				///////////////////////
+				
+				/// ARENA IMAGE ///
+				arenaImage.setPosition(-25, 70);
+				group.addTextureObject(arenaImage);
+				//////////////////
+				
+				/// PLAYER ///
+				arena.getPlayer().setPosition(-25, 0);
+				group.addTextureObject(arena.getPlayer());
+				//////////////
+				
+				/// ENEMY ///
+				arena.getEnemy().setPosition(-25, 130);
+				group.addTextureObject(arena.getEnemy());
+				////////////
+				
+				/// CLOSE BUTTON ///
 				Button closeArena = new Button(new Texture("images/dialog/close_dialog.png"), stickTo.TopRight);
 				closeArena.move(-360, 10);
-				
 				closeArenaButton = closeArena;
-				
 				group.addTextureObject(closeArena);
+				///////////////////
+
 				
 				this.arenaGroup = group;
 				this.addGroup(group);
@@ -922,5 +962,10 @@ public class GuiRenderer implements RenderProperties {
 
 	public void setArenaLogBackground(BufferedImage arenaLogBackground) {
 		this.arenaLogBackground = arenaLogBackground;
+	}
+
+	public void setArenaImage(BufferedImage arenaImage) {
+		TextureObject tempArenaImage = new TextureObject(new Texture(arenaImage));
+		this.arenaImage = tempArenaImage;
 	}
 }

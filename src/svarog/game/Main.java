@@ -118,6 +118,7 @@ public class Main {
 		
 		
 		guiRenderer.setArenaLogBackground(Texture.getImageBuffer("images/arena/log_background.png"));
+		guiRenderer.setArenaImage(Texture.getImageBuffer("images/arena/arena.png"));
 		
 		panels = new GuiPanels();
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));

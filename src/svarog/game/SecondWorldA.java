@@ -1,14 +1,10 @@
 package svarog.game;
 
-import java.awt.image.BufferedImage;
 
-import svarog.entity.Enemy;
-import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Texture;
-import svarog.render.Transform;
 import svarog.world.Door;
 import svarog.world.Tile;
 import svarog.world.World;
