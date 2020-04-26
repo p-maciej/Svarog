@@ -1,16 +1,11 @@
 package svarog.gui;
 
-import java.awt.image.BufferedImage;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.joml.Matrix4f;
-import org.joml.Vector2f;
-import org.lwjgl.BufferUtils;
 
 import svarog.gui.font.Line;
-import svarog.gui.font.Font;
 import svarog.gui.font.TextBlock;
 import svarog.io.Window;
 import svarog.io.Window.Cursor;
@@ -19,7 +14,6 @@ import svarog.render.Camera;
 import svarog.render.Model;
 import svarog.render.RenderProperties;
 import svarog.render.Shader;
-import svarog.render.Texture;
 
 public class GuiRenderer implements RenderProperties {
 	
@@ -50,7 +44,11 @@ public class GuiRenderer implements RenderProperties {
 	private List<TextBlock> textBlocks;
 	private List<Group> groups;
 	private List<GuiWindow> windows; 
-
+	private BubbleContainer bubbleContainer;
+	private DialogContainer dialogContainer;
+	private ArenaContainer arenaContainer;
+	private TileSheet tileSheet;
+	
 	private static int clickedObjectId;
 	private static int mouseOverObjectId;
 	private static int draggingFromObjectId;
@@ -58,34 +56,10 @@ public class GuiRenderer implements RenderProperties {
 	private static int draggingWindowId;
 	private static boolean setPointer;
 
-	private TextureObject bubbleLeft;
-	private TextureObject bubbleRight;
-	private BufferedImage bubbleCenter;
-
 	private static int bubbleXoffest = 35; // I thing we can make setter for this to be customizable
 	private static int bubbleYoffset = 20;
 	private static int worldXOffset = -350;
 	private static int worldYOffset = 70;
-	
-	private TileSheet tileSheet;
-	
-	private int dialogId;
-	private Button dialogButton;
-	
-	private Font dialogFont;
-	private Font answerFont;
-	private Font answerHoverFont;
-	private TextureObject dialogTop;
-	private BufferedImage dialogCenter;
-	
-	//// Arena ////////
-	private Arena arena;
-	
-	private TextureObject arenaImage;
-	private BufferedImage arenaLogBackground;
-	private Button closeArenaButton;
-	private Group arenaGroup;
-	///////////////////
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
@@ -93,6 +67,9 @@ public class GuiRenderer implements RenderProperties {
 		this.groups = new ArrayList<Group>();
 		this.tileSheet = new TileSheet();
 		this.windows = new ArrayList<GuiWindow>();
+		this.bubbleContainer = new BubbleContainer(bubbleXoffest, bubbleYoffset);
+		this.dialogContainer = new DialogContainer(worldXOffset, worldYOffset);
+		this.arenaContainer = new ArenaContainer();
 		
 		this.model = new Model(verticesArray, textureArray, indicesArray);
 		this.camera = new Camera();
@@ -105,8 +82,6 @@ public class GuiRenderer implements RenderProperties {
 		draggingFromObjectId = -1;
 		objectDraggedOut = false;
 		draggingWindowId = -1;
-		
-		dialogId = -1;
 	}
 	
 	public void updatePositions() {
@@ -356,14 +331,14 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 
-		if(dialogButton != null) {
-			if(dialogButton.isClicked()) {
+		if(dialogContainer.getDialogButton() != null) {
+			if(dialogContainer.getDialogButton().isClicked()) {
 				closeDialog();
 			}
 		}
 		
-		if(closeArenaButton != null) {
-			if(closeArenaButton.isClicked()) {
+		if(this.arenaContainer.getCloseArenaButton() != null) {
+			if(this.arenaContainer.getCloseArenaButton().isClicked()) {
 				closeArena();
 			}
 		}
@@ -480,39 +455,6 @@ public class GuiRenderer implements RenderProperties {
 		}
 	}
 	
-	public void showBubble(Line line, double posX, double posY) {
-		if(bubbleLeft != null && bubbleRight != null && bubbleCenter != null) {
-			Group group = new Group(State.dynamicImage);
-			bubbleLeft.setPosition((float)posX+bubbleXoffest, (float)posY+bubbleYoffset);
-			group.addTextureObject(bubbleLeft);
-			
-			ByteBuffer contentBackground = BufferUtils.createByteBuffer((int)(bubbleCenter.getHeight()*line.getWidth()*4));
-			
-			for(int i = 0; i < line.getWidth(); i++) {
-				for(int j = 0; j < bubbleCenter.getHeight(); j++) {
-					int pixel = bubbleCenter.getRGB(0, j);
-					contentBackground.put(((byte)((pixel >> 16) & 0xFF)));
-					contentBackground.put(((byte)((pixel >> 8) & 0xFF)));
-					contentBackground.put((byte)(pixel & 0xFF));
-					contentBackground.put(((byte)((pixel >> 24) & 0xFF)));
-				}
-			}
-			contentBackground.flip();
-			
-			TextureObject center = new TextureObject(new Texture(contentBackground, line.getWidth(), bubbleCenter.getHeight()), (float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest), (float)(posY+bubbleYoffset));
-			group.addTextureObject(center);
-			
-			line.setPosition((float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest), (float)(posY+bubbleYoffset-bubbleCenter.getHeight()/2 +line.getHeight()/2));
-			group.addTextureObject(line);
-			
-			bubbleRight.setPosition((float)posX+bubbleXoffest+line.getWidth()+bubbleLeft.getWidth()-3, (float)posY+bubbleYoffset);
-			group.addTextureObject(bubbleRight);
-			
-			this.addGroup(group);
-		} else 
-			throw new IllegalStateException("Bubble textures isn't declared!");
-	}
-	
 	public void update(Window window) {
 		camera.setProjection(window.getWidth(), window.getHeight());
 		this.windowHeight = window.getHeight();
@@ -523,7 +465,12 @@ public class GuiRenderer implements RenderProperties {
 	public void updateAfterResize(Window window) {
 		this.windowHeight = window.getHeight();
 		this.windowWidth = window.getWidth();
-		showArena();
+
+		Group container = arenaContainer.getArenaGroup(windowWidth, windowHeight);
+		if(container != null) {
+			groups.add(container);
+			updatePositions();
+		}
 		
 		update(window);
 	}
@@ -554,106 +501,6 @@ public class GuiRenderer implements RenderProperties {
 			if(groups.get(i).getState() != null)
 				if(groups.get(i).getState() == State.guiPanel)
 					groups.remove(i);
-	}
-	
-	private void createDialog(Dialog dialog) {
-		if(dialogTop != null && dialogCenter != null && answerFont != null && answerHoverFont != null && dialogFont != null) {
-			Group group = new Group();
-			
-			int yOffset = 36;
-			int interspace = 8;
-			TextBlock content = new TextBlock(550, new Vector2f());
-			content.setString(dialogFont, dialog.getContent());
-			
-			int height = content.getHeight()-dialogTop.getHeight()+yOffset;
-			if(height < 0)
-				height = 0;
-			
-			int top = 0;
-			int left = -dialogTop.getWidth()/2+15;
-			
-			
-			for(int i = dialog.getAnswers().size()-1; i >= 0; i--) {
-				Answer answer = dialog.getAnswers().get(i);
-				
-				TextBlockButton ans = new TextBlockButton(535, new Vector2f());
-				ans.setString(answerFont, answerHoverFont, answer.getContent());
-				top -= ans.getHeight()+interspace;
-				height += ans.getHeight()+interspace;
-				ans.move(left+15, top);
-				answer.setObjectId(ans.getId());
-				group.addTextBlock(ans);
-			}
-	
-			top -= content.getHeight()+interspace;
-			
-			if(height*dialogTop.getWidth()*4 > 0) {
-				ByteBuffer center = BufferUtils.createByteBuffer(height*dialogTop.getWidth()*4);
-			
-				for(int j = 0; j < dialogTop.getWidth(); j++) {
-					for(int i = 0; i < height; i++) {
-						int pixel = dialogCenter.getRGB(j, 0);
-						center.put(((byte)((pixel >> 16) & 0xFF)));
-						center.put(((byte)((pixel >> 8) & 0xFF)));
-						center.put((byte)(pixel & 0xFF));
-						center.put(((byte)((pixel >> 24) & 0xFF)));
-					}
-				}
-				center.flip();
-				
-				TextureObject centerTexture = new TextureObject(new Texture(center, dialogTop.getWidth(), height));	
-				centerTexture.move(0, -height/2);
-				group.addTextureObject(centerTexture);
-			}
-	
-			content.move(left, top);
-			
-			dialogTop.setPosition(0, height+dialogTop.getHeight()/2);
-			Button closeDialog = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(-left, -top+10));
-			dialogButton = closeDialog;
-			
-			
-			group.addTextureObject(dialogTop);	
-			
-			group.addTextBlock(content);
-			group.addTextureObject(closeDialog);
-			
-			dialogId = group.getId();
-			group.setStickTo(stickTo.Bottom);
-			group.move(worldXOffset/2, worldYOffset);
-			groups.add(group);
-		} else
-			throw new IllegalStateException("Set all of required textures and fonts for dialog in renderer!");
-	}
-	
-	public void setTopDialog(BufferedImage topDialog) {
-		TextureObject tempDialogTop = new TextureObject(new Texture(topDialog));
-		this.dialogTop = tempDialogTop;
-	}
-	
-	public void setCenterDialog(BufferedImage centerImage) {
-		this.dialogCenter = centerImage;
-	}
-	
-	public void showDialog(Dialog dialog) {
-		if(dialogId == -1) {
-			createDialog(dialog);
-			updatePositions();
-		}
-	}
-	
-	public void closeDialog() {	
-		if(dialogId >= 0) {
-			removeGroup(dialogId);
-			dialogId = -1;
-		}
-	}
-	
-	public boolean isDialogOpen() {
-		if(dialogId >= 0)
-			return true;
-		else 
-			return false;
 	}
 	
 	private void setObjectStickTo(GuiObject object) {
@@ -754,20 +601,6 @@ public class GuiRenderer implements RenderProperties {
 	public static int getDraggingFromObjectId() {
 		return draggingFromObjectId;
 	}
-	
-	public void setBubbleLeft(BufferedImage bubbleLeft) {
-		TextureObject tempBubbleLeft = new TextureObject(new Texture(bubbleLeft));
-		this.bubbleLeft = tempBubbleLeft;
-	}
-
-	public void setBubbleRight(BufferedImage bubbleRight) {
-		TextureObject tempBubbleRight = new TextureObject(new Texture(bubbleRight));
-		this.bubbleRight = tempBubbleRight;
-	}
-
-	public void setBubbleCenter(BufferedImage bubbleCenter) {
-		this.bubbleCenter = bubbleCenter;
-	}
 
 	public void setTileSheet(TileSheet tileSheet) {
 		this.tileSheet = tileSheet;
@@ -832,140 +665,45 @@ public class GuiRenderer implements RenderProperties {
 				groups.remove(i);
 	}
 	
+	public void removeGroup(Group group) {
+		groups.remove(group);
+	}
+	
 	public void removeWindow(int windowId) {
 		for(int i = 0; i < windows.size(); i++)
 			if(windows.get(i).getId() == windowId)
 				windows.remove(i);
 	}
-
-	public void setDialogFont(Font dialogFont) {
-		this.dialogFont = dialogFont;
-	}
-
-	public void setAnswerFont(Font answerFont) {
-		this.answerFont = answerFont;
-	}
-
-	public void setAnswerHoverFont(Font answerHoverFont) {
-		this.answerHoverFont = answerHoverFont;
+	
+	public void showBubble(Line line, double posX, double posY) {
+		this.groups.add(bubbleContainer.getBubble(line, posX, posY));
 	}
 	
-	private void showArena() {
-		if(arena != null) {
-			if(arenaLogBackground != null) {
-				Group group = new Group(State.guiPanel);
-				
-				/// LOG ///
-				ByteBuffer logBackground = BufferUtils.createByteBuffer((arenaLogBackground.getWidth()*(windowHeight-70)*4));
-				
-				for(int i = 0; i <  arenaLogBackground.getWidth(); i++) {
-					for(int j = 0; j < windowHeight-70; j++) {
-						int pixel = arenaLogBackground.getRGB(i, 0);
-						logBackground.put(((byte)((pixel >> 16) & 0xFF)));
-						logBackground.put(((byte)((pixel >> 8) & 0xFF)));
-						logBackground.put((byte)(pixel & 0xFF));
-						logBackground.put(((byte)((pixel >> 24) & 0xFF)));
-					}
-				}
-				logBackground.flip();
-				
-				TextureObject log = new TextureObject(new Texture(logBackground, arenaLogBackground.getWidth(), windowHeight-70));
-				log.setStickTo(stickTo.TopLeft);
-				group.addTextureObject(log);
-				
-				int tempHeight = 0;
-				int minIndex = 0;
-				for(int i = arena.getLog().size()-1; i >= 0; i--) {
-					tempHeight += arena.getLog().get(i).getHeight();
-					if(tempHeight < windowHeight-70)
-						minIndex = i;
-					else 
-						break;
-				}
-				
-				tempHeight = 10;
-				for(int i = minIndex; i < arena.getLog().size() ; i++) {
-					TextBlock tempBlock = arena.getLog().get(i);
-					tempBlock.setStickTo(stickTo.TopLeft);
-					tempBlock.setPosition(10, -tempHeight);
-					tempHeight += tempBlock.getHeight();
-					group.addTextBlock(tempBlock);
-				}
-				/////////
-				
-				/// MAIN BACKGROUND ///
-				int arenaWidth = windowWidth-arenaLogBackground.getWidth()-350;
-				int arenaHeight = windowHeight-70;
-				ByteBuffer arenaBackground = BufferUtils.createByteBuffer(arenaWidth*arenaHeight*4);
-				
-				for(int i = 0; i < arenaWidth; i++) {
-					for(int j = 0; j < arenaHeight; j++) {
-						arenaBackground.put((byte)(141));
-						arenaBackground.put((byte)(88));
-						arenaBackground.put((byte)(50));
-						arenaBackground.put((byte)(255)); // Color of choose
-					}
-				}
-				arenaBackground.flip();
-				
-				TextureObject arenaBg = new TextureObject(new Texture(arenaBackground, arenaWidth, arenaHeight));
-				arenaBg.setStickTo(stickTo.TopLeft);
-				arenaBg.setPosition(arenaLogBackground.getWidth(), 0);
-				group.addTextureObject(arenaBg);
-				///////////////////////
-				
-				/// ARENA IMAGE ///
-				arenaImage.setPosition(-25, 70);
-				group.addTextureObject(arenaImage);
-				//////////////////
-				
-				/// PLAYER ///
-				arena.getPlayer().setPosition(-25, 0);
-				group.addTextureObject(arena.getPlayer());
-				//////////////
-				
-				/// ENEMY ///
-				arena.getEnemy().setPosition(-25, 130);
-				group.addTextureObject(arena.getEnemy());
-				////////////
-				
-				/// CLOSE BUTTON ///
-				Button closeArena = new Button(new Texture("images/dialog/close_dialog.png"), stickTo.TopRight);
-				closeArena.move(-360, 10);
-				closeArenaButton = closeArena;
-				group.addTextureObject(closeArena);
-				///////////////////
-
-				
-				this.arenaGroup = group;
-				this.addGroup(group);
-			} else 
-				throw new IllegalStateException("Arena textures isn't declared!");
+	public void showDialog(Dialog dialog) {
+		if(dialogContainer.getDialogId() == -1) {
+			groups.add(dialogContainer.createDialog(dialog));
+			updatePositions();
 		}
 	}
 	
+	public void closeDialog() {	
+		dialogContainer.closeDialog(this);
+	}
+	
+	public boolean isDialogOpen() {
+		return dialogContainer.isDialogOpen();
+	}
+	
 	public void showArena(Arena arena) {
-		if(this.arena == null) {
-			this.arena = arena;
-			showArena();
+		this.arenaContainer.setArena(arena);
+		Group container = arenaContainer.getArenaGroup(windowWidth, windowHeight);
+		if(container != null) {
+			groups.add(container);
 			updatePositions();
 		}
 	}
 	
 	public void closeArena() {
-		if(arenaGroup != null) {
-			this.arena = null;
-			groups.remove(arenaGroup);
-			arenaGroup = null;
-		}
-	}
-
-	public void setArenaLogBackground(BufferedImage arenaLogBackground) {
-		this.arenaLogBackground = arenaLogBackground;
-	}
-
-	public void setArenaImage(BufferedImage arenaImage) {
-		TextureObject tempArenaImage = new TextureObject(new Texture(arenaImage));
-		this.arenaImage = tempArenaImage;
+		arenaContainer.closeArena(this);
 	}
 }

@@ -15,8 +15,11 @@ import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.Player;
 import svarog.gui.Arena;
+import svarog.gui.ArenaContainer;
+import svarog.gui.BubbleContainer;
 import svarog.gui.Button;
 import svarog.gui.Dialog;
+import svarog.gui.DialogContainer;
 import svarog.gui.Group;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
@@ -106,19 +109,19 @@ public class Main {
 		
 		guiRenderer = new GuiRenderer(window);
 		
-		guiRenderer.setBubbleLeft(Texture.getImageBuffer("images/bubble/left.png"));
-		guiRenderer.setBubbleRight(Texture.getImageBuffer("images/bubble/right.png"));
-		guiRenderer.setBubbleCenter(Texture.getImageBuffer("images/bubble/center.png"));
+		BubbleContainer.setBubbleLeft(Texture.getImageBuffer("images/bubble/left.png"));
+		BubbleContainer.setBubbleRight(Texture.getImageBuffer("images/bubble/right.png"));
+		BubbleContainer.setBubbleCenter(Texture.getImageBuffer("images/bubble/center.png"));
 		
-		guiRenderer.setTopDialog(Texture.getImageBuffer("images/dialog/dialog_top.png"));
-		guiRenderer.setCenterDialog(Texture.getImageBuffer("images/dialog/dialog_center.png"));
-		guiRenderer.setDialogFont(pressStart);
-		guiRenderer.setAnswerFont(pressStartY);
-		guiRenderer.setAnswerHoverFont(pressStartR);
+		DialogContainer.setTopDialog(Texture.getImageBuffer("images/dialog/dialog_top.png"));
+		DialogContainer.setCenterDialog(Texture.getImageBuffer("images/dialog/dialog_center.png"));
+		DialogContainer.setDialogFont(pressStart);
+		DialogContainer.setAnswerFont(pressStartY);
+		DialogContainer.setAnswerHoverFont(pressStartR);
 		
 		
-		guiRenderer.setArenaLogBackground(Texture.getImageBuffer("images/arena/log_background.png"));
-		guiRenderer.setArenaImage(Texture.getImageBuffer("images/arena/arena.png"));
+		ArenaContainer.setArenaLogBackground(Texture.getImageBuffer("images/arena/log_background.png"));
+		ArenaContainer.setArenaImage(Texture.getImageBuffer("images/arena/arena.png"));
 		
 		panels = new GuiPanels();
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
