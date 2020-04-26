@@ -12,6 +12,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import svarog.entity.NPC;
 import svarog.game.Main;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
@@ -102,7 +103,7 @@ public class Interactions {
 		//int answer2 = 0;
 		for(int i=0; i < currentWorld.getWorld().numberOfEntities() - 1 ; i++) {
 			if(currentWorld.isOverEntity(currentWorld.getWorld().getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
-				if(currentWorld.getWorld().getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
+				if(currentWorld.getWorld().getEntity(i) instanceof NPC && currentWorld.getWorld().getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
 					Main.dialog = dialogs.get(0);
 					guiRenderer.showDialog(Main.dialog);
 					Main.ans1 = 1;
