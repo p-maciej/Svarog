@@ -27,10 +27,10 @@ public class ArenaContainer {
 	}
 	
 	Group getArenaGroup(int windowWidth, int windowHeight) {
-		if(arena != null) {
+		if(arena != null && arenaGroup == null) {
 			if(arenaLogBackground != null) {
 				Group group = new Group(State.guiPanel);
-				
+
 				/// LOG ///
 				ByteBuffer logBackground = BufferUtils.createByteBuffer((arenaLogBackground.getWidth()*(windowHeight-70)*4));
 				
