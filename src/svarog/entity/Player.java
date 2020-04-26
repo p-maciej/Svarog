@@ -6,6 +6,9 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_LAST;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_S;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_W;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
@@ -36,6 +39,10 @@ public class Player extends Entity {
 	//Money, Inventory //
 	private int money = 0;
 	private Inventory inventory;
+	
+	//fightString for fight stats
+	private ArrayList<String> fightString = new ArrayList<>();
+	
 	
 	
 	public Player(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
@@ -220,24 +227,26 @@ public class Player extends Entity {
 		return lastPressedKey;
 	}
 	
-	public void fight(Enemy enemy, World world, int enemyWorldID) {
+	public ArrayList<String> fight(Enemy enemy, World world, int enemyWorldID) {
+		fightString.clear();
 		while((enemy).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
-			System.out.println("Enemy HP (before attack): " + (enemy).GetEnemyHP());
+			fightString.add("Enemy HP (before attack): " + (enemy).GetEnemyHP());
 			(enemy).DecreaseEnemyHP(this.getRandomAttack());
-			System.out.println("Enemy HP:  (after attack): " + (enemy).GetEnemyHP());
+			fightString.add("Enemy HP:  (after attack): " + (enemy).GetEnemyHP());
 			if((enemy).GetEnemyHP()<0) {
-				System.out.println("Enemy "+ (enemy).getName() + " died, you WON!!!");
+				fightString.add("Enemy "+ (enemy).getName() + " died, you WON!!!");
 				world.removeEntity(enemy);
 			}else {
-				System.out.println("Player HP (before attack): " + this.getHP());
+				fightString.add("Player HP (before attack): " + this.getHP());
 				this.DecreasePlayerHP((enemy).GetRandomAttack());
-				System.out.println("Player HP (after attack): " + this.getHP());
+				fightString.add("Player HP (after attack): " + this.getHP());
 				if(this.getHP()<0) {
-					System.out.println("Player died, " + (enemy).getName() + " was killing more people than ever.");
+					fightString.add("Player died, " + (enemy).getName() + " was killing more people than ever.");
 					break;
 				}
 			}
 		}
+		return fightString;
 	}
 	
 	

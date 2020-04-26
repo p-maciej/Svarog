@@ -14,8 +14,11 @@ public class Task {
 
 	private String title;
 	private String description;
+	private int howMuchIsDone = 0;
 	private int toDo;
 	private int doItemID;
+	
+	private boolean isEnded = false;
 	
 	public Task() {
 		setTaskID(-1);
@@ -87,5 +90,16 @@ public class Task {
 
 	public void setState(doState state) {
 		this.state = state;
+	}
+	
+	public boolean getIsEnded() {
+		return this.isEnded;
+	}
+	
+	public void increaseHowMuchIsDone() {
+		this.howMuchIsDone++;
+		if(howMuchIsDone>=toDo) {
+			this.isEnded = true;
+		}
 	}
 }

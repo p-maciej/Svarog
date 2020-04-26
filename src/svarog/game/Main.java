@@ -406,7 +406,15 @@ public class Main {
 				for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
 					if(currentWorld.getEntity(i).isClicked()) {
 						if(currentWorld.getEntity(i) instanceof Enemy) {
-							player.fight((Enemy)currentWorld.getEntity(i), currentWorld, i);
+							Arena arena = new Arena(player, currentWorld.getEntity(i));
+							List<TextBlock> log = new ArrayList<TextBlock>();
+							
+							for(String word: player.fight((Enemy)currentWorld.getEntity(i), currentWorld, i)) {
+								log.add(new TextBlock(250, new Vector2f(), pressStart, word));
+							}
+							
+							arena.setLog(log);
+							guiRenderer.showArena(arena);
 						}
 					}
 					

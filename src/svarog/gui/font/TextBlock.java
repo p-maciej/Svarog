@@ -23,6 +23,12 @@ public class TextBlock extends GuiObject {
 		lines = new ArrayList<Line>();
 	}
 	
+	public TextBlock(int maxWidth, Vector2f position, Font font, String string) {
+		super(maxWidth, 0, position);
+		lines = new ArrayList<Line>();
+		setString(font, string);
+	}
+	
 	public TextBlock(int maxWidth, Vector2f position, boolean clickable) {
 		super(maxWidth, 0, position);
 		
