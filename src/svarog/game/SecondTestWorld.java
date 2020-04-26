@@ -27,7 +27,7 @@ abstract class SecondTestWorld {
 			for(int j = 0; j < 4; j++)
 				world.addTile((new Tile().setTexture(new Texture(home, i, j, 32), (byte)(j < 3 ? 2 : 1))), 7+i, 15+j);
 		
-		Enemy ArchEnemy = new Enemy(1, new Texture("textures/avatar.png"), new Transform().setPosition(10, 11), true, 10, 100, 200, 50);
+		Enemy ArchEnemy = new Enemy(1, new Texture("textures/avatar.png"), new Transform().setPosition(10, 11), true, 10, 100, 200, 50, 100);
 		
 		world.addEntity(ArchEnemy);
 		

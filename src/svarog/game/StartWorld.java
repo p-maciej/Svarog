@@ -24,7 +24,7 @@ abstract class StartWorld implements Runnable {
 		ent1.setName("Maciej");
 		NPC ent2 = new NPC(2, new Texture("textures/player.png"), new Transform().setPosition(46, 27), true);
 		ent2.setName("Dawid");
-		Enemy ArchEnemy = new Enemy(3, new Texture("textures/avatar.png"), new Transform().setPosition(46, 29), true, 1, 50, 20, 150);
+		Enemy ArchEnemy = new Enemy(3, new Texture("textures/avatar.png"), new Transform().setPosition(46, 29), true, 1, 50, 20, 150, 100);
 		ArchEnemy.setName("Ten Z³y");
 		NPC npc01 = new NPC(4, new Texture("textures/npc01.png"), new Transform().setPosition(46, 25), true);
 		npc01.setName("Sklepikarz");

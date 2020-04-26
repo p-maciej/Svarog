@@ -12,6 +12,10 @@ import java.util.List;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+import svarog.gui.Arena;
+import svarog.gui.GuiRenderer;
+import svarog.gui.font.Font;
+import svarog.gui.font.TextBlock;
 import svarog.io.Window;
 import svarog.render.Animation;
 import svarog.render.Camera;
@@ -39,10 +43,6 @@ public class Player extends Entity {
 	//Money, Inventory //
 	private int money = 0;
 	private Inventory inventory;
-	
-	//fightString for fight stats
-	private ArrayList<String> fightString = new ArrayList<>();
-	
 	
 	
 	public Player(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
@@ -227,14 +227,31 @@ public class Player extends Entity {
 		return lastPressedKey;
 	}
 	
-	public ArrayList<String> fight(Enemy enemy, World world, int enemyWorldID) {
-		fightString.clear();
+	public void fightShow(GuiRenderer guiRenderer, Player player, Enemy enemy, World world, Font font) {
+		Arena arena = new Arena(player, enemy);
+		List<TextBlock> log = new ArrayList<TextBlock>();
+		
+		for(String word: player.fightLogic((Enemy)enemy, world)) {
+			log.add(new TextBlock(250, new Vector2f(), font, word));
+		}
+		
+		arena.setLog(log);
+		guiRenderer.showArena(arena);
+	}
+	
+	public ArrayList<String> fightLogic(Enemy enemy, World world) {
+		ArrayList<String> fightString = new ArrayList<>();
 		while((enemy).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
 			fightString.add("Enemy HP (before attack): " + (enemy).GetEnemyHP());
 			(enemy).DecreaseEnemyHP(this.getRandomAttack());
 			fightString.add("Enemy HP:  (after attack): " + (enemy).GetEnemyHP());
 			if((enemy).GetEnemyHP()<0) {
 				fightString.add("Enemy "+ (enemy).getName() + " died, you WON!!!");
+				//Adding XP and money reward
+				this.AddPlayerXP(enemy.GetXpForKilling());
+				this.money += enemy.getReward();
+				
+				//Last line (everything should be done before it)
 				world.removeEntity(enemy);
 			}else {
 				fightString.add("Player HP (before attack): " + this.getHP());
