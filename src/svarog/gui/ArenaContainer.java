@@ -29,7 +29,7 @@ public class ArenaContainer {
 	Group getArenaGroup(int windowWidth, int windowHeight) {
 		if(arena != null && arenaGroup == null) {
 			if(arenaLogBackground != null) {
-				Group group = new Group(State.guiPanel);
+				Group group = new Group(State.staticImage);
 
 				/// LOG ///
 				ByteBuffer logBackground = BufferUtils.createByteBuffer((arenaLogBackground.getWidth()*(windowHeight-70)*4));
@@ -137,6 +137,13 @@ public class ArenaContainer {
 	public void closeArena(GuiRenderer renderer) {
 		if(arenaGroup != null) {
 			this.arena = null;
+			renderer.removeGroup(arenaGroup);
+			arenaGroup = null;
+		}
+	}
+	
+	void reload(GuiRenderer renderer) {
+		if(arenaGroup != null) {
 			renderer.removeGroup(arenaGroup);
 			arenaGroup = null;
 		}

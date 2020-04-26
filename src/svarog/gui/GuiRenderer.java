@@ -466,6 +466,7 @@ public class GuiRenderer implements RenderProperties {
 		this.windowHeight = window.getHeight();
 		this.windowWidth = window.getWidth();
 
+		arenaContainer.reload(this);
 		Group container = arenaContainer.getArenaGroup(windowWidth, windowHeight);
 		if(container != null) {
 			groups.add(container);
