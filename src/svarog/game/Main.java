@@ -361,6 +361,7 @@ public class Main {
             	
 				glClearColor(0.2f, 0.2f, 0.2f, 1f);
 				if(window.hasResized()) {
+					window.checkSize();
 					camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
 					guiRenderer.deleteGuiPanels();
 					guiRenderer.deleteGuiPanelGroups();

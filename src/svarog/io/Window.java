@@ -5,6 +5,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_HAND_CURSOR;
 import static org.lwjgl.glfw.GLFW.glfwCreateStandardCursor;
 import static org.lwjgl.glfw.GLFW.glfwCreateWindow;
 import static org.lwjgl.glfw.GLFW.glfwGetCursorPos;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowSize;
 import static org.lwjgl.glfw.GLFW.glfwGetPrimaryMonitor;
 import static org.lwjgl.glfw.GLFW.glfwGetVideoMode;
 import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
@@ -40,6 +41,9 @@ public class Window {
 	
 	private int width;
 	private int height;
+	
+	private int minimumWidth;
+	private int minimumHeight;
 	
 	private boolean fullscreen;
 	private boolean hasResized;
@@ -162,9 +166,27 @@ public class Window {
 		cursorRequest.clear();
 	}
 	
+	public void checkSize() {
+		int tempWidth = width;
+		int tempHeight = height;
+		boolean changed = false;
+		
+		if(width < minimumWidth) {
+			tempWidth = minimumWidth;
+			changed = true;
+		}		
+		if(height < minimumHeight) {
+			tempHeight = minimumHeight;
+			changed = true;
+		}
+		
+		if(changed == true)
+			glfwSetWindowSize(window, tempWidth, tempHeight);
+	}
+	
 	public void setSize(int width, int height) {
-		this.width = width;
-		this.height = height;
+		this.minimumWidth = this.width = width;
+		this.minimumHeight = this.height = height;
 	}
 	
 	public int getWidth() {
