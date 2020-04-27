@@ -20,10 +20,11 @@ public class Enemy extends Entity {
 	//private String fileName;
 	
 	private HP hp = new HP(20);
-	private int maxAttack;
-	private int minAttack;
-	private int xpForKilling;
-	
+	private int maxAttack=0;
+	private int minAttack=0;
+	private int xpForKilling=0;
+	private int reward=0;
+
 	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox) {
 		super(id, texture, transform, fullBoundingBox);
 		super.setClickable(true);
@@ -34,7 +35,7 @@ public class Enemy extends Entity {
 		super.setIsStatic(false); // Non-static - default setting for Enemy
 	}
 	
-	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp) {
+	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp, int reward) {
 		super(id, texture, transform, fullBoundingBox);
 		super.setClickable(true);
 		super.setOverable(true);
@@ -46,6 +47,7 @@ public class Enemy extends Entity {
 		this.maxAttack = maxAttack;
 		this.minAttack = minAttack;
 		this.xpForKilling = xpForKilling;
+		this.reward = reward;
 		this.hp.SetMaxHP(hp);
 	}
 	
@@ -82,12 +84,18 @@ public class Enemy extends Entity {
 	public void SetXpForKilling(int xpForKilling) {
 		this.xpForKilling = xpForKilling;
 	}
-	public void SetAttackRewardXP(int minAttack, int maxAttack, int xpForKilling, int hp) {
+	public void SetAttackRewardXPHP(int minAttack, int maxAttack, int xpForKilling, int hp, int reward) {
 		this.minAttack = minAttack;
 		this.xpForKilling = xpForKilling;
 		this.maxAttack = maxAttack;
 		this.hp.SetHP(hp);
+		this.setReward(reward);
 	}
+
+	public void setReward(int reward) {
+		this.reward = reward;
+	}
+	
 	
 	//Changers
 	public void DecreaseEnemyHP(int damage) {
@@ -111,6 +119,10 @@ public class Enemy extends Entity {
 		return this.hp.GetHP();
 	}
 	
+	public int getReward() {
+		return reward;
+	}
+
 	@Override
 	public boolean isClicked() {
 		return WorldRenderer.getClickedEntityId() == super.getId() ? true : false;
