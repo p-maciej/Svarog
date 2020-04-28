@@ -44,7 +44,6 @@ public class Player extends Entity {
 	private int money = 0;
 	private Inventory inventory;
 	
-	
 	public Player(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
 		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
 		
@@ -105,7 +104,7 @@ public class Player extends Entity {
 				if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]))
 					setTexture(Direction.left);
 				else
-					if(super.currentDirection != Direction.left)
+					if(super.currentDirection != Direction.left || lastPressedKey == 0)
 						setAnimation(Direction.left);
 				
 			} else if(direction == 68) {
@@ -114,7 +113,7 @@ public class Player extends Entity {
 				if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]))
 					setTexture(Direction.right);
 				else
-					if(super.currentDirection != Direction.right)
+					if(super.currentDirection != Direction.right || lastPressedKey == 0)
 						setAnimation(Direction.right);
 			} else if(direction == 87) {
 				movement.add(0, 1*delta);
@@ -122,7 +121,7 @@ public class Player extends Entity {
 				if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]))
 					setTexture(Direction.up);
 				else
-					if(super.currentDirection != Direction.up)
+					if(super.currentDirection != Direction.up || lastPressedKey == 0)
 						setAnimation(Direction.up);
 			} else if(direction == 83) {
 				movement.add(0, -1*delta);
@@ -130,7 +129,7 @@ public class Player extends Entity {
 				if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]))
 					setTexture(Direction.down);
 				else
-					if(super.currentDirection != Direction.down)
+					if(super.currentDirection != Direction.down || lastPressedKey == 0)
 						setAnimation(Direction.down);
 			} else if(direction == 0) {
 				if(super.currentDirection == Direction.left) {

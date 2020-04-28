@@ -43,7 +43,7 @@ public abstract class Entity implements MouseInteraction {
 		left,
 		right,
 		down,
-		up	
+		up
 	}
 	
 	// Animation constructor
