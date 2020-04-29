@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.joml.Matrix4f;
 
+import svarog.gui.PagedGuiWindow.WindowTextType;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.io.Window;
@@ -166,12 +167,12 @@ public class GuiRenderer implements RenderProperties {
 			}
 			
 			if(item instanceof PagedGuiWindow) {
-				for(TextBlock textBlock : ((PagedGuiWindow) item).getTextBlocks()) {
-					if(textBlock.getStickTo() != null) {
-						setTextBlockStickTo(textBlock);
-						textBlock.getTransform().getPosition().add(textBlock.getPosition().x+item.getElements().getTransform().x, textBlock.getPosition().y+item.getElements().getTransform().y, 0);
+				for(WindowTextType textBlock : ((PagedGuiWindow) item).getTextBlocks()) {
+					if(textBlock.getBlock().getStickTo() != null) {
+						setTextBlockStickTo(textBlock.getBlock());
+						textBlock.getBlock().getTransform().getPosition().add(textBlock.getBlock().getPosition().x+item.getElements().getTransform().x, textBlock.getBlock().getPosition().y+item.getElements().getTransform().y, 0);
 					} else {
-						textBlock.getTransform().getPosition().set(textBlock.getPosition().x+item.getElements().getTransform().x, textBlock.getPosition().y+item.getElements().getTransform().y, 0);
+						textBlock.getBlock().getTransform().getPosition().set(textBlock.getBlock().getPosition().x+item.getElements().getTransform().x, textBlock.getBlock().getPosition().y+item.getElements().getTransform().y, 0);
 					}
 				}
 			}
@@ -305,8 +306,8 @@ public class GuiRenderer implements RenderProperties {
 			}
 			
 			if(item instanceof PagedGuiWindow) {
-				for(TextBlock block : ((PagedGuiWindow) item).getTextBlocks()) {
-					renderTextBlock(block, shader, window);
+				for(WindowTextType block : ((PagedGuiWindow) item).getTextBlocks()) {
+					renderTextBlock(block.getBlock(), shader, window);
 				}
 			}
 			

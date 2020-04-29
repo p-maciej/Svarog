@@ -25,6 +25,7 @@ import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.PagedGuiWindow;
+import svarog.gui.PagedGuiWindow.Type;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
 import svarog.gui.TileSheet;
@@ -171,30 +172,39 @@ public class Main {
 		quests.move(-520, -275);
 		
 		
+		TextBlock topic = new TextBlock(280, new Vector2f());
+		topic.setString(pressStart, "Nag³ówek");
+		
+		quests.addTextBlock(topic, Type.headline);
+		
 		TextBlock blck1 = new TextBlock(280, new Vector2f());
 		blck1.setString(pressStart, "test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj ");
 		
-		quests.addTextBlock(blck1);
+		quests.addTextBlock(blck1, Type.content);
 		
 		TextBlock blck2 = new TextBlock(280, new Vector2f());
 		blck2.setString(pressStart, "1111 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
 		
-		quests.addTextBlock(blck2);
+		quests.addTextBlock(blck2, Type.normal);
 		
 		TextBlock blck3 = new TextBlock(280, new Vector2f());
 		blck3.setString(pressStart, "1111 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
 		
-		quests.addTextBlock(blck3);
+		quests.addTextBlock(blck3, Type.normal);
+		
+		TextBlock topic2 = new TextBlock(280, new Vector2f());
+		topic2.setString(pressStart, "Nag³ówek1");
+		quests.addTextBlock(topic2, Type.headline);
 		
 		TextBlock blck4 = new TextBlock(280, new Vector2f());
 		blck4.setString(pressStart, "11113 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
 		
-		quests.addTextBlock(blck4);
+		quests.addTextBlock(blck4, Type.content);
 		
 		TextBlock blck5 = new TextBlock(280, new Vector2f());
 		blck5.setString(pressStart, "1234 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
 		
-		quests.addTextBlock(blck5);
+		quests.addTextBlock(blck5, Type.normal);
 		
 		quests.setPageContent();
 		

@@ -11,9 +11,14 @@ import svarog.gui.font.TextBlock;
 import svarog.render.Texture;
 
 public class PagedGuiWindow extends GuiWindow {
+	public static enum Type {
+		headline,
+		content,
+		normal
+	}
 	
-	private List<TextBlock> textBlocks;
-	private List<TextBlock> toRender;
+	private List<WindowTextType> textBlocks;
+	private List<WindowTextType> toRender;
 	private int currentPage;
 	
 	
@@ -32,11 +37,12 @@ public class PagedGuiWindow extends GuiWindow {
 	private int textBlockSpacing;
 	private int textBlockPaddingLeft;
 	private int textBlockPaddingTop;
+	private int textBlockIndent;
 	
 	public PagedGuiWindow(String title, Font font, TextureObject backgroundTexture) {
 		super(title, font, backgroundTexture);
-		textBlocks = new ArrayList<TextBlock>();
-		toRender = new ArrayList<TextBlock>();
+		textBlocks = new ArrayList<WindowTextType>();
+		toRender = new ArrayList<WindowTextType>();
 		
 		this.interfacePaddingLeft = 20;
 		this.interfacePaddingRight = 20;
@@ -44,6 +50,7 @@ public class PagedGuiWindow extends GuiWindow {
 		this.textBlockSpacing = 20;
 		this.textBlockPaddingLeft = 10;
 		this.textBlockPaddingTop = 70;
+		this.textBlockIndent = 20;
 		
 		this.currentPage = 1;
 		addPagesElements();
@@ -51,8 +58,8 @@ public class PagedGuiWindow extends GuiWindow {
 	
 	public PagedGuiWindow(String title, Font font, TextureObject backgroundTexture, int interfacePaddingLeft, int interfacePaddingRight, int interfacePaddingTop, int textBlockSpacing, int textBlockPaddingLeft, int textBlockPaddingTop) {
 		super(title, font, backgroundTexture);
-		textBlocks = new ArrayList<TextBlock>();
-		toRender = new ArrayList<TextBlock>();
+		textBlocks = new ArrayList<WindowTextType>();
+		toRender = new ArrayList<WindowTextType>();
 		
 		this.setInterfacePaddingLeft(interfacePaddingLeft);
 		this.setInterfacePaddingRight(interfacePaddingRight);
@@ -65,12 +72,12 @@ public class PagedGuiWindow extends GuiWindow {
 		addPagesElements();
 	}
 	
-	@Override
-	public void addTextBlock(TextBlock block) {
-		textBlocks.add(block);
+
+	public void addTextBlock(TextBlock block, Type type) {
+		textBlocks.add(new WindowTextType(block, type));
 	}
 	
-	List<TextBlock> getTextBlocks() {
+	List<WindowTextType> getTextBlocks() {
 		return toRender;
 	}
 
@@ -114,9 +121,18 @@ public class PagedGuiWindow extends GuiWindow {
 	private void setBlockPositions() {
 		int left = -super.getWidth()/2+textBlockPaddingLeft;
 		int top = super.getHeight()/2-textBlockPaddingTop;
-		for(TextBlock block : toRender) {
-			block.setPosition(left, top);
-			top -= block.getHeight() + textBlockSpacing;
+		for(WindowTextType block : toRender) {
+			int tempLeft = left;
+			if(block.getType() == Type.content) {
+				tempLeft += textBlockIndent;
+			}
+			
+			block.getBlock().setPosition(tempLeft, top);
+			if(block.getType() == Type.content || block.getType() == Type.normal)
+				top -= block.getBlock().getHeight() + textBlockSpacing;
+			else
+				top -= block.getBlock().getHeight();
+			
 		}
 	}
 	
@@ -124,26 +140,50 @@ public class PagedGuiWindow extends GuiWindow {
 		toRender.clear();
 		int height = textBlockPaddingTop;
 		int lastRenderedIndex = 0;
-		int tempHeight = 0;
+		int tempHeight = textBlockPaddingTop;
 		int tempPage = 1;
+		
+		int headlineRendered = -1;
 		maxPage = false;
 
 		if(currentPage > 1) {
 			for(int i = 0; i < textBlocks.size(); i++) {
-				tempHeight += textBlocks.get(i).getHeight() + textBlockSpacing;
-				if(tempHeight > super.getHeight()) {
-					tempPage++;
-					tempHeight = 0;
+				WindowTextType temp = textBlocks.get(i);
+				if(temp.getType() == Type.headline) {
+					tempHeight += temp.getBlock().getHeight() + textBlockSpacing;
+					headlineRendered = i;
+				} else if( temp.getType() == Type.normal) {
+					tempHeight += temp.getBlock().getHeight() + textBlockSpacing;
+				} else {
+					tempHeight += temp.getBlock().getHeight();
+				}
+				
+				if(tempHeight >= super.getHeight()) {
+					++tempPage;
+					tempHeight = textBlockPaddingTop;
+					if(headlineRendered != i-1)
+						i = i-1;
+					else 
+						i = i-2;
+					
 					if(tempPage == currentPage) {
-						lastRenderedIndex = i-1;
+						lastRenderedIndex = i;
 						break;
 					}
 				}
+				
+				if(i-1 == headlineRendered)
+					headlineRendered = -1;
 			}
-			for(int i = lastRenderedIndex; i < textBlocks.size(); i++) {
-				height += textBlocks.get(i).getHeight() + textBlockSpacing;
+			for(int i = lastRenderedIndex+1; i < textBlocks.size(); i++) {
+				WindowTextType temp = textBlocks.get(i);
+				if(temp.getType() == Type.headline || temp.getType() == Type.normal)
+					height += temp.getBlock().getHeight() + textBlockSpacing;
+				else
+					height += temp.getBlock().getHeight();
+				
 				if(height < super.getHeight()) {
-					toRender.add(textBlocks.get(i));
+					toRender.add(temp);
 					if(i+1 == textBlocks.size())
 						maxPage = true;
 				} else {
@@ -152,9 +192,14 @@ public class PagedGuiWindow extends GuiWindow {
 			}
 		} else if(currentPage == 1) {
 			for(int i = 0; i < textBlocks.size(); i++) {
-				height += textBlocks.get(i).getHeight() + textBlockSpacing;
+				WindowTextType temp = textBlocks.get(i);
+				if(temp.getType() == Type.headline || temp.getType() == Type.normal)
+					height += temp.getBlock().getHeight() + textBlockSpacing;
+				else
+					height += temp.getBlock().getHeight();
+				
 				if(height < super.getHeight()) {
-					toRender.add(textBlocks.get(i));
+					toRender.add(temp);
 					lastRenderedIndex = i;
 				} else {
 					break;
@@ -223,10 +268,6 @@ public class PagedGuiWindow extends GuiWindow {
 		this.textBlockSpacing = textBlockSpacing;
 	}
 
-	public void setTextBlocks(List<TextBlock> textBlocks) {
-		this.textBlocks = textBlocks;
-	}
-
 	public int getTextBlockPaddingLeft() {
 		return textBlockPaddingLeft;
 	}
@@ -241,5 +282,32 @@ public class PagedGuiWindow extends GuiWindow {
 
 	public void setTextBlockPaddingTop(int textBlockPaddingTop) {
 		this.textBlockPaddingTop = textBlockPaddingTop;
+	}
+	
+	
+	class WindowTextType {
+		private Type type;
+		private TextBlock block;
+
+		private WindowTextType(TextBlock block, Type type) {
+			this.setType(type);
+			this.setBlock(block);
+		}		
+		
+		TextBlock getBlock() {
+			return block;
+		}
+
+		private void setBlock(TextBlock block) {
+			this.block = block;
+		}
+
+		private Type getType() {
+			return type;
+		}
+
+		private void setType(Type type) {
+			this.type = type;
+		}
 	}
 }
