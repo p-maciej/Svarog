@@ -7,6 +7,7 @@ import org.lwjgl.BufferUtils;
 
 import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
+import svarog.gui.font.Color;
 import svarog.gui.font.TextBlock;
 import svarog.render.Texture;
 
@@ -15,7 +16,8 @@ public class ArenaContainer {
 	
 	private static TextureObject arenaImage;
 	private static BufferedImage arenaLogBackground;
-	
+	private static Color backgtroundColor;
+
 	private Button closeArenaButton;
 	private Group arenaGroup;
 	
@@ -28,7 +30,7 @@ public class ArenaContainer {
 	
 	Group getArenaGroup(int windowWidth, int windowHeight) {
 		if(arena != null && arenaGroup == null) {
-			if(arenaLogBackground != null) {
+			if(arenaLogBackground != null && arenaImage != null && backgtroundColor != null) {
 				Group group = new Group(State.staticImage);
 
 				/// LOG ///
@@ -76,10 +78,10 @@ public class ArenaContainer {
 				
 				for(int i = 0; i < arenaWidth; i++) {
 					for(int j = 0; j < arenaHeight; j++) {
-						arenaBackground.put((byte)(141));
-						arenaBackground.put((byte)(88));
-						arenaBackground.put((byte)(50));
-						arenaBackground.put((byte)(255)); // Color of choose
+						arenaBackground.put(backgtroundColor.getR());
+						arenaBackground.put(backgtroundColor.getG());
+						arenaBackground.put(backgtroundColor.getB());
+						arenaBackground.put((byte)255);
 					}
 				}
 				arenaBackground.flip();
@@ -156,5 +158,9 @@ public class ArenaContainer {
 	public static void setArenaImage(BufferedImage arenaImg) {
 		TextureObject tempArenaImage = new TextureObject(new Texture(arenaImg));
 		arenaImage = tempArenaImage;
+	}
+	
+	public static void setBackgtroundColor(Color backgtroundColor) {
+		ArenaContainer.backgtroundColor = backgtroundColor;
 	}
 }
