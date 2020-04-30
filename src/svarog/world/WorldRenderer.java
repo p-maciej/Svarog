@@ -20,16 +20,18 @@ public class WorldRenderer implements RenderProperties {
 	
 	private World world;
 	
-	Vector2f worldOffset;
+	private Vector2f worldOffset;
 	
-	int mouseOverX;
-	int mouseOverY;
+	private int mouseOverX;
+	private int mouseOverY;
 	
-	int viewX;
-	int viewY;
+	private int viewX;
+	private int viewY;
 	
-	static int mouseOverEntityId;
-	static int clickedEntityId;
+	private static int mouseOverEntityId;
+	private static int clickedEntityId;
+	
+	private static boolean mouseInteractionLock = false;
 	
 	public WorldRenderer() {
 		this.world = null;
@@ -58,9 +60,11 @@ public class WorldRenderer implements RenderProperties {
 
 		for(int i = 0; i < viewX; i++) {
 			for(int j = 0; j < viewY; j++) {
-				if((i-posX-(viewX/2)+1)*scale*2 < x && (i-posX-(viewX/2)+1+1)*scale*2 > x && (j+posY-(viewY/2))*scale*2 < y && (j+posY-(viewY/2)+1)*scale*2 > y) {
-					mouseOverX = i-posX-(viewX/2)+1;
-					mouseOverY = j+posY-(viewY/2);
+				if(mouseInteractionLock == false) {
+					if((i-posX-(viewX/2)+1)*scale*2 < x && (i-posX-(viewX/2)+1+1)*scale*2 > x && (j+posY-(viewY/2))*scale*2 < y && (j+posY-(viewY/2)+1)*scale*2 > y) {
+						mouseOverX = i-posX-(viewX/2)+1;
+						mouseOverY = j+posY-(viewY/2);
+					}
 				}
 				Tile t = world.getTile(i-posX-(viewX/2)+1, j+posY-(viewY/2));
 				if(t != null)
@@ -72,7 +76,8 @@ public class WorldRenderer implements RenderProperties {
 			renderEntity(entity, shader, camera, world); // Entities rendering
 			if(entity.isOverable()) {
 				if(isOverEntity(entity, camera, window)) {
-					mouseOverEntityId = entity.getObjectId();
+					if(mouseInteractionLock == false)
+						mouseOverEntityId = entity.getObjectId();
 					
 					if(entity.isClickable())
 						if(window.getInput().isMouseButtonPressed(0))
@@ -241,5 +246,13 @@ public class WorldRenderer implements RenderProperties {
 	
 	public static float getScale() {
 		return scale;
+	}
+
+	public static boolean isMouseInteractionLocked() {
+		return mouseInteractionLock;
+	}
+
+	public static void setMouseInteractionLock(boolean mouseInteractionLock) {
+		WorldRenderer.mouseInteractionLock = mouseInteractionLock;
 	}
 }

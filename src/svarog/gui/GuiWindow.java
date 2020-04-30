@@ -24,6 +24,8 @@ public class GuiWindow {
 	
 	protected Font windowFont;
 	
+	private int backgroundWindowId;
+	
 	public GuiWindow(String title, Font font, int width, int height, stickTo stickTo) {
 		this.id = auto_increment++;
 		this.setWidth(width);
@@ -61,6 +63,8 @@ public class GuiWindow {
 		position = new Vector2f();
 		elements = new Group();
 		
+		backgroundTexture.setOverable(true);
+		backgroundWindowId = backgroundTexture.getId();
 		elements.addTextureObject(backgroundTexture);
 		
 		addStaticElements();
@@ -165,5 +169,9 @@ public class GuiWindow {
 
 	public void setWindowFont(Font windowFont) {
 		this.windowFont = windowFont;
+	}
+
+	int getBackgroundWindowId() {
+		return backgroundWindowId;
 	}
 }

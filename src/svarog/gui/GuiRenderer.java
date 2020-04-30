@@ -15,6 +15,7 @@ import svarog.render.Camera;
 import svarog.render.Model;
 import svarog.render.RenderProperties;
 import svarog.render.Shader;
+import svarog.world.WorldRenderer;
 
 public class GuiRenderer implements RenderProperties {
 	
@@ -253,9 +254,15 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		
-		for(GuiWindow item : windows) {		
+		boolean worldLock = false;
+		for(GuiWindow item : windows) {	
+			worldLock = false;
 			for(TextureObject object : item.getElements().getTextureObjectList()) {
 				renderGuiObject(object, shader, window);
+				
+				
+				if(mouseOverObjectId == item.getBackgroundWindowId())
+					worldLock = true;
 				
 				if(object.isOverable() && object.isMovable()) {
 					boolean update = false;
@@ -269,17 +276,20 @@ public class GuiRenderer implements RenderProperties {
 						item.setPosition(item.getPosition().x, -(window.getHeight()/2)+item.getHeight()/2);
 						update = true;
 					}
-					
-					if((mouseOverObjectId == object.getId() && window.getInput().isMouseButtonDown(0)) || draggingWindowId >= 0) {
-						draggingWindowId = object.getId();
-						if(item.getStickTo() != null)
-							item.setStickTo(null);
-						
-						if(window.getCursorPositionX()+item.getWidth()/2 < window.getWidth()-350 && window.getCursorPositionY()+item.getHeight() - 15 < window.getHeight()-70 && window.getCursorPositionY()-15 > 0 && window.getCursorPositionX()-item.getWidth()/2 > 0) {
-							item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
+
+					if(mouseOverObjectId == object.getId() || draggingWindowId >= 0) {
+						worldLock = true;
+						if(window.getInput().isMouseButtonDown(0)) {
+							draggingWindowId = object.getId();
+							if(item.getStickTo() != null)
+								item.setStickTo(null);
+							
+							if(window.getCursorPositionX()+item.getWidth()/2 < window.getWidth()-350 && window.getCursorPositionY()+item.getHeight() - 15 < window.getHeight()-70 && window.getCursorPositionY()-15 > 0 && window.getCursorPositionX()-item.getWidth()/2 > 0) {
+								item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
+							}
+							
+							update = true;
 						}
-						
-						update = true;
 					}
 					if(draggingWindowId >= 0 && window.getInput().isMouseButtonReleased(0)) {
 						draggingWindowId = -1;
@@ -300,6 +310,11 @@ public class GuiRenderer implements RenderProperties {
 					}
 				}
 			}
+			
+			if(WorldRenderer.isMouseInteractionLocked() && !worldLock)
+				WorldRenderer.setMouseInteractionLock(false);
+			else if(!WorldRenderer.isMouseInteractionLocked() && worldLock)
+				WorldRenderer.setMouseInteractionLock(true);
 			
 			for(TextBlock block : item.getElements().getTextBlockList()) {
 				renderTextBlock(block, shader, window);
@@ -700,6 +715,7 @@ public class GuiRenderer implements RenderProperties {
 		this.arenaContainer.setArena(arena);
 		Group container = arenaContainer.getArenaGroup(windowWidth, windowHeight);
 		if(container != null) {
+			WorldRenderer.setMouseInteractionLock(true);
 			groups.add(container);
 			updatePositions();
 		}
@@ -707,5 +723,6 @@ public class GuiRenderer implements RenderProperties {
 	
 	public void closeArena() {
 		arenaContainer.closeArena(this);
+		WorldRenderer.setMouseInteractionLock(false);
 	}
 }
