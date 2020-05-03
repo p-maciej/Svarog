@@ -17,7 +17,6 @@ import svarog.game.Main;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
 import svarog.gui.GuiRenderer;
-import svarog.interactions.Task.doState;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.world.WorldRenderer;
@@ -62,17 +61,22 @@ public class Interactions {
 						//System.out.println(eElement.getElementsByTagName("id").item(i).getTextContent());
 						//System.out.println(eElement.getElementsByTagName("leadsTo").item(i).getTextContent());
 					}
-					if( Integer.parseInt(eElement.getElementsByTagName("q").item(0).getTextContent())!=0) {
-						for(int i =0; i< Integer.parseInt(eElement.getElementsByTagName("t").item(0).getTextContent());i++) {
-							tasks.add(new Task(Integer.parseInt(eElement.getElementsByTagName("taskID").item(i).getTextContent()),
-									eElement.getElementsByTagName("title").item(i).getTextContent(),
-									eElement.getElementsByTagName("description").item(i).getTextContent(),
-									Integer.parseInt(eElement.getElementsByTagName("toDo").item(i).getTextContent()),
-									Integer.parseInt(eElement.getElementsByTagName("doItemID").item(i).getTextContent()),
-									doState.valueOf(eElement.getElementsByTagName("state").item(i).getTextContent())
-									));
-						}
-					}
+                    if( Integer.parseInt(eElement.getElementsByTagName("q").item(0).getTextContent())!=0) {
+                        for(int i =0; i< Integer.parseInt(eElement.getElementsByTagName("t").item(0).getTextContent());i++) {
+                            tasks.add(new Task(Integer.parseInt(eElement.getElementsByTagName("taskID").item(i).getTextContent()),
+                                    Integer.parseInt(eElement.getElementsByTagName("toDo").item(i).getTextContent()),
+                                    Integer.parseInt(eElement.getElementsByTagName("doItemID").item(i).getTextContent()),
+                                    Task.doState.valueOf(eElement.getElementsByTagName("state").item(i).getTextContent())
+                            ));
+                        }
+                    }
+
+                    if(eElement.getElementsByTagName("questID").item(0) != null) {
+                        quests.add(new Quest(Integer.parseInt(eElement.getElementsByTagName("questID").item(0).getTextContent()),
+                                eElement.getElementsByTagName("title").item(0).getTextContent(),
+                                eElement.getElementsByTagName("description").item(0).getTextContent(),
+                                tasks));
+                    }
 					/*Quest temporaryGuy = new Quest(Integer.parseInt(eElement.getElementsByTagName("questID").item(0).getTextContent()),
 							Integer.parseInt(eElement.getElementsByTagName("taskID").item(0).getTextContent()),
 							eElement.getElementsByTagName("title").item(0).getTextContent(),
@@ -87,10 +91,6 @@ public class Interactions {
 					dialogs.add(new Dialog(Integer.parseInt(eElement.getAttribute("id")),
 							eElement.getElementsByTagName("content").item(0).getTextContent(),
 							answers));
-					if(eElement.getElementsByTagName("questID").item(0) != null) {
-						quests.add(new Quest(Integer.parseInt(eElement.getElementsByTagName("questID").item(0).getTextContent()),
-								tasks));
-					}
 				}
 			}
 		} catch (Exception e) {
@@ -143,6 +143,10 @@ public class Interactions {
 			}
 		}
 	}
+	
+    public List<Quest> getQuests() {
+        return quests;
+    }
 	
 	public Dialog getDialogAt(int i) {
 		return dialogs.get(i);

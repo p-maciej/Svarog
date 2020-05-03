@@ -16,6 +16,7 @@ import svarog.gui.Arena;
 import svarog.gui.GuiRenderer;
 import svarog.gui.font.Font;
 import svarog.gui.font.TextBlock;
+import svarog.interactions.Quest;
 import svarog.io.Window;
 import svarog.render.Animation;
 import svarog.render.Camera;
@@ -43,7 +44,8 @@ public class Player extends Entity {
 	//Money, Inventory //
 	private int money = 0;
 	private Inventory inventory;
-	
+	private List<Quest> quests = new ArrayList<>();
+
 	public Player(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
 		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
 		
@@ -351,6 +353,14 @@ public class Player extends Entity {
 	
 	public int getMoney() {
 		return money;
+	}
+	
+	public List<Quest> getQuests() {
+		return quests;
+	}
+
+	public void setQuests(List<Quest> quests) {
+		this.quests = quests;
 	}
 
 	//ERROR04 -- mo¿liwa wartoœæ ujemna ale w teorii jest to mo¿liwe sooo to tak na razie zostawiam

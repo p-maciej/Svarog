@@ -34,6 +34,8 @@ import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.interactions.Interactions;
+import svarog.interactions.Quest;
+import svarog.interactions.Task;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
@@ -74,6 +76,8 @@ public class Main {
 	public static int ans1 = 0;
 	public static Dialog dialog = null;
 	public static Dialog dialog1 = null;
+	public static Interactions interactions = new Interactions("quest01.quest");
+
 	
 	private static void windowInit() {
 		window = new Window();
@@ -171,7 +175,16 @@ public class Main {
 		quests.setStickTo(stickTo.TopRight);
 		quests.move(-520, -275);
 		
+		////////////TESTING INTERACTIONSMASTER ////////
+		player.setQuests(interactions.getQuests());
 		
+		for(Quest ques: player.getQuests()) {
+			quests.addTextBlock(new TextBlock(280, new Vector2f(), pressStart, ques.getTitle()), Type.headline);
+			quests.addTextBlock(new TextBlock(280, new Vector2f(), pressStart, ques.getDescription()), Type.content);
+			for(Task tasks01: ques.getTasks()) {
+				quests.addTextBlock(new TextBlock(280, new Vector2f(), pressStart, tasks01.progress()), Type.normal);
+			}
+		}
 		TextBlock topic = new TextBlock(280, new Vector2f());
 		topic.setString(pressStart, "Nag³ówek");
 		
@@ -295,8 +308,7 @@ public class Main {
 		
 		windowInit();
 		
-		////////////TESTING INTERACTIONSMASTER ////////
-		Interactions interactions = new Interactions("quest01.quest");
+		
 		
 		/////////////////////// LOCAL VARIABLES ////////////////////////////////////////////
 		long lastNanos = Timer.getNanoTime();

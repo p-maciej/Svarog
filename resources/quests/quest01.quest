@@ -3,45 +3,42 @@
    <dialog id = "0">
       <content>Chcesz questa?</content>
       <ans>2</ans>
-      <q>0</q>
-      <t>0</t>
       <answer>TAK</answer>
       <id>0</id>
       <leadsTo>1</leadsTo>
       <answer>NIE</answer>
       <id>1</id>
       <leadsTo>2</leadsTo>
+      <q>0</q>
+      <t>0</t>
    </dialog>
    <dialog id = "1">
       <content>Bierz questa</content>
       <ans>1</ans>
-      <q>1</q>
       <answer>Bywaj</answer>
       <id>0</id>
       <leadsTo>1</leadsTo>
+      <q>1</q>
 	  <questID>1</questID>
-	  <t>2</t>
-	  <taskID>0</taskID>
 	  <title>Pokonaj zbojcow</title>
 	  <description>Pod miastem kryja sie grozni zbuje, mozesz ich pokonac przy pomocy miecza</description>
+	  <t>2</t>
+	  <taskID>0</taskID>
       <toDo>5</toDo>
       <doItemID>6</doItemID>
       <state>kill</state>
 	  <taskID>1</taskID>
-	  <title>Zbierz ziiola</title>
-	  <description>Kazdy bohater potrzebuje potionow leczniczych</description>
-      <toDo>6</toDo>
+	  <toDo>6</toDo>
       <doItemID>12</doItemID>
       <state>collect</state>
    </dialog>
    <dialog id = "2">
       <content>To nie dostaniesz</content>
       <ans>1</ans>
-      <q>0</q>
-      <t>0</t>
       <answer>Bywaj</answer>
       <id>0</id>
       <leadsTo>1</leadsTo>
       <q>0</q>
+      <t>0</t>
    </dialog>
 </class>

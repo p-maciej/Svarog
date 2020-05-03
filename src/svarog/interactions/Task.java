@@ -1,105 +1,95 @@
 package svarog.interactions;
 
 public class Task {
-	
-	public enum doState{
-		kill,
-		collect
-	}
-	
-	private int taskID;
-	private static int globalTaskID;
-	
-	doState state;
 
-	private String title;
-	private String description;
-	private int howMuchIsDone = 0;
-	private int toDo;
-	private int doItemID;
-	
-	private boolean isEnded = false;
-	
-	public Task() {
-		setTaskID(-1);
-		setTitle("title");
-		setDescription("description");
-		setToDo(0);
-		setDoItemID(0);
-		setState(doState.kill);
-		globalTaskID++;
-	}
-	
-	public Task(int taskID, String title, String description, int toDo, int doItemID, doState state) {
-		this.setTaskID(taskID);
-		this.title = title;
-		this.description = description;
-		this.toDo = toDo;
-		this.doItemID = doItemID;
-		this.state = state;
-		globalTaskID++;
-	}
-	
-	public int getTaskID() {
-		return taskID;
-	}
+    public enum doState{
+        kill,
+        collect
+    }
 
-	public void setTaskID(int taskID) {
-		this.taskID = taskID;
-	}
+    private int taskID;
+    private static int globalTaskID;
 
-	public int getGlobalTaskID() {
-		return globalTaskID;
-	}
+    doState state;
 
-	public String getDescription() {
-		return description;
-	}
+    private int howMuchIsDone = 0;
+    private int toDo;
+    private int doItemID;
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    private boolean isEnded = false;
 
-	public int getToDo() {
-		return toDo;
-	}
+    public Task() {
+        setTaskID(-1);
 
-	public void setToDo(int toDo) {
-		this.toDo = toDo;
-	}
+        setToDo(0);
+        setDoItemID(0);
+        setState(doState.kill);
+        globalTaskID++;
+    }
 
-	public int getDoItemID() {
-		return doItemID;
-	}
+    public Task(int taskID, int toDo, int doItemID, doState state) {
+        this.setTaskID(taskID);
+        this.toDo = toDo;
+        this.doItemID = doItemID;
+        this.state = state;
+        globalTaskID++;
+    }
 
-	public void setDoItemID(int doItemID) {
-		this.doItemID = doItemID;
-	}
+    public int getTaskID() {
+        return taskID;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setTaskID(int taskID) {
+        this.taskID = taskID;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	
-	public doState getState() {
-		return state;
-	}
+    public int getGlobalTaskID() {
+        return globalTaskID;
+    }
 
-	public void setState(doState state) {
-		this.state = state;
-	}
-	
-	public boolean getIsEnded() {
-		return this.isEnded;
-	}
-	
-	public void increaseHowMuchIsDone() {
-		this.howMuchIsDone++;
-		if(howMuchIsDone>=toDo) {
-			this.isEnded = true;
-		}
-	}
+    public int getToDo() {
+        return toDo;
+    }
+
+    public void setToDo(int toDo) {
+        this.toDo = toDo;
+    }
+
+    public int getDoItemID() {
+        return doItemID;
+    }
+
+    public void setDoItemID(int doItemID) {
+        this.doItemID = doItemID;
+    }
+
+    public doState getState() {
+        return state;
+    }
+
+    public void setState(doState state) {
+        this.state = state;
+    }
+
+    public boolean getIsEnded() {
+        return this.isEnded;
+    }
+
+    public void increaseHowMuchIsDone() {
+        this.howMuchIsDone++;
+        if(howMuchIsDone>=toDo) {
+            this.isEnded = true;
+        }
+    }
+    
+    public String progress(){
+        if(state == doState.kill){
+            return "Kill " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+        }
+        if(state == doState.collect){
+            return "Collect " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+        }
+        return "Sorry our programmers don't think about that yet";
+    }
 }
+

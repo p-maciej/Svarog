@@ -1,51 +1,65 @@
 package svarog.interactions;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-//import svarog.interactions.Task.doState;
-
 public class Quest {
-	
-	private int questID;
-	private List<Task> tasks;
-	
-	public Quest(int questID){
-		this.setQuestID(questID);
-		this.setTask(new ArrayList<Task>());
-	}
-	
-	public Quest(int questID, List<Task> tasks){
-		this.setQuestID(questID);
-		this.setTask(tasks);
-	}
-	
-//	Quest(int questID, int taskID, String title, String description, int toDo, int doItemID, doState state){
-//		this.questID = questID;
-//		tasks.add(new Task(taskID, title, description, toDo, doItemID, state));
-//	}
-	
-	public int getQuestID() {
-		return questID;
-	}
 
-	public void setQuestID(int questID) {
-		this.questID = questID;
-	}
+    private int questID;
+    private List<Task> tasks;
 
-//	public void addTask(int taskID, String title, String description, int toDo, int doItemID, doState state) {
-//		tasks.add(new Task(taskID, title, description, toDo, doItemID, state));
-//	}
-	
-	public void setTask(List<Task>tasks) {
-		this.tasks = tasks;
-	}
-	
-	public Task getTaskAt(int i) {
-		return tasks.get(i);
-	}
-	
-	public List<Task> getTasks() {
-		return this.tasks;
-	}
+    private String title;
+    private String description;
+
+    public Quest(int questID, String title, String description){
+        this.setQuestID(questID);
+        this.setTasks(new ArrayList<Task>());
+        this.setTitle(title);
+        this.setDescription(description);
+    }
+
+    public Quest(int questID, String title, String description, List<Task> tasks){
+        this.setQuestID(questID);
+        this.setTasks(tasks);
+        this.setTitle(title);
+        this.setDescription(description);
+    }
+
+    public int getQuestID() {
+        return questID;
+    }
+
+    public void setQuestID(int questID) {
+        this.questID = questID;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public Task getTaskAt(int i) {
+        return tasks.get(i);
+    }
+
+    public List<Task> getTasks() {
+        return this.tasks;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
