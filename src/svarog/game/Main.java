@@ -500,7 +500,6 @@ public class Main {
 					}
 					
 					
-					//Quick check if attack system is working properly, please don't remove, just comment, thanks
 					for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
 						if(currentWorld.getEntity(i).isClicked()) {
 							if(currentWorld.getEntity(i) instanceof Enemy) {
@@ -509,18 +508,6 @@ public class Main {
 	
 							}
 						}
-						
-						/*if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
-							if(currentWorld.getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
-								dialog = new Dialog(1);
-								dialog.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac. In hendrerit, nulla ut vulputate maximus, tortor arcu varius diam, ac molestie arcu nisi id odio. ");
-								List<Answer> ans = new ArrayList<Answer>();
-								ans.add(new Answer(0, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac.", 1));
-								ans.add(new Answer(1, "Test2", 1));
-								dialog.setAnswers(ans);
-								guiRenderer.showDialog(dialog);
-							}
-						}*/
 					}
 					
 					interactions.ChceckInteractions(worldRenderer, camera, window, guiRenderer);
@@ -550,20 +537,6 @@ public class Main {
 						System.out.println("Health of player was fully recovered: " + player.getHP() + "hp.");
 					}
 					
-					/*if(dialog != null) {
-						if(dialog.clickedAnswer() != null) {
-							if(dialog.clickedAnswer().getId() == 0) {
-								guiRenderer.closeDialog();
-								Dialog dialog1 = new Dialog(2);
-								dialog1.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ");
-								List<Answer> ans1 = new ArrayList<Answer>();
-								ans1.add(new Answer(0, "Ala ma kota", 1));
-								ans1.add(new Answer(1, "Tekst saukdhskajhdksajhdkjsahkjd 1", 1));
-								dialog1.setAnswers(ans1);
-								guiRenderer.showDialog(dialog1);
-							}
-						}
-					}*/
 					
 					for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
 						if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {

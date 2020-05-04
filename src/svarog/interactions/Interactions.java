@@ -13,7 +13,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import svarog.entity.NPC;
-import svarog.game.Main;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
 import svarog.gui.GuiRenderer;
@@ -24,6 +23,8 @@ import svarog.world.WorldRenderer;
 public class Interactions {
 	private List<Dialog> dialogs = new ArrayList<>();
 	private List<Quest> quests = new ArrayList<>();
+	private Dialog dialog;
+	private boolean isEnded = true;
 	
 	private static final String path = "resources/quests/";
 	
@@ -85,102 +86,43 @@ public class Interactions {
 
 				}
 			}
-			for(Dialog inc: dialogs) {
-			for(Answer i: inc.getAnswers()) {
-				System.out.println(i.getLeadsTo());
-			}
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer) {
-		Main.dialog = dialogs.get(0);
+		if(isEnded || dialog == null) {
+			dialog = dialogs.get(0);
+			isEnded = false;
+		}
 		for(int i=0; i < currentWorld.getWorld().numberOfEntities() - 1 ; i++) {
 			if(currentWorld.isOverEntity(currentWorld.getWorld().getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
 				if(currentWorld.getWorld().getEntity(i) instanceof NPC && currentWorld.getWorld().getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
-					guiRenderer.showDialog(Main.dialog);
-					Main.ans1 = 1;
+					guiRenderer.showDialog(dialog);
 				}
 			}
 		}
 		
-		if(Main.dialog.clickedAnswer() != null) {
+		if(dialog.clickedAnswer() != null) {
 			interactionsHelper(guiRenderer);
 		}
-		if(Main.dialog.clickedAnswer() != null) {
-			interactionsHelper(guiRenderer);
-		}
-		
-			/*for(int i = 0; i < Main.dialog.getAnswers().size();i++) {
-				if(Main.ans1 != 0) {
-					if(Main.dialog.clickedAnswer() != null) {
-						if(Main.dialog.clickedAnswer().getId() == i) {
-							guiRenderer.closeDialog();
-							System.out.println(Main.dialog.clickedAnswer().getLeadsTo());
-							if(Main.dialog.clickedAnswer().getLeadsTo() == -1) {
-								break;
-							}
-							Main.dialog = new Dialog(dialogs.get(Main.dialog.clickedAnswer().getLeadsTo()).getId(),
-									dialogs.get(Main.dialog.clickedAnswer().getLeadsTo()).getContent(),
-									dialogs.get(Main.dialog.clickedAnswer().getLeadsTo()).getAnswers()
-									);
-							guiRenderer.showDialog(Main.dialog);
-							break;
-						}
-					}
-				}
-			}*/
 
-//		if(Main.ans1 != 0) {
-//			if(Main.dialog.clickedAnswer() != null) {
-//				if(Main.dialog.clickedAnswer().getId() == 0) {
-//					guiRenderer.closeDialog();
-//					//Main.ans1=0;
-//					Main.dialog1 = new Dialog(dialogs.get(1).getId());
-//					Main.dialog1.setContent(dialogs.get(1).getContent());
-//					Main.dialog1.setAnswers(dialogs.get(1).getAnswers());
-//					guiRenderer.showDialog(Main.dialog1);
-//					Main.ans1=2;
-//				}
-//			}
-//		}
-//		if(Main.ans1 != 0) {
-//			if(Main.dialog.clickedAnswer() != null) {
-//				if(Main.dialog.clickedAnswer().getId() == 1) {
-//					guiRenderer.closeDialog();
-//					//Main.ans1=0;
-//					Main.dialog1 = dialogs.get(2);
-//					guiRenderer.showDialog(Main.dialog1);
-//					Main.ans1=2;
-//				}
-//			}
-//		}
-//		if(Main.ans1 == 2) {
-//			if(Main.dialog1.clickedAnswer() != null) {
-//				if(Main.dialog1.clickedAnswer().getId() == 0) {
-//					guiRenderer.closeDialog();
-//				}
-//			}
-//		}
 	}
 	public void interactionsHelper(GuiRenderer guiRenderer) {
-		for(int i = 0; i < Main.dialog.getAnswers().size();i++) {
-			if(Main.ans1 != 0) {
-				if(Main.dialog.clickedAnswer() != null) {
-					if(Main.dialog.clickedAnswer().getId() == i) {
-						guiRenderer.closeDialog();
-						System.out.println(Main.dialog.clickedAnswer().getLeadsTo());
-						if(Main.dialog.clickedAnswer().getLeadsTo() == -1) {
-							break;
-						}
-						Main.dialog = new Dialog(dialogs.get(Main.dialog.clickedAnswer().getLeadsTo()).getId(),
-								dialogs.get(Main.dialog.clickedAnswer().getLeadsTo()).getContent(),
-								dialogs.get(Main.dialog.clickedAnswer().getLeadsTo()).getAnswers()
-								);
-						guiRenderer.showDialog(Main.dialog);
+		for(int i = 0; i < dialog.getAnswers().size();i++) {
+			if(dialog.clickedAnswer() != null) {
+				if(dialog.clickedAnswer().getId() == i) {
+					guiRenderer.closeDialog();
+					if(dialog.clickedAnswer().getLeadsTo() == -1) {
+						isEnded = true;
+						break;
 					}
+					dialog = new Dialog(dialogs.get(dialog.clickedAnswer().getLeadsTo()).getId(),
+							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getContent(),
+							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getAnswers()
+							);
+					guiRenderer.showDialog(dialog);
 				}
 			}
 		}
