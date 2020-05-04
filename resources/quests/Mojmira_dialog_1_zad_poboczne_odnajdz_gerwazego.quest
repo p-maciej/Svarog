@@ -1,0 +1,127 @@
+<?xml version = "1.0"?>
+<class>
+   <dialog id = "0">
+      <content>[Mavak] – Witaj Mojmiro.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "1">
+      <content>[Mojmira] – Witaj Mavaku.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>2</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "2">
+      <content>[Mavak] – Czy coś się stało? Wyglądasz na strasznie przygnębioną.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>3</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "3">
+      <content>[Mojmira] – Chodzi o mojego męża, Gerwazego. Jak zapewne wiesz jest on drwalem.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>4</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "4">
+      <content>[Mavak] – No tak, nie raz go widziałem w okolicznych lasach jak ścinał dla naszej wioski drewno. Czy coś się z nim stało?</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>5</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "5">
+      <content>[Mojmira] – Mam nadzieję że nie. Jakiś czas temu usłyszał od wędrownego kupca pogłoski o tym ze niedaleko opuszczonego grodu rosną drzewa o niezwykłych właściwościach.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>6</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "6">
+      <content>[Mojmira] - Powiedział że to drewno jest o wiele bardziej wytrzymałe od tego które można spotkać w naszych lasach.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>7</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "7">
+      <content>[Mojmira] – A jako iż mój mąż jest człowiekiem ambitnym oraz o wielkiej sile to postanowił że wyruszy On na poszukiwania owego drewna.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>8</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "8">
+      <content>[Mojmira] – Odradzałam mu to ponieważ wszyscy wiemy co się stało w grodzie i jakie potwory tam teraz grasują.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>9</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "9">
+      <content>[Mojmira] – Niestety ale nie posłuchał mnie i wyruszył w tamte strony około tydzień temu. Mówił mi że jego podróż potrwa dzień/dwa. Jeszcze nie wrócił.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>10</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "10">
+      <content>[Mojmira] – Mavaku. Głupio mi tak prosić ale czy mógłbyś go poszukać? Chciałabym się dowiedzieć czy jeszcze żyje, bo niestety ale obawiam się najgorszego.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>11</leadsTo>
+      <q>1</q>
+	  <questID>5</questID>
+	  <title>Odnajdź Gerwazego, okolicznego drwala</title>
+	  <description>W wiosce spotkałem Mojmirę, była zrospaczona tym że jej mąż Gerwazy wyruszył około tygodnia temu w okolice opuszczonego grodu w poszukiwaniu drewna o wyjątkowych właściwościach, jednakże do tej pory On stamtąd nie wrócił. I tak wybieram się w tamte rejony, więc obiecałem Mojmirze że znajdę Gerwazego, mam nadzieję że żywego.</description>
+	  <t>1</t>
+	  <taskID>0</taskID>
+      <toDo>1</toDo>
+      <doItemID>1</doItemID>
+      <state>Find</state>
+   </dialog>
+   <dialog id = "11">
+      <content>[Mavak] – Oczywiście że go poszukam. W sumie i tak muszę się tam udać więc będę mieć oko na Twojego męża. Mam nadzieję że go znajdę całego i zdrowego.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>12</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "12">
+      <content>[Mojmira] – Dziękuję Ci.</content>
+      <ans>1</ans>
+      <answer>Koniec</answer>
+      <id>0</id>
+      <leadsTo>-1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+</class>

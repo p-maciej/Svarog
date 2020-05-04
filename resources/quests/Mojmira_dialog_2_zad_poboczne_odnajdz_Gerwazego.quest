@@ -1,0 +1,39 @@
+<?xml version = "1.0"?>
+<class>
+   <dialog id = "0">
+      <content>[Mavak] – O nie. To chyba Gerwazy. Biedak chyba został rozszarpany przez Ghule i zaciągnięty aż tutaj.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "1">
+      <content>[Mavak] – Ehhh trzeba będzie te smutną wiadomość przekazać Mojmirze. Jak ja jej to mam powiedzieć?</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>2</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "2">
+      <content>[Mavak] – Nie powienienem tego robić ale na znak dowodu wezmę ze sobą jego naszyjnik.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>3</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "3">
+      <content><Dodano do ekwipunku: Naszyjnik Gerwazego></content>
+      <ans>1</ans>
+      <answer>Koniec</answer>
+      <id>0</id>
+      <leadsTo>-1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+</class>

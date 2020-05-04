@@ -1,0 +1,228 @@
+<?xml version = "1.0"?>
+<class>
+   <dialog id = "0">
+      <content>[Mavak] – Mam Twoje jabłka. Proszę.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "1">
+      <content>[Rozenna] – Awwww dziękuje. Przy okazji dobrze dla Ciebie.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>2</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "2">
+      <content>[Rozenna] -  Bo jak Cię nie było to znalazłam w Swoim domu kosz świeżych jabłek i zdążyłam już dla Ciebie przygotować obiecane 5 jabłeczników. Proszę.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>3</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "3">
+      <content>[Mavak] – <Otrzymałeś 5 jabłeczników. Zostają one dodane do ekwipunku></content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>4</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "4">
+      <content>[Mavak] – Dziękuje Ci bardzo moja droga. Na pewno przydadzą mi się w najbliższym czasie.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>5</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "5">
+      <content>[Rozenna] – W najbliższym czasie? Co masz na myśli? W ogóle wyglądasz na bardzo zamyślonego. Czy coś się stało?</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>6</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "6">
+      <content>[Mavak] – Nie uwierzyła byś.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>7</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "7">
+      <content>[Rozenna] – Czyżby Bogowie dali Ci znak? <śmiech></content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>8</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "8">
+      <content>[Mavak] – Tak!</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>9</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "9">
+      <content>[Rozenna] – Czekaj co? Żartujesz sobie ze mnie.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>10</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "10">
+      <content>[Mavak] – Nie żartuje. Przemówił do mnie sam Rod. Okazuje się że jestem związany jakimś Boskiem Przeznaczeniem i muszę teraz odnaleźć 4 boskie artefakty które są mi przeznaczone.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>11</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "11">
+      <content>[Mavak] –  Jeden z tych artefaktów znalazłem kiedy szukałem dla Ciebie jabłek.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>12</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "12">
+      <content>[Rozenna] – Ten przepiękny miecz jest jednym z nich?</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>13</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "13">
+      <content>[Mavak] – Tak, nazywa się Poran i jest to miecz boga błyskawic – Peruna.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>14</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "14">
+      <content>[Rozenna] – Cóż za niesamowita broń. A co z pozostałymi artefaktami. Wiesz gdzie ich szukać?</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>15</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "15">
+      <content>[Mavak] – Podobno moje sny zawierają w sobie wskazówki do tego gdzie mam ich szukać. Ale co dokładnie moje sny oznaczały, tego nie jestem jeszcze pewny.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>16</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "16">
+      <content>[Rozenna] – Może powinieneś porozmawiać z Pratą, naszym starszym wioski. On powinien Ci pomóc.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>17</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "17">
+      <content>[Mavak] – Tak zrobię. Udam się do niego natychmiast. A następnie, cóż, chyba pójdę wypełnić Swoje przeznaczenie.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>18</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "18">
+      <content>[Rozenna] – Wypełnisz je, wierzę w to.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>19</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "19">
+      <content>[Rozenna] - Hah patrz, czyli jednak miałam rację co do tego że jesteś w stanie dokonać wielkich rzeczy, oraz że Bogowie Cię obserwują.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>20</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "20">
+      <content>[Mavak] – <śmiech> Najwyraźniej tak, nie doceniłem Cię moja droga.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>21</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "21">
+      <content>[Rozenna] – Umysł kobiety nigdy się nie myli. A teraz idź. I Mavaku.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>22</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "22">
+      <content>[Mavak] – Tak?</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>23</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "23">
+      <content>[Rozenna] – Powodzenia. Niech Bogowie będą z Tobą.</content>
+      <ans>1</ans>
+      <answer>Następne okno</answer>
+      <id>0</id>
+      <leadsTo>24</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "24">
+      <content>[Mavak] - <Kiwa głową></content>
+      <ans>1</ans>
+      <answer>Koniec</answer>
+      <id>0</id>
+      <leadsTo>-1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+</class>
