@@ -59,7 +59,7 @@ public class Player extends Entity {
 		
 		List<Task>tasks001 = new ArrayList<>();
 		tasks001.add(new Task(0, 1, 69, doState.talk));
-		this.getQuests().add(new Quest(-100, "Pogadaj z Rozanna", "Musisz sie udac gdzies tam aby pogadac z rozanna,",tasks001 ));
+		this.getQuests().add(new Quest(-100, "Pogadaj z Rozanna", "Musisz sie udac gdzies tam aby pogadac z Rozanna.",tasks001 ));
 		
 		//END OF FIRST QUEST
 		

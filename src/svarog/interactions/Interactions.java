@@ -14,6 +14,7 @@ import org.w3c.dom.NodeList;
 
 import svarog.entity.NPC;
 import svarog.entity.Player;
+import svarog.game.Main;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
 import svarog.gui.GuiRenderer;
@@ -104,8 +105,8 @@ public class Interactions {
 			isEnded = false;
 		}
 		for(int i=0; i < currentWorld.getWorld().numberOfEntities() - 1 ; i++) {
-			if(currentWorld.isOverEntity(currentWorld.getWorld().getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
-				if(currentWorld.getWorld().getEntity(i) instanceof NPC && currentWorld.getWorld().getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
+			if(/* currentWorld.isOverEntity(currentWorld.getWorld().getEntity(i), camera, window) && */ window.getInput().isMouseButtonPressed(0)) {
+				if(/*currentWorld.getWorld().getEntity(i) instanceof NPC && currentWorld.getWorld().getEntity(i).getId() == 6 &&*/ !guiRenderer.isDialogOpen()) {
 					guiRenderer.showDialog(dialog);
 				}
 			}
@@ -123,6 +124,7 @@ public class Interactions {
 					guiRenderer.closeDialog();
 					if(dialog.clickedAnswer().getLeadsTo() == -1) {
 						isEnded = true;
+						Main.talkingNPCid = -1;
 						break;
 					}
 					dialog = new Dialog(dialogs.get(dialog.clickedAnswer().getLeadsTo()).getId(),
@@ -132,7 +134,6 @@ public class Interactions {
 							);
 					guiRenderer.showDialog(dialog);
 					if(dialog.getQuestID()!=-1) {
-						System.out.println("qwertyuiolkjhgfdsxcvbnm");
 						player.addNewQuestNoRepeating(getQuestByID(dialog.getQuestID()));
 					}
 				}

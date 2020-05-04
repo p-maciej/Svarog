@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.joml.Vector2f;
 
+import svarog.interactions.Interactions;
 import svarog.objects.Item;
 import svarog.objects.ItemInfo;
 import svarog.render.Texture;
@@ -13,10 +14,12 @@ import svarog.world.WorldRenderer;
 
 public class NPC extends Entity {
 
+	private Interactions interactions;
+	
 	//Animacja potem siê ogarnie
 	//private String texturesPath;
 	//private String fileName;
-	
+
 	private List<Item> items = new ArrayList<Item>();
 
 	public NPC(int id, Texture texture, Transform transform, boolean fullBoundingBox) {
@@ -35,6 +38,7 @@ public class NPC extends Entity {
 		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
+		super.setIsStatic(false);
 		
 		super.setIsStatic(true); // static - default setting for NPC 
 		
@@ -47,6 +51,14 @@ public class NPC extends Entity {
 	
 	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
 		items.add(new Item(texture, position, itemInfo, globalID, localID, hpRegeneration, attackBonus, lvlRequired, name, description, itemType));
+	}
+	
+	public Interactions getInteractions() {
+		return interactions;
+	}
+
+	public void setInteractions(Interactions interactions) {
+		this.interactions = interactions;
 	}
 
 	@Override

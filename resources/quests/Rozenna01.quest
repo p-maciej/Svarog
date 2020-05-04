@@ -1,0 +1,181 @@
+<?xml version = "1.0"?>
+<class>
+   <dialog id = "0">
+      <content>[Rozenna]  Mavak! Witaj moj drogi co u Ciebie slychac?</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "1">
+      <content>[Mavak]  Witaj Rozenno. To nadal nie ustaje. Te sny. Od kilku nocy mam w glowie obrazy ktorych nie rozumiem:</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>2</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "2">
+      <content>[Mavak] - Miecz, bagna, lod, smierc. Co to wszystko moze oznaczac? Dlaczego mi sie to w ogole sni?</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>3</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "3">
+      <content>[Rozenna] -  Moze sami Bogowie chca Ci dac jakis znak? Zawsze Ci mowilam ze jestes zdolny do wielkich rzeczy, moze ktos na gorze to w koncu zauwazyl. *smiech* </content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>4</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "4">
+      <content>[Mavak] - *smiech* Oj glupiutka. Naprawde myslisz ze Bogowie maja oko na to miejsce? Spojrz tylko na nasza okolice.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>5</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "5">
+      <content>[Mavak] - W okolo wioski pelno wilkow zdolnych pozrec wszystko co stanie im na drodze, za nasza wioska stacjonuja bandyci ktorzy napadaja i zabijaja praktycznie kazdego.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>6</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "6">
+      <content>[Mavak] - Najblizsza wioska do ktorej sie mozemy udac jest ten przeklety grod na wschodzie ktory lata temu zostal napadniety przez armie nieumarlych.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>7</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "7">
+      <content>[Mavak] - A o moczarach na poludniu nawet nie bede mowic. Sama przeciez slyszalas liczne legendy o istotach ktore podobno tam zamieszkuja.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>8</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "8">
+      <content>[Mavak]  Ehhh powiedzmy sobie szczerze Bogowie dawno zapomnieli o tym miejscu i posagi znajdujace sie w naszej wiosce  raczej im o nas nie przypominaja.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>9</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "9">
+      <content>[Rozenna] - Trudno Ci nie przyznac racji. Ale zastanow sie, Twoje sny nie moga brac sie znikad, moze naprawde cos jest na rzeczy.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>10</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "10">
+      <content>[Mavak]  Hah, Rozenno mowilem Ci kiedys ze jestes uparta niewiasta?</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>11</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "11">
+      <content>[Rozenna]  I to jest pierwszy powod dla ktorego tak mnie lubisz moj drogi.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>12</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "12">
+      <content>[Mavak]  A drugi powod toooo?</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>13</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "13">
+      <content>[Rozenna]  Jableczniki mojej roboty. *smiech* </content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>14</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "14">
+      <content>[Mavak]  Dobra, masz mnie! *smiech* Rozumiem, ze wspominasz o nich nie bez przyczyny i pewnie mam Ci poszukac ladnych jablek?</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>15</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "15">
+      <content>[Rozenna]  Wiedzialam ze sie zrozumiemy. Wyjdx przed wioske, mysle ze gdzies tam powinny jeszcze rosnac jakies jablka.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>16</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "16">
+      <content>[Mavak]  Zajme sie tym natychmiast. Ale w zamian oczekuje ze w nagrode dostane wiecej twych cudownych jablecznikow niz zazwyczaj.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>17</leadsTo>
+       <q>1</q>
+	  <questID>1</questID>
+	  <title>Zbierz jablka dla Rozenny</title>
+	  <description>Te sny. Nie pozwalaja mi spac. Miecz, bagna, lod, smierc. Co to moze wszystko oznaczac? Jak dobrze ze jest Rozenna, ona zawsze potrafila mnie uspokoic swoim dobrym slowem. Ale tez ta slodka lisica zna moja slabosc do jej jablecznikow. Czas wybrac sie za wioske pozbierac dla niej jablka, oraz posluchac jej rady: nie myslec o mych snach.</description>
+	  <t>1</t>
+	  <taskID>0</taskID>
+      <toDo>5</toDo>
+      <doItemID>5</doItemID>
+      <state>collect</state>
+   </dialog>
+   <dialog id = "17">
+      <content>[Rozenna]  Dostaniesz 5 zarloku. A teraz idx. I prosze Cie. Podczas poszukiwan staraj sie nie myslec o tych Twoich snach, daj swojemu umyslowi odpoczac.</content>
+      <ans>1</ans>
+      <answer>Nastepne okno</answer>
+      <id>0</id>
+      <leadsTo>18</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "18">
+      <content>[Mavak]  Postaram sie. Bywaj.</content>
+      <ans>1</ans>
+      <answer>Koniec</answer>
+      <id>0</id>
+      <leadsTo>-1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+</class>

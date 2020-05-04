@@ -3,6 +3,7 @@ package svarog.game;
 import svarog.entity.Enemy;
 import svarog.entity.NPC;
 import svarog.entity.Player;
+import svarog.interactions.Interactions;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Texture;
@@ -31,12 +32,18 @@ abstract class StartWorld implements Runnable {
 		Enemy enemy2 = new Enemy(5, new Texture("textures/avatar.png"), new Transform().setPosition(47, 29), true, 1, 50, 20, 150, 100);
 		ArchEnemy.setName("Andrzej");
 		
-		NPC npc01 = new NPC(4, new Texture("textures/npc01.png"), new Transform().setPosition(46, 25), true);
+		NPC npc01 = new NPC(6, new Texture("textures/npc01.png"), new Transform().setPosition(46, 25), true);
 		npc01.setName("Sklepikarz");
+		npc01.setInteractions(new Interactions("quest01.quest"));
+		
+		NPC npc02 = new NPC(7, new Texture("textures/rozenna.png"), new Transform().setPosition(48, 25), true);
+		npc02.setName("Rozenna");
+		npc02.setInteractions(new Interactions("Rozenna01.quest"));
 		
 		world.addEntity(ent1);
 		world.addEntity(ent2);
 		world.addEntity(npc01);
+		world.addEntity(npc02);
 		world.addEntity(ArchEnemy);
 		world.addEntity(enemy1);
 		world.addEntity(enemy2);

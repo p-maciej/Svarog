@@ -14,6 +14,7 @@ import org.joml.Vector2f;
 
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
+import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.gui.Arena;
 import svarog.gui.ArenaContainer;
@@ -77,10 +78,10 @@ public class Main {
 	private static Button menuSaveButton;
 	
 	//JG GLOBLA VARIABLES
-	public static int ans1 = 0;
-	public static Dialog dialog = null;
-	public static Dialog dialog1 = null;
-	public static Interactions interactions = new Interactions("quest01.quest");
+	public static int talkingNPCid = -1;
+	//public static Dialog dialog = null;
+	//public static Dialog dialog1 = null;
+	//public static Interactions interactions = new Interactions("quest01.quest");
 
 	
 	private static void windowInit() {
@@ -444,15 +445,20 @@ public class Main {
 					
 					for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
 						if(currentWorld.getEntity(i).isClicked()) {
+							System.out.println("Auc");
 							if(currentWorld.getEntity(i) instanceof Enemy) {
 	
 								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, pressStart);
 	
+							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() !=null) {
+								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player);
+								talkingNPCid = i;
 							}
 						}
 					}
-					
-					interactions.ChceckInteractions(worldRenderer, camera, window, guiRenderer, player);
+					if(talkingNPCid != -1){
+						((NPC)currentWorld.getEntity(talkingNPCid)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player);
+					}
 					
 					guiRenderer.renderGuiObjects(guiShader, window);
 					
