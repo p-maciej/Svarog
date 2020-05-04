@@ -4,7 +4,8 @@ public class Task {
 
     public enum doState{
         kill,
-        collect
+        collect,
+        talk
     }
 
     private int taskID;
@@ -88,6 +89,9 @@ public class Task {
         }
         if(state == doState.collect){
             return "Collect " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+        }
+        if(state == doState.talk) {
+        	return "Talk to " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         return "Sorry our programmers don't think about that yet";
     }

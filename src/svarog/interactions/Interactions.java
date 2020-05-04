@@ -13,6 +13,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import svarog.entity.NPC;
+import svarog.entity.Player;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
 import svarog.gui.GuiRenderer;
@@ -80,10 +81,16 @@ public class Interactions {
                                 tasks));
                     }
 					
-					dialogs.add(new Dialog(Integer.parseInt(eElement.getAttribute("id")),
+                    if(eElement.getElementsByTagName("questID").item(0) != null) {
+                    	dialogs.add(new Dialog(Integer.parseInt(eElement.getAttribute("id")),
+							eElement.getElementsByTagName("content").item(0).getTextContent(),
+							answers,
+							Integer.parseInt(eElement.getElementsByTagName("questID").item(0).getTextContent())));
+                    }else {
+                    	dialogs.add(new Dialog(Integer.parseInt(eElement.getAttribute("id")),
 							eElement.getElementsByTagName("content").item(0).getTextContent(),
 							answers));
-
+                    }
 				}
 			}
 		} catch (Exception e) {
@@ -91,7 +98,7 @@ public class Interactions {
 		}
 	}
 	
-	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer) {
+	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer, Player player) {
 		if(isEnded || dialog == null) {
 			dialog = dialogs.get(0);
 			isEnded = false;
@@ -105,11 +112,11 @@ public class Interactions {
 		}
 		
 		if(dialog.clickedAnswer() != null) {
-			interactionsHelper(guiRenderer);
+			interactionsHelper(guiRenderer, player);
 		}
 
 	}
-	public void interactionsHelper(GuiRenderer guiRenderer) {
+	public void interactionsHelper(GuiRenderer guiRenderer, Player player) {
 		for(int i = 0; i < dialog.getAnswers().size();i++) {
 			if(dialog.clickedAnswer() != null) {
 				if(dialog.clickedAnswer().getId() == i) {
@@ -120,9 +127,14 @@ public class Interactions {
 					}
 					dialog = new Dialog(dialogs.get(dialog.clickedAnswer().getLeadsTo()).getId(),
 							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getContent(),
-							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getAnswers()
+							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getAnswers(),
+							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getQuestID()
 							);
 					guiRenderer.showDialog(dialog);
+					if(dialog.getQuestID()!=-1) {
+						System.out.println("qwertyuiolkjhgfdsxcvbnm");
+						player.getQuests().add(getQuestByID(dialog.getQuestID()));
+					}
 				}
 			}
 		}
@@ -131,6 +143,15 @@ public class Interactions {
 	
     public List<Quest> getQuests() {
         return quests;
+    }
+    
+    public Quest getQuestByID(int id) {
+    	for(Quest i :quests) {
+    		if(i.getQuestID() == id) {
+    			return i;
+    		}
+    	}
+    		return null;
     }
 	
 	public Dialog getDialogAt(int i) {

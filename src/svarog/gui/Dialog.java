@@ -7,7 +7,8 @@ public class Dialog {
 	private String content;
 	private List<Answer> answers;
 	private int id;
-	
+	private int questID=-1;
+
 	public Dialog(int dialogId) {
 		this.setId(dialogId);
 		this.setContent("");
@@ -18,6 +19,13 @@ public class Dialog {
 		this.setId(dialogId);
 		this.setContent(content);
 		this.setAnswers(answers);
+	}
+	
+	public Dialog(int dialogId, String content, List<Answer> answers, int questID) {
+		this.setId(dialogId);
+		this.setContent(content);
+		this.setAnswers(answers);
+		this.setQuestID(questID);
 	}
 	
 	public String getContent() {
@@ -50,5 +58,13 @@ public class Dialog {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getQuestID() {
+		return questID;
+	}
+
+	public void setQuestID(int questID) {
+		this.questID = questID;
 	}
 }

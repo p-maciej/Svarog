@@ -14,9 +14,15 @@ import org.joml.Vector3f;
 
 import svarog.gui.Arena;
 import svarog.gui.GuiRenderer;
+import svarog.gui.PagedGuiWindow;
+import svarog.gui.TextureObject;
+import svarog.gui.GuiRenderer.stickTo;
+import svarog.gui.PagedGuiWindow.Type;
 import svarog.gui.font.Font;
 import svarog.gui.font.TextBlock;
 import svarog.interactions.Quest;
+import svarog.interactions.Task;
+import svarog.interactions.Task.doState;
 import svarog.io.Window;
 import svarog.render.Animation;
 import svarog.render.Camera;
@@ -49,6 +55,14 @@ public class Player extends Entity {
 	public Player(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
 		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
 		
+		//ADDING FIRST QUEST
+		
+		List<Task>tasks001 = new ArrayList<>();
+		tasks001.add(new Task(0, 1, 69, doState.talk));
+		this.getQuests().add(new Quest(-100, "Pogadaj z Rozanna", "Musisz sie udac gdzies tam aby pogadac z rozanna,",tasks001 ));
+		
+		//END OF FIRST QUEST
+		
 		this.texturesPath = texturePath;
 		this.fileName = filename;
 		
@@ -57,6 +71,26 @@ public class Player extends Entity {
 		
 		this.setMovementLock(false);
 		super.setIsStatic(false); // Non-static - default setting for player 
+	}
+	
+	public PagedGuiWindow getQuestsPagedOnGUI(Font font) {
+		/// Windows on GUI /////////////////////////
+		PagedGuiWindow quests = new PagedGuiWindow("Questy", font, new TextureObject(new Texture("images/window1.png")));
+		quests.setStickTo(stickTo.TopRight);
+		quests.move(-520, -275);
+		
+		for(Quest ques: this.getQuests()) {
+			quests.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getTitle()), Type.headline);
+			quests.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getDescription()), Type.content);
+			for(Task tasks01: ques.getTasks()) {
+				quests.addTextBlock(new TextBlock(280, new Vector2f(), font, tasks01.progress()), Type.normal);
+			}
+		}
+		
+		quests.setPageContent();
+		
+		////////////////////////////////////////////
+		return quests;
 	}
 	
 	@Override

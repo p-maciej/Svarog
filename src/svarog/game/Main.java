@@ -25,8 +25,6 @@ import svarog.gui.Group;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
 import svarog.gui.GuiRenderer.stickTo;
-import svarog.gui.PagedGuiWindow;
-import svarog.gui.PagedGuiWindow.Type;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
 import svarog.gui.TileSheet;
@@ -35,8 +33,6 @@ import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.interactions.Interactions;
-import svarog.interactions.Quest;
-import svarog.interactions.Task;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
@@ -69,7 +65,6 @@ public class Main {
 	private static Button button1;
 	private static Button button2;
 	private static Button healBtn;
-	private static PagedGuiWindow quests;
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
 	
@@ -178,59 +173,7 @@ public class Main {
 		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(group1);
 		
-		
-		/// Windows on GUI /////////////////////////
-		quests = new PagedGuiWindow("Questy", pressStart, new TextureObject(new Texture("images/window1.png")));
-		quests.setStickTo(stickTo.TopRight);
-		quests.move(-520, -275);
-		
-		////////////TESTING INTERACTIONSMASTER ////////
-		player.setQuests(interactions.getQuests());
-		
-		for(Quest ques: player.getQuests()) {
-			quests.addTextBlock(new TextBlock(280, new Vector2f(), pressStart, ques.getTitle()), Type.headline);
-			quests.addTextBlock(new TextBlock(280, new Vector2f(), pressStart, ques.getDescription()), Type.content);
-			for(Task tasks01: ques.getTasks()) {
-				quests.addTextBlock(new TextBlock(280, new Vector2f(), pressStart, tasks01.progress()), Type.normal);
-			}
-		}
-		TextBlock topic = new TextBlock(280, new Vector2f());
-		topic.setString(pressStart, "Nag³ówek");
-		
-		quests.addTextBlock(topic, Type.headline);
-		
-		TextBlock blck1 = new TextBlock(280, new Vector2f());
-		blck1.setString(pressStart, "test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj ");
-		
-		quests.addTextBlock(blck1, Type.content);
-		
-		TextBlock blck2 = new TextBlock(280, new Vector2f());
-		blck2.setString(pressStart, "1111 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
-		
-		quests.addTextBlock(blck2, Type.normal);
-		
-		TextBlock blck3 = new TextBlock(280, new Vector2f());
-		blck3.setString(pressStart, "1111 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
-		
-		quests.addTextBlock(blck3, Type.normal);
-		
-		TextBlock topic2 = new TextBlock(280, new Vector2f());
-		topic2.setString(pressStart, "Nag³ówek1");
-		quests.addTextBlock(topic2, Type.headline);
-		
-		TextBlock blck4 = new TextBlock(280, new Vector2f());
-		blck4.setString(pressStart, "11113 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
-		
-		quests.addTextBlock(blck4, Type.content);
-		
-		TextBlock blck5 = new TextBlock(280, new Vector2f());
-		blck5.setString(pressStart, "1234 test test 12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj ");
-		
-		quests.addTextBlock(blck5, Type.normal);
-		
-		quests.setPageContent();
-		
-		////////////////////////////////////////////
+	
 		
 		/// Tiles on GUI ///////////////////////////
 		tileSheet = new TileSheet();
@@ -344,7 +287,6 @@ public class Main {
 		//////////////////////////////////////////////////////////////////////////////////////
 		
 		windowInit();
-		
 		
 		
 		/////////////////////// LOCAL VARIABLES ////////////////////////////////////////////
@@ -510,12 +452,12 @@ public class Main {
 						}
 					}
 					
-					interactions.ChceckInteractions(worldRenderer, camera, window, guiRenderer);
+					interactions.ChceckInteractions(worldRenderer, camera, window, guiRenderer, player);
 					
 					guiRenderer.renderGuiObjects(guiShader, window);
 					
 					if(button1.isClicked())
-						guiRenderer.addWindow(quests);
+						guiRenderer.addWindow(player.getQuestsPagedOnGUI(pressStart));
 					
 					if(button2.isClicked()) {
 						Arena arena = new Arena(player, currentWorld.getEntity(0));
