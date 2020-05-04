@@ -75,22 +75,24 @@ public class Player extends Entity {
 	
 	public PagedGuiWindow getQuestsPagedOnGUI(Font font) {
 		/// Windows on GUI /////////////////////////
-		PagedGuiWindow quests = new PagedGuiWindow("Questy", font, new TextureObject(new Texture("images/window1.png")));
-		quests.setStickTo(stickTo.TopRight);
-		quests.move(-520, -275);
+		PagedGuiWindow quests1 = new PagedGuiWindow("Questy", font, new TextureObject(new Texture("images/window1.png")));
+		quests1.setStickTo(stickTo.TopRight);
+		quests1.move(-520, -275);
+		
+		System.out.println(this.getQuests().size());
 		
 		for(Quest ques: this.getQuests()) {
-			quests.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getTitle()), Type.headline);
-			quests.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getDescription()), Type.content);
+			quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getTitle()), Type.headline);
+			quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getDescription()), Type.content);
 			for(Task tasks01: ques.getTasks()) {
-				quests.addTextBlock(new TextBlock(280, new Vector2f(), font, tasks01.progress()), Type.normal);
+				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, tasks01.progress()), Type.normal);
 			}
 		}
 		
-		quests.setPageContent();
+		quests1.setPageContent();
 		
 		////////////////////////////////////////////
-		return quests;
+		return quests1;
 	}
 	
 	@Override
@@ -393,6 +395,17 @@ public class Player extends Entity {
 		return quests;
 	}
 
+	public void addNewQuestNoRepeating(Quest quest) {
+		int i=0;
+		for(Quest q:quests) {
+			if(q.getQuestID()==quest.getQuestID()) {
+				i++;
+			}
+		}
+		if(i == 0)
+			this.quests.add(quest);
+	}
+	
 	public void setQuests(List<Quest> quests) {
 		this.quests = quests;
 	}

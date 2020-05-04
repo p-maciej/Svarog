@@ -133,7 +133,7 @@ public class Interactions {
 					guiRenderer.showDialog(dialog);
 					if(dialog.getQuestID()!=-1) {
 						System.out.println("qwertyuiolkjhgfdsxcvbnm");
-						player.getQuests().add(getQuestByID(dialog.getQuestID()));
+						player.addNewQuestNoRepeating(getQuestByID(dialog.getQuestID()));
 					}
 				}
 			}
