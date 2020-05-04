@@ -201,6 +201,8 @@ public class PagedGuiWindow extends GuiWindow {
 				if(height < super.getHeight()) {
 					toRender.add(temp);
 					lastRenderedIndex = i;
+					if(i+1 == textBlocks.size())
+						maxPage = true;
 				} else {
 					break;
 				}
