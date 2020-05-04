@@ -656,7 +656,7 @@ public class GuiRenderer implements RenderProperties {
 		}
 	}
 	
-	public void removeTextureObject(TextureObject object) {
+	public void removeGuiObject(GuiObject object) {
 		objects.remove(object);
 	}
 	

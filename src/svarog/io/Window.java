@@ -18,6 +18,7 @@ import static org.lwjgl.glfw.GLFW.glfwShowWindow;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
 import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowShouldClose;
 import static org.lwjgl.opengl.GL11.GL_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_BLEND;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
@@ -135,6 +136,10 @@ public class Window {
 	
 	public boolean processProgram() {
 		return !glfwWindowShouldClose(window);
+	}
+	
+	public void closeProgram() {
+		glfwSetWindowShouldClose(window, true);
 	}
 	
 	public void swapBuffers() {

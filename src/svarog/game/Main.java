@@ -5,6 +5,7 @@ import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +72,14 @@ public class Main {
 	private static PagedGuiWindow quests;
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
+	
+	// Menu
+	private static GuiRenderer menu;
+	private static Button menuStartButton;
+	private static Button menuExitButton;
+	private static Button menuResumeButton;
+	private static Button menuLoadButton;
+	private static Button menuSaveButton;
 	
 	//JG GLOBLA VARIABLES
 	public static int ans1 = 0;
@@ -298,6 +307,34 @@ public class Main {
 		////////////////////////////////////////////////////////////////////////////////////
 	}
 	
+	private static void menuInit() {
+		guiShader = new Shader("shader");
+		
+		menu = new GuiRenderer(window);
+		
+		menuStartButton = new Button(new Texture("images/menu/start.png"), new Vector2f(0, 130));
+		menuResumeButton = new Button(new Texture("images/menu/resume.png"), new Vector2f(0, 130));
+		
+		menuSaveButton = new Button(new Texture("images/menu/save.png"), new Vector2f(0, 0));
+		menuLoadButton = new Button(new Texture("images/menu/load.png"), new Vector2f(0, 0));
+		
+		menuExitButton = new Button(new Texture("images/menu/exit.png"), new Vector2f(0, -130));
+		
+		menu.addGuiObject(menuStartButton);
+		menu.addGuiObject(menuExitButton);
+		menu.addGuiObject(menuLoadButton);
+	}
+	
+	private static void pauseGame() {	
+		if(menu != null) {
+			menu.removeGuiObject(menuStartButton);
+			menu.removeGuiObject(menuLoadButton);
+			
+			menu.addGuiObject(menuResumeButton);
+			menu.addGuiObject(menuSaveButton);
+		}
+	}
+	
 	public static void main(String[] args) {
 		///////////////// INIT ///////////////////////////////////////////////////////////////
 		Window.setCallbacks();
@@ -319,194 +356,235 @@ public class Main {
 		long start = -1;
 		boolean worldLoaded = false;
 		boolean joinThread = false;
+		
+		boolean showMenu = true;
 		////////////////////////////////////////////////////////////////////////////////////
 		
 		while(window.processProgram()) {										// This works while program is running
 			Timer.syncFrameRate(60, lastNanos);									// Fps limiter
             lastNanos = Timer.getNanoTime();
             
-            if(nextFrameLoadWorld != 0) {
+            if(showMenu == true) {
             	glClear(GL_COLOR_BUFFER_BIT);
-            	glClearColor(0f, 0f, 0f, 1f);
+            	glClearColor(0f, 0.5f, 0.5f, 1f);
+            	
+            	if(menu == null) 
+            		menuInit();
+            	 	
+            	menu.update(window);
+            	menu.renderGuiObjects(guiShader, window);
             	
             	
-                if(start == -1) {
-                	start = Timer.getNanoTime();
-                	
-                	if(loading_text != null)
-                		((Animation)loading_text.getTexture()).resetLastTime();
-                }
-                
-            	if(programInit == true) {		
-            		loadingScreen();
-            		
-                	loadingScreen.update(window);
-                	loadingScreen.renderGuiObjects(guiShader, window);
-                	
-                	worldInit();
-                	
-                	programInit = false;
-            	} else {
-                	loadingScreen.update(window);
-                	loadingScreen.renderGuiObjects(guiShader, window);
+            	if(menuStartButton.isClicked() || menuResumeButton.isClicked()) {
+            		showMenu = false;
             	}
+            	
+            	if(menuExitButton.isClicked()) {
+            		window.closeProgram();
+            	}
+            	
+            	
+
             	window.update();
             	window.swapBuffers(); 
             	
+            	if(window.hasResized())
+            		glViewport(0, 0, window.getWidth(), window.getHeight());
             	
-            	if(worldLoaded == false) {            	
-	            	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
-	            	currentWorld.start();
-	            	worldRenderer.setWorld(currentWorld);
-	            	worldRenderer.calculateView(window);
-	            	camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
-	            	worldLoaded = true;
-	            	joinThread = true;
-            	}
-            	
-            	long stop = Timer.getNanoTime();
-            	
-            	if(Timer.getDelay(start, stop, 1)) {
-	            	nextFrameLoadWorld = 0;
-	            	start = -1;
-            	}
-            } else {
-            	if(joinThread == true) {
-	        		try {
-	        			currentWorld.join(worldRenderer);
-	        		} catch (InterruptedException e) {
-	        			e.printStackTrace();
-	        		}
-
-	        		joinThread = false;
-            	}
-        		
-            	
-				glClearColor(0.2f, 0.2f, 0.2f, 1f);
-				if(window.hasResized()) {
-					window.checkSize();
-					camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
-					guiRenderer.deleteGuiPanels();
-					guiRenderer.deleteGuiPanelGroups();
-					panels.updateDynamicGuiElements(guiRenderer, window);
-					guiRenderer.updateAfterResize(window);
-					
-					worldRenderer.calculateView(window);
-					glViewport(0, 0, window.getWidth(), window.getHeight());
-				}
-				glClear(GL_COLOR_BUFFER_BIT);
-				
-				guiRenderer.deleteDynamicGroups();
-				
-				worldRenderer.update((float)0.2, window, camera);
-				worldRenderer.correctCamera(camera, window);							// This sets correct camera position on world
-
-				
-
-					
-				worldRenderer.render(shader, camera, window);							// world rendering
-				
-				
-				
-				if(WorldRenderer.getMouseOverEntityId() >= 0) {
-					if(WorldRenderer.getMouseOverEntityId() != currentEntityId) {
-						startNanos = Timer.getNanoTime();
-						currentEntityId = WorldRenderer.getMouseOverEntityId();
-					}
-					
-					if(Timer.getDelay(startNanos, Timer.getNanoTime(), 0.4)) {
-						Line name = new Line(0, 0);
-						Entity ent = currentWorld.getEntityById(WorldRenderer.getMouseOverEntityId());
-						if(ent != null) {
-							name.setString(ent.getName(), pressStart);
+            } else if(showMenu == false) {
+	            if(nextFrameLoadWorld != 0) {
+	            	glClear(GL_COLOR_BUFFER_BIT);
+	            	glClearColor(0f, 0f, 0f, 1f);
+	            	
+	            	
+	                if(start == -1) {
+	                	start = Timer.getNanoTime();
+	                	
+	                	if(loading_text != null)
+	                		((Animation)loading_text.getTexture()).resetLastTime();
+	                }
+	                
+	            	if(programInit == true) {		
+	            		loadingScreen();
+	            		
+	                	loadingScreen.update(window);
+	                	loadingScreen.renderGuiObjects(guiShader, window);
+	                	
+	                	worldInit();
+	                	
+	                	programInit = false;
+	            	} else {
+	                	loadingScreen.update(window);
+	                	loadingScreen.renderGuiObjects(guiShader, window);
+	            	}
+	            	window.update();
+	            	window.swapBuffers(); 
+	            	
+	            	
+	            	if(worldLoaded == false) {            	
+		            	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
+		            	currentWorld.start();
+		            	worldRenderer.setWorld(currentWorld);
+		            	worldRenderer.calculateView(window);
+		            	camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
+		            	worldLoaded = true;
+		            	joinThread = true;
+	            	}
+	            	
+	            	long stop = Timer.getNanoTime();
+	            	
+	            	if(Timer.getDelay(start, stop, 1)) {
+		            	nextFrameLoadWorld = 0;
+		            	start = -1;
+	            	}
+	            	
+	            	if(window.hasResized())
+	            		glViewport(0, 0, window.getWidth(), window.getHeight());
+	            } else {
+	            	if(joinThread == true) {
+		        		try {
+		        			currentWorld.join(worldRenderer);
+		        		} catch (InterruptedException e) {
+		        			e.printStackTrace();
+		        		}
+	
+		        		joinThread = false;
+	            	}
+	        		
+	            	
+					glClearColor(0.2f, 0.2f, 0.2f, 1f);
+					if(window.hasResized()) {
+						window.checkSize();
+						camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
+						guiRenderer.deleteGuiPanels();
+						guiRenderer.deleteGuiPanelGroups();
+						panels.updateDynamicGuiElements(guiRenderer, window);
+						guiRenderer.updateAfterResize(window);
 						
-							guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
-						}
+						worldRenderer.calculateView(window);
+						glViewport(0, 0, window.getWidth(), window.getHeight());
 					}
-				} else {
-					if(currentEntityId != -1)
-						currentEntityId = -1;
-				}
-				
-				
-				//Quick check if attack system is working properly, please don't remove, just comment, thanks
-				for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
-					if(currentWorld.getEntity(i).isClicked()) {
-						if(currentWorld.getEntity(i) instanceof Enemy) {
-
-							player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, pressStart);
-
+					glClear(GL_COLOR_BUFFER_BIT);
+					
+					
+					guiRenderer.deleteDynamicGroups();
+					
+					worldRenderer.update((float)0.2, window, camera);
+					worldRenderer.correctCamera(camera, window);							// This sets correct camera position on world
+	
+					
+	
+						
+					worldRenderer.render(shader, camera, window);							// world rendering
+					
+					
+					
+					if(WorldRenderer.getMouseOverEntityId() >= 0) {
+						if(WorldRenderer.getMouseOverEntityId() != currentEntityId) {
+							startNanos = Timer.getNanoTime();
+							currentEntityId = WorldRenderer.getMouseOverEntityId();
 						}
+						
+						if(Timer.getDelay(startNanos, Timer.getNanoTime(), 0.4)) {
+							Line name = new Line(0, 0);
+							Entity ent = currentWorld.getEntityById(WorldRenderer.getMouseOverEntityId());
+							if(ent != null) {
+								name.setString(ent.getName(), pressStart);
+							
+								guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
+							}
+						}
+					} else {
+						if(currentEntityId != -1)
+							currentEntityId = -1;
 					}
 					
-					/*if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
-						if(currentWorld.getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
-							dialog = new Dialog(1);
-							dialog.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac. In hendrerit, nulla ut vulputate maximus, tortor arcu varius diam, ac molestie arcu nisi id odio. ");
-							List<Answer> ans = new ArrayList<Answer>();
-							ans.add(new Answer(0, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac.", 1));
-							ans.add(new Answer(1, "Test2", 1));
-							dialog.setAnswers(ans);
-							guiRenderer.showDialog(dialog);
+					
+					//Quick check if attack system is working properly, please don't remove, just comment, thanks
+					for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
+						if(currentWorld.getEntity(i).isClicked()) {
+							if(currentWorld.getEntity(i) instanceof Enemy) {
+	
+								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, pressStart);
+	
+							}
+						}
+						
+						/*if(currentWorld.isOverEntity(currentWorld.getEntity(i), camera, window) && window.getInput().isMouseButtonPressed(0)) {
+							if(currentWorld.getEntity(i).getId() == 4 && !guiRenderer.isDialogOpen()) {
+								dialog = new Dialog(1);
+								dialog.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac. In hendrerit, nulla ut vulputate maximus, tortor arcu varius diam, ac molestie arcu nisi id odio. ");
+								List<Answer> ans = new ArrayList<Answer>();
+								ans.add(new Answer(0, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium sem sem, ac pellentesque dolor dignissim ac.", 1));
+								ans.add(new Answer(1, "Test2", 1));
+								dialog.setAnswers(ans);
+								guiRenderer.showDialog(dialog);
+							}
+						}*/
+					}
+					
+					interactions.ChceckInteractions(worldRenderer, camera, window, guiRenderer);
+					
+					guiRenderer.renderGuiObjects(guiShader, window);
+					
+					if(button1.isClicked())
+						guiRenderer.addWindow(quests);
+					
+					if(button2.isClicked()) {
+						Arena arena = new Arena(player, currentWorld.getEntity(0));
+						List<TextBlock> log = new ArrayList<TextBlock>();
+						TextBlock tbx = new TextBlock(250, new Vector2f());
+						tbx.setString(pressStart, "Killed yourself");
+						
+						TextBlock tbx2 = new TextBlock(250, new Vector2f());
+						tbx2.setString(pressStart, "Suicide");
+						
+						log.add(tbx);
+						log.add(tbx2);
+						arena.setLog(log);
+						guiRenderer.showArena(arena);
+					}
+					
+					if(healBtn.isClicked()) {
+						player.FullyRecoverHP();
+						System.out.println("Health of player was fully recovered: " + player.getHP() + "hp.");
+					}
+					
+					/*if(dialog != null) {
+						if(dialog.clickedAnswer() != null) {
+							if(dialog.clickedAnswer().getId() == 0) {
+								guiRenderer.closeDialog();
+								Dialog dialog1 = new Dialog(2);
+								dialog1.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ");
+								List<Answer> ans1 = new ArrayList<Answer>();
+								ans1.add(new Answer(0, "Ala ma kota", 1));
+								ans1.add(new Answer(1, "Tekst saukdhskajhdksajhdkjsahkjd 1", 1));
+								dialog1.setAnswers(ans1);
+								guiRenderer.showDialog(dialog1);
+							}
 						}
 					}*/
-				}
-				
-				interactions.ChceckInteractions(worldRenderer, camera, window, guiRenderer);
-				
-				guiRenderer.renderGuiObjects(guiShader, window);
-				
-				if(button1.isClicked())
-					guiRenderer.addWindow(quests);
-				
-				if(button2.isClicked()) {
-					Arena arena = new Arena(player, currentWorld.getEntity(0));
-					List<TextBlock> log = new ArrayList<TextBlock>();
-					TextBlock tbx = new TextBlock(250, new Vector2f());
-					tbx.setString(pressStart, "Killed yourself");
 					
-					TextBlock tbx2 = new TextBlock(250, new Vector2f());
-					tbx2.setString(pressStart, "Suicide");
-					
-					log.add(tbx);
-					log.add(tbx2);
-					arena.setLog(log);
-					guiRenderer.showArena(arena);
-				}
-				
-				if(healBtn.isClicked()) {
-					player.FullyRecoverHP();
-					System.out.println("Health of player was fully recovered: " + player.getHP() + "hp.");
-				}
-				
-				/*if(dialog != null) {
-					if(dialog.clickedAnswer() != null) {
-						if(dialog.clickedAnswer().getId() == 0) {
-							guiRenderer.closeDialog();
-							Dialog dialog1 = new Dialog(2);
-							dialog1.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ");
-							List<Answer> ans1 = new ArrayList<Answer>();
-							ans1.add(new Answer(0, "Ala ma kota", 1));
-							ans1.add(new Answer(1, "Tekst saukdhskajhdksajhdkjsahkjd 1", 1));
-							dialog1.setAnswers(ans1);
-							guiRenderer.showDialog(dialog1);
-						}
+					for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
+						if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
+							player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
+							player.setSetCamWithoutAnimation(true);
+							nextFrameLoadWorld = currentWorld.getDoor(i).getWorldIdDestination();
+							worldLoaded = false;
+							break;
+						} else 
+							nextFrameLoadWorld = 0;
 					}
-				}*/
-				
-				for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
-					if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
-						player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
-						player.setSetCamWithoutAnimation(true);
-						nextFrameLoadWorld = currentWorld.getDoor(i).getWorldIdDestination();
-						worldLoaded = false;
-						break;
-					} else 
-						nextFrameLoadWorld = 0;
-				}
-				
-				window.update();
-				window.swapBuffers();
+					
+					window.update();
+					
+					if(window.getInput().isKeyDown(GLFW_KEY_ESCAPE)) {
+						showMenu = true;
+						pauseGame();
+					}
+					
+					window.swapBuffers();
+	            }
             }
 		}
 		
