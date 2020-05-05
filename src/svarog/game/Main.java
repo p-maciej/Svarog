@@ -20,7 +20,7 @@ import svarog.gui.Arena;
 import svarog.gui.ArenaContainer;
 import svarog.gui.BubbleContainer;
 import svarog.gui.Button;
-import svarog.gui.Dialog;
+
 import svarog.gui.DialogContainer;
 import svarog.gui.Group;
 import svarog.gui.GuiPanels;
@@ -33,10 +33,7 @@ import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
-import svarog.interactions.Interactions;
-import svarog.interactions.Quest;
-import svarog.interactions.Task;
-import svarog.interactions.Task.doState;
+
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;

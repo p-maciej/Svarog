@@ -79,8 +79,6 @@ public class Player extends Entity {
 		quests1.setStickTo(stickTo.TopRight);
 		quests1.move(-520, -275);
 		
-		System.out.println(this.getQuests().size());
-		
 		for(Quest ques: this.getQuests()) {
 			quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getTitle()), Type.headline);
 			quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getDescription()), Type.content);
