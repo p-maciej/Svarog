@@ -25,6 +25,8 @@ public class DialogContainer {
 	private int dialogXOffset;
 	private int dialogYOffset;
 	
+	private static boolean isDialogClosing = false;
+
 	DialogContainer(int dialogXOffset, int dialogYOffset) {
 		this.setDialogXOffset(dialogXOffset);
 		this.setDialogYOffset(dialogYOffset);
@@ -159,5 +161,13 @@ public class DialogContainer {
 	
 	public static void setCenterDialog(BufferedImage centerImage) {
 		dialogCenter = centerImage;
+	}
+	
+	public static boolean isDialogClosing() {
+		return isDialogClosing;
+	}
+
+	public static void setDialogClosing(boolean state) {
+		isDialogClosing = state;
 	}
 }

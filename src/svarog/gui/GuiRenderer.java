@@ -208,6 +208,9 @@ public class GuiRenderer implements RenderProperties {
 		setPointer = false;
 		int windowToRemove = -1;
 		
+		if(DialogContainer.isDialogClosing())
+			DialogContainer.setDialogClosing(false);
+		
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
 			if(object.getState() == State.guiPanel) {
@@ -309,12 +312,8 @@ public class GuiRenderer implements RenderProperties {
 						updatePositions();
 					}
 				}
-			}
-			
-			if(WorldRenderer.isMouseInteractionLocked() && !worldLock)
-				WorldRenderer.setMouseInteractionLock(false);
-			else if(!WorldRenderer.isMouseInteractionLocked() && worldLock)
-				WorldRenderer.setMouseInteractionLock(true);
+			}		
+
 			
 			for(TextBlock block : item.getElements().getTextBlockList()) {
 				renderTextBlock(block, shader, window);
@@ -326,8 +325,15 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 			
-			if(item.getCloseButton().isClicked())
+			if(item.getCloseButton().isClicked()) {
 				windowToRemove = item.getId();
+				worldLock = false;
+			}
+			
+			if(WorldRenderer.isMouseInteractionLocked() && !worldLock)
+				WorldRenderer.setMouseInteractionLock(false);
+			else if(!WorldRenderer.isMouseInteractionLocked() && worldLock)
+				WorldRenderer.setMouseInteractionLock(true);
 		}
 		
 		// Render items
@@ -475,6 +481,7 @@ public class GuiRenderer implements RenderProperties {
 		camera.setProjection(window.getWidth(), window.getHeight());
 		this.windowHeight = window.getHeight();
 		this.windowWidth = window.getWidth();
+		
 		updatePositions();
 	}
 	
@@ -704,6 +711,7 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	public void closeDialog() {	
+		DialogContainer.setDialogClosing(true);
 		dialogContainer.closeDialog(this);
 	}
 	
