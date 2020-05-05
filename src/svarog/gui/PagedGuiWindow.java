@@ -177,25 +177,37 @@ public class PagedGuiWindow extends GuiWindow {
 			}
 			for(int i = lastRenderedIndex+1; i < textBlocks.size(); i++) {
 				WindowTextType temp = textBlocks.get(i);
-				if(temp.getType() == Type.headline || temp.getType() == Type.normal)
+				if(temp.getType() == Type.headline) {
 					height += temp.getBlock().getHeight() + textBlockSpacing;
-				else
+					headlineRendered = i;
+				} else if(temp.getType() == Type.normal) {
+					height += temp.getBlock().getHeight() + textBlockSpacing;
+				} else {
 					height += temp.getBlock().getHeight();
+				}
 				
 				if(height < super.getHeight()) {
 					toRender.add(temp);
 					if(i+1 == textBlocks.size())
 						maxPage = true;
 				} else {
+					if(i-1 == headlineRendered)
+						toRender.remove(toRender.size()-1);
 					break;
 				}
+				
+				if(i-1 == headlineRendered)
+					headlineRendered = -1;
 			}
 		} else if(currentPage == 1) {
 			for(int i = 0; i < textBlocks.size(); i++) {
 				WindowTextType temp = textBlocks.get(i);
-				if(temp.getType() == Type.headline || temp.getType() == Type.normal)
+				if(temp.getType() == Type.headline) {
 					height += temp.getBlock().getHeight() + textBlockSpacing;
-				else
+					headlineRendered = i;
+				} else if(temp.getType() == Type.normal) {
+					height += temp.getBlock().getHeight() + textBlockSpacing;
+				} else
 					height += temp.getBlock().getHeight();
 				
 				if(height < super.getHeight()) {
@@ -204,8 +216,13 @@ public class PagedGuiWindow extends GuiWindow {
 					if(i+1 == textBlocks.size())
 						maxPage = true;
 				} else {
+					if(i-1 == headlineRendered)
+						toRender.remove(toRender.size()-1);
 					break;
 				}
+				
+				if(i-1 == headlineRendered)
+					headlineRendered = -1;
 			}
 		}
 	}
