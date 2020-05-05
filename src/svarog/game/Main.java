@@ -34,6 +34,9 @@ import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.interactions.Interactions;
+import svarog.interactions.Quest;
+import svarog.interactions.Task;
+import svarog.interactions.Task.doState;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
@@ -445,19 +448,18 @@ public class Main {
 					
 					for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
 						if(currentWorld.getEntity(i).isClicked()) {
-							System.out.println("Auc");
 							if(currentWorld.getEntity(i) instanceof Enemy) {
 	
 								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, pressStart);
 	
-							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() !=null) {
-								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player);
+							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
+								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId());
 								talkingNPCid = i;
 							}
 						}
 					}
 					if(talkingNPCid != -1){
-						((NPC)currentWorld.getEntity(talkingNPCid)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player);
+						((NPC)currentWorld.getEntity(talkingNPCid)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(talkingNPCid).getId());
 					}
 					
 					guiRenderer.renderGuiObjects(guiShader, window);

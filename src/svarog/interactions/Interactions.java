@@ -18,6 +18,7 @@ import svarog.game.Main;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
 import svarog.gui.GuiRenderer;
+import svarog.interactions.Task.doState;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.world.WorldRenderer;
@@ -99,7 +100,7 @@ public class Interactions {
 		}
 	}
 	
-	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer, Player player) {
+	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer, Player player, int NPCid) {
 		if(isEnded || dialog == null) {
 			dialog = dialogs.get(0);
 			isEnded = false;
@@ -113,17 +114,26 @@ public class Interactions {
 		}
 		
 		if(dialog.clickedAnswer() != null) {
-			interactionsHelper(guiRenderer, player);
+			interactionsHelper(currentWorld, guiRenderer, player, NPCid);
 		}
 
 	}
-	public void interactionsHelper(GuiRenderer guiRenderer, Player player) {
+	public void interactionsHelper(WorldRenderer currentWorld, GuiRenderer guiRenderer, Player player, int NPCid) {
 		for(int i = 0; i < dialog.getAnswers().size();i++) {
 			if(dialog.clickedAnswer() != null) {
 				if(dialog.clickedAnswer().getId() == i) {
 					guiRenderer.closeDialog();
 					if(dialog.clickedAnswer().getLeadsTo() == -1) {
 						isEnded = true;
+						for(Quest q1:player.getQuests()) {
+							for(Task t1:q1.getTasks()) {
+								if(t1.getState() == doState.talk) {
+									if(t1.getDoItemID() == NPCid) {
+										t1.increaseHowMuchIsDone();
+									}
+								}
+							}
+						}
 						Main.talkingNPCid = -1;
 						break;
 					}
