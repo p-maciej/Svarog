@@ -355,6 +355,7 @@ public class GuiRenderer implements RenderProperties {
 
 		if(dialogContainer.getDialogButton() != null) {
 			if(dialogContainer.getDialogButton().isClicked()) {
+				DialogContainer.setDialogClosing(true);
 				closeDialog();
 			}
 		}
@@ -711,7 +712,6 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	public void closeDialog() {	
-		DialogContainer.setDialogClosing(true);
 		dialogContainer.closeDialog(this);
 	}
 	
