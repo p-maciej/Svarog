@@ -5,6 +5,7 @@ public class Task {
     public enum doState{
         kill,
         collect,
+        find,
         talk
     }
 
@@ -90,6 +91,9 @@ public class Task {
         }
         if(state == doState.collect){
             return "Collect " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+        }
+        if(state == doState.find){
+            return "Find " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         if(state == doState.talk) {
         	return "Talk to " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
