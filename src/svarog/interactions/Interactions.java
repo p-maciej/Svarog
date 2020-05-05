@@ -12,12 +12,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.game.Main;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
-import svarog.gui.DialogContainer;
+
 import svarog.gui.GuiRenderer;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
@@ -131,8 +130,6 @@ public class Interactions {
 		for(int i = 0; i < dialog.getAnswers().size();i++) {
 			if(dialog.clickedAnswer() != null) {
 				if(dialog.clickedAnswer().getId() == i) {
-					
-					if(DialogContainer.isDialogClosing()) System.out.println("Alleluja");
 					
 					if(dialog.clickedAnswer().getLeadsTo() == -1) {
 						isEnded = true;
