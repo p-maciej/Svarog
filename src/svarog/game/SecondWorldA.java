@@ -13,13 +13,27 @@ abstract class SecondWorldA {
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(2, 90, 60);
 		world.loadMap("second_map.png", 32);
-		
+		world.setSolidTilesFromMap("second_map.png");
 
 		world.addEntity(player);
-		player.setPosition(2, 45);
+		//player.setPosition(2, 45);
 		
-		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 1, 45);
-		world.addDoor(new Door(1, 1, 45, 118, 16));
+		// to start_map
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 0, 45);
+		world.addDoor(new Door(1, 0, 45, 118, 16));
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 0, 44);
+		world.addDoor(new Door(1, 0, 44, 118, 15));
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 0, 43);
+		world.addDoor(new Door(1, 0, 43, 118, 14));
+
+		
+		
+		
+		// to second_mapB
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 86, 40);
+		world.addDoor(new Door(3, 86, 40, 1, 52));
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 86, 41);
+		world.addDoor(new Door(3, 86, 41, 1, 53));
 		
 		return world;
 	}

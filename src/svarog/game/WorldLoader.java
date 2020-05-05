@@ -14,7 +14,11 @@ public abstract class WorldLoader {
 			return StartWorld.getWorld(player, camera, window);
 		else if(id == 2)
 			return SecondWorldA.getWorld(player, camera, window);
-		else 
+		else if(id == 3)
+			return SecondWorldB.getWorld(player, camera, window);
+		else if(id == 4)
+			return ThirdWorld.getWorld(player, camera, window);
+		else  
 			return null;
 	}
 }

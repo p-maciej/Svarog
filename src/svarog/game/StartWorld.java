@@ -18,7 +18,6 @@ abstract class StartWorld implements Runnable {
 		World world = new World(1, 120, 90);
 
 		world.loadMap("start_map.png", 32);
-    	
 		world.setSolidTilesFromMap("start_map.png");
 		
 		NPC ent1 = new NPC(1, new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
@@ -59,10 +58,10 @@ abstract class StartWorld implements Runnable {
 		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 119, 13);
 		
 		//adding door object
-		world.addDoor(new Door(2, 119, 16, 1, 20));
-		world.addDoor(new Door(2, 119, 15, 1, 20));
-		world.addDoor(new Door(2, 119, 14, 1, 20));
-		world.addDoor(new Door(2, 119, 13, 1, 20));
+		world.addDoor(new Door(2, 119, 16, 2, 45));
+		world.addDoor(new Door(2, 119, 15, 2, 45));
+		world.addDoor(new Door(2, 119, 14, 2, 45));
+		world.addDoor(new Door(2, 119, 13, 2, 45));
 		//world.addDoor(new Door(60, 24, 1, 20));
 
 		return world;

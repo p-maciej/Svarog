@@ -132,7 +132,7 @@ public class Main {
 		
 		ArenaContainer.setArenaLogBackground(Texture.getImageBuffer("images/arena/log_background.png"));
 		ArenaContainer.setArenaImage(Texture.getImageBuffer("images/arena/arena.png"));
-		ArenaContainer.setBackgtroundColor(new Color((byte)141, (byte)88, (byte)50));
+		ArenaContainer.setBackgtroundColor(new Color((byte)64, (byte)52, (byte)32));
 		
 		panels = new GuiPanels();
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
