@@ -459,7 +459,12 @@ public class Main {
 						}
 					}
 					if(talkingNPCid != -1){
+						
 						((NPC)currentWorld.getEntity(talkingNPCid)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(talkingNPCid).getId());
+					}
+					if(DialogContainer.isDialogClosing()) {
+						((NPC)currentWorld.getEntity(talkingNPCid)).getInteractions().setEnded(true);
+						talkingNPCid = -1;
 					}
 					
 					guiRenderer.renderGuiObjects(guiShader, window);

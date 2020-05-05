@@ -17,6 +17,7 @@ import svarog.entity.Player;
 import svarog.game.Main;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
+import svarog.gui.DialogContainer;
 import svarog.gui.GuiRenderer;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
@@ -29,6 +30,14 @@ public class Interactions {
 	private Dialog dialog;
 	private boolean isEnded = true;
 	
+	public boolean isEnded() {
+		return isEnded;
+	}
+
+	public void setEnded(boolean isEnded) {
+		this.isEnded = isEnded;
+	}
+
 	private static final String path = "resources/quests/";
 	
 	public Interactions(String file) {
@@ -122,7 +131,9 @@ public class Interactions {
 		for(int i = 0; i < dialog.getAnswers().size();i++) {
 			if(dialog.clickedAnswer() != null) {
 				if(dialog.clickedAnswer().getId() == i) {
-					guiRenderer.closeDialog();
+					
+					if(DialogContainer.isDialogClosing()) System.out.println("Alleluja");
+					
 					if(dialog.clickedAnswer().getLeadsTo() == -1) {
 						isEnded = true;
 						for(Quest q1:player.getQuests()) {
@@ -134,9 +145,11 @@ public class Interactions {
 								}
 							}
 						}
+						guiRenderer.closeDialog();
 						Main.talkingNPCid = -1;
 						break;
 					}
+					guiRenderer.closeDialog();
 					dialog = new Dialog(dialogs.get(dialog.clickedAnswer().getLeadsTo()).getId(),
 							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getContent(),
 							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getAnswers(),
