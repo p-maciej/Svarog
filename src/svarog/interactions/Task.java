@@ -77,10 +77,11 @@ public class Task {
     }
 
     public void increaseHowMuchIsDone() {
-        this.howMuchIsDone++;
         if(howMuchIsDone>=toDo) {
             this.isEnded = true;
+            return;
         }
+        this.howMuchIsDone++;
     }
     
     public String progress(){
