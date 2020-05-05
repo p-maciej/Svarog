@@ -8,6 +8,7 @@ import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.joml.Vector2f;
@@ -63,8 +64,7 @@ public class Main {
 	private static GuiPanels panels;
 	private static TileSheet tileSheet;
 	private static GuiRenderer loadingScreen;
-	private static Button button1;
-	private static Button button2;
+	private static Button questsButton;
 	private static Button healBtn;
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
@@ -95,8 +95,6 @@ public class Main {
 		//////////////// WORLD ///////////////////////////////////////////////////////////////
 		shader = new Shader("shader");
 		camera = new Camera();
-
-		
 
 		
 		player = new Player(0, "player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
@@ -147,8 +145,8 @@ public class Main {
 		TextBlock test = new TextBlock(400, stickTo.TopLeft);
 		test.setString(verdana, "12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj fklkdsjfl ksjdlfk");
 		test.move(15, 15);
-		group1.addTextBlock(test);
-		group1.addTextureObject(test1);
+		//group1.addTextBlock(test);
+		//group1.addTextureObject(test1);
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
@@ -156,21 +154,17 @@ public class Main {
 		bottomBorderRightPanel.move(0, -70);
 		TextureObject topBorderRightPanel = new TextureObject(new Texture("images/border_right_panel.png"), GuiRenderer.stickTo.TopRight);
 		
-		button1 = new Button(new Texture("images/button.png"), new Texture("images/button_hover.png"), stickTo.TopRight);
-		button1.move(-100, 100);
+		questsButton = new Button(new Texture("images/gui/button_quest.png"), new Texture("images/gui/button_quest_hover.png"), stickTo.TopRight);
+		questsButton.move(-250, 10);
 		
-		button2 = new Button(new Texture("images/button.png"), new Texture("images/button_hover.png"), stickTo.TopRight);
-		button2.move(-100, 180);
-		
-		healBtn = new Button(new Texture("images/button.png"), stickTo.TopRight);
-		healBtn.move(-100, 250);
+		healBtn =  new Button(new Texture("images/gui/button_heal.png"), new Texture("images/gui/button_heal_hover.png"), stickTo.TopRight);
+		healBtn.move(-25, 10);
 		
 		guiRenderer.addGuiObject(bottomCorner1);
 		guiRenderer.addGuiObject(bottomCorner2);
 		guiRenderer.addGuiObject(bottomBorderRightPanel);
 		guiRenderer.addGuiObject(topBorderRightPanel);
-		guiRenderer.addGuiObject(button1);
-		guiRenderer.addGuiObject(button2);
+		guiRenderer.addGuiObject(questsButton);
 		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(group1);
 		
@@ -181,34 +175,69 @@ public class Main {
 		Texture tileTexture = new Texture("images/guiTile.png");
 		Texture tileTexture_hover = new Texture("images/guiTile_hover.png");
 		
+		// Main EQ //
 		Group tileGroup = new Group();
 		tileGroup.move(-25, 150);
 		tileGroup.setStickTo(stickTo.BottomRight);
-		List<Integer> puttables = new ArrayList<Integer>();
-		puttables.add(0);
+		
+		List<Integer> puttables = Arrays.asList(0,1,2,3,4,5); // main eq - there should be every item type
+
 		int tileId = 0;
 		for(int i = 0; i < 6; i++) {
 			for(int j = 0; j < 5; j++) {
 				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, j*50, -i*50);
-				if(tileId!=1) // first tile not allowed for type 0
-					tile.setPuttableItemTypes(puttables);
+				tile.setPuttableItemTypes(puttables);
+				
 				tileGroup.addTextureObject(tile);
 			}
 		}
 
 		tileSheet.addTileGroup(tileGroup);
+		////////////
 		
 		
+		// Bottom bar eq //
 		Group tileGroup2 = new Group();
 		tileGroup2.setStickTo(stickTo.Bottom);
 		tileGroup2.move(0, 10);
 		for(int i = 0; i < 6; i++) {
 				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, i*50, 0);
-				tile.setPuttableItemTypes(puttables);
+				tile.setPuttableItemTypes(puttables); // bottom bar tiles - idk what there should be
 				tileGroup2.addTextureObject(tile);
 		}
 		
 		tileSheet.addTileGroup(tileGroup2);
+		///////////////////
+		
+		// Character EQ //
+		Group tileGroup3 = new Group();
+		tileGroup3.setStickTo(stickTo.BottomRight);
+		tileGroup3.move(-25, 545);
+		
+		Tile helmet = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 0, 50);
+		helmet.setPuttableItemTypes(Arrays.asList(1)); // item type 1
+		
+		Tile armor = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 0, 0);
+		armor.setPuttableItemTypes(Arrays.asList(2));
+		
+		Tile boots = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, -50, 0);
+		boots.setPuttableItemTypes(Arrays.asList(3));
+		
+		Tile sword = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 0, -50);
+		sword.setPuttableItemTypes(Arrays.asList(4));
+		
+		Tile shield = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 50, 0);
+		shield.setPuttableItemTypes(Arrays.asList(5));
+		
+		tileGroup3.addTextureObject(helmet);
+		tileGroup3.addTextureObject(armor);
+		tileGroup3.addTextureObject(boots);
+		tileGroup3.addTextureObject(shield);
+		tileGroup3.addTextureObject(sword);
+		
+		tileSheet.addTileGroup(tileGroup3);
+		//////////////////
+		
 		////////////////////////////////////////////
 		
 		guiRenderer.setTileSheet(tileSheet);
@@ -466,23 +495,8 @@ public class Main {
 					
 					guiRenderer.renderGuiObjects(guiShader, window);
 					
-					if(button1.isClicked())
+					if(questsButton.isClicked())
 						guiRenderer.addWindow(player.getQuestsPagedOnGUI(pressStart));
-					
-					if(button2.isClicked()) {
-						Arena arena = new Arena(player, currentWorld.getEntity(0));
-						List<TextBlock> log = new ArrayList<TextBlock>();
-						TextBlock tbx = new TextBlock(250, new Vector2f());
-						tbx.setString(pressStart, "Killed yourself");
-						
-						TextBlock tbx2 = new TextBlock(250, new Vector2f());
-						tbx2.setString(pressStart, "Suicide");
-						
-						log.add(tbx);
-						log.add(tbx2);
-						arena.setLog(log);
-						guiRenderer.showArena(arena);
-					}
 					
 					if(healBtn.isClicked()) {
 						player.FullyRecoverHP();
