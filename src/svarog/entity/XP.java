@@ -49,4 +49,8 @@ public class XP {
 		}
 		return toNextLvl;
 	}
+	
+	public float getXPpercentage() {
+		return xp/PointsToNextLvl();
+	}
 }

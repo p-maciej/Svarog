@@ -292,7 +292,7 @@ public class Player extends Entity {
 				fightString.add("Player HP (before attack): " + this.getHP());
 				this.DecreasePlayerHP((enemy).GetRandomAttack());
 				fightString.add("Player HP (after attack): " + this.getHP());
-				if(this.getHP()<0) {
+				if(this.getHP().GetHP()<0) {
 					fightString.add("Player died, " + (enemy).getName() + " was killing more people than ever.");
 					break;
 				}
@@ -370,8 +370,12 @@ public class Player extends Entity {
 		return minAttack;
 	}
 	
-	public int getHP() {
-		return hp.GetHP();
+	public HP getHP() {
+		return hp;
+	}
+	
+	public XP getXP() {
+		return xp;
 	}
 	
 	public void FullyRecoverHP() {

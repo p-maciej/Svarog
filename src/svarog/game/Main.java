@@ -7,17 +7,17 @@ import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 
-import java.util.ArrayList;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.List;
 
 import org.joml.Vector2f;
+import org.lwjgl.BufferUtils;
 
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.NPC;
 import svarog.entity.Player;
-import svarog.gui.Arena;
 import svarog.gui.ArenaContainer;
 import svarog.gui.BubbleContainer;
 import svarog.gui.Button;
@@ -33,7 +33,6 @@ import svarog.gui.TileSheet;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
-import svarog.gui.font.TextBlock;
 
 import svarog.io.Timer;
 import svarog.io.Window;
@@ -68,6 +67,7 @@ public class Main {
 	private static Button healBtn;
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
+	private static Group playerStats;
 	
 	// Menu
 	private static GuiRenderer menu;
@@ -89,6 +89,84 @@ public class Main {
 		window.setSize(1200, 800);
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
 		window.glInit();
+	}
+	
+	private static void playerStatsDynamic(Player player, GuiRenderer guiRenderer) {
+		if(playerStats != null)
+			guiRenderer.removeGroup(playerStats);
+			
+		playerStats = new Group();
+		
+		int width = 200;
+		int height = 12;
+		
+		Color hpRemaining = new Color((byte)255, (byte)0, (byte)0);
+		Color hpLost = new Color((byte)150, (byte)0, (byte)0);
+		
+		int remHPWidth = (int)(player.getHP().GetHPfloat()*width);
+		
+		// HP //
+		ByteBuffer HPbuffer = BufferUtils.createByteBuffer(width*height*4);
+		
+		for(int i = 0; i < width; i++) {
+			for(int j = 0; j < height; j++) {
+				if(i <= remHPWidth) {
+					HPbuffer.put(hpRemaining.getR());
+					HPbuffer.put(hpRemaining.getG());
+					HPbuffer.put(hpRemaining.getB());
+					HPbuffer.put((byte)255);
+				} else {
+					HPbuffer.put(hpLost.getR());
+					HPbuffer.put(hpLost.getG());
+					HPbuffer.put(hpLost.getB());
+					HPbuffer.put((byte)255);
+				}
+			}
+		}
+		HPbuffer.flip();
+		
+		TextureObject hpTexture = new TextureObject(new Texture(HPbuffer, width, height));
+		hpTexture.setStickTo(stickTo.BottomLeft);
+		hpTexture.move(120, -42);
+		playerStats.addTextureObject(hpTexture);
+		
+		Color xpGained = new Color((byte)255, (byte)255, (byte)0);
+		Color xpRemaining = new Color((byte)150, (byte)150, (byte)0);
+		
+		int remXPWidth = (int)(player.getXP().getXPpercentage()*width);
+		
+		// HP //
+		ByteBuffer XPbuffer = BufferUtils.createByteBuffer(width*height*4);
+		
+		for(int i = 0; i < width; i++) {
+			for(int j = 0; j < height; j++) {
+				if(i <= remXPWidth) {
+					XPbuffer.put(xpGained.getR());
+					XPbuffer.put(xpGained.getG());
+					XPbuffer.put(xpGained.getB());
+					XPbuffer.put((byte)255);
+				} else {
+					XPbuffer.put(xpRemaining.getR());
+					XPbuffer.put(xpRemaining.getG());
+					XPbuffer.put(xpRemaining.getB());
+					XPbuffer.put((byte)255);
+				}
+			}
+		}
+		XPbuffer.flip();
+		
+		TextureObject xpTexture = new TextureObject(new Texture(XPbuffer, width, height));
+		xpTexture.setStickTo(stickTo.BottomLeft);
+		xpTexture.move(120, -14);
+		playerStats.addTextureObject(xpTexture);
+		
+		Line level = new Line(GuiRenderer.stickTo.BottomRight);
+		level.setString(Integer.toString(player.getXP().GetLevel()) + "lvl", verdana);
+		level.move(-70, -20);
+		playerStats.addTextureObject(level);
+		
+		guiRenderer.addGroup(playerStats);
+		guiRenderer.updatePositions();
 	}
 	
 	private static void worldInit() {	
@@ -137,16 +215,20 @@ public class Main {
 		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
 		panels.updateDynamicGuiElements(guiRenderer, window);
 		
-		Group group1 = new Group();
-		Line test1 = new Line(GuiRenderer.stickTo.BottomLeft);
-		test1.setString("Tekst w innym miejscu", verdana);
-		test1.move(95, -25);
-
-		TextBlock test = new TextBlock(400, stickTo.TopLeft);
-		test.setString(verdana, "12 asê jsajhdkjs sdsadsa sad asdsadhjs dksfjlskdjflksdj flkjlkjdflsdjfljdslkj jjkdj lfjsldfjldksjj fklkdsjfl ksjdlfk");
-		test.move(15, 15);
-		//group1.addTextBlock(test);
-		//group1.addTextureObject(test1);
+		Group statsStatic = new Group();
+		Line HPtext = new Line(GuiRenderer.stickTo.BottomLeft);
+		HPtext.setString("HP:", verdana);
+		HPtext.move(75, -35);
+		
+		
+		Line XPtext = new Line(GuiRenderer.stickTo.BottomLeft);
+		XPtext.setString("XP:", verdana);
+		XPtext.move(75, -5);
+		
+		statsStatic.addTextureObject(XPtext);
+		statsStatic.addTextureObject(HPtext);
+		
+		playerStatsDynamic(player, guiRenderer);
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
@@ -166,7 +248,7 @@ public class Main {
 		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addGuiObject(questsButton);
 		guiRenderer.addGuiObject(healBtn);
-		guiRenderer.addGroup(group1);
+		guiRenderer.addGroup(statsStatic);
 		
 	
 		
@@ -477,6 +559,7 @@ public class Main {
 							if(currentWorld.getEntity(i) instanceof Enemy) {
 	
 								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, pressStart);
+								playerStatsDynamic(player, guiRenderer);
 	
 							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
 								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId());
