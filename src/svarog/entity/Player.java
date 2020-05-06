@@ -80,10 +80,12 @@ public class Player extends Entity {
 		quests1.move(-520, -275);
 		
 		for(Quest ques: this.getQuests()) {
-			quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getTitle()), Type.headline);
-			quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getDescription()), Type.content);
-			for(Task tasks01: ques.getTasks()) {
-				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, tasks01.progress()), Type.normal);
+			if(ques.isEndedQuest() != true) {
+				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getTitle()), Type.headline);
+				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getDescription()), Type.content);
+				for(Task tasks01: ques.getTasks()) {
+					quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, tasks01.progress()), Type.normal);
+				}
 			}
 		}
 		

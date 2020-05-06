@@ -8,8 +8,24 @@ public class Quest {
 
     private int questID;
     private List<Task> tasks;
+    private boolean isEndedQuest = false; 
 
-    private String title;
+    public boolean isEndedQuest() {
+    	setEndedQuest();
+		return isEndedQuest;
+	}
+
+	private void setEndedQuest() {
+		for(Task t: tasks) {
+			if(t.getIsEnded()==false) {
+				this.isEndedQuest = false;
+				return;
+			}
+		}
+		this.isEndedQuest = true;
+	}
+
+	private String title;
     private String description;
 
     public Quest(int questID, String title, String description){
