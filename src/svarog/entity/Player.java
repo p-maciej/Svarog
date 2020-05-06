@@ -289,9 +289,9 @@ public class Player extends Entity {
 				//Last line (everything should be done before it)
 				world.removeEntity(enemy);
 			}else {
-				fightString.add("Player HP (before attack): " + this.getHP());
+				fightString.add("Player HP (before attack): " + this.getHP().GetHP());
 				this.DecreasePlayerHP((enemy).GetRandomAttack());
-				fightString.add("Player HP (after attack): " + this.getHP());
+				fightString.add("Player HP (after attack): " + this.getHP().GetHP());
 				if(this.getHP().GetHP()<0) {
 					fightString.add("Player died, " + (enemy).getName() + " was killing more people than ever.");
 					break;
