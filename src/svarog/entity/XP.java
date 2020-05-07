@@ -2,7 +2,25 @@ package svarog.entity;
 
 public class XP {
 	private int xp = 0;
-	private Level level= new Level(0);
+	private int xpmin=0;
+	public int getXpmin() {
+		return xpmin;
+	}
+
+	public void setXpmin(int xpmin) {
+		this.xpmin = xpmin;
+	}
+
+	public int getXpmax() {
+		return xpmax;
+	}
+
+	public void setXpmax(int xpmax) {
+		this.xpmax = xpmax;
+	}
+
+	private int xpmax = 20;
+	private Level level= new Level(1);
 	
 	public XP(int xp) {
 		this.xp = xp;
@@ -28,29 +46,29 @@ public class XP {
 	}
 	
 	private void CheckLvlStatus() {
-		int iter = 1;
-		for(int i = 20; ; i = i * 2) {
-			if(this.xp > i) {
-				this.level.setLevel(iter);
+		for( ; ; xpmax = xpmax * 2) {
+			if(this.xp > xpmax) {
+				this.level.setLevel(this.GetLevel()+1);
+				xpmin = xpmax;
 			}else {
 				break;
 			}
-			iter++;
 		}
 	}
 	
-	public int PointsToNextLvl() {
-		int toNextLvl=0;
-		for(int i = 20; ; i = i*2 ) {
-			if(xp < i){
-				toNextLvl = i - xp;
-				break;
-			}
-		}
-		return toNextLvl;
-	}
+//	public int PointsToNextLvl() {
+//		int toNextLvl=0;
+//		for(int i = 20; ; i = i*2 ) {
+//			if(xp < i){
+//				toNextLvl = i - xp;
+//				break;
+//			}
+//		}
+//		return toNextLvl;
+//	}
 	
 	public float getXPpercentage() {
-		return xp/PointsToNextLvl();
+		CheckLvlStatus();
+		return (float)((float)(xp-xpmin)/(float)(xpmax-xpmin));
 	}
 }

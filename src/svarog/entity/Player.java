@@ -286,6 +286,8 @@ public class Player extends Entity {
 				fightString.add("Enemy "+ (enemy).getName() + " died, you WON!!!");
 				//Adding XP and money reward
 				this.AddPlayerXP(enemy.GetXpForKilling());
+				//System.out.println(this.getXP().GetXP()+ " " + this.getXP().getXpmin() + " " + this.getXP().getXpmax());
+				
 				this.money += enemy.getReward();
 				
 				//Last line (everything should be done before it)
