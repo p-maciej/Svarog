@@ -8,11 +8,12 @@ import org.joml.Vector2f;
 import svarog.interactions.Interactions;
 import svarog.objects.Item;
 import svarog.objects.ItemInfo;
+import svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.world.WorldRenderer;
 
-public class NPC extends Entity {
+public class NPC extends Entity{
 
 	private Interactions interactions;
 	
@@ -55,7 +56,7 @@ public class NPC extends Entity {
 		items.add(item);
 	}
 	
-	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
+	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType) {
 		items.add(new Item(texture, position, itemInfo, globalID, localID, hpRegeneration, attackBonus, lvlRequired, name, description, itemType));
 	}
 	
