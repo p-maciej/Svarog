@@ -132,6 +132,7 @@ public class Main {
 		
 		Color xpGained = new Color((byte)255, (byte)255, (byte)0);
 		Color xpRemaining = new Color((byte)150, (byte)150, (byte)0);
+
 		
 		int remXPWidth = (int)(player.getXP().getXPpercentage()*width);
 		
@@ -583,7 +584,8 @@ public class Main {
 					
 					if(healBtn.isClicked()) {
 						player.FullyRecoverHP();
-						System.out.println("Health of player was fully recovered: " + player.getHP() + "hp.");
+						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
+						playerStatsDynamic(player, guiRenderer);
 					}
 					
 					
