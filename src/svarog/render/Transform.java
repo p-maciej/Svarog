@@ -9,15 +9,18 @@ public class Transform {
 	private Vector3f position;
 	private Vector3f scale;
 	
+	private int offset;
+	
 	public Transform() {
 		position = new Vector3f();
 		scale = new Vector3f();
+		this.setOffset(0);
 	}
 	
 	public Transform set(Transform transform) {
 		this.position.set(transform.position);
 		this.scale.set(transform.scale);
-		
+		this.offset = transform.offset;
 		transform = null;
 		
 		return this;
@@ -61,5 +64,13 @@ public class Transform {
 	
 	public Vector3f getScale() {
 		return scale;
+	}
+
+	public int getOffset() {
+		return offset;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
 	}
 }

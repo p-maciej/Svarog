@@ -139,21 +139,23 @@ public class WorldRenderer implements RenderProperties {
 	}
 	
 	public void renderEntity(Entity entity, Shader shader, Camera camera, World world) {
-		Matrix4f target = camera.getProjection();
-		target.mul(world.getWorld());
-		
-		Transform temp = new Transform().set(entity.getTransform());
-		
-		if(entity.getFullBoundingBox() == false)
-			temp.getPosition().y += 1f; // This sets offset in texture rendering when entity should walk like on foots
+		if(entity.getTexture() != null) {
+			Matrix4f target = camera.getProjection();
+			target.mul(world.getWorld());
 			
-		shader.bind();
-		shader.setUniform("sampler", 0);
-		shader.setUniform("projection", temp.getProjection(target));
-		shader.setUniform("sharpness", 1.0f);
-		
-		entity.getTexture().bind(0);
-		this.model.render();
+			Transform temp = new Transform().set(entity.getTransform());
+			
+			if(entity.getFullBoundingBox() == false)
+				temp.getPosition().y += 1f; // This sets offset in texture rendering when entity should walk like on foots
+				
+			shader.bind();
+			shader.setUniform("sampler", 0);
+			shader.setUniform("projection", temp.getProjection(target));
+			shader.setUniform("sharpness", 1.0f);
+			
+			entity.getTexture().bind(0);
+			this.model.render();
+		}
 	}
 	
 	public void setBuffers() {
@@ -206,9 +208,11 @@ public class WorldRenderer implements RenderProperties {
 		int x = (-(int)((camera.getPosition().x)) - (int)(window.getWidth()/2) + (int)(worldOffset.x/2) + (int)scale + (int)window.getCursorPositionX());
 		int y = ((int)((camera.getPosition().y)) - (int)(window.getHeight()/2) + (int)(worldOffset.y/2) + (int)scale + (int)window.getCursorPositionY());
 		
-		if(posX < x && (posX + scale*2) > x  && (posY -scale*2) < y && (posY + scale*2) > y) {
+
+		if(posX < x && (posX+entity.getTransform().getScale().x*scale*2) > x && (posY-entity.getTransform().getScale().y*scale+entity.getTransform().getOffset()) < y && posY+scale*2+entity.getTransform().getOffset() > y) {
 			return true;
 		}
+		
 		return false;
 	}
 	

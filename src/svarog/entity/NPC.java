@@ -38,11 +38,17 @@ public class NPC extends Entity {
 		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
-		super.setIsStatic(false);
 		
 		super.setIsStatic(true); // static - default setting for NPC 
 		
 		this.items = items;
+	}
+	
+	public NPC(int id, Transform transform, String name) {
+		super(id, transform, name);
+		super.setOverable(true);
+		super.setClickable(true); 
+		super.setIsStatic(true); 
 	}
 	
 	public void AddItem(Item item) {

@@ -48,7 +48,7 @@ public abstract class Entity implements MouseInteraction {
 	
 	// Animation constructor
 	public Entity(int id, Animation animation, Transform transform, boolean fullBoundingBox) {	
-		objectId = auto_increment++;
+		this.objectId = auto_increment++;
 		this.setId(id);
 		
 		this.entityName = new String();
@@ -67,7 +67,7 @@ public abstract class Entity implements MouseInteraction {
 	
 	// Texture constructor
 	public Entity(int id, Texture texture, Transform transform, boolean fullBoundingBox) {		
-		objectId = auto_increment++;
+		this.objectId = auto_increment++;
 		this.setId(id);
 		
 		this.entityName = new String();
@@ -84,6 +84,15 @@ public abstract class Entity implements MouseInteraction {
 		setEntityProperties();	
 	}
 	
+	public Entity(int id, Transform transform, String name) {
+		this.objectId = auto_increment++;
+		this.setId(id);
+		this.setName(name);
+		this.transform = transform;
+		this.transform.getPosition().x *= 2;
+		this.transform.getPosition().y *= 2;
+	}
+	
 	// This sets correct scale of entity
 	private void setEntityProperties() {
 		this.transform.getPosition().x *= 2;
@@ -93,6 +102,8 @@ public abstract class Entity implements MouseInteraction {
 			transform.getScale().x = 1;
 		if(transform.getScale().y < 1)
 			transform.getScale().y = 1;	
+		
+		transform.setOffset((int)WorldRenderer.getScale());
 		
 		float offset = 0;
 		if(fullBoundingBox == false)
@@ -143,27 +154,28 @@ public abstract class Entity implements MouseInteraction {
 		isColliding[1] = false;
 		if(!this.isStatic()) { 
 			for(int i = 0; i < world.numberOfEntities(); i++) {
-				if(world.getEntity(i).id != this.id) {
-					
-					Collision collision = bounding_box.getCollision(world.getEntity(i).getBoduningBox());
-					
-					if(collision.isIntersecting()) {
-						if(world.getEntity(i).isStatic == false) {
-							collision.getDistance().x /= 2;
-							collision.getDistance().y /= 2;
-						}
+				if(world.getEntity(i).id != this.id) {		
+					if(world.getEntity(i).getBoduningBox() != null) {
+						Collision collision = bounding_box.getCollision(world.getEntity(i).getBoduningBox());
 						
-						bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
-						transform.getPosition().set(bounding_box.getCenter(), 0);
-						
-						
-						
-						if(world.getEntity(i).isStatic == false) {
-							isColliding[1] = false;
-							world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
-							world.getEntity(i).transform.getPosition().set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
-						} else {
-							isColliding[1] = true;
+						if(collision.isIntersecting()) {
+							if(world.getEntity(i).isStatic == false) {
+								collision.getDistance().x /= 2;
+								collision.getDistance().y /= 2;
+							}
+							
+							bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
+							transform.getPosition().set(bounding_box.getCenter(), 0);
+							
+							
+							
+							if(world.getEntity(i).isStatic == false) {
+								isColliding[1] = false;
+								world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
+								world.getEntity(i).transform.getPosition().set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
+							} else {
+								isColliding[1] = true;
+							}
 						}
 					}
 				}

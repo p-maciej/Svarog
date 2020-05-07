@@ -39,6 +39,8 @@ abstract class StartWorld implements Runnable {
 		npc02.setName("Rozenna");
 		npc02.setInteractions(new Interactions("Rozenna01.quest"));
 		
+		NPC ninja = new NPC(8, new Transform().setPosition(29, 28).setScale(1, 2), "Ninja");
+		
 		world.addEntity(ent1);
 		world.addEntity(ent2);
 		world.addEntity(npc01);
@@ -46,6 +48,7 @@ abstract class StartWorld implements Runnable {
 		world.addEntity(ArchEnemy);
 		world.addEntity(enemy1);
 		world.addEntity(enemy2);
+		world.addEntity(ninja);
 
 		world.addEntity(player); //We always should add player at the end, otherwise he will be rendered under entities ;)
 		
