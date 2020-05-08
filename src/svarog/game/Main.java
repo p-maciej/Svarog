@@ -14,6 +14,7 @@ import java.util.List;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
+import svarog.audio.Audio;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.NPC;
@@ -68,6 +69,7 @@ public class Main {
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
 	private static Group playerStats;
+	private static Audio audioPlayer;
 	
 	// Menu
 	private static GuiRenderer menu;
@@ -175,6 +177,7 @@ public class Main {
 		shader = new Shader("shader");
 		camera = new Camera();
 
+		audioPlayer = new Audio();
 		
 		player = new Player(0, "player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
 		player.setName("Ty");
@@ -583,6 +586,11 @@ public class Main {
 						guiRenderer.addWindow(player.getQuestsPagedOnGUI(pressStart));
 					
 					if(healBtn.isClicked()) {
+						try {
+							audioPlayer.play("walk01.ogg", false);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 						player.FullyRecoverHP();
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						playerStatsDynamic(player, guiRenderer);
@@ -612,6 +620,7 @@ public class Main {
             }
 		}
 		
+		audioPlayer.finalize();
 		glfwTerminate();
 	}
 }
