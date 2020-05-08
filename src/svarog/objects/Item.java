@@ -4,6 +4,7 @@ import org.joml.Vector2f;
 
 import svarog.gui.GuiRenderer;
 import svarog.gui.TextureObject;
+import svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 
 public class Item extends TextureObject implements Movable, MouseInteraction{
@@ -30,7 +31,7 @@ public class Item extends TextureObject implements Movable, MouseInteraction{
 		this.itemInfo = itemInfo;
 	}
 	
-	public Item(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
+	public Item(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType) {
 		super(texture, position);
 		this.itemInfo = new ItemInfo(globalID, localID, hpRegeneration, attackBonus, lvlRequired, name, description, itemType);
 	}
@@ -39,21 +40,13 @@ public class Item extends TextureObject implements Movable, MouseInteraction{
 		return GuiRenderer.getClickedObjectId() == super.getId() ? true : false;
 	}
 	
-	public void SetItem(int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
+	public void SetItem(int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType) {
 		itemInfo.setHpRegeneration(hpRegeneration);
 		itemInfo.setAttackBonus(attackBonus);
 		itemInfo.setLvlRequired(lvlRequired);
 		itemInfo.setName(name);
 		itemInfo.setDescription(description);
 		itemInfo.setItemType(itemType);
-	}
-	
-	public String GetItemName() {
-		return itemInfo.getName();
-	}
-	
-	public String GetItemDescription() {
-		return itemInfo.getDescription();
 	}
 	
 	public ItemInfo getItemInfo() {
@@ -70,11 +63,11 @@ public class Item extends TextureObject implements Movable, MouseInteraction{
 		return super.getTransform().getPosition().y;
 	}
 
-	public int getItemType() { /// I've added just getter and setter for now. A need this for Tile class for gui.
+	public ItemType getItemType() { /// I've added just getter and setter for now. A need this for Tile class for gui.
 		return itemInfo.getItemType();
 	}
 
-	public void setItemType(int itemType) {
+	public void setItemType(ItemType itemType) {
 		this.itemInfo.setItemType(itemType);
 	}
 }

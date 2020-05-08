@@ -39,6 +39,7 @@ import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
 import svarog.objects.ItemInfo;
+import svarog.objects.ItemInfo.ItemType;
 import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Shader;
@@ -266,7 +267,7 @@ public class Main {
 		tileGroup.move(-25, 150);
 		tileGroup.setStickTo(stickTo.BottomRight);
 		
-		List<Integer> puttables = Arrays.asList(0,1,2,3,4,5); // main eq - there should be every item type
+		List<ItemType> puttables = Arrays.asList(ItemType.values()); // main eq - there should be every item type
 
 		int tileId = 0;
 		for(int i = 0; i < 6; i++) {
@@ -301,24 +302,24 @@ public class Main {
 		tileGroup3.move(-25, 545);
 		
 		Tile helmet = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 0, 50);
-		helmet.setPuttableItemTypes(Arrays.asList(1)); // item type 1
+		helmet.setPuttableItemTypes(Arrays.asList(ItemType.helm)); // item type 1
 		
 		Tile armor = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 0, 0);
-		armor.setPuttableItemTypes(Arrays.asList(2));
+		armor.setPuttableItemTypes(Arrays.asList(ItemType.armor));
 		
 		Tile boots = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, -50, 0);
-		boots.setPuttableItemTypes(Arrays.asList(3));
+		boots.setPuttableItemTypes(Arrays.asList(ItemType.shoes));
 		
 		Tile sword = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 0, -50);
-		sword.setPuttableItemTypes(Arrays.asList(4));
+		sword.setPuttableItemTypes(Arrays.asList(ItemType.weapon));
 		
-		Tile shield = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 50, 0);
-		shield.setPuttableItemTypes(Arrays.asList(5));
+		Tile gloves = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 50, 0);
+		gloves.setPuttableItemTypes(Arrays.asList(ItemType.gloves));
 		
 		tileGroup3.addTextureObject(helmet);
 		tileGroup3.addTextureObject(armor);
 		tileGroup3.addTextureObject(boots);
-		tileGroup3.addTextureObject(shield);
+		tileGroup3.addTextureObject(gloves);
 		tileGroup3.addTextureObject(sword);
 		
 		tileSheet.addTileGroup(tileGroup3);
@@ -331,11 +332,11 @@ public class Main {
 		guiRenderer.updatePositions();
 		
 		
-		Item fancyItem = new Item(new Texture("textures/item.png"), new ItemInfo());
-		fancyItem.setItemType(0);
+		Item fancyItem = new Item(new Texture("textures/helmet.png"), new ItemInfo());
+		fancyItem.setItemType(ItemType.helm);
 		
 		Item fancyItem2 = new Item(new Texture("textures/item.png"), new ItemInfo());
-		fancyItem2.setItemType(0);
+		fancyItem2.setItemType(ItemType.eatable);
 		
 		try {
 			guiRenderer.getTileSheet().getTile(2).putItem(fancyItem);

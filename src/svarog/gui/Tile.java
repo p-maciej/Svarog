@@ -7,11 +7,12 @@ import org.joml.Vector2f;
 
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.objects.Item;
+import svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 
 public class Tile extends TextureObject {
 	private byte tileType;
-	private List<Integer> puttableItemTypes;
+	private List<ItemType> puttableItemTypes;
 	private Item puttedItem;
 	
 	private int tileId;
@@ -24,7 +25,7 @@ public class Tile extends TextureObject {
 		super(texture, position);
 		super.setOverable(true);
 		this.setTileId(tileId);
-		setPuttableItemTypes(new ArrayList<Integer>());
+		setPuttableItemTypes(new ArrayList<ItemType>());
 		
 		this.setTileType(tileType);
 		
@@ -36,7 +37,7 @@ public class Tile extends TextureObject {
 		super(texture, X, Y);
 		super.setOverable(true);
 		this.setTileId(tileId);
-		setPuttableItemTypes(new ArrayList<Integer>());
+		setPuttableItemTypes(new ArrayList<ItemType>());
 		
 		this.setTileType(tileType);
 		
@@ -48,7 +49,7 @@ public class Tile extends TextureObject {
 		super(texture, stickTo);
 		super.setOverable(true);
 		this.setTileId(tileId);
-		setPuttableItemTypes(new ArrayList<Integer>());
+		setPuttableItemTypes(new ArrayList<ItemType>());
 		
 		this.setTileType(tileType);
 		
@@ -60,7 +61,7 @@ public class Tile extends TextureObject {
 		super(texture, position);
 		super.setOverable(true);
 		this.setTileId(tileId);
-		setPuttableItemTypes(new ArrayList<Integer>());
+		setPuttableItemTypes(new ArrayList<ItemType>());
 		
 		this.setTileType(tileType);
 		
@@ -73,7 +74,7 @@ public class Tile extends TextureObject {
 		super(texture, stickTo);
 		super.setOverable(true);
 		this.setTileId(tileId);
-		setPuttableItemTypes(new ArrayList<Integer>());
+		setPuttableItemTypes(new ArrayList<ItemType>());
 		
 		this.setTileType(tileType);
 		
@@ -86,7 +87,7 @@ public class Tile extends TextureObject {
 		super(texture, X, Y);
 		super.setOverable(true);
 		this.setTileId(tileId);
-		setPuttableItemTypes(new ArrayList<Integer>());
+		setPuttableItemTypes(new ArrayList<ItemType>());
 		
 		this.setTileType(tileType);
 		
@@ -103,13 +104,13 @@ public class Tile extends TextureObject {
 		this.tileType = tileType;
 	}
 
-	public void setPuttableItemTypes(List<Integer> puttableItemTypes) {
+	public void setPuttableItemTypes(List<ItemType> puttableItemTypes) {
 		this.puttableItemTypes = puttableItemTypes;
 	}
 	
 	public void putItem(Item object) throws Exception {
 		boolean hasBeenPutted = false;
-		for(Integer type : puttableItemTypes) {
+		for(ItemType type : puttableItemTypes) {
 			if(type == object.getItemType()) {
 				object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
 				this.puttedItem = object;

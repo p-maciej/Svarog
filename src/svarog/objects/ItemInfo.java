@@ -1,6 +1,18 @@
 package svarog.objects;
 
 public class ItemInfo {
+	public enum ItemType{
+		trophy,
+		helm,
+		other,
+		weapon,
+		eatable,
+		armor,
+		gloves,
+		shoes,
+		none
+	}
+	
 	private int globalID;
 	private int localID;
 	private int hpRegeneration;
@@ -8,7 +20,7 @@ public class ItemInfo {
 	private int lvlRequired;
 	private String name;
 	private String description;
-	private int itemType;
+	private ItemType itemType;
 	
 	public ItemInfo() {
 		this.globalID = -1;
@@ -18,10 +30,10 @@ public class ItemInfo {
 		this.lvlRequired = 0;
 		this.name = "name";
 		this.description = "description";
-		this.itemType = -1;
+		this.itemType = ItemType.none;
 	}
 
-	public ItemInfo(int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, int itemType) {
+	public ItemInfo(int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType) {
 		this.globalID = globalID;
 		this.localID = localID;
 		this.hpRegeneration = hpRegeneration;
@@ -72,11 +84,11 @@ public class ItemInfo {
 		this.description = description;
 	}
 	
-	public int getItemType() {
+	public ItemType getItemType() {
 		return itemType;
 	}
 
-	public void setItemType(int itemType) {
+	public void setItemType(ItemType itemType) {
 		this.itemType = itemType;
 	}
 	
