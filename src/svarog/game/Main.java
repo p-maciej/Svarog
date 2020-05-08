@@ -357,10 +357,10 @@ public class Main {
 		fancyItem2.setItemType(ItemType.eatable);
 		
 		Item fancyItem3 = new Item(new Texture("textures/poranSword.png"), new ItemInfo());
-		fancyItem2.setItemType(ItemType.weapon);
+		fancyItem3.setItemType(ItemType.weapon);
 		
 		Item fancyItem4 = new Item(new Texture("textures/magicArmor.png"), new ItemInfo());
-		fancyItem2.setItemType(ItemType.armor);
+		fancyItem4.setItemType(ItemType.armor);
 		
 		
 		
