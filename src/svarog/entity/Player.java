@@ -12,12 +12,14 @@ import java.util.List;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+import svarog.audio.Audio;
+import svarog.audio.Sound;
 import svarog.gui.Arena;
 import svarog.gui.GuiRenderer;
-import svarog.gui.PagedGuiWindow;
-import svarog.gui.TextureObject;
 import svarog.gui.GuiRenderer.stickTo;
+import svarog.gui.PagedGuiWindow;
 import svarog.gui.PagedGuiWindow.Type;
+import svarog.gui.TextureObject;
 import svarog.gui.font.Font;
 import svarog.gui.font.TextBlock;
 import svarog.interactions.Quest;
@@ -41,6 +43,8 @@ public class Player extends Entity {
 	
 	private boolean movementLock;
 	
+	private Sound walk;
+	
 	//HP, Level, NPC, MinAttack, MaxAttack//
 	private HP hp = new HP(100);
 	private XP xp = new XP(0);
@@ -52,11 +56,12 @@ public class Player extends Entity {
 	private Inventory inventory;
 	private List<Quest> quests = new ArrayList<>();
 
-	public Player(int id, String texturePath, String filename, Transform transform, boolean fullBoundingBox) {
+	public Player(int id, String texturePath, String filename, Sound walkSound, Transform transform, boolean fullBoundingBox) {
 		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
 		
-		//ADDING FIRST QUEST
+		this.setWalkSound(walkSound);
 		
+		//ADDING FIRST QUEST
 		List<Task>tasks001 = new ArrayList<>();
 		tasks001.add(new Task(0, 1, 7, doState.talk));
 		this.getQuests().add(new Quest(-100, "Pogadaj z Rozanna", "Musisz sie udac gdzies tam aby pogadac z Rozanna.",tasks001 ));
@@ -96,7 +101,7 @@ public class Player extends Entity {
 	}
 	
 	@Override
-	public void update(float delta, Window window, Camera camera, WorldRenderer world) {
+	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer) {
 		if(movementLock == false) {
 			Vector2f movement = new Vector2f();
 			
@@ -135,6 +140,14 @@ public class Player extends Entity {
 			
 			direction = getNewPressedKey(lastKeysPressed, keysPressed);
 			setLastKeysPressed(keysPressed);
+			
+			if(keysPressed[0]+keysPressed[1]+keysPressed[2]+keysPressed[3] == -4) {
+				if(audioPlayer.isPlaying(walk))
+					audioPlayer.stop(walk);
+			} else {
+				if(!audioPlayer.isPlaying(walk))
+					audioPlayer.play(walk);
+			}
 			
 			if(direction == 65) {
 				movement.add(-1*delta, 0);
@@ -196,7 +209,7 @@ public class Player extends Entity {
 				camera.getPosition().lerp(transform.getPosition().mul(-WorldRenderer.getScale(), new Vector3f()), 0.6f); // Camera movement
 			}
 			
-			super.update(delta, window, camera, world);
+			super.update(delta, window, camera, world, audioPlayer);
 			/////////////////////////////////////////////////////////
 		}
 	}
@@ -432,5 +445,13 @@ public class Player extends Entity {
 
 	public void setMovementLock(boolean movementLock) {
 		this.movementLock = movementLock;
+	}
+
+	public void setWalkSound(Sound walk) {
+		this.walk = walk;
+	}
+	
+	public Sound getWalkSound() {
+		return walk;
 	}
 }

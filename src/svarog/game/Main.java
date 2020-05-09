@@ -15,6 +15,7 @@ import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
 import svarog.audio.Audio;
+import svarog.audio.Sound;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.NPC;
@@ -179,10 +180,19 @@ public class Main {
 		camera = new Camera();
 
 		audioPlayer = new Audio();
+
+		Sound walk = null;
+		try {
+			walk = new Sound("walk01.ogg", true);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		
-		player = new Player(0, "player/mavak/", "mavak", new Transform().setPosition(40, 25), false);
-		player.setName("Ty");
-		player.setHpXpAttack(100, 0, 50, 60);
+		if(walk != null) {
+			player = new Player(0, "player/mavak/", "mavak", walk, new Transform().setPosition(40, 25), false);
+			player.setName("Ty");
+			player.setHpXpAttack(100, 0, 50, 60);
+		}
 		
 		currentWorld = new World(1, 0, 0);
 		
@@ -191,6 +201,7 @@ public class Main {
 		Vector2f offset = new Vector2f(350, 70);
 		worldRenderer.setWorldOffset(offset);
 		/////////////////////////////////////////////////////////////////////////////////////
+		
 		
 		/////// GUI  ////////////////////////////////////////////////////////////////////////
 		verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
@@ -429,6 +440,10 @@ public class Main {
             	
             	if(menu == null) 
             		menuInit();
+            	
+            	if(player != null && audioPlayer != null)
+            		if(audioPlayer.isPlaying(player.getWalkSound()))
+            				audioPlayer.stop(player.getWalkSound());
             	 	
             	menu.update(window);
             	menu.renderGuiObjects(guiShader, window);
@@ -455,7 +470,10 @@ public class Main {
 	            	glClear(GL_COLOR_BUFFER_BIT);
 	            	glClearColor(0f, 0f, 0f, 1f);
 	            	
-	            	
+	              	if(player != null && audioPlayer != null)
+	            		if(audioPlayer.isPlaying(player.getWalkSound()))
+	            				audioPlayer.stop(player.getWalkSound());
+	              	
 	                if(start == -1) {
 	                	start = Timer.getNanoTime();
 	                	
@@ -528,7 +546,7 @@ public class Main {
 					
 					guiRenderer.deleteDynamicGroups();
 					
-					worldRenderer.update((float)0.2, window, camera);
+					worldRenderer.update((float)0.2, window, camera, audioPlayer);
 					worldRenderer.correctCamera(camera, window);							// This sets correct camera position on world
 	
 					
@@ -587,11 +605,6 @@ public class Main {
 						guiRenderer.addWindow(player.getQuestsPagedOnGUI(pressStart));
 					
 					if(healBtn.isClicked()) {
-						try {
-							audioPlayer.play("walk01.ogg", false);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
 						player.FullyRecoverHP();
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						playerStatsDynamic(player, guiRenderer);
@@ -621,7 +634,11 @@ public class Main {
             }
 		}
 		
-		audioPlayer.finalize();
+		try {
+			audioPlayer.finalize();
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		glfwTerminate();
 	}
 }

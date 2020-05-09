@@ -4,6 +4,7 @@ import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+import svarog.audio.Audio;
 import svarog.entity.Entity;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -172,9 +173,9 @@ public class WorldRenderer implements RenderProperties {
 		}
 	}
 	
-	public void update(float delta, Window window, Camera camera) { // World update
+	public void update(float delta, Window window, Camera camera, Audio audioPlayer) { // World update
 		for(Entity entity : world.getEntities()) {
-			entity.update(delta, window, camera, this);
+			entity.update(delta, window, camera, this, audioPlayer);
 			entity.collideWithTiles(world);
 			entity.collideWithEntities(world);
 		}
