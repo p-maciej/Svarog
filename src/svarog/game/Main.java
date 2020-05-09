@@ -307,24 +307,42 @@ public class Main {
 		tileSheet.addTileGroup(tileGroup2);
 		///////////////////
 		
+		
+		// Tiles to character EQ
+		Texture tileHelmetTexture = new Texture("images/eqTile/helmetTile.png");
+		Texture tileHelmetTexture_hover = new Texture("images/eqTile/helmetTile_hover.png");
+		
+		Texture tileArmorTexture = new Texture("images/eqTile/armorTile.png");
+		Texture tileArmorTexture_hover = new Texture("images/eqTile/armorTile_hover.png");
+		
+		Texture tileBootsTexture = new Texture("images/eqTile/bootsTile.png");
+		Texture tileBootsTexture_hover = new Texture("images/eqTile/bootsTile_hover.png");
+		
+		Texture tileSwordTexture = new Texture("images/eqTile/swordTile.png");
+		Texture tileSwordTexture_hover = new Texture("images/eqTile/swordTile_hover.png");
+		
+		Texture tileGlovesTexture = new Texture("images/eqTile/glovesTile.png");
+		Texture tileGlovesTexture_hover = new Texture("images/eqTile/glovesTile_hover.png");
+		
+		
 		// Character EQ //
 		Group tileGroup3 = new Group();
 		tileGroup3.setStickTo(stickTo.BottomRight);
 		tileGroup3.move(-25, 545);
 		
-		Tile helmet = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 0, 50);
+		Tile helmet = new Tile(tileId++, tileHelmetTexture, tileHelmetTexture_hover, (byte)0, 0, 50);
 		helmet.setPuttableItemTypes(Arrays.asList(ItemType.helm)); // item type 1
 		
-		Tile armor = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 0, 0);
+		Tile armor = new Tile(tileId++, tileArmorTexture, tileArmorTexture_hover, (byte)0, 0, 0);
 		armor.setPuttableItemTypes(Arrays.asList(ItemType.armor));
 		
-		Tile boots = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, -50, 0);
+		Tile boots = new Tile(tileId++, tileBootsTexture, tileBootsTexture_hover, (byte)0, 0, -50);
 		boots.setPuttableItemTypes(Arrays.asList(ItemType.shoes));
 		
-		Tile sword = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 0, -50);
+		Tile sword = new Tile(tileId++, tileSwordTexture, tileSwordTexture_hover, (byte)0, -50, 0);
 		sword.setPuttableItemTypes(Arrays.asList(ItemType.weapon));
 		
-		Tile gloves = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, 50, 0);
+		Tile gloves = new Tile(tileId++, tileGlovesTexture, tileGlovesTexture_hover, (byte)0, 50, 0);
 		gloves.setPuttableItemTypes(Arrays.asList(ItemType.gloves));
 		
 		tileGroup3.addTextureObject(helmet);
@@ -349,6 +367,14 @@ public class Main {
 		Item fancyItem2 = new Item(new Texture("textures/item.png"), new ItemInfo());
 		fancyItem2.setItemType(ItemType.eatable);
 		
+		Item fancyItem3 = new Item(new Texture("textures/poranSword.png"), new ItemInfo());
+		fancyItem3.setItemType(ItemType.weapon);
+		
+		Item fancyItem4 = new Item(new Texture("textures/magicArmor.png"), new ItemInfo());
+		fancyItem4.setItemType(ItemType.armor);
+		
+		
+		
 		try {
 			guiRenderer.getTileSheet().getTile(2).putItem(fancyItem);
 
@@ -358,6 +384,18 @@ public class Main {
 		
 		try {
 			guiRenderer.getTileSheet().getTile(3).putItem(fancyItem2);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			guiRenderer.getTileSheet().getTile(4).putItem(fancyItem3);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			guiRenderer.getTileSheet().getTile(5).putItem(fancyItem4);
 
 		} catch (Exception e) {
 			e.printStackTrace();
