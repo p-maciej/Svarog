@@ -18,9 +18,7 @@ public class Group {
 	private List<TextureObject> textureObjects;
 	private List<TextBlock> textBlocks;
 	
-	
 	private State state;
-	
 	
 	private int groupWidth;
 	private int groupHeight;

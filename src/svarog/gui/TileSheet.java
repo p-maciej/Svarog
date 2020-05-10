@@ -3,6 +3,8 @@ package svarog.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import svarog.objects.Item;
+
 public class TileSheet {
 	private List<Group> tileGroups;
 	
@@ -41,5 +43,27 @@ public class TileSheet {
 		}
 		
 		return null;
+	}
+	
+	public void putItemFirstEmpty(Item item) {
+		boolean finished = false;
+		for(Group group : tileGroups) {
+			for(TextureObject tile : group.getObjects()) {
+				if(tile instanceof Tile) {
+					Tile temp = (Tile)tile;
+					if(temp.getPuttableItemTypes().size() > 1) {
+						if(temp.getPuttedItem() == null) {
+							try {
+								temp.putItem(item);
+								finished = true;
+								break;
+							} catch (Exception e) {}
+						}		
+					}
+				}
+			}
+			if(finished)
+				break;
+		}
 	}
 }

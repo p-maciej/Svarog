@@ -1,18 +1,6 @@
 package svarog.objects;
 
-public class ItemInfo {
-	public enum ItemType{
-		trophy,
-		helm,
-		other,
-		weapon,
-		eatable,
-		armor,
-		gloves,
-		shoes,
-		none
-	}
-	
+public class ItemInfo implements ItemProperties {
 	private int globalID;
 	private int localID;
 	private int hpRegeneration;

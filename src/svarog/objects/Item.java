@@ -4,10 +4,9 @@ import org.joml.Vector2f;
 
 import svarog.gui.GuiRenderer;
 import svarog.gui.TextureObject;
-import svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 
-public class Item extends TextureObject implements Movable, MouseInteraction{
+public class Item extends TextureObject implements Movable, MouseInteraction, ItemProperties {
 
 	private ItemInfo itemInfo;
 

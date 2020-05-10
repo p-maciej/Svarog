@@ -40,7 +40,7 @@ import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
 import svarog.objects.ItemInfo;
-import svarog.objects.ItemInfo.ItemType;
+import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Shader;
@@ -365,7 +365,7 @@ public class Main {
 		fancyItem.setItemType(ItemType.helm);
 		
 		Item fancyItem2 = new Item(new Texture("textures/item.png"), new ItemInfo());
-		fancyItem2.setItemType(ItemType.eatable);
+		fancyItem2.setItemType(ItemType.consumable);
 		
 		Item fancyItem3 = new Item(new Texture("textures/poranSword.png"), new ItemInfo());
 		fancyItem3.setItemType(ItemType.weapon);
@@ -374,20 +374,9 @@ public class Main {
 		fancyItem4.setItemType(ItemType.armor);
 		
 		
+		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem);
+		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem2);
 		
-		try {
-			guiRenderer.getTileSheet().getTile(2).putItem(fancyItem);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			guiRenderer.getTileSheet().getTile(3).putItem(fancyItem2);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		try {
 			guiRenderer.getTileSheet().getTile(4).putItem(fancyItem3);
 

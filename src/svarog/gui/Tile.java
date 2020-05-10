@@ -7,12 +7,13 @@ import org.joml.Vector2f;
 
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.objects.Item;
-import svarog.objects.ItemInfo.ItemType;
+import svarog.objects.ItemProperties;
 import svarog.render.Texture;
 
-public class Tile extends TextureObject {
+public class Tile extends TextureObject implements ItemProperties {
 	private byte tileType;
 	private List<ItemType> puttableItemTypes;
+
 	private Item puttedItem;
 	
 	private int tileId;
@@ -106,6 +107,10 @@ public class Tile extends TextureObject {
 
 	public void setPuttableItemTypes(List<ItemType> puttableItemTypes) {
 		this.puttableItemTypes = puttableItemTypes;
+	}
+	
+	List<ItemType> getPuttableItemTypes() {
+		return puttableItemTypes;
 	}
 	
 	public void putItem(Item object) throws Exception {

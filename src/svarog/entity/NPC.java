@@ -8,7 +8,7 @@ import org.joml.Vector2f;
 import svarog.interactions.Interactions;
 import svarog.objects.Item;
 import svarog.objects.ItemInfo;
-import svarog.objects.ItemInfo.ItemType;
+import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.world.WorldRenderer;
