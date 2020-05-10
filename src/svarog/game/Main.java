@@ -634,8 +634,7 @@ public class Main {
 						player.FullyRecoverHP();
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						playerStatsDynamic(player, guiRenderer);
-						Player.getInventory().getItems().add(new Item(new Texture("textures/helmet.png"), new ItemInfo(), ItemType.helm));
-						guiRenderer.getTileSheet().putItemFirstEmpty(Player.getInventory().getItems().get(Player.getInventory().getItems().size()-1));
+						Player.addItemToInventoryWithGUIupdate(new Item(new Texture("textures/helmet.png"), new ItemInfo(), ItemType.helm), guiRenderer);
 					}
 					
 					

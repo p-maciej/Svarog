@@ -26,6 +26,7 @@ import svarog.interactions.Quest;
 import svarog.interactions.Task;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
+import svarog.objects.Item;
 import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
@@ -311,6 +312,12 @@ public class Player extends Entity {
 		
 		arena.setLog(log);
 		guiRenderer.showArena(arena);
+	}
+	
+	public static void addItemToInventoryWithGUIupdate(Item item, GuiRenderer guiRenderer) {
+		Player.getInventory().getItems().add(item);
+		guiRenderer.getTileSheet().putItemFirstEmpty(Player.getInventory().getItems().get(Player.getInventory().getItems().size()-1));
+
 	}
 	
 	public ArrayList<String> fightLogic(Enemy enemy, World world) {
