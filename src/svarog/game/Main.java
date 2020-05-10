@@ -273,41 +273,6 @@ public class Main {
 		Texture tileTexture = new Texture("images/guiTile.png");
 		Texture tileTexture_hover = new Texture("images/guiTile_hover.png");
 		
-		// Main EQ //
-		Group tileGroup = new Group();
-		tileGroup.move(-25, 150);
-		tileGroup.setStickTo(stickTo.BottomRight);
-		
-		List<ItemType> puttables = Arrays.asList(ItemType.values()); // main eq - there should be every item type
-
-		int tileId = 0;
-		for(int i = 0; i < 6; i++) {
-			for(int j = 0; j < 5; j++) {
-				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, j*50, -i*50);
-				tile.setPuttableItemTypes(puttables);
-				
-				tileGroup.addTextureObject(tile);
-			}
-		}
-
-		tileSheet.addTileGroup(tileGroup);
-		////////////
-		
-		
-		// Bottom bar eq //
-		Group tileGroup2 = new Group();
-		tileGroup2.setStickTo(stickTo.Bottom);
-		tileGroup2.move(0, 10);
-		for(int i = 0; i < 6; i++) {
-				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, i*50, 0);
-				tile.setPuttableItemTypes(puttables); // bottom bar tiles - idk what there should be
-				tileGroup2.addTextureObject(tile);
-		}
-		
-		tileSheet.addTileGroup(tileGroup2);
-		///////////////////
-		
-		
 		// Tiles to character EQ
 		Texture tileHelmetTexture = new Texture("images/eqTile/helmetTile.png");
 		Texture tileHelmetTexture_hover = new Texture("images/eqTile/helmetTile_hover.png");
@@ -324,6 +289,12 @@ public class Main {
 		Texture tileGlovesTexture = new Texture("images/eqTile/glovesTile.png");
 		Texture tileGlovesTexture_hover = new Texture("images/eqTile/glovesTile_hover.png");
 		
+		int tileId = 0;
+		
+		// Main EQ //
+		Group tileGroup = new Group();
+		tileGroup.move(-25, 150);
+		tileGroup.setStickTo(stickTo.BottomRight);		
 		
 		// Character EQ //
 		Group tileGroup3 = new Group();
@@ -354,6 +325,35 @@ public class Main {
 		tileSheet.addTileGroup(tileGroup3);
 		//////////////////
 		
+		List<ItemType> puttables = Arrays.asList(ItemType.values()); // main eq - there should be every item type
+
+		for(int i = 0; i < 6; i++) {
+			for(int j = 0; j < 5; j++) {
+				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, j*50, -i*50);
+				tile.setPuttableItemTypes(puttables);
+				
+				tileGroup.addTextureObject(tile);
+			}
+		}
+
+		tileSheet.addTileGroup(tileGroup);
+		////////////
+		
+		
+		// Bottom bar eq //
+		Group tileGroup2 = new Group();
+		tileGroup2.setStickTo(stickTo.Bottom);
+		tileGroup2.move(0, 10);
+		for(int i = 0; i < 6; i++) {
+				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, i*50, 0);
+				tile.setPuttableItemTypes(puttables); // bottom bar tiles - idk what there should be
+				tileGroup2.addTextureObject(tile);
+		}
+		
+		tileSheet.addTileGroup(tileGroup2);
+		///////////////////
+	
+		
 		////////////////////////////////////////////
 		
 		guiRenderer.setTileSheet(tileSheet);
@@ -376,19 +376,16 @@ public class Main {
 		
 		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem);
 		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem2);
-		
-		try {
-			guiRenderer.getTileSheet().getTile(4).putItem(fancyItem3);
+		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem3);
+		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem4);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		try {
-			guiRenderer.getTileSheet().getTile(5).putItem(fancyItem4);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			guiRenderer.getTileSheet().getTile(5).putItem(fancyItem4);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		////////////////////////////////////////////////////////////////////////////////////
 	}
 

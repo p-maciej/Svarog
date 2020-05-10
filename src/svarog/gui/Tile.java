@@ -121,6 +121,7 @@ public class Tile extends TextureObject implements ItemProperties {
 					object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
 					this.puttedItem = object;
 					hasBeenPutted = true;
+					object.getItemInfo().setTileID(this.getTileId());
 					break;
 				}
 			}

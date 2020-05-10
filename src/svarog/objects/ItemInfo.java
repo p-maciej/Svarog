@@ -1,6 +1,8 @@
 package svarog.objects;
 
 public class ItemInfo implements ItemProperties {
+	
+	private int tileID=-1;
 	private int globalID;
 	private int localID;
 	private int hpRegeneration;
@@ -96,4 +98,11 @@ public class ItemInfo implements ItemProperties {
 		this.globalID = globalID;
 	}
 	
+	public int getTileID() {
+		return tileID;
+	}
+
+	public void setTileID(int tileID) {
+		this.tileID = tileID;
+	}
 }
