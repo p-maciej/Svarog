@@ -110,12 +110,14 @@ public class Tile extends TextureObject {
 	
 	public void putItem(Item object) throws Exception {
 		boolean hasBeenPutted = false;
-		for(ItemType type : puttableItemTypes) {
-			if(type == object.getItemType()) {
-				object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
-				this.puttedItem = object;
-				hasBeenPutted = true;
-				break;
+		if(puttedItem == null) {
+			for(ItemType type : puttableItemTypes) {
+				if(type == object.getItemType()) {
+					object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
+					this.puttedItem = object;
+					hasBeenPutted = true;
+					break;
+				}
 			}
 		}
 		
