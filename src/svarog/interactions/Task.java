@@ -100,5 +100,9 @@ public class Task {
         }
         return "Sorry our programmers don't think about that yet";
     }
+
+	public int getHowMuchIsDone() {
+		return howMuchIsDone;
+	}
 }
 

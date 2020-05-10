@@ -43,7 +43,7 @@ public class Player extends Entity {
 	private String fileName;
 	
 	private boolean movementLock;
-	
+
 	private Sound walk;
 	
 	//HP, Level, NPC, MinAttack, MaxAttack//
@@ -493,4 +493,14 @@ public class Player extends Entity {
 	public static void setInventory(Inventory inventoryT) {
 		inventory = inventoryT;
 	}
+
+	public String getTexturesPath() {
+		return texturesPath;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+	
+
 }

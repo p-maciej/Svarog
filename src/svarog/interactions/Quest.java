@@ -78,4 +78,8 @@ public class Quest {
     public void setDescription(String description) {
         this.description = description;
     }
+
+	public void setEndedQuest(boolean isEndedQuest) {
+		this.isEndedQuest = isEndedQuest;
+	}
 }

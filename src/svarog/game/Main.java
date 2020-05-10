@@ -48,6 +48,7 @@ import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.Save;
 import svarog.world.World;
 import svarog.world.WorldRenderer;
 
@@ -82,9 +83,6 @@ public class Main {
 	private static Button menuResumeButton;
 	private static Button menuLoadButton;
 	private static Button menuSaveButton;
-	
-	//Inventory:
-	private static Inventory inventory;
 	
 	//Actual dialog with NPC id 
 	public static int talkingNPCid = -1;
@@ -194,8 +192,7 @@ public class Main {
 		itemsT.add(new Item(new Texture("textures/poranSword.png"), new ItemInfo(), ItemType.weapon));
 		itemsT.add(new Item(new Texture("textures/magicArmor.png"), new ItemInfo(), ItemType.armor));
 		///
-		inventory = new Inventory(itemsT);
-		//Player.setInventory(new Inventory(itemsT));
+		Player.setInventory(new Inventory(itemsT));
 
 		Sound walk = null;
 		try {
@@ -205,7 +202,7 @@ public class Main {
 		}
 		
 		if(walk != null) {
-			player = new Player(0, "player/mavak/", "mavak", walk, new Transform().setPosition(40, 25), false, inventory);
+			player = new Player(0, "player/mavak/", "mavak", walk, new Transform().setPosition(40, 25), false);
 			player.setName("Ty");
 			player.setHpXpAttack(100, 0, 50, 60);
 		}
@@ -478,6 +475,10 @@ public class Main {
             	if(menuStartButton.isClicked() || menuResumeButton.isClicked()) {
             		showMenu = false;
             	}
+            	
+        		if(menuSaveButton.isClicked() && player != null) {
+        			Save.SaveAs("Save", player);
+        		}
             	
             	if(menuExitButton.isClicked()) {
             		window.closeProgram();
