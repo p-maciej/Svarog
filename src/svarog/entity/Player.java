@@ -53,7 +53,8 @@ public class Player extends Entity {
 	
 	//Money, Inventory //
 	private int money = 0;
-	private Inventory inventory;
+	private static Inventory inventory;
+
 	private List<Quest> quests = new ArrayList<>();
 
 	public Player(int id, String texturePath, String filename, Sound walkSound, Transform transform, boolean fullBoundingBox) {
@@ -76,6 +77,29 @@ public class Player extends Entity {
 		
 		this.setMovementLock(false);
 		super.setIsStatic(false); // Non-static - default setting for player 
+	}
+	
+	public Player(int id, String texturePath, String filename, Sound walkSound, Transform transform, boolean fullBoundingBox, Inventory inventory) {
+		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
+		setInventory(inventory);
+		this.setWalkSound(walkSound);
+		
+		//ADDING FIRST QUEST
+		List<Task>tasks001 = new ArrayList<>();
+		tasks001.add(new Task(0, 1, 7, doState.talk));
+		this.getQuests().add(new Quest(-100, "Pogadaj z Rozanna", "Musisz sie udac gdzies tam aby pogadac z Rozanna.",tasks001 ));
+		
+		//END OF FIRST QUEST
+		
+		this.texturesPath = texturePath;
+		this.fileName = filename;
+		
+		setCamWithoutAnimation = true;
+		lastPressedKey = GLFW_KEY_LAST;
+		
+		this.setMovementLock(false);
+		super.setIsStatic(false); // Non-static - default setting for player 
+
 	}
 	
 	public PagedGuiWindow getQuestsPagedOnGUI(Font font) {
@@ -453,5 +477,13 @@ public class Player extends Entity {
 	
 	public Sound getWalkSound() {
 		return walk;
+	}
+	
+	public static Inventory getInventory() {
+		return inventory;
+	}
+
+	public static void setInventory(Inventory inventoryT) {
+		inventory = inventoryT;
 	}
 }

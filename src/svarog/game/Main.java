@@ -8,6 +8,7 @@ import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import svarog.audio.Audio;
 import svarog.audio.Sound;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
+import svarog.entity.Inventory;
 import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.gui.ArenaContainer;
@@ -81,7 +83,10 @@ public class Main {
 	private static Button menuLoadButton;
 	private static Button menuSaveButton;
 	
-	//JG GLOBLA VARIABLES
+	//Inventory:
+	private static Inventory inventory;
+	
+	//Actual dialog with NPC id 
 	public static int talkingNPCid = -1;
 	//public static Dialog dialog = null;
 	//public static Dialog dialog1 = null;
@@ -173,6 +178,7 @@ public class Main {
 		guiRenderer.addGroup(playerStats);
 		guiRenderer.updatePositions();
 	}
+
 	
 	private static void worldInit() {	
 		//////////////// WORLD ///////////////////////////////////////////////////////////////
@@ -180,6 +186,16 @@ public class Main {
 		camera = new Camera();
 
 		audioPlayer = new Audio();
+		
+		//Items
+		List<Item> itemsT = new ArrayList<>();
+		itemsT.add(new Item(new Texture("textures/helmet.png"), new ItemInfo(), ItemType.helm));
+		itemsT.add(new Item(new Texture("textures/item.png"), new ItemInfo(), ItemType.consumable));
+		itemsT.add(new Item(new Texture("textures/poranSword.png"), new ItemInfo(), ItemType.weapon));
+		itemsT.add(new Item(new Texture("textures/magicArmor.png"), new ItemInfo(), ItemType.armor));
+		///
+		inventory = new Inventory(itemsT);
+		//Player.setInventory(new Inventory(itemsT));
 
 		Sound walk = null;
 		try {
@@ -189,7 +205,7 @@ public class Main {
 		}
 		
 		if(walk != null) {
-			player = new Player(0, "player/mavak/", "mavak", walk, new Transform().setPosition(40, 25), false);
+			player = new Player(0, "player/mavak/", "mavak", walk, new Transform().setPosition(40, 25), false, inventory);
 			player.setName("Ty");
 			player.setHpXpAttack(100, 0, 50, 60);
 		}
@@ -360,25 +376,11 @@ public class Main {
 		
 		guiRenderer.updatePositions();
 		
-		
-		Item fancyItem = new Item(new Texture("textures/helmet.png"), new ItemInfo());
-		fancyItem.setItemType(ItemType.helm);
-		
-		Item fancyItem2 = new Item(new Texture("textures/item.png"), new ItemInfo());
-		fancyItem2.setItemType(ItemType.consumable);
-		
-		Item fancyItem3 = new Item(new Texture("textures/poranSword.png"), new ItemInfo());
-		fancyItem3.setItemType(ItemType.weapon);
-		
-		Item fancyItem4 = new Item(new Texture("textures/magicArmor.png"), new ItemInfo());
-		fancyItem4.setItemType(ItemType.armor);
-		
-		
-		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem);
-		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem2);
-		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem3);
-		guiRenderer.getTileSheet().putItemFirstEmpty(fancyItem4);
+		//Inventory inventory = new Inventory(itemsT);
 
+		for(Item itemT: Player.getInventory().getItems()) {
+			guiRenderer.getTileSheet().putItemFirstEmpty(itemT);
+		}
 
 //		try {
 //			guiRenderer.getTileSheet().getTile(5).putItem(fancyItem4);
@@ -510,7 +512,7 @@ public class Main {
 	            		
 	                	loadingScreen.update(window);
 	                	loadingScreen.renderGuiObjects(guiShader, window);
-	                	
+
 	                	worldInit();
 	                	
 	                	programInit = false;
@@ -632,6 +634,8 @@ public class Main {
 						player.FullyRecoverHP();
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						playerStatsDynamic(player, guiRenderer);
+						Player.getInventory().getItems().add(new Item(new Texture("textures/helmet.png"), new ItemInfo(), ItemType.helm));
+						guiRenderer.getTileSheet().putItemFirstEmpty(Player.getInventory().getItems().get(Player.getInventory().getItems().size()-1));
 					}
 					
 					
