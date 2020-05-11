@@ -73,7 +73,8 @@ public class Save {
 					task.setHowMuchIsDone(Integer.parseInt(reader.nextLine()));
 					tasks.add(task);
 				}
-				Quest quest = new Quest(Integer.parseInt(reader.nextLine()), reader.nextLine(),
+				Quest quest = new Quest(Integer.parseInt(reader.nextLine()),
+						reader.nextLine(),
 						reader.nextLine(), tasks);
 				quest.setEndedQuest(Boolean.valueOf(reader.nextLine()));
 				quests.add(quest);
