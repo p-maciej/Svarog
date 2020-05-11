@@ -12,7 +12,7 @@ import svarog.world.Door;
 import svarog.world.Tile;
 import svarog.world.World;
 
-abstract class StartWorld implements Runnable {
+abstract class Village implements Runnable {
 	
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(1, 120, 90);
