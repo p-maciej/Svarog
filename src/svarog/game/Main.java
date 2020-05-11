@@ -439,11 +439,10 @@ public class Main {
 		//////////////////////////////////////////////////////////////////////////////////////
 		
 		windowInit();
-		
+		WorldLoader.setNextFrameLoadWorld(1);
 		
 		/////////////////////// LOCAL VARIABLES ////////////////////////////////////////////
 		long lastNanos = Timer.getNanoTime();
-		int nextFrameLoadWorld = 1;
 		int currentEntityId = -1;
 		long startNanos = 0;
 		boolean programInit = true;
@@ -477,8 +476,12 @@ public class Main {
             		showMenu = false;
             	}
             	
+            	if(menuLoadButton.isClicked()) {
+            		Save.ReadFrom("Save", player);
+            	}
+            	
         		if(menuSaveButton.isClicked() && player != null) {
-        			Save.SaveAs("Save", player);
+        			Save.SaveAs("Save", player, currentWorld);
         		}
             	
             	if(menuExitButton.isClicked()) {
@@ -494,7 +497,7 @@ public class Main {
             		glViewport(0, 0, window.getWidth(), window.getHeight());
             	
             } else if(showMenu == false) {
-	            if(nextFrameLoadWorld != 0) {
+	            if(WorldLoader.getNextFrameLoadWorld() != 0) {
 	            	glClear(GL_COLOR_BUFFER_BIT);
 	            	glClearColor(0f, 0f, 0f, 1f);
 	            	
@@ -527,7 +530,7 @@ public class Main {
 	            	
 	            	
 	            	if(worldLoaded == false) {            	
-		            	currentWorld = WorldLoader.getWorld(nextFrameLoadWorld, player, camera, window);
+		            	currentWorld = WorldLoader.getWorld(WorldLoader.getNextFrameLoadWorld(), player, camera, window);
 		            	currentWorld.start();
 		            	worldRenderer.setWorld(currentWorld);
 		            	worldRenderer.calculateView(window);
@@ -539,7 +542,7 @@ public class Main {
 	            	long stop = Timer.getNanoTime();
 	            	
 	            	if(Timer.getDelay(start, stop, 1)) {
-		            	nextFrameLoadWorld = 0;
+		            	WorldLoader.setNextFrameLoadWorld(0);
 		            	start = -1;
 	            	}
 	            	
@@ -644,11 +647,11 @@ public class Main {
 						if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
 							player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
 							player.setSetCamWithoutAnimation(true);
-							nextFrameLoadWorld = currentWorld.getDoor(i).getWorldIdDestination();
+							WorldLoader.setNextFrameLoadWorld(currentWorld.getDoor(i).getWorldIdDestination());
 							worldLoaded = false;
 							break;
 						} else 
-							nextFrameLoadWorld = 0;
+							WorldLoader.setNextFrameLoadWorld(0);
 					}
 					
 					window.update();

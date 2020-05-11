@@ -7,8 +7,9 @@ import svarog.world.World;
 
 public abstract class WorldLoader {	
 	
-	//public static Thread worldLoader; 
-	
+	public static int nextFrameLoadWorld;
+	//public static Thread worldLoader;
+
 	public static World getWorld(int id, Player player, Camera camera, Window window) { // You need to add new if statement if you want doors to shift to particular world
 		if(id == 1)
 			return StartWorld.getWorld(player, camera, window);
@@ -20,5 +21,13 @@ public abstract class WorldLoader {
 			return ThirdWorld.getWorld(player, camera, window);
 		else  
 			return null;
+	}
+	
+	public static int getNextFrameLoadWorld() {
+		return nextFrameLoadWorld;
+	}
+
+	public static void setNextFrameLoadWorld(int nextFrameLoadWorld) {
+		WorldLoader.nextFrameLoadWorld = nextFrameLoadWorld;
 	}
 }

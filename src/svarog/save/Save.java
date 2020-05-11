@@ -2,22 +2,40 @@ package svarog.save;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import svarog.entity.Player;
+import svarog.game.WorldLoader;
 import svarog.interactions.Quest;
 import svarog.interactions.Task;
 import svarog.objects.Item;
+import svarog.world.World;
 
 public class Save {
 	
-	public Save(String filename, Player player) {
-		SaveAs(filename, player);
+	public Save(String filename, Player player, World currentWorld) {
+		SaveAs(filename, player, currentWorld);
 	}
 	
-	public static void SaveAs(String filename, Player player) {
+	public static void ReadFrom(String filename, Player player) {
+		
+		try {
+	        Scanner reader;
+	        reader = new Scanner(filename);
+	        WorldLoader.setNextFrameLoadWorld(Integer.parseInt(reader.nextLine()));
+			player.setPosition(Integer.parseInt(reader.nextLine()),Integer.parseInt(reader.nextLine()));
+			reader.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
+	public static void SaveAs(String filename, Player player, World currentWorld) {
         PrintWriter save;
 		try {
 			save = new PrintWriter("resources/saves/" + filename);
+			save.println(currentWorld.getId());
 			save.println(player.getPositionX());
 			save.println(player.getPositionY());
 			save.println(player.getTexturesPath());
