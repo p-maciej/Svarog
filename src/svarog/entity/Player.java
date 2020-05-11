@@ -90,7 +90,7 @@ public class Player extends Entity {
 		
 		//ADDING QUEST
 		this.quests = playerParam.getQuests();
-		this.inventory = new Inventory(playerParam.getItems());
+		this.setInventory(new Inventory(playerParam.getItems()));
 
 		this.getHP().SetMaxHP(playerParam.getMaxHP());
 		this.setHpXpAttack(playerParam.getHP(), playerParam.getXp(), playerParam.getMinAttack(), playerParam.getMaxAttack());

@@ -61,9 +61,10 @@ public class Save {
 				item.getItemInfo().setTileID(Integer.parseInt(reader.nextLine()));
 				tempItem.add(item);
 			}
+			playerParam.setItems(tempItem);
 			List<Quest> quests = new ArrayList<>();
 			iterator = Integer.parseInt(reader.nextLine());
-			for(int i=0;i<Integer.parseInt(reader.nextLine());i++) {
+			for(int i=0;i<iterator;i++) {
 				List<Task> tasks = new ArrayList<>();
 				for(int j=0;j<Integer.parseInt(reader.nextLine());j++) {
 					Task task = new Task(Integer.parseInt(reader.nextLine()), Integer.parseInt(reader.nextLine()),
@@ -75,11 +76,13 @@ public class Save {
 				Quest quest = new Quest(Integer.parseInt(reader.nextLine()), reader.nextLine(),
 						reader.nextLine(), tasks);
 				quest.setEndedQuest(Boolean.valueOf(reader.nextLine()));
+				quests.add(quest);
 			}
+			playerParam.setQuests(quests);
 			reader.close();
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("You fucked up something, did player was made yet idiot?");
+			System.out.println("BUGS");
 			e.printStackTrace();
 		}
 		

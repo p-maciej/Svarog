@@ -47,7 +47,6 @@ import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
-import svarog.render.Transform;
 import svarog.save.Save;
 import svarog.world.World;
 import svarog.world.WorldRenderer;
@@ -207,7 +206,7 @@ public class Main {
 			//player.setHpXpAttack(100, 0, 50, 60);
 		}
 		
-		player.setInventory(new Inventory(itemsT));
+		//player.setInventory(new Inventory(itemsT));
 		
 		currentWorld = new World(1, 0, 0);
 		
@@ -475,6 +474,7 @@ public class Main {
             	
             	
             	if(menuStartButton.isClicked() || menuResumeButton.isClicked()) {
+            		Save.ReadFrom("MainSave.save", player);
             		showMenu = false;
             	}
             	
