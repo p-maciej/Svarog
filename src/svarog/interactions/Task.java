@@ -104,5 +104,14 @@ public class Task {
 	public int getHowMuchIsDone() {
 		return howMuchIsDone;
 	}
+
+	public void setHowMuchIsDone(int howMuchIsDone) {
+		this.howMuchIsDone = howMuchIsDone;
+	}
+
+	public void setEnded(boolean isEnded) {
+		this.isEnded = isEnded;
+	}
+	
 }
 

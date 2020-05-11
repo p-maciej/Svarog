@@ -8,7 +8,7 @@ public class Quest {
 
     private int questID;
     private List<Task> tasks;
-    private boolean isEndedQuest = false; 
+    private boolean isEndedQuest = false;
 
     public boolean isEndedQuest() {
     	setEndedQuest();

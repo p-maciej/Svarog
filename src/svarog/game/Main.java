@@ -201,9 +201,10 @@ public class Main {
 		}
 		
 		if(walk != null) {
-			player = new Player(0, "player/mavak/", "mavak", walk, new Transform().setPosition(40, 25), false);
-			player.setName("Ty");
-			player.setHpXpAttack(100, 0, 50, 60);
+			player = new Player(walk, Save.getPlayerParam());
+			//player = new Player(0, "player/mavak/", "mavak", walk, new Transform().setPosition(40, 25), false);
+			//player.setName("Ty");
+			//player.setHpXpAttack(100, 0, 50, 60);
 		}
 		
 		player.setInventory(new Inventory(itemsT));

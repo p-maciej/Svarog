@@ -31,6 +31,7 @@ import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.PlayerParameters;
 import svarog.world.World;
 import svarog.world.WorldRenderer;
 
@@ -78,6 +79,30 @@ public class Player extends Entity {
 		
 		this.setMovementLock(false);
 		super.setIsStatic(false); // Non-static - default setting for player 
+	}
+	
+	public Player(Sound walkSound, PlayerParameters playerParam) {
+		super(playerParam.getPlayerID(),
+				new Texture("textures/animations/" + playerParam.getTexturesPath() + "idle/down/" + playerParam.getFileName() + ".png"),
+				new Transform().setPosition(playerParam.getPositionX(), playerParam.getPositionY()), playerParam.isFullBoundingBox());
+		
+		this.setWalkSound(walkSound);
+		
+		//ADDING QUEST
+		this.quests = playerParam.getQuests();
+		this.inventory = new Inventory(playerParam.getItems());
+
+		this.getHP().SetMaxHP(playerParam.getMaxHP());
+		this.setHpXpAttack(playerParam.getHP(), playerParam.getXp(), playerParam.getMinAttack(), playerParam.getMaxAttack());
+		this.setMoney(playerParam.getMoney());
+		this.texturesPath = playerParam.getTexturesPath();
+		this.fileName = playerParam.getFileName();
+		
+		setCamWithoutAnimation = true;
+		lastPressedKey = GLFW_KEY_LAST;
+		
+		this.setMovementLock(playerParam.isMovementLocked());
+		super.setIsStatic(false); // Non-static - default setting for player
 	}
 	
 	public Player(int id, String texturePath, String filename, Sound walkSound, Transform transform, boolean fullBoundingBox, Inventory inventory) {
