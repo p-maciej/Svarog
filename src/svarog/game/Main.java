@@ -407,14 +407,16 @@ public class Main {
 		
 		menu = new GuiRenderer(window);
 		
-		menuStartButton = new Button(new Texture("images/menu/start.png"), new Vector2f(0, 130));
-		menuResumeButton = new Button(new Texture("images/menu/resume.png"), new Vector2f(0, 130));
 		
-		menuSaveButton = new Button(new Texture("images/menu/save.png"), new Vector2f(0, 0));
-		menuLoadButton = new Button(new Texture("images/menu/load.png"), new Vector2f(0, 0));
+		TextureObject menuBackground = new TextureObject(new Texture("images/menu/menuBackground.png"));	
 		
-		menuExitButton = new Button(new Texture("images/menu/exit.png"), new Vector2f(0, -130));
+		menuStartButton = new Button(new Texture("images/menu/start.png"),new Texture("images/menu/start_hover.png"), new Vector2f(0, 130));
+		menuResumeButton = new Button(new Texture("images/menu/resume.png"),new Texture("images/menu/resume_hover.png"), new Vector2f(0, 130));
+		menuSaveButton = new Button(new Texture("images/menu/save.png"),new Texture("images/menu/save_hover.png"), new Vector2f(0, 0));
+		menuLoadButton = new Button(new Texture("images/menu/load.png"),new Texture("images/menu/load_hover.png"), new Vector2f(0, 0));
+		menuExitButton = new Button(new Texture("images/menu/exit.png"),new Texture("images/menu/exit_hover.png"), new Vector2f(0, -130));
 		
+		menu.addGuiObject(menuBackground);
 		menu.addGuiObject(menuStartButton);
 		menu.addGuiObject(menuExitButton);
 		menu.addGuiObject(menuLoadButton);
@@ -458,7 +460,7 @@ public class Main {
             
             if(showMenu == true) {
             	glClear(GL_COLOR_BUFFER_BIT);
-            	glClearColor(0f, 0.5f, 0.5f, 1f);
+            	glClearColor(0.2352f, 0.2078f, 0.1607f, 1f); // <= tutaj kolor tla
             	
             	if(menu == null) 
             		menuInit();
