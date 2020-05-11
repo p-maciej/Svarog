@@ -37,7 +37,7 @@ import svarog.gui.TileSheet;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
-
+import svarog.interactions.Interactions;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
@@ -85,7 +85,6 @@ public class Main {
 	private static Button menuSaveButton;
 	
 	//Actual dialog with NPC id 
-	public static int talkingNPCid = -1;
 	//public static Dialog dialog = null;
 	//public static Dialog dialog1 = null;
 	//public static Interactions interactions = new Interactions("quest01.quest");
@@ -615,17 +614,17 @@ public class Main {
 	
 							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
 								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId());
-								talkingNPCid = i;
+								Interactions.setTalkingNPCid(i);
 							}
 						}
 					}
-					if(talkingNPCid != -1){
+					if(Interactions.getTalkingNPCid() != -1){
 						
-						((NPC)currentWorld.getEntity(talkingNPCid)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(talkingNPCid).getId());
+						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(Interactions.getTalkingNPCid()).getId());
 					}
 					if(DialogContainer.isDialogClosing()) {
-						((NPC)currentWorld.getEntity(talkingNPCid)).getInteractions().setEnded(true);
-						talkingNPCid = -1;
+						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().setEnded(true);
+						Interactions.setTalkingNPCid(-1);
 					}
 					
 					guiRenderer.renderGuiObjects(guiShader, window);

@@ -13,7 +13,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import svarog.entity.Player;
-import svarog.game.Main;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
 
@@ -28,6 +27,8 @@ public class Interactions {
 	private List<Quest> quests = new ArrayList<>();
 	private Dialog dialog;
 	private boolean isEnded = true;
+	
+	private static int talkingNPCid = -1;
 	
 	public boolean isEnded() {
 		return isEnded;
@@ -143,7 +144,7 @@ public class Interactions {
 							}
 						}
 						guiRenderer.closeDialog();
-						Main.talkingNPCid = -1;
+						setTalkingNPCid(-1);
 						break;
 					}
 					guiRenderer.closeDialog();
@@ -182,6 +183,12 @@ public class Interactions {
 	public Quest getQuestAt(int i) {
 		return quests.get(i);
 	}
-	
-	
+
+	public static int getTalkingNPCid() {
+		return talkingNPCid;
+	}
+
+	public static void setTalkingNPCid(int talkingNPCid) {
+		Interactions.talkingNPCid = talkingNPCid;
+	}	
 }
