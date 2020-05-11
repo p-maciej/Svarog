@@ -9,7 +9,7 @@ import svarog.world.Door;
 import svarog.world.Tile;
 import svarog.world.World;
 
-abstract class SecondWorldA {
+abstract class AbandonedCastle {
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(2, 90, 60);
 		world.loadMap("second_map.png", 32);

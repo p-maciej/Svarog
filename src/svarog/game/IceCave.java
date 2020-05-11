@@ -1,6 +1,5 @@
 package svarog.game;
 
-
 import svarog.entity.Player;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -9,7 +8,7 @@ import svarog.world.Door;
 import svarog.world.Tile;
 import svarog.world.World;
 
-abstract class ThirdWorld {
+abstract class IceCave {
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(2, 130, 130);
 		world.loadMap("third_map.png", 32);
