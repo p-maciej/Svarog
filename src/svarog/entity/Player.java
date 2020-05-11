@@ -118,7 +118,7 @@ public class Player extends Entity {
 				}
 			}
 		}
-		
+
 		quests1.setPageContent();
 		
 		////////////////////////////////////////////

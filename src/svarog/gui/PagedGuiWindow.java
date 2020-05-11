@@ -27,7 +27,7 @@ public class PagedGuiWindow extends GuiWindow {
 	
 	private Line pageLine;
 	
-	private boolean maxPage;
+	private int maxPage;
 	
 	
 	private int interfacePaddingLeft;
@@ -53,6 +53,7 @@ public class PagedGuiWindow extends GuiWindow {
 		this.textBlockIndent = 20;
 		
 		this.currentPage = 1;
+		this.maxPage = 1;
 		addPagesElements();
 	}
 	
@@ -69,6 +70,7 @@ public class PagedGuiWindow extends GuiWindow {
 		this.setTextBlockPaddingTop(textBlockPaddingTop);
 		
 		this.currentPage = 1;
+		this.maxPage = 1;
 		addPagesElements();
 	}
 	
@@ -93,6 +95,8 @@ public class PagedGuiWindow extends GuiWindow {
 	
 	public void setPageContent() {
 		setCurrentPage(1);
+		this.maxPage = calcMaxPage();
+		update();
 	}
 	
 	private void addPagesElements() {
@@ -136,6 +140,39 @@ public class PagedGuiWindow extends GuiWindow {
 		}
 	}
 	
+	private int calcMaxPage() {
+		int tempHeight = textBlockPaddingTop;
+		int tempPage = 1;
+		
+		int headlineRendered = -1;
+		
+		for(int i = 0; i < textBlocks.size(); i++) {
+			WindowTextType temp = textBlocks.get(i);
+			if(temp.getType() == Type.headline) {
+				tempHeight += temp.getBlock().getHeight() + textBlockSpacing;
+				headlineRendered = i;
+			} else if( temp.getType() == Type.normal) {
+				tempHeight += temp.getBlock().getHeight() + textBlockSpacing;
+			} else {
+				tempHeight += temp.getBlock().getHeight();
+			}
+			
+			if(tempHeight >= super.getHeight()) {
+				++tempPage;
+				tempHeight = textBlockPaddingTop;
+				if(headlineRendered != i-1)
+					i = i-1;
+				else 
+					i = i-2;
+			}
+			
+			if(i-1 == headlineRendered)
+				headlineRendered = -1;
+		}
+
+		return tempPage;
+	}
+	
 	private void setRenderBlocks() {
 		toRender.clear();
 		int height = textBlockPaddingTop;
@@ -144,7 +181,6 @@ public class PagedGuiWindow extends GuiWindow {
 		int tempPage = 1;
 		
 		int headlineRendered = -1;
-		maxPage = false;
 
 		if(currentPage > 1) {
 			for(int i = 0; i < textBlocks.size(); i++) {
@@ -188,8 +224,6 @@ public class PagedGuiWindow extends GuiWindow {
 				
 				if(height < super.getHeight()) {
 					toRender.add(temp);
-					if(i+1 == textBlocks.size())
-						maxPage = true;
 				} else {
 					if(i-1 == headlineRendered)
 						toRender.remove(toRender.size()-1);
@@ -213,8 +247,6 @@ public class PagedGuiWindow extends GuiWindow {
 				if(height < super.getHeight()) {
 					toRender.add(temp);
 					lastRenderedIndex = i;
-					if(i+1 == textBlocks.size())
-						maxPage = true;
 				} else {
 					if(i-1 == headlineRendered)
 						toRender.remove(toRender.size()-1);
@@ -244,7 +276,7 @@ public class PagedGuiWindow extends GuiWindow {
 	}
 	
 	void nextPage() {
-		if(!maxPage) {
+		if(currentPage < maxPage) {
 			this.currentPage++;
 			this.setCurrentPage(currentPage);
 			update();
@@ -252,7 +284,7 @@ public class PagedGuiWindow extends GuiWindow {
 	}
 	
 	void update() {
-		pageLine.setString(Integer.toString(currentPage), super.windowFont);
+		pageLine.setString(currentPage + "/" + maxPage, super.windowFont);
 	}
 
 	public int getInterfacePaddingLeft() {
