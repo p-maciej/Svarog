@@ -1,14 +1,17 @@
 package svarog.save;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import svarog.audio.Sound;
 import svarog.entity.Player;
 import svarog.game.WorldLoader;
 import svarog.interactions.Quest;
 import svarog.interactions.Task;
 import svarog.objects.Item;
+import svarog.render.Transform;
 import svarog.world.World;
 
 public class Save {
@@ -18,15 +21,18 @@ public class Save {
 	}
 	
 	public static void ReadFrom(String filename, Player player) {
-		
+		File file;
 		try {
-	        Scanner reader;
-	        reader = new Scanner(filename);
-	        WorldLoader.setNextFrameLoadWorld(Integer.parseInt(reader.nextLine()));
-			player.setPosition(Integer.parseInt(reader.nextLine()),Integer.parseInt(reader.nextLine()));
+	        file = new File("resources/saves/" + filename);
+	        Scanner reader = new Scanner(file);
+	        
+			WorldLoader.setNextFrameLoadWorld(Integer.parseInt(reader.nextLine()));
+	        //player.setPosition(Integer.parseInt(reader.nextLine()),Integer.parseInt(reader.nextLine()));
 			reader.close();
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("You fucked up something, did player was made yet idiot?");
+
 		}
 		
 	}

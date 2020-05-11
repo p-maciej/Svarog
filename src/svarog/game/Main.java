@@ -439,7 +439,6 @@ public class Main {
 		//////////////////////////////////////////////////////////////////////////////////////
 		
 		windowInit();
-		WorldLoader.setNextFrameLoadWorld(1);
 		
 		/////////////////////// LOCAL VARIABLES ////////////////////////////////////////////
 		long lastNanos = Timer.getNanoTime();
@@ -478,10 +477,12 @@ public class Main {
             	
             	if(menuLoadButton.isClicked()) {
             		Save.ReadFrom("Save", player);
+            		showMenu = false;
             	}
             	
         		if(menuSaveButton.isClicked() && player != null) {
         			Save.SaveAs("Save", player, currentWorld);
+        			showMenu = false;
         		}
             	
             	if(menuExitButton.isClicked()) {
