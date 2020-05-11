@@ -192,7 +192,7 @@ public class Main {
 		itemsT.add(new Item(new Texture("textures/poranSword.png"), new ItemInfo(), ItemType.weapon));
 		itemsT.add(new Item(new Texture("textures/magicArmor.png"), new ItemInfo(), ItemType.armor));
 		///
-		Player.setInventory(new Inventory(itemsT));
+
 
 		Sound walk = null;
 		try {
@@ -206,6 +206,8 @@ public class Main {
 			player.setName("Ty");
 			player.setHpXpAttack(100, 0, 50, 60);
 		}
+		
+		player.setInventory(new Inventory(itemsT));
 		
 		currentWorld = new World(1, 0, 0);
 		
@@ -375,7 +377,7 @@ public class Main {
 		
 		//Inventory inventory = new Inventory(itemsT);
 
-		for(Item itemT: Player.getInventory().getItems()) {
+		for(Item itemT: player.getInventory().getItems()) {
 			guiRenderer.getTileSheet().putItemFirstEmpty(itemT);
 		}
 
@@ -635,7 +637,7 @@ public class Main {
 						player.FullyRecoverHP();
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						playerStatsDynamic(player, guiRenderer);
-						Player.addItemToInventoryWithGUIupdate(new Item(new Texture("textures/helmet.png"), new ItemInfo(), ItemType.helm), guiRenderer);
+						player.addItemToInventoryWithGUIupdate(new Item(new Texture("textures/helmet.png"), new ItemInfo(), ItemType.helm), guiRenderer);
 					}
 					
 					

@@ -29,8 +29,8 @@ public class Save {
 			save.println(player.getMinAttack());
 			save.println(player.getMaxAttack());
 			save.println(player.getMoney());
-			save.println(Player.getInventory().getItems().size());
-			for(Item item: Player.getInventory().getItems()) {
+			save.println(player.getInventory().getItems().size());
+			for(Item item: player.getInventory().getItems()) {
 				save.println(item.getItemInfo().getTileID());
 				save.println(item.getItemInfo().getGlobalID());
 				save.println(item.getItemInfo().getLocalID());

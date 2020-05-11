@@ -54,7 +54,7 @@ public class Player extends Entity {
 	
 	//Money, Inventory //
 	private int money = 0;
-	private static Inventory inventory;
+	private Inventory inventory;
 
 	private List<Quest> quests = new ArrayList<>();
 
@@ -314,9 +314,9 @@ public class Player extends Entity {
 		guiRenderer.showArena(arena);
 	}
 	
-	public static void addItemToInventoryWithGUIupdate(Item item, GuiRenderer guiRenderer) {
-		Player.getInventory().getItems().add(item);
-		guiRenderer.getTileSheet().putItemFirstEmpty(Player.getInventory().getItems().get(Player.getInventory().getItems().size()-1));
+	public void addItemToInventoryWithGUIupdate(Item item, GuiRenderer guiRenderer) {
+		this.getInventory().getItems().add(item);
+		guiRenderer.getTileSheet().putItemFirstEmpty(this.getInventory().getItems().get(this.getInventory().getItems().size()-1));
 
 	}
 	
@@ -486,12 +486,12 @@ public class Player extends Entity {
 		return walk;
 	}
 	
-	public static Inventory getInventory() {
+	public Inventory getInventory() {
 		return inventory;
 	}
 
-	public static void setInventory(Inventory inventoryT) {
-		inventory = inventoryT;
+	public void setInventory(Inventory inventoryT) {
+		this.inventory = inventoryT;
 	}
 
 	public String getTexturesPath() {
