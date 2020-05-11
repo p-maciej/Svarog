@@ -66,7 +66,8 @@ public class Save {
 			iterator = Integer.parseInt(reader.nextLine());
 			for(int i=0;i<iterator;i++) {
 				List<Task> tasks = new ArrayList<>();
-				for(int j=0;j<Integer.parseInt(reader.nextLine());j++) {
+				int inter = Integer.parseInt(reader.nextLine());
+				for(int j=0;j<inter;j++) {
 					Task task = new Task(Integer.parseInt(reader.nextLine()), Integer.parseInt(reader.nextLine()),
 							Integer.parseInt(reader.nextLine()), doState.valueOf(reader.nextLine()));
 					task.setEnded(Boolean.valueOf(reader.nextLine()));
