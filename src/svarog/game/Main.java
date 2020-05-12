@@ -553,7 +553,7 @@ public class Main {
 						player.FullyRecoverHP();
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						guiRenderer.playerStatsDynamic(player, verdana);
-						player.addItemToInventoryWithGUIupdate(new Item(new Texture("textures/helmet.png"), new ItemInfo(), ItemType.helm), guiRenderer);
+						player.addItemToInventoryWithGUIupdate(new Item(new Texture("textures/helmet.png"), Save.getItemById(1).getItemInfo(), ItemType.helm), guiRenderer);
 					}
 					
 					

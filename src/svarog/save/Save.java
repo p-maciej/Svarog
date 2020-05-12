@@ -188,7 +188,7 @@ public class Save {
 		Save.playerParam = playerParam;
 	}
 	
-	private static Item getItemById(int id) {
+	public static Item getItemById(int id) {
 		for(Item elem : items) {
 			if(elem.getItemInfo().getGlobalID() == id) 
 				return elem;
