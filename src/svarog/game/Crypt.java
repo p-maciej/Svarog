@@ -11,8 +11,9 @@ import svarog.world.World;
 
 abstract class Crypt {
 	public static World getWorld(Player player, Camera camera, Window window) {
-		World world = new World(2, 60, 60);
-		world.loadMap("secondB_map.png", 32);
+		World world = new World(3, 60, 60);
+		world.loadMap("crypt.png", 32);
+		world.setSolidTilesFromMap("crypt_mask.png");
 		
 
 		world.addEntity(player);

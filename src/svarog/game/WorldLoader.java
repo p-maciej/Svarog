@@ -19,6 +19,8 @@ public abstract class WorldLoader {
 			return Crypt.getWorld(player, camera, window);
 		else if(id == 4)
 			return IceCave.getWorld(player, camera, window);
+		else if(id == 5)
+			return Swamp.getWorld(player, camera, window);
 		else  
 			return null;
 	}

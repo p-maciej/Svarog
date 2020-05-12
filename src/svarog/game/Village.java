@@ -17,8 +17,8 @@ abstract class Village implements Runnable {
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(1, 120, 90);
 
-		world.loadMap("start_map.png", 32);
-		world.setSolidTilesFromMap("start_map.png");
+		world.loadMap("village.png", 32);
+		world.setSolidTilesFromMap("village_mask.png");
 		
 		NPC ent1 = new NPC(1, new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
 		ent1.setName("Maciej");
@@ -67,6 +67,20 @@ abstract class Village implements Runnable {
 		world.addDoor(new Door(2, 119, 13, 2, 45));
 		//world.addDoor(new Door(60, 24, 1, 20));
 
+		
+		// door to swamp
+	
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 12, 89);
+		world.addDoor(new Door(5, 12, 89, 85, 1));
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 11, 89);
+		world.addDoor(new Door(5, 11, 89, 85, 1));
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 10, 89);
+		world.addDoor(new Door(5, 10, 89, 86, 1));
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 9, 89);
+		world.addDoor(new Door(5, 9, 89, 86, 1));
+
+		
+		
 		return world;
 	}
 }
