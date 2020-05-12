@@ -2,7 +2,8 @@
 
 # xml (quest)
 
-```<?xml version = "1.0"?>
+```xml
+<?xml version = "1.0"?>
 <class>
 	<item>
 		<TextureFileName>textures/item.png</TextureFileName>
@@ -52,10 +53,10 @@ Next step should be adding (string) ```<description>``` tag
 #
 Next step should be adding (int) ```<itemType>``` tag 
 #
-Last step is to remember to close ```<item>``` tag 
+Last step is to remember to close ```</item>``` tag 
 #
 CONGRATS YOURS FIRST ITEM IS COMPLETED.
 
-# Doc ver 0.1
+# Doc ver 0.2
 
 # Author JG
