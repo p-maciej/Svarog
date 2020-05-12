@@ -32,10 +32,7 @@ public class Save {
 		try {
 	        file = new File("resources/saves/" + filename);
 	        Scanner reader = new Scanner(file);
-	        //System.out.println("I am here");
 			WorldLoader.setNextFrameLoadWorld(Integer.parseInt(reader.nextLine()));
-			//System.out.println("I am here");
-			//playerParam.setCurrentWorldId(WorldLoader.getNextFrameLoadWorld());
 			playerParam.setPositionX(Integer.parseInt(reader.nextLine()));
 			playerParam.setPositionY(Integer.parseInt(reader.nextLine()));
 			playerParam.setPlayerID(Integer.parseInt(reader.nextLine()));//4
@@ -50,9 +47,7 @@ public class Save {
 			playerParam.setMaxAttack(Integer.parseInt(reader.nextLine()));
 			playerParam.setMoney(Integer.parseInt(reader.nextLine()));//14
 			playerParam.setPlayerName(reader.nextLine());
-			//System.out.println("I am here");
 			List<Item> tempItem = new ArrayList<>();
-			//System.out.println(reader.nextLine());
 			int iterator = Integer.parseInt(reader.nextLine());//16
 			for(int i=0;i<iterator;i++) {
 				Item item = new Item(new Texture(reader.nextLine()),new ItemInfo(Integer.parseInt(reader.nextLine()),

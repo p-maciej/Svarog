@@ -1,12 +1,12 @@
-2
-8
-44
+1
+113
+15
 0
 player/mavak/
 mavak
 false
 false
-60
+100
 100
 30
 50
@@ -23,7 +23,7 @@ textures/helmet.png
 name
 description
 helm
-5
+0
 textures/item.png
 -1
 -1
@@ -43,7 +43,7 @@ textures/poranSword.png
 name
 description
 weapon
-7
+3
 textures/magicArmor.png
 -1
 -1
@@ -53,7 +53,7 @@ textures/magicArmor.png
 name
 description
 armor
-8
+1
 textures/helmet.png
 -1
 -1
@@ -63,7 +63,7 @@ textures/helmet.png
 name
 description
 helm
-9
+17
 textures/helmet.png
 -1
 -1

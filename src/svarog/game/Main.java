@@ -19,7 +19,6 @@ import svarog.audio.Audio;
 import svarog.audio.Sound;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
-import svarog.entity.Inventory;
 import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.gui.ArenaContainer;
@@ -82,11 +81,6 @@ public class Main {
 	private static Button menuResumeButton;
 	private static Button menuLoadButton;
 	private static Button menuSaveButton;
-	
-	//Actual dialog with NPC id 
-	//public static Dialog dialog = null;
-	//public static Dialog dialog1 = null;
-	//public static Interactions interactions = new Interactions("quest01.quest");
 
 	
 	private static void windowInit() {
@@ -205,8 +199,7 @@ public class Main {
 			//player.setName("Ty");
 			//player.setHpXpAttack(100, 0, 50, 60);
 		}
-		
-		//player.setInventory(new Inventory(itemsT));
+
 		
 		currentWorld = new World(1, 0, 0);
 		
@@ -377,15 +370,18 @@ public class Main {
 		//Inventory inventory = new Inventory(itemsT);
 
 		for(Item itemT: player.getInventory().getItems()) {
-			guiRenderer.getTileSheet().putItemFirstEmpty(itemT);
+			if(itemT.getItemInfo().getTileID() !=-1 && guiRenderer.getTileSheet().getTile(itemT.getItemInfo().getTileID()).getPuttedItem() == null ) {
+				try {
+					guiRenderer.getTileSheet().getTile(itemT.getItemInfo().getTileID()).putItem(itemT);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else {
+				guiRenderer.getTileSheet().putItemFirstEmpty(itemT);
+			}
 		}
 
-//		try {
-//			guiRenderer.getTileSheet().getTile(5).putItem(fancyItem4);
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
 		////////////////////////////////////////////////////////////////////////////////////
 	}
 
