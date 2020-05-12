@@ -368,7 +368,8 @@ public class Player extends Entity {
 				world.removeEntity(enemy);
 			}else {
 				fightString.add("Player HP (before attack): " + this.getHP().GetHP());
-				int attack = ((enemy).GetRandomAttack()-this.getPlayerDefense())>0?((enemy).GetRandomAttack()-this.getPlayerDefense()):0;
+				int enemyAttcc = (enemy).GetRandomAttack();
+				int attack = ((enemyAttcc-this.getPlayerDefense())>0)?(enemyAttcc-this.getPlayerDefense()):0;
 				this.DecreasePlayerHP(attack);
 				fightString.add("Player HP (after attack): " + this.getHP().GetHP());
 				if(this.getHP().GetHP()<0) {
