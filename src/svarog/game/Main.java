@@ -37,7 +37,6 @@ import svarog.interactions.Interactions;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.objects.Item;
-import svarog.objects.ItemInfo;
 import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Animation;
 import svarog.render.Camera;
@@ -92,14 +91,6 @@ public class Main {
 
 		audioPlayer = new Audio();
 		
-		//Items
-		/*items.add(new Item(new Texture("textures/helmet.png"), new ItemInfo().setGlobalID(1), ItemType.helm));
-		items.add(new Item(new Texture("textures/item.png"), new ItemInfo().setGlobalID(2), ItemType.consumable));
-		items.add(new Item(new Texture("textures/poranSword.png"), new ItemInfo().setGlobalID(3), ItemType.weapon));
-		items.add(new Item(new Texture("textures/magicArmor.png"), new ItemInfo().setGlobalID(4), ItemType.armor));*/
-		///
-
-		
 		Sound walk = null;
 		try {
 			walk = new Sound("walk01.ogg", true);
@@ -107,12 +98,8 @@ public class Main {
 			e1.printStackTrace();
 		}
 		
-		if(walk != null) {
+		if(walk != null)
 			player = new Player(walk, Save.getPlayerParam());
-			//player = new Player(0, "player/mavak/", "mavak", walk, new Transform().setPosition(40, 25), false);
-			//player.setName("Ty");
-			//player.setHpXpAttack(100, 0, 50, 60);
-		}
 
 		
 		currentWorld = new World(1, 0, 0);
@@ -210,6 +197,8 @@ public class Main {
 		Texture tileGlovesTexture = new Texture("images/eqTile/glovesTile.png");
 		Texture tileGlovesTexture_hover = new Texture("images/eqTile/glovesTile_hover.png");
 		
+		Texture tileTrashTexture = new Texture("images/trash.png"); 
+		
 		int tileId = 0;
 		
 		// Main EQ //
@@ -244,6 +233,18 @@ public class Main {
 		tileGroup3.addTextureObject(sword);
 		
 		tileSheet.addTileGroup(tileGroup3);
+		
+		// Trash //
+		Group trashG = new Group();
+		trashG.setStickTo(stickTo.BottomRight);
+		trashG.move(20, 120);
+		
+		Tile trash = new Tile(tileId++, tileTrashTexture, tileTrashTexture, (byte)0, 0, 0);
+		trash.setPuttableItemTypes(Arrays.asList(ItemType.trash));
+		
+		trashG.addTextureObject(trash);
+		
+		tileSheet.addTileGroup(trashG);
 		//////////////////
 		
 		List<ItemType> puttables = Arrays.asList(ItemType.values()); // main eq - there should be every item type

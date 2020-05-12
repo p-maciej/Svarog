@@ -471,15 +471,19 @@ public class GuiRenderer implements RenderProperties {
 								tile.getPuttedItem().setPosition(tile.getTransform().getPosition().x, tile.getTransform().getPosition().y);
 								object.removePuttedItem();
 							} catch (Exception e) {
-								if(e.getMessage() == "Consume") {
+								if(e.getMessage() == "consume") {
 									player.AddPlayerHP(((Item)object.getPuttedItem()).getItemInfo().getHpRegeneration());
 									player.getInventory().removeItemById(object.getId());
 										
 									object.removePuttedItem();
 									this.playerStatsDynamic(player, font);
 										
-								} else
+								} else if(e.getMessage() == "delete") {
+									player.getInventory().removeItemById(object.getId());
+									object.removePuttedItem();
+								} else {
 									object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+								}
 							}
 						} else {
 							object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);

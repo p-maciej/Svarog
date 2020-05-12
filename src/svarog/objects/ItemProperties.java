@@ -10,6 +10,7 @@ public interface ItemProperties {
 		armor,
 		gloves,
 		shoes,
+		trash,
 		none
 	}
 }
