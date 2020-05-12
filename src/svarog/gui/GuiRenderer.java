@@ -466,25 +466,20 @@ public class GuiRenderer implements RenderProperties {
 					if(mouseOverObjectId != draggingFromObjectId) {
 						Tile tile = tileSheet.getTileByObjectId(mouseOverObjectId);
 						if(tile != null) {
-							if(tile.getPuttedItem() == null) {
-								try {
-									tile.putItem(object.getPuttedItem());
-									tile.getPuttedItem().setPosition(tile.getTransform().getPosition().x, tile.getTransform().getPosition().y);
+							try {
+								tile.putItem(object.getPuttedItem());
+								tile.getPuttedItem().setPosition(tile.getTransform().getPosition().x, tile.getTransform().getPosition().y);
+								object.removePuttedItem();
+							} catch (Exception e) {
+								if(e.getMessage() == "Consume") {
+									player.AddPlayerHP(((Item)object.getPuttedItem()).getItemInfo().getHpRegeneration());
+									player.getInventory().removeItemById(object.getId());
+										
 									object.removePuttedItem();
-								} catch (Exception e) {
-									if(e.getMessage() == "Consume") {
-										System.out.println(((Item)object.getPuttedItem()).getItemInfo().getHpRegeneration());
-										player.AddPlayerHP(((Item)object.getPuttedItem()).getItemInfo().getHpRegeneration());
-										player.getInventory().removeItemById(object.getId());
+									this.playerStatsDynamic(player, font);
 										
-										object.removePuttedItem();
-										this.playerStatsDynamic(player, font);
-										
-									} else
-										object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
-								}
-							} else {
-								object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+								} else
+									object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
 							}
 						} else {
 							object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
