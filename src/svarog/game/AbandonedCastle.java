@@ -12,8 +12,8 @@ import svarog.world.World;
 abstract class AbandonedCastle {
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(2, 90, 60);
-		world.loadMap("second_map.png", 32);
-		world.setSolidTilesFromMap("second_map.png");
+		world.loadMap("abandonedCastle.png", 32);
+		world.setSolidTilesFromMap("abandonedCastle_mask.png");
 
 		world.addEntity(player);
 		//player.setPosition(2, 45);

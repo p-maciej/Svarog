@@ -10,8 +10,9 @@ import svarog.world.World;
 
 abstract class IceCave {
 	public static World getWorld(Player player, Camera camera, Window window) {
-		World world = new World(2, 130, 130);
-		world.loadMap("third_map.png", 32);
+		World world = new World(4, 130, 130);
+		world.loadMap("iceCave.png", 32);
+		world.setSolidTilesFromMap("iceCave_mask.png");
 		
 
 		world.addEntity(player);
