@@ -20,4 +20,12 @@ public class Inventory {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
+	
+	public void removeItemById(int id) {
+		for(int i = 0; i < items.size(); i++) {
+			if(items.get(i).getId() == id) {
+				items.remove(i);
+			}
+		}
+	}
 }

@@ -115,6 +115,12 @@ public class Tile extends TextureObject implements ItemProperties {
 	
 	public void putItem(Item object) throws Exception {
 		boolean hasBeenPutted = false;
+		if(object.getItemInfo().getItemType() == ItemType.consumable) {
+			if(puttableItemTypes.size() == 1) {
+				throw new Exception("Consume");
+			}
+		}
+		
 		if(puttedItem == null) {
 			for(ItemType type : puttableItemTypes) {
 				if(type == object.getItemType()) {

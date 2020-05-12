@@ -1,11 +1,16 @@
 package svarog.gui;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.joml.Matrix4f;
+import org.lwjgl.BufferUtils;
 
+import svarog.entity.Player;
 import svarog.gui.PagedGuiWindow.WindowTextType;
+import svarog.gui.font.Color;
+import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.io.Window;
@@ -15,6 +20,7 @@ import svarog.render.Camera;
 import svarog.render.Model;
 import svarog.render.RenderProperties;
 import svarog.render.Shader;
+import svarog.render.Texture;
 import svarog.world.WorldRenderer;
 
 public class GuiRenderer implements RenderProperties {
@@ -62,6 +68,8 @@ public class GuiRenderer implements RenderProperties {
 	private static int bubbleYoffset = 20;
 	private static int worldXOffset = -350;
 	private static int worldYOffset = 70;
+	
+	private static Group playerStats;
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
@@ -202,7 +210,7 @@ public class GuiRenderer implements RenderProperties {
 		///////////////////////////////////////////
 	}
 	
-	public void renderGuiObjects(Shader shader, Window window) {
+	public void renderGuiObjects(Shader shader, Window window, Player player, Font font) {
 		clickedObjectId = -1;
 		mouseOverObjectId = -1;
 		setPointer = false;
@@ -352,7 +360,7 @@ public class GuiRenderer implements RenderProperties {
 		// Drag and drop for groups
 		for(Group group : tileSheet.getTileGroupsList()) {
 			for(TextureObject object : group.getTextureObjectList()) {
-				dragAndDrop((Tile)object, window);
+				dragAndDrop((Tile)object, window, player, font);
 			}
 		}
 
@@ -441,7 +449,7 @@ public class GuiRenderer implements RenderProperties {
 			model.render();	
 	}
 	
-	private void dragAndDrop(Tile object, Window window) {
+	private void dragAndDrop(Tile object, Window window, Player player, Font font) {
 		if(object != null) {
 			if((object.getId() == mouseOverObjectId && draggingFromObjectId == -1) || draggingFromObjectId == object.getId()) {
 				if(window.getInput().isMouseButtonDown(0)) {
@@ -464,7 +472,16 @@ public class GuiRenderer implements RenderProperties {
 									tile.getPuttedItem().setPosition(tile.getTransform().getPosition().x, tile.getTransform().getPosition().y);
 									object.removePuttedItem();
 								} catch (Exception e) {
-									object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+									if(e.getMessage() == "Consume") {
+										System.out.println(((Item)object.getPuttedItem()).getItemInfo().getHpRegeneration());
+										player.AddPlayerHP(((Item)object.getPuttedItem()).getItemInfo().getHpRegeneration());
+										player.getInventory().removeItemById(object.getId());
+										
+										object.removePuttedItem();
+										this.playerStatsDynamic(player, font);
+										
+									} else
+										object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
 								}
 							} else {
 								object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
@@ -480,6 +497,85 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 		}
+	}
+	
+	public void playerStatsDynamic(Player player, Font font) {
+		if(playerStats != null)
+			this.removeGroup(playerStats);
+			
+		playerStats = new Group();
+		
+		int width = 200;
+		int height = 12;
+		
+		Color hpRemaining = new Color((byte)255, (byte)0, (byte)0);
+		Color hpLost = new Color((byte)150, (byte)0, (byte)0);
+		
+		int remHPWidth = (int)(player.getHP().GetHPfloat()*width);
+		
+		// HP //
+		ByteBuffer HPbuffer = BufferUtils.createByteBuffer(width*height*4);
+		
+		for(int i = 0; i < width; i++) {
+			for(int j = 0; j < height; j++) {
+				if(i <= remHPWidth) {
+					HPbuffer.put(hpRemaining.getR());
+					HPbuffer.put(hpRemaining.getG());
+					HPbuffer.put(hpRemaining.getB());
+					HPbuffer.put((byte)255);
+				} else {
+					HPbuffer.put(hpLost.getR());
+					HPbuffer.put(hpLost.getG());
+					HPbuffer.put(hpLost.getB());
+					HPbuffer.put((byte)255);
+				}
+			}
+		}
+		HPbuffer.flip();
+		
+		TextureObject hpTexture = new TextureObject(new Texture(HPbuffer, width, height));
+		hpTexture.setStickTo(stickTo.BottomLeft);
+		hpTexture.move(120, -42);
+		playerStats.addTextureObject(hpTexture);
+		
+		Color xpGained = new Color((byte)255, (byte)255, (byte)0);
+		Color xpRemaining = new Color((byte)150, (byte)150, (byte)0);
+
+		
+		int remXPWidth = (int)(player.getXP().getXPpercentage()*width);
+		
+		// HP //
+		ByteBuffer XPbuffer = BufferUtils.createByteBuffer(width*height*4);
+		
+		for(int i = 0; i < width; i++) {
+			for(int j = 0; j < height; j++) {
+				if(i <= remXPWidth) {
+					XPbuffer.put(xpGained.getR());
+					XPbuffer.put(xpGained.getG());
+					XPbuffer.put(xpGained.getB());
+					XPbuffer.put((byte)255);
+				} else {
+					XPbuffer.put(xpRemaining.getR());
+					XPbuffer.put(xpRemaining.getG());
+					XPbuffer.put(xpRemaining.getB());
+					XPbuffer.put((byte)255);
+				}
+			}
+		}
+		XPbuffer.flip();
+		
+		TextureObject xpTexture = new TextureObject(new Texture(XPbuffer, width, height));
+		xpTexture.setStickTo(stickTo.BottomLeft);
+		xpTexture.move(120, -14);
+		playerStats.addTextureObject(xpTexture);
+		
+		Line level = new Line(GuiRenderer.stickTo.BottomRight);
+		level.setString(Integer.toString(player.getXP().GetLevel()) + "lvl", font);
+		level.move(-70, -20);
+		playerStats.addTextureObject(level);
+		
+		this.addGroup(playerStats);
+		this.updatePositions();
 	}
 	
 	public void update(Window window) {

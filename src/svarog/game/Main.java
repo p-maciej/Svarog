@@ -7,12 +7,10 @@ import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 
-import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.List;
 
 import org.joml.Vector2f;
-import org.lwjgl.BufferUtils;
 
 import svarog.audio.Audio;
 import svarog.audio.Sound;
@@ -69,7 +67,6 @@ public class Main {
 	private static Button healBtn;
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
-	private static Group playerStats;
 	private static Audio audioPlayer;
 	
 	// Menu
@@ -85,85 +82,6 @@ public class Main {
 		window.setSize(1200, 800);
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
 		window.glInit();
-	}
-	
-	private static void playerStatsDynamic(Player player, GuiRenderer guiRenderer) {
-		if(playerStats != null)
-			guiRenderer.removeGroup(playerStats);
-			
-		playerStats = new Group();
-		
-		int width = 200;
-		int height = 12;
-		
-		Color hpRemaining = new Color((byte)255, (byte)0, (byte)0);
-		Color hpLost = new Color((byte)150, (byte)0, (byte)0);
-		
-		int remHPWidth = (int)(player.getHP().GetHPfloat()*width);
-		
-		// HP //
-		ByteBuffer HPbuffer = BufferUtils.createByteBuffer(width*height*4);
-		
-		for(int i = 0; i < width; i++) {
-			for(int j = 0; j < height; j++) {
-				if(i <= remHPWidth) {
-					HPbuffer.put(hpRemaining.getR());
-					HPbuffer.put(hpRemaining.getG());
-					HPbuffer.put(hpRemaining.getB());
-					HPbuffer.put((byte)255);
-				} else {
-					HPbuffer.put(hpLost.getR());
-					HPbuffer.put(hpLost.getG());
-					HPbuffer.put(hpLost.getB());
-					HPbuffer.put((byte)255);
-				}
-			}
-		}
-		HPbuffer.flip();
-		
-		TextureObject hpTexture = new TextureObject(new Texture(HPbuffer, width, height));
-		hpTexture.setStickTo(stickTo.BottomLeft);
-		hpTexture.move(120, -42);
-		playerStats.addTextureObject(hpTexture);
-		
-		Color xpGained = new Color((byte)255, (byte)255, (byte)0);
-		Color xpRemaining = new Color((byte)150, (byte)150, (byte)0);
-
-		
-		int remXPWidth = (int)(player.getXP().getXPpercentage()*width);
-		
-		// HP //
-		ByteBuffer XPbuffer = BufferUtils.createByteBuffer(width*height*4);
-		
-		for(int i = 0; i < width; i++) {
-			for(int j = 0; j < height; j++) {
-				if(i <= remXPWidth) {
-					XPbuffer.put(xpGained.getR());
-					XPbuffer.put(xpGained.getG());
-					XPbuffer.put(xpGained.getB());
-					XPbuffer.put((byte)255);
-				} else {
-					XPbuffer.put(xpRemaining.getR());
-					XPbuffer.put(xpRemaining.getG());
-					XPbuffer.put(xpRemaining.getB());
-					XPbuffer.put((byte)255);
-				}
-			}
-		}
-		XPbuffer.flip();
-		
-		TextureObject xpTexture = new TextureObject(new Texture(XPbuffer, width, height));
-		xpTexture.setStickTo(stickTo.BottomLeft);
-		xpTexture.move(120, -14);
-		playerStats.addTextureObject(xpTexture);
-		
-		Line level = new Line(GuiRenderer.stickTo.BottomRight);
-		level.setString(Integer.toString(player.getXP().GetLevel()) + "lvl", verdana);
-		level.move(-70, -20);
-		playerStats.addTextureObject(level);
-		
-		guiRenderer.addGroup(playerStats);
-		guiRenderer.updatePositions();
 	}
 
 	
@@ -247,7 +165,7 @@ public class Main {
 		statsStatic.addTextureObject(XPtext);
 		statsStatic.addTextureObject(HPtext);
 		
-		playerStatsDynamic(player, guiRenderer);
+		guiRenderer.playerStatsDynamic(player, verdana);
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
@@ -462,7 +380,7 @@ public class Main {
             				audioPlayer.stop(player.getWalkSound());
             	 	
             	menu.update(window);
-            	menu.renderGuiObjects(guiShader, window);
+            	menu.renderGuiObjects(guiShader, window, player, verdana);
             	
             	
             	if(menuStartButton.isClicked() || menuResumeButton.isClicked()) {
@@ -512,14 +430,14 @@ public class Main {
 	            		loadingScreen();
 	            		
 	                	loadingScreen.update(window);
-	                	loadingScreen.renderGuiObjects(guiShader, window);
+	                	loadingScreen.renderGuiObjects(guiShader, window, player, verdana);
 
 	                	worldInit();
 	                	
 	                	programInit = false;
 	            	} else {
 	                	loadingScreen.update(window);
-	                	loadingScreen.renderGuiObjects(guiShader, window);
+	                	loadingScreen.renderGuiObjects(guiShader, window, player, verdana);
 	            	}
 	            	window.update();
 	            	window.swapBuffers(); 
@@ -609,7 +527,7 @@ public class Main {
 							if(currentWorld.getEntity(i) instanceof Enemy) {
 	
 								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, pressStart);
-								playerStatsDynamic(player, guiRenderer);
+								guiRenderer.playerStatsDynamic(player, verdana);
 	
 							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
 								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId());
@@ -626,7 +544,7 @@ public class Main {
 						Interactions.setTalkingNPCid(-1);
 					}
 					
-					guiRenderer.renderGuiObjects(guiShader, window);
+					guiRenderer.renderGuiObjects(guiShader, window, player, verdana);
 					
 					if(questsButton.isClicked())
 						guiRenderer.addWindow(player.getQuestsPagedOnGUI(pressStart));
@@ -634,7 +552,7 @@ public class Main {
 					if(healBtn.isClicked()) {
 						player.FullyRecoverHP();
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
-						playerStatsDynamic(player, guiRenderer);
+						guiRenderer.playerStatsDynamic(player, verdana);
 						player.addItemToInventoryWithGUIupdate(new Item(new Texture("textures/helmet.png"), new ItemInfo(), ItemType.helm), guiRenderer);
 					}
 					
