@@ -26,6 +26,7 @@ import svarog.gui.DialogContainer;
 import svarog.gui.Group;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
+import svarog.gui.StatsContainer;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
@@ -117,7 +118,10 @@ public class Main {
 		pressStartY = new Font("font", new Color((byte)255, (byte)255, (byte)0));
 		pressStartR = new Font("font", new Color((byte)255, (byte)0, (byte)0));
 		
+		StatsContainer.setFont(verdana);
+		
 		guiRenderer = new GuiRenderer(window);
+		
 		
 		BubbleContainer.setBubbleLeft(Texture.getImageBuffer("images/bubble/left.png"));
 		BubbleContainer.setBubbleRight(Texture.getImageBuffer("images/bubble/right.png"));
@@ -152,7 +156,7 @@ public class Main {
 		statsStatic.addTextureObject(XPtext);
 		statsStatic.addTextureObject(HPtext);
 		
-		guiRenderer.playerStatsDynamic(player, verdana);
+		guiRenderer.updatePlayerStats(player);
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
@@ -528,7 +532,7 @@ public class Main {
 							if(currentWorld.getEntity(i) instanceof Enemy) {
 	
 								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, pressStart);
-								guiRenderer.playerStatsDynamic(player, verdana);
+								guiRenderer.updatePlayerStats(player);
 	
 							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
 								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId());
@@ -553,7 +557,7 @@ public class Main {
 					if(healBtn.isClicked()) {
 						player.FullyRecoverHP();
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
-						guiRenderer.playerStatsDynamic(player, verdana);
+						guiRenderer.updatePlayerStats(player);
 						player.addItemToInventoryWithGUIupdate(new Item(new Texture("textures/helmet.png"), Save.getItemById(1).getItemInfo(), ItemType.helm), guiRenderer);
 					}
 					
