@@ -211,6 +211,9 @@ public class GuiRenderer implements RenderProperties {
 		if(DialogContainer.isDialogClosing())
 			DialogContainer.setDialogClosing(false);
 		
+		if(ArenaContainer.isArenaClosing())
+			ArenaContainer.setArenaClosing(false);
+		
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
 			if(object.getState() == State.guiPanel) {
@@ -362,6 +365,7 @@ public class GuiRenderer implements RenderProperties {
 		
 		if(this.arenaContainer.getCloseArenaButton() != null) {
 			if(this.arenaContainer.getCloseArenaButton().isClicked()) {
+				ArenaContainer.setArenaClosing(true);
 				closeArena();
 			}
 		}

@@ -15,6 +15,7 @@ import org.joml.Vector3f;
 import svarog.audio.Audio;
 import svarog.audio.Sound;
 import svarog.gui.Arena;
+import svarog.gui.ArenaContainer;
 import svarog.gui.GuiRenderer;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.PagedGuiWindow;
@@ -101,7 +102,7 @@ public class Player extends Entity {
 		setCamWithoutAnimation = true;
 		lastPressedKey = GLFW_KEY_LAST;
 		
-		this.setMovementLock(playerParam.isMovementLocked());
+		this.setMovementLock(false);
 		super.setIsStatic(false); // Non-static - default setting for player
 	}
 	
@@ -152,6 +153,10 @@ public class Player extends Entity {
 	
 	@Override
 	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer) {
+		if(movementLock)
+			if(ArenaContainer.isArenaClosing())
+				this.movementLock = false;
+				
 		if(movementLock == false) {
 			Vector2f movement = new Vector2f();
 			
@@ -336,13 +341,13 @@ public class Player extends Entity {
 		}
 		
 		arena.setLog(log);
+		this.setMovementLock(true);
 		guiRenderer.showArena(arena);
 	}
 	
 	public void addItemToInventoryWithGUIupdate(Item item, GuiRenderer guiRenderer) {
 		this.getInventory().getItems().add(item);
 		guiRenderer.getTileSheet().putItemFirstEmpty(this.getInventory().getItems().get(this.getInventory().getItems().size()-1));
-
 	}
 	
 	public ArrayList<String> fightLogic(Enemy enemy, World world) {

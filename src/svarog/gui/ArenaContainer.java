@@ -21,6 +21,7 @@ public class ArenaContainer {
 	private Button closeArenaButton;
 	private Group arenaGroup;
 	
+	private static boolean isArenaClosing = false;
 	
 	ArenaContainer() {
 		this.arena = null;
@@ -162,5 +163,13 @@ public class ArenaContainer {
 	
 	public static void setBackgtroundColor(Color backgtroundColor) {
 		ArenaContainer.backgtroundColor = backgtroundColor;
+	}
+
+	public static boolean isArenaClosing() {
+		return isArenaClosing;
+	}
+
+	static void setArenaClosing(boolean isArenaClosing) {
+		ArenaContainer.isArenaClosing = isArenaClosing;
 	}
 }

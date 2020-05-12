@@ -8,7 +8,6 @@ import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -664,7 +663,8 @@ public class Main {
 		}
 		
 		try {
-			audioPlayer.finalize();
+			if(audioPlayer != null)
+				audioPlayer.finalize();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
