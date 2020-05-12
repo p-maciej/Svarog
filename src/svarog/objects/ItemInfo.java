@@ -94,8 +94,9 @@ public class ItemInfo implements ItemProperties {
 		return globalID;
 	}
 
-	public void setGlobalID(int globalID) {
+	public ItemInfo setGlobalID(int globalID) {
 		this.globalID = globalID;
+		return this;
 	}
 	
 	public int getTileID() {

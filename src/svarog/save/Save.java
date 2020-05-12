@@ -22,6 +22,7 @@ public class Save {
 	
 	//WARNING IT IS USED ONLY FOR HELP READING PLAYER FROM FILE, IT ISN'T INTENDED TO CHANGING IT EVERY TIME
 	private static PlayerParameters playerParam = new PlayerParameters();
+	private static List<Item> items = new ArrayList<Item>();
 	
 	public Save(String filename, Player player, World currentWorld) {
 		SaveAs(filename, player, currentWorld);
@@ -147,6 +148,14 @@ public class Save {
 
 	public static void setPlayerParam(PlayerParameters playerParam) {
 		Save.playerParam = playerParam;
+	}
+	
+	private static Item getItemById(int id) {
+		for(Item elem : items) {
+			if(elem.getItemInfo().getGlobalID() == id) 
+				return elem;
+		}
+		return null;
 	}
 	
 }

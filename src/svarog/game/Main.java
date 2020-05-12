@@ -51,7 +51,6 @@ import svarog.world.World;
 import svarog.world.WorldRenderer;
 
 
-
 public class Main {
 	private static Window window;
 	private static Shader shader;
@@ -81,7 +80,6 @@ public class Main {
 	private static Button menuResumeButton;
 	private static Button menuLoadButton;
 	private static Button menuSaveButton;
-
 	
 	private static void windowInit() {
 		window = new Window();
@@ -178,14 +176,13 @@ public class Main {
 		audioPlayer = new Audio();
 		
 		//Items
-		List<Item> itemsT = new ArrayList<>();
-		itemsT.add(new Item(new Texture("textures/helmet.png"), new ItemInfo(), ItemType.helm));
-		itemsT.add(new Item(new Texture("textures/item.png"), new ItemInfo(), ItemType.consumable));
-		itemsT.add(new Item(new Texture("textures/poranSword.png"), new ItemInfo(), ItemType.weapon));
-		itemsT.add(new Item(new Texture("textures/magicArmor.png"), new ItemInfo(), ItemType.armor));
+		/*items.add(new Item(new Texture("textures/helmet.png"), new ItemInfo().setGlobalID(1), ItemType.helm));
+		items.add(new Item(new Texture("textures/item.png"), new ItemInfo().setGlobalID(2), ItemType.consumable));
+		items.add(new Item(new Texture("textures/poranSword.png"), new ItemInfo().setGlobalID(3), ItemType.weapon));
+		items.add(new Item(new Texture("textures/magicArmor.png"), new ItemInfo().setGlobalID(4), ItemType.armor));*/
 		///
 
-
+		
 		Sound walk = null;
 		try {
 			walk = new Sound("walk01.ogg", true);
