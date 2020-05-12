@@ -98,9 +98,8 @@ public class Save {
 			List<Item> tempItem = new ArrayList<>();
 			int iterator = Integer.parseInt(reader.nextLine());//16
 			for(int i=0;i<iterator;i++) {
-				Item item = new Item(new Texture(reader.nextLine()),new ItemInfo(Integer.parseInt(reader.nextLine()),
-						Integer.parseInt(reader.nextLine()), Integer.parseInt(reader.nextLine()), Integer.parseInt(reader.nextLine()),
-						Integer.parseInt(reader.nextLine()), reader.nextLine(), reader.nextLine(), ItemType.valueOf(reader.nextLine())));
+				//System.out.println(Integer.parseInt(reader.nextLine()));
+				Item item = getItemById(Integer.parseInt(reader.nextLine()));
 				item.getItemInfo().setTileID(Integer.parseInt(reader.nextLine()));
 				tempItem.add(item);
 			}
@@ -127,7 +126,7 @@ public class Save {
 			reader.close();
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("BUGS");
+			System.out.println("BUGS ReadFrom");
 			e.printStackTrace();
 		}
 		
@@ -154,15 +153,7 @@ public class Save {
 			save.println(player.getName());
 			save.println(player.getInventory().getItems().size());//16
 			for(Item item: player.getInventory().getItems()) {
-				save.println(item.getTexture().getFilename());
 				save.println(item.getItemInfo().getGlobalID());
-				save.println(item.getItemInfo().getDefense());
-				save.println(item.getItemInfo().getHpRegeneration());
-				save.println(item.getItemInfo().getAttackBonus());
-				save.println(item.getItemInfo().getLvlRequired());
-				save.println(item.getItemInfo().getName());
-				save.println(item.getItemInfo().getDescription());
-				save.println(item.getItemInfo().getItemType());
 				save.println(item.getItemInfo().getTileID());
 			}
 			save.println(player.getQuests().size());
