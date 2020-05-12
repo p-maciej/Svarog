@@ -354,7 +354,7 @@ public class Player extends Entity {
 		ArrayList<String> fightString = new ArrayList<>();
 		while((enemy).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
 			fightString.add("Enemy HP (before attack): " + (enemy).GetEnemyHP());
-			(enemy).DecreaseEnemyHP(this.getRandomAttack());
+			(enemy).DecreaseEnemyHP(this.getRandomAttack()+getPlayerAttackBonus());
 			fightString.add("Enemy HP:  (after attack): " + (enemy).GetEnemyHP());
 			if((enemy).GetEnemyHP()<0) {
 				fightString.add("Enemy "+ (enemy).getName() + " died, you WON!!!");
@@ -368,7 +368,8 @@ public class Player extends Entity {
 				world.removeEntity(enemy);
 			}else {
 				fightString.add("Player HP (before attack): " + this.getHP().GetHP());
-				this.DecreasePlayerHP((enemy).GetRandomAttack());
+				int attack = ((enemy).GetRandomAttack()-this.getPlayerDefense())>0?((enemy).GetRandomAttack()-this.getPlayerDefense()):0;
+				this.DecreasePlayerHP(attack);
 				fightString.add("Player HP (after attack): " + this.getHP().GetHP());
 				if(this.getHP().GetHP()<0) {
 					fightString.add("Player died, " + (enemy).getName() + " was killing more people than ever.");
@@ -377,6 +378,28 @@ public class Player extends Entity {
 			}
 		}
 		return fightString;
+	}
+	
+	public int getPlayerDefense() {
+		int defense = 0;
+		for(Item i: inventory.getItems()) {
+			if(i.getItemInfo().getTileID() == 0 || i.getItemInfo().getTileID() == 1 ||i.getItemInfo().getTileID() == 2
+					||i.getItemInfo().getTileID() == 3 ||i.getItemInfo().getTileID() == 4) {
+				defense+=i.getItemInfo().getDefense();
+			}
+		}
+		return defense;
+	}
+	
+	public int getPlayerAttackBonus() {
+		int attack = 0;
+		for(Item i: inventory.getItems()) {
+			if(i.getItemInfo().getTileID() == 0 || i.getItemInfo().getTileID() == 1 ||i.getItemInfo().getTileID() == 2
+					||i.getItemInfo().getTileID() == 3 ||i.getItemInfo().getTileID() == 4) {
+				attack+=i.getItemInfo().getAttackBonus();
+			}
+		}
+		return attack;
 	}
 	
 	

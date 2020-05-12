@@ -8,6 +8,7 @@ public class ItemInfo implements ItemProperties {
 	private int hpRegeneration;
 	private int attackBonus;
 	private int lvlRequired;
+	private int defense = 0;
 	private String name;
 	private String description;
 	private ItemType itemType;
@@ -105,5 +106,13 @@ public class ItemInfo implements ItemProperties {
 
 	public void setTileID(int tileID) {
 		this.tileID = tileID;
+	}
+
+	public int getDefense() {
+		return defense;
+	}
+
+	public void setDefense(int defense) {
+		this.defense = defense;
 	}
 }
