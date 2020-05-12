@@ -1,0 +1,47 @@
+<?xml version = "1.0"?>
+<class>
+	<item>
+		<TextureFileName>textures/item.png</TextureFileName>
+   		<globalID>0</globalID>
+   		<defense>0</defense>
+   		<hpRegeneration>25</hpRegeneration>
+   		<attackBonus>0</attackBonus>
+   		<lvlRequired>0</lvlRequired>
+   		<name>Potion</name>
+   		<description>It will icrease your hp</description>
+   		<itemType>consumable</itemType>
+	</item>
+	<item>
+		<TextureFileName>textures/helmet.png</TextureFileName>
+   		<globalID>1</globalID>
+   		<defense>10</defense>
+   		<hpRegeneration>0</hpRegeneration>
+   		<attackBonus>5</attackBonus>
+   		<lvlRequired>0</lvlRequired>
+   		<name>helmet</name>
+   		<description>It will defense yours head</description>
+   		<itemType>helm</itemType>
+	</item>
+	<item>
+		<TextureFileName>textures/poranSword.png</TextureFileName>
+   		<globalID>2</globalID>
+   		<defense>2</defense>
+   		<hpRegeneration>0</hpRegeneration>
+   		<attackBonus>12</attackBonus>
+   		<lvlRequired>0</lvlRequired>
+   		<name>poranSword</name>
+   		<description>You van slayer monster with it</description>
+   		<itemType>weapon</itemType>
+	</item>
+	<item>
+		<TextureFileName>textures/magicArmor.png</TextureFileName>
+   		<globalID>3</globalID>
+   		<defense>20</defense>
+   		<hpRegeneration>0</hpRegeneration>
+   		<attackBonus>0</attackBonus>
+   		<lvlRequired>0</lvlRequired>
+   		<name>magicArmor</name>
+   		<description>Super ultra duper magic Armor</description>
+   		<itemType>armor</itemType>
+	</item>
+</class>

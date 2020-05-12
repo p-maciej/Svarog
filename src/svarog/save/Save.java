@@ -7,6 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import svarog.entity.Player;
 import svarog.game.WorldLoader;
 import svarog.interactions.Quest;
@@ -28,7 +36,46 @@ public class Save {
 		SaveAs(filename, player, currentWorld);
 	}
 	
+	public static void ReadItems() {
+		try {
+			File inputFile = new File("resources/items/items");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+			//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			NodeList nList = doc.getElementsByTagName("item");
+			//System.out.println("----------------------------");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				//System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					Item item;
+
+					item = new Item(new Texture(eElement.getElementsByTagName("TextureFileName").item(0).getTextContent()),
+							new ItemInfo(Integer.parseInt(eElement.getElementsByTagName("globalID").item(0).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("defense").item(0).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("hpRegeneration").item(0).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("attackBonus").item(0).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("lvlRequired").item(0).getTextContent()),
+									eElement.getElementsByTagName("name").item(0).getTextContent(),
+									eElement.getElementsByTagName("description").item(0).getTextContent(), 
+									ItemType.valueOf(eElement.getElementsByTagName("itemType").item(0).getTextContent())
+								));
+					items.add(item);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("ReadItems :)");
+			e.printStackTrace();
+		}
+	}
+	
 	public static void ReadFrom(String filename, Player player) {
+		ReadItems();
 		File file;
 		try {
 	        file = new File("resources/saves/" + filename);
@@ -109,7 +156,7 @@ public class Save {
 			for(Item item: player.getInventory().getItems()) {
 				save.println(item.getTexture().getFilename());
 				save.println(item.getItemInfo().getGlobalID());
-				save.println(item.getItemInfo().getLocalID());
+				save.println(item.getItemInfo().getDefense());
 				save.println(item.getItemInfo().getHpRegeneration());
 				save.println(item.getItemInfo().getAttackBonus());
 				save.println(item.getItemInfo().getLvlRequired());

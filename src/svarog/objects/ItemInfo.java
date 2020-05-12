@@ -4,18 +4,18 @@ public class ItemInfo implements ItemProperties {
 	
 	private int tileID=-1;
 	private int globalID;
-	private int localID;
+	private int defense = 0;
 	private int hpRegeneration;
 	private int attackBonus;
 	private int lvlRequired;
-	private int defense = 0;
+	
 	private String name;
 	private String description;
 	private ItemType itemType;
 	
 	public ItemInfo() {
 		this.globalID = -1;
-		this.localID = -1;
+		this.defense = 0;
 		this.hpRegeneration = 0;
 		this.attackBonus = 0;
 		this.lvlRequired = 0;
@@ -24,9 +24,9 @@ public class ItemInfo implements ItemProperties {
 		this.itemType = ItemType.none;
 	}
 
-	public ItemInfo(int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType) {
+	public ItemInfo(int globalID, int defense, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType) {
 		this.globalID = globalID;
-		this.localID = localID;
+		this.defense = defense;
 		this.hpRegeneration = hpRegeneration;
 		this.attackBonus = attackBonus;
 		this.lvlRequired = lvlRequired;
@@ -83,13 +83,13 @@ public class ItemInfo implements ItemProperties {
 		this.itemType = itemType;
 	}
 	
-	public int getLocalID() {
-		return localID;
-	}
+	//public int getLocalID() {
+	//	return localID;
+	//}
 
-	public void setLocalID(int localID) {
-		this.localID = localID;
-	}
+	//public void setLocalID(int localID) {
+	//	this.localID = localID;
+	//}
 
 	public int getGlobalID() {
 		return globalID;
