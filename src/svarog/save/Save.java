@@ -99,7 +99,16 @@ public class Save {
 			int iterator = Integer.parseInt(reader.nextLine());//16
 			for(int i=0;i<iterator;i++) {
 				//System.out.println(Integer.parseInt(reader.nextLine()));
-				Item item = getItemById(Integer.parseInt(reader.nextLine()));
+				int ID = Integer.parseInt(reader.nextLine());
+				Item item = new Item(new Texture(getItemById(ID).getTexture().getFilename()),
+						new ItemInfo(getItemById(ID).getItemInfo().getGlobalID(),
+								getItemById(ID).getItemInfo().getDefense(),
+								getItemById(ID).getItemInfo().getHpRegeneration(),
+								getItemById(ID).getItemInfo().getAttackBonus(),
+								getItemById(ID).getItemInfo().getLvlRequired(),
+								getItemById(ID).getItemInfo().getName(),
+								getItemById(ID).getItemInfo().getDescription(),
+								getItemById(ID).getItemInfo().getItemType()));
 				item.getItemInfo().setTileID(Integer.parseInt(reader.nextLine()));
 				tempItem.add(item);
 			}
