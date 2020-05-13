@@ -1,6 +1,7 @@
 package svarog.gui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import svarog.objects.Item;
@@ -47,7 +48,12 @@ public class TileSheet {
 	
 	public void putItemFirstEmpty(Item item) {
 		boolean finished = false;
+		
+		Collections.sort(tileGroups);
+		
 		for(Group group : tileGroups) {
+			Collections.sort(group.getObjects());
+			
 			for(TextureObject tile : group.getObjects()) {
 				if(tile instanceof Tile) {
 					Tile temp = (Tile)tile;

@@ -9,7 +9,7 @@ import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.font.TextBlock;
 
-public class Group {
+public class Group implements Comparable<Group> {
 	private static int auto_increment = 0;
 	private int id;
 	private Vector2f transform;
@@ -163,5 +163,9 @@ public class Group {
 	List<TextureObject> getObjects() {
 		return textureObjects;
 	}
-	
+
+	@Override
+	public int compareTo(Group o) {
+		return id - o.id;
+	}
 }

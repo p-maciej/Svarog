@@ -5,7 +5,7 @@ import org.joml.Vector2f;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.render.Texture;
 
-public class TextureObject extends GuiObject {
+public class TextureObject extends GuiObject implements Comparable<TextureObject> {
 	Texture texture;
 
 	public TextureObject(Texture texture) {
@@ -52,4 +52,9 @@ public class TextureObject extends GuiObject {
 
 	@Override
 	protected void update() {}
+
+	@Override
+	public int compareTo(TextureObject o) {
+		return super.getId() - o.getId();
+	}
 }
