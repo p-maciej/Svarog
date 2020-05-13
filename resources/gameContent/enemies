@@ -16,4 +16,18 @@
 		<itemGlobalID>1</itemGlobalID>
 		<itemTileID>-1</itemTileID>
 	</enemy>
+	<enemy>
+		<globalID>1</globalID>
+		<texture>textures/avatar2.png</texture>
+		<posX>46</posX>
+		<posY>29</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>60</minAttack>
+		<maxAttack>120</maxAttack>
+		<xpForKilling>150</xpForKilling>
+		<hp>300</hp>
+		<reward>1400</reward>
+		<name>Kikimora</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
 </class>

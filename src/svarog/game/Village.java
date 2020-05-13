@@ -27,7 +27,7 @@ abstract class Village implements Runnable {
 		ent2.setName("Dawid");
 
 		Enemy ArchEnemy = new Enemy(3, Save.getEnemies().get(0));
-		Enemy enemy1 = new Enemy(4, new Transform().setPosition(49, 15), Save.getEnemies().get(0), "Zlowrog");
+		Enemy enemy1 = new Enemy(4, new Transform().setPosition(49, 15), Save.getEnemies().get(1), "Kikimora");
 		Enemy enemy2 = new Enemy(5, new Transform().setPosition(47, 29), Save.getEnemies().get(0), "Andrzej");
 		
 		NPC npc01 = new NPC(6, new Texture("textures/npc01.png"), new Transform().setPosition(46, 25), true);
