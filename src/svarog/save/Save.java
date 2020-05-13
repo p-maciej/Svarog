@@ -43,7 +43,7 @@ public class Save {
 	
 	public static void ReadItems() {
 		try {
-			File inputFile = new File("resources/items/items");
+			File inputFile = new File("resources/gameContent/items");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(inputFile);

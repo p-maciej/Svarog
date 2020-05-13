@@ -2,66 +2,40 @@
 <class>
 <save id="0">
 <worldID>1</worldID>
-<getPositionX>44</getPositionX>
-<getPositionY>24</getPositionY>
+<getPositionX>40</getPositionX>
+<getPositionY>25</getPositionY>
 <getId>0</getId>
 <getTexturesPath>player/mavak/</getTexturesPath>
 <getFileName>mavak</getFileName>
 <getFullBoundingBox>false</getFullBoundingBox>
 <isMovementLocked>false</isMovementLocked>
-<getHP>62</getHP>
+<getHP>100</getHP>
 <getMaxHP>100</getMaxHP>
-<getXP>60</getXP>
+<getXP>0</getXP>
 <getMinAttack>50</getMinAttack>
 <getMaxAttack>60</getMaxAttack>
-<getMoney>400</getMoney>
+<getMoney>0</getMoney>
 <getName>Ty</getName>
-<howManyItems>6</howManyItems>
-<getGlobalID>0</getGlobalID>
-<getTileID>13</getTileID>
-<getGlobalID>2</getGlobalID>
-<getTileID>3</getTileID>
-<getGlobalID>3</getGlobalID>
-<getTileID>1</getTileID>
-<getGlobalID>1</getGlobalID>
-<getTileID>0</getTileID>
-<getGlobalID>1</getGlobalID>
+<howManyItems>4</howManyItems>
+<getGlobalID>100001</getGlobalID>
 <getTileID>6</getTileID>
-<getGlobalID>1</getGlobalID>
-<getTileID>7</getTileID>
-<howManyQuests>3</howManyQuests>
+<getGlobalID>100002</getGlobalID>
+<getTileID>0</getTileID>
+<getGlobalID>100003</getGlobalID>
+<getTileID>3</getTileID>
+<getGlobalID>100004</getGlobalID>
+<getTileID>9</getTileID>
+<howManyQuests>1</howManyQuests>
 <howManyTasks>1</howManyTasks>
 <getTaskID>0</getTaskID>
 <getToDo>1</getToDo>
 <getDoItemID>7</getDoItemID>
 <getState>talk</getState>
-<getIsEnded>true</getIsEnded>
-<getHowMuchIsDone>1</getHowMuchIsDone>
+<getIsEnded>false</getIsEnded>
+<getHowMuchIsDone>0</getHowMuchIsDone>
 <getQuestID>-3</getQuestID>
 <getTitle>Pogadaj z Rozenna</getTitle>
-<getDescription>Idz do Rozenny, ona znajdzie dla ciebie jakiegos questa</getDescription>
-<isEndedQuest>true</isEndedQuest>
-<howManyTasks>1</howManyTasks>
-<getTaskID>0</getTaskID>
-<getToDo>1</getToDo>
-<getDoItemID>7</getDoItemID>
-<getState>talk</getState>
-<getIsEnded>true</getIsEnded>
-<getHowMuchIsDone>1</getHowMuchIsDone>
-<getQuestID>-3</getQuestID>
-<getTitle>Pogadaj z Rozenna</getTitle>
-<getDescription>Idz do Rozenny, ona znajdzie dla ciebie jakiegos questa</getDescription>
-<isEndedQuest>true</isEndedQuest>
-<howManyTasks>1</howManyTasks>
-<getTaskID>0</getTaskID>
-<getToDo>1</getToDo>
-<getDoItemID>7</getDoItemID>
-<getState>talk</getState>
-<getIsEnded>true</getIsEnded>
-<getHowMuchIsDone>1</getHowMuchIsDone>
-<getQuestID>-3</getQuestID>
-<getTitle>Pogadaj z Rozenna</getTitle>
-<getDescription>Idz do Rozenny, ona znajdzie dla ciebie jakiegos questa</getDescription>
-<isEndedQuest>true</isEndedQuest>
+<getDescription>Idz do Rozenny, ona znajdzie dla wiecej tekstu dla PagedGuiWindow ciebie jakiegos questa</getDescription>
+<isEndedQuest>false</isEndedQuest>
 </save>
 </class>
