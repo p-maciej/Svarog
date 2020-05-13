@@ -7,7 +7,6 @@ import org.joml.Matrix4f;
 
 import svarog.entity.Player;
 import svarog.gui.PagedGuiWindow.WindowTextType;
-import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.io.Window;
@@ -208,7 +207,7 @@ public class GuiRenderer implements RenderProperties {
 		///////////////////////////////////////////
 	}
 	
-	public void renderGuiObjects(Shader shader, Window window, Player player, Font font) {
+	public void renderGuiObjects(Shader shader, Window window, Player player) {
 		clickedObjectId = -1;
 		mouseOverObjectId = -1;
 		setPointer = false;
@@ -358,7 +357,7 @@ public class GuiRenderer implements RenderProperties {
 		// Drag and drop for groups
 		for(Group group : tileSheet.getTileGroupsList()) {
 			for(TextureObject object : group.getTextureObjectList()) {
-				dragAndDrop((Tile)object, window, player, font);
+				dragAndDrop((Tile)object, window, player);
 			}
 		}
 
@@ -447,7 +446,7 @@ public class GuiRenderer implements RenderProperties {
 			model.render();	
 	}
 	
-	private void dragAndDrop(Tile object, Window window, Player player, Font font) {
+	private void dragAndDrop(Tile object, Window window, Player player) {
 		if(object != null) {
 			if((object.getId() == mouseOverObjectId && draggingFromObjectId == -1) || draggingFromObjectId == object.getId()) {
 				if(window.getInput().isMouseButtonDown(0)) {

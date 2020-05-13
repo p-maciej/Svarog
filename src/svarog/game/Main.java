@@ -56,10 +56,6 @@ public class Main {
 	private static World currentWorld;
 	private static Shader guiShader;
 	private static GuiRenderer guiRenderer;
-	private static Font verdana;
-	private static Font pressStart;
-	private static Font pressStartY;
-	private static Font pressStartR;
 	private static GuiPanels panels;
 	private static TileSheet tileSheet;
 	private static GuiRenderer loadingScreen;
@@ -68,6 +64,12 @@ public class Main {
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
 	private static Audio audioPlayer;
+	
+	// Fonts
+	private static Font roboto_15;
+	private static Font roboto_18;
+	private static Font roboto_18_R;
+	private static Font roboto_18_Y;
 	
 	// Menu
 	private static GuiRenderer menu;
@@ -113,12 +115,12 @@ public class Main {
 		
 		
 		/////// GUI  ////////////////////////////////////////////////////////////////////////
-		verdana = new Font("verdana_20", new Color((byte)255, (byte)255, (byte)0));
-		pressStart = new Font("font", new Color((byte)255, (byte)255, (byte)255));
-		pressStartY = new Font("font", new Color((byte)255, (byte)255, (byte)0));
-		pressStartR = new Font("font", new Color((byte)255, (byte)0, (byte)0));
+		roboto_15 = new Font("roboto_15", new Color((byte)255, (byte)255, (byte)255));
+		roboto_18 = new Font("roboto_18", new Color((byte)255, (byte)255, (byte)255));
+		roboto_18_Y = new Font("roboto_18", new Color((byte)255, (byte)255, (byte)0));
+		roboto_18_R = new Font("roboto_18", new Color((byte)255, (byte)0, (byte)0));
 		
-		StatsContainer.setFont(verdana);
+		StatsContainer.setFont(roboto_18);
 		
 		guiRenderer = new GuiRenderer(window);
 		
@@ -129,9 +131,9 @@ public class Main {
 		
 		DialogContainer.setTopDialog(Texture.getImageBuffer("images/dialog/dialog_top.png"));
 		DialogContainer.setCenterDialog(Texture.getImageBuffer("images/dialog/dialog_center.png"));
-		DialogContainer.setDialogFont(pressStart);
-		DialogContainer.setAnswerFont(pressStartY);
-		DialogContainer.setAnswerHoverFont(pressStartR);
+		DialogContainer.setDialogFont(roboto_18);
+		DialogContainer.setAnswerFont(roboto_18_Y);
+		DialogContainer.setAnswerHoverFont(roboto_18_R);
 		
 		
 		ArenaContainer.setArenaLogBackground(Texture.getImageBuffer("images/arena/log_background.png"));
@@ -145,12 +147,12 @@ public class Main {
 		
 		Group statsStatic = new Group();
 		Line HPtext = new Line(GuiRenderer.stickTo.BottomLeft);
-		HPtext.setString("HP:", verdana);
+		HPtext.setString("HP:", roboto_18);
 		HPtext.move(75, -35);
 		
 		
 		Line XPtext = new Line(GuiRenderer.stickTo.BottomLeft);
-		XPtext.setString("XP:", verdana);
+		XPtext.setString("XP:", roboto_18);
 		XPtext.move(75, -5);
 		
 		statsStatic.addTextureObject(XPtext);
@@ -385,7 +387,7 @@ public class Main {
             				audioPlayer.stop(player.getWalkSound());
             	 	
             	menu.update(window);
-            	menu.renderGuiObjects(guiShader, window, player, verdana);
+            	menu.renderGuiObjects(guiShader, window, player);
             	
             	
             	if(menuStartButton.isClicked() || menuResumeButton.isClicked()) {
@@ -435,14 +437,14 @@ public class Main {
 	            		loadingScreen();
 	            		
 	                	loadingScreen.update(window);
-	                	loadingScreen.renderGuiObjects(guiShader, window, player, verdana);
+	                	loadingScreen.renderGuiObjects(guiShader, window, player);
 
 	                	worldInit();
 	                	
 	                	programInit = false;
 	            	} else {
 	                	loadingScreen.update(window);
-	                	loadingScreen.renderGuiObjects(guiShader, window, player, verdana);
+	                	loadingScreen.renderGuiObjects(guiShader, window, player);
 	            	}
 	            	window.update();
 	            	window.swapBuffers(); 
@@ -516,7 +518,7 @@ public class Main {
 							Line name = new Line(0, 0);
 							Entity ent = currentWorld.getEntityById(WorldRenderer.getMouseOverEntityId());
 							if(ent != null) {
-								name.setString(ent.getName(), pressStart);
+								name.setString(ent.getName(), roboto_18);
 							
 								guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
 							}
@@ -531,7 +533,7 @@ public class Main {
 						if(currentWorld.getEntity(i).isClicked()) {
 							if(currentWorld.getEntity(i) instanceof Enemy) {
 	
-								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, pressStart);
+								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, roboto_18);
 								guiRenderer.updatePlayerStats(player);
 	
 							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
@@ -549,10 +551,10 @@ public class Main {
 						Interactions.setTalkingNPCid(-1);
 					}
 					
-					guiRenderer.renderGuiObjects(guiShader, window, player, verdana);
+					guiRenderer.renderGuiObjects(guiShader, window, player);
 					
 					if(questsButton.isClicked())
-						guiRenderer.addWindow(player.getQuestsPagedOnGUI(pressStart));
+						guiRenderer.addWindow(player.getQuestsPagedOnGUI(roboto_15));
 					
 					if(healBtn.isClicked()) {
 						player.FullyRecoverHP();
