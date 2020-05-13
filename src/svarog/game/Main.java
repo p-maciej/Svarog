@@ -26,6 +26,7 @@ import svarog.gui.DialogContainer;
 import svarog.gui.Group;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
+import svarog.gui.GuiWindow;
 import svarog.gui.StatsContainer;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.TextureObject;
@@ -367,6 +368,7 @@ public class Main {
 		long start = -1;
 		boolean worldLoaded = false;
 		boolean joinThread = false;
+		GuiWindow itemInfo = null;
 		
 		boolean showMenu = true;
 		////////////////////////////////////////////////////////////////////////////////////
@@ -552,6 +554,20 @@ public class Main {
 					}
 					
 					guiRenderer.renderGuiObjects(guiShader, window, player);
+					
+					Tile tempTile = tileSheet.clickedTile();
+					if(tempTile != null) {
+						Item tempItem = tempTile.getPuttedItem();
+						if(tempItem != null) {
+							if(itemInfo != null)
+								guiRenderer.removeWindow(itemInfo.getId());
+							
+							itemInfo = new GuiWindow(tempItem.getItemInfo().getName(), roboto_15, new TextureObject(new Texture("images/window2.png")));
+							guiRenderer.addWindow(itemInfo);
+						}
+					}
+					
+					
 					
 					if(questsButton.isClicked())
 						guiRenderer.addWindow(player.getQuestsPagedOnGUI(roboto_15));

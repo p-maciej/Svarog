@@ -66,4 +66,17 @@ public class TileSheet {
 				break;
 		}
 	}
+	
+	public Tile clickedTile() {
+		for(Group group : tileGroups) {
+			for(TextureObject tile : group.getTextureObjectList()) {
+				if(tile.getId() == GuiRenderer.getClickedObjectId()) {
+					Tile temp = (Tile)tile;
+					return temp;
+				}
+			}
+		}
+		
+		return null;
+	}
 }

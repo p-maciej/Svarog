@@ -1,6 +1,7 @@
 package svarog.gui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.joml.Matrix4f;
@@ -59,6 +60,7 @@ public class GuiRenderer implements RenderProperties {
 	private static boolean objectDraggedOut;
 	private static int draggingWindowId;
 	private static boolean setPointer;
+	private static int pressedObjectId;
 
 	private static int bubbleXoffest = 35; // I thing we can make setter for this to be customizable
 	private static int bubbleYoffset = 20;
@@ -89,6 +91,7 @@ public class GuiRenderer implements RenderProperties {
 		draggingFromObjectId = -1;
 		objectDraggedOut = false;
 		draggingWindowId = -1;
+		pressedObjectId = -1;
 	}
 	
 	public void updatePositions() {
@@ -265,37 +268,39 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		
+		boolean update = false;
 		boolean worldLock = false;
+		
 		for(GuiWindow item : windows) {	
 			worldLock = false;
+			 update = false;
 			for(TextureObject object : item.getElements().getTextureObjectList()) {
 				renderGuiObject(object, shader, window);
-				
 				
 				if(mouseOverObjectId == item.getBackgroundWindowId())
 					worldLock = true;
 				
 				if(object.isOverable() && object.isMovable()) {
-					boolean update = false;
 					
-					if(item.getPosition().x < -(window.getWidth()/2)) {
+					 
+					if(item.getPosition().x < -(window.getWidth()/2) && draggingWindowId == item.getId()) {
 						item.setPosition(-(window.getWidth()/2)+item.getWidth()/2, item.getPosition().y);
 						update = true;
 					}
 
-					if(item.getPosition().y-item.getHeight()/2 < -(window.getHeight()/2)) {
+					if(item.getPosition().y-item.getHeight()/2 < -(window.getHeight()/2) && draggingWindowId == item.getId()) {
 						item.setPosition(item.getPosition().x, -(window.getHeight()/2)+item.getHeight()/2);
 						update = true;
 					}
 
-					if(mouseOverObjectId == object.getId() || draggingWindowId >= 0) {
+					if((mouseOverObjectId == object.getId() && draggingWindowId == -1) || (draggingWindowId >= 0 && draggingWindowId == item.getId())) {
 						worldLock = true;
 						if(window.getInput().isMouseButtonDown(0)) {
-							draggingWindowId = object.getId();
-							if(item.getStickTo() != null)
+							draggingWindowId = item.getId();
+							if(item.getStickTo() != null && item.getId() == draggingWindowId)
 								item.setStickTo(null);
-							
-							if(window.getCursorPositionX()+item.getWidth()/2 < window.getWidth()-350 && window.getCursorPositionY()+item.getHeight() - 15 < window.getHeight()-70 && window.getCursorPositionY()-15 > 0 && window.getCursorPositionX()-item.getWidth()/2 > 0) {
+
+							if(window.getCursorPositionX()+item.getWidth()/2 < window.getWidth()-350 && window.getCursorPositionY()+item.getHeight() - 15 < window.getHeight()-70 && window.getCursorPositionY()-15 > 0 && window.getCursorPositionX()-item.getWidth()/2 > 0 && item.getId() == draggingWindowId) {
 								item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
 							}
 							
@@ -305,10 +310,8 @@ public class GuiRenderer implements RenderProperties {
 					if(draggingWindowId >= 0 && window.getInput().isMouseButtonReleased(0)) {
 						draggingWindowId = -1;
 					}
-					
-					if(update)
-						updatePositions();
 				}
+
 				
 				if(object instanceof Button && item instanceof PagedGuiWindow) {
 					if(((Button) object).isClicked() && clickedObjectId == ((PagedGuiWindow)item).getPageLeft().getId()) {
@@ -320,8 +323,7 @@ public class GuiRenderer implements RenderProperties {
 						updatePositions();
 					}
 				}
-			}		
-
+			}	
 			
 			for(TextBlock block : item.getElements().getTextBlockList()) {
 				renderTextBlock(block, shader, window);
@@ -342,7 +344,20 @@ public class GuiRenderer implements RenderProperties {
 				WorldRenderer.setMouseInteractionLock(false);
 			else if(!WorldRenderer.isMouseInteractionLocked() && worldLock)
 				WorldRenderer.setMouseInteractionLock(true);
+			
+			if(update)
+				updatePositions();
 		}
+		
+		if(draggingWindowId >= 0) {
+			if(windows.get(windows.size()-1).getId() != draggingWindowId) {
+				if(windows.size() > 1) {
+					Collections.swap(windows, windows.size()-1, windows.size()-2);
+				}
+			}
+		}
+		
+		
 		
 		// Render items
 		for(Group group : tileSheet.getTileGroupsList()) {
@@ -449,6 +464,16 @@ public class GuiRenderer implements RenderProperties {
 	private void dragAndDrop(Tile object, Window window, Player player) {
 		if(object != null) {
 			if((object.getId() == mouseOverObjectId && draggingFromObjectId == -1) || draggingFromObjectId == object.getId()) {
+				if(object.getId() == mouseOverObjectId) {
+					if(window.getInput().isMouseButtonPressed(0)) {
+						pressedObjectId = mouseOverObjectId;
+					}
+					if(window.getInput().isMouseButtonReleased(0)) {
+						if(mouseOverObjectId == pressedObjectId) {
+							clickedObjectId = mouseOverObjectId;
+						}
+					}
+				}
 				if(window.getInput().isMouseButtonDown(0)) {
 					if(((Tile) object).getPuttedItem() != null) {
 						if(draggingFromObjectId == -1)
