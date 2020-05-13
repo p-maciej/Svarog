@@ -36,6 +36,7 @@ public class Save {
 	//WARNING IT IS USED ONLY FOR HELP READING PLAYER FROM FILE, IT ISN'T INTENDED TO CHANGING IT EVERY TIME
 	private static PlayerParameters playerParam = new PlayerParameters();
 	private static List<Item> items = new ArrayList<Item>();
+	private static List<EnemyParameters> enemies = new ArrayList<EnemyParameters>();
 	
 	public Save(String filename, Player player, World currentWorld) {
 		SaveAs(filename, player, currentWorld);
@@ -79,8 +80,62 @@ public class Save {
 		}
 	}
 	
+	public static void ReadEnemies() {
+		ReadItems();
+		
+		try {
+			File inputFile = new File("resources/gameContent/enemies");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+			//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			NodeList nList = doc.getElementsByTagName("enemy");
+			//System.out.println("----------------------------");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				//System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					/////////////////////////////////////////////////////////////////////////////////////////
+					//ItemType.valueOf(eElement.getElementsByTagName("itemType").item(0).getTextContent());
+					//eElement.getElementsByTagName("description").item(0).getTextContent();
+					//Integer.parseInt(eElement.getElementsByTagName("attackBonus").item(0).getTextContent());
+					//Boolean.valueOf(eElement.getElementsByTagName("attackBonus").item(0).getTextContent());
+					/////////////////////////////////////////////////////////////////////////////////////////
+					List<ItemParameters> itemParam = new ArrayList<>();
+					for(int i=0;i<Integer.parseInt(eElement.getElementsByTagName("howManyItems").item(0).getTextContent());i++) {
+						itemParam.add(new ItemParameters(Integer.parseInt(eElement.getElementsByTagName("itemGlobalID").item(i).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("itemTileID").item(i).getTextContent())));
+					}
+					EnemyParameters enemyParam = new EnemyParameters(itemParam,
+							Integer.parseInt(eElement.getElementsByTagName("globalID").item(0).getTextContent()),
+							eElement.getElementsByTagName("texture").item(0).getTextContent(),
+							Integer.parseInt(eElement.getElementsByTagName("posX").item(0).getTextContent()),
+							Integer.parseInt(eElement.getElementsByTagName("posY").item(0).getTextContent()),
+							Boolean.valueOf(eElement.getElementsByTagName("fullBoundingBox").item(0).getTextContent()),
+							Integer.parseInt(eElement.getElementsByTagName("minAttack").item(0).getTextContent()),
+							Integer.parseInt(eElement.getElementsByTagName("maxAttack").item(0).getTextContent()),
+							Integer.parseInt(eElement.getElementsByTagName("xpForKilling").item(0).getTextContent()),
+							Integer.parseInt(eElement.getElementsByTagName("hp").item(0).getTextContent()),
+							Integer.parseInt(eElement.getElementsByTagName("reward").item(0).getTextContent()),
+							eElement.getElementsByTagName("name").item(0).getTextContent());
+
+
+					enemies.add(enemyParam);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("ReadItems :)");
+			e.printStackTrace();
+		}
+	}
+	
 	public static void ReadFrom(String filename, Player player) {
 		ReadItems();
+		ReadEnemies();
 		
 		try {
 			File inputFile = new File("resources/saves/" + filename);
@@ -165,7 +220,7 @@ public class Save {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("ReadItems :)");
+			System.out.println("ReadFromFile :)");
 			e.printStackTrace();
 		}
 	}
@@ -360,6 +415,22 @@ public class Save {
 				return elem;
 		}
 		return null;
+	}
+	
+	public static EnemyParameters getEnemyById(int id) {
+		for(EnemyParameters elem : enemies) {
+			if(elem.getGlobalEnemyID() == id) 
+				return elem;
+		}
+		return null;
+	}
+	
+	public static List<EnemyParameters> getEnemies() {
+		return enemies;
+	}
+
+	public static void setEnemies(List<EnemyParameters> enemies) {
+		Save.enemies = enemies;
 	}
 	
 }

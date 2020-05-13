@@ -8,6 +8,7 @@ import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.Save;
 import svarog.world.Door;
 import svarog.world.Tile;
 import svarog.world.World;
@@ -24,12 +25,10 @@ abstract class Village implements Runnable {
 		ent1.setName("Maciej");
 		NPC ent2 = new NPC(2, new Texture("textures/player.png"), new Transform().setPosition(46, 27), true);
 		ent2.setName("Dawid");
-		Enemy ArchEnemy = new Enemy(3, new Texture("textures/avatar.png"), new Transform().setPosition(46, 29), true, 1, 50, 15, 150, 100);
-		ArchEnemy.setName("Ten Zly");
-		Enemy enemy1 = new Enemy(4, new Texture("textures/avatar.png"), new Transform().setPosition(49, 15), true, 1, 50, 15, 150, 100);
-		ArchEnemy.setName("Zlowrog");
-		Enemy enemy2 = new Enemy(5, new Texture("textures/avatar.png"), new Transform().setPosition(47, 29), true, 1, 50, 15, 150, 100);
-		ArchEnemy.setName("Andrzej");
+
+		Enemy ArchEnemy = new Enemy(3, Save.getEnemies().get(0));
+		Enemy enemy1 = new Enemy(4, new Transform().setPosition(49, 15), Save.getEnemies().get(0), "Zlowrog");
+		Enemy enemy2 = new Enemy(5, new Transform().setPosition(47, 29), Save.getEnemies().get(0), "Andrzej");
 		
 		NPC npc01 = new NPC(6, new Texture("textures/npc01.png"), new Transform().setPosition(46, 25), true);
 		npc01.setName("Sklepikarz");

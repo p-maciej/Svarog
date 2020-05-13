@@ -1,0 +1,19 @@
+<?xml version = "1.0"?>
+<class>
+	<enemy>
+		<globalID>0</globalID>
+		<texture>textures/avatar.png</texture>
+		<posX>46</posX>
+		<posY>29</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>30</minAttack>
+		<maxAttack>50</maxAttack>
+		<xpForKilling>15</xpForKilling>
+		<hp>150</hp>
+		<reward>100</reward>
+		<name>Malina</name>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>1</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</enemy>
+</class>

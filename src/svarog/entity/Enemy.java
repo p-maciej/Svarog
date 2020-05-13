@@ -10,6 +10,7 @@ import svarog.objects.ItemInfo;
 import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.EnemyParameters;
 import svarog.world.WorldRenderer;
 
 public class Enemy extends Entity {
@@ -20,6 +21,7 @@ public class Enemy extends Entity {
 	//private String texturesPath;
 	//private String fileName;
 	
+	private int globalID =-1;
 	private HP hp = new HP(20);
 	private int maxAttack=0;
 	private int minAttack=0;
@@ -50,6 +52,46 @@ public class Enemy extends Entity {
 		this.xpForKilling = xpForKilling;
 		this.reward = reward;
 		this.hp.SetMaxHP(hp);
+	}
+	
+	public Enemy(int id, EnemyParameters enemyParameters) {
+		super(id, new Texture(enemyParameters.getTexture()),
+				new Transform().setPosition(enemyParameters.getPosX(), enemyParameters.getPosY()),
+				enemyParameters.isFullBoundingBox());
+		super.setClickable(true);
+		super.setOverable(true);
+		//this.texturesPath = texturePath;
+		//this.fileName = filename;
+		
+		super.setIsStatic(false); // Non-static - default setting for Enemy
+		
+		this.maxAttack = enemyParameters.getMaxAttack();
+		this.minAttack = enemyParameters.getMinAttack();
+		this.xpForKilling = enemyParameters.getXpForKilling();
+		this.reward = enemyParameters.getReward();
+		this.hp.SetMaxHP(enemyParameters.getHp());
+		super.setName(enemyParameters.getName());
+		
+	}
+	
+	public Enemy(int id, Transform transform, EnemyParameters enemyParameters, String name) {
+		super(id, new Texture(enemyParameters.getTexture()),
+				transform,
+				enemyParameters.isFullBoundingBox());
+		super.setClickable(true);
+		super.setOverable(true);
+		//this.texturesPath = texturePath;
+		//this.fileName = filename;
+		
+		super.setIsStatic(false); // Non-static - default setting for Enemy
+		
+		this.maxAttack = enemyParameters.getMaxAttack();
+		this.minAttack = enemyParameters.getMinAttack();
+		this.xpForKilling = enemyParameters.getXpForKilling();
+		this.reward = enemyParameters.getReward();
+		this.hp.SetMaxHP(enemyParameters.getHp());
+		super.setName(name);
+		
 	}
 	
 	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, List<Item> items) {
@@ -127,5 +169,13 @@ public class Enemy extends Entity {
 	@Override
 	public boolean isClicked() {
 		return WorldRenderer.getClickedEntityId() == super.getId() ? true : false;
+	}
+
+	public int getGlobalID() {
+		return globalID;
+	}
+
+	public void setGlobalID(int globalID) {
+		this.globalID = globalID;
 	}
 }
