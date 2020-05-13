@@ -1,51 +1,7 @@
 <?xml version = "1.0"?>
 <class>
-	<item> <!--temp values begin-->
-		<TextureFileName>textures/item.png</TextureFileName>
-   		<globalID>100001</globalID>
-   		<defense>0</defense>
-   		<hpRegeneration>25</hpRegeneration>
-   		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
-   		<name>Potion</name>
-   		<description>It will icrease your hp</description>
-   		<itemType>consumable</itemType>
-	</item>
 	<item>
-		<TextureFileName>textures/helmet.png</TextureFileName>
-   		<globalID>100002</globalID>
-   		<defense>10</defense>
-   		<hpRegeneration>0</hpRegeneration>
-   		<attackBonus>5</attackBonus>
-   		<lvlRequired>0</lvlRequired>
-   		<name>helmet</name>
-   		<description>It will defense yours head</description>
-   		<itemType>helm</itemType>
-	</item>
-	<item>
-		<TextureFileName>textures/poranSword.png</TextureFileName>
-   		<globalID>100003</globalID>
-   		<defense>2</defense>
-   		<hpRegeneration>0</hpRegeneration>
-   		<attackBonus>12</attackBonus>
-   		<lvlRequired>0</lvlRequired>
-   		<name>poranSword</name>
-   		<description>You van slayer monster with it</description>
-   		<itemType>weapon</itemType>
-	</item>
-	<item>
-		<TextureFileName>textures/magicArmor.png</TextureFileName>
-   		<globalID>100004</globalID>
-   		<defense>20</defense>
-   		<hpRegeneration>0</hpRegeneration>
-   		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
-   		<name>magicArmor</name>
-   		<description>Super ultra duper magic Armor</description>
-   		<itemType>armor</itemType>
-	</item> <!--temp values end-->
-	<item>
-		<TextureFileName>textures/wolfskin.png</TextureFileName>
+		<TextureFileName>textures/items/trophies/wolfSkin.png</TextureFileName>
    		<globalID>0</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -56,7 +12,7 @@
    		<itemType>trophy</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/wargskin.png</TextureFileName>
+		<TextureFileName>textures/items/trophies/wargSkin.png</TextureFileName>
    		<globalID>1</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -67,7 +23,7 @@
    		<itemType>trophy</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/tooth.png</TextureFileName>
+		<TextureFileName>textures/items/trophies/fangs.png</TextureFileName>
    		<globalID>2</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -78,7 +34,7 @@
    		<itemType>trophy</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Ghulblood.png</TextureFileName>
+		<TextureFileName>textures/items/trophies/ghoulBlood.png</TextureFileName>
    		<globalID>3</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -89,7 +45,7 @@
    		<itemType>trophy</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Strzygaheart.png</TextureFileName>
+		<TextureFileName>textures/items/trophies/strigoiHeart</TextureFileName>
    		<globalID>4</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -100,7 +56,7 @@
    		<itemType>trophy</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Polnocnicahair.png</TextureFileName>
+		<TextureFileName>textures/items/trophies/nightHair.png</TextureFileName>
    		<globalID>5</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -111,7 +67,7 @@
    		<itemType>trophy</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/claws.png</TextureFileName>
+		<TextureFileName>textures/items/trophies/claws.png</TextureFileName>
    		<globalID>6</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -122,7 +78,7 @@
    		<itemType>trophy</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Warewolfskin.png</TextureFileName>
+		<TextureFileName>textures/items/trophies/werewolfSkin.png</TextureFileName>
    		<globalID>7</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -133,7 +89,7 @@
    		<itemType>trophy</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Rusalkatongue.png</TextureFileName>
+		<TextureFileName>textures/items/trophies/nixieTongue.png</TextureFileName>
    		<globalID>8</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -144,7 +100,7 @@
    		<itemType>trophy</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Naturecrown.png</TextureFileName>
+		<TextureFileName>textures/items/artefacts/natureCrown.png</TextureFileName>
    		<globalID>9</globalID>
    		<defense>50</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -155,7 +111,7 @@
    		<itemType>helm</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Magichelmet.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/magicHelmet.png</TextureFileName>
    		<globalID>10</globalID>
    		<defense>2</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -166,7 +122,7 @@
    		<itemType>helm</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Moneybag.png</TextureFileName>
+		<TextureFileName>textures/items/quest/moneyBag.png</TextureFileName>
    		<globalID>11</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -177,7 +133,7 @@
    		<itemType>other</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Icecup.png</TextureFileName>
+		<TextureFileName>textures/items/quest/iceCup.png</TextureFileName>
    		<globalID>12</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -188,7 +144,7 @@
    		<itemType>other</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Gerwazynecklace.png</TextureFileName>
+		<TextureFileName>textures/items/quest/gerwazyNecklace.png</TextureFileName>
    		<globalID>13</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -199,7 +155,7 @@
    		<itemType>other</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Poran.png</TextureFileName>
+		<TextureFileName>textures/items/artefacts/poran.png</TextureFileName>
    		<globalID>14</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -210,7 +166,7 @@
    		<itemType>weapon</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Mavakfamilysword.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/mavakFamilySword.png</TextureFileName>
    		<globalID>15</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -221,7 +177,7 @@
    		<itemType>weapon</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Banditsword.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/banditSword.png</TextureFileName>
    		<globalID>16</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -232,7 +188,7 @@
    		<itemType>weapon</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Banditmorgenstern.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/banditMorgenstern.png</TextureFileName>
    		<globalID>17</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -243,7 +199,7 @@
    		<itemType>weapon</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/AdventurerZweihander.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/adventurerZweihander.png</TextureFileName>
    		<globalID>18</globalID>
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -254,7 +210,7 @@
    		<itemType>weapon</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Apple.png</TextureFileName>
+		<TextureFileName>textures/items/food/apple.png</TextureFileName>
    		<globalID>19</globalID>
    		<defense>0</defense>
    		<hpRegeneration>10</hpRegeneration>
@@ -265,7 +221,7 @@
    		<itemType>consumable</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Goldenberry.png</TextureFileName>
+		<TextureFileName>textures/items/food/goldenBerry.png</TextureFileName>
    		<globalID>20</globalID>
    		<defense>0</defense>
    		<hpRegeneration>100</hpRegeneration>
@@ -276,7 +232,7 @@
    		<itemType>consumable</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Applepie.png</TextureFileName>
+		<TextureFileName>textures/items/food/applePie.png</TextureFileName>
    		<globalID>21</globalID>
    		<defense>0</defense>
    		<hpRegeneration>60</hpRegeneration>
@@ -287,7 +243,7 @@
    		<itemType>consumable</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Potion01.png</TextureFileName>
+		<TextureFileName>textures/items/food/smallPotion.png</TextureFileName>
    		<globalID>22</globalID>
    		<defense>0</defense>
    		<hpRegeneration>40</hpRegeneration>
@@ -298,7 +254,7 @@
    		<itemType>consumable</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Potion02.png</TextureFileName>
+		<TextureFileName>textures/items/food/bigPotion.png</TextureFileName>
    		<globalID>23</globalID>
    		<defense>0</defense>
    		<hpRegeneration>70</hpRegeneration>
@@ -309,7 +265,7 @@
    		<itemType>consumable</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Leatherarmor.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/leatherBreastplate.png</TextureFileName>
    		<globalID>24</globalID>
    		<defense>10</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -320,7 +276,7 @@
    		<itemType>armor</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Deathcoming.png</TextureFileName>
+		<TextureFileName>textures/items/artefacts/deathComing.png</TextureFileName>
    		<globalID>25</globalID>
    		<defense>25</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -331,7 +287,7 @@
    		<itemType>armor</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Magicarmor.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/magicArmor.png</TextureFileName>
    		<globalID>26</globalID>
    		<defense>15</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -342,7 +298,7 @@
    		<itemType>armor</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Skotijka.png</TextureFileName>
+		<TextureFileName>textures/items/artefacts/skotijka.png</TextureFileName>
    		<globalID>27</globalID>
    		<defense>5</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -353,7 +309,7 @@
    		<itemType>gloves</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Leathergloves.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/leatherGloves.png</TextureFileName>
    		<globalID>28</globalID>
    		<defense>2</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -364,7 +320,7 @@
    		<itemType>gloves</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Onuce.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/onuce.png</TextureFileName>
    		<globalID>29</globalID>
    		<defense>1</defense>
    		<hpRegeneration>0</hpRegeneration>
@@ -375,7 +331,7 @@
    		<itemType>shoes</itemType>
 	</item>
 	<item>
-		<TextureFileName>textures/Leathershoes.png</TextureFileName>
+		<TextureFileName>textures/items/equipment/leatherBoots.png</TextureFileName>
    		<globalID>30</globalID>
    		<defense>3</defense>
    		<hpRegeneration>0</hpRegeneration>
