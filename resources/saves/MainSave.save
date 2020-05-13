@@ -1,36 +1,41 @@
-1
-40
-25
-0
-player/mavak/
-mavak
-false
-false
-100
-100
-0
-50
-60
-0
-Ty
-4
-0
-6
-2
-7
-3
-8
-1
-9
-1
-1
-0
-1
-7
-talk
-false
-0
--3
-Pogadaj z Rozenna
-Idz do Rozenny, ona znajdzie dla ciebie jakiegos questa
-false
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<class>
+<save id="0">
+<worldID>1</worldID>
+<getPositionX>40</getPositionX>
+<getPositionY>25</getPositionY>
+<getId>0</getId>
+<getTexturesPath>player/mavak/</getTexturesPath>
+<getFileName>mavak</getFileName>
+<getFullBoundingBox>false</getFullBoundingBox>
+<isMovementLocked>false</isMovementLocked>
+<getHP>100</getHP>
+<getMaxHP>100</getMaxHP>
+<getXP>0</getXP>
+<getMinAttack>50</getMinAttack>
+<getMaxAttack>60</getMaxAttack>
+<getMoney>0</getMoney>
+<getName>Ty</getName>
+<howManyItems>4</howManyItems>
+<getGlobalID>0</getGlobalID>
+<getTileID>6</getTileID>
+<getGlobalID>2</getGlobalID>
+<getTileID>7</getTileID>
+<getGlobalID>3</getGlobalID>
+<getTileID>8</getTileID>
+<getGlobalID>1</getGlobalID>
+<getTileID>9</getTileID>
+<howManyQuests>1</howManyQuests>
+<howManyTasks>1</howManyTasks>
+<getTaskID>0</getTaskID>
+<getToDo>1</getToDo>
+<getDoItemID>7</getDoItemID>
+<getState>talk</getState>
+<getIsEnded>false</getIsEnded>
+<getHowMuchIsDone>0</getHowMuchIsDone>
+<getQuestID>-3</getQuestID>
+<getTitle>Pogadaj z Rozenna</getTitle>
+<getDescription>Idz do Rozenny, ona znajdzie dla ciebie jakiegos questa</getDescription>
+<isEndedQuest>false</isEndedQuest>
+</save>
+</class>
