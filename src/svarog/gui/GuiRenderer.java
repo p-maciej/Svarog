@@ -299,8 +299,10 @@ public class GuiRenderer implements RenderProperties {
 						worldLock = true;
 						if(window.getInput().isMouseButtonDown(0)) {
 							draggingWindowId = item.getId();
-							if(item.getStickTo() != null && item.getId() == draggingWindowId)
+							if(item.getStickTo() != null && item.getId() == draggingWindowId) {
 								item.setStickTo(null);
+								item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
+							}
 
 							if(window.getCursorPositionX()+item.getWidth()/2 < window.getWidth()-350 && window.getCursorPositionY()+item.getHeight() - 15 < window.getHeight()-70 && window.getCursorPositionY()-15 > 0 && window.getCursorPositionX()-item.getWidth()/2 > 0 && item.getId() == draggingWindowId) {
 								item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
@@ -375,6 +377,31 @@ public class GuiRenderer implements RenderProperties {
 		for(Group group : tileSheet.getTileGroupsList()) {
 			for(TextureObject object : group.getTextureObjectList()) {
 				dragAndDrop((Tile)object, window, player);
+			}
+		}
+		
+		int outerIndex = 0;
+		int draggingIndex = -1;
+		
+		for(Group group : tileSheet.getTileGroupsList()) {
+			int index = 0;
+			for(TextureObject object : group.getTextureObjectList()) {
+				dragAndDrop((Tile)object, window, player);
+				
+				if(draggingFromObjectId >= 0 && object.getId() == draggingFromObjectId) {
+					if(group.getTextureObjectList().size()-1 != index) {
+						Collections.swap(group.getTextureObjectList(), index, group.getTextureObjectList().size()-1);
+					}
+					draggingIndex = outerIndex;
+				}
+				index++;
+			}
+			outerIndex++;
+		}
+		
+		if(draggingIndex >= 0) {
+			if(tileSheet.getTileGroupsList().size() > 1 && draggingIndex != tileSheet.getTileGroupsList().size()-1) {
+				Collections.swap(tileSheet.getTileGroupsList(), draggingIndex, tileSheet.getTileGroupsList().size()-1);
 			}
 		}
 
