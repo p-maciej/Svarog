@@ -2,7 +2,7 @@
 <class>
 	<item>
 		<TextureFileName>textures/item.png</TextureFileName>
-   		<globalID>0</globalID>
+   		<globalID>100001</globalID>
    		<defense>0</defense>
    		<hpRegeneration>25</hpRegeneration>
    		<attackBonus>0</attackBonus>
@@ -13,7 +13,7 @@
 	</item>
 	<item>
 		<TextureFileName>textures/helmet.png</TextureFileName>
-   		<globalID>1</globalID>
+   		<globalID>100002</globalID>
    		<defense>10</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>5</attackBonus>
@@ -24,7 +24,7 @@
 	</item>
 	<item>
 		<TextureFileName>textures/poranSword.png</TextureFileName>
-   		<globalID>2</globalID>
+   		<globalID>100003</globalID>
    		<defense>2</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>12</attackBonus>
@@ -35,7 +35,7 @@
 	</item>
 	<item>
 		<TextureFileName>textures/magicArmor.png</TextureFileName>
-   		<globalID>3</globalID>
+   		<globalID>100004</globalID>
    		<defense>20</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>

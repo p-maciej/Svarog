@@ -17,13 +17,13 @@
 <getMoney>0</getMoney>
 <getName>Ty</getName>
 <howManyItems>4</howManyItems>
-<getGlobalID>0</getGlobalID>
+<getGlobalID>100001</getGlobalID>
 <getTileID>6</getTileID>
-<getGlobalID>2</getGlobalID>
+<getGlobalID>100002</getGlobalID>
 <getTileID>7</getTileID>
-<getGlobalID>3</getGlobalID>
+<getGlobalID>100003</getGlobalID>
 <getTileID>8</getTileID>
-<getGlobalID>1</getGlobalID>
+<getGlobalID>100004</getGlobalID>
 <getTileID>9</getTileID>
 <howManyQuests>1</howManyQuests>
 <howManyTasks>1</howManyTasks>
@@ -35,7 +35,7 @@
 <getHowMuchIsDone>0</getHowMuchIsDone>
 <getQuestID>-3</getQuestID>
 <getTitle>Pogadaj z Rozenna</getTitle>
-<getDescription>Idz do Rozenny, ona znajdzie dla ciebie jakiegos questa</getDescription>
+<getDescription>Idz do Rozenny, ona znajdzie dla wiecej tekstu dla PagedGuiWindow ciebie jakiegos questa</getDescription>
 <isEndedQuest>false</isEndedQuest>
 </save>
 </class>
