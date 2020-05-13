@@ -65,6 +65,7 @@ public class Main {
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
 	private static Audio audioPlayer;
+	private static GuiWindow questsWindow;
 	
 	// Fonts
 	private static Font roboto_15;
@@ -569,8 +570,17 @@ public class Main {
 					
 					
 					
-					if(questsButton.isClicked())
-						guiRenderer.addWindow(player.getQuestsPagedOnGUI(roboto_15));
+					if(questsButton.isClicked()) {
+						if(questsWindow != null) {
+							if(questsWindow.isClosed()) {
+								questsWindow = player.getQuestsPagedOnGUI(roboto_15);
+								guiRenderer.addWindow(questsWindow);
+							}
+						} else {
+							questsWindow = player.getQuestsPagedOnGUI(roboto_15);
+							guiRenderer.addWindow(questsWindow);
+						}
+					}
 					
 					if(healBtn.isClicked()) {
 						player.FullyRecoverHP();

@@ -11,6 +11,7 @@ import svarog.gui.PagedGuiWindow.WindowTextType;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
 import svarog.io.Window;
+import svarog.io.Timer;
 import svarog.io.Window.Cursor;
 import svarog.objects.Item;
 import svarog.render.Camera;
@@ -61,6 +62,7 @@ public class GuiRenderer implements RenderProperties {
 	private static int draggingWindowId;
 	private static boolean setPointer;
 	private static int pressedObjectId;
+	private static long clickedTime;
 
 	private static int bubbleXoffest = 35; // I thing we can make setter for this to be customizable
 	private static int bubbleYoffset = 20;
@@ -470,14 +472,17 @@ public class GuiRenderer implements RenderProperties {
 					}
 					if(window.getInput().isMouseButtonReleased(0)) {
 						if(mouseOverObjectId == pressedObjectId) {
-							clickedObjectId = mouseOverObjectId;
+							if(!Timer.getDelay(clickedTime, Timer.getNanoTime(), 0.3f))
+								clickedObjectId = mouseOverObjectId;
 						}
 					}
 				}
 				if(window.getInput().isMouseButtonDown(0)) {
 					if(((Tile) object).getPuttedItem() != null) {
-						if(draggingFromObjectId == -1)
+						if(draggingFromObjectId == -1) {
 							draggingFromObjectId = object.getId();
+							clickedTime = Timer.getNanoTime();
+						}
 						
 						if((draggingFromObjectId != mouseOverObjectId) || objectDraggedOut == true) {
 							object.getPuttedItem().setPosition((float)window.getRelativePositionCursorX(), (float)window.getRelativePositionCursorY());
@@ -737,9 +742,12 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	public void removeWindow(int windowId) {
-		for(int i = 0; i < windows.size(); i++)
-			if(windows.get(i).getId() == windowId)
+		for(int i = 0; i < windows.size(); i++) {
+			if(windows.get(i).getId() == windowId) {
+				windows.get(i).setClosed(true);
 				windows.remove(i);
+			}
+		}
 	}
 	
 	public void showBubble(Line line, double posX, double posY) {

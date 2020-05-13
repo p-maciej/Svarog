@@ -26,12 +26,15 @@ public class GuiWindow {
 	
 	private int backgroundWindowId;
 	
+	private boolean isClosed;
+
 	public GuiWindow(String title, Font font, int width, int height, stickTo stickTo) {
 		this.id = auto_increment++;
 		this.setWidth(width);
 		this.setHeight(height);
 		this.setTitle(title);
 		this.setWindowFont(font);
+		this.setClosed(false);
 		
 		position = new Vector2f();
 		elements = new Group();
@@ -46,6 +49,7 @@ public class GuiWindow {
 		this.setHeight(height);
 		this.setTitle(title);
 		this.setWindowFont(font);
+		this.setClosed(false);
 		
 		setPosition(position);
 		elements = new Group();
@@ -59,6 +63,7 @@ public class GuiWindow {
 		this.setHeight(backgroundTexture.getHeight());
 		this.setTitle(title);
 		this.setWindowFont(font);
+		this.setClosed(false);
 		
 		position = new Vector2f();
 		elements = new Group();
@@ -173,5 +178,14 @@ public class GuiWindow {
 
 	int getBackgroundWindowId() {
 		return backgroundWindowId;
+	}
+	
+	
+	public boolean isClosed() {
+		return isClosed;
+	}
+
+	void setClosed(boolean isClosed) {
+		this.isClosed = isClosed;
 	}
 }
