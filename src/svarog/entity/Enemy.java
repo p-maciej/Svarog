@@ -65,6 +65,7 @@ public class Enemy extends Entity {
 		
 		super.setIsStatic(false); // Non-static - default setting for Enemy
 		
+		this.globalID = enemyParameters.getGlobalEnemyID();
 		this.maxAttack = enemyParameters.getMaxAttack();
 		this.minAttack = enemyParameters.getMinAttack();
 		this.xpForKilling = enemyParameters.getXpForKilling();

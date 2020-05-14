@@ -11,6 +11,7 @@ import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.NpcParameters;
 import svarog.world.World;
 import svarog.world.WorldRenderer;
 
@@ -83,6 +84,60 @@ public abstract class Entity implements MouseInteraction {
 			transform.getScale().x = diff;
 		
 		setEntityProperties();	
+	}
+	
+	public Entity(int id, NpcParameters npcParameters) {
+		if(npcParameters.getTexturePath().isEmpty()) {
+			this.objectId = auto_increment++;
+			this.setId(id);
+			this.setName(npcParameters.getName());
+			this.transform = new Transform().setPosition(npcParameters.getPosX(), npcParameters.getPosY());
+			this.transform.getPosition().x *= 2;
+			this.transform.getPosition().y *= 2;
+		}else {
+			this.objectId = auto_increment++;
+			this.setId(id);
+			
+			this.entityName = npcParameters.getName();
+			this.texture = new Texture(npcParameters.getTexturePath());
+			this.transform = new Transform().setPosition(npcParameters.getPosX(), npcParameters.getPosY());
+			this.setFullBoundingBox(npcParameters.isFullBoundingBox());
+			
+			float diff = (float)texture.getHeight() / (float)texture.getWidth();
+			if(texture.getHeight() > texture.getWidth())
+				transform.getScale().y = diff;
+			else
+				transform.getScale().x = diff;
+			
+			setEntityProperties();	
+		}
+	}
+	
+	public Entity(int id, NpcParameters npcParameters, Transform transform) {
+		if(npcParameters.getTexturePath().isEmpty()) {
+			this.objectId = auto_increment++;
+			this.setId(id);
+			this.setName(npcParameters.getName());
+			this.transform = transform;
+			this.transform.getPosition().x *= 2;
+			this.transform.getPosition().y *= 2;
+		}else {
+			this.objectId = auto_increment++;
+			this.setId(id);
+			
+			this.entityName = npcParameters.getName();
+			this.texture = new Texture(npcParameters.getTexturePath());
+			this.transform = transform;
+			this.setFullBoundingBox(npcParameters.isFullBoundingBox());
+			
+			float diff = (float)texture.getHeight() / (float)texture.getWidth();
+			if(texture.getHeight() > texture.getWidth())
+				transform.getScale().y = diff;
+			else
+				transform.getScale().x = diff;
+			
+			setEntityProperties();	
+		}
 	}
 	
 	public Entity(int id, Transform transform, String name) {

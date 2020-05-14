@@ -1,0 +1,45 @@
+<?xml version = "1.0"?>
+<class>
+	<npc>
+		<globalID>0</globalID>
+		<texturePath>textures/player.png</texturePath>
+		<posX>42</posX>
+		<posY>26</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Dummy</name>
+		<interactionsFile></interactionsFile>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>1</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</npc>
+	<npc>
+		<globalID>1</globalID>
+		<texturePath>textures/npc01.png</texturePath>
+		<posX>46</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Sklepikarz</name>
+		<interactionsFile>quest01.quest</interactionsFile>
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>2</globalID>
+		<texturePath>textures/rozenna.png</texturePath>
+		<posX>48</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Rozenna</name>
+		<interactionsFile>Rozenna01.quest</interactionsFile>
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>3</globalID>
+		<texturePath></texturePath>
+		<posX>29</posX>
+		<posY>28</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Ninja</name>
+		<interactionsFile></interactionsFile>
+		<howManyItems>0</howManyItems>
+	</npc>
+</class>

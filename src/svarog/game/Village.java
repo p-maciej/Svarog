@@ -21,9 +21,9 @@ abstract class Village implements Runnable {
 		world.loadMap("village.png", 32);
 		world.setSolidTilesFromMap("village_mask.png");
 		
-		NPC ent1 = new NPC(1, new Texture("textures/player.png"), new Transform().setPosition(42, 26), true);
+		NPC ent1 = new NPC(1, Save.getNpcsByID(0));
 		ent1.setName("Maciej");
-		NPC ent2 = new NPC(2, new Texture("textures/player.png"), new Transform().setPosition(46, 27), true);
+		NPC ent2 = new NPC(2, Save.getNpcsByID(0), new Transform().setPosition(46, 27));
 		ent2.setName("Dawid");
 
 		Enemy ArchEnemy = new Enemy(3, Save.getEnemies().get(0));
