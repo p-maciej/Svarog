@@ -810,6 +810,10 @@ public class GuiRenderer implements RenderProperties {
 		}
 	}
 	
+	public StatsContainer getStatsContainer() {
+		return statsContainer;
+	}
+	
 	public void closeArena() {
 		arenaContainer.closeArena(this);
 		WorldRenderer.setMouseInteractionLock(false);

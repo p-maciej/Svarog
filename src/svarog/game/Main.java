@@ -128,7 +128,8 @@ public class Main {
 		roboto_18_Y = new Font("roboto_18", new Color((byte)255, (byte)255, (byte)0));
 		roboto_18_R = new Font("roboto_18", new Color((byte)255, (byte)0, (byte)0));
 		
-		StatsContainer.setFont(roboto_18);
+		StatsContainer.setLargeFont(roboto_18);
+		StatsContainer.setSmallFont(roboto_15);
 		
 		guiRenderer = new GuiRenderer(window);
 		
@@ -157,8 +158,7 @@ public class Main {
 		Line HPtext = new Line(GuiRenderer.stickTo.BottomLeft);
 		HPtext.setString("HP:", roboto_18);
 		HPtext.move(75, -35);
-		
-		
+
 		Line XPtext = new Line(GuiRenderer.stickTo.BottomLeft);
 		XPtext.setString("XP:", roboto_18);
 		XPtext.move(75, -5);
@@ -166,7 +166,25 @@ public class Main {
 		statsStatic.addTextureObject(XPtext);
 		statsStatic.addTextureObject(HPtext);
 		
-		guiRenderer.updatePlayerStats(player);
+		Group playerStats = new Group();
+		playerStats.setStickTo(stickTo.TopRight);
+		playerStats.move(-330, -20);
+		
+		Line levelText = new Line(0, 0);
+		levelText.setString(language.getValue("levelItem"), roboto_15);
+		levelText.move(levelText.getWidth()/2, 0);
+		
+		Line attackText = new Line(0, -25);
+		attackText.setString(language.getValue("attackItem"), roboto_15);
+		attackText.move(attackText.getWidth()/2, 0);
+		
+		Line defenseText = new Line(0, -50);
+		defenseText.setString(language.getValue("defenseItem"), roboto_15);
+		defenseText.move(defenseText.getWidth()/2, 0);
+		
+		playerStats.addTextureObject(attackText);
+		playerStats.addTextureObject(defenseText);
+		playerStats.addTextureObject(levelText);
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
@@ -175,10 +193,10 @@ public class Main {
 		TextureObject topBorderRightPanel = new TextureObject(new Texture("images/border_right_panel.png"), GuiRenderer.stickTo.TopRight);
 		
 		questsButton = new Button(new Texture("images/gui/button_quest.png"), new Texture("images/gui/button_quest_hover.png"), stickTo.TopRight);
-		questsButton.move(-250, 10);
+		questsButton.move(-25, 10);
 		
 		healBtn =  new Button(new Texture("images/gui/button_heal.png"), new Texture("images/gui/button_heal_hover.png"), stickTo.TopRight);
-		healBtn.move(-25, 10);
+		healBtn.move(-25, 70);
 		
 		guiRenderer.addGuiObject(bottomCorner1);
 		guiRenderer.addGuiObject(bottomCorner2);
@@ -187,8 +205,10 @@ public class Main {
 		guiRenderer.addGuiObject(questsButton);
 		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(statsStatic);
+		guiRenderer.addGroup(playerStats);
 		
 	
+		guiRenderer.updatePlayerStats(player);
 		
 		/// Tiles on GUI ///////////////////////////
 		tileSheet = new TileSheet();
@@ -570,7 +590,7 @@ public class Main {
 								guiRenderer.removeWindow(itemInfo.getId());
 							
 							
-							itemInfo = StaticUI.createItemWindow(tempItem, roboto_15, language, itemWindowBackground);
+							itemInfo = guiRenderer.getStatsContainer().createItemWindow(tempItem, language, itemWindowBackground);
 							
 							itemInfo.setStickTo(stickTo.BottomRight);
 							itemInfo.move(-530, 300);
