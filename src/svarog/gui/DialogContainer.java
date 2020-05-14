@@ -9,6 +9,7 @@ import org.lwjgl.BufferUtils;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.font.Font;
 import svarog.gui.font.TextBlock;
+import svarog.language.LanguageLoader;
 import svarog.render.Texture;
 
 public class DialogContainer {
@@ -33,14 +34,14 @@ public class DialogContainer {
 		this.dialogId = -1;
 	}
 	
-	Group createDialog(Dialog dialog) {
+	Group createDialog(Dialog dialog, LanguageLoader language) {
 		if(dialogTop != null && dialogCenter != null && answerFont != null && answerHoverFont != null && dialogFont != null) {
 			Group group = new Group();
 			
 			int yOffset = 36;
 			int interspace = 8;
 			TextBlock content = new TextBlock(550, new Vector2f());
-			content.setString(dialogFont, dialog.getContent());
+			content.setString(dialogFont, language.getValue(dialog.getContent()));
 			
 			int height = content.getHeight()-dialogTop.getHeight()+yOffset;
 			if(height < 0)
@@ -54,7 +55,7 @@ public class DialogContainer {
 				Answer answer = dialog.getAnswers().get(i);
 				
 				TextBlockButton ans = new TextBlockButton(535, new Vector2f());
-				ans.setString(answerFont, answerHoverFont, answer.getContent());
+				ans.setString(answerFont, answerHoverFont, language.getValue(answer.getContent()));
 				top -= ans.getHeight()+interspace;
 				height += ans.getHeight()+interspace;
 				ans.move(left+15, top);

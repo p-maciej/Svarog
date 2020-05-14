@@ -568,14 +568,14 @@ public class Main {
 								guiRenderer.updatePlayerStats(player);
 	
 							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
-								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId());
+								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId(), language);
 								Interactions.setTalkingNPCid(i);
 							}
 						}
 					}
 					if(Interactions.getTalkingNPCid() != -1){
 						
-						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(Interactions.getTalkingNPCid()).getId());
+						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(Interactions.getTalkingNPCid()).getId(), language);
 					}
 					if(DialogContainer.isDialogClosing()) {
 						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().setEnded(true);

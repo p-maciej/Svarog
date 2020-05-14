@@ -19,6 +19,7 @@ import svarog.gui.Dialog;
 import svarog.gui.GuiRenderer;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
+import svarog.language.LanguageLoader;
 import svarog.render.Camera;
 import svarog.world.WorldRenderer;
 
@@ -109,7 +110,7 @@ public class Interactions {
 		}
 	}
 	
-	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer, Player player, int NPCid) {
+	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
 		if(isEnded || dialog == null) {
 			dialog = dialogs.get(0);
 			isEnded = false;
@@ -117,17 +118,17 @@ public class Interactions {
 		for(int i=0; i < currentWorld.getWorld().numberOfEntities() - 1 ; i++) {
 			if(/* currentWorld.isOverEntity(currentWorld.getWorld().getEntity(i), camera, window) && */ window.getInput().isMouseButtonPressed(0)) {
 				if(/*currentWorld.getWorld().getEntity(i) instanceof NPC && currentWorld.getWorld().getEntity(i).getId() == 6 &&*/ !guiRenderer.isDialogOpen()) {
-					guiRenderer.showDialog(dialog);
+					guiRenderer.showDialog(dialog, language);
 				}
 			}
 		}
 		
 		if(dialog.clickedAnswer() != null) {
-			interactionsHelper(currentWorld, guiRenderer, player, NPCid);
+			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
 		}
 
 	}
-	public void interactionsHelper(WorldRenderer currentWorld, GuiRenderer guiRenderer, Player player, int NPCid) {
+	public void interactionsHelper(WorldRenderer currentWorld, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
 		for(int i = 0; i < dialog.getAnswers().size();i++) {
 			if(dialog.clickedAnswer() != null) {
 				if(dialog.clickedAnswer().getId() == i) {
@@ -153,7 +154,7 @@ public class Interactions {
 							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getAnswers(),
 							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getQuestID()
 							);
-					guiRenderer.showDialog(dialog);
+					guiRenderer.showDialog(dialog, language);
 					if(dialog.getQuestID()!=-1) {
 						player.addNewQuestNoRepeating(getQuestByID(dialog.getQuestID()));
 					}

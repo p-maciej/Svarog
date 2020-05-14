@@ -58,7 +58,7 @@ public class InterfaceTranslations {
 	              return data.get(i).getValue();
 	          }
 	      }
-	      return "There is no " + k +"!";
+	      return ("Err: "+k);
 	  }
 	
 	  public String getKey(String v) {
@@ -67,7 +67,7 @@ public class InterfaceTranslations {
 	              return data.get(i).getKey();
 	          }
 	      }
-	      return "There is no " + v +"!";
+	      return ("Err: "+v);
 	  }
 	
 	  private String Options(languages option) {

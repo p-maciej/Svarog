@@ -13,6 +13,7 @@ import svarog.gui.font.TextBlock;
 import svarog.io.Window;
 import svarog.io.Timer;
 import svarog.io.Window.Cursor;
+import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.render.Camera;
 import svarog.render.Model;
@@ -781,9 +782,9 @@ public class GuiRenderer implements RenderProperties {
 		this.groups.add(bubbleContainer.getBubble(line, posX, posY));
 	}
 	
-	public void showDialog(Dialog dialog) {
+	public void showDialog(Dialog dialog, LanguageLoader language) {
 		if(dialogContainer.getDialogId() == -1) {
-			groups.add(dialogContainer.createDialog(dialog));
+			groups.add(dialogContainer.createDialog(dialog, language));
 			updatePositions();
 		}
 	}
