@@ -47,29 +47,40 @@ public class NPC extends Entity{
 		this.items = items;
 	}
 	
-	public NPC(int id, NpcParameters npcParams, Transform transform) {
+	public NPC(int id, NpcParameters npcParams, Transform transform, boolean isClickable) {
 		super(id, npcParams, transform);
-		//super(id, new Transform().setPosition(npcParams.getPosX(), npcParams.getPosY()), npcParams.getName());
 		super.setOverable(true);
-		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
-
-		super.setIsStatic(true); // static - default setting for NPC
+		super.setClickable(isClickable);
+		
+		super.setIsStatic(true);
 		super.setName(npcParams.getName());
 		
 		this.globalNpcID = npcParams.getGlobalNpcID();
 		if(npcParams.getInteractionsPath()!=null && !(npcParams.getInteractionsPath().isEmpty())) {
-			System.out.println("-"+npcParams.getInteractionsPath()+"-");
 			this.setInteractions(new Interactions(npcParams.getInteractionsPath()));
 		}
 	}
 	
-	public NPC(int id, NpcParameters npcParams) {
-		super(id, npcParams);
-		//super(id, new Transform().setPosition(npcParams.getPosX(), npcParams.getPosY()), npcParams.getName());
+	public NPC(int id, NpcParameters npcParams, Transform transform, String name, boolean isClickable) {
+		super(id, npcParams, transform);
 		super.setOverable(true);
-		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
-
-		super.setIsStatic(true); // static - default setting for NPC
+		super.setClickable(isClickable);
+		
+		super.setIsStatic(true);
+		super.setName(name);
+		
+		this.globalNpcID = npcParams.getGlobalNpcID();
+		if(npcParams.getInteractionsPath()!=null && !(npcParams.getInteractionsPath().isEmpty())) {
+			this.setInteractions(new Interactions(npcParams.getInteractionsPath()));
+		}
+	}
+	
+	public NPC(int id, NpcParameters npcParams, boolean isClickable) {
+		super(id, npcParams);
+		super.setOverable(true);
+		super.setClickable(isClickable); 
+		
+		super.setIsStatic(true); 
 		super.setName(npcParams.getName());
 		
 		this.globalNpcID = npcParams.getGlobalNpcID();
