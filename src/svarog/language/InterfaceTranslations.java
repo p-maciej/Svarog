@@ -73,11 +73,11 @@ public class InterfaceTranslations {
 	  private String Options(languages option) {
 	      String file_name;
 	      if(option == languages.EN_en) {
-	          file_name = "test.lang";
+	          file_name = "en_EN.lang";
 	      } else if(option == languages.PL_pl) {
-	          file_name = "test.lang";
+	          file_name = "pl_PL.lang";
 	      } else {
-	          file_name = "test.lang";
+	          file_name = "en_EN.lang";
 	      }
 	      return file_name;
 	  }

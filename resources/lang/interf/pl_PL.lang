@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0"?>
 <file>
     <variable>
-        <key>SELL</key>
-        <translation>sprzedaj</translation>
+        <key>wolfSkin</key>
+        <translation>Skóra wilka</translation>
+    </variable>
+	<variable>
+        <key>wolfSkin</key>
+        <translation>Skóra wilka</translation>
     </variable>
     <variable>
         <key>BUY</key>
