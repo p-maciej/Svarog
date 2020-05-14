@@ -61,7 +61,7 @@ Add enemy hp (int) ```<hp>```
 #
 Add value in money which player will get after kill enemy (int) ```<reward>```
 #
-Add how many items enemy will have (it is not showing so for now let it be o EVERYTIME) (int) ```<howManyItems>```
+Add how many items enemy will have (it is not showing so for now let it be value of 0 EVERYTIME) (int) ```<howManyItems>```
 #
 for(how many items enemy will have) {
 #

@@ -1,4 +1,4 @@
-# How to write working enemies 101
+# How to write working npc 101
 
 # xml (quest)
 
@@ -52,7 +52,7 @@
 ```
 #
 #
-#**YOU CAN LEAVE SOME TAGS EMPTY ONLY WHERE I WRITE ABOUT IT !!!**
+# **YOU CAN LEAVE SOME TAGS EMPTY ONLY WHERE I WRITE ABOUT IT !!!**
 #
 #
 First you must declare  ```<npc>``` 
@@ -71,7 +71,7 @@ Add name for out hero (String) ```<name>```
 #
 Add is interactions File (String) (you can leave that empty if npc doesnt have anything to say to out hero) ```<interactionsFile>```
 #
-Add how many items npc will have (it is not showing so for now let it be o EVERYTIME) (int) ```<howManyItems>```
+Add how many items npc will have (it is not showing so for now let it be value of 0 EVERYTIME) (int) ```<howManyItems>```
 #
 for(how many items enemy will have) {
 #
@@ -82,7 +82,7 @@ for(how many items enemy will have) {
 }
 #
 
-#CONGRATS YOU MADE YOURS FIRST WORKING NPC, REMEMBER TO ADD XML FORMAT AT TOP AND DO EVERY THING IN class TAG ;)
+# CONGRATS YOU MADE YOURS FIRST WORKING NPC, REMEMBER TO ADD XML FORMAT AT TOP AND DO EVERY THING IN class TAG ;)
 
 
 # Doc ver 0.1
