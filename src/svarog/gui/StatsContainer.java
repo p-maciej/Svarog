@@ -2,23 +2,30 @@ package svarog.gui;
 
 import java.nio.ByteBuffer;
 
+import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
 import svarog.entity.Player;
+import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
+import svarog.gui.font.TextBlock;
+import svarog.language.LanguageLoader;
+import svarog.objects.Item;
 import svarog.render.Texture;
 
 public class StatsContainer {
 	private Group playerStats;
-	private static Font font;	
-	
+	private static Line level;
+	private static Font largeFont;	
+	private static Font smallFont;
+
 	public StatsContainer() {}
 	
 	public void playerStatsDynamic(GuiRenderer guiRenderer, Player player) {
-		if(font != null) {
+		if(largeFont != null) {
 			if(playerStats != null)
 				guiRenderer.removeGroup(playerStats);
 				
@@ -88,20 +95,118 @@ public class StatsContainer {
 			xpTexture.move(120, -14);
 			playerStats.addTextureObject(xpTexture);
 			
-			Line level = new Line(GuiRenderer.stickTo.BottomRight);
-			level.setString(Integer.toString(player.getXP().GetLevel()) + "lvl", font);
-			level.move(-70, -20);
-			playerStats.addTextureObject(level);
-			
 			guiRenderer.addGroup(playerStats);
+			
+			updateLevel(guiRenderer, player);
+			
 			guiRenderer.updatePositions();
 		} else {
 			throw new IllegalStateException("Set static font in StatsContainer!");
 		}
 	}
 	
+	public void updateLevel(GuiRenderer guiRenderer, Player player) {
+		if(smallFont != null) {
+			if(level != null)
+				guiRenderer.removeGuiObject(level);
+		
+			level = new Line(stickTo.TopRight);
+			level.setString(Integer.toString(player.getXP().GetLevel()), smallFont);
+			level.move(-250, 11);
+			
+			guiRenderer.addGuiObject(level, State.staticImage);
+		}
+	}
 	
-	public static void setFont(Font font) {
-		StatsContainer.font = font;
+	public GuiWindow createItemWindow(Item item, LanguageLoader language, TextureObject itemWindowBackground) {
+		int yPos = 0;
+		// Desc
+		GuiWindow itemInfo = new GuiWindow(language.getValue(item.getItemInfo().getName()), smallFont, itemWindowBackground);
+		TextBlock description = new TextBlock(itemInfo.getWidth()-30, new Vector2f());
+		description.setString(smallFont, language.getValue(item.getItemInfo().getDescription()));
+		description.move(-description.getWidth()/2-5, -itemInfo.getHeight()/2+50);
+		itemInfo.addTextBlock(description);
+		
+		yPos = (int)(description.getPosition().y - description.getHeight() - 20);
+		// Type
+		Line pre_type = new Line(-itemInfo.getWidth()/2, yPos);
+		pre_type.setString(language.getValue("categoryItem"), smallFont);
+		pre_type.move(pre_type.getWidth()/2+10, 0);
+		itemInfo.addTextureObject(pre_type);
+		
+		Line type = new Line(-50, (int)pre_type.getPosition().y);
+		type.setString(language.getValue(item.getItemInfo().getItemType().name()), smallFont);
+		type.move(type.getWidth()/2, 0);
+		itemInfo.addTextureObject(type);
+		
+		yPos = (int)pre_type.getPosition().y-20;
+		// Level req
+		Line pre_levelReq = new Line(-itemInfo.getWidth()/2, yPos);
+		pre_levelReq.setString(language.getValue("levelItem"), smallFont);
+		pre_levelReq.move(pre_levelReq.getWidth()/2+10, 0);
+		itemInfo.addTextureObject(pre_levelReq);
+		
+		Line levelReq = new Line(-50, (int)pre_levelReq.getPosition().y);
+		levelReq.setString(Integer.toString(item.getItemInfo().getLvlRequired()), smallFont);
+		levelReq.move(levelReq.getWidth()/2, 0);
+		itemInfo.addTextureObject(levelReq);
+		
+		
+		if(item.getItemInfo().getAttackBonus() > 0) {
+			yPos -= 20;
+			// Attack bonus
+			Line pre_attack = new Line(-itemInfo.getWidth()/2, (int)pre_levelReq.getPosition().y-20);
+			pre_attack.setString(language.getValue("attackItem"), smallFont);
+			pre_attack.move(pre_attack.getWidth()/2+10, 0);
+			itemInfo.addTextureObject(pre_attack);
+			
+			Line attack = new Line(-50, (int)pre_attack.getPosition().y);
+			attack.setString(Integer.toString(item.getItemInfo().getAttackBonus()), smallFont);
+			attack.move(attack.getWidth()/2, 0);
+			itemInfo.addTextureObject(attack);
+		}
+		
+		if(item.getItemInfo().getDefense() > 0) {
+			yPos -= 20;
+			// Defense bonus
+			Line pre_defense = new Line(-itemInfo.getWidth()/2, yPos);
+			pre_defense.setString(language.getValue("defenseItem"), smallFont);
+			pre_defense.move(pre_defense.getWidth()/2+10, 0);
+			itemInfo.addTextureObject(pre_defense);
+			
+			Line defense = new Line(-50, (int)pre_defense.getPosition().y);
+			defense.setString(Integer.toString(item.getItemInfo().getDefense()), smallFont);
+			defense.move(defense.getWidth()/2, 0);
+			itemInfo.addTextureObject(defense);
+		}
+		
+		if(item.getItemInfo().getHpRegeneration() > 0) {
+			yPos -= 20;
+			// HP
+			Line pre_hp = new Line(-itemInfo.getWidth()/2, yPos);
+			pre_hp.setString(language.getValue("hpItem"), smallFont);
+			pre_hp.move(pre_hp.getWidth()/2+10, 0);
+			itemInfo.addTextureObject(pre_hp);
+			
+			Line hp = new Line(-50, (int)pre_hp.getPosition().y);
+			hp.setString(Integer.toString(item.getItemInfo().getHpRegeneration()), smallFont);
+			hp.move(hp.getWidth()/2, 0);
+			itemInfo.addTextureObject(hp);
+		}
+		
+		return itemInfo;
+	}
+	
+	
+	public static Font getSmallFont() {
+		return smallFont;
+	}
+
+	public static void setSmallFont(Font smallFont) {
+		StatsContainer.smallFont = smallFont;
+	}
+	
+	public static void setLargeFont(Font font) {
+		StatsContainer.largeFont = font;
 	}
 }
