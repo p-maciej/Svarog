@@ -11,10 +11,12 @@ import svarog.objects.ItemInfo;
 import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.NpcParameters;
 import svarog.world.WorldRenderer;
 
 public class NPC extends Entity{
 
+	private int globalNpcID = -1;
 	private Interactions interactions;
 	
 	//Animacja potem siê ogarnie
@@ -45,6 +47,38 @@ public class NPC extends Entity{
 		this.items = items;
 	}
 	
+	public NPC(int id, NpcParameters npcParams, Transform transform) {
+		super(id, npcParams, transform);
+		//super(id, new Transform().setPosition(npcParams.getPosX(), npcParams.getPosY()), npcParams.getName());
+		super.setOverable(true);
+		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
+
+		super.setIsStatic(true); // static - default setting for NPC
+		super.setName(npcParams.getName());
+		
+		this.globalNpcID = npcParams.getGlobalNpcID();
+		if(npcParams.getInteractionsPath()!=null && !(npcParams.getInteractionsPath().isEmpty())) {
+			System.out.println("-"+npcParams.getInteractionsPath()+"-");
+			this.setInteractions(new Interactions(npcParams.getInteractionsPath()));
+		}
+	}
+	
+	public NPC(int id, NpcParameters npcParams) {
+		super(id, npcParams);
+		//super(id, new Transform().setPosition(npcParams.getPosX(), npcParams.getPosY()), npcParams.getName());
+		super.setOverable(true);
+		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
+
+		super.setIsStatic(true); // static - default setting for NPC
+		super.setName(npcParams.getName());
+		
+		this.globalNpcID = npcParams.getGlobalNpcID();
+		if(npcParams.getInteractionsPath()!=null && !(npcParams.getInteractionsPath().isEmpty())) {
+			System.out.println("-"+npcParams.getInteractionsPath()+"-");
+			this.setInteractions(new Interactions(npcParams.getInteractionsPath()));
+		}
+	}
+	
 	public NPC(int id, Transform transform, String name) {
 		super(id, transform, name);
 		super.setOverable(true);
@@ -71,6 +105,14 @@ public class NPC extends Entity{
 	@Override
 	public boolean isClicked() {
 		return WorldRenderer.getClickedEntityId() == super.getId() ? true : false;
+	}
+
+	public int getGlobalNpcID() {
+		return globalNpcID;
+	}
+
+	public void setGlobalNpcID(int globalNpcID) {
+		this.globalNpcID = globalNpcID;
 	}
 }
 
