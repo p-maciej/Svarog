@@ -71,7 +71,7 @@ Add name for out hero (String) ```<name>```
 #
 Add is interactions File (String) (you can leave that empty if npc doesnt have anything to say to out hero) ```<interactionsFile>```
 #
-Add how many items npc will have (it is not showing so for now let it be o EVERYTIME) (int) ```<howManyItems>```
+Add how many items npc will have (it is not showing so for now let it be value of 0 EVERYTIME) (int) ```<howManyItems>```
 #
 for(how many items enemy will have) {
 #
