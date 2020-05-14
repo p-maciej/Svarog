@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 <class>
    <dialog id = "0">
-      <content>[Rozenna]  Mavak! Witaj moj drogi co u Ciebie slychac?</content>
+      <content>[Rozenna] Mavak! Witaj moj drogi co u Ciebie slychac?</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -10,7 +10,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "1">
-      <content>[Mavak]  Witaj Rozenno. To nadal nie ustaje. Te sny. Od kilku nocy mam w glowie obrazy ktorych nie rozumiem:</content>
+      <content>[Mavak] Witaj Rozenno. To nadal nie ustaje. Te sny. Od kilku nocy mam w glowie obrazy ktorych nie rozumiem:</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -73,7 +73,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "8">
-      <content>[Mavak]  Ehhh powiedzmy sobie szczerze Bogowie dawno zapomnieli o tym miejscu i posagi znajdujace sie w naszej wiosce  raczej im o nas nie przypominaja.</content>
+      <content>[Mavak] Ehhh powiedzmy sobie szczerze Bogowie dawno zapomnieli o tym miejscu i posagi znajdujace sie w naszej wiosce  raczej im o nas nie przypominaja.</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -91,7 +91,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "10">
-      <content>[Mavak]  Hah, Rozenno mowilem Ci kiedys ze jestes uparta niewiasta?</content>
+      <content>[Mavak] Hah, Rozenno mowilem Ci kiedys ze jestes uparta niewiasta?</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -100,7 +100,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "11">
-      <content>[Rozenna]  I to jest pierwszy powod dla ktorego tak mnie lubisz moj drogi.</content>
+      <content>[Rozenna] I to jest pierwszy powod dla ktorego tak mnie lubisz moj drogi.</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -109,7 +109,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "12">
-      <content>[Mavak]  A drugi powod toooo?</content>
+      <content>[Mavak] A drugi powod toooo?</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -118,7 +118,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "13">
-      <content>[Rozenna]  Jableczniki mojej roboty. *smiech* </content>
+      <content>[Rozenna] Jableczniki mojej roboty. *smiech* </content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -127,7 +127,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "14">
-      <content>[Mavak]  Dobra, masz mnie! *smiech* Rozumiem, ze wspominasz o nich nie bez przyczyny i pewnie mam Ci poszukac ladnych jablek?</content>
+      <content>[Mavak] Dobra, masz mnie! *smiech* Rozumiem, ze wspominasz o nich nie bez przyczyny i pewnie mam Ci poszukac ladnych jablek?</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -136,7 +136,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "15">
-      <content>[Rozenna]  Wiedzialam ze sie zrozumiemy. Wyjdx przed wioske, mysle ze gdzies tam powinny jeszcze rosnac jakies jablka.</content>
+      <content>[Rozenna] Wiedzialam ze sie zrozumiemy. Wyjdx przed wioske, mysle ze gdzies tam powinny jeszcze rosnac jakies jablka.</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -145,7 +145,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "16">
-      <content>[Mavak]  Zajme sie tym natychmiast. Ale w zamian oczekuje ze w nagrode dostane wiecej twych cudownych jablecznikow niz zazwyczaj.</content>
+      <content>[Mavak] Zajme sie tym natychmiast. Ale w zamian oczekuje ze w nagrode dostane wiecej twych cudownych jablecznikow niz zazwyczaj.</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>
@@ -161,7 +161,7 @@
       <state>collect</state>
    </dialog>
    <dialog id = "17">
-      <content>[Rozenna]  Dostaniesz 5 zarloku. A teraz idx. I prosze Cie. Podczas poszukiwan staraj sie nie myslec o tych Twoich snach, daj swojemu umyslowi odpoczac.</content>
+      <content>[Rozenna] Dostaniesz 5 zarloku. A teraz idx. I prosze Cie. Podczas poszukiwan staraj sie nie myslec o tych Twoich snach, daj swojemu umyslowi odpoczac.</content>
       <ans>1</ans>
       <answer>Nastepne okno</answer>
       <id>0</id>

@@ -42,7 +42,7 @@ public class DialogContainer {
 			int interspace = 8;
 			TextBlock content = new TextBlock(550, new Vector2f());
 			content.setString(dialogFont, language.getValue(dialog.getContent()));
-			
+
 			int height = content.getHeight()-dialogTop.getHeight()+yOffset;
 			if(height < 0)
 				height = 0;

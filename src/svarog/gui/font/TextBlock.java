@@ -73,12 +73,11 @@ public class TextBlock extends GuiObject {
 		if(string.length() > 0)
 			lineHeight = wordHeight = font.getCharacterBuffer(string.charAt(0)).getHeight();
 		
-		
 		for(int i = 0; i < string.length(); i++) {	
 			Word word = attemptToAddWord(font, i, lineWidth);
 			i = word.getLastIndex();
-			
-			if(word.getWordWidth() > 0) {
+
+			if(word.getWordWidth() > 0) {	
 				lineWidth += word.getWordWidth();
 				lineChars += word.getWordLength();
 					
@@ -115,29 +114,30 @@ public class TextBlock extends GuiObject {
 		int wordWidth = 0;
 		int lastIndex = 0;
 		int wordLength = 0;
+
 		for(int i = index; i < string.length(); i++) {
+			CharacterBuffer character = font.getCharacterBuffer(string.charAt(i));
 			if(string.charAt(i) != SPACE) {
-				CharacterBuffer character = font.getCharacterBuffer(string.charAt(i));
+				wordLength++;
 				if(character != null) {
 					wordWidth += character.getWidth();
-					wordLength++;
 					lastIndex = i;
-				}
+				}				
 			} else {
-				CharacterBuffer character = font.getCharacterBuffer(string.charAt(i));
+				wordLength++;
 				if(character != null) {
 					wordWidth += character.getWidth();
-					wordLength++;
 					lastIndex = i;
 				}
 				break;
 			}
 		}
+
 		if(wordWidth < super.getWidth())
 			if(lineWidth+wordWidth < super.getWidth())
-				return new Word(wordWidth, lastIndex, wordLength, false);
+				return new Word(wordWidth, lastIndex, wordLength);
 			else 
-				return new Word(0, lastIndex, wordLength, false);
+				return new Word(0, lastIndex, wordLength);
 		else
 			throw new IllegalStateException("Box is to small");
 	}
@@ -163,7 +163,7 @@ public class TextBlock extends GuiObject {
 		private int wordLendth;
 		private int lastIndex;
 
-		private Word(int wordWidth, int lastIndex, int wordLength, boolean wordException) {
+		private Word(int wordWidth, int lastIndex, int wordLength) {
 			this.wordWidth = wordWidth;
 			this.lastIndex = lastIndex;
 			this.wordLendth = wordLength;
