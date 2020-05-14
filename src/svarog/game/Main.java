@@ -619,7 +619,7 @@ public class Main {
 						player.setMovement(player.movePlayer(65, true));
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						guiRenderer.updatePlayerStats(player);
-						player.addItemToInventoryWithGUIupdate(new Item(new Texture("textures/helmet.png"), Save.getItemById(1).getItemInfo(), ItemType.helm), guiRenderer);
+						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(9)), guiRenderer);
 					}
 					
 					
