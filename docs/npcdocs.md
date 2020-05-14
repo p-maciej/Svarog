@@ -1,4 +1,4 @@
-# How to write working enemies 101
+# How to write working npc 101
 
 # xml (quest)
 
@@ -52,7 +52,7 @@
 ```
 #
 #
-#**YOU CAN LEAVE SOME TAGS EMPTY ONLY WHERE I WRITE ABOUT IT !!!**
+# **YOU CAN LEAVE SOME TAGS EMPTY ONLY WHERE I WRITE ABOUT IT !!!**
 #
 #
 First you must declare  ```<npc>``` 
@@ -82,7 +82,7 @@ for(how many items enemy will have) {
 }
 #
 
-#CONGRATS YOU MADE YOURS FIRST WORKING NPC, REMEMBER TO ADD XML FORMAT AT TOP AND DO EVERY THING IN class TAG ;)
+# CONGRATS YOU MADE YOURS FIRST WORKING NPC, REMEMBER TO ADD XML FORMAT AT TOP AND DO EVERY THING IN class TAG ;)
 
 
 # Doc ver 0.1
