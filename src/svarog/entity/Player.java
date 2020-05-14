@@ -151,6 +151,62 @@ public class Player extends Entity {
 		return quests1;
 	}
 	
+	public Vector2f movePlayer(int direction, float delta) {
+		Vector2f movement = new Vector2f();
+		
+		if(direction == 65) {
+			movement.add(-1*delta, 0);
+			
+			if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]))
+				setTexture(Direction.left);
+			else
+				if(super.currentDirection != Direction.left || lastPressedKey == 0)
+					setAnimation(Direction.left);
+			
+		} else if(direction == 68) {
+			movement.add(1*delta, 0);
+			
+			if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]))
+				setTexture(Direction.right);
+			else
+				if(super.currentDirection != Direction.right || lastPressedKey == 0)
+					setAnimation(Direction.right);
+		} else if(direction == 87) {
+			movement.add(0, 1*delta);
+			
+			if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]))
+				setTexture(Direction.up);
+			else
+				if(super.currentDirection != Direction.up || lastPressedKey == 0)
+					setAnimation(Direction.up);
+		} else if(direction == 83) {
+			movement.add(0, -1*delta);
+			
+			if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]))
+				setTexture(Direction.down);
+			else
+				if(super.currentDirection != Direction.down || lastPressedKey == 0)
+					setAnimation(Direction.down);
+		} else if(direction == 0) {
+			if(super.currentDirection == Direction.left) {
+				setTexture(Direction.left);
+			}
+			if(super.currentDirection == Direction.right) {
+				setTexture(Direction.right);
+			}
+			if(super.currentDirection == Direction.up) {
+				setTexture(Direction.up);
+			}
+			if(super.currentDirection == Direction.down) {
+				setTexture(Direction.down);
+			}
+		}
+		
+		lastPressedKey = direction;
+		
+		return movement;
+	}
+	
 	@Override
 	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer) {
 		if(movementLock)
@@ -158,7 +214,7 @@ public class Player extends Entity {
 				this.movementLock = false;
 				
 		if(movementLock == false) {
-			Vector2f movement = new Vector2f();
+			Vector2f movement = null;
 			
 			///////////// WASD Player movement ////////////////////
 			
@@ -204,55 +260,8 @@ public class Player extends Entity {
 					audioPlayer.play(walk);
 			}
 			
-			if(direction == 65) {
-				movement.add(-1*delta, 0);
-				
-				if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]))
-					setTexture(Direction.left);
-				else
-					if(super.currentDirection != Direction.left || lastPressedKey == 0)
-						setAnimation(Direction.left);
-				
-			} else if(direction == 68) {
-				movement.add(1*delta, 0);
-				
-				if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]))
-					setTexture(Direction.right);
-				else
-					if(super.currentDirection != Direction.right || lastPressedKey == 0)
-						setAnimation(Direction.right);
-			} else if(direction == 87) {
-				movement.add(0, 1*delta);
-				
-				if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]))
-					setTexture(Direction.up);
-				else
-					if(super.currentDirection != Direction.up || lastPressedKey == 0)
-						setAnimation(Direction.up);
-			} else if(direction == 83) {
-				movement.add(0, -1*delta);
-				
-				if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]))
-					setTexture(Direction.down);
-				else
-					if(super.currentDirection != Direction.down || lastPressedKey == 0)
-						setAnimation(Direction.down);
-			} else if(direction == 0) {
-				if(super.currentDirection == Direction.left) {
-					setTexture(Direction.left);
-				}
-				if(super.currentDirection == Direction.right) {
-					setTexture(Direction.right);
-				}
-				if(super.currentDirection == Direction.up) {
-					setTexture(Direction.up);
-				}
-				if(super.currentDirection == Direction.down) {
-					setTexture(Direction.down);
-				}
-			}
 			
-			lastPressedKey = direction;
+			movement = movePlayer(direction, delta);
 			
 			move(movement);
 			

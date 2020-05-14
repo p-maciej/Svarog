@@ -68,7 +68,7 @@ public class Main {
 	private static TextureObject loading_text;
 	private static Audio audioPlayer;
 	private static GuiWindow questsWindow;
-	private static LanguageLoader language; // todo
+	private static LanguageLoader language;
 	private static TextureObject itemWindowBackground;
 	
 	// Fonts
