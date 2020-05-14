@@ -106,9 +106,10 @@ public class Main {
 			e1.printStackTrace();
 		}
 		
-		if(walk != null)
+		if(walk != null) {
 			player = new Player(walk, Save.getPlayerParam());
-
+			player.setSpeed(0.2f);
+		}
 		
 		currentWorld = new World(1, 0, 0);
 		
@@ -527,6 +528,7 @@ public class Main {
 					
 					guiRenderer.deleteDynamicGroups();
 					
+
 					worldRenderer.update((float)0.2, window, camera, audioPlayer);
 					worldRenderer.correctCamera(camera, window);							// This sets correct camera position on world
 	
@@ -614,6 +616,7 @@ public class Main {
 					
 					if(healBtn.isClicked()) {
 						player.FullyRecoverHP();
+						player.setMovement(player.movePlayer(65, true));
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						guiRenderer.updatePlayerStats(player);
 						player.addItemToInventoryWithGUIupdate(new Item(new Texture("textures/helmet.png"), Save.getItemById(1).getItemInfo(), ItemType.helm), guiRenderer);

@@ -38,7 +38,10 @@ import svarog.world.WorldRenderer;
 
 public class Player extends Entity {
 	private boolean setCamWithoutAnimation;
-	
+	private Vector2f movement;
+
+	private float speed = 0.2f;
+
 	private int[] lastKeysPressed = new int[4];
 	private int lastPressedKey;
 	private String texturesPath;
@@ -59,6 +62,8 @@ public class Player extends Entity {
 	private Inventory inventory;
 
 	private List<Quest> quests = new ArrayList<>();
+	
+	private boolean autoMovement = false;
 
 	public Player(int id, String texturePath, String filename, Sound walkSound, Transform transform, boolean fullBoundingBox) {
 		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
@@ -151,11 +156,14 @@ public class Player extends Entity {
 		return quests1;
 	}
 	
-	public Vector2f movePlayer(int direction, float delta) {
-		Vector2f movement = new Vector2f();
+	public Vector2f movePlayer(int direction, boolean auto) {
+		movement = new Vector2f();
+		
+		if(auto)
+			autoMovement = true;
 		
 		if(direction == 65) {
-			movement.add(-1*delta, 0);
+			movement.add(-1*speed, 0);
 			
 			if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]))
 				setTexture(Direction.left);
@@ -164,7 +172,7 @@ public class Player extends Entity {
 					setAnimation(Direction.left);
 			
 		} else if(direction == 68) {
-			movement.add(1*delta, 0);
+			movement.add(1*speed, 0);
 			
 			if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]))
 				setTexture(Direction.right);
@@ -172,7 +180,7 @@ public class Player extends Entity {
 				if(super.currentDirection != Direction.right || lastPressedKey == 0)
 					setAnimation(Direction.right);
 		} else if(direction == 87) {
-			movement.add(0, 1*delta);
+			movement.add(0, 1*speed);
 			
 			if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]))
 				setTexture(Direction.up);
@@ -180,7 +188,7 @@ public class Player extends Entity {
 				if(super.currentDirection != Direction.up || lastPressedKey == 0)
 					setAnimation(Direction.up);
 		} else if(direction == 83) {
-			movement.add(0, -1*delta);
+			movement.add(0, -1*speed);
 			
 			if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]))
 				setTexture(Direction.down);
@@ -213,9 +221,7 @@ public class Player extends Entity {
 			if(ArenaContainer.isArenaClosing())
 				this.movementLock = false;
 				
-		if(movementLock == false) {
-			Vector2f movement = null;
-			
+		if(movementLock == false) {		
 			///////////// WASD Player movement ////////////////////
 			
 			int direction = 0;
@@ -252,16 +258,21 @@ public class Player extends Entity {
 			direction = getNewPressedKey(lastKeysPressed, keysPressed);
 			setLastKeysPressed(keysPressed);
 			
-			if(keysPressed[0]+keysPressed[1]+keysPressed[2]+keysPressed[3] == -4) {
+			if(keysPressed[0]+keysPressed[1]+keysPressed[2]+keysPressed[3] != -4) {
+				autoMovement = false;
+			}
+			
+			if(!autoMovement)
+				movement = movePlayer(direction, false);
+			
+			
+			if(movement.x == 0 && movement.y == 0) {
 				if(audioPlayer.isPlaying(walk))
 					audioPlayer.stop(walk);
 			} else {
 				if(!audioPlayer.isPlaying(walk))
 					audioPlayer.play(walk);
 			}
-			
-			
-			movement = movePlayer(direction, delta);
 			
 			move(movement);
 			
@@ -565,5 +576,19 @@ public class Player extends Entity {
 		return fileName;
 	}
 	
+	public float getSpeed() {
+		return speed;
+	}
 
+	public void setSpeed(float speed) {
+		this.speed = speed;
+	}
+
+	public void setMovement(Vector2f movement) {
+		this.movement = movement;
+	}
+	
+	public boolean isAutoMovement() {
+		return autoMovement;
+	}
 }
