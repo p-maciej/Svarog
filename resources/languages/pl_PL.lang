@@ -1,0 +1,307 @@
+﻿<?xml version="1.0"?>
+<file>
+    <variable>
+        <key>wolfSkin</key>
+        <translation>Skóra wilka</translation>
+    </variable>
+    <variable>
+        <key>wolfSkinDescription</key>
+        <translation>Zerwana z Wilka, delikatna w dotyku. Może ogrzać w trudnej chwili.</translation>
+    </variable>
+    <variable>
+        <key>wargSkin</key>
+        <translation>Skóra warga</translation>
+    </variable>
+	 <variable>
+        <key>wargSkinDescription</key>
+        <translation>Zerwana z Warga, szorstka w dotyku.</translation>
+    </variable>
+	 <variable>
+        <key>fangs</key>
+        <translation>Kły</translation>
+    </variable>
+	 <variable>
+        <key>fangsDescription</key>
+        <translation>Twarde jak kamień.</translation>
+    </variable>
+	 <variable>
+        <key>ghoulBlood</key>
+        <translation>Krew ghula</translation>
+    </variable>
+	 <variable>
+        <key>ghoulBloodDescription</key>
+        <translation>Krew przebrzydłego trupojada.</translation>
+    </variable>
+	 <variable>
+        <key>strigoiHeart</key>
+        <translation>Serce strzygi</translation>
+    </variable>
+	 <variable>
+        <key>strigoiHeartDescription</key>
+        <translation>Wyrwałem je z cielska strzygi.</translation>
+    </variable>
+	 <variable>
+        <key>nightHair</key>
+        <translation>Włosy północnicy</translation>
+    </variable>
+	 <variable>
+        <key>nightHairDescription</key>
+        <translation>Wyrwałem je północnicy podczas walki to je wziąłem, może się do czegoś przydadzą.</translation>
+    </variable>
+	 <variable>
+        <key>claws</key>
+        <translation>Pazury</translation>
+    </variable>
+	 <variable>
+        <key>clawsDescription</key>
+        <translation>Ostre jak brzytwa.</translation>
+    </variable>
+	 <variable>
+        <key>werewolfSkin</key>
+        <translation>Skóra wilkołaka</translation>
+    </variable>
+	 <variable>
+        <key>werewolfSkinDescription</key>
+        <translation>Zerwałem ją z Wilkołaka, można by nią całe domostwo pokryć, taka jest wielka.</translation>
+    </variable>
+	 <variable>
+        <key>nixieTongue</key>
+        <translation>Język Rusałki</translation>
+    </variable>
+	 <variable>
+        <key>nixieTongueDescription</key>
+        <translation>Wyrwany z ust Rusałki. Już nie zauroczy swym śpiewem bezbronnego podróżnika.</translation>
+    </variable>
+	 <variable>
+        <key>natureCrown</key>
+        <translation>Korona natury</translation>
+    </variable>
+	 <variable>
+        <key>natureCrownDescription</key>
+        <translation>Ostatni z Boskich Artefaktów. Zdobyłem go z Leszego Dodaje 50 pkt. do obrony.</translation>
+    </variable>
+	 <variable>
+        <key>magicHelmet</key>
+        <translation>Magiczny hełm</translation>
+    </variable>
+	 <variable>
+        <key>magicHelmetDescription</key>
+        <translation>Emanuje magiczną energią. Małowuj mnie prosił abym go zdobył. Dodaje 2 pkt. do ochrony.</translation>
+    </variable>
+	 <variable>
+        <key>moneyBag</key>
+        <translation>Mieszek ze złotem</translation>
+    </variable>
+	 <variable>
+        <key>moneyBagDescription</key>
+        <translation>Ciężki mieszek pełen złota należący do okradzionego kupca.</translation>
+    </variable>
+	 <variable>
+        <key>iceCup</key>
+        <translation>Lodowy kielich</translation>
+    </variable>
+	 <variable>
+        <key>iceCupDescription</key>
+        <translation>Podobno magiczny, jakoś nie widzę mocy którą emanuje.</translation>
+    </variable>
+	 <variable>
+        <key>gerwazyNecklace</key>
+        <translation>Drewniany naszyjnik Gerwazego</translation>
+    </variable>
+	 <variable>
+        <key>gerwazyNecklaceDescription</key>
+        <translation>Należał do Gerwazego którego niestety zabiły Ghule w Opuszczonym Grodzie. Powinienem go pokazać Mojmirze.</translation>
+    </variable>
+	 <variable>
+        <key>poran</key>
+        <translation>Poran</translation>
+    </variable>
+	 <variable>
+        <key>poranDescription</key>
+        <translation>Pierwszy Boski Artefakt. Miecz boga piorunów Peruna. Dodaje 15 pkt. do obrażeń.</translation>
+    </variable>
+	 <variable>
+        <key>mavakFamilySword</key>
+        <translation>Miecz rodowy Mavaka</translation>
+    </variable>
+	 <variable>
+        <key>mavakFamilySwordDescription</key>
+        <translation>Miecz mojego pradziadka Pervana. W mojej rodzinie od pokoleń. Dodaje 5 pkt. do obrażeń.</translation>
+    </variable>
+	 <variable>
+        <key>banditSword</key>
+        <translation>Bandycka szpada</translation>
+    </variable>
+	 <variable>
+        <key>banditSwordDescription</key>
+        <translation>Podstawowa broń bandyty, bez niej nie dałby rady okraść nawet ślepego. Dodaje 6 pkt. do obrażeń.</translation>
+    </variable>
+	 <variable>
+        <key>banditMorgenstern</key>
+        <translation>Bandycki Morgensztern</translation>
+    </variable>
+	 <variable>
+        <key>banditMorgensternDescription</key>
+        <translation>Należał do przywódcy bandyty, prymitywna lecz potężna broń. Dodaje 7 pkt. do obrażeń.</translation>
+    </variable>
+	 <variable>
+        <key>adventurerZweihander</key>
+        <translation>Dwuręczniak łowcy przygód</translation>
+    </variable>
+	 <variable>
+        <key>adventurerZweihanderDescription</key>
+        <translation>Należał do łowcy nagród. Z taką bronią na pewno będziesz miał przygodę. Dodaje 9 pkt. do obrażeń.</translation>
+    </variable>
+	 <variable>
+        <key>apple</key>
+        <translation>Jabłko</translation>
+    </variable>
+	 <variable>
+        <key>appleDescription</key>
+        <translation>Jabłko jakie jest każdy widzi, czerwone i soczyste. Odnawia 10 HP.</translation>
+    </variable>
+	 <variable>
+        <key>goldenBerry</key>
+        <translation>Złota jagoda</translation>
+    </variable>
+	 <variable>
+        <key>goldenBerryDescription</key>
+        <translation>Jedyny w swoim rodzaju owoc z dalekiego południa. Odnawia 100 HP.</translation>
+    </variable>
+	 <variable>
+        <key>applePie</key>
+        <translation>Jabłecznik</translation>
+    </variable>
+	 <variable>
+        <key>applePieDescription</key>
+        <translation>Mój ulubiony. Przyrządziła go dla mnie Rozenna. Odnawia 60 HP.</translation>
+    </variable>
+	 <variable>
+        <key>smallPotion</key>
+        <translation>Mała mikstura lecznicza</translation>
+    </variable>
+	 <variable>
+        <key>smallPotionDescription</key>
+        <translation>Mała lecz potrafi uratować życie. Odnawia 40 HP.</translation>
+    </variable>
+	 <variable>
+        <key>bigPotion</key>
+        <translation>Duża miktura lecznicza</translation>
+    </variable>
+	 <variable>
+        <key>bigPotionDescription</key>
+        <translation>Wyleczy nawet najpoważniejsze rany. Odnawia 70 HP.</translation>
+    </variable>
+	 <variable>
+        <key>leatherBreastplate</key>
+        <translation>Skórzana zbroja</translation>
+    </variable>
+	 <variable>
+        <key>leatherBreastplateDescription</key>
+        <translation>Podstawowa zbroja zapewniająca podstawową ochronę. Dodaje 10 pkt. do obrony.</translation>
+    </variable>
+	 <variable>
+        <key>deathComing</key>
+        <translation>Zwiastun śmierci</translation>
+    </variable>
+	 <variable>
+        <key>deathComingDescription</key>
+        <translation>Trzeci Boski Artefakt, wydobyłem go z ciała Marzanny. Emanuje złowrogą lecz potężną energią. Dodaje 25 pkt do obrony.</translation>
+    </variable>
+	 <variable>
+        <key>magicArmor</key>
+        <translation>Magiczny napierśnik</translation>
+    </variable>
+	 <variable>
+        <key>magicArmorDescription</key>
+        <translation>Emanuje magiczną energią. Małowuj mnie prosił abym go zdobył. Dodaje 15 pkt do obrony.</translation>
+    </variable>
+	 <variable>
+        <key>skotijka</key>
+        <translation>Skotijka</translation>
+    </variable>
+	 <variable>
+        <key>skotijkaDescription</key>
+        <translation>Drugi Boski Artefakt. Rękawice Słowiańskiego boga magii i klątw Welesa. Dodaje 5 pkt. do obrony.</translation>
+    </variable>
+	 <variable>
+        <key>leatherGloves</key>
+        <translation>Skórzane rękawice</translation>
+    </variable>
+	 <variable>
+        <key>leatherGlovesDescription</key>
+        <translation>Trochę znoszone ale potrafią jeszcze ochronić i ogrzać dłonie. Dodaje 2 pkt. do obrony.</translation>
+    </variable>
+	 <variable>
+        <key>onuce</key>
+        <translation>Onuce</translation>
+    </variable>
+	 <variable>
+        <key>onuceDescription</key>
+        <translation>Kawałek szmatki owinięty wokół stopy. Dodaje 1 pkt. do obrony.</translation>
+    </variable>
+	 <variable>
+        <key>leatherBoots</key>
+        <translation>Skórzane buty</translation>
+    </variable>
+	<variable>
+        <key>leatherBootsDescription</key>
+        <translation>Porządna ochrona dla mych stóp. Dodaje 3 pkt. do obrony.</translation>
+    </variable>
+	<variable>
+        <key>categoryItem</key>
+        <translation>Kategoria:</translation>
+    </variable>
+	<variable>
+        <key>levelItem</key>
+        <translation>Poziom:</translation>
+    </variable>
+	<variable>
+        <key>attackItem</key>
+        <translation>Atak:</translation>
+    </variable>
+	<variable>
+        <key>defenseItem</key>
+        <translation>Obrona:</translation>
+    </variable>
+	<variable>
+        <key>hpItem</key>
+        <translation>Kategoria:</translation>
+    </variable>
+	<variable>
+        <key>trophy</key>
+        <translation>Trofeum</translation>
+    </variable>
+	<variable>
+        <key>helm</key>
+        <translation>Hełm</translation>
+    </variable>
+	<variable>
+        <key>other</key>
+        <translation>Inne</translation>
+    </variable>
+	<variable>
+        <key>weapon</key>
+        <translation>Miecz</translation>
+    </variable>
+	<variable>
+        <key>consumable</key>
+        <translation>Konsumbcyjne</translation>
+    </variable>
+	<variable>
+        <key>armor</key>
+        <translation>Zbroja</translation>
+    </variable>
+	<variable>
+        <key>gloves</key>
+        <translation>Rękawice</translation>
+    </variable>
+	<variable>
+        <key>shoes</key>
+        <translation>Buty</translation>
+    </variable>
+	<variable>
+        <key>none</key>
+        <translation>Brak/błąd</translation>
+    </variable>
+</file>

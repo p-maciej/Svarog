@@ -35,7 +35,6 @@ import svarog.gui.TileSheet;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
-import svarog.gui.font.TextBlock;
 import svarog.interactions.Interactions;
 import svarog.io.Timer;
 import svarog.io.Window;
@@ -571,7 +570,7 @@ public class Main {
 								guiRenderer.removeWindow(itemInfo.getId());
 							
 							
-							itemInfo = createItemWindow(tempItem);
+							itemInfo = StaticUI.createItemWindow(tempItem, roboto_15, language, itemWindowBackground);
 							
 							itemInfo.setStickTo(stickTo.BottomRight);
 							itemInfo.move(-530, 300);
@@ -631,84 +630,5 @@ public class Main {
 			e.printStackTrace();
 		}
 		glfwTerminate();
-	}
-	
-	private static GuiWindow createItemWindow(Item item) {
-		int yPos = 0;
-		// Desc
-		GuiWindow itemInfo = new GuiWindow(item.getItemInfo().getName(), roboto_15, itemWindowBackground);
-		TextBlock description = new TextBlock(itemInfo.getWidth()-30, new Vector2f());
-		description.setString(roboto_15, item.getItemInfo().getDescription());
-		description.move(-description.getWidth()/2-5, -itemInfo.getHeight()/2+50);
-		itemInfo.addTextBlock(description);
-		
-		yPos = (int)(description.getPosition().y - description.getHeight() - 20);
-		// Type
-		Line pre_type = new Line(-itemInfo.getWidth()/2, yPos);
-		pre_type.setString("Kategoria:", roboto_15);
-		pre_type.move(pre_type.getWidth()/2+10, 0);
-		itemInfo.addTextureObject(pre_type);
-		
-		Line type = new Line(-50, (int)pre_type.getPosition().y);
-		type.setString(item.getItemInfo().getItemType().name(), roboto_15);
-		type.move(type.getWidth()/2, 0);
-		itemInfo.addTextureObject(type);
-		
-		yPos = (int)pre_type.getPosition().y-20;
-		// Level req
-		Line pre_levelReq = new Line(-itemInfo.getWidth()/2, yPos);
-		pre_levelReq.setString("Poziom:", roboto_15);
-		pre_levelReq.move(pre_levelReq.getWidth()/2+10, 0);
-		itemInfo.addTextureObject(pre_levelReq);
-		
-		Line levelReq = new Line(-50, (int)pre_levelReq.getPosition().y);
-		levelReq.setString(Integer.toString(item.getItemInfo().getLvlRequired()), roboto_15);
-		levelReq.move(levelReq.getWidth()/2, 0);
-		itemInfo.addTextureObject(levelReq);
-		
-		
-		if(item.getItemInfo().getAttackBonus() > 0) {
-			yPos -= 20;
-			// Attack bonus
-			Line pre_attack = new Line(-itemInfo.getWidth()/2, (int)pre_levelReq.getPosition().y-20);
-			pre_attack.setString("Atak:", roboto_15);
-			pre_attack.move(pre_attack.getWidth()/2+10, 0);
-			itemInfo.addTextureObject(pre_attack);
-			
-			Line attack = new Line(-50, (int)pre_attack.getPosition().y);
-			attack.setString(Integer.toString(item.getItemInfo().getAttackBonus()), roboto_15);
-			attack.move(attack.getWidth()/2, 0);
-			itemInfo.addTextureObject(attack);
-		}
-		
-		if(item.getItemInfo().getDefense() > 0) {
-			yPos -= 20;
-			// Defense bonus
-			Line pre_defense = new Line(-itemInfo.getWidth()/2, yPos);
-			pre_defense.setString("Obrona:", roboto_15);
-			pre_defense.move(pre_defense.getWidth()/2+10, 0);
-			itemInfo.addTextureObject(pre_defense);
-			
-			Line defense = new Line(-50, (int)pre_defense.getPosition().y);
-			defense.setString(Integer.toString(item.getItemInfo().getDefense()), roboto_15);
-			defense.move(defense.getWidth()/2, 0);
-			itemInfo.addTextureObject(defense);
-		}
-		
-		if(item.getItemInfo().getHpRegeneration() > 0) {
-			yPos -= 20;
-			// HP
-			Line pre_hp = new Line(-itemInfo.getWidth()/2, yPos);
-			pre_hp.setString("¯ycie:", roboto_15);
-			pre_hp.move(pre_hp.getWidth()/2+10, 0);
-			itemInfo.addTextureObject(pre_hp);
-			
-			Line hp = new Line(-50, (int)pre_hp.getPosition().y);
-			hp.setString(Integer.toString(item.getItemInfo().getHpRegeneration()), roboto_15);
-			hp.move(hp.getWidth()/2, 0);
-			itemInfo.addTextureObject(hp);
-		}
-		
-		return itemInfo;
 	}
 }

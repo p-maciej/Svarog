@@ -46,7 +46,7 @@ public class InterfaceTranslations {
   
 	  private ArrayList<InterfaceTranslation> data = new ArrayList<InterfaceTranslation>();
 	
-	  private static final String path = "resources/lang/interf/";
+	  private static final String path = "resources/languages/";
 	
 	  InterfaceTranslations(languages option) {
 	      CreateData(Options(option));

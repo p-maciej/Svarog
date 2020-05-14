@@ -7,8 +7,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Skora wilka</name>
-   		<description>Zerwana z Wilka, delikatna w dotyku. Moze ogrzac w trudnej chwili.</description>
+   		<name>wolfSkin</name>
+   		<description>wolfSkinDescription</description>
    		<itemType>trophy</itemType>
 	</item>
 	<item>
@@ -18,8 +18,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Skora warga</name>
-   		<description>Zerwana z Warga, szorstka w dotyku.</description>
+   		<name>wargSkin</name>
+   		<description>wargSkinDescription</description>
    		<itemType>trophy</itemType>
 	</item>
 	<item>
@@ -29,8 +29,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Kly</name>
-   		<description>Twarde jak kamien.</description>
+   		<name>fangs</name>
+   		<description>fangsDescription</description>
    		<itemType>trophy</itemType>
 	</item>
 	<item>
@@ -40,8 +40,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Krew ghula</name>
-   		<description>Krew przebrzydlego trupojada.</description>
+   		<name>ghoulBlood</name>
+   		<description>ghoulBloodDescription</description>
    		<itemType>trophy</itemType>
 	</item>
 	<item>
@@ -51,8 +51,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Serce strzygi</name>
-   		<description>Wyrwalem je z cielska strzygi.</description>
+   		<name>strigoiHeart</name>
+   		<description>strigoiHeartDescription</description>
    		<itemType>trophy</itemType>
 	</item>
 	<item>
@@ -62,8 +62,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Wlosy polnocnicy</name>
-   		<description>Wyrwalem je polnocnicy podczas walki to je wzialem, moze sie do czegos przydadza.</description>
+   		<name>nightHair</name>
+   		<description>nightHairDescription</description>
    		<itemType>trophy</itemType>
 	</item>
 	<item>
@@ -73,8 +73,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Pazury</name>
-   		<description>Ostre jak brzytwa.</description>
+   		<name>claws</name>
+   		<description>clawsDescription</description>
    		<itemType>trophy</itemType>
 	</item>
 	<item>
@@ -84,8 +84,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Skora wilkolaka</name>
-   		<description>Zerwalem ja z Wilkolaka, mozna by nia cale domostwo pokryc, taka jest wielka.</description>
+   		<name>werewolfSkin</name>
+   		<description>werewolfSkinDescription</description>
    		<itemType>trophy</itemType>
 	</item>
 	<item>
@@ -95,8 +95,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Jezyk Rusalki</name>
-   		<description>Wyrwany z ust Rusalki. Juz nie zauroczy swym spiewem bezbronnego podroznika.</description>
+   		<name>nixieTongue</name>
+   		<description>nixieTongueDescription</description>
    		<itemType>trophy</itemType>
 	</item>
 	<item>
@@ -106,8 +106,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>14</lvlRequired>
-   		<name>Korona natury</name>
-   		<description>Ostatni z Boskich Artefaktow. Zdobylem go z Leszego Dodaje 50 pkt. do obrony.</description>
+   		<name>natureCrown</name>
+   		<description>natureCrownDescription</description>
    		<itemType>helm</itemType>
 	</item>
 	<item>
@@ -117,8 +117,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>9</lvlRequired>
-   		<name>Magiczny helm</name>
-   		<description>Emanuje magiczna energia. Malowuj mnie prosil abym go zdobyl. Dodaje 2 pkt. do ochrony.</description>
+   		<name>magicHelmet</name>
+   		<description>magicHelmetDescription</description>
    		<itemType>helm</itemType>
 	</item>
 	<item>
@@ -128,8 +128,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Mieszek ze zlotem</name>
-   		<description>Ciezki mieszek pelen zlota nalezacy do okradzionego kupca.</description>
+   		<name>moneyBag</name>
+   		<description>moneyBagDescription</description>
    		<itemType>other</itemType>
 	</item>
 	<item>
@@ -139,8 +139,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Lodowy kielich</name>
-   		<description>Podobno magiczny, jakos nie widze mocy ktora emanuje.</description>
+   		<name>iceCup</name>
+   		<description>iceCupDescription</description>
    		<itemType>other</itemType>
 	</item>
 	<item>
@@ -150,8 +150,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Drewniany naszyjnik Gerwazego</name>
-   		<description>Nalezal do Gerwazego ktorego niestety zabily Ghule w Opuszczonym Grodzie. Powinienem go pokazac Mojmirze.</description>
+   		<name>gerwazyNecklace</name>
+   		<description>gerwazyNecklaceDescription</description>
    		<itemType>other</itemType>
 	</item>
 	<item>
@@ -161,8 +161,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>15</attackBonus>
    		<lvlRequired>1</lvlRequired>
-   		<name>Poran</name>
-   		<description>Pierwszy Boski Artefakt. Miecz boga piorunow Peruna. Dodaje 15 pkt. do obrazen.</description>
+   		<name>poran</name>
+   		<description>poranDescription</description>
    		<itemType>weapon</itemType>
 	</item>
 	<item>
@@ -172,8 +172,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>5</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Miecz rodowy Mavaka</name>
-   		<description>Miecz mojego pradziadka Pervana. W mojej rodzinie od pokolen. Dodaje 5 pkt. do obrazen.</description>
+   		<name>mavakFamilySword</name>
+   		<description>mavakFamilySwordDescription</description>
    		<itemType>weapon</itemType>
 	</item>
 	<item>
@@ -183,8 +183,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>6</attackBonus>
    		<lvlRequired>3</lvlRequired>
-   		<name>Bandycka szpada</name>
-   		<description>Podstawowa bron bandyty, bez niej nie dalby rady okrasc nawet slepego. Dodaje 6 pkt. do obrazen.</description>
+   		<name>banditSword</name>
+   		<description>banditSwordDescription</description>
    		<itemType>weapon</itemType>
 	</item>
 	<item>
@@ -194,8 +194,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>7</attackBonus>
    		<lvlRequired>6</lvlRequired>
-   		<name>Bandycki Morgensztern</name>
-   		<description>Nalezal do przywodcy bandyty, prymitywna lecz potezna bron. Dodaje 7 pkt. do obrazen.</description>
+   		<name>banditMorgenstern</name>
+   		<description>banditMorgensternDescription</description>
    		<itemType>weapon</itemType>
 	</item>
 	<item>
@@ -205,8 +205,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>9</attackBonus>
    		<lvlRequired>11</lvlRequired>
-   		<name>Dwureczniak lowcy przygod</name>
-   		<description>Nalezal do lowcy nagrod. Z taka bronia na pewno bedziesz mial przygode. Dodaje 9 pkt. do obrazen.</description>
+   		<name>adventurerZweihander</name>
+   		<description>adventurerZweihanderDescription</description>
    		<itemType>weapon</itemType>
 	</item>
 	<item>
@@ -216,8 +216,8 @@
    		<hpRegeneration>10</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Jablko</name>
-   		<description>Jablko jakie jest kazdy widzi, czerwone i soczyste. Odnawia 10 HP.</description>
+   		<name>apple</name>
+   		<description>appleDescription</description>
    		<itemType>consumable</itemType>
 	</item>
 	<item>
@@ -227,8 +227,8 @@
    		<hpRegeneration>100</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Zlota jagoda</name>
-   		<description>Jedyny w swoim rodzaju owoc z dalekiego poludnia. Odnawia 100 HP.</description>
+   		<name>goldenBerry</name>
+   		<description>goldenBerryDescription</description>
    		<itemType>consumable</itemType>
 	</item>
 	<item>
@@ -238,8 +238,8 @@
    		<hpRegeneration>60</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Jablecznik</name>
-   		<description>Moj ulubiony. Przyrzadzila go dla mnie Rozenna. Odnawia 60 HP.</description>
+   		<name>applePie</name>
+   		<description>applePieDescription</description>
    		<itemType>consumable</itemType>
 	</item>
 	<item>
@@ -249,8 +249,8 @@
    		<hpRegeneration>40</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Mala mikstura lecznicza</name>
-   		<description>Mala lecz potrafi uratowac zycie. Odnawia 40 HP.</description>
+   		<name>smallPotion</name>
+   		<description>smallPotionDescription</description>
    		<itemType>consumable</itemType>
 	</item>
 	<item>
@@ -260,8 +260,8 @@
    		<hpRegeneration>70</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Duza miktura lecznicza</name>
-   		<description>Wyleczy nawet najpowazniejsze rany. Odnawia 70 HP.</description>
+   		<name>bigPotion</name>
+   		<description>bigPotionDescription</description>
    		<itemType>consumable</itemType>
 	</item>
 	<item>
@@ -271,8 +271,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>4</lvlRequired>
-   		<name>Skorzana zbroja</name>
-   		<description>Podstawowa zbroja zapewniajaca podstawowa ochrone. Dodaje 10 pkt. do obrony.</description>
+   		<name>leatherBreastplate</name>
+   		<description>leatherBreastplateDescription</description>
    		<itemType>armor</itemType>
 	</item>
 	<item>
@@ -282,8 +282,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>13</lvlRequired>
-   		<name>Zwiastun smierci</name>
-   		<description>Trzeci Boski Artefakt, wydobylem go z ciala Marzanny. Emanuje zlowroga lecz potezna energia. Dodaje 25 pkt do obrony.</description>
+   		<name>deathComing</name>
+   		<description>deathComingDescription</description>
    		<itemType>armor</itemType>
 	</item>
 	<item>
@@ -293,8 +293,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>10</lvlRequired>
-   		<name>Magiczny napiersnik</name>
-   		<description>Emanuje magiczna energia. Malowuj mnie prosil abym go zdobyl. Dodaje 15 pkt do obrony.</description>
+   		<name>magicArmor</name>
+   		<description>magicArmorDescription</description>
    		<itemType>armor</itemType>
 	</item>
 	<item>
@@ -304,8 +304,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>10</lvlRequired>
-   		<name>Skotijka</name>
-   		<description>Drugi Boski Artefakt. Rekawice Slowianskiego boga magii i klatw Welesa. Dodaje 5 pkt. do obrony.</description>
+   		<name>skotijka</name>
+   		<description>skotijkaDescription</description>
    		<itemType>gloves</itemType>
 	</item>
 	<item>
@@ -315,8 +315,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>2</lvlRequired>
-   		<name>Skorzane rekawice</name>
-   		<description>Troche znoszone ale potrafia jeszcze ochronic i ogrzac dlonie. Dodaje 2 pkt. do obrony.</description>
+   		<name>leatherGloves</name>
+   		<description>leatherGlovesDescription</description>
    		<itemType>gloves</itemType>
 	</item>
 	<item>
@@ -326,8 +326,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>0</lvlRequired>
-   		<name>Onuce</name>
-   		<description>Kawalek szmatki owiniety wokol stopy. Dodaje 1 pkt. do obrony.</description>
+   		<name>onuce</name>
+   		<description>onuceDescription</description>
    		<itemType>shoes</itemType>
 	</item>
 	<item>
@@ -337,8 +337,8 @@
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>2</lvlRequired>
-   		<name>Skorzane buty</name>
-   		<description>Porzadna ochrona dla mych stop. Dodaje 3 pkt. do obrony.</description>
+   		<name>leatherBoots</name>
+   		<description>leatherBootsDescription</description>
    		<itemType>shoes</itemType>
 	</item>
 </class>
