@@ -138,7 +138,7 @@ public class Player extends Entity {
 		for(Quest ques: this.getQuests()) {
 			if(ques.isEndedQuest() != true) {
 				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getTitle()), Type.headline);
-				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getDescription()), Type.content);
+				quests1.addTextBlock(new TextBlock(265, new Vector2f(), font, ques.getDescription()), Type.content);
 				for(Task tasks01: ques.getTasks()) {
 					quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, tasks01.progress()), Type.normal);
 				}

@@ -1,4 +1,4 @@
-# How to write good quests 101
+# How to write working enemies 101
 
 # xml (quest)
 

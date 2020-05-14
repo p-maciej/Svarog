@@ -75,7 +75,7 @@ public class Enemy extends Entity {
 		
 	}
 	
-	public Enemy(int id, Transform transform, EnemyParameters enemyParameters, String name) {
+	public Enemy(int id, EnemyParameters enemyParameters, Transform transform, String name) {
 		super(id, new Texture(enemyParameters.getTexture()),
 				transform,
 				enemyParameters.isFullBoundingBox());
