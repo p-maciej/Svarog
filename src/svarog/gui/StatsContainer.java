@@ -18,10 +18,15 @@ import svarog.render.Texture;
 public class StatsContainer {
 	private Group playerStats;
 	private Group playerProperties;
+	private Group playerInventory;
 	private static Font largeFont;	
 	private static Font smallFont;
 
-	public StatsContainer() {}
+	private boolean update;
+	
+	public StatsContainer() {
+		this.update = false;
+	}
 	
 	public void updatePlayerStats(GuiRenderer guiRenderer, Player player) {
 		if(largeFont != null && smallFont != null) {
@@ -102,7 +107,7 @@ public class StatsContainer {
 			
 			guiRenderer.addGroup(this.playerStats);
 			
-			guiRenderer.updatePositions();
+			this.update = true;
 		} else {
 			throw new IllegalStateException("Set static font in StatsContainer!");
 		}
@@ -116,10 +121,6 @@ public class StatsContainer {
 				this.playerProperties = new Group();
 				this.playerProperties.setStickTo(stickTo.TopRight);
 				
-				Line money = new Line(0,0);
-				money.setString(Integer.toString(player.getMoney()), smallFont);
-				money.move(-165-money.getWidth()/2, 130);
-				
 				Line attack = new Line(0,0);
 				attack.setString((player.getMinAttack()+player.getPlayerAttackBonus()) + "-" +  (player.getMaxAttack()+player.getPlayerAttackBonus()), smallFont);
 				attack.move(-165-attack.getWidth()/2, 62);
@@ -128,12 +129,40 @@ public class StatsContainer {
 				defense.setString(Integer.toString(player.getPlayerDefense()), smallFont);
 				defense.move(-165-defense.getWidth()/2, 97);
 				
-				this.playerProperties.addTextureObject(money);
 				this.playerProperties.addTextureObject(attack);
 				this.playerProperties.addTextureObject(defense);
 				
 				guiRenderer.addGroup(playerProperties);
+				
+				this.update = true;
 		}
+	}
+	
+	public void updatePlayerInventory(GuiRenderer guiRenderer, Player player) {
+		if(largeFont != null && smallFont != null) {
+			if(playerInventory != null)
+				guiRenderer.removeGroup(playerInventory);
+			
+				this.playerInventory = new Group();
+				this.playerInventory.setStickTo(stickTo.TopRight);
+				
+				Line money = new Line(0,0);
+				money.setString(Integer.toString(player.getMoney()), smallFont);
+				money.move(-165-money.getWidth()/2, 130);
+				
+				this.playerInventory.addTextureObject(money);
+				
+				guiRenderer.addGroup(playerInventory);
+				
+				this.update = true;
+		}
+	}
+	
+	public void update(GuiRenderer guiRenderer) {
+		if(update) {
+			guiRenderer.updatePositions();
+			this.update = false;
+		}	
 	}
 	
 	public GuiWindow createItemWindow(Item item, LanguageLoader language, TextureObject itemWindowBackground) {

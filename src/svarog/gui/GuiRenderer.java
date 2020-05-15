@@ -15,6 +15,7 @@ import svarog.io.Timer;
 import svarog.io.Window.Cursor;
 import svarog.language.LanguageLoader;
 import svarog.objects.Item;
+import svarog.objects.ItemProperties.ItemType;
 import svarog.render.Camera;
 import svarog.render.Model;
 import svarog.render.RenderProperties;
@@ -218,6 +219,8 @@ public class GuiRenderer implements RenderProperties {
 		mouseOverObjectId = -1;
 		setPointer = false;
 		int windowToRemove = -1;
+		
+		statsContainer.update(this);
 		
 		if(DialogContainer.isDialogClosing())
 			DialogContainer.setDialogClosing(false);
@@ -525,6 +528,10 @@ public class GuiRenderer implements RenderProperties {
 								tile.putItem(object.getPuttedItem());
 								tile.getPuttedItem().setPosition(tile.getTransform().getPosition().x, tile.getTransform().getPosition().y);
 								object.removePuttedItem();
+								
+								if(tile.getPuttableItemTypes().size() == 1 && (tile.getPuttableItemTypes().get(0) == ItemType.armor || tile.getPuttableItemTypes().get(0) == ItemType.gloves || tile.getPuttableItemTypes().get(0) == ItemType.helm || tile.getPuttableItemTypes().get(0) == ItemType.weapon || tile.getPuttableItemTypes().get(0) == ItemType.shoes)) {
+									statsContainer.updatePlayerProperties(this, player);
+								}
 							} catch (Exception e) {
 								if(e.getMessage() == "consume") {
 									player.AddPlayerHP(((Item)object.getPuttedItem()).getItemInfo().getHpRegeneration());

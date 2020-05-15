@@ -216,6 +216,7 @@ public class Main {
 	
 		guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 		guiRenderer.getStatsContainer().updatePlayerProperties(guiRenderer, player);
+		guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 		
 		/// Tiles on GUI ///////////////////////////
 		tileSheet = new TileSheet();
@@ -555,7 +556,7 @@ public class Main {
 							Line name = new Line(0, 0);
 							Entity ent = currentWorld.getEntityById(WorldRenderer.getMouseOverEntityId());
 							if(ent != null) {
-								name.setString(ent.getName(), roboto_18);
+								name.setString(ent.getName(), roboto_15);
 							
 								guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
 							}
@@ -572,6 +573,7 @@ public class Main {
 	
 								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, roboto_18);
 								guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
+								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 	
 							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
 								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId(), language);
@@ -587,7 +589,7 @@ public class Main {
 						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().setEnded(true);
 						Interactions.setTalkingNPCid(-1);
 					}
-					
+	
 					guiRenderer.renderGuiObjects(guiShader, window, player);
 					
 					Tile tempTile = tileSheet.clickedTile();
