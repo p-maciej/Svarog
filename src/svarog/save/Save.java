@@ -181,7 +181,7 @@ public class Save {
 	}
 	
 	
-	public static void ReadFrom(String filename, Player player) {
+	public static void ReadFrom(String filename) {
 		ReadItems();
 		ReadEnemies();
 		ReadNpc();

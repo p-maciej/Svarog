@@ -428,12 +428,12 @@ public class Main {
             	
             	
             	if(menuStartButton.isClicked() || menuResumeButton.isClicked()) {
-            		Save.ReadFrom("MainSave.save", player);
+            		Save.ReadFrom("MainSave.save");
             		showMenu = false;
             	}
             	
             	if(menuLoadButton.isClicked()) {
-            		Save.ReadFrom("Save", player);
+            		Save.ReadFrom("Save");
             		showMenu = false;
             	}
             	

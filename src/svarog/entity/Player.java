@@ -14,6 +14,7 @@ import org.joml.Vector3f;
 
 import svarog.audio.Audio;
 import svarog.audio.Sound;
+import svarog.game.WorldLoader;
 import svarog.gui.Arena;
 import svarog.gui.ArenaContainer;
 import svarog.gui.GuiRenderer;
@@ -33,10 +34,14 @@ import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.save.PlayerParameters;
+import svarog.save.Save;
 import svarog.world.World;
 import svarog.world.WorldRenderer;
 
 public class Player extends Entity {
+	
+	private int isFightWin = 0; //0==no fight, 1 == win, 2 == lost
+	
 	private boolean setCamWithoutAnimation;
 	private Vector2f movement;
 
@@ -394,11 +399,20 @@ public class Player extends Entity {
 				fightString.add("Player HP (after attack): " + this.getHP().GetHP());
 				if(this.getHP().GetHP()<0) {
 					fightString.add("Player died, " + (enemy).getName() + " was killing more people than ever.");
+					playerDead();
 					break;
 				}
 			}
 		}
 		return fightString;
+	}
+	
+	public void playerDead() {
+		//this.getHP().SetHP(this.getHP().getMaxHP());
+		Save.ReadFrom("MainSave.save");
+		this.setPosition(Save.getPlayerParam().getPositionX(), Save.getPlayerParam().getPositionY());
+		WorldLoader.setNextFrameLoadWorld(1);
+		setIsFightWin(2);
 	}
 	
 	public int getPlayerDefense() {
@@ -590,5 +604,13 @@ public class Player extends Entity {
 	
 	public boolean isAutoMovement() {
 		return autoMovement;
+	}
+
+	public int getIsFightWin() {
+		return isFightWin;
+	}
+
+	public void setIsFightWin(int isFightWin) {
+		this.isFightWin = isFightWin;
 	}
 }

@@ -419,7 +419,7 @@ public class GuiRenderer implements RenderProperties {
 		if(this.arenaContainer.getCloseArenaButton() != null) {
 			if(this.arenaContainer.getCloseArenaButton().isClicked()) {
 				ArenaContainer.setArenaClosing(true);
-				closeArena();
+				closeArena(player);
 			}
 		}
 
@@ -818,8 +818,14 @@ public class GuiRenderer implements RenderProperties {
 		return statsContainer;
 	}
 	
-	public void closeArena() {
+	public void closeArena(Player player) {
+		if(player.getIsFightWin()==2) {
+			player.getHP().SetMaxHP(player.getHP().getMaxHP());
+			statsContainer.updatePlayerStats(this, player);
+			player.setIsFightWin(0);
+		}
 		arenaContainer.closeArena(this);
 		WorldRenderer.setMouseInteractionLock(false);
+		
 	}
 }
