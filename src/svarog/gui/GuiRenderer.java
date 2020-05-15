@@ -531,6 +531,8 @@ public class GuiRenderer implements RenderProperties {
 								
 								if(tile.getPuttableItemTypes().size() == 1 && (tile.getPuttableItemTypes().get(0) == ItemType.armor || tile.getPuttableItemTypes().get(0) == ItemType.gloves || tile.getPuttableItemTypes().get(0) == ItemType.helm || tile.getPuttableItemTypes().get(0) == ItemType.weapon || tile.getPuttableItemTypes().get(0) == ItemType.shoes)) {
 									statsContainer.updatePlayerProperties(this, player);
+								} else if(object.getPuttableItemTypes().size() == 1 && (object.getPuttableItemTypes().get(0) == ItemType.armor || object.getPuttableItemTypes().get(0) == ItemType.gloves || object.getPuttableItemTypes().get(0) == ItemType.helm || object.getPuttableItemTypes().get(0) == ItemType.weapon || object.getPuttableItemTypes().get(0) == ItemType.shoes)) {
+									statsContainer.updatePlayerProperties(this, player);
 								}
 							} catch (Exception e) {
 								if(e.getMessage() == "consume") {
