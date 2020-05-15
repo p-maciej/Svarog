@@ -537,13 +537,13 @@ public class GuiRenderer implements RenderProperties {
 							} catch (Exception e) {
 								if(e.getMessage() == "consume") {
 									player.AddPlayerHP(((Item)object.getPuttedItem()).getItemInfo().getHpRegeneration());
-									player.getInventory().removeItemById(object.getId());
+									player.getInventory().removeItemById(object.getPuttedItem().getId());
 										
 									object.removePuttedItem();
 									statsContainer.updatePlayerStats(this, player);
 										
 								} else if(e.getMessage() == "delete") {
-									player.getInventory().removeItemById(object.getId());
+									player.getInventory().removeItemById(object.getPuttedItem().getId());
 									object.removePuttedItem();
 								} else {
 									object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
