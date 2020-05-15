@@ -6,7 +6,6 @@ import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
 import svarog.entity.Player;
-import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
@@ -18,18 +17,18 @@ import svarog.render.Texture;
 
 public class StatsContainer {
 	private Group playerStats;
-	private static Line level;
+	private Group playerProperties;
 	private static Font largeFont;	
 	private static Font smallFont;
 
 	public StatsContainer() {}
 	
-	public void playerStatsDynamic(GuiRenderer guiRenderer, Player player) {
-		if(largeFont != null) {
+	public void updatePlayerStats(GuiRenderer guiRenderer, Player player) {
+		if(largeFont != null && smallFont != null) {
 			if(playerStats != null)
 				guiRenderer.removeGroup(playerStats);
 				
-			playerStats = new Group();
+			this.playerStats = new Group();
 			
 			int width = 200;
 			int height = 12;
@@ -62,7 +61,7 @@ public class StatsContainer {
 			TextureObject hpTexture = new TextureObject(new Texture(HPbuffer, width, height));
 			hpTexture.setStickTo(stickTo.BottomLeft);
 			hpTexture.move(120, -42);
-			playerStats.addTextureObject(hpTexture);
+			this.playerStats.addTextureObject(hpTexture);
 			
 			Color xpGained = new Color((byte)255, (byte)255, (byte)0);
 			Color xpRemaining = new Color((byte)150, (byte)150, (byte)0);
@@ -93,11 +92,15 @@ public class StatsContainer {
 			TextureObject xpTexture = new TextureObject(new Texture(XPbuffer, width, height));
 			xpTexture.setStickTo(stickTo.BottomLeft);
 			xpTexture.move(120, -14);
-			playerStats.addTextureObject(xpTexture);
+			this.playerStats.addTextureObject(xpTexture);
 			
-			guiRenderer.addGroup(playerStats);
+			Line level = new Line(stickTo.TopRight);
+			level.setString(Integer.toString(player.getXP().GetLevel()), smallFont);
+			level.move(-160-level.getWidth()/2, 21);
 			
-			updateLevel(guiRenderer, player);
+			this.playerStats.addTextureObject(level);
+			
+			guiRenderer.addGroup(this.playerStats);
 			
 			guiRenderer.updatePositions();
 		} else {
@@ -105,16 +108,31 @@ public class StatsContainer {
 		}
 	}
 	
-	public void updateLevel(GuiRenderer guiRenderer, Player player) {
-		if(smallFont != null) {
-			if(level != null)
-				guiRenderer.removeGuiObject(level);
-		
-			level = new Line(stickTo.TopRight);
-			level.setString(Integer.toString(player.getXP().GetLevel()), smallFont);
-			level.move(-250, 11);
+	public void updatePlayerProperties(GuiRenderer guiRenderer, Player player) {
+		if(largeFont != null && smallFont != null) {
+			if(playerProperties != null)
+				guiRenderer.removeGroup(playerProperties);
 			
-			guiRenderer.addGuiObject(level, State.staticImage);
+				this.playerProperties = new Group();
+				this.playerProperties.setStickTo(stickTo.TopRight);
+				
+				Line money = new Line(0,0);
+				money.setString(Integer.toString(player.getMoney()), smallFont);
+				money.move(-165-money.getWidth()/2, 130);
+				
+				Line attack = new Line(0,0);
+				attack.setString((player.getMinAttack()+player.getPlayerAttackBonus()) + "-" +  (player.getMaxAttack()+player.getPlayerAttackBonus()), smallFont);
+				attack.move(-165-attack.getWidth()/2, 62);
+				
+				Line defense = new Line(0,0);
+				defense.setString(Integer.toString(player.getPlayerDefense()), smallFont);
+				defense.move(-165-defense.getWidth()/2, 97);
+				
+				this.playerProperties.addTextureObject(money);
+				this.playerProperties.addTextureObject(attack);
+				this.playerProperties.addTextureObject(defense);
+				
+				guiRenderer.addGroup(playerProperties);
 		}
 	}
 	

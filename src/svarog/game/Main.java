@@ -171,18 +171,23 @@ public class Main {
 		playerStats.setStickTo(stickTo.TopRight);
 		playerStats.move(-330, -20);
 		
+		
+		TextureObject statBackground = new TextureObject(new Texture("images/stat_background.png"));
+		statBackground.move(100, 60);
 		Line levelText = new Line(0, 0);
 		levelText.setString(language.getValue("levelItem"), roboto_15);
-		levelText.move(levelText.getWidth()/2, 0);
+		levelText.move(levelText.getWidth()/2+11, 10);
 		
 		Line attackText = new Line(0, -25);
 		attackText.setString(language.getValue("attackItem"), roboto_15);
-		attackText.move(attackText.getWidth()/2, 0);
+		attackText.move(attackText.getWidth()/2+11, 19);
 		
 		Line defenseText = new Line(0, -50);
 		defenseText.setString(language.getValue("defenseItem"), roboto_15);
-		defenseText.move(defenseText.getWidth()/2, 0);
+		defenseText.move(defenseText.getWidth()/2+11, 29);
 		
+		
+		playerStats.addTextureObject(statBackground);
 		playerStats.addTextureObject(attackText);
 		playerStats.addTextureObject(defenseText);
 		playerStats.addTextureObject(levelText);
@@ -209,7 +214,8 @@ public class Main {
 		guiRenderer.addGroup(playerStats);
 		
 	
-		guiRenderer.updatePlayerStats(player);
+		guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
+		guiRenderer.getStatsContainer().updatePlayerProperties(guiRenderer, player);
 		
 		/// Tiles on GUI ///////////////////////////
 		tileSheet = new TileSheet();
@@ -565,7 +571,7 @@ public class Main {
 							if(currentWorld.getEntity(i) instanceof Enemy) {
 	
 								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, roboto_18);
-								guiRenderer.updatePlayerStats(player);
+								guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 	
 							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
 								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId(), language);
@@ -618,7 +624,7 @@ public class Main {
 						player.FullyRecoverHP();
 						player.setMovement(player.movePlayer(65, true));
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
-						guiRenderer.updatePlayerStats(player);
+						guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(9)), guiRenderer);
 					}
 					

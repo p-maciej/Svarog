@@ -531,7 +531,7 @@ public class GuiRenderer implements RenderProperties {
 									player.getInventory().removeItemById(object.getId());
 										
 									object.removePuttedItem();
-									statsContainer.playerStatsDynamic(this, player);
+									statsContainer.updatePlayerStats(this, player);
 										
 								} else if(e.getMessage() == "delete") {
 									player.getInventory().removeItemById(object.getId());
@@ -795,10 +795,6 @@ public class GuiRenderer implements RenderProperties {
 	
 	public boolean isDialogOpen() {
 		return dialogContainer.isDialogOpen();
-	}
-	
-	public void updatePlayerStats(Player player) {
-		this.statsContainer.playerStatsDynamic(this, player);
 	}
 	
 	public void showArena(Arena arena) {
