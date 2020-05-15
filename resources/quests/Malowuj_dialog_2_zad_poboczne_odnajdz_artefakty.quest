@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 <class>
    <dialog id = "0">
-      <content>MojmandMav_dialog2_line0</content>
+      <content>MalandMav_dialog2_line0</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -10,7 +10,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "1">
-      <content>MojmandMav_dialog2_line1</content>
+      <content>MalandMav_dialog2_line1</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -19,7 +19,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "2">
-      <content>MojmandMav_dialog2_line2</content>
+      <content>MalandMav_dialog2_line2</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -28,9 +28,27 @@
       <t>0</t>
    </dialog>
    <dialog id = "3">
-      <content>MojmandMav_dialog2_line3</content>
+      <content>MalandMav_dialog2_line3</content>
       <ans>1</ans>
-      <answer>End</answer>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>4</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "4">
+      <content>MalandMav_dialog2_line4</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>5</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "5">
+      <content>MalandMav_dialog2_line5</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>-1</leadsTo>
       <q>0</q>

@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 <class>
    <dialog id = "0">
-      <content>RozandMav_dialog2_line0</content>
+      <content>IzborandMav_dialog1_line0</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -10,7 +10,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "1">
-      <content>RozandMav_dialog2_line1</content>
+      <content>IzborandMav_dialog1_line1</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -19,7 +19,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "2">
-      <content>RozandMav_dialog2_line2</content>
+      <content>IzborandMav_dialog1_line2</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -28,7 +28,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "3">
-      <content>RozandMav_dialog2_line3</content>
+      <content>IzborandMav_dialog1_line3</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -37,7 +37,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "4">
-      <content>RozandMav_dialog2_line4</content>
+      <content>IzborandMav_dialog1_line4</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -46,7 +46,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "5">
-      <content>RozandMav_dialog2_line5</content>
+      <content>IzborandMav_dialog1_line5</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -55,7 +55,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "6">
-      <content>RozandMav_dialog2_line6</content>
+      <content>IzborandMav_dialog1_line6</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -64,7 +64,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "7">
-      <content>RozandMav_dialog2_line7</content>
+      <content>IzborandMav_dialog1_line7</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -73,7 +73,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "8">
-      <content>RozandMav_dialog2_line8</content>
+      <content>IzborandMav_dialog1_line8</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -82,7 +82,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "9">
-      <content>RozandMav_dialog2_line9</content>
+      <content>IzborandMav_dialog1_line9</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -91,7 +91,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "10">
-      <content>RozandMav_dialog2_line10</content>
+      <content>IzborandMav_dialog1_line10</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -100,7 +100,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "11">
-      <content>RozandMav_dialog2_line11</content>
+      <content>IzborandMav_dialog1_line11</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -109,7 +109,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "12">
-      <content>RozandMav_dialog2_line12</content>
+      <content>IzborandMav_dialog1_line12</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -118,7 +118,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "13">
-      <content>RozandMav_dialog2_line13</content>
+      <content>IzborandMav_dialog1_line13</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -127,7 +127,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "14">
-      <content>RozandMav_dialog2_line14</content>
+      <content>IzborandMav_dialog1_line14</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -136,7 +136,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "15">
-      <content>RozandMav_dialog2_line15</content>
+      <content>IzborandMav_dialog1_line15</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -145,7 +145,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "16">
-      <content>RozandMav_dialog2_line16</content>
+      <content>IzborandMav_dialog1_line16</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -154,7 +154,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "17">
-      <content>RozandMav_dialog2_line17</content>
+      <content>IzborandMav_dialog1_line17</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -163,7 +163,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "18">
-      <content>RozandMav_dialog2_line18</content>
+      <content>IzborandMav_dialog1_line18</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -172,7 +172,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "19">
-      <content>RozandMav_dialog2_line19</content>
+      <content>IzborandMav_dialog1_line19</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -181,7 +181,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "20">
-      <content>RozandMav_dialog2_line20</content>
+      <content>IzborandMav_dialog1_line20</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -190,7 +190,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "21">
-      <content>RozandMav_dialog2_line21</content>
+      <content>IzborandMav_dialog1_line21</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -199,7 +199,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "22">
-      <content>RozandMav_dialog2_line22</content>
+      <content>IzborandMav_dialog1_line22</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -208,7 +208,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "23">
-      <content>RozandMav_dialog2_line23</content>
+      <content>IzborandMav_dialog1_line23</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -217,7 +217,59 @@
       <t>0</t>
    </dialog>
    <dialog id = "24">
-      <content>RozandMav_dialog2_line24</content>
+      <content>IzborandMav_dialog1_line24</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>25</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "25">
+      <content>IzborandMav_dialog1_line25</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>26</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "26">
+      <content>IzborandMav_dialog1_line26</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>27</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "27">
+      <content>IzborandMav_dialog1_line27</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>28</leadsTo>
+      <q>1</q>
+	  <questID>6</questID>
+	  <title>QuestID6_Find10IceCup_Title</title>
+	  <description>QuestID6_Find10IceCup_Desc</description>
+	  <t>1</t>
+	  <taskID>0</taskID>
+      <toDo>10</toDo>
+      <doItemID>10</doItemID>
+      <state>collect</state>
+   </dialog>
+    <dialog id = "28">
+      <content>IzborandMav_dialog1_line28</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>29</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "29">
+      <content>IzborandMav_dialog1_line29</content>
       <ans>1</ans>
       <answer>End</answer>
       <id>0</id>

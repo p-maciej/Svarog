@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 <class>
    <dialog id = "0">
-      <content>MojmandMav_dialog1_line0</content>
+      <content>MalandMav_dialog1_line0</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -10,7 +10,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "1">
-      <content>MojmandMav_dialog1_line1</content>
+      <content>MalandMav_dialog1_line1</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -19,7 +19,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "2">
-      <content>MojmandMav_dialog1_line2</content>
+      <content>MalandMav_dialog1_line2</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -28,7 +28,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "3">
-      <content>MojmandMav_dialog1_line3</content>
+      <content>MalandMav_dialog1_line3</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -37,7 +37,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "4">
-      <content>MojmandMav_dialog1_line4</content>
+      <content>MalandMav_dialog1_line4</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -46,7 +46,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "5">
-      <content>MojmandMav_dialog1_line5</content>
+      <content>MalandMav_dialog1_line5</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -55,7 +55,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "6">
-      <content>MojmandMav_dialog1_line6</content>
+      <content>MalandMav_dialog1_line6</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -64,7 +64,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "7">
-      <content>MojmandMav_dialog1_line7</content>
+      <content>MalandMav_dialog1_line7</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -73,7 +73,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "8">
-      <content>MojmandMav_dialog1_line8</content>
+      <content>MalandMav_dialog1_line8</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -82,7 +82,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "9">
-      <content>MojmandMav_dialog1_line9</content>
+      <content>MalandMav_dialog1_line9</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -91,32 +91,59 @@
       <t>0</t>
    </dialog>
    <dialog id = "10">
-      <content>MojmandMav_dialog1_line10</content>
+      <content>MalandMav_dialog1_line10</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>11</leadsTo>
-      <q>1</q>
-	  <questID>5</questID>
-	  <title>QuestID5_FindGerwazy_Title</title>
-	  <description>QuestID5_FindGerwazy_Desc</description>
-	  <t>1</t>
-	  <taskID>0</taskID>
-      <toDo>1</toDo>
-      <doItemID>1</doItemID>
-      <state>find</state>
+      <q>0</q>
+      <t>0</t>
    </dialog>
    <dialog id = "11">
-      <content>MojmandMav_dialog1_line11</content>
+      <content>MalandMav_dialog1_line11</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>12</leadsTo>
+      <q>1</q>
+	  <questID>7</questID>
+	  <title>QuestID7_FindArtefactsinFort_Title</title>
+	  <description>QuestID7_FindArtefactsinFort_Desc</description>
+	  <t>1</t>
+	  <taskID>0</taskID>
+      <toDo>2</toDo>
+      <doItemID>2</doItemID>
+      <state>collect</state>
+   </dialog>
+    <dialog id = "12">
+      <content>MalandMav_dialog1_line12</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>13</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
-   <dialog id = "12">
-      <content>MojmandMav_dialog1_line12</content>
+   <dialog id = "13">
+      <content>MalandMav_dialog1_line13</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>14</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "14">
+      <content>MalandMav_dialog1_line14</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>15</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "15">
+      <content>MalandMav_dialog1_line15</content>
       <ans>1</ans>
       <answer>End</answer>
       <id>0</id>

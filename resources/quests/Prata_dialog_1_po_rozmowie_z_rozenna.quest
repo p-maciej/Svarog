@@ -1,0 +1,583 @@
+<?xml version = "1.0"?>
+<class>
+   <dialog id = "0">
+      <content>PratandMav_dialog1_line0</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "1">
+      <content>PratandMav_dialog1_line1</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>2</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "2">
+      <content>PratandMav_dialog1_line2</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>3</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "3">
+      <content>PratandMav_dialog1_line3</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>4</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "4">
+      <content>PratandMav_dialog1_line4</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>5</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "5">
+      <content>PratandMav_dialog1_line5</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>6</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "6">
+      <content>PratandMav_dialog1_line6</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>7</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "7">
+      <content>PratandMav_dialog1_line7</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>8</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "8">
+      <content>PratandMav_dialog1_line8</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>9</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "9">
+      <content>PratandMav_dialog1_line9</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>10</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "10">
+      <content>PratandMav_dialog1_line10</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>11</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "11">
+      <content>PratandMav_dialog1_line11</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>12</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "12">
+      <content>PratandMav_dialog1_line12</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>13</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "13">
+      <content>PratandMav_dialog1_line13</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>14</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "14">
+      <content>PratandMav_dialog1_line14</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>15</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "15">
+      <content>PratandMav_dialog1_line15</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>16</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "16">
+      <content>PratandMav_dialog1_line16</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>17</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "17">
+      <content>PratandMav_dialog1_line17</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>18</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "18">
+      <content>PratandMav_dialog1_line18</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>19</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "19">
+      <content>PratandMav_dialog1_line19</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>20</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "20">
+      <content>PratandMav_dialog1_line20</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>21</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "21">
+      <content>PratandMav_dialog1_line21</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>22</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "22">
+      <content>PratandMav_dialog1_line22</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>23</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "23">
+      <content>PratandMav_dialog1_line23</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>24</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "24">
+      <content>PratandMav_dialog1_line24</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>25</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "25">
+      <content>PratandMav_dialog1_line25</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>26</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "26">
+      <content>PratandMav_dialog1_line26</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>27</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "27">
+      <content>PratandMav_dialog1_line27</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>28</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "28">
+      <content>PratandMav_dialog1_line28</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>29</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "29">
+      <content>PratandMav_dialog1_line29</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>30</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "30">
+      <content>PratandMav_dialog1_line30</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>31</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "31">
+      <content>PratandMav_dialog1_line31</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>32</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "32">
+      <content>PratandMav_dialog1_line32</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>33</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "33">
+      <content>PratandMav_dialog1_line33</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>34</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "34">
+      <content>PratandMav_dialog1_line34</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>35</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "35">
+      <content>PratandMav_dialog1_line35</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>36</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "36">
+      <content>PratandMav_dialog1_line36</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>37</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "37">
+      <content>PratandMav_dialog1_line37</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>38</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "38">
+      <content>PratandMav_dialog1_line38</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>39</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "39">
+      <content>PratandMav_dialog1_line39</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>40</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "40">
+      <content>PratandMav_dialog1_line40</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>41</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "41">
+      <content>PratandMav_dialog1_line41</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>42</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "42">
+      <content>PratandMav_dialog1_line42</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>43</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "43">
+      <content>PratandMav_dialog1_line43</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>44</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "44">
+      <content>PratandMav_dialog1_line44</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>45</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "45">
+      <content>PratandMav_dialog1_line45</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>46</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "46">
+      <content>PratandMav_dialog1_line46</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>47</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "47">
+      <content>PratandMav_dialog1_line47</content>
+      <ans>3</ans>
+      <answer>PratandMav_dialog1_line47_ans1</answer>
+      <id>0</id>
+      <leadsTo>48</leadsTo>
+      <answer>PratandMav_dialog1_line47_ans2</answer>
+      <id>1</id>
+      <leadsTo>59</leadsTo>
+	  <answer>Bye</answer>
+      <id>2</id>
+      <leadsTo>-1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "48">
+      <content>PratandMav_dialog1_line48</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>49</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "49">
+      <content>PratandMav_dialog1_line49</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>50</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "50">
+      <content>PratandMav_dialog1_line50</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>51</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "51">
+      <content>PratandMav_dialog1_line51</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>52</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "52">
+      <content>PratandMav_dialog1_line52</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>53</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "53">
+      <content>PratandMav_dialog1_line53</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>54</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "54">
+      <content>PratandMav_dialog1_line54</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>55</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "55">
+      <content>PratandMav_dialog1_line55</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>56</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "56">
+      <content>PratandMav_dialog1_line56</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>57</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "57">
+      <content>PratandMav_dialog1_line57</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>58</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+    <dialog id = "58">
+      <content>PratandMav_dialog1_line58</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>47</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "59">
+      <content>PratandMav_dialog1_line59</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>60</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "60">
+      <content>PratandMav_dialog1_line60</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>61</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "61">
+      <content>PratandMav_dialog1_line61</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>62</leadsTo>
+       <q>1</q>
+	  <questID>2</questID>
+	  <title>QuestID2_KillWolfes_Title</title>
+	  <description>QuestID2_KillWolfes_Desc</description>
+	  <t>1</t>
+	  <taskID>0</taskID>
+      <toDo>6</toDo>
+      <doItemID>6</doItemID>
+      <state>kill</state>
+   </dialog>
+   <dialog id = "62">
+      <content>PratandMav_dialog1_line62</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>47</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+</class>

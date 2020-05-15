@@ -1,126 +1,126 @@
 <?xml version = "1.0"?>
 <class>
    <dialog id = "0">
-      <content>[Mavak] – Mojmiro.</content>
+      <content>MojmandMav_dialog3_line0</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>1</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "1">
-      <content>[Mojmira] – Znalazłeś go? Proszę powiedz mi że go znalazłeś.</content>
+      <content>MojmandMav_dialog3_line1</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>2</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "2">
-      <content>[Mavak] – Ehmmm tak aleee…</content>
+      <content>MojmandMav_dialog3_line2</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>3</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "3">
-      <content>[Mojmira] – Skoro go znalazłeś to gdzie on jest?</content>
+      <content>MojmandMav_dialog3_line3</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>4</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
     <dialog id = "4">
-      <content>[Mavak] – Ehmmm nie wiem jak Ci to powiedzieć.</content>
+      <content>MojmandMav_dialog3_line4</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>5</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "5">
-      <content>[Mojmira] - <szok></content>
+      <content>MojmandMav_dialog3_line5</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>6</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
     <dialog id = "6">
-      <content>[Mojmira] – Rozumiem. Ehhhhhh Gerwazy.</content>
+      <content>MojmandMav_dialog3_line6</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>7</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "7">
-      <content>[Mavak] – Przepraszam.</content>
+      <content>MojmandMav_dialog3_line7</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>8</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "8">
-      <content>[Mojmira] – Nie masz za co. Masz chociaż coś czym możesz potwierdzić że to jego znalazłeś a nie kogoś innego.</content>
+      <content>MojmandMav_dialog3_line8</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>9</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "9">
-      <content>[Mavak] – Tak, znalazłem przy nim ten naszyjnik.</content>
+      <content>MojmandMav_dialog3_line9</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>10</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "10">
-      <content>[Mojmira] - <wzruszona> To naszyjnik który dałam mu niedługo po tym jak się poznaliśmy, dziękuje że mi go zwróciłeś. Będzie mi on i nim przypominać.</content>
+      <content>MojmandMav_dialog3_line10</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>11</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "11">
-      <content>[Mojmira] – Mavaku, proszę weź to złoto. To niewiele ale chociaż w taki sposób mogę się odwdzięczyć za to że wyruszyłeś do tego przeklętego grodu w poszukiwaniu mojego męża.</content>
+      <content>MojmandMav_dialog3_line11</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>12</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "12">
-      <content>[Mavak] – Nie. Stanowczo odmawiam przyjęcia tych pieniędzy, Tobie się one teraz bardziej przydadzą.</content>
+      <content>MojmandMav_dialog3_line12</content>
       <ans>1</ans>
-      <answer>Następne okno</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>13</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
    <dialog id = "13">
-      <content>[Mojmira] – To bardzo miłe z twej strony. Dziękuje Mavaku za przyniesienie mi tych smutnych wiadmości.</content>
+      <content>MojmandMav_dialog3_line13</content>
       <ans>1</ans>
-      <answer>Koniec</answer>
+      <answer>End</answer>
       <id>0</id>
       <leadsTo>-1</leadsTo>
       <q>0</q>

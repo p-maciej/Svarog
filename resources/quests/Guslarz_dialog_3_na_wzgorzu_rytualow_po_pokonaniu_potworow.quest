@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 <class>
    <dialog id = "0">
-      <content>RozandMav_dialog2_line0</content>
+      <content>MavandGus_dialog3_line0</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -10,7 +10,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "1">
-      <content>RozandMav_dialog2_line1</content>
+      <content>MavandGus_dialog3_line1</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -19,7 +19,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "2">
-      <content>RozandMav_dialog2_line2</content>
+      <content>MavandGus_dialog3_line2</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -28,7 +28,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "3">
-      <content>RozandMav_dialog2_line3</content>
+      <content>MavandGus_dialog3_line3</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -37,7 +37,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "4">
-      <content>RozandMav_dialog2_line4</content>
+      <content>MavandGus_dialog3_line4</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -46,7 +46,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "5">
-      <content>RozandMav_dialog2_line5</content>
+      <content>MavandGus_dialog3_line5</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -55,7 +55,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "6">
-      <content>RozandMav_dialog2_line6</content>
+      <content>MavandGus_dialog3_line6</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -64,7 +64,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "7">
-      <content>RozandMav_dialog2_line7</content>
+      <content>MavandGus_dialog3_line7</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -73,7 +73,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "8">
-      <content>RozandMav_dialog2_line8</content>
+      <content>MavandGus_dialog3_line8</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -82,7 +82,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "9">
-      <content>RozandMav_dialog2_line9</content>
+      <content>MavandGus_dialog3_line9</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -91,7 +91,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "10">
-      <content>RozandMav_dialog2_line10</content>
+      <content>MavandGus_dialog3_line10</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -100,7 +100,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "11">
-      <content>RozandMav_dialog2_line11</content>
+      <content>MavandGus_dialog3_line11</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -109,7 +109,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "12">
-      <content>RozandMav_dialog2_line12</content>
+      <content>MavandGus_dialog3_line12</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -118,7 +118,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "13">
-      <content>RozandMav_dialog2_line13</content>
+      <content>MavandGus_dialog3_line13</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -127,7 +127,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "14">
-      <content>RozandMav_dialog2_line14</content>
+      <content>MavandGus_dialog3_line14</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -136,7 +136,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "15">
-      <content>RozandMav_dialog2_line15</content>
+      <content>MavandGus_dialog3_line15</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -145,16 +145,16 @@
       <t>0</t>
    </dialog>
    <dialog id = "16">
-      <content>RozandMav_dialog2_line16</content>
+      <content>MavandGus_dialog3_line16</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>17</leadsTo>
       <q>0</q>
-      <t>0</t>
+	  <t>0</t>
    </dialog>
    <dialog id = "17">
-      <content>RozandMav_dialog2_line17</content>
+      <content>MavandGus_dialog3_line17</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -163,16 +163,16 @@
       <t>0</t>
    </dialog>
    <dialog id = "18">
-      <content>RozandMav_dialog2_line18</content>
+      <content>MavandGus_dialog3_line18</content>
       <ans>1</ans>
-      <answer>NextWindow</answer>
+      <answer>MavandGus_dialog3_line19</answer>
       <id>0</id>
       <leadsTo>19</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>
     <dialog id = "19">
-      <content>RozandMav_dialog2_line19</content>
+      <content>MavandGus_dialog3_line20</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -180,8 +180,8 @@
       <q>0</q>
       <t>0</t>
    </dialog>
-    <dialog id = "20">
-      <content>RozandMav_dialog2_line20</content>
+   <dialog id = "20">
+      <content>MavandGus_dialog3_line21</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -189,8 +189,8 @@
       <q>0</q>
       <t>0</t>
    </dialog>
-    <dialog id = "21">
-      <content>RozandMav_dialog2_line21</content>
+   <dialog id = "21">
+      <content>MavandGus_dialog3_line22</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -199,7 +199,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "22">
-      <content>RozandMav_dialog2_line22</content>
+      <content>MavandGus_dialog3_line23</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -208,7 +208,7 @@
       <t>0</t>
    </dialog>
     <dialog id = "23">
-      <content>RozandMav_dialog2_line23</content>
+      <content>MavandGus_dialog3_line24</content>
       <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
@@ -216,8 +216,8 @@
       <q>0</q>
       <t>0</t>
    </dialog>
-   <dialog id = "24">
-      <content>RozandMav_dialog2_line24</content>
+    <dialog id = "24">
+      <content>MavandGus_dialog3_line25</content>
       <ans>1</ans>
       <answer>End</answer>
       <id>0</id>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <file>
     <variable>
         <key>wolfSkin</key>
@@ -303,5 +303,1601 @@
 	<variable>
         <key>none</key>
         <translation>Brak/błąd</translation>
+    </variable>
+	<variable>
+        <key>NextWindow</key>
+        <translation>Nastepne okno</translation>
+    </variable>
+	<variable>
+        <key>End</key>
+        <translation>Koniec</translation>
+    </variable>
+	<variable>
+        <key>Bye</key>
+        <translation>Bywaj</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line0</key>
+        <translation>[Mavak] – Witaj Guślarzu. Podobno chciałeś się ze mną widzieć.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line1</key>
+        <translation>[Guślarz] - …</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line2</key>
+        <translation>[Mavak] – Guślarzu?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line3</key>
+        <translation>[Guślarz] – Kto śmie przeszkadzać Guślarzowi w jego pracy?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line4</key>
+        <translation>[Mavak] – Przepraszam, to ja Mavak. Podobno chciałeś się ze mną widzieć.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line5</key>
+        <translation>[Guślarz] – Aaaaa Mavak. Tak tak Guślarz pamięta, Guślarz wie. Guślarz pomocy od Mavaka potrzebuje.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line6</key>
+        <translation>[Mavak] – O jaką pomoc chodzi?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line7</key>
+        <translation>[Guślarz] – Czas Dziadów się zbliża. Dziady muszą zostać odprawione, inaczej Bogowie źli, a gdy Bogowie źli to zapominają o nas.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line8</key>
+        <translation>[Guślarz] - Nie przejmują się nami. Dziady już kiedyś nie zostały odprawione i Mavak widzi co się teraz dzieje z wioską oraz jej okolicami, nawet Guślarz to widzi a mieszka daleko od wioski.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line9</key>
+        <translation>[Mavak] – A więc to przez to czułem że Bogowie o nas zapomnieli. Po prostu nie przeprowadziłeś Dziadów.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line10</key>
+        <translation>[Guślarz] – Guślarz nigdy o tym nikomu nie mówił. Guślarz kilka lat temu chciał przeprowadzić Dziady ale Ghule mu wtedy przeszkodziły.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line11</key>
+        <translation>[Guślarz] - Zbeszcześciły wzgórze Rytuałów. Od tego momentu Bogowie obrażeni, zapomnieli o naszej wiosce.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line12</key>
+        <translation>[Mavak] – Dlaczego mi to mówisz?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line13</key>
+        <translation>[Guślarz] – Bo Guślarz wie że Mavak zrozumie Guślarza. Guślarz wie też o misji Mavaka.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line14</key>
+        <translation>[Mavak] – Wiesz o Boskiem przeznaczeniu? Wiesz że wyruszyłem z misją odnalezienia 4 artefaktów?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line15</key>
+        <translation>[Guślarz] – Tak Guślarz wie. Guślarz nawet wie że nie wiesz gdzie szukać jednego z artefaktów. Guślarz wie że Prata nie wiedział co dokładnie oznacza wskazówka „lód”.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line16</key>
+        <translation>[Mavak] – Skąd Ty to wiesz? Przecież nie pojawiasz się w wiosce. A wieśniak który mi przekazał że mam się z Tobą zobaczyć raczej nie wiedział o mojej misji.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line17</key>
+        <translation>[Guślarz] – Wieśniak nie wiedział o misji to prawda. Ale Guślarz ma swoje dojścia. Guślarz wie wszystko co trzeba wiedzieć.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line18</key>
+        <translation>[Mavak] – Guślarzu jesteś tajemniczą postacią.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line19</key>
+        <translation>[Guślarz] – Guślarz wie, i Guślarz jest z tego dumny.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line20</key>
+        <translation>[Mavak] – To Guślarzu, powiesz mi o co chodzi z brakującą wskazówką?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line21</key>
+        <translation>[Guślarz] – Guślarz powie, ale Guślarz najpierw musi odprawić Dziady, a Mavak musi pomóc Guślarzowi.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line22</key>
+        <translation>[Mavak] – Dobrze, co mam robić?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog1_line23</key>
+        <translation>[Guślarz] – Mavak niech się uda na Wzgórze Rytuałów, tam Guślarz wyjaśni co Mavak ma robić.</translation>
+    </variable>
+	<variable>
+        <key>QuestID4_HelpGuslarz_Title</key>
+        <translation>Pomóż Guślarzowi przeprowadzić rytuał dziadów.</translation>
+    </variable>
+	<variable>
+        <key>QuestID4_HelpGuslarz_Desc</key>
+        <translation>Jeden z wieśniaków skontaktował się ze mną. Powiedział mi że Guślarz chce się ze mną zobaczyć. Odwiedziłem go, na miejscu się okazało że wie o mnie więcej niż się spodziewałem. Obiecał mi pomóc z brakującymi wskazówkami pod warunkiem że pomogę mu przeprowadzić rytuał Dziadów na Wzgórzu Rytuałów. Rytuały w ostatnich latach były przerywane przez potwory. Przez to odnoszę wrażenie że Bogowie zapomnieli o tym miejscu. Czas to zmienić.</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line0</key>
+        <translation>[Mavak] – Guślarzu. Przybyłem. Na czym ma polegać moja pomoc?</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line1</key>
+        <translation>[Guślarz] – Mavak przybył. Guślarz jest uradowany. Guślarz teraz będzie odprawiał rytuał Dziadów.</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line2</key>
+        <translation>[Guślarz] – Jednakże w trakcie rytuału Guślarza mogą zaatakować Ghule. Jeżeli przerwą one rytuał, tragedia w Groszycach się stanie. Mavak musi chronić Guślarza.</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line3</key>
+        <translation>[Mavak] – Dobrze, nie martw się o to, ochronię Cię.</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line4</key>
+        <translation>[Guślarz] – Jeżeli Mavak ochroni Guślarza i Dziady zostaną odprawione, to Guślarz nagrodzi Mavaka błogosławieństwem Bogów i odpowie na pytania Mavaka.</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line5</key>
+        <translation>[Guślarz] – Jeżeli Mavak jest gotowy to Guślarz zacznie odprawiać Dziady.</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line6</key>
+        <translation>[Mavak] – Jestem gotowy. Zaczynaj.</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line7</key>
+        <translation>[Guślarz] - Czyscowe duszeczki!</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line8</key>
+        <translation>[Guślarz] - W jakiejkolwiek świata stronie:</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line9</key>
+        <translation>[Guślarz] - Czyli która w smole płonie,</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line10</key>
+        <translation>[Guślarz] - Czyli marznie na dnie rzeczki,</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line11</key>
+        <translation>[Guślarz] - Czyli dla dotkliwszej kary</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line12</key>
+        <translation>[Guślarz] - W surowym wszczepiona drewnie,</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line13</key>
+        <translation>[Guślarz] - Gdy ją w piecu gryzą żary,</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line14</key>
+        <translation>[Guślarz] - I piszczy, i płacze rzewnie;</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line15</key>
+        <translation>[Guślarz] - Każda spieszcie do gromady!</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line16</key>
+        <translation>[Guślarz] - Gromada niech się tu zbierze!</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line17</key>
+        <translation>[Guślarz] - Oto obchodzimy Dziady!</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line18</key>
+        <translation>[Guślarz] - Zstępujcie w święty przybytek;</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line19</key>
+        <translation>[Guślarz] - Jest jałmużna, są pacierze,</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line20</key>
+        <translation>[Guślarz] - I jedzenie, i napitek.</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line21</key>
+        <translation>[Guślarz] - Ciemno wszędzie, głucho wszędzie,</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line22</key>
+        <translation>[Guślarz] - Co to będzie, co to będzie?</translation>
+    </variable>
+	<variable>
+        <key>MavangGus_dialog2_line23</key>
+        <translation>[Mavak] - *do siebie* Są i ghule po drugiej stronie wzgórza. Muszę je wyeliminować, bo inaczej przerwą rytuał.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line0</key>
+        <translation>[Guślarz] - Daj mnie stułę i gromnicę,</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line1</key>
+        <translation>[Guślarz] - Zapalę, jeszcze poświęcę...</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line2</key>
+        <translation>[Guślarz] - Próżno palę, próżno święcę,</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line3</key>
+        <translation>[Guślarz] - Nie znika przeklęta dusza.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line4</key>
+        <translation>[Guślarz] - Weźcie pasterkę pod ręce,</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line5</key>
+        <translation>[Guślarz] - Wyprowadźcie za kaplicę.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line6</key>
+        <translation>[Guślarz] - Czegoż uśmiechasz się, czego?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line7</key>
+        <translation>[Guślarz] - Co w nim widzisz powabnego?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line8</key>
+        <translation>[Guślarz] - Czegoż oglądasz się? czego?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line9</key>
+        <translation>[Guślarz] - Co w nim widzisz powabnego?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line10</key>
+        <translation>[Guślarz] - Przebóg, widmo kroku rusza!</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line11</key>
+        <translation>[Guślarz] - Gdzie my z nią, on za nią wszędzie...</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line12</key>
+        <translation>[Guślarz] - Co to będzie, co to będzie?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line13</key>
+        <translation>[Guślarz] - Gdzie my z nią, on za nią wszędzie.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line14</key>
+        <translation>[Guślarz] - Co to będzie, co to będzie?</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line15</key>
+        <translation>[Guślarz] - *Z ulgą w głosie* Guślarzowi i Mavakowi się udało. Dziady zostały odprawione. Guślarz niezmiernie dziękuje Mavakowi.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line16</key>
+        <translation>[Mavak] – To był drobiazg Guślarzu. Mam nadzieję że udany rytuał sprawi że Bogowie przypomną sobie o naszej wiosce.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line17</key>
+        <translation>[Guślarz] – Przypomną przypomną. Guślarz pewny tego jest. Guślarz też wie że Mavak wypełni Boskie Przeznaczenie i zasiądzie w Boskim Panteonie, a wtedy Guślarz jest pewny tego że Mavak nie zapomni o Groszycach.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line18</key>
+        <translation>[Guślarz] – Teraz Guślarz chce podziękować Mavakowi. Niech Bogowie Cię błogosławią, niech dadzą Ci siłę która pomoże Ci wypełnić Twe przeznaczenie.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line19</key>
+        <translation>*Komunikat: Zostajesz pobłogosławiony, Czujesz się silniejszy*</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line20</key>
+        <translation>[Mavak] – Wow. Poczułem nagły przypływ mocy. Dziękuje Ci Guślarzu.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line21</key>
+        <translation>[Guślarz] – Teraz Guślarz powie Mavakowi o co chodzi z ostatnią wskazówką.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line22</key>
+        <translation>[Mavak] – Zamieniam się w słuch.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line23</key>
+        <translation>[Guślarz] – Lód. Mavak powinien udać się głęboko pod opuszczony gród. Tam Mavak znajdzie Jaskinie Wiecznego Mrozu. Tam Mavak znajdzie Marzannę która posiada artefakt.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line24</key>
+        <translation>[Mavak] – Guślarzu. Dziękuje. Za wszystko.</translation>
+    </variable>
+	<variable>
+        <key>MavandGus_dialog3_line25</key>
+        <translation>[Guślarz] – To Guślarz dziękuje Mavakowi. A teraz Mavak niech idzie. Niech wypełni swoje Boskie Przeznaczenie, odnajdzie artefakty.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line0</key>
+        <translation>[Mavak] – Witaj podróżniku. Co robisz przed tym przeklętym fortem.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line1</key>
+        <translation>[Izbor] – Ooo a kogóż my tu mamy. Chyba zabłądziłeś kolego. To miejsce jest niebezpieczne. Lepiej tam nie wchodź.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line2</key>
+        <translation>[Mavak] – Doprawdy?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line3</key>
+        <translation>[Izbor] – Spójrz Małowuj. Chyba mamy tu chojraka. Kolego, lepiej nie przechodź przez tą dziurę w palisadzie.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line4</key>
+        <translation>[Mavak] – Doprawdy? A co mnie tam czeka jeżeli przejdę przez nią?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line5</key>
+        <translation>[Izbor] – Śmierć Cię czeka mój drogi jak tędy przejdziesz. Lata temu to miejsce zostało brutalnie przejęte przez armię ghuli ze Strzygą na czele.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line6</key>
+        <translation>[Izbor] - Teraz cały gród się od nich roi. Ten kto wejdzie do grodu, żywym stamtąd nie wyjdzie.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line7</key>
+        <translation>[Mavak] – No widzisz podróżniku. Mówisz że w grodzie czeka na mnie śmierć. Słowo klucz „śmierć”. To mnie właśnie tutaj sprowadziło.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line8</key>
+        <translation>[Izbor] – No no czyli zamierzasz tam wejść. To w takim razie mam dla Ciebie propozycję.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line9</key>
+        <translation>[Mavak] – Propozycję?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line10</key>
+        <translation>[Izbor] – Tak, propozycję. Chciałbyś posiąść ogromne moce i bogactwo?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line11</key>
+        <translation>[Mavak] – Myślę że jestem w stanie posiąść chociaż jedną z tych rzeczy bez Waszej pomocy, no ale słucham.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line12</key>
+        <translation>[Izbor] – Uuuu proszę człowiek który jest na tyle odważny aby wejść do grodu, na tyle ambitny aby rzucać takie słowa, oraz na tyle tajemniczy aby nie wyjawiać swych prawdziwych zamiarów. Będziesz się idealnie nadawał do tego zadania.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line13</key>
+        <translation>[Mavak] – Jakiego zadania. Wprowadź mnie proszę w szczegóły?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line14</key>
+        <translation>[Izbor] – Posłuchaj, lata temu z Małowujem usłyszeliśmy legendę że gdzieś głęboko pod tym grodem znajduje się jaskinia. Jaskinia ta podobno jest pokryta lodem – wieczną zmarzliną.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line15</key>
+        <translation>[Izbor] - Oprócz tego że w owej jaskini znajdują się niezliczone ilości różnego rodzaju pokractwa, to podobno w tej jaskini można znaleźć 10 lodowych kielichów.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line16</key>
+        <translation>[Mavak] – Lodowych kielichów?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line17</key>
+        <translation>[Izbor] – Tak lodowych kielichów. Owa legenda głosi że ten który posiądzie wszystkie 10 kielichów zdobędzie niesamowite moce niemalże dorównujące bogom. Zamierzamy z Małowujem zdobyć te kielichy i jeszcze coś.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line18</key>
+        <translation>[Mavak] – Jeszcze coś?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line19</key>
+        <translation>[Izbor] – Pogadaj z moim druhem Małowujem jeżeli jeszcze tego nie zrobiłeś. On Cię wprowadzi w szczegóły.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line20</key>
+        <translation>[Mavak] – No dobrze. Kielichy dające niesamowitą moc. Brzmi to doprawdy niesamowicie, niesamowicie mało przekonująco. Wierzycie w tą bajeczkę?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line21</key>
+        <translation>[Izbor] – Wątpisz w prawdziwość tej legendy?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line22</key>
+        <translation>[Mavak] – Tak, ale mogę dla Was spróbować poszukać tych kielichów, aby Wam udowodnić swoją rację. Co będę z tego miał?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line23</key>
+        <translation>[Izbor] – Jeżeli uda Ci się znaleźć kielichy to damy Ci połowę mocy która jest w nich zaklęta.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line24</key>
+        <translation>[Mavak] – A wiecie w ogóle jak taką moc podzielić?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line25</key>
+        <translation>[Mavak] – A wiecie w ogóle jak taką moc podzielić?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line26</key>
+        <translation>[Izbor] – Ehhh zaczynasz mnie wkurzać. Bierzesz to zadanie czy nie?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line27</key>
+        <translation>[Mavak] – Wezmę. Ale tylko po to aby Wam udowodnić że ta legenda to jakaś marna bajeczka.</translation>
+    </variable>
+	<variable>
+        <key>QuestID6_Find10IceCup_Title</key>
+        <translation>Odnajdź 10 lodowych kielichów</translation>
+    </variable>
+	<variable>
+        <key>QuestID6_Find10IceCup_Desc</key>
+        <translation>Przed opuszczonym grodem spotkałem dwóch ciekawych gości Izbora oraz Małowuja. Pierwszy z nich z błyskiem w oku opowiedział mi o legendzie 10 lodowych kielichów, ten kto je posiądzie wszystkie zdobędzie niesamowite moce. Ta niesamowite to są te bajeczki. Odnajdę te kielichy aby mu udowodnić że ta legenda to jedna wielka mrzonka. Jednakże muszę uważać na tych gości bo wydają się podejrzani.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line28</key>
+        <translation>[Izbor] – Uwierz mi, to nie bajeczka *śmiech*</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog1_line29</key>
+        <translation>[Mavak] - *do siebie* Ci goście wydają się podejrzani. Muszę na nich uważać.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line0</key>
+        <translation>[Izbor] – No i? No i? Gdzie są kielichy?</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line1</key>
+        <translation>[Mavak] – Tutaj są Wasze kielichy.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line2</key>
+        <translation>[Izbor] – Aaaaaa cudownie. Słyszysz Małowuj? Mamy je w końcu, teraz będziemy niepokonani, nawet Bogowie nie będą mogli nam dorównać.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line3</key>
+        <translation>[Mavak] – Chyba będą mogli bo te kielichy nie posiadają w sobie żadnej mocy.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line4</key>
+        <translation>[Izbor] – Co? Kłamiesz!</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line5</key>
+        <translation>[Mavak] – Nie kłamię. Mówiłem że to zwykła bajeczka z tą mocą kielichów. Po zdobyciu ich wszystkich nie poczułem przypływu jakieś niesamowitej mocy.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line6</key>
+        <translation>[Mavak] – Zostaliście wrobieni. Cieszcie się że żyjecie. Nawet sobie nie zdajecie sprawy ile stworzeń było w tej jaskini.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line7</key>
+        <translation>[Izbor] – KŁAMIESZ!!! Te kielichy mają moc, czuję to, chcesz je po prostu zatrzymać dla siebie. Chcesz nas oszukać.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line8</key>
+        <translation>[Mavak] – Dlaczego miałbym Was oszukiwać dla jakichś bezużytecznych kielichów.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line9</key>
+        <translation>[Izbor] – One nie są bezużyteczne i zaraz się o tym przekonasz. Małowuj dobieraj miecza.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line10</key>
+        <translation>[Izbor] – Ten oszust jest osłabiony po bitwach. Zabicie go to będzie pestka. Przy okazji położymy łapki na jego ekwipunku.</translation>
+    </variable>
+	<variable>
+        <key>IzborandMav_dialog_2_line11</key>
+        <translation>[Mavak] – Ehhhh skoro tak się sprawy mają. Duet idiotów, jeden głupszy od drugiego.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line0</key>
+        <translation>[Mavak] – A cóż to się stało?</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line1</key>
+        <translation>[Kupiec] – A jak myślisz? Napadli mnie cholerni bandyci. Te rzezimieszki grasują w tych okolicach chyba od zawsze.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line2</key>
+        <translation>[Kupiec] - Jak Wy możecie z nimi żyć, dlaczego z nimi nic jeszcze nie zrobiliście?</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line3</key>
+        <translation>[Mavak] – Noooo nie jest łatwo. Wiele razy musieliśmy się przed nimi bronić.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line4</key>
+        <translation>[Kupiec] – Nie jest łatwo. Oczywiście że nie jest łatwo. To bandyci. Ja się pytam dlaczego nic z nimi nie zrobiliście?</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line5</key>
+        <translation>[Kupiec] - Jestem obwoźnym kupcem już prawie 30 wiosen i jak babcie kocham nigdy mi się nic takiego nie wydarzyło.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line6</key>
+        <translation>[Kupiec] – 30 wiosen podróży z najróżniejszymi towarami. Oczywiście czasami napadali mnie jacyś rozbójnicy, ale zazwyczaj byli oni takimi nieudacznikami że jedyne co wtedy traciłem to poczucie humoru przez tych idiotów.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line7</key>
+        <translation>[Kupiec] – Aż do dzisiaj, te łajzy nie dość że wybiegły z okolicznego pola pszenicy przez co było ich widać już daleka, nawet nie starali się jakoś specjalnie ukryć,</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line8</key>
+        <translation>[Kupiec] – to jeszcze do tego byli tak uzbrojeni że nie miałem żadnej szansy na obronę, musiałem ratować się ucieczką. Ile razy te głąby musiały dokonać udanych grabieży że tak się wzbogacili?</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line9</key>
+        <translation>[Mavak] - …</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line10</key>
+        <translation>[Kupiec] – Nawet nie odpowiadaj. Cały towar. Rozkradli lub zniszczyli mi cały towar. Oczywiście ukradli mi tez całe złoto które miałem przy sobie.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line11</key>
+        <translation>[Mavak] – Ehhh może będę mógł jakoś pomóc?</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line12</key>
+        <translation>[Kupiec] – Pomóc? Tak, idź i zabij każdego bandytę jakiego spotkasz w okolicy.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line13</key>
+        <translation>[Kupiec] – Nie oszczędź nikogo, w ten sposób wyświadczysz przysługę mi oraz tej całej Twojej zapomnianej przez bogów wiosce.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line14</key>
+        <translation>[Kupiec] – Jak wcześniej wspomniałem te łajzy rozkradły lub zniszczyły cały mój towar.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line15</key>
+        <translation>[Kupiec] – Ale już mniejsza z tym, jedyne co chcę odzyskać to moje złoto. Jeżeli coś przy nich znajdziesz innego z moich towarów to możesz sobie to wziąć jako nagrodę.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line16</key>
+        <translation>[Mavak] – Dobr…</translation>
+    </variable>
+	<variable>
+        <key>QuestID3_KillBandits_Title</key>
+        <translation>Wybij bantydów na zachodzie.</translation>
+    </variable>
+	<variable>
+        <key>QuestID3_KillBandits_Desc</key>
+        <translation>Ehhhh szkoda mi to marnować miejsce w dzienniku. Wielu ludzie poznałem w swym życiu, ale jeszcze nigdy nie spotkałem takie oschłego człowieka jak ten kupiec. Ja rozumiem być zdenerwowanym, wręcz wściekłym po byciu okradzionym przez bandytów. Ci sami bandyci już od dawna nam uprzykrzają życie. Ale żeby być tak wrogo nastawionym do osoby która może mu zaoferować jakąś pomoc. No ale pomogę mu, bandyci powinni mieć swoje obozowisko gdzieś w okolicach wioski.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line17</key>
+        <translation>[Kupiec] – Dobra dobra, idź już.</translation>
+    </variable>
+	<variable>
+        <key>KubandMav_dialog1_line18</key>
+        <translation>[Mavak] - *do siebie* Na Roda, ja rozumiem że został on obrabowany ale jak można być takim oschłym kutasem?</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line0</key>
+        <translation>[Mavak] – Oto Twoje złoto kupcze.</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line1</key>
+        <translation>[Kupiec] – Moje? Czyli zabiłeś bandytów?</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line2</key>
+        <translation>[Mavak] – Tak.</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line3</key>
+        <translation>[Kupiec] – Dowód?</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line4</key>
+        <translation>[Mavak] – Jaki dowód? O co Ci chodzi? Przecież oddałem Ci Twoje złoto.</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line5</key>
+        <translation>[Kupiec] – Dowód że wybiłeś każdą łajzę która napadła na mnie.</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line6</key>
+        <translation>[Mavak] – Człowieku przecież ty mnie prosiłeś tylko o wybicie bandytów i przyniesienie Twojego złota, nic nie mówiłeś o żadnym dowodzie.</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line7</key>
+        <translation>[Kupiec] – A w jaki sposób mam wiedzieć że to moj…</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line8</key>
+        <translation>[Mavak] – Zamknij się cepie. Chodź ze mną. Zaprowadzę cię do obozowiska bandytów, a raczej tego co z niego zostało.</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line9</key>
+        <translation>[Mavak] - Zobaczymy czy zdołasz rozpoznać swoje towary pośród ciał bandytów.</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line10</key>
+        <translation>[Kupiec] – *przestraszony* Nie, myślę że to nie będz…</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line11</key>
+        <translation>[Mavak] – Aaaaaa czyli mam się wrócić i odrąbać im głowy i przynieść je jako dowód?</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line12</key>
+        <translation>[Kupiec] – NIE NIE, dobra wierzę Ci, dziękuje już dziękuje. </translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line13</key>
+        <translation>[Mavak] – Bierz to złoto, i jeżeli nie masz w naszej wiosce nic do załatwienia to wynoś się z niej i nie wracaj.</translation>
+    </variable>
+	<variable>
+        <key>KupandMav_dialog2_line14</key>
+        <translation>*Oddajesz sakiewke kupcowi.*</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line0</key>
+        <translation>[Mavak] – Witaj. Co tutaj robisz?</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line1</key>
+        <translation>[Małowuj] – Czekam odważnisiu.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line2</key>
+        <translation>[Mavak] – Czekasz? Tutaj? Na kogo?</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line3</key>
+        <translation>[Małowuj] – Na Ciebie?</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line4</key>
+        <translation>[Mavak] – Na mnie?</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line5</key>
+        <translation>[Małowuj] – Tak. Chcesz zarobić?</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line6</key>
+        <translation>[Mavak] – Może. Co chcesz?</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line7</key>
+        <translation>[Małowuj] – W forcie jest gdzieś ukryty pancerz. Bardzo mocny i magiczny. Znajdź  go dla mnie.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line8</key>
+        <translation>[Małowuj] – Składa się on z dwóch elementów: napierśnika i hełmu. Jak je zdobędziesz przyjdź do mnie a obsypię Cię złotem.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line9</key>
+        <translation>[Mavak] – A dlaczego sam nie wejdziesz do fortu i go nie zdobędziesz. Boisz się?</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line10</key>
+        <translation>[Małowuj] – Nie. Chcesz te robotę w ogóle?</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line11</key>
+        <translation>[Mavak] – Niech Ci będzie.</translation>
+    </variable>
+	<variable>
+        <key>QuestID7_FindArtefactsinFort_Title</key>
+        <translation>Odnajdź artefakty w grodzie</translation>
+    </variable>
+	<variable>
+        <key>QuestID7_FindArtefactsinFort_Desc</key>
+        <translation>Przed opuszczonym grodem spotkałem dwóch ciekawych gości Izbora oraz Małowuja. Drugi z nich nie był zbyt wygadany w stosunku do mnie, powiedział mi jednakże o tym że gdzieś w grodzie jest ukryty pancerz składający się z napierśnika oraz hełmu. Niechętnie przyjąłem to zadanie *jakoś mi się nie chce wierzyć że mnie obsypię po tym złotem*. </translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line12</key>
+        <translation>[Małowuj] – No to idź zdobądź ten pancerz.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line13</key>
+        <translation>[Mavak] – Nie jesteś zbyt rozmowny co?</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line14</key>
+        <translation>[Małowuj] – Nie.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog1_line15</key>
+        <translation>[Mavak] - *do siebie* Nie wiem po co w ogóle przyjąłem to zadanie. On coś kręci.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog2_line0</key>
+        <translation>[Mavak] – Mam pancerz.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog2_line1</key>
+        <translation>[Małowuj] – Świetnie dawaj go tu.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog2_line2</key>
+        <translation>[Mavak] – Hola hola. Najpierw zapłata.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog2_line3</key>
+        <translation>[Małowuj] - *rozgniewany* Jeżeli nie rozmawiałeś z moim kumplem Izborem. To pogadaj z nim. Jak rozwiążesz jego problem to Ci zapłacę.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog2_line4</key>
+        <translation>[Mavak] – Pod jednym warunkiem. Pancerz Ci oddam dopiero jak mi zapłacisz.</translation>
+    </variable>
+	<variable>
+        <key>MalandMav_dialog2_line5</key>
+        <translation>[Małowuj] – Ta ta, niech Ci będzie. A teraz spadaj stąd. Pogadamy później.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line0</key>
+        <translation>[Mavak] – Witaj Mojmiro.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line1</key>
+        <translation>[Mojmira] – Witaj Mavaku.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line2</key>
+        <translation>[Mavak] – Czy coś się stało? Wyglądasz na strasznie przygnębioną.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line3</key>
+        <translation>[Mojmira] – Chodzi o mojego męża, Gerwazego. Jak zapewne wiesz jest on drwalem.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line4</key>
+        <translation>[Mavak] – No tak, nie raz go widziałem w okolicznych lasach jak ścinał dla naszej wioski drewno. Czy coś się z nim stało?</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line5</key>
+        <translation>[Mojmira] – Mam nadzieję że nie. Jakiś czas temu usłyszał od wędrownego kupca pogłoski o tym ze niedaleko opuszczonego grodu rosną drzewa o niezwykłych właściwościach.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line6</key>
+        <translation>[Mojmira] - Powiedział że to drewno jest o wiele bardziej wytrzymałe od tego które można spotkać w naszych lasach.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line7</key>
+        <translation>[Mojmira] – A jako iż mój mąż jest człowiekiem ambitnym oraz o wielkiej sile to postanowił że wyruszy On na poszukiwania owego drewna.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line8</key>
+        <translation>[Mojmira] – Odradzałam mu to ponieważ wszyscy wiemy co się stało w grodzie i jakie potwory tam teraz grasują.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line9</key>
+        <translation>[Mojmira] – Niestety ale nie posłuchał mnie i wyruszył w tamte strony około tydzień temu. Mówił mi że jego podróż potrwa dzień/dwa. Jeszcze nie wrócił.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line10</key>
+        <translation>[Mojmira] – Mavaku. Głupio mi tak prosić ale czy mógłbyś go poszukać? Chciałabym się dowiedzieć czy jeszcze żyje, bo niestety ale obawiam się najgorszego.</translation>
+    </variable>
+	<variable>
+        <key>QuestID5_FindGerwazy_Title</key>
+        <translation>Odnajdź Gerwazego, okolicznego drwala</translation>
+    </variable>
+	<variable>
+        <key>QuestID5_FindGerwazy_Desc</key>
+        <translation>W wiosce spotkałem Mojmirę, była zrospaczona tym że jej mąż Gerwazy wyruszył około tygodnia temu w okolice opuszczonego grodu w poszukiwaniu drewna o wyjątkowych właściwościach, jednakże do tej pory On stamtąd nie wrócił. I tak wybieram się w tamte rejony, więc obiecałem Mojmirze że znajdę Gerwazego, mam nadzieję że żywego.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line11</key>
+        <translation>[Mavak] – Oczywiście że go poszukam. W sumie i tak muszę się tam udać więc będę mieć oko na Twojego męża. Mam nadzieję że go znajdę całego i zdrowego.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog1_line12</key>
+        <translation>[Mojmira] – Dziękuję Ci.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog2_line0</key>
+        <translation>[Mavak] – O nie. To chyba Gerwazy. Biedak chyba został rozszarpany przez Ghule i zaciągnięty aż tutaj.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog2_line1</key>
+        <translation>[Mavak] – Ehhh trzeba będzie te smutną wiadomość przekazać Mojmirze. Jak ja jej to mam powiedzieć?</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog2_line2</key>
+        <translation>[Mavak] – Nie powienienem tego robić ale na znak dowodu wezmę ze sobą jego naszyjnik.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog2_line3</key>
+        <translation>*Dodano do ekwipunku: Naszyjnik Gerwazego*</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line0</key>
+        <translation>[Mavak] – Mojmiro.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line1</key>
+        <translation>[Mojmira] – Znalazłeś go? Proszę powiedz mi że go znalazłeś.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line2</key>
+        <translation>[Mavak] – Ehmmm tak aleee…</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line3</key>
+        <translation>[Mojmira] – Skoro go znalazłeś to gdzie on jest?</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line4</key>
+        <translation>[Mavak] – Ehmmm nie wiem jak Ci to powiedzieć.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line5</key>
+        <translation>[Mojmira] - *szok*</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line6</key>
+        <translation>[Mojmira] – Rozumiem. Ehhhhhh Gerwazy.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line7</key>
+        <translation>[Mavak] – Przepraszam.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line8</key>
+        <translation>[Mojmira] – Nie masz za co. Masz chociaż coś czym możesz potwierdzić że to jego znalazłeś a nie kogoś innego.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line9</key>
+        <translation>[Mavak] – Tak, znalazłem przy nim ten naszyjnik.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line10</key>
+        <translation>[Mojmira] - *wzruszona* To naszyjnik który dałam mu niedługo po tym jak się poznaliśmy, dziękuje że mi go zwróciłeś. Będzie mi on i nim przypominać.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line11</key>
+        <translation>[Mojmira] – Mavaku, proszę weź to złoto. To niewiele ale chociaż w taki sposób mogę się odwdzięczyć za to że wyruszyłeś do tego przeklętego grodu w poszukiwaniu mojego męża.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line12</key>
+        <translation>[Mavak] – Nie. Stanowczo odmawiam przyjęcia tych pieniędzy, Tobie się one teraz bardziej przydadzą.</translation>
+    </variable>
+	<variable>
+        <key>MojmandMav_dialog3_line13</key>
+        <translation>[Mojmira] – To bardzo miłe z twej strony. Dziękuje Mavaku za przyniesienie mi tych smutnych wiadmości.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line0</key>
+        <translation>[Mavak] – Witaj Prato.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line1</key>
+        <translation>[Prata] – Witaj młodzieńcze. W jaki sposób mogę Ci dzisiaj pomóc? Widzę w twych oczach że koniecznie potrzebujesz mojego wsparcia.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line2</key>
+        <translation>[Mavak] – Zgadza się. Potrzebuję Twojego wsparcia oraz Twej mądrości w tej ważnej dla mnie chwili. Twoja pomoc może mieć ogromny wpływ na przyszłość.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line3</key>
+        <translation>[Prata] – A Cóż to się wydarzyło w Twym życiu że przychodzisz właśnie do mnie?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line4</key>
+        <translation>[Mavak] – Rod do mnie przemówił!</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line5</key>
+        <translation>[Prata] – Doprawdy? A co powiedział?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line6</key>
+        <translation>[Mavak] – Że jestem związany teraz Boskim Przeznaczeniem i moim zadaniem jest znalezienie 4 boskich artefaktów po których zdobyciu będę mógł zasiąść w Boskim Panteonie jako nowe Bóstwo.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line7</key>
+        <translation>[Prata] – Wierzę w Twe słowa.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line8</key>
+        <translation>[Mavak] – Naprawdę? Przecież zdajesz sobie sprawę że moje słowa brzmią jak historia jakiegoś obłąkanego wieśniaka który zatracił już wszelki kontakt z rzeczywistością.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line9</key>
+        <translation>[Prata] – Ale Ty nigdy nie byłeś ani nie będziesz obłąkany. Rozenna wiele razy Ci mówiła że jesteś skłonny do osiągnięcia wielkich rzeczy,</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line10</key>
+        <translation>[Prata] – nie Ona jedyna miała takie zdanie o Tobie. Mimo iż pewnie w to nie wierzysz to jesteś człowiekiem o wielkiej sile woli oraz twardym charakterze.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line11</key>
+        <translation>[Prata] – Zawsze jesteś szczery wobec ludzie którzy Cię otaczają. Zawsze masz Swoje zdanie na wiele tematów, nie jesteś owcą w stadzie,</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line12</key>
+        <translation>[Prata] – za nikim nie podążasz, zawsze kroczysz alternatywnymi ścieżkami. Bogowie o tym wiedzą.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line13</key>
+        <translation>[Prata] – Wiedzą też o tym że powątpiewałeś w ich działania w naszej okolicy, a raczej na brak jakichkolwiek działań. Bogowie o tym wiedzą, są wszechmądrzy,</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line14</key>
+        <translation>[Prata] – zobaczyli w Tobie kogoś kto mógłby to zmienić, kogoś kto mógłby zasiąść razem z nimi w Boskim Panteonie. Dostałeś misję, dostałeś szansę na dokonanie wielkich rzeczy.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line15</key>
+        <translation>[Mavak] – Czyli pomożesz mi?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line16</key>
+        <translation>[Prata] – Pomogę jak tylko mogę.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line17</key>
+        <translation>[Mavak] – To w takim razie potrzebuję Twoich wskazówek co do lokacji pozostałych trzech artefaktów które muszę znaleźć.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line18</key>
+        <translation>[Mavak] – Podobno wskazówki znajdowały się w moich snach które dręczyły mnie od kilku tygodni.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line19</key>
+        <translation>[Prata] – Cóż to za wskazówki?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line20</key>
+        <translation>[Mavak] – Śmierć, Bagna oraz Lód.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line21</key>
+        <translation>[Prata] – To wszystkie wskazówki?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line22</key>
+        <translation>[Mavak] – Zgadza się. Tylko tyle zdołałem wyciągnąć ze swoich snów.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line23</key>
+        <translation>[Prata] – W pewnym sensie to niewiele, ale dla mnie jest to wystarczające aby Ci pomóc. Od której wskazówki chcesz zacząć?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line24</key>
+        <translation>[Mavak] – Bagno.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line25</key>
+        <translation>[Prata] – Hmmmm na południu od naszej wioski znajduja się Mroczne moczary. Jest to ogromne bagno zamieszkałe przez ogromną ilość śmiercionośnych stworzeń.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line26</key>
+        <translation>Lata temu słyszałem że w tychże moczarach grasuje potężny pradawny Demon Lasu – Leszy. Myślę że on może być w posiadaniu jednego z artefaktów.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line27</key>
+        <translation>[Prata] – Jednakże ostrzegam Cię! Mroczne Moczary to bardzo niebezpieczne miejsce. Na Twoim miejscu nie udawałbym się tam od razu.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line28</key>
+        <translation>[Prata] – Jeżeli pójdziesz tam teraz to grasujące tam potwory pożrą Cię natychmiastowo. Z tamtym miejscem nie ma żartów.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line29</key>
+        <translation>[Mavak] – W takim razie dobrze będzie zdobyć więcej doświadczenia zanim tam wyruszę.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line30</key>
+        <translation>[Prata] – Tak też zrób. A teraz powiedz mi którą wskazówką mam się teraz zająć?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line31</key>
+        <translation>[Mavak] – Śmierć.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line32</key>
+        <translation>[Prata] – Hmmmmmm Lata temu gród na wschodzie zniszczyła inwazja nieumarłych ghuli, nieliczni którzy wtedy przeżyli mówili że owa armia była prowadzona przez potężnego demona – Strzygę.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line33</key>
+        <translation>[Prata] – Gród od tego czasu stał się jedną wielką opuszczona mogiłą pełną nieumarłych. Myślę że skojarzenie Twojej wskazówki z tym miejscem jest dość trafne.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line34</key>
+        <translation>[Prata] – Myślę też że najlepiej będzie rozpocząć poszukiwania w tamtym miejscu. Teraz powiedz mi ostatnią wskazówkę.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line35</key>
+        <translation>[Mavak] – Lód.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line36</key>
+        <translation>[Prata] - …</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line37</key>
+        <translation>[Prata] - …</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line38</key>
+        <translation>[Prata] - …</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line39</key>
+        <translation>[Prata] – Niestety ale nie wiem jak Ci tu pomóc. Jedyne skojarzenie z Lodem jakie mi przychodzi do głowy to ta dotycząca bogini mrozu oraz śmierci Marzanny.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line40</key>
+        <translation>[Prata] – Ale nigdy nie słyszałem opowieści o tym gdzie owa Bogini mogłaby się znajdować. Bądź co bądź widzisz jaką mamy porę roku *śmiech*</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line41</key>
+        <translation>[Prata] – Więc przepraszam Cię Mavaku, ale tutaj nie jestem w stanie Ci pomóc.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line42</key>
+        <translation>[Mavak] – Rozumiem, nie mam Ci tego za złe i tak aż nadto mi pomogłeś. Dziękuje.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line43</key>
+        <translation>[Prata] – Drobiazg chłopcze, drobiazg. Biorąc pod uwagę Twoją misje, czułem się zobowiązany do tego aby pomóc Ci tak bardzo jak tylko potrafię.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line44</key>
+        <translation>[Mavak] – Nigdy nie zapomnę tego jak mi pomogłeś. Możesz być tego pewny.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line45</key>
+        <translation>[Prata] – Biorąc pod uwagę to że możesz zostać nowym Bóstwem to niewątpliwie Twoja wdzięczność może mi się kiedyś przydać *śmiech*</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line46</key>
+        <translation>[Mavak] - *śmiech* Niewątpliwie. Mogę Cię spytać o coś jeszcze?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line47</key>
+        <translation>[Prata] – Oczywiście, pytaj mnie o co tylko chcesz.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line47_ans1</key>
+        <translation>Dlaczego wszyscy mówią na Ciebie Prata? Przecież kiedyś mi mówiłeś że to nie jest Twoje prawdziwe imię.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line47_ans2</key>
+        <translation>Czy potrzebujesz jakieś pomocy?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line48</key>
+        <translation>[Prata] – Moje prawdziwe imię nie jest istotne w tej historii młodzieńcze. A dlaczego wszyscy mówią na mnie Prata?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line49</key>
+        <translation>[Prata] – No cóż wiele lat temu kiedy nasza wioska została dopiero założona, władzę w niej przejął mój ojciec – Strzebor.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line50</key>
+        <translation>[Prata] – Był on w posiadaniu pewnej książki kupionej od tajemniczego kupca, który przedstawiał się jako: „człowiek z lądu na zachodzie gdzie słońce wiecznie świeci i gdzie żaden człowiek nie postawi swej nogi przez następne tysiąc lat.”</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line51</key>
+        <translation>[Prata] – Mój ojciec przez lata starał się zrozumieć mądrości zawarte w tej książce, jednakże bez skutku.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line52</key>
+        <translation>[Prata] – Zawsze mi mówił że: „Ta książka została napisana przez kogoś kto ewidentnie nie chce aby czytelnik cokolwiek z niej zrozumiał, słowa oraz znaki w niej zawarte nie są przeznaczone dla naszych oczu.”</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line53</key>
+        <translation>[Prata] -  Jednakże pewnego dnia ciekawość świata zaprowadziła mnie do tego że sięgnąłem po tą księgę.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line54</key>
+        <translation>[Mavak] – I co się w niej znajdowało?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line55</key>
+        <translation>[Prata] – Zapiski o jakimś języku przyszłości. Języku w którym człowiek nie używa słów tylko liczb. Liczby te zamieniają się w słowa, które to następnie zamieniają się w rzeczywistość.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line56</key>
+        <translation>[Prata] – Kiedy powiedziałem o swoich odkryciach mojemu ojcu ten stwierdził że nigdy nie spotkał jeszcze człowieka o takich zdolnościach dedukcyjnych.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line57</key>
+        <translation>[Prata] – Mianował mnie na swojego następce oraz nadał mi nowe imię – Prata, ale na cześć czego mnie tak nazwał, tego mi nigdy nie powiedział. Może w tej książce było coś czego nie zauważyłem. *śmiech*</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line58</key>
+        <translation>[Mavak] – Doprawdy pasjonująca historia.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line59</key>
+        <translation>[Prata] – Jeżeli zechcesz mi pomóc to jest coś co mógłbyś zrobić dla Naszej społeczności. Od jakiegoś czasu poza wioską nasiliły się ataki watahy wilków na mieszkańców Groszyc.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line60</key>
+        <translation>[Prata] – Proszę Cię o to abyś zajął się tym problemem. Zabij stado wilków. Jeżeli Ci się uda będę miał dla Ciebie nagrodę.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line61</key>
+        <translation>[Mavak] – Dobrze, zrobię to. Przy okazji będzie to dobry trening przed bitwami które mnie czekają.</translation>
+    </variable>
+	<variable>
+        <key>QuestID2_KillWolfes_Title</key>
+        <translation>Zabij okoliczne wilki z lasu na południu</translation>
+    </variable>
+	<variable>
+        <key>QuestID2_KillWolfes_Desc</key>
+        <translation>Wiedziałem że u Praty znajdę odpowiedzi na część nurtujących mnie pytań. Pora też za to mu się odwdzięczyć. W lesie na południu grasuje stado wilków które od jakiegoś czasu polują na bezbronnych wieśniaków. Czas się nimi zająć.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog1_line62</key>
+        <translation>[Prata] – Doskonale.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog2_line0</key>
+        <translation>[Mavak] – Prato. Problem zażegnany. Wilki zostały wyeliminowane. </translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog2_line1</key>
+        <translation>[Prata] – Doskonale. W imieniu całej społeczności Groszyc niezmiernie Ci dziękuje. Proszę oto nagroda.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog2_line2</key>
+        <translation>*Dodano do ekwipunku: ZŁOTE JAGODY: ilość:5*</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog2_line3</key>
+        <translation>[Mavak] – Co to jest?</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog2_line4</key>
+        <translation>[Prata] – Mavaku to są tak zwane Złote jagody. Niezwykle rzadkie owoce z dalekiego południa. Zregenerują one całkowicie Twoją energię. Myślę że bardzo mogą Ci się one przydać w Twojej podróży.</translation>
+    </variable>
+	<variable>
+        <key>PratandMav_dialog2_line5</key>
+        <translation>[Mavak] – Na pewno zrobię z nich dobry użytek. Dziękuję.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line0</key>
+        <translation>[Mavak] – *mówiąc do siebie* Miecz wbity w drzewo tutaj? Dziwne, odwiedzałem  to miejsce setki razy i ani razu się na niego nie natknąłem.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line1</key>
+        <translation>[Mavak] – *rozgląda się dookoła* Ale skoro jest tutaj wbity, a w okolicy raczej nie widać właściciela, to chyba nikt mnie nie przeklnie jeżeli go sobie stąd wezmę. Bądź co bądź wygląda na mocną i piękną broń.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line2</key>
+        <translation>*wyciąga miecz z drzewa*</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line3</key>
+        <translation>[Drzewo] – Mhhhhhhhm, graaaaaghhh</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line4</key>
+        <translation>[Mavak] - *zdziwiony* Czekaj, czy to drzewo właśnie wydało z siebie jakiś dźwięk? Czy przez te sny już totalnie mi się poprzekręcało w głowie?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line5</key>
+        <translation>[Drzewo] – PORAN WYBRAŁ SWOJEGO WŁAŚCICIELA!!! NA MOCY PANTEONU BOSKIEGO TO TY BĘDZIESZ NASTĘPNYM CZŁONKIEM NASZEGO BÓSTWA!!!</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line6</key>
+        <translation>[Mavak] - *przerażony* Aaaaaaa na Świętego Roda co się dzieje?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line7</key>
+        <translation>[Drzewo] – Widzę że znasz moje imię. Dobrze, to oznacza że Twoja dusza jest świadoma mego istnienia i jest godna wypełnienia boskiego przeznaczenia.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line8</key>
+        <translation>[Mavak] – Jakiego boskiego przeznaczenia? O co chodzi? Mam tyle pytań!</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line9</key>
+        <translation>[Rod] – Pytaj więc. Człowiek który jest godny wypełnienia Boskiego Przeznaczenia ma prawo zapytać mnie o co tylko zechce.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line9_ans1</key>
+        <translation>Kim jesteś?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line9_ans2</key>
+        <translation>Dlaczego w żaden sposób nam nie pomagacie? Dlaczego czuję że zapomnieliście o tym miejscu?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line9_ans3</key>
+        <translation>To ja już wyruszam w podróż.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line10</key>
+        <translation>[Rod] - Przecież już sobie odpowiedziałeś na to pytanie śmiertelniku. Moje imię: Rod – Święte Bóstwo, kieruje Waszym losem, trzymam pieczę nad Waszymi rodzinami.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line11</key>
+        <translation>[Mavak] – Niemożliwe!</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line12</key>
+        <translation>[Rod] – Ależ jak najbardziej możliwe. Wiem że to dla Ciebie jest bardzo trudne do pojęcia, ale musisz zrozumieć że stoi przed Tobą Bóstwo. Bóstwo którego spotkanie było Ci przeznaczone!</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line13</key>
+        <translation>[Mavak] – Czy to Ty stałeś za moimi snami?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line14</key>
+        <translation>[Rod] – Nie!</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line15</key>
+        <translation>[Mavak] – Skoro nie Ty to kto?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line16</key>
+        <translation>[Rod] – Ty sam!</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line17</key>
+        <translation>[Mavak] – Nie rozumiem.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line18</key>
+        <translation>[Rod] – Przeznaczenie kieruje Waszymi poczynaniami życiowymi od momentu narodzin aż do Waszej śmierci.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line19</key>
+        <translation>[Rod] - Jednakże osoby które w życiu mają dokonać nadnaturalnych rzeczy mają zdolność która pozwala im za pomocą snów przewidywać przyszłe fragmenty ich życia. Ty jesteś tą osobą. Stąd te sny.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line20</key>
+        <translation>[Mavak] – O jakie Boskie przeznaczenie chodzi?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line21</key>
+        <translation>[Rod] – Eony temu, podczas tworzenia Waszego gatunku, postanowiliśmy że jeden z przedstawicieli Waszego gatunku będzie miał okazje dołączenia do naszego panteonu.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line22</key>
+        <translation>[Rod] – Ten który okaże się godny posiadania Peruna tego dusza zostanie związana Boskim Przeznaczeniem.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line23</key>
+        <translation>[Mavak] – W jaki sposób to przeznaczenie można wypełnić?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line24</key>
+        <translation>[Rod] – Znajdź 4 boskie artefakty a wypełnisz swe przeznaczenie i zasiądź  w Naszym panteonie jako nowe bóstwo.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line25</key>
+        <translation>[Mavak] – Gdzie mam ich szukać?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line26</key>
+        <translation>[Rod] – Cóż. Jeden z nich właśnie zdobyłeś.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line27</key>
+        <translation>[Mavak] – A pozostałe trzy?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line28</key>
+        <translation>[Rod] – Twoje sny już Ci powiedziały gdzie masz szukać.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line29</key>
+        <translation>[Mavak] – Moje sny? Hmmmmm</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line30</key>
+        <translation>[Mavak] – Miecz.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line31</key>
+        <translation>[Mavak] - Bagna.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line32</key>
+        <translation>[Mavak] – Lód.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line33</key>
+        <translation>[Mavak] – Śmierć.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line34</key>
+        <translation>[Rod] – No to już masz wskazówki co do poszukiwań. Przeznaczenie Cię poprowadzi.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line35</key>
+        <translation>[Mavak] – Co to za miecz?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line36</key>
+        <translation>[Rod] – Miecz który właśnie wyciągnąłeś z kory tego drzewa nazywa się Poran. Jest to miecz mojego boskiego brata – Peruna – Boga błyskawic.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line37</key>
+        <translation>[Rod] – Perun zaklął ten miecz w taki sposób że tylko osoba powiązana z Boskim Przeznaczeniem może go dobyć. Moją misją było znalezienie prawowitego właściciela miecza.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line38</key>
+        <translation>[Rod] – Spędziłem dziesiątki waszych ludzkich lat na poszukiwaniach, lecz każda poprzednia osoba która natrafiła na ten miecz nie okazywała się go godna. Aż do dzisiaj.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line39</key>
+        <translation>[Rod] – Nie możesz tak od razu sobie pójść. Wpierw musisz się czegoś więcej ode mnie dowiedzieć. Zacznijmy od tego kim jestem.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line40</key>
+        <translation>...</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line40_ans1</key>
+        <translation>Kim jesteś?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line40_ans2</key>
+        <translation>Dlaczego w żaden sposób nam nie pomagacie? Dlaczego czuję że zapomnieliście o tym miejscu</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line40_ans3</key>
+        <translation>To ja już wyruszam w podróż.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line41</key>
+        <translation>[Rod] – Jesteśmy Bóstwem ale i my też mamy swoje ograniczenia, nie możemy być wszędzie i wpływać na wszystko.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line42</key>
+        <translation>[Mavak] – No ale przecież przez te kilka ostatnich lat mogliście zerknąć tutaj chociaż raz.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line43</key>
+        <translation>[Rod] – Kiedy wypełnisz Swoje przeznaczenie być może będziesz mógł to zmienić.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line44</key>
+        <translation>[Mavak] – A tak w ogóle, to dlaczego masz postać drzewa? Myślałem że wyglądacie tak samo jak my?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line45</key>
+        <translation>[Rod] – To że stworzyliśmy Was na Nasze podobieństwo nie oznacza że daliśmy Wam takie same umiejętności. Jako Bóstwo mamy trochę większe możliwości.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line46</key>
+        <translation>[Rod] – Jakoś musimy Was obserwować w taki sposób abyście o tym nie wiedzieli. Dla Ciebie jednakże zrobiliśmy wyjątek. Ponieważ jesteś osobą wyjątkową.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog1_line47</key>
+        <translation>[Rod] – Wyruszaj więc. Przeznaczenie doprowadzi Cię do celu.</translation>
+    </variable>
+	<variable>
+        <key>QuestID0_MainQuest_Title</key>
+        <translation>Znajdż 4 boskie artefakty</translation>
+    </variable>
+	<variable>
+        <key>QuestID0_MainQuest_Desc</key>
+        <translation>A więc to nie były zwykłe sny. To była przepowiednia tego co ma stać. Podczas poszukiwania jabłek przemówił do mnie sam Rod. Powiedział że jestem złączony jakimś Boskim Przeznaczeniem i teraz powinienem poszukać 4 artefaktów. Jeden już mam zostały jeszcze 3. Coś czuję że to będzie ciekawa i niebezpieczna przygoda.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line0</key>
+        <translation>[Rozenna] - Mavak! Witaj moj drogi co u Ciebie slychac?</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line1</key>
+        <translation>[Mavak] - Witaj Rozenno. To nadal nie ustaje. Te sny. Od kilku nocy mam w glowie obrazy ktorych nie rozumiem:</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line2</key>
+        <translation>[Mavak] - Miecz, bagna, lod, smierc. Co to wszystko moze oznaczac? Dlaczego mi sie to w ogole sni?</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line3</key>
+        <translation>[Rozenna] -  Moze sami Bogowie chca Ci dac jakis znak? Zawsze Ci mowilam ze jestes zdolny do wielkich rzeczy, moze ktos na gorze to w koncu zauwazyl. *smiech*</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line4</key>
+        <translation>[Mavak] - *smiech* Oj glupiutka. Naprawde myslisz ze Bogowie maja oko na to miejsce? Spojrz tylko na nasza okolice.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line5</key>
+        <translation>[Mavak] - W okolo wioski pelno wilkow zdolnych pozrec wszystko co stanie im na drodze, za nasza wioska stacjonuja bandyci ktorzy napadaja i zabijaja praktycznie kazdego.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line6</key>
+        <translation>[Mavak] - Najblizsza wioska do ktorej sie mozemy udac jest ten przeklety grod na wschodzie ktory lata temu zostal napadniety przez armie nieumarlych.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line7</key>
+        <translation>[Mavak] - A o moczarach na poludniu nawet nie bede mowic. Sama przeciez slyszalas liczne legendy o istotach ktore podobno tam zamieszkuja.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line8</key>
+        <translation>[Mavak] - Ehhh powiedzmy sobie szczerze Bogowie dawno zapomnieli o tym miejscu i posagi znajdujace sie w naszej wiosce  raczej im o nas nie przypominaja.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line9</key>
+        <translation>[Rozenna] - Trudno Ci nie przyznac racji. Ale zastanow sie, Twoje sny nie moga brac sie znikad, moze naprawde cos jest na rzeczy.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line10</key>
+        <translation>[Mavak] - Hah, Rozenno mowilem Ci kiedys ze jestes uparta niewiasta?</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line11</key>
+        <translation>[Rozenna] - I to jest pierwszy powod dla ktorego tak mnie lubisz moj drogi.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line12</key>
+        <translation>[Mavak] - A drugi powod toooo?</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line13</key>
+        <translation>[Rozenna] - Jableczniki mojej roboty. *smiech*</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line14</key>
+        <translation>[Mavak] - Dobra, masz mnie! *smiech* Rozumiem, ze wspominasz o nich nie bez przyczyny i pewnie mam Ci poszukac ladnych jablek?</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line15</key>
+        <translation>[Rozenna] - Wiedzialam ze sie zrozumiemy. Wyjdx przed wioske, mysle ze gdzies tam powinny jeszcze rosnac jakies jablka.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line16</key>
+        <translation>[Mavak] - Zajme sie tym natychmiast. Ale w zamian oczekuje ze w nagrode dostane wiecej twych cudownych jablecznikow niz zazwyczaj.</translation>
+    </variable>
+	<variable>
+        <key>QuestID1_CollectApples_Title</key>
+        <translation>Zbierz jablka dla Rozenny</translation>
+    </variable>
+	<variable>
+        <key>QuestID1_CollectApples_Desc</key>
+        <translation>Te sny. Nie pozwalaja mi spac. Miecz, bagna, lod, smierc. Co to moze wszystko oznaczac? Jak dobrze ze jest Rozenna, ona zawsze potrafila mnie uspokoic swoim dobrym slowem. Ale tez ta slodka lisica zna moja slabosc do jej jablecznikow. Czas wybrac sie za wioske pozbierac dla niej jablka, oraz posluchac jej rady: nie myslec o mych snach.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line17</key>
+        <translation>[Rozenna] - Dostaniesz 5 zarloku. A teraz idx. I prosze Cie. Podczas poszukiwan staraj sie nie myslec o tych Twoich snach, daj swojemu umyslowi odpoczac.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog1_line18</key>
+        <translation>[Mavak] - Postaram sie. Bywaj.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line0</key>
+        <translation>[Mavak] – Mam Twoje jabłka. Proszę.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line1</key>
+        <translation>[Rozenna] – Awwww dziękuje. Przy okazji dobrze dla Ciebie.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line2</key>
+        <translation>[Rozenna] -  Bo jak Cię nie było to znalazłam w Swoim domu kosz świeżych jabłek i zdążyłam już dla Ciebie przygotować obiecane 5 jabłeczników. Proszę.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line3</key>
+        <translation>[Mavak] – *Otrzymałeś 5 jabłeczników. Zostają one dodane do ekwipunku*</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line4</key>
+        <translation>[Mavak] – Dziękuje Ci bardzo moja droga. Na pewno przydadzą mi się w najbliższym czasie.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line5</key>
+        <translation>[Rozenna] – W najbliższym czasie? Co masz na myśli? W ogóle wyglądasz na bardzo zamyślonego. Czy coś się stało?</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line6</key>
+        <translation>[Mavak] – Nie uwierzyła byś.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line7</key>
+        <translation>[Rozenna] – Czyżby Bogowie dali Ci znak? *śmiech*</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line8</key>
+        <translation>[Mavak] – Tak!</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line9</key>
+        <translation>[Rozenna] – Czekaj co? Żartujesz sobie ze mnie.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line10</key>
+        <translation>[Mavak] – Nie żartuje. Przemówił do mnie sam Rod. Okazuje się że jestem związany jakimś Boskiem Przeznaczeniem i muszę teraz odnaleźć 4 boskie artefakty które są mi przeznaczone.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line11</key>
+        <translation>[Mavak] –  Jeden z tych artefaktów znalazłem kiedy szukałem dla Ciebie jabłek.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line12</key>
+        <translation>[Rozenna] – Ten przepiękny miecz jest jednym z nich?</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line13</key>
+        <translation>[Mavak] – Tak, nazywa się Poran i jest to miecz boga błyskawic – Peruna.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line14</key>
+        <translation>[Rozenna] – Cóż za niesamowita broń. A co z pozostałymi artefaktami. Wiesz gdzie ich szukać?</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line15</key>
+        <translation>[Mavak] – Podobno moje sny zawierają w sobie wskazówki do tego gdzie mam ich szukać. Ale co dokładnie moje sny oznaczały, tego nie jestem jeszcze pewny.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line16</key>
+        <translation>[Rozenna] – Może powinieneś porozmawiać z Pratą, naszym starszym wioski. On powinien Ci pomóc.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line17</key>
+        <translation>[Mavak] – Tak zrobię. Udam się do niego natychmiast. A następnie, cóż, chyba pójdę wypełnić Swoje przeznaczenie.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line18</key>
+        <translation>[Rozenna] – Wypełnisz je, wierzę w to.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line19</key>
+        <translation>[Rozenna] - Hah patrz, czyli jednak miałam rację co do tego że jesteś w stanie dokonać wielkich rzeczy, oraz że Bogowie Cię obserwują.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line20</key>
+        <translation>[Mavak] – *śmiech* Najwyraźniej tak, nie doceniłem Cię moja droga.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line21</key>
+        <translation>[Rozenna] – Umysł kobiety nigdy się nie myli. A teraz idź. I Mavaku.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line22</key>
+        <translation>[Mavak] – Tak?</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line23</key>
+        <translation>[Rozenna] – Powodzenia. Niech Bogowie będą z Tobą.</translation>
+    </variable>
+	<variable>
+        <key>RozandMav_dialog2_line24</key>
+        <translation>[Mavak] - *Kiwa głową*</translation>
+    </variable>
+	<variable>
+        <key>WiesandMav_dialog1_line0</key>
+        <translation>[Wieśniak] – Mavaku tutaj jesteś.</translation>
+    </variable>
+	<variable>
+        <key>WiesandMav_dialog1_line1</key>
+        <translation>[Mavak] – Witaj, szukałeś mnie?</translation>
+    </variable>
+	<variable>
+        <key>WiesandMav_dialog1_line2</key>
+        <translation>[Wieśniak] – Ja nie, ale przysłał mnie Guślarz, prosił mnie abym Ci przekazał że chce się z Tobą widzieć.</translation>
+    </variable>
+	<variable>
+        <key>WiesandMav_dialog1_line3</key>
+        <translation>[Mavak] – Ze mną? Ale dlaczego akurat ze mną?</translation>
+    </variable>
+	<variable>
+        <key>WiesandMav_dialog1_line4</key>
+        <translation>[Wieśniak] – Tego mi nie powiedział. Wiesz jaki On jest.</translation>
+    </variable>
+	<variable>
+        <key>WiesandMav_dialog1_line5</key>
+        <translation>[Mavak] – Racja, tajemniczy człowiek. Przypomnij mi gdzie On pomieszkuje.</translation>
+    </variable>
+	<variable>
+        <key>WiesandMav_dialog1_line6</key>
+        <translation>[Wieśniak] – Niedaleko wejścia na Mroczne Moczary, tylko uważaj proszę, przy rzecze widziałem Rusałki.</translation>
+    </variable>
+	<variable>
+        <key>WiesandMav_dialog1_line7</key>
+        <translation>[Mavak] – Dzięki za informację, będę uważał.</translation>
     </variable>
 </file>
