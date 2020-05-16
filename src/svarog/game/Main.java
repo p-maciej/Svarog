@@ -346,8 +346,8 @@ public class Main {
 		}
 		
 		confirmWindow = new GuiWindow(language.getValue("deleteItemRequestTitle"), roboto_15, new TextureObject(new Texture("images/window3.png")), false);
-		applyButton = new Button(new Texture("images/buttonYes.png"), new Vector2f(-50, -15));
-		cancelButton = new Button(new Texture("images/buttonNo.png"), new Vector2f(50, -15));
+		applyButton = new Button(new Texture("images/buttonYes.png"),new Texture("images/buttonYes_hover.png"), new Vector2f(-50, -15));
+		cancelButton = new Button(new Texture("images/buttonNo.png"),new Texture("images/buttonNo_hover.png"), new Vector2f(50, -15));
 		confirmWindow.addTextureObject(applyButton);
 		confirmWindow.addTextureObject(cancelButton);
 
