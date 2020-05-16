@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 <class>
 	<enemy>
-		<globalID>0</globalID>
+		<globalID>-101</globalID>
 		<texture>textures/avatar.png</texture>
 		<posX>46</posX>
 		<posY>29</posY>
@@ -17,7 +17,7 @@
 		<itemTileID>-1</itemTileID>
 	</enemy>
 	<enemy>
-		<globalID>1</globalID>
+		<globalID>-102</globalID>
 		<texture>textures/avatar2.png</texture>
 		<posX>46</posX>
 		<posY>29</posY>
@@ -28,6 +28,188 @@
 		<hp>300</hp>
 		<reward>1400</reward>
 		<name>Kikimora</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>0</globalID>
+		<texture>textures/wolf.png</texture>
+		<posX>44</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>2</minAttack>
+		<maxAttack>10</maxAttack>
+		<xpForKilling>10</xpForKilling>
+		<hp>90</hp>
+		<reward>50</reward>
+		<name>Wilk</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>1</globalID>
+		<texture>textures/warg.png</texture>
+		<posX>42</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>5</minAttack>
+		<maxAttack>15</maxAttack>
+		<xpForKilling>100</xpForKilling>
+		<hp>120</hp>
+		<reward>100</reward>
+		<name>Warg</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>2</globalID>
+		<texture>textures/pixie.png</texture>
+		<posX>40</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>10</minAttack>
+		<maxAttack>20</maxAttack>
+		<xpForKilling>1000</xpForKilling>
+		<hp>190</hp>
+		<reward>250</reward>
+		<name>Północnica</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>3</globalID>
+		<texture>textures/Striga.png</texture>
+		<posX>38</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>10</minAttack>
+		<maxAttack>35</maxAttack>
+		<xpForKilling>3500</xpForKilling>
+		<hp>400</hp>
+		<reward>500</reward>
+		<name>Strzyga</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>4</globalID>
+		<texture>textures/Rusalka.png</texture>
+		<posX>36</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>8</minAttack>
+		<maxAttack>20</maxAttack>
+		<xpForKilling>150</xpForKilling>
+		<hp>210</hp>
+		<reward>450</reward>
+		<name>Rusałka</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>5</globalID>
+		<texture>textures/Leszy.png</texture>
+		<posX>34</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>10</minAttack>
+		<maxAttack>40</maxAttack>
+		<xpForKilling>66000</xpForKilling>
+		<hp>900</hp>
+		<reward>2000</reward>
+		<name>Leszy</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>6</globalID>
+		<texture>textures/Bandit.png</texture>
+		<posX>32</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>5</minAttack>
+		<maxAttack>10</maxAttack>
+		<xpForKilling>20</xpForKilling>
+		<hp>150</hp>
+		<reward>75</reward>
+		<name>Bandyta</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>7</globalID>
+		<texture>textures/BanditLeader.png</texture>
+		<posX>30</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>7</minAttack>
+		<maxAttack>20</maxAttack>
+		<xpForKilling>50</xpForKilling>
+		<hp>200</hp>
+		<reward>250</reward>
+		<name>Przywódca bandytów</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>8</globalID>
+		<texture>textures/Marzanna.png</texture>
+		<posX>44</posX>
+		<posY>27</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>10</minAttack>
+		<maxAttack>40</maxAttack>
+		<xpForKilling>40000</xpForKilling>
+		<hp>600</hp>
+		<reward>1000</reward>
+		<name>Marzanna</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>9</globalID>
+		<texture>textures/Ghul.png</texture>
+		<posX>42</posX>
+		<posY>27</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>7</minAttack>
+		<maxAttack>15</maxAttack>
+		<xpForKilling>200</xpForKilling>
+		<hp>150</hp>
+		<reward>125</reward>
+		<name>Ghul</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>10</globalID>
+		<texture>textures/Warewolf.png</texture>
+		<posX>40</posX>
+		<posY>27</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>10</minAttack>
+		<maxAttack>25</maxAttack>
+		<xpForKilling>15000</xpForKilling>
+		<hp>260</hp>
+		<reward>900</reward>
+		<name>Wilkołak</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>11</globalID>
+		<texture>textures/IzborEnemy.png</texture>
+		<posX>38</posX>
+		<posY>27</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>15</minAttack>
+		<maxAttack>25</maxAttack>
+		<xpForKilling>2000</xpForKilling>
+		<hp>300</hp>
+		<reward>1000</reward>
+		<name>Izbor</name>
+		<howManyItems>0</howManyItems>
+	</enemy>
+	<enemy>
+		<globalID>12</globalID>
+		<texture>textures/MalowujEnemy.png</texture>
+		<posX>36</posX>
+		<posY>27</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>15</minAttack>
+		<maxAttack>25</maxAttack>
+		<xpForKilling>200</xpForKilling>
+		<hp>320</hp>
+		<reward>1000</reward>
+		<name>Małowuj</name>
 		<howManyItems>0</howManyItems>
 	</enemy>
 </class>

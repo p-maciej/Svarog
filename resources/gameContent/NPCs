@@ -29,7 +29,8 @@
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
 		<name>Rozenna</name>
-		<interactionsFile>Rozenna01.quest</interactionsFile>
+		<interactionsFile>Rozenna_dialog_1_pierwszy_dialog_w_grze.quest</interactionsFile>
+		<!--<interactionsFile>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
 	</npc>
 	<npc>
@@ -42,4 +43,125 @@
 		<interactionsFile></interactionsFile>
 		<howManyItems>0</howManyItems>
 	</npc>
+	<!--Na wszelki wypadek nie ruszałem powyższej domyślnej wersji pliku, z npc Rozenna, ninja, sklepikarz-->
+	<npc>
+		<globalID>4</globalID>
+		<texturePath>textures/Prata.png</texturePath>
+		<posX>46</posX>
+		<posY>45</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Prata</name>
+		<interactionsFile>Prata_dialog_1_po_rozmowie_z_rozenna.quest</interactionsFile>
+		<!--<interactionsFile>Prata_dialog_2_po_zabiciu_wilkow.quest</interactionsFile>-->
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>5</globalID>
+		<texturePath>textures/IzborFriend.png</texturePath>
+		<posX>44</posX>
+		<posY>45</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Izbor</name>
+		<interactionsFile>Izbor_dialog_1_zad_pob_odnajdz_10_kielichow.quest</interactionsFile>
+		<!--<interactionsFile>Izbor_dialog_2_zad_poboczne_odnajdz_10_kielichow.quest</interactionsFile>-->
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>6</globalID>
+		<texturePath>textures/MalowujFriend.png</texturePath>
+		<posX>42</posX>
+		<posY>45</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Malowuj</name>
+		<interactionsFile>Malowuj_dialog_1_zad_poboczne_odnajdz_artefakty.quest</interactionsFile>
+		<!--<interactionsFile>Malowuj_dialog_2_zad_poboczne_odnajdz_artefakty.quest</interactionsFile>-->
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>7</globalID>
+		<texturePath>textures/Gerwazybody.png</texturePath>
+		<posX>40</posX>
+		<posY>45</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Gerwazy</name>
+		<interactionsFile>Mojmira_dialog_2_zad_poboczne_odnajdz_Gerwazego.quest</interactionsFile>
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>8</globalID>
+		<texturePath>textures/Villager.png</texturePath>
+		<posX>38</posX>
+		<posY>45</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Wieśniak</name>
+		<interactionsFile></interactionsFile>
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>9</globalID>
+		<texturePath>textures/QuestVillager.png</texturePath>
+		<posX>36</posX>
+		<posY>45</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Wieśniak</name>
+		<interactionsFile>Wiesniak_dialog_1_zadanie_poboczne_Dziady.quest</interactionsFile>
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>10</globalID>
+		<texturePath>textures/RodTree.png</texturePath>
+		<posX>34</posX>
+		<posY>45</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Podejrzanie wyglądające drzewo</name>
+		<interactionsFile>Rod_1_dialog_po_wyciagnieciu_miecza_z_drzewa.quest</interactionsFile>
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>11</globalID>
+		<texturePath>textures/GuslarzVillage.png</texturePath>
+		<posX>32</posX>
+		<posY>45</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Guślarz</name>
+		<interactionsFile>Guslarz_dialog_1_zad_pob_dziady.quest</interactionsFile>
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>12</globalID>
+		<texturePath>textures/GuslarzRitualHill.png</texturePath><!--Textura guślarza taka sama tylko nazwa inna-->
+		<posX>44</posX>
+		<posY>43</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Guślarz</name>
+		<interactionsFile>Guslarz_dialog_2_na_wzgorzu_rytualow.quest</interactionsFile>
+		<!--<interactionsFile>Guslarz_dialog_3_na_wzgorzu_rytualow_po_pokonaniu_potworow.quest</interactionsFile>-->
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>13</globalID>
+		<texturePath>textures/Mojmira.png</texturePath>
+		<posX>42</posX>
+		<posY>43</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Mojmira</name>
+		<interactionsFile>Mojmira_dialog_1_zad_poboczne_odnajdz_gerwazego.quest</interactionsFile>
+		<!--<interactionsFile>Mojmira_dialog_3_zad_poboczne_odnajdz_Gerwazego.quest</interactionsFile>-->
+		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>14</globalID>
+		<texturePath>textures/Trader.png</texturePath>
+		<posX>40</posX>
+		<posY>43</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>Kupiec</name>
+		<interactionsFile>Kupiec_dialog_1_zad_poboczne_zabij_bandytow.quest</interactionsFile>
+		<!--<interactionsFile>Kupiec_dialog_2_zad_poboczne_zabij_bandytow.quest</interactionsFile>-->
+		<howManyItems>0</howManyItems>
+	</npc>
 </class>
+
+
+	
+	
