@@ -317,6 +317,10 @@
         <translation>Bywaj</translation>
     </variable>
 	<variable>
+        <key>deleteItemRequestTitle</key>
+        <translation>Czy na pewno usunąć przedmiot?</translation>
+    </variable>
+	<variable>
         <key>MavandGus_dialog1_line0</key>
         <translation>[Mavak] – Witaj Guślarzu. Podobno chciałeś się ze mną widzieć.</translation>
     </variable>

@@ -9,8 +9,11 @@ import svarog.objects.Item;
 public class TileSheet {
 	private List<Group> tileGroups;
 	
+	private int requestDeleteItem;
+	
 	public TileSheet() {
 		this.tileGroups = new ArrayList<Group>();
+		requestDeleteItem(-1);
 	}
 	
 	public void addTileGroup(Group group) {
@@ -84,5 +87,22 @@ public class TileSheet {
 		}
 		
 		return null;
+	}
+	
+	public void removeItem(Tile tile) {
+		tile.removePuttedItem();
+		requestDeleteItem = -1;
+	}
+	
+	public void cancelRemoveItem() {
+		requestDeleteItem = -1;
+	}
+
+	public int itemToDelete() {
+		return requestDeleteItem;
+	}
+
+	void requestDeleteItem(int requestDeleteItem) {
+		this.requestDeleteItem = requestDeleteItem;
 	}
 }

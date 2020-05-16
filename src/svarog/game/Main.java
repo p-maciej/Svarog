@@ -85,9 +85,15 @@ public class Main {
 	private static Button menuLoadButton;
 	private static Button menuSaveButton;
 	
+	
+	// Confirm window
+	private static GuiWindow confirmWindow;
+	private static Button applyButton;
+	private static Button cancelButton;
+	
 	private static void windowInit() {
 		window = new Window();
-		window.setSize(1200, 800);
+		window.setSize(1200, 700);
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
 		window.glInit();
 	}
@@ -245,13 +251,13 @@ public class Main {
 		
 		// Main EQ //
 		Group tileGroup = new Group();
-		tileGroup.move(-25, 150);
+		tileGroup.move(-25, 110);
 		tileGroup.setStickTo(stickTo.BottomRight);		
 		
 		// Character EQ //
 		Group tileGroup3 = new Group();
 		tileGroup3.setStickTo(stickTo.BottomRight);
-		tileGroup3.move(-25, 545);
+		tileGroup3.move(-25, 470);
 		
 		Tile helmet = new Tile(tileId++, tileHelmetTexture, tileHelmetTexture_hover, (byte)0, 0, 50);
 		helmet.setPuttableItemTypes(Arrays.asList(ItemType.helm)); // item type 1
@@ -324,20 +330,25 @@ public class Main {
 		
 		guiRenderer.updatePositions();
 		
-		//Inventory inventory = new Inventory(itemsT);
+		
 
 		for(Item itemT: player.getInventory().getItems()) {
 			if(itemT.getItemInfo().getTileID() !=-1 && guiRenderer.getTileSheet().getTile(itemT.getItemInfo().getTileID()).getPuttedItem() == null ) {
 				try {
 					guiRenderer.getTileSheet().getTile(itemT.getItemInfo().getTileID()).putItem(itemT);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}else {
 				guiRenderer.getTileSheet().putItemFirstEmpty(itemT);
 			}
 		}
+		
+		confirmWindow = new GuiWindow(language.getValue("deleteItemRequestTitle"), roboto_15, new TextureObject(new Texture("images/window3.png")), false);
+		applyButton = new Button(new Texture("images/button.png"), new Vector2f(-50, -15));
+		cancelButton = new Button(new Texture("images/button.png"), new Vector2f(50, -15));
+		confirmWindow.addTextureObject(applyButton);
+		confirmWindow.addTextureObject(cancelButton);
 
 		////////////////////////////////////////////////////////////////////////////////////
 	}
@@ -609,7 +620,6 @@ public class Main {
 					}
 					
 					
-					
 					if(questsButton.isClicked()) {
 						if(questsWindow != null) {
 							if(questsWindow.isClosed()) {
@@ -628,6 +638,27 @@ public class Main {
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(9)), guiRenderer);
+						guiRenderer.addWindow(confirmWindow);
+					}
+					
+					// confirm window
+					if(cancelButton.isClicked()) {
+						guiRenderer.getTileSheet().cancelRemoveItem();
+						guiRenderer.removeWindow(confirmWindow.getId());
+					}
+					
+					if(applyButton.isClicked()) {
+						if(tileSheet.itemToDelete() >= 0) {
+							Tile temp = guiRenderer.getTileSheet().getTile(guiRenderer.getTileSheet().itemToDelete());
+
+							player.getInventory().removeItemById(temp.getPuttedItem().getId());
+							guiRenderer.getTileSheet().removeItem(temp);
+							guiRenderer.removeWindow(confirmWindow.getId());
+						}
+					}
+					
+					if(tileSheet.itemToDelete() >= 0) {
+						guiRenderer.addWindow(confirmWindow);
 					}
 					
 					

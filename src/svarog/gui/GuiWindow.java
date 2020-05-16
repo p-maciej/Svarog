@@ -28,43 +28,40 @@ public class GuiWindow {
 	
 	private boolean isClosed;
 
+	
+	private Line title_px;
+	
 	public GuiWindow(String title, Font font, int width, int height, stickTo stickTo) {
+		position = new Vector2f();
+		elements = new Group();
+		
 		this.id = auto_increment++;
 		this.setWidth(width);
 		this.setHeight(height);
-		this.setTitle(title);
 		this.setWindowFont(font);
+		this.setTitle(title);
 		this.setClosed(false);
 		
-		position = new Vector2f();
-		elements = new Group();
 		this.setStickTo(stickTo);
 		
-		addStaticElements();
+		addCloseButton();
 	}
 	
 	public GuiWindow(String title, Font font, int width, int height, Vector2f position) {
+		elements = new Group();
 		this.id = auto_increment++;
 		this.setWidth(width);
 		this.setHeight(height);
-		this.setTitle(title);
 		this.setWindowFont(font);
+		this.setTitle(title);
 		this.setClosed(false);
 		
 		setPosition(position);
-		elements = new Group();
 		
-		addStaticElements();
+		addCloseButton();
 	}
 	
 	public GuiWindow(String title, Font font, TextureObject backgroundTexture) {
-		this.id = auto_increment++;
-		this.setWidth(backgroundTexture.getWidth());
-		this.setHeight(backgroundTexture.getHeight());
-		this.setTitle(title);
-		this.setWindowFont(font);
-		this.setClosed(false);
-		
 		position = new Vector2f();
 		elements = new Group();
 		
@@ -72,21 +69,39 @@ public class GuiWindow {
 		backgroundWindowId = backgroundTexture.getId();
 		elements.addTextureObject(backgroundTexture);
 		
-		addStaticElements();
+		this.id = auto_increment++;
+		this.setWidth(backgroundTexture.getWidth());
+		this.setHeight(backgroundTexture.getHeight());
+		this.setWindowFont(font);
+		this.setTitle(title);
+		this.setClosed(false);
+
+		addCloseButton();
 	}
 	
-	private void addStaticElements() {
+	public GuiWindow(String title, Font font, TextureObject backgroundTexture, boolean closeButton) {
+		position = new Vector2f();
+		elements = new Group();
+		
+		backgroundTexture.setOverable(true);
+		backgroundWindowId = backgroundTexture.getId();
+		elements.addTextureObject(backgroundTexture);
+		
+		this.id = auto_increment++;
+		this.setWidth(backgroundTexture.getWidth());
+		this.setHeight(backgroundTexture.getHeight());
+		this.setWindowFont(font);
+		this.setTitle(title);
+		this.setClosed(false);
+
+		if(closeButton)
+			addCloseButton();
+	}
+	
+	private void addCloseButton() {
 		Button closeDialog = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(getWidth()/2-15, getHeight()/2-15));
 		closeButton = closeDialog;
 		elements.addTextureObject(closeDialog);
-		
-		Line title = new Line(0, getHeight()/2-15);
-		title.setString(this.title, windowFont);
-		title.setOverable(true);
-		title.setMovable(true);
-		title.setClickable(true);
-		
-		elements.addTextureObject(title);
 	}
 	
 	public void addTextureObject(TextureObject object) {
@@ -170,6 +185,17 @@ public class GuiWindow {
 
 	public void setTitle(String title) {
 		this.title = title;
+		
+		if(title_px != null)
+			elements.removeTextureObject(title_px);
+		
+		title_px = new Line(0, getHeight()/2-15);
+		title_px.setString(this.title, windowFont);
+		title_px.setOverable(true);
+		title_px.setMovable(true);
+		title_px.setClickable(true);
+		
+		elements.addTextureObject(title_px);
 	}
 
 	public void setWindowFont(Font windowFont) {

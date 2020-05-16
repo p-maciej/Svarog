@@ -363,9 +363,11 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 			
-			if(item.getCloseButton().isClicked()) {
-				windowToRemove = item.getId();
-				worldLock = false;
+			if(item.getCloseButton() != null) {
+				if(item.getCloseButton().isClicked()) {
+					windowToRemove = item.getId();
+					worldLock = false;
+				}
 			}
 			
 			if(WorldRenderer.isMouseInteractionLocked() && !worldLock)
@@ -563,8 +565,8 @@ public class GuiRenderer implements RenderProperties {
 									statsContainer.updatePlayerStats(this, player);
 										
 								} else if(e.getMessage() == "delete") {
-									player.getInventory().removeItemById(object.getPuttedItem().getId());
-									object.removePuttedItem();
+									this.tileSheet.requestDeleteItem(object.getTileId());
+									object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
 								} else {
 									object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
 								}
@@ -803,6 +805,9 @@ public class GuiRenderer implements RenderProperties {
 			if(windows.get(i).getId() == windowId) {
 				windows.get(i).setClosed(true);
 				windows.remove(i);
+				
+				if(WorldRenderer.isMouseInteractionLocked())
+					WorldRenderer.setMouseInteractionLock(false);
 			}
 		}
 	}
