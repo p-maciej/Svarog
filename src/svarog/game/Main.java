@@ -84,6 +84,7 @@ public class Main {
 	private static Button menuResumeButton;
 	private static Button menuLoadButton;
 	private static Button menuSaveButton;
+	private static Button menuAuthorsButton;
 	
 	
 	// Confirm window
@@ -345,8 +346,8 @@ public class Main {
 		}
 		
 		confirmWindow = new GuiWindow(language.getValue("deleteItemRequestTitle"), roboto_15, new TextureObject(new Texture("images/window3.png")), false);
-		applyButton = new Button(new Texture("images/button.png"), new Vector2f(-50, -15));
-		cancelButton = new Button(new Texture("images/button.png"), new Vector2f(50, -15));
+		applyButton = new Button(new Texture("images/buttonYes.png"), new Vector2f(-50, -15));
+		cancelButton = new Button(new Texture("images/buttonNo.png"), new Vector2f(50, -15));
 		confirmWindow.addTextureObject(applyButton);
 		confirmWindow.addTextureObject(cancelButton);
 
@@ -374,16 +375,19 @@ public class Main {
 		
 		TextureObject menuBackground = new TextureObject(new Texture("images/menu/menuBackground.png"));	
 		
-		menuStartButton = new Button(new Texture("images/menu/start.png"),new Texture("images/menu/start_hover.png"), new Vector2f(0, 130));
-		menuResumeButton = new Button(new Texture("images/menu/resume.png"),new Texture("images/menu/resume_hover.png"), new Vector2f(0, 130));
-		menuSaveButton = new Button(new Texture("images/menu/save.png"),new Texture("images/menu/save_hover.png"), new Vector2f(0, 0));
-		menuLoadButton = new Button(new Texture("images/menu/load.png"),new Texture("images/menu/load_hover.png"), new Vector2f(0, 0));
-		menuExitButton = new Button(new Texture("images/menu/exit.png"),new Texture("images/menu/exit_hover.png"), new Vector2f(0, -130));
+		menuStartButton = new Button(new Texture("images/menu/start.png"),new Texture("images/menu/start_hover.png"), new Vector2f(0, 190));
+		menuResumeButton = new Button(new Texture("images/menu/resume.png"),new Texture("images/menu/resume_hover.png"), new Vector2f(0, 190));
+		menuSaveButton = new Button(new Texture("images/menu/save.png"),new Texture("images/menu/save_hover.png"), new Vector2f(0, 65));
+		menuLoadButton = new Button(new Texture("images/menu/load.png"),new Texture("images/menu/load_hover.png"), new Vector2f(0, 65));
+		menuExitButton = new Button(new Texture("images/menu/exit.png"),new Texture("images/menu/exit_hover.png"), new Vector2f(0, -60));
+		menuAuthorsButton = new Button(new Texture("images/menu/authors.png"),new Texture("images/menu/authors_hover.png"), new Vector2f(0, -185));
+		
 		
 		menu.addGuiObject(menuBackground);
 		menu.addGuiObject(menuStartButton);
 		menu.addGuiObject(menuExitButton);
 		menu.addGuiObject(menuLoadButton);
+		menu.addGuiObject(menuAuthorsButton);
 	}
 	
 	private static void pauseGame() {	
