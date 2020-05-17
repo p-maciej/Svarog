@@ -73,6 +73,8 @@ public class Main {
 	
 	// Fonts
 	private static Font roboto_15;
+	private static Font roboto_15_G;
+	private static Font roboto_15_Y;
 	private static Font roboto_18;
 	private static Font roboto_18_R;
 	private static Font roboto_18_Y;
@@ -375,6 +377,8 @@ public class Main {
 	
 	private static void menuInit() {
 		roboto_15 = new Font("roboto_15", new Color((byte)255, (byte)255, (byte)255));
+		roboto_15_G  = new Font("roboto_15", new Color((byte)200, (byte)200, (byte)200));
+		roboto_15_Y  = new Font("roboto_15", new Color((byte)255, (byte)255, (byte)150));
 		
 		guiShader = new Shader("shader");
 		
@@ -642,11 +646,11 @@ public class Main {
 					if(questsButton.isClicked()) {
 						if(questsWindow != null) {
 							if(questsWindow.isClosed()) {
-								questsWindow = player.getQuestsPagedOnGUI(roboto_15, language);
+								questsWindow = player.getQuestsPagedOnGUI(roboto_15, roboto_15_G, roboto_15_Y, language);
 								guiRenderer.addWindow(questsWindow);
 							}
 						} else {
-							questsWindow = player.getQuestsPagedOnGUI(roboto_15, language);
+							questsWindow = player.getQuestsPagedOnGUI(roboto_15, roboto_15_G, roboto_15_Y, language);
 							guiRenderer.addWindow(questsWindow);
 						}
 					}
