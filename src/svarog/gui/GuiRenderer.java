@@ -389,14 +389,20 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 			
-			if(WorldRenderer.isMouseInteractionLocked() && !worldLock)
-				WorldRenderer.setMouseInteractionLock(false);
-			else if(!WorldRenderer.isMouseInteractionLocked() && worldLock)
-				WorldRenderer.setMouseInteractionLock(true);
-			
-			if(update)
-				updatePositions();
+
 		}
+		
+		dialogContainer.checkWorldLock(this);
+		
+		if(WorldRenderer.isMouseInteractionLocked() && !worldLock)
+			WorldRenderer.setMouseInteractionLock(false);
+		else if(!WorldRenderer.isMouseInteractionLocked() && worldLock)
+			WorldRenderer.setMouseInteractionLock(true);
+		
+		if(update)
+			updatePositions();
+		
+		
 		
 		if(draggingWindowId >= 0) {
 			if(windows.get(windows.size()-1).getId() != draggingWindowId) {
@@ -473,7 +479,7 @@ public class GuiRenderer implements RenderProperties {
 	
 	private boolean windowInteraction(GuiWindow item, TextureObject object, Window window) {
 		boolean update = false;
-		if(object.isOverable() && object.isMovable()) {
+		if(object.isOverable() && object.isMovable() && draggingFromObjectId == -1) {
 			if(draggingWindowId == item.getId()) {
 				if(item.getPosition().x < -(window.getWidth()/2)) {
 					item.setPosition(-(window.getWidth()/2)+item.getWidth()/2, item.getPosition().y);
@@ -521,6 +527,8 @@ public class GuiRenderer implements RenderProperties {
 			if(draggingWindowId >= 0 && window.getInput().isMouseButtonReleased(0)) {
 				draggingWindowId = -1;
 			}
+		} else if(!window.getInput().isMouseButtonDown(0) && draggingWindowId >= 0) {
+			draggingWindowId = -1;
 		}
 		
 		return update;
@@ -577,7 +585,7 @@ public class GuiRenderer implements RenderProperties {
 	
 	private void dragAndDrop(Tile object, Window window, Player player) {
 		if(object != null) {
-			if((object.getId() == mouseOverTileId && draggingFromObjectId == -1) || draggingFromObjectId == object.getId()) {
+			if((object.getId() == mouseOverTileId && draggingFromObjectId == -1) || draggingFromObjectId == object.getId() && draggingWindowId == -1) {
 				if(object.getId() == mouseOverTileId) {
 					if(window.getInput().isMouseButtonPressed(0)) {
 						pressedObjectId = mouseOverTileId;
@@ -920,7 +928,7 @@ public class GuiRenderer implements RenderProperties {
 		
 	}
 	
-	public static int getMouseOverTileId() {
+	static int getMouseOverTileId() {
 		return mouseOverTileId;
 	}
 
@@ -943,6 +951,7 @@ public class GuiRenderer implements RenderProperties {
 	}
 
 	public void setWorldXOffset(int worldXOffset) {
+		dialogContainer.setDialogXOffset(worldXOffset);
 		this.worldXOffset = worldXOffset;
 	}
 
@@ -951,6 +960,15 @@ public class GuiRenderer implements RenderProperties {
 	}
 
 	public void setWorldYOffset(int worldYOffset) {
+		dialogContainer.setDialogYOffset(worldYOffset);
 		this.worldYOffset = worldYOffset;
+	}
+
+	void setWorldLock(boolean worldLock) {
+		this.worldLock = worldLock;
+	}
+	
+	boolean getWorldLock() {
+		return worldLock;
 	}
 }

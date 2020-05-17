@@ -13,7 +13,7 @@ import svarog.language.LanguageLoader;
 import svarog.render.Texture;
 
 public class DialogContainer {
-	private int dialogId;
+	private Group dialog;
 	private Button dialogButton;
 	
 	private static Font dialogFont;
@@ -31,7 +31,7 @@ public class DialogContainer {
 	DialogContainer(int dialogXOffset, int dialogYOffset) {
 		this.setDialogXOffset(dialogXOffset);
 		this.setDialogYOffset(dialogYOffset);
-		this.dialogId = -1;
+		this.dialog = null;
 	}
 	
 	Group createDialog(Dialog dialog, LanguageLoader language) {
@@ -96,7 +96,7 @@ public class DialogContainer {
 			group.addTextBlock(content);
 			group.addTextureObject(closeDialog);
 			
-			dialogId = group.getId();
+			this.dialog = group;
 			group.setStickTo(stickTo.Bottom);
 			group.move(dialogXOffset/2, dialogYOffset);
 			
@@ -106,18 +106,38 @@ public class DialogContainer {
 	}
 	
 	int getDialogId() {
-		return dialogId;
+		if(dialog != null)
+			return dialog.getId();
+		else return -1;
 	}
 	
 	void closeDialog(GuiRenderer renderer) {
-		if(this.dialogId >= 0) {
-			renderer.removeGroup(this.dialogId);
-			this.dialogId = -1;
+		if(this.dialog != null) {
+			renderer.removeGroup(this.dialog);
+			this.dialog = null;
+		}
+	}
+	
+	void checkWorldLock(GuiRenderer renderer) {
+		if(dialog != null) {
+			boolean lock = false;
+			for(TextureObject object : dialog.getObjects()) {
+				if(GuiRenderer.getMouseOverObjectId() == object.getId())
+					lock = true;
+			}
+			
+			for(TextBlock object : dialog.getTextBlockList()) {
+				if(GuiRenderer.getMouseOverObjectId() == object.getId())
+					lock = true;
+			}
+			
+			if(lock == true)
+				renderer.setWorldLock(true);
 		}
 	}
 	
 	public boolean isDialogOpen() {
-		if(this.dialogId >= 0)
+		if(this.dialog !=  null)
 			return true;
 		else 
 			return false;
