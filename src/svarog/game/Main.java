@@ -85,6 +85,7 @@ public class Main {
 	private static Button menuLoadButton;
 	private static Button menuSaveButton;
 	private static Button menuAuthorsButton;
+	private static GuiWindow authorsWindow;
 	
 	
 	// Confirm window
@@ -131,7 +132,6 @@ public class Main {
 		itemWindowBackground = new TextureObject(new Texture("images/window2.png"));
 		
 		/////// GUI  ////////////////////////////////////////////////////////////////////////
-		roboto_15 = new Font("roboto_15", new Color((byte)255, (byte)255, (byte)255));
 		roboto_18 = new Font("roboto_18", new Color((byte)255, (byte)255, (byte)255));
 		roboto_18_Y = new Font("roboto_18", new Color((byte)255, (byte)255, (byte)0));
 		roboto_18_R = new Font("roboto_18", new Color((byte)255, (byte)0, (byte)0));
@@ -210,6 +210,10 @@ public class Main {
 		
 		healBtn =  new Button(new Texture("images/gui/button_heal.png"), new Texture("images/gui/button_heal_hover.png"), stickTo.TopRight);
 		healBtn.move(-25, 70);
+		
+		
+		guiRenderer.setMarginRight(bottomBorderRightPanel.getWidth());
+		guiRenderer.setMarginBottom(70);
 		
 		guiRenderer.addGuiObject(bottomCorner1);
 		guiRenderer.addGuiObject(bottomCorner2);
@@ -368,6 +372,8 @@ public class Main {
 	}
 	
 	private static void menuInit() {
+		roboto_15 = new Font("roboto_15", new Color((byte)255, (byte)255, (byte)255));
+		
 		guiShader = new Shader("shader");
 		
 		menu = new GuiRenderer(window);
@@ -381,6 +387,9 @@ public class Main {
 		menuLoadButton = new Button(new Texture("images/menu/load.png"),new Texture("images/menu/load_hover.png"), new Vector2f(0, 65));
 		menuExitButton = new Button(new Texture("images/menu/exit.png"),new Texture("images/menu/exit_hover.png"), new Vector2f(0, -60));
 		menuAuthorsButton = new Button(new Texture("images/menu/authors.png"),new Texture("images/menu/authors_hover.png"), new Vector2f(0, -185));
+		
+		
+		authorsWindow = new GuiWindow("Autorzy", roboto_15, new TextureObject(new Texture("images/window4.png")));
 		
 		
 		menu.addGuiObject(menuBackground);
@@ -459,6 +468,10 @@ public class Main {
             	
             	if(menuExitButton.isClicked()) {
             		window.closeProgram();
+            	}
+            	
+            	if(menuAuthorsButton.isClicked()) {
+            		menu.addWindow(authorsWindow);
             	}
             	
             	

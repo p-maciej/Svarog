@@ -59,6 +59,8 @@ public class GuiRenderer implements RenderProperties {
 	
 	private static int clickedObjectId;
 	private static int mouseOverObjectId;
+	private static int mouseOverTileId;
+	private static int clickedTileId;
 	private static int draggingFromObjectId;
 	private static boolean objectDraggedOut;
 	private static int draggingWindowId;
@@ -72,6 +74,8 @@ public class GuiRenderer implements RenderProperties {
 	private static int worldYOffset = 70;
 	
 
+	private int marginRight;
+	private int marginBottom;
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
@@ -84,6 +88,9 @@ public class GuiRenderer implements RenderProperties {
 		this.arenaContainer = new ArenaContainer();
 		this.statsContainer = new StatsContainer();
 		
+		this.setMarginBottom(0);
+		this.setMarginRight(0);
+		
 		this.model = new Model(verticesArray, textureArray, indicesArray);
 		this.camera = new Camera();
 		
@@ -93,6 +100,8 @@ public class GuiRenderer implements RenderProperties {
 		this.windowHeight = window.getHeight();
 		
 		draggingFromObjectId = -1;
+		mouseOverTileId = -1;
+		clickedTileId = -1;
 		objectDraggedOut = false;
 		draggingWindowId = -1;
 		pressedObjectId = -1;
@@ -215,7 +224,9 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	public void renderGuiObjects(Shader shader, Window window, Player player) {
+		mouseOverTileId = -1;
 		clickedObjectId = -1;
+		clickedTileId = -1;
 		mouseOverObjectId = -1;
 		setPointer = false;
 		int windowToRemove = -1;
@@ -227,6 +238,56 @@ public class GuiRenderer implements RenderProperties {
 		
 		if(ArenaContainer.isArenaClosing())
 			ArenaContainer.setArenaClosing(false);
+		
+		// Interaction
+		// Dynamic images render first (they are deleted every window resize)
+		for(GuiObject object : objects) {
+			mouseInteraction(object, window);
+		}
+		
+		// After that textBlocks, they supposed to cover textures
+		for(TextBlock block : textBlocks) {
+			mouseInteraction(block, window);
+		}
+		
+		// Then render groups, they usually will be moving or not windows inside the game
+		for(Group group : groups) {		
+			for(TextureObject object : group.getTextureObjectList()) {
+				mouseInteraction(object, window);
+			}
+			
+			for(TextBlock block : group.getTextBlockList()) {
+				mouseInteraction(block, window);
+			}
+		}
+
+		
+		for(GuiWindow item : windows) {	
+			for(TextureObject object : item.getElements().getTextureObjectList()) {
+				mouseInteraction(object, window);
+				
+				for(TextBlock block : item.getElements().getTextBlockList()) {
+					mouseInteraction(block, window);
+				}
+				
+				if(item instanceof PagedGuiWindow) {
+					for(WindowTextType block : ((PagedGuiWindow) item).getTextBlocks()) {
+						mouseInteraction(block.getBlock(), window);
+					}
+				}
+			}
+		}
+		
+		// And groups of tiles
+		for(Group group : tileSheet.getTileGroupsList()) {
+			for(TextureObject object : group.getTextureObjectList()) {
+				mouseInteraction(object, window);
+				Item temp = ((Tile)object).getPuttedItem();
+				if(temp != null) 
+					mouseInteraction(temp, window);
+			}
+		}
+		////////////////////////////////////////
 		
 		// Dynamic images render first (they are deleted every window resize)
 		for(GuiObject object : objects) {
@@ -276,8 +337,8 @@ public class GuiRenderer implements RenderProperties {
 		
 		boolean update = false;
 		boolean worldLock = false;
-		int borderRight = window.getWidth()-350;
-		int borderBottom = window.getHeight()-70;
+		int borderRight = window.getWidth()-this.marginRight;
+		int borderBottom = window.getHeight()-this.marginBottom;
 		
 		for(GuiWindow item : windows) {	
 			worldLock = false;
@@ -452,23 +513,24 @@ public class GuiRenderer implements RenderProperties {
 			this.removeWindow(windowToRemove);
 	}
 	
-	private void renderTextBlock(TextBlock block, Shader shader, Window window) {
-		// Mouse interaction //
-		if(block.isOverable()) {
-			if(block.isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY())) {
-				if(block.isOverable())
-					mouseOverObjectId = block.getId();
-					
-				if(block.isClickable() && window.getInput().isMouseButtonPressed(0)) {
-					clickedObjectId = block.getId();
-				}
+	private void mouseInteraction(GuiObject object, Window window) {
+		if(object.isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY())) {
+			setPointer = false;
+			mouseOverObjectId = object.getId();
+			
+			if(object instanceof Tile)
+				mouseOverTileId = object.getId();
 				
-				if(block.isClickable())
-					setPointer = true;
+			if(object.isClickable() && window.getInput().isMouseButtonPressed(0)) {
+				clickedObjectId = object.getId();
 			}
+			
+			if(object.isClickable())
+				setPointer = true;
 		}
-		/////////////////////
-		
+	}
+
+	private void renderTextBlock(TextBlock block, Shader shader, Window window) {
 		block.update();
 		
 		for(int i = 0; i < block.getLines().size(); i++) {
@@ -489,22 +551,6 @@ public class GuiRenderer implements RenderProperties {
 	private void renderGuiObject(GuiObject object, Shader shader, Window window) {
 			Matrix4f projection = camera.getProjection();
 			
-			// Mouse interaction //
-			if(object.isOverable()) {
-				if(object.isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY())) {
-					if(object.isOverable())
-						mouseOverObjectId = object.getId();
-						
-					if(object.isClickable() && window.getInput().isMouseButtonPressed(0)) {
-						clickedObjectId = object.getId();
-					}
-					
-					if(object.isClickable())
-						setPointer = true;
-				}
-			}
-			/////////////////////
-			
 			object.update();
 			
 			if(object.getTexture() != null)
@@ -518,15 +564,15 @@ public class GuiRenderer implements RenderProperties {
 	
 	private void dragAndDrop(Tile object, Window window, Player player) {
 		if(object != null) {
-			if((object.getId() == mouseOverObjectId && draggingFromObjectId == -1) || draggingFromObjectId == object.getId()) {
-				if(object.getId() == mouseOverObjectId) {
+			if((object.getId() == mouseOverTileId && draggingFromObjectId == -1) || draggingFromObjectId == object.getId()) {
+				if(object.getId() == mouseOverTileId) {
 					if(window.getInput().isMouseButtonPressed(0)) {
-						pressedObjectId = mouseOverObjectId;
+						pressedObjectId = mouseOverTileId;
 					}
 					if(window.getInput().isMouseButtonReleased(0)) {
-						if(mouseOverObjectId == pressedObjectId) {
+						if(mouseOverTileId == pressedObjectId) {
 							if(!Timer.getDelay(clickedTime, Timer.getNanoTime(), 0.3f))
-								clickedObjectId = mouseOverObjectId;
+								clickedTileId = mouseOverTileId;
 						}
 					}
 				}
@@ -537,14 +583,14 @@ public class GuiRenderer implements RenderProperties {
 							clickedTime = Timer.getNanoTime();
 						}
 						
-						if((draggingFromObjectId != mouseOverObjectId) || objectDraggedOut == true) {
+						if((draggingFromObjectId != mouseOverTileId) || objectDraggedOut == true) {
 							object.getPuttedItem().setPosition((float)window.getRelativePositionCursorX(), (float)window.getRelativePositionCursorY());
 							objectDraggedOut = true;
 						}
 					}
 				} else if(window.getInput().isMouseButtonReleased(0) && draggingFromObjectId != -1) {
-					if(mouseOverObjectId != draggingFromObjectId) {
-						Tile tile = tileSheet.getTileByObjectId(mouseOverObjectId);
+					if(mouseOverTileId != draggingFromObjectId) {
+						Tile tile = tileSheet.getTileByObjectId(mouseOverTileId);
 						if(tile != null) {
 							try {
 								tile.putItem(object.getPuttedItem());
@@ -722,10 +768,12 @@ public class GuiRenderer implements RenderProperties {
 	}
 
 	public static int getClickedObjectId() {
-		return clickedObjectId;
+		if(mouseOverObjectId == clickedObjectId)
+			return clickedObjectId;
+		else return -1;
 	}
 	
-	public static int getMouseOverObjectId() {
+	static int getMouseOverObjectId() {
 		return mouseOverObjectId;
 	}
 	
@@ -854,5 +902,21 @@ public class GuiRenderer implements RenderProperties {
 		arenaContainer.closeArena(this);
 		WorldRenderer.setMouseInteractionLock(false);
 		
+	}
+	
+	public static int getMouseOverTileId() {
+		return mouseOverTileId;
+	}
+
+	public void setMarginRight(int marginRight) {
+		this.marginRight = marginRight;
+	}
+
+	public void setMarginBottom(int marginBottom) {
+		this.marginBottom = marginBottom;
+	}
+
+	public static int getClickedTileId() {
+		return clickedTileId;
 	}
 }

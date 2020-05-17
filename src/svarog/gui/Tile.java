@@ -161,14 +161,16 @@ public class Tile extends TextureObject implements ItemProperties {
 	
 	@Override
 	public void update() {
-		if(GuiRenderer.getMouseOverObjectId() == super.getId() && hover == false) {
-			if((GuiRenderer.getDraggingFromObjectId() != -1 && puttedItem == null) || GuiRenderer.getDraggingFromObjectId() == -1 || GuiRenderer.getDraggingFromObjectId() == super.getId()) {
-				hover = true;
-				super.setTexture(this.hoverTexture);
+		if(puttedItem != null) {
+			if(GuiRenderer.getMouseOverTileId() == super.getId() && hover == false) {
+				if((GuiRenderer.getDraggingFromObjectId() != -1 && puttedItem == null) || GuiRenderer.getDraggingFromObjectId() == -1 || GuiRenderer.getDraggingFromObjectId() == super.getId()) {
+					hover = true;
+					super.setTexture(this.hoverTexture);
+				}
+			} else if(GuiRenderer.getMouseOverTileId() != super.getId() && hover == true) {
+				hover = false;
+				super.setTexture(this.copy);
 			}
-		} else if(GuiRenderer.getMouseOverObjectId() != super.getId() && hover == true) {
-			hover = false;
-			super.setTexture(this.copy);
 		}
 	}
 }
