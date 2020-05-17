@@ -73,9 +73,13 @@ public class GuiRenderer implements RenderProperties {
 	private int worldXOffset;
 	private int worldYOffset;
 	
+	boolean update = false;
+	boolean worldLock = false;
 
 	private int marginRight;
 	private int marginBottom;
+	private int borderRight;
+	private int borderBottom;
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
@@ -92,6 +96,9 @@ public class GuiRenderer implements RenderProperties {
 		this.setMarginRight(0);
 		this.setWorldXOffset(0);
 		this.setWorldYOffset(0);
+		
+		this.borderRight = window.getWidth()-this.marginRight;
+		this.borderBottom = window.getHeight()-this.marginBottom;
 		
 		this.model = new Model(verticesArray, textureArray, indicesArray);
 		this.camera = new Camera();
@@ -337,69 +344,20 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		
-		boolean update = false;
-		boolean worldLock = false;
-		int borderRight = window.getWidth()-this.marginRight;
-		int borderBottom = window.getHeight()-this.marginBottom;
+		worldLock = false;
+		update = false;
 		
 		for(GuiWindow item : windows) {	
-			worldLock = false;
-			 update = false;
 			for(TextureObject object : item.getElements().getTextureObjectList()) {
 				renderGuiObject(object, shader, window);
 				
+				boolean updateT = windowInteraction(item, object, window);
+				
+				if(!update && updateT)
+					update = true;
+				
 				if(mouseOverObjectId == item.getBackgroundWindowId())
 					worldLock = true;
-				
-				if(object.isOverable() && object.isMovable()) {
-					if(draggingWindowId == item.getId()) {
-						if(item.getPosition().x < -(window.getWidth()/2)) {
-							item.setPosition(-(window.getWidth()/2)+item.getWidth()/2, item.getPosition().y);
-							update = true;
-						}
-						
-						if(window.getCursorPositionX() < item.getWidth()/2) {
-							item.setPosition(-(window.getWidth()/2)+item.getWidth()/2, item.getPosition().y);
-							update = true;
-						} else if(window.getCursorPositionX()+item.getWidth()/2 > borderRight) {
-							item.setPosition(borderRight/2-item.getWidth()/2+worldXOffset/2, item.getPosition().y);
-							update = true;
-						}
-	
-						if(item.getPosition().y-item.getHeight()/2 < -(window.getHeight()/2)) {
-							item.setPosition(item.getPosition().x, -(window.getHeight()/2)+item.getHeight()/2);
-							update = true;
-						}
-						
-						if(window.getCursorPositionY() < 15) {
-							item.setPosition(item.getPosition().x, -(window.getHeight()/2)+item.getHeight()/2);
-							update = true;
-						} else if(window.getCursorPositionY()+item.getHeight()-15 > borderBottom) {
-							item.setPosition(item.getPosition().x, borderBottom/2-item.getHeight()/2-worldYOffset/2);
-							update = true;
-						}
-					}
-					
-					if((mouseOverObjectId == object.getId() && draggingWindowId == -1) || (draggingWindowId >= 0 && draggingWindowId == item.getId())) {
-						worldLock = true;
-						if(window.getInput().isMouseButtonDown(0)) {
-							draggingWindowId = item.getId();
-							if(item.getStickTo() != null && item.getId() == draggingWindowId) {
-								item.setStickTo(null);
-								item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
-							}
-
-							if(window.getCursorPositionX()+item.getWidth()/2 < borderRight && window.getCursorPositionY()+item.getHeight() - 15 < borderBottom  && window.getCursorPositionY()-15 > 0 && window.getCursorPositionX()-item.getWidth()/2 > 0 && item.getId() == draggingWindowId) {
-								item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
-							}
-							
-							update = true;
-						}
-					}
-					if(draggingWindowId >= 0 && window.getInput().isMouseButtonReleased(0)) {
-						draggingWindowId = -1;
-					}
-				}
 
 				
 				if(object instanceof Button && item instanceof PagedGuiWindow) {
@@ -511,6 +469,61 @@ public class GuiRenderer implements RenderProperties {
 		
 		if(windowToRemove != -1)
 			this.removeWindow(windowToRemove);
+	}
+	
+	private boolean windowInteraction(GuiWindow item, TextureObject object, Window window) {
+		boolean update = false;
+		if(object.isOverable() && object.isMovable()) {
+			if(draggingWindowId == item.getId()) {
+				if(item.getPosition().x < -(window.getWidth()/2)) {
+					item.setPosition(-(window.getWidth()/2)+item.getWidth()/2, item.getPosition().y);
+					update = true;
+				}
+				
+				if(window.getCursorPositionX() < item.getWidth()/2) {
+					item.setPosition(-(window.getWidth()/2)+item.getWidth()/2, item.getPosition().y);
+					update = true;
+				} else if(window.getCursorPositionX()+item.getWidth()/2 > borderRight) {
+					item.setPosition(borderRight/2-item.getWidth()/2+worldXOffset/2, item.getPosition().y);
+					update = true;
+				}
+
+				if(item.getPosition().y-item.getHeight()/2 < -(window.getHeight()/2)) {
+					item.setPosition(item.getPosition().x, -(window.getHeight()/2)+item.getHeight()/2);
+					update = true;
+				}
+				
+				if(window.getCursorPositionY() < 15) {
+					item.setPosition(item.getPosition().x, -(window.getHeight()/2)+item.getHeight()/2);
+					update = true;
+				} else if(window.getCursorPositionY()+item.getHeight()-15 > borderBottom) {
+					item.setPosition(item.getPosition().x, borderBottom/2-item.getHeight()/2-worldYOffset/2);
+					update = true;
+				}
+			}
+			
+			if((mouseOverObjectId == object.getId() && draggingWindowId == -1) || (draggingWindowId >= 0 && draggingWindowId == item.getId())) {
+				worldLock = true;
+				if(window.getInput().isMouseButtonDown(0)) {
+					draggingWindowId = item.getId();
+					if(item.getStickTo() != null && item.getId() == draggingWindowId) {
+						item.setStickTo(null);
+						item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
+					}
+
+					if(window.getCursorPositionX()+item.getWidth()/2 < borderRight && window.getCursorPositionY()+item.getHeight() - 15 < borderBottom  && window.getCursorPositionY()-15 > 0 && window.getCursorPositionX()-item.getWidth()/2 > 0 && item.getId() == draggingWindowId) {
+						item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
+					}
+					
+					update = true;
+				}
+			}
+			if(draggingWindowId >= 0 && window.getInput().isMouseButtonReleased(0)) {
+				draggingWindowId = -1;
+			}
+		}
+		
+		return update;
 	}
 	
 	private void mouseInteraction(GuiObject object, Window window) {
@@ -642,6 +655,9 @@ public class GuiRenderer implements RenderProperties {
 		this.windowHeight = window.getHeight();
 		this.windowWidth = window.getWidth();
 
+		this.borderRight = window.getWidth()-this.marginRight;
+		this.borderBottom = window.getHeight()-this.marginBottom;
+		
 		arenaContainer.reload(this);
 		Group container = arenaContainer.getArenaGroup(windowWidth, windowHeight);
 		if(container != null) {
@@ -910,10 +926,12 @@ public class GuiRenderer implements RenderProperties {
 
 	public void setMarginRight(int marginRight) {
 		this.marginRight = marginRight;
+		this.borderRight = borderRight-this.marginRight;
 	}
 
 	public void setMarginBottom(int marginBottom) {
 		this.marginBottom = marginBottom;
+		this.borderBottom = borderBottom-this.marginBottom;
 	}
 
 	public static int getClickedTileId() {
