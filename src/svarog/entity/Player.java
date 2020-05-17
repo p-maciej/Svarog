@@ -28,6 +28,7 @@ import svarog.interactions.Quest;
 import svarog.interactions.Task;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
+import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.render.Animation;
 import svarog.render.Camera;
@@ -139,7 +140,7 @@ public class Player extends Entity {
 
 	}
 	
-	public PagedGuiWindow getQuestsPagedOnGUI(Font font) {
+	public PagedGuiWindow getQuestsPagedOnGUI(Font font, LanguageLoader language) {
 		/// Windows on GUI /////////////////////////
 		PagedGuiWindow quests1 = new PagedGuiWindow("Questy", font, new TextureObject(new Texture("images/window1.png")));
 		quests1.setStickTo(stickTo.TopRight);
@@ -147,8 +148,8 @@ public class Player extends Entity {
 		
 		for(Quest ques: this.getQuests()) {
 			if(ques.isEndedQuest() != true) {
-				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, ques.getTitle()), Type.headline);
-				quests1.addTextBlock(new TextBlock(265, new Vector2f(), font, ques.getDescription()), Type.content);
+				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, language.getValue(ques.getTitle())), Type.headline);
+				quests1.addTextBlock(new TextBlock(265, new Vector2f(), font, language.getValue(ques.getDescription())), Type.content);
 				for(Task tasks01: ques.getTasks()) {
 					quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, tasks01.progress()), Type.normal);
 				}

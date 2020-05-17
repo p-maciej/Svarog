@@ -642,11 +642,11 @@ public class Main {
 					if(questsButton.isClicked()) {
 						if(questsWindow != null) {
 							if(questsWindow.isClosed()) {
-								questsWindow = player.getQuestsPagedOnGUI(roboto_15);
+								questsWindow = player.getQuestsPagedOnGUI(roboto_15, language);
 								guiRenderer.addWindow(questsWindow);
 							}
 						} else {
-							questsWindow = player.getQuestsPagedOnGUI(roboto_15);
+							questsWindow = player.getQuestsPagedOnGUI(roboto_15, language);
 							guiRenderer.addWindow(questsWindow);
 						}
 					}
