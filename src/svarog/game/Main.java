@@ -141,6 +141,8 @@ public class Main {
 		
 		guiRenderer = new GuiRenderer(window);
 		
+		guiRenderer.setWorldXOffset(-350);
+		guiRenderer.setWorldYOffset(70);
 		
 		BubbleContainer.setBubbleLeft(Texture.getImageBuffer("images/bubble/left.png"));
 		BubbleContainer.setBubbleRight(Texture.getImageBuffer("images/bubble/right.png"));

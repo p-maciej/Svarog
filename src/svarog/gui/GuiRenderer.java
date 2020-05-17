@@ -70,8 +70,8 @@ public class GuiRenderer implements RenderProperties {
 
 	private static int bubbleXoffest = 35; // I thing we can make setter for this to be customizable
 	private static int bubbleYoffset = 20;
-	private static int worldXOffset = -350;
-	private static int worldYOffset = 70;
+	private int worldXOffset;
+	private int worldYOffset;
 	
 
 	private int marginRight;
@@ -90,6 +90,8 @@ public class GuiRenderer implements RenderProperties {
 		
 		this.setMarginBottom(0);
 		this.setMarginRight(0);
+		this.setWorldXOffset(0);
+		this.setWorldYOffset(0);
 		
 		this.model = new Model(verticesArray, textureArray, indicesArray);
 		this.camera = new Camera();
@@ -350,8 +352,6 @@ public class GuiRenderer implements RenderProperties {
 					worldLock = true;
 				
 				if(object.isOverable() && object.isMovable()) {
-					
-					 
 					if(draggingWindowId == item.getId()) {
 						if(item.getPosition().x < -(window.getWidth()/2)) {
 							item.setPosition(-(window.getWidth()/2)+item.getWidth()/2, item.getPosition().y);
@@ -362,7 +362,7 @@ public class GuiRenderer implements RenderProperties {
 							item.setPosition(-(window.getWidth()/2)+item.getWidth()/2, item.getPosition().y);
 							update = true;
 						} else if(window.getCursorPositionX()+item.getWidth()/2 > borderRight) {
-							item.setPosition(borderRight/2-item.getWidth()-23, item.getPosition().y);
+							item.setPosition(borderRight/2-item.getWidth()/2+worldXOffset/2, item.getPosition().y);
 							update = true;
 						}
 	
@@ -375,7 +375,7 @@ public class GuiRenderer implements RenderProperties {
 							item.setPosition(item.getPosition().x, -(window.getHeight()/2)+item.getHeight()/2);
 							update = true;
 						} else if(window.getCursorPositionY()+item.getHeight()-15 > borderBottom) {
-							item.setPosition(item.getPosition().x, borderBottom/2-item.getHeight()/2-33);
+							item.setPosition(item.getPosition().x, borderBottom/2-item.getHeight()/2-worldYOffset/2);
 							update = true;
 						}
 					}
@@ -918,5 +918,21 @@ public class GuiRenderer implements RenderProperties {
 
 	public static int getClickedTileId() {
 		return clickedTileId;
+	}
+	
+	public int getWorldXOffset() {
+		return worldXOffset;
+	}
+
+	public void setWorldXOffset(int worldXOffset) {
+		this.worldXOffset = worldXOffset;
+	}
+
+	public int getWorldYOffset() {
+		return worldYOffset;
+	}
+
+	public void setWorldYOffset(int worldYOffset) {
+		this.worldYOffset = worldYOffset;
 	}
 }
