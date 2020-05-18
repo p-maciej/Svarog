@@ -317,6 +317,14 @@
         <translation>Bywaj</translation>
     </variable>
 	<variable>
+        <key>authorsWindowTitle</key>
+        <translation>Autorzy</translation>
+    </variable>
+	<variable>
+        <key>authorsWindowHeader</key>
+        <translation>Autorzy:</translation>
+    </variable>
+	<variable>
         <key>deleteItemRequestTitle</key>
         <translation>Czy na pewno usunąć przedmiot?</translation>
     </variable>

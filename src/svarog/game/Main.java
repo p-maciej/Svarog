@@ -127,8 +127,6 @@ public class Main {
 		
 		currentWorld = new World(1, 0, 0);
 		
-		language = LanguageLoader.getInstance(languages.PL_pl);
-		
 		worldRenderer = new WorldRenderer(currentWorld);
 		
 		Vector2f offset = new Vector2f(350, 70);
@@ -382,6 +380,7 @@ public class Main {
 	}
 	
 	private static void menuInit() {
+		language = LanguageLoader.getInstance(languages.PL_pl);
 		roboto_15 = new Font("roboto_15", new Color((byte)255, (byte)255, (byte)255));
 		roboto_15_G  = new Font("roboto_15", new Color((byte)200, (byte)200, (byte)200));
 		roboto_15_Y  = new Font("roboto_15", new Color((byte)255, (byte)255, (byte)150));
@@ -403,6 +402,41 @@ public class Main {
 		
 		authorsWindow = new GuiWindow("Autorzy", roboto_15, new TextureObject(new Texture("images/window4.png")));
 		
+		int yPos = authorsWindow.getHeight()/2 - 50;
+		Line line1 = new Line(-authorsWindow.getWidth()/2, yPos);
+		line1.setString(language.getValue("authorsWindowHeader"), roboto_15);
+		line1.move(line1.getWidth()/2 + 10, 0);
+		
+		yPos -= 20;
+		Line line2 = new Line(-authorsWindow.getWidth()/2, yPos);
+		line2.setString("- Maciej Pawlak", roboto_15);
+		line2.move(line2.getWidth()/2 + 20, 0);
+		
+		yPos -= 20;
+		Line line3 = new Line(-authorsWindow.getWidth()/2, yPos);
+		line3.setString("- Dawid Garnczarek", roboto_15);
+		line3.move(line3.getWidth()/2 + 20, 0);
+		
+		yPos -= 20;
+		Line line4 = new Line(-authorsWindow.getWidth()/2, yPos);
+		line4.setString("- Jakub Go³êbiowski", roboto_15);
+		line4.move(line4.getWidth()/2 + 20, 0);
+		
+		yPos -= 20;
+		Line line5 = new Line(-authorsWindow.getWidth()/2, yPos);
+		line5.setString("- Patryk Góra", roboto_15);
+		line5.move(line5.getWidth()/2 + 20, 0);
+		
+		Line line6 = new Line(authorsWindow.getWidth()/2, -authorsWindow.getHeight()/2+20);
+		line6.setString("Copyright 2020", roboto_15);
+		line6.move(-line6.getWidth()/2-10,  0);
+		
+		authorsWindow.addTextureObject(line1);
+		authorsWindow.addTextureObject(line2);
+		authorsWindow.addTextureObject(line3);
+		authorsWindow.addTextureObject(line4);
+		authorsWindow.addTextureObject(line5);
+		authorsWindow.addTextureObject(line6);
 		
 		menu.addGuiObject(menuBackground);
 		menu.addGuiObject(menuStartButton);
