@@ -711,7 +711,7 @@ public class Main {
 					}*/
 					//System.out.println(window.getCursorPositionX() + "  " + window.getCursorPositionY());
 					//System.out.println(worldRenderer.getMouseOverX() + "  " + worldRenderer.getMouseOverY());
-					if(pathFinder.getIsWorking()==1) {
+					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1) {
 						pathFinder.movePlayer(player);
 					}
 					// confirm window

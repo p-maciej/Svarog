@@ -797,7 +797,7 @@ public class GuiRenderer implements RenderProperties {
 		else return -1;
 	}
 	
-	static int getMouseOverObjectId() {
+	public static int getMouseOverObjectId() {
 		return mouseOverObjectId;
 	}
 	
