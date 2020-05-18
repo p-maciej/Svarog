@@ -614,7 +614,7 @@ public class GuiRenderer implements RenderProperties {
 						Tile tile = tileSheet.getTileByObjectId(mouseOverTileId);
 						if(tile != null) {
 							try {
-								tile.putItem(object.getPuttedItem());
+								tile.putItem(object.getPuttedItem(), player);
 								tile.getPuttedItem().setPosition(tile.getTransform().getPosition().x, tile.getTransform().getPosition().y);
 								object.removePuttedItem();
 								

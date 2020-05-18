@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.joml.Vector2f;
 
+import svarog.entity.Player;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.objects.Item;
 import svarog.objects.ItemProperties;
@@ -113,7 +114,7 @@ public class Tile extends TextureObject implements ItemProperties {
 		return puttableItemTypes;
 	}
 	
-	public void putItem(Item object) throws Exception {
+	public void putItem(Item object, Player player) throws Exception {
 		boolean hasBeenPutted = false;
 		if(this.puttableItemTypes.size() == 1 && this.puttableItemTypes.get(0) == ItemType.trash) {
 			throw new Exception("delete");
@@ -126,14 +127,30 @@ public class Tile extends TextureObject implements ItemProperties {
 			}
 		}
 		
-		if(puttedItem == null) {
-			for(ItemType type : puttableItemTypes) {
-				if(type == object.getItemType()) {
-					object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
-					this.puttedItem = object;
-					hasBeenPutted = true;
-					object.getItemInfo().setTileID(this.getTileId());
-					break;
+		if(this.puttableItemTypes.size() == 1 && (this.puttableItemTypes.get(0) == ItemType.helm || this.puttableItemTypes.get(0) == ItemType.armor || this.puttableItemTypes.get(0) == ItemType.gloves || this.puttableItemTypes.get(0) == ItemType.shoes || this.puttableItemTypes.get(0) == ItemType.weapon)) {
+			if(player.getXP().GetLevel() >= object.getItemInfo().getLvlRequired()) {
+				if(puttedItem == null) {
+					for(ItemType type : puttableItemTypes) {
+						if(type == object.getItemType()) {
+							object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
+							this.puttedItem = object;
+							hasBeenPutted = true;
+							object.getItemInfo().setTileID(this.getTileId());
+							break;
+						}
+					}
+				}
+			}
+		} else {
+			if(puttedItem == null) {
+				for(ItemType type : puttableItemTypes) {
+					if(type == object.getItemType()) {
+						object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
+						this.puttedItem = object;
+						hasBeenPutted = true;
+						object.getItemInfo().setTileID(this.getTileId());
+						break;
+					}
 				}
 			}
 		}

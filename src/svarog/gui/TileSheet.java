@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import svarog.entity.Player;
 import svarog.objects.Item;
 
 public class TileSheet {
@@ -49,7 +50,7 @@ public class TileSheet {
 		return null;
 	}
 	
-	public void putItemFirstEmpty(Item item) {
+	public void putItemFirstEmpty(Item item, Player player) {
 		boolean finished = false;
 		
 		Collections.sort(tileGroups);
@@ -63,7 +64,7 @@ public class TileSheet {
 					if(temp.getPuttableItemTypes().size() > 1) {
 						if(temp.getPuttedItem() == null) {
 							try {
-								temp.putItem(item);
+								temp.putItem(item, player);
 								finished = true;
 								break;
 							} catch (Exception e) {}

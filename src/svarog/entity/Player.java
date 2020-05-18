@@ -373,7 +373,7 @@ public class Player extends Entity {
 	
 	public void addItemToInventoryWithGUIupdate(Item item, GuiRenderer guiRenderer) {
 		this.getInventory().getItems().add(item);
-		guiRenderer.getTileSheet().putItemFirstEmpty(this.getInventory().getItems().get(this.getInventory().getItems().size()-1));
+		guiRenderer.getTileSheet().putItemFirstEmpty(this.getInventory().getItems().get(this.getInventory().getItems().size()-1), this);
 	}
 	
 	public ArrayList<String> fightLogic(Enemy enemy, World world) {

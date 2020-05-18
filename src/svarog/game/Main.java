@@ -348,12 +348,12 @@ public class Main {
 		for(Item itemT: player.getInventory().getItems()) {
 			if(itemT.getItemInfo().getTileID() !=-1 && guiRenderer.getTileSheet().getTile(itemT.getItemInfo().getTileID()).getPuttedItem() == null ) {
 				try {
-					guiRenderer.getTileSheet().getTile(itemT.getItemInfo().getTileID()).putItem(itemT);
+					guiRenderer.getTileSheet().getTile(itemT.getItemInfo().getTileID()).putItem(itemT, player);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}else {
-				guiRenderer.getTileSheet().putItemFirstEmpty(itemT);
+				guiRenderer.getTileSheet().putItemFirstEmpty(itemT, player);
 			}
 		}
 		
@@ -706,9 +706,9 @@ public class Main {
 						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(9)), guiRenderer);
 						//guiRenderer.addWindow(confirmWindow);
 					}
-					if(window.getInput().isMouseButtonReleased(0)) {
+					/*if(window.getInput().isMouseButtonReleased(0)) {
 						pathFinder.stupidMover(worldRenderer, player);
-					}
+					}*/
 					//System.out.println(window.getCursorPositionX() + "  " + window.getCursorPositionY());
 					//System.out.println(worldRenderer.getMouseOverX() + "  " + worldRenderer.getMouseOverY());
 					if(pathFinder.getIsWorking()==1) {
