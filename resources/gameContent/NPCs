@@ -2,7 +2,7 @@
 <class>
 	<npc>
 		<globalID>0</globalID>
-		<texturePath>textures/player.png</texturePath>
+		<texturePath>textures/npc/player.png</texturePath>
 		<posX>42</posX>
 		<posY>26</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -14,7 +14,7 @@
 	</npc>
 	<npc>
 		<globalID>1</globalID>
-		<texturePath>textures/npc01.png</texturePath>
+		<texturePath>textures/npc/shopkeeper.png</texturePath>
 		<posX>46</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -24,12 +24,12 @@
 	</npc>
 	<npc>
 		<globalID>2</globalID>
-		<texturePath>textures/rozenna.png</texturePath>
+		<texturePath>textures/npc/rozenna.png</texturePath>
 		<posX>48</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
 		<name>Rozenna</name>
-		<interactionsFile>Rozenna_dialog_1_pierwszy_dialog_w_grze.quest</interactionsFile>
+		<interactionsFile>Rozenna01.quest</interactionsFile>
 		<!--<interactionsFile>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
 	</npc>
@@ -46,7 +46,7 @@
 	<!--Na wszelki wypadek nie ruszałem powyższej domyślnej wersji pliku, z npc Rozenna, ninja, sklepikarz-->
 	<npc>
 		<globalID>4</globalID>
-		<texturePath>textures/Prata.png</texturePath>
+		<texturePath>textures/npc/prata.png</texturePath>
 		<posX>46</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -57,7 +57,7 @@
 	</npc>
 	<npc>
 		<globalID>5</globalID>
-		<texturePath>textures/IzborFriend.png</texturePath>
+		<texturePath>textures/npc/izbor.png</texturePath>
 		<posX>44</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -68,7 +68,7 @@
 	</npc>
 	<npc>
 		<globalID>6</globalID>
-		<texturePath>textures/MalowujFriend.png</texturePath>
+		<texturePath>textures/npc/malowoj.png</texturePath>
 		<posX>42</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -79,7 +79,7 @@
 	</npc>
 	<npc>
 		<globalID>7</globalID>
-		<texturePath>textures/Gerwazybody.png</texturePath>
+		<texturePath>textures/npc/gerwazyBody.png</texturePath>
 		<posX>40</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -89,7 +89,7 @@
 	</npc>
 	<npc>
 		<globalID>8</globalID>
-		<texturePath>textures/Villager.png</texturePath>
+		<texturePath>textures/npc/villager.png</texturePath>
 		<posX>38</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -99,7 +99,7 @@
 	</npc>
 	<npc>
 		<globalID>9</globalID>
-		<texturePath>textures/QuestVillager.png</texturePath>
+		<texturePath>textures/npc/villagerQuest.png</texturePath>
 		<posX>36</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -109,7 +109,7 @@
 	</npc>
 	<npc>
 		<globalID>10</globalID>
-		<texturePath>textures/RodTree.png</texturePath>
+		<texturePath>textures/npc/rodTree.png</texturePath>
 		<posX>34</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -119,7 +119,7 @@
 	</npc>
 	<npc>
 		<globalID>11</globalID>
-		<texturePath>textures/GuslarzVillage.png</texturePath>
+		<texturePath>textures/npc/guslarzVillage.png</texturePath>
 		<posX>32</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -129,7 +129,7 @@
 	</npc>
 	<npc>
 		<globalID>12</globalID>
-		<texturePath>textures/GuslarzRitualHill.png</texturePath><!--Textura guślarza taka sama tylko nazwa inna-->
+		<texturePath>textures/npc/guslarzRitualHill.png</texturePath><!--Textura guślarza taka sama tylko nazwa inna-->
 		<posX>44</posX>
 		<posY>43</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -140,7 +140,7 @@
 	</npc>
 	<npc>
 		<globalID>13</globalID>
-		<texturePath>textures/Mojmira.png</texturePath>
+		<texturePath>textures/npc/mojmira.png</texturePath>
 		<posX>42</posX>
 		<posY>43</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -151,7 +151,7 @@
 	</npc>
 	<npc>
 		<globalID>14</globalID>
-		<texturePath>textures/Trader.png</texturePath>
+		<texturePath>textures/npc/trader.png</texturePath>
 		<posX>40</posX>
 		<posY>43</posY>
 		<fullBoundingBox>true</fullBoundingBox>

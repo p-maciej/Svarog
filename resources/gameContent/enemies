@@ -1,38 +1,8 @@
 <?xml version = "1.0"?>
 <class>
 	<enemy>
-		<globalID>-101</globalID>
-		<texture>textures/avatar.png</texture>
-		<posX>46</posX>
-		<posY>29</posY>
-		<fullBoundingBox>true</fullBoundingBox>
-		<minAttack>30</minAttack>
-		<maxAttack>50</maxAttack>
-		<xpForKilling>15</xpForKilling>
-		<hp>150</hp>
-		<reward>100</reward>
-		<name>Malina</name>
-		<howManyItems>1</howManyItems>
-		<itemGlobalID>1</itemGlobalID>
-		<itemTileID>-1</itemTileID>
-	</enemy>
-	<enemy>
-		<globalID>-102</globalID>
-		<texture>textures/avatar2.png</texture>
-		<posX>46</posX>
-		<posY>29</posY>
-		<fullBoundingBox>true</fullBoundingBox>
-		<minAttack>60</minAttack>
-		<maxAttack>120</maxAttack>
-		<xpForKilling>150</xpForKilling>
-		<hp>300</hp>
-		<reward>1400</reward>
-		<name>Kikimora</name>
-		<howManyItems>0</howManyItems>
-	</enemy>
-	<enemy>
 		<globalID>0</globalID>
-		<texture>textures/wolf.png</texture>
+		<texture>textures/enemy/wolf.png</texture>
 		<posX>44</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -46,7 +16,7 @@
 	</enemy>
 	<enemy>
 		<globalID>1</globalID>
-		<texture>textures/warg.png</texture>
+		<texture>textures/enemy/warg.png</texture>
 		<posX>42</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -60,7 +30,7 @@
 	</enemy>
 	<enemy>
 		<globalID>2</globalID>
-		<texture>textures/pixie.png</texture>
+		<texture>textures/enemy/pixie.png</texture>
 		<posX>40</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -74,7 +44,7 @@
 	</enemy>
 	<enemy>
 		<globalID>3</globalID>
-		<texture>textures/Striga.png</texture>
+		<texture>textures/enemy/striga.png</texture>
 		<posX>38</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -88,7 +58,7 @@
 	</enemy>
 	<enemy>
 		<globalID>4</globalID>
-		<texture>textures/Rusalka.png</texture>
+		<texture>textures/enemy/rusalka.png</texture>
 		<posX>36</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -102,7 +72,7 @@
 	</enemy>
 	<enemy>
 		<globalID>5</globalID>
-		<texture>textures/Leszy.png</texture>
+		<texture>textures/enemy/leszy.png</texture>
 		<posX>34</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -116,7 +86,7 @@
 	</enemy>
 	<enemy>
 		<globalID>6</globalID>
-		<texture>textures/Bandit.png</texture>
+		<texture>textures/enemy/bandit.png</texture>
 		<posX>32</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -130,7 +100,7 @@
 	</enemy>
 	<enemy>
 		<globalID>7</globalID>
-		<texture>textures/BanditLeader.png</texture>
+		<texture>textures/enemy/banditLeader.png</texture>
 		<posX>30</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -144,7 +114,7 @@
 	</enemy>
 	<enemy>
 		<globalID>8</globalID>
-		<texture>textures/Marzanna.png</texture>
+		<texture>textures/enemy/Marzanna.png</texture>
 		<posX>44</posX>
 		<posY>27</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -158,7 +128,7 @@
 	</enemy>
 	<enemy>
 		<globalID>9</globalID>
-		<texture>textures/Ghul.png</texture>
+		<texture>textures/enemy/ghul.png</texture>
 		<posX>42</posX>
 		<posY>27</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -172,7 +142,7 @@
 	</enemy>
 	<enemy>
 		<globalID>10</globalID>
-		<texture>textures/Warewolf.png</texture>
+		<texture>textures/enemy/warewolf.png</texture>
 		<posX>40</posX>
 		<posY>27</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -186,7 +156,7 @@
 	</enemy>
 	<enemy>
 		<globalID>11</globalID>
-		<texture>textures/IzborEnemy.png</texture>
+		<texture>textures/enemy/izbor.png</texture>
 		<posX>38</posX>
 		<posY>27</posY>
 		<fullBoundingBox>true</fullBoundingBox>
@@ -200,7 +170,7 @@
 	</enemy>
 	<enemy>
 		<globalID>12</globalID>
-		<texture>textures/MalowujEnemy.png</texture>
+		<texture>textures/enemy/malowoj.png</texture>
 		<posX>36</posX>
 		<posY>27</posY>
 		<fullBoundingBox>true</fullBoundingBox>
