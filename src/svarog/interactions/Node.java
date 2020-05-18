@@ -7,6 +7,7 @@ public class Node {
 	private int gCost=0;//how far is it from starting Node
 	private int hCost=0;//howfar is it from end Node
 	private int fCost=0;//sum of gCost and hCost
+	private int localState=0; //0-not cheched yet, 1-checked, 2-to final path
 	
 	public Node(boolean _walkable, int _x, int _y) {
 		this.walkable=_walkable;
@@ -15,9 +16,9 @@ public class Node {
 	}
 	
 	public int countCost(int x_begin,int y_begin, int x_end,int y_end) {
-		
-		
-		
+		gCost = Math.abs(x-x_begin)*10 + Math.abs(y-y_begin)*10;
+		hCost = Math.abs(x-x_end)*10 + Math.abs(y-y_end)*10;
+		fCost = gCost + hCost;
 		return fCost;
 	}
 	
@@ -64,6 +65,14 @@ public class Node {
 
 	public void setWalkable(boolean walkable) {
 		this.walkable = walkable;
+	}
+
+	public int getLocalState() {
+		return localState;
+	}
+
+	public void setLocalState(int localState) {
+		this.localState = localState;
 	}
 	
 }

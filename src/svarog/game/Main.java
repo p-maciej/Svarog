@@ -36,6 +36,7 @@ import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.interactions.Interactions;
+import svarog.interactions.PathFinder;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.language.InterfaceTranslations.languages;
@@ -95,6 +96,9 @@ public class Main {
 	private static Button applyButton;
 	private static Button cancelButton;
 	
+	//Path Finder
+	private static PathFinder pathFinder;
+	
 	private static void windowInit() {
 		window = new Window();
 		window.setSize(1200, 700);
@@ -130,6 +134,8 @@ public class Main {
 		Vector2f offset = new Vector2f(350, 70);
 		worldRenderer.setWorldOffset(offset);
 		/////////////////////////////////////////////////////////////////////////////////////
+		
+		pathFinder = new PathFinder();
 		
 		itemWindowBackground = new TextureObject(new Texture("images/window2.png"));
 		
@@ -657,13 +663,17 @@ public class Main {
 					
 					if(healBtn.isClicked()) {
 						player.FullyRecoverHP();
-						player.setMovement(player.movePlayer(65, true));
+						//player.setMovement(player.movePlayer(65, true));
+						pathFinder.movePlayer(player);
+						pathFinder.setIsWorking(1);
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(9)), guiRenderer);
-						guiRenderer.addWindow(confirmWindow);
+						//guiRenderer.addWindow(confirmWindow);
 					}
-					
+					if(pathFinder.getIsWorking()==1) {
+						pathFinder.movePlayer(player);
+					}
 					// confirm window
 					if(cancelButton.isClicked()) {
 						guiRenderer.getTileSheet().cancelRemoveItem();
