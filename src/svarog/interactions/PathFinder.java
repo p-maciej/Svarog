@@ -5,6 +5,7 @@ import java.util.List;
 
 import svarog.collision.AABB;
 import svarog.entity.Player;
+import svarog.world.WorldRenderer;
 
 public class PathFinder {
 	private AABB[][]coliders;
@@ -23,13 +24,38 @@ public class PathFinder {
 	}
 	
 	public void test() {
-		moveList.add(new moveInstruction(65, 5));
-		moveList.add(new moveInstruction(68, 5));
-		moveList.add(new moveInstruction(83, 3));
-		moveList.add(new moveInstruction(87, 3));
-		moveList.add(new moveInstruction(83, 3));
-		moveList.add(new moveInstruction(87, 3));
+		moveList.add(new moveInstruction(65, 5));//left
+		moveList.add(new moveInstruction(65, 2));
+		moveList.add(new moveInstruction(68, 5));//right
+		moveList.add(new moveInstruction(83, 3));//down
+		moveList.add(new moveInstruction(87, 3));//up
+		moveList.add(new moveInstruction(83, 3));//down
+		moveList.add(new moveInstruction(87, 3));//up
+		moveList.add(new moveInstruction(0, 0));//stop - end of moving
+	}
+	
+	public void stupidMover(WorldRenderer worldRenderer, Player player) {
+		reset();
+		moveList.clear();
+		isWorking = 1;
+		
+		System.out.println((worldRenderer.getMouseOverX()-player.getPositionX()) + "  "+ (player.getPositionY()-worldRenderer.getMouseOverY()));
+		if(worldRenderer.getMouseOverX()>player.getPositionX()) {
+			moveList.add(new moveInstruction(68, worldRenderer.getMouseOverX()-player.getPositionX()));
+			System.out.println("right");
+		}else {
+			moveList.add(new moveInstruction(65, player.getPositionX()-worldRenderer.getMouseOverX()));
+			System.out.println("left");
+		}
+		if(worldRenderer.getMouseOverY()>player.getPositionY()) {
+			moveList.add(new moveInstruction(83, worldRenderer.getMouseOverY()-player.getPositionY()));
+			System.out.println("down");
+		}else {
+			moveList.add(new moveInstruction(87, player.getPositionY()-worldRenderer.getMouseOverY()));
+			System.out.println("up");
+		}
 		moveList.add(new moveInstruction(0, 0));
+		movePlayer(player);
 	}
 	
 	public void movePlayer(Player player) {
@@ -88,12 +114,18 @@ public class PathFinder {
 		}
 		
 		//STOP
-		if(moveList.get(actualMove).getDirection()==0) {
+		if(moveList.get(actualMove).getDirection()==0 || player.isEntityColliding()) {
 			player.setMovement(player.movePlayer(0, true));
 			isWorking = 0;
 			actualMove=0;
 			isMoveEnded=1;
 		}
+	}
+	
+	public void reset() {
+		isWorking = 0;
+		actualMove=0;
+		isMoveEnded=1;
 	}
 
 	public int getIsWorking() {

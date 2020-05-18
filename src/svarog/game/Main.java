@@ -664,6 +664,7 @@ public class Main {
 					if(healBtn.isClicked()) {
 						player.FullyRecoverHP();
 						//player.setMovement(player.movePlayer(65, true));
+						pathFinder.reset();
 						pathFinder.movePlayer(player);
 						pathFinder.setIsWorking(1);
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
@@ -671,6 +672,11 @@ public class Main {
 						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(9)), guiRenderer);
 						//guiRenderer.addWindow(confirmWindow);
 					}
+					if(window.getInput().isMouseButtonReleased(0)) {
+						pathFinder.stupidMover(worldRenderer, player);
+					}
+					//System.out.println(window.getCursorPositionX() + "  " + window.getCursorPositionY());
+					//System.out.println(worldRenderer.getMouseOverX() + "  " + worldRenderer.getMouseOverY());
 					if(pathFinder.getIsWorking()==1) {
 						pathFinder.movePlayer(player);
 					}

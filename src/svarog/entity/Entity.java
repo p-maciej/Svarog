@@ -36,7 +36,6 @@ public abstract class Entity implements MouseInteraction {
 	
 	private String entityName;
 	
-	
 	private boolean isClickable;
 	private boolean isMovable;
 	private boolean isOverable;
@@ -313,6 +312,10 @@ public abstract class Entity implements MouseInteraction {
 	
 	public Texture getTexture() {
 		return texture;
+	}
+	
+	public boolean isEntityColliding() {
+		return(isColliding[0]||isColliding[1]);
 	}
 	
 	public abstract boolean isClicked();
