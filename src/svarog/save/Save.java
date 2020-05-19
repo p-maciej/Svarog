@@ -107,7 +107,9 @@ public class Save {
 					List<ItemParameters> itemParam = new ArrayList<>();
 					for(int i=0;i<Integer.parseInt(eElement.getElementsByTagName("howManyItems").item(0).getTextContent());i++) {
 						itemParam.add(new ItemParameters(Integer.parseInt(eElement.getElementsByTagName("itemGlobalID").item(i).getTextContent()),
-								Integer.parseInt(eElement.getElementsByTagName("itemTileID").item(i).getTextContent())));
+								Integer.parseInt(eElement.getElementsByTagName("itemTileID").item(i).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("itemPropability").item(i).getTextContent())
+								));
 					}
 					EnemyParameters enemyParam = new EnemyParameters(itemParam,
 							Integer.parseInt(eElement.getElementsByTagName("globalID").item(0).getTextContent()),
@@ -120,6 +122,8 @@ public class Save {
 							Integer.parseInt(eElement.getElementsByTagName("xpForKilling").item(0).getTextContent()),
 							Integer.parseInt(eElement.getElementsByTagName("hp").item(0).getTextContent()),
 							Integer.parseInt(eElement.getElementsByTagName("reward").item(0).getTextContent()),
+							Integer.parseInt(eElement.getElementsByTagName("respownInSeconds").item(0).getTextContent()),
+							Integer.parseInt(eElement.getElementsByTagName("level").item(0).getTextContent()),
 							eElement.getElementsByTagName("name").item(0).getTextContent());
 
 

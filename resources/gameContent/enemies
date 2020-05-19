@@ -12,6 +12,8 @@
 		<hp>90</hp>
 		<reward>50</reward>
 		<name>Wilk</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -26,6 +28,8 @@
 		<hp>120</hp>
 		<reward>100</reward>
 		<name>Warg</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -40,6 +44,8 @@
 		<hp>190</hp>
 		<reward>250</reward>
 		<name>Północnica</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -54,6 +60,8 @@
 		<hp>400</hp>
 		<reward>500</reward>
 		<name>Strzyga</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -68,6 +76,8 @@
 		<hp>210</hp>
 		<reward>450</reward>
 		<name>Rusałka</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -82,6 +92,8 @@
 		<hp>900</hp>
 		<reward>2000</reward>
 		<name>Leszy</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -96,6 +108,8 @@
 		<hp>150</hp>
 		<reward>75</reward>
 		<name>Bandyta</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -110,6 +124,8 @@
 		<hp>200</hp>
 		<reward>250</reward>
 		<name>Przywódca bandytów</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -124,6 +140,8 @@
 		<hp>600</hp>
 		<reward>1000</reward>
 		<name>Marzanna</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -138,6 +156,8 @@
 		<hp>150</hp>
 		<reward>125</reward>
 		<name>Ghul</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -152,6 +172,8 @@
 		<hp>260</hp>
 		<reward>900</reward>
 		<name>Wilkołak</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -166,6 +188,8 @@
 		<hp>300</hp>
 		<reward>1000</reward>
 		<name>Izbor</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -180,6 +204,8 @@
 		<hp>320</hp>
 		<reward>1000</reward>
 		<name>Małowuj</name>
+		<respownInSeconds>60</respownInSeconds>
+		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 </class>

@@ -27,6 +27,9 @@ public class Enemy extends Entity {
 	private int minAttack=0;
 	private int xpForKilling=0;
 	private int reward=0;
+	
+	private int respownInSec;
+	private int level;
 
 	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox) {
 		super(id, texture, transform, fullBoundingBox);
@@ -71,6 +74,8 @@ public class Enemy extends Entity {
 		this.xpForKilling = enemyParameters.getXpForKilling();
 		this.reward = enemyParameters.getReward();
 		this.hp.SetMaxHP(enemyParameters.getHp());
+		this.setRespownInSec(enemyParameters.getRespownInSec());
+		this.setLevel(enemyParameters.getLevel());
 		super.setName(enemyParameters.getName());
 		
 	}
@@ -91,6 +96,8 @@ public class Enemy extends Entity {
 		this.xpForKilling = enemyParameters.getXpForKilling();
 		this.reward = enemyParameters.getReward();
 		this.hp.SetMaxHP(enemyParameters.getHp());
+		this.setRespownInSec(enemyParameters.getRespownInSec());
+		this.setLevel(enemyParameters.getLevel());
 		super.setName(name);
 		
 	}
@@ -166,6 +173,18 @@ public class Enemy extends Entity {
 	public int getReward() {
 		return reward;
 	}
+	public int getRespownInSec() {
+		return respownInSec;
+	}
+	public void setRespownInSec(int respownInSec) {
+		this.respownInSec = respownInSec;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
 
 	@Override
 	public boolean isClicked() {
@@ -179,4 +198,5 @@ public class Enemy extends Entity {
 	public void setGlobalID(int globalID) {
 		this.globalID = globalID;
 	}
+	
 }

@@ -18,10 +18,12 @@ public class EnemyParameters {
 	private int hp=1;
 	private int reward=0;
 	
+	private int respownInSec=-1;
+	private int level=1;
 	private String name;
 	
 	public EnemyParameters(List<ItemParameters> itemParameters, int globalEnemyID, String texture, int posX, int posY,
-			boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp, int reward, String name) {
+			boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp, int reward, int respownInSec, int level, String name) {
 		super();
 		this.itemParameters = itemParameters;
 		this.globalEnemyID = globalEnemyID;
@@ -34,6 +36,8 @@ public class EnemyParameters {
 		this.xpForKilling = xpForKilling;
 		this.hp = hp;
 		this.reward = reward;
+		this.respownInSec = respownInSec;
+		this.level = level;
 		this.name = name;
 	}
 	public String getTexture() {
@@ -107,5 +111,17 @@ public class EnemyParameters {
 	}
 	public void setItemParameters(List<ItemParameters> itemParameters) {
 		this.itemParameters = itemParameters;
+	}
+	public int getRespownInSec() {
+		return respownInSec;
+	}
+	public void setRespownInSec(int respownInSec) {
+		this.respownInSec = respownInSec;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
 	}	
 }
