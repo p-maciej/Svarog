@@ -190,7 +190,6 @@ public class Enemy extends Entity {
 
 	@Override
 	public boolean isClicked() {
-		//System.out.println(super.getId());
 		return WorldRenderer.getClickedEntityId() == super.getObjectId() ? true : false;
 	}
 

@@ -181,13 +181,15 @@ public class WorldRenderer implements RenderProperties {
 	public void update(float delta, Window window, Camera camera, Audio audioPlayer) { // World update
 		for(int i = 0; i < world.getEntitiesToRespawn().size(); i++) {
 			EntityRespawn temp =  world.getEntitiesToRespawn().get(i);
-			if(Timer.getDelay(temp.getTimerStart(), Timer.getNanoTime(), temp.getEntity().getRespownInSec())) {
-				if(temp.getEntity() instanceof Enemy)
-					((Enemy)temp.getEntity()).resetEnemy();
-				
-				world.getEntities().add(temp.getEntity());
-				Collections.swap(world.getEntities(), world.numberOfEntities()-1, world.numberOfEntities()-2);
-				world.getEntitiesToRespawn().remove(i);
+			if(temp.getEntity().getRespownInSec() != -1) {
+				if(Timer.getDelay(temp.getTimerStart(), Timer.getNanoTime(), temp.getEntity().getRespownInSec())) {
+					if(temp.getEntity() instanceof Enemy)
+						((Enemy)temp.getEntity()).resetEnemy();
+					
+					world.getEntities().add(temp.getEntity());
+					Collections.swap(world.getEntities(), world.numberOfEntities()-1, world.numberOfEntities()-2);
+					world.getEntitiesToRespawn().remove(i);
+				}
 			}
 		}
 		
