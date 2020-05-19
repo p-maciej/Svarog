@@ -6,7 +6,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>wolfSkin</name>
    		<description>wolfSkinDescription</description>
    		<itemType>trophy</itemType>
@@ -17,7 +17,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>wargSkin</name>
    		<description>wargSkinDescription</description>
    		<itemType>trophy</itemType>
@@ -28,7 +28,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>fangs</name>
    		<description>fangsDescription</description>
    		<itemType>trophy</itemType>
@@ -39,7 +39,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>ghoulBlood</name>
    		<description>ghoulBloodDescription</description>
    		<itemType>trophy</itemType>
@@ -50,7 +50,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>strigoiHeart</name>
    		<description>strigoiHeartDescription</description>
    		<itemType>trophy</itemType>
@@ -61,7 +61,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>nightHair</name>
    		<description>nightHairDescription</description>
    		<itemType>trophy</itemType>
@@ -72,7 +72,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>claws</name>
    		<description>clawsDescription</description>
    		<itemType>trophy</itemType>
@@ -83,7 +83,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>werewolfSkin</name>
    		<description>werewolfSkinDescription</description>
    		<itemType>trophy</itemType>
@@ -94,7 +94,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>nixieTongue</name>
    		<description>nixieTongueDescription</description>
    		<itemType>trophy</itemType>
@@ -127,7 +127,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>moneyBag</name>
    		<description>moneyBagDescription</description>
    		<itemType>other</itemType>
@@ -138,7 +138,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>iceCup</name>
    		<description>iceCupDescription</description>
    		<itemType>other</itemType>
@@ -149,7 +149,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>gerwazyNecklace</name>
    		<description>gerwazyNecklaceDescription</description>
    		<itemType>other</itemType>
@@ -171,7 +171,7 @@
    		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>5</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>mavakFamilySword</name>
    		<description>mavakFamilySwordDescription</description>
    		<itemType>weapon</itemType>
@@ -215,7 +215,7 @@
    		<defense>0</defense>
    		<hpRegeneration>10</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>apple</name>
    		<description>appleDescription</description>
    		<itemType>consumable</itemType>
@@ -226,7 +226,7 @@
    		<defense>0</defense>
    		<hpRegeneration>100</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>goldenBerry</name>
    		<description>goldenBerryDescription</description>
    		<itemType>consumable</itemType>
@@ -237,7 +237,7 @@
    		<defense>0</defense>
    		<hpRegeneration>60</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>applePie</name>
    		<description>applePieDescription</description>
    		<itemType>consumable</itemType>
@@ -248,7 +248,7 @@
    		<defense>0</defense>
    		<hpRegeneration>40</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>smallPotion</name>
    		<description>smallPotionDescription</description>
    		<itemType>consumable</itemType>
@@ -259,7 +259,7 @@
    		<defense>0</defense>
    		<hpRegeneration>70</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>bigPotion</name>
    		<description>bigPotionDescription</description>
    		<itemType>consumable</itemType>
@@ -325,7 +325,7 @@
    		<defense>1</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
-   		<lvlRequired>0</lvlRequired>
+   		<lvlRequired>1</lvlRequired>
    		<name>onuce</name>
    		<description>onuceDescription</description>
    		<itemType>shoes</itemType>

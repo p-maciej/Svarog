@@ -18,7 +18,7 @@
 		<posX>46</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Sklepikarz</name>
+		<name>Shopkeeper</name>
 		<interactionsFile>quest01.quest</interactionsFile>
 		<howManyItems>0</howManyItems>
 	</npc>
@@ -28,7 +28,7 @@
 		<posX>48</posX>
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Rozenna</name>
+		<name>NPCRozenna</name>
 		<interactionsFile>Rozenna_dialog_1_pierwszy_dialog_w_grze.quest</interactionsFile>
 		<!--<interactionsFile>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
@@ -39,7 +39,7 @@
 		<posX>29</posX>
 		<posY>28</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Ninja</name>
+		<name>NPCNinja</name>
 		<interactionsFile></interactionsFile>
 		<howManyItems>0</howManyItems>
 	</npc>
@@ -50,7 +50,7 @@
 		<posX>46</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Prata</name>
+		<name>NPCPrata</name>
 		<interactionsFile>Prata_dialog_1_po_rozmowie_z_rozenna.quest</interactionsFile>
 		<!--<interactionsFile>Prata_dialog_2_po_zabiciu_wilkow.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
@@ -61,7 +61,7 @@
 		<posX>44</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Izbor</name>
+		<name>NPCIzbor</name>
 		<interactionsFile>Izbor_dialog_1_zad_pob_odnajdz_10_kielichow.quest</interactionsFile>
 		<!--<interactionsFile>Izbor_dialog_2_zad_poboczne_odnajdz_10_kielichow.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
@@ -72,7 +72,7 @@
 		<posX>42</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Malowuj</name>
+		<name>NPCMalowuj</name>
 		<interactionsFile>Malowuj_dialog_1_zad_poboczne_odnajdz_artefakty.quest</interactionsFile>
 		<!--<interactionsFile>Malowuj_dialog_2_zad_poboczne_odnajdz_artefakty.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
@@ -83,7 +83,7 @@
 		<posX>40</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Gerwazy</name>
+		<name>NPCGerwazy</name>
 		<interactionsFile>Mojmira_dialog_2_zad_poboczne_odnajdz_Gerwazego.quest</interactionsFile>
 		<howManyItems>0</howManyItems>
 	</npc>
@@ -93,7 +93,7 @@
 		<posX>38</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Wieśniak</name>
+		<name>NPCVillager</name>
 		<interactionsFile></interactionsFile>
 		<howManyItems>0</howManyItems>
 	</npc>
@@ -103,7 +103,7 @@
 		<posX>36</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Wieśniak</name>
+		<name>NPCVillagerQuest</name>
 		<interactionsFile>Wiesniak_dialog_1_zadanie_poboczne_Dziady.quest</interactionsFile>
 		<howManyItems>0</howManyItems>
 	</npc>
@@ -113,7 +113,7 @@
 		<posX>34</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Podejrzanie wyglądające drzewo</name>
+		<name>NPCGodTree</name>
 		<interactionsFile>Rod_1_dialog_po_wyciagnieciu_miecza_z_drzewa.quest</interactionsFile>
 		<howManyItems>0</howManyItems>
 	</npc>
@@ -123,7 +123,7 @@
 		<posX>32</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Guślarz</name>
+		<name>guslarzVillage</name>
 		<interactionsFile>Guslarz_dialog_1_zad_pob_dziady.quest</interactionsFile>
 		<howManyItems>0</howManyItems>
 	</npc>
@@ -133,7 +133,7 @@
 		<posX>44</posX>
 		<posY>43</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Guślarz</name>
+		<name>guslarzRitualHill</name>
 		<interactionsFile>Guslarz_dialog_2_na_wzgorzu_rytualow.quest</interactionsFile>
 		<!--<interactionsFile>Guslarz_dialog_3_na_wzgorzu_rytualow_po_pokonaniu_potworow.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
@@ -144,7 +144,7 @@
 		<posX>42</posX>
 		<posY>43</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Mojmira</name>
+		<name>NPCMojmira</name>
 		<interactionsFile>Mojmira_dialog_1_zad_poboczne_odnajdz_gerwazego.quest</interactionsFile>
 		<!--<interactionsFile>Mojmira_dialog_3_zad_poboczne_odnajdz_Gerwazego.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
@@ -155,13 +155,9 @@
 		<posX>40</posX>
 		<posY>43</posY>
 		<fullBoundingBox>true</fullBoundingBox>
-		<name>Kupiec</name>
+		<name>NPCTrader</name>
 		<interactionsFile>Kupiec_dialog_1_zad_poboczne_zabij_bandytow.quest</interactionsFile>
 		<!--<interactionsFile>Kupiec_dialog_2_zad_poboczne_zabij_bandytow.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
 	</npc>
 </class>
-
-
-	
-	

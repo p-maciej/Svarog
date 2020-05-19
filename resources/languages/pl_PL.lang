@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <file>
+<!--Items-->
     <variable>
         <key>wolfSkin</key>
         <translation>Skóra wilka</translation>
@@ -328,6 +329,7 @@
         <key>deleteItemRequestTitle</key>
         <translation>Czy na pewno usunąć przedmiot?</translation>
     </variable>
+	<!--1 Dialog Guslarza z Mavakiem-->
 	<variable>
         <key>MavandGus_dialog1_line0</key>
         <translation>[Mavak] – Witaj Guślarzu. Podobno chciałeś się ze mną widzieć.</translation>
@@ -432,6 +434,7 @@
         <key>QuestID4_HelpGuslarz_Desc</key>
         <translation>Jeden z wieśniaków skontaktował się ze mną. Powiedział mi że Guślarz chce się ze mną zobaczyć. Odwiedziłem go, na miejscu się okazało że wie o mnie więcej niż się spodziewałem. Obiecał mi pomóc z brakującymi wskazówkami pod warunkiem że pomogę mu przeprowadzić rytuał Dziadów na Wzgórzu Rytuałów. Rytuały w ostatnich latach były przerywane przez potwory. Przez to odnoszę wrażenie że Bogowie zapomnieli o tym miejscu. Czas to zmienić.</translation>
     </variable>
+	<!--2 Dialog Guslarza z Mavakiem-->
 	<variable>
         <key>MavangGus_dialog2_line0</key>
         <translation>[Mavak] – Guślarzu. Przybyłem. Na czym ma polegać moja pomoc?</translation>
@@ -528,6 +531,7 @@
         <key>MavangGus_dialog2_line23</key>
         <translation>[Mavak] - *do siebie* Są i ghule po drugiej stronie wzgórza. Muszę je wyeliminować, bo inaczej przerwą rytuał.</translation>
     </variable>
+	<!--3 Dialog Guslarza z Mavakiem-->
 	<variable>
         <key>MavandGus_dialog3_line0</key>
         <translation>[Guślarz] - Daj mnie stułę i gromnicę,</translation>
@@ -632,6 +636,7 @@
         <key>MavandGus_dialog3_line25</key>
         <translation>[Guślarz] – To Guślarz dziękuje Mavakowi. A teraz Mavak niech idzie. Niech wypełni swoje Boskie Przeznaczenie, odnajdzie artefakty.</translation>
     </variable>
+	<!--1 Dialog Izbora z Mavakiem-->
 	<variable>
         <key>IzborandMav_dialog1_line0</key>
         <translation>[Mavak] – Witaj podróżniku. Co robisz przed tym przeklętym fortem.</translation>
@@ -760,6 +765,7 @@
         <key>IzborandMav_dialog1_line29</key>
         <translation>[Mavak] - *do siebie* Ci goście wydają się podejrzani. Muszę na nich uważać.</translation>
     </variable>
+	<!--2 Dialog Izbora z Mavakiem-->
 	<variable>
         <key>IzborandMav_dialog_2_line0</key>
         <translation>[Izbor] – No i? No i? Gdzie są kielichy?</translation>
@@ -808,6 +814,7 @@
         <key>IzborandMav_dialog_2_line11</key>
         <translation>[Mavak] – Ehhhh skoro tak się sprawy mają. Duet idiotów, jeden głupszy od drugiego.</translation>
     </variable>
+	<!--1 Dialog Kupca z Mavakiem-->
 	<variable>
         <key>KubandMav_dialog1_line0</key>
         <translation>[Mavak] – A cóż to się stało?</translation>
@@ -892,6 +899,7 @@
         <key>KubandMav_dialog1_line18</key>
         <translation>[Mavak] - *do siebie* Na Roda, ja rozumiem że został on obrabowany ale jak można być takim oschłym kutasem?</translation>
     </variable>
+	<!--2 Dialog Kupca z Mavakiem-->
 	<variable>
         <key>KupandMav_dialog2_line0</key>
         <translation>[Mavak] – Oto Twoje złoto kupcze.</translation>
@@ -952,6 +960,7 @@
         <key>KupandMav_dialog2_line14</key>
         <translation>*Oddajesz sakiewke kupcowi.*</translation>
     </variable>
+	<!--1 Dialog Malowuja z Mavakiem-->
 	<variable>
         <key>MalandMav_dialog1_line0</key>
         <translation>[Mavak] – Witaj. Co tutaj robisz?</translation>
@@ -1024,6 +1033,7 @@
         <key>MalandMav_dialog1_line15</key>
         <translation>[Mavak] - *do siebie* Nie wiem po co w ogóle przyjąłem to zadanie. On coś kręci.</translation>
     </variable>
+	<!--2 Dialog Malowuja z Mavakiem-->
 	<variable>
         <key>MalandMav_dialog2_line0</key>
         <translation>[Mavak] – Mam pancerz.</translation>
@@ -1048,6 +1058,7 @@
         <key>MalandMav_dialog2_line5</key>
         <translation>[Małowuj] – Ta ta, niech Ci będzie. A teraz spadaj stąd. Pogadamy później.</translation>
     </variable>
+	<!--1 Dialog Mojmiry z Mavakiem-->
 	<variable>
         <key>MojmandMav_dialog1_line0</key>
         <translation>[Mavak] – Witaj Mojmiro.</translation>
@@ -1108,6 +1119,7 @@
         <key>MojmandMav_dialog1_line12</key>
         <translation>[Mojmira] – Dziękuję Ci.</translation>
     </variable>
+	<!--2 Dialog Mojmiry z Mavakiem-->
 	<variable>
         <key>MojmandMav_dialog2_line0</key>
         <translation>[Mavak] – O nie. To chyba Gerwazy. Biedak chyba został rozszarpany przez Ghule i zaciągnięty aż tutaj.</translation>
@@ -1124,6 +1136,7 @@
         <key>MojmandMav_dialog2_line3</key>
         <translation>*Dodano do ekwipunku: Naszyjnik Gerwazego*</translation>
     </variable>
+	<!--3 Dialog Mojmiry z Mavakiem-->
 	<variable>
         <key>MojmandMav_dialog3_line0</key>
         <translation>[Mavak] – Mojmiro.</translation>
@@ -1180,6 +1193,7 @@
         <key>MojmandMav_dialog3_line13</key>
         <translation>[Mojmira] – To bardzo miłe z twej strony. Dziękuje Mavaku za przyniesienie mi tych smutnych wiadmości.</translation>
     </variable>
+	<!--1 Dialog Praty z Mavakiem-->
 	<variable>
         <key>PratandMav_dialog1_line0</key>
         <translation>[Mavak] – Witaj Prato.</translation>
@@ -1448,6 +1462,7 @@
         <key>PratandMav_dialog1_line62</key>
         <translation>[Prata] – Doskonale.</translation>
     </variable>
+	<!--2 Dialog Praty z Mavakiem-->
 	<variable>
         <key>PratandMav_dialog2_line0</key>
         <translation>[Mavak] – Prato. Problem zażegnany. Wilki zostały wyeliminowane. </translation>
@@ -1472,6 +1487,7 @@
         <key>PratandMav_dialog2_line5</key>
         <translation>[Mavak] – Na pewno zrobię z nich dobry użytek. Dziękuję.</translation>
     </variable>
+	<!--Dialog Roda z Mavakiem-->
 	<variable>
         <key>RodandMav_dialog1_line0</key>
         <translation>[Mavak] – *mówiąc do siebie* Miecz wbity w drzewo tutaj? Dziwne, odwiedzałem  to miejsce setki razy i ani razu się na niego nie natknąłem.</translation>
@@ -1696,6 +1712,7 @@
         <key>QuestID0_MainQuest_Desc</key>
         <translation>A więc to nie były zwykłe sny. To była przepowiednia tego co ma stać. Podczas poszukiwania jabłek przemówił do mnie sam Rod. Powiedział że jestem złączony jakimś Boskim Przeznaczeniem i teraz powinienem poszukać 4 artefaktów. Jeden już mam zostały jeszcze 3. Coś czuję że to będzie ciekawa i niebezpieczna przygoda.</translation>
     </variable>
+	<!--1 Dialog Rozenny z Mavakiem-->
 	<variable>
         <key>RozandMav_dialog1_line0</key>
         <translation>[Rozenna] - Mavak! Witaj moj drogi co u Ciebie slychac?</translation>
@@ -1780,6 +1797,7 @@
         <key>RozandMav_dialog1_line18</key>
         <translation>[Mavak] - Postaram sie. Bywaj.</translation>
     </variable>
+	<!--2 Dialog Rozenny z Mavakiem-->
 	<variable>
         <key>RozandMav_dialog2_line0</key>
         <translation>[Mavak] – Mam Twoje jabłka. Proszę.</translation>
@@ -1880,6 +1898,7 @@
         <key>RozandMav_dialog2_line24</key>
         <translation>[Mavak] - *Kiwa głową*</translation>
     </variable>
+	<!--Dialog Wieśniaka z Mavakiem-->
 	<variable>
         <key>WiesandMav_dialog1_line0</key>
         <translation>[Wieśniak] – Mavaku tutaj jesteś.</translation>
@@ -1911,5 +1930,119 @@
 	<variable>
         <key>WiesandMav_dialog1_line7</key>
         <translation>[Mavak] – Dzięki za informację, będę uważał.</translation>
+    </variable>
+	<!--NPC-->
+	<variable>
+        <key>Dummy</key>
+        <translation>Bohater</translation>
+    </variable>
+	<variable>
+        <key>Shopkeeper</key>
+        <translation>Sklepikarz</translation>
+    </variable>
+	<variable>
+        <key>NPCRozenna</key>
+        <translation>Rozenna</translation>
+    </variable>
+	<variable>
+        <key>NPCNinja</key>
+        <translation>Ninja</translation>
+    </variable>
+	<variable>
+        <key>NPCPrata</key>
+        <translation>Prata</translation>
+    </variable>
+	<variable>
+        <key>NPCIzbor</key>
+        <translation>Izbor</translation>
+    </variable>
+	<variable>
+        <key>NPCMalowuj</key>
+        <translation>Malowuj</translation>
+    </variable>
+	<variable>
+        <key>NPCGerwazy</key>
+        <translation>Gerwazy</translation>
+    </variable>
+	<variable>
+        <key>NPCVillager</key>
+        <translation>Wieśniak</translation>
+    </variable>
+	<variable>
+        <key>NPCVillagerQuest</key>
+        <translation>Wieśniak</translation>
+    </variable>
+	<variable>
+        <key>NPCGodTree</key>
+        <translation>Podejrzanie wyglądające drzewo</translation>
+    </variable>
+	<variable>
+        <key>guslarzVillage</key>
+        <translation>Guślarz</translation>
+    </variable>
+	<variable>
+        <key>guslarzRitualHill</key>
+        <translation>Guślarz</translation>
+    </variable>
+	<variable>
+        <key>NPCMojmira</key>
+        <translation>Mojmira</translation>
+    </variable>
+	<variable>
+        <key>NPCTrader</key>
+        <translation>Kupiec</translation>
+    </variable>
+	<!--Enemies-->
+	<variable>
+        <key>ENEMYWolf</key>
+        <translation>Wilk</translation>
+    </variable>
+	<variable>
+        <key>ENEMYwarg</key>
+        <translation>Warg</translation>
+    </variable>
+	<variable>
+        <key>ENEMYpixie</key>
+        <translation>Północnica</translation>
+    </variable>
+	<variable>
+        <key>ENEMYstriga</key>
+        <translation>Strzyga</translation>
+    </variable>
+	<variable>
+        <key>ENEMYrusalka</key>
+        <translation>Rusałka</translation>
+    </variable>
+	<variable>
+        <key>ENEMYleszy</key>
+        <translation>Leszy</translation>
+    </variable>
+	<variable>
+        <key>ENEMYbandit</key>
+        <translation>Bandyta</translation>
+    </variable>
+	<variable>
+        <key>ENEMYbanditLeader</key>
+        <translation>Przywódca bandytów</translation>
+    </variable>
+	<variable>
+        <key>ENEMYMarzanna</key>
+        <translation>Marzanna</translation>
+    </variable>
+	<variable>
+        <key>ENEMYghul</key>
+        <translation>Ghul</translation>
+    </variable>
+	<variable>
+        <key>ENEMYwarewolf</key>
+        <translation>Wilkołak</translation>
+    </variable>
+	<variable>
+        <key>ENEMYizbor</key>
+        <translation>Izbor</translation>
+    </variable>
+	<variable>
+        <key>ENEMYmalowoj</key>
+        <translation>Małowuj</translation>
     </variable>
 </file>

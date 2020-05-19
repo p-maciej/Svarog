@@ -11,8 +11,8 @@
 		<xpForKilling>10</xpForKilling>
 		<hp>90</hp>
 		<reward>50</reward>
-		<name>Wilk</name>
-		<respownInSeconds>60</respownInSeconds>
+		<name>ENEMYWolf</name>
+		<respownInSeconds>300</respownInSeconds>
 		<level>1</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
@@ -27,9 +27,9 @@
 		<xpForKilling>100</xpForKilling>
 		<hp>120</hp>
 		<reward>100</reward>
-		<name>Warg</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYwarg</name>
+		<respownInSeconds>90</respownInSeconds>
+		<level>6</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -43,9 +43,9 @@
 		<xpForKilling>1000</xpForKilling>
 		<hp>190</hp>
 		<reward>250</reward>
-		<name>Północnica</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYpixie</name>
+		<respownInSeconds>240</respownInSeconds>
+		<level>11</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -59,9 +59,9 @@
 		<xpForKilling>3500</xpForKilling>
 		<hp>400</hp>
 		<reward>500</reward>
-		<name>Strzyga</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYstriga</name>
+		<respownInSeconds>-1</respownInSeconds>
+		<level>11</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -75,9 +75,9 @@
 		<xpForKilling>150</xpForKilling>
 		<hp>210</hp>
 		<reward>450</reward>
-		<name>Rusałka</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYrusalka</name>
+		<respownInSeconds>180</respownInSeconds>
+		<level>5</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -91,9 +91,9 @@
 		<xpForKilling>66000</xpForKilling>
 		<hp>900</hp>
 		<reward>2000</reward>
-		<name>Leszy</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYleszy</name>
+		<respownInSeconds>-1</respownInSeconds>
+		<level>14</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -107,9 +107,9 @@
 		<xpForKilling>20</xpForKilling>
 		<hp>150</hp>
 		<reward>75</reward>
-		<name>Bandyta</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYbandit</name>
+		<respownInSeconds>-1</respownInSeconds>
+		<level>2</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -123,9 +123,9 @@
 		<xpForKilling>50</xpForKilling>
 		<hp>200</hp>
 		<reward>250</reward>
-		<name>Przywódca bandytów</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYbanditLeader</name>
+		<respownInSeconds>-1</respownInSeconds>
+		<level>5</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -139,9 +139,9 @@
 		<xpForKilling>40000</xpForKilling>
 		<hp>600</hp>
 		<reward>1000</reward>
-		<name>Marzanna</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYMarzanna</name>
+		<respownInSeconds>-1</respownInSeconds>
+		<level>13</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -155,9 +155,9 @@
 		<xpForKilling>200</xpForKilling>
 		<hp>150</hp>
 		<reward>125</reward>
-		<name>Ghul</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYghul</name>
+		<respownInSeconds>300</respownInSeconds>
+		<level>7</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -171,9 +171,9 @@
 		<xpForKilling>15000</xpForKilling>
 		<hp>260</hp>
 		<reward>900</reward>
-		<name>Wilkołak</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYwarewolf</name>
+		<respownInSeconds>300</respownInSeconds>
+		<level>13</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -187,9 +187,9 @@
 		<xpForKilling>2000</xpForKilling>
 		<hp>300</hp>
 		<reward>1000</reward>
-		<name>Izbor</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYizbor</name>
+		<respownInSeconds>-1</respownInSeconds>
+		<level>9</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
@@ -200,12 +200,12 @@
 		<fullBoundingBox>true</fullBoundingBox>
 		<minAttack>15</minAttack>
 		<maxAttack>25</maxAttack>
-		<xpForKilling>200</xpForKilling>
+		<xpForKilling>2000</xpForKilling>
 		<hp>320</hp>
 		<reward>1000</reward>
-		<name>Małowuj</name>
-		<respownInSeconds>60</respownInSeconds>
-		<level>1</level>
+		<name>ENEMYmalowoj</name>
+		<respownInSeconds>-1</respownInSeconds>
+		<level>9</level>
 		<howManyItems>0</howManyItems>
 	</enemy>
 </class>
