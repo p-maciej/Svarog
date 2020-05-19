@@ -99,7 +99,7 @@ public class GuiWindow {
 	}
 	
 	private void addCloseButton() {
-		Button closeDialog = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(getWidth()/2-15, getHeight()/2-15));
+		Button closeDialog = new Button(new Texture("images/dialog/close_window.png"), new Vector2f(getWidth()/2-15, getHeight()/2-15));
 		closeButton = closeDialog;
 		elements.addTextureObject(closeDialog);
 	}

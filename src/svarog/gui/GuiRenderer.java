@@ -542,7 +542,7 @@ public class GuiRenderer implements RenderProperties {
 			if(object instanceof Tile)
 				mouseOverTileId = object.getId();
 				
-			if(object.isClickable() && window.getInput().isMouseButtonPressed(0)) {
+			if(object.isClickable() && window.getInput().isMouseButtonReleased(0)) {
 				clickedObjectId = object.getId();
 			}
 			
