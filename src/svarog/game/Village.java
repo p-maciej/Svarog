@@ -1,9 +1,13 @@
 package svarog.game;
 
 import svarog.entity.Enemy;
+import svarog.entity.EntityItem;
 import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.io.Window;
+import svarog.objects.Item;
+import svarog.objects.ItemInfo;
+import svarog.objects.ItemProperties.ItemType;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
@@ -36,6 +40,13 @@ abstract class Village implements Runnable {
 		
 		NPC ninja = new NPC(8, Save.getNpcsByID(3), new Transform().setPosition(29, 28).setScale(1, 2), true);
 		
+		Texture appleTexture = new Texture("textures/items/food/apple.png");
+		EntityItem appleEntity = new EntityItem(9, appleTexture, new Transform().setPosition(29, 29), true);
+		appleEntity.setName("Jab³ko");
+		appleEntity.setRespownInSec(2);
+		appleEntity.addLoot(new Item(appleTexture, new ItemInfo(9, 0, 5, 0, 1, "Jab³ko", "Super", ItemType.consumable)));
+		
+		world.addEntity(appleEntity);
 		world.addEntity(ent1);
 		world.addEntity(ent2);
 		world.addEntity(npc01);

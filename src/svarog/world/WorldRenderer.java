@@ -86,7 +86,7 @@ public class WorldRenderer implements RenderProperties {
 						mouseOverEntityId = entity.getId();
 					
 					if(entity.isClickable())
-						if(window.getInput().isMouseButtonPressed(0))
+						if(window.getInput().isMouseButtonReleased(0))
 							clickedEntityId = mouseOverEntityId;
 				}
 			}

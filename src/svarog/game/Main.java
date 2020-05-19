@@ -16,6 +16,7 @@ import svarog.audio.Audio;
 import svarog.audio.Sound;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
+import svarog.entity.EntityItem;
 import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.gui.ArenaContainer;
@@ -642,17 +643,21 @@ public class Main {
 					
 
 					for(int i=0; i < currentWorld.numberOfEntities() ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
-						if(currentWorld.getEntity(i).isClicked()) {
-							
-							if(currentWorld.getEntity(i) instanceof Enemy) {
-								
-								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, roboto_18);
+						Entity entity = currentWorld.getEntity(i);
+						if(entity.isClicked()) {
+							if(entity instanceof Enemy) {
+								player.fightShow(guiRenderer, player, (Enemy)entity, currentWorld, roboto_18);
 								guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 	
-							}if(currentWorld.getEntity(i) instanceof NPC && ((NPC)currentWorld.getEntity(i)).getInteractions() != null) {
-								((NPC)currentWorld.getEntity(i)).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(i).getId(), language);
+							} else if(entity instanceof NPC && ((NPC)entity).getInteractions() != null) {
+								((NPC)entity).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, entity.getId(), language);
 								Interactions.setTalkingNPCid(i);
+							} else if(entity instanceof EntityItem) {
+								currentWorld.removeAndRespawn(entity);
+								for(Item item : ((EntityItem)entity).getLoot()) {
+									player.addItemToInventoryWithGUIupdate(new Item(item), guiRenderer);
+								}
 							}
 						}
 					}
