@@ -54,6 +54,7 @@ public abstract class Entity implements MouseInteraction {
 	public Entity(int id, Animation animation, Transform transform, boolean fullBoundingBox) {	
 		this.objectId = auto_increment++;
 		this.setId(id);
+		this.setRespownInSec(0);
 		
 		this.entityName = new String();
 		//this.animation = animation;
@@ -73,6 +74,7 @@ public abstract class Entity implements MouseInteraction {
 	public Entity(int id, Texture texture, Transform transform, boolean fullBoundingBox) {		
 		this.objectId = auto_increment++;
 		this.setId(id);
+		this.setRespownInSec(0);
 		
 		this.entityName = new String();
 		this.texture = texture;
@@ -92,6 +94,8 @@ public abstract class Entity implements MouseInteraction {
 		if(npcParameters.getTexturePath().isEmpty()) {
 			this.objectId = auto_increment++;
 			this.setId(id);
+			this.setRespownInSec(0);
+			
 			this.setName(npcParameters.getName());
 			this.transform = new Transform().setPosition(npcParameters.getPosX(), npcParameters.getPosY());
 			this.transform.getPosition().x *= 2;
@@ -99,6 +103,7 @@ public abstract class Entity implements MouseInteraction {
 		}else {
 			this.objectId = auto_increment++;
 			this.setId(id);
+			this.setRespownInSec(0);
 			
 			this.entityName = npcParameters.getName();
 			this.texture = new Texture(npcParameters.getTexturePath());
@@ -119,6 +124,8 @@ public abstract class Entity implements MouseInteraction {
 		if(npcParameters.getTexturePath().isEmpty()) {
 			this.objectId = auto_increment++;
 			this.setId(id);
+			this.setRespownInSec(0);
+			
 			this.setName(npcParameters.getName());
 			this.transform = transform;
 			this.transform.getPosition().x *= 2;
@@ -126,6 +133,7 @@ public abstract class Entity implements MouseInteraction {
 		}else {
 			this.objectId = auto_increment++;
 			this.setId(id);
+			this.setRespownInSec(0);
 			
 			this.entityName = npcParameters.getName();
 			this.texture = new Texture(npcParameters.getTexturePath());
@@ -145,6 +153,8 @@ public abstract class Entity implements MouseInteraction {
 	public Entity(int id, Transform transform, String name) {
 		this.objectId = auto_increment++;
 		this.setId(id);
+		this.setRespownInSec(0);
+		
 		this.setName(name);
 		this.transform = transform;
 		this.transform.getPosition().x *= 2;

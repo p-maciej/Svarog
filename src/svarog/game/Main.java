@@ -640,11 +640,12 @@ public class Main {
 							currentEntityId = -1;
 					}
 					
-					
-					for(int i=0; i < currentWorld.numberOfEntities() - 1 ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
+
+					for(int i=0; i < currentWorld.numberOfEntities() ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
 						if(currentWorld.getEntity(i).isClicked()) {
+							
 							if(currentWorld.getEntity(i) instanceof Enemy) {
-	
+								
 								player.fightShow(guiRenderer, player, (Enemy)currentWorld.getEntity(i), currentWorld, roboto_18);
 								guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
@@ -655,6 +656,7 @@ public class Main {
 							}
 						}
 					}
+
 					if(Interactions.getTalkingNPCid() != -1){
 						
 						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(Interactions.getTalkingNPCid()).getId(), language);
@@ -665,7 +667,7 @@ public class Main {
 					}
 	
 					guiRenderer.renderGuiObjects(guiShader, window, player);
-					
+
 					Tile tempTile = tileSheet.clickedTile();
 					if(tempTile != null) {
 						Item tempItem = tempTile.getPuttedItem();

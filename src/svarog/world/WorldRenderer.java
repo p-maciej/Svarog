@@ -1,11 +1,15 @@
 package svarog.world;
 
+import java.util.Collections;
+
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import svarog.audio.Audio;
+import svarog.entity.Enemy;
 import svarog.entity.Entity;
+import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.render.Camera;
 import svarog.render.Model;
@@ -13,6 +17,7 @@ import svarog.render.RenderProperties;
 import svarog.render.Shader;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.world.World.EntityRespawn;
 
 public class WorldRenderer implements RenderProperties {
 	static final float scale = 16f;
@@ -174,6 +179,18 @@ public class WorldRenderer implements RenderProperties {
 	}
 	
 	public void update(float delta, Window window, Camera camera, Audio audioPlayer) { // World update
+		for(int i = 0; i < world.getEntitiesToRespawn().size(); i++) {
+			EntityRespawn temp =  world.getEntitiesToRespawn().get(i);
+			if(Timer.getDelay(temp.getTimerStart(), Timer.getNanoTime(), temp.getEntity().getRespownInSec())) {
+				if(temp.getEntity() instanceof Enemy)
+					((Enemy)temp.getEntity()).resetEnemy();
+				
+				world.getEntities().add(temp.getEntity());
+				Collections.swap(world.getEntities(), world.numberOfEntities()-1, world.numberOfEntities()-2);
+				world.getEntitiesToRespawn().remove(i);
+			}
+		}
+		
 		for(Entity entity : world.getEntities()) {
 			entity.update(delta, window, camera, this, audioPlayer);
 			entity.collideWithTiles(world);

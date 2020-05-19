@@ -17,6 +17,7 @@ import org.lwjgl.BufferUtils;
 import svarog.collision.AABB;
 import svarog.entity.Entity;
 import svarog.entity.Player;
+import svarog.io.Timer;
 import svarog.render.Texture;
 
 import svarog.world.Tile;
@@ -33,8 +34,8 @@ public class World implements Runnable {
 	
 	private Matrix4f world;
 	
-	
-	
+	private List<EntityRespawn> entitiesToRespawn;
+
 	// Multithreading Variables //
 	private Texture fillWorldTexture;
 	private String mapFileName;
@@ -52,6 +53,7 @@ public class World implements Runnable {
 		entities = new ArrayList<Entity>();
 		doors = new ArrayList<Door>();
 		tileQueue = new ArrayList<QueuedTile>();
+		entitiesToRespawn = new ArrayList<EntityRespawn>();
 		
 		this.setId(id);
 		this.width = width;
@@ -161,7 +163,9 @@ public class World implements Runnable {
 		if(entity.getTexture() != null)
 			entity.getTexture().prepare();
 		
-		this.entities.add(entity);	
+		if(!isEntityWaitingToRespawn(entity.getId())) {
+			this.entities.add(entity);	
+		}
 	}
 	
 	public int numberOfEntities() {
@@ -270,6 +274,11 @@ public class World implements Runnable {
 		entities.remove(entity);
 	}
 	
+	public void removeAndRespawn(Entity entity) {
+		entitiesToRespawn.add(new EntityRespawn(entity, Timer.getNanoTime()));
+		entities.remove(entity);
+	}
+	
 	public void removeEntity(int entityId) {
 		for(int i = 0; i < this.numberOfEntities(); i++) {
 			if(entities.get(i).getId() == entityId)
@@ -279,6 +288,24 @@ public class World implements Runnable {
 	
 	public void addTile(Tile tile, int x, int y) {
 		tileQueue.add(new QueuedTile(tile, x, y));
+	}
+	
+	
+	List<EntityRespawn> getEntitiesToRespawn() {
+		return entitiesToRespawn;
+	}
+	
+
+	public void setEntitiesToRespawn(EntityRespawn entityRespawn) {
+		this.entitiesToRespawn.add(entityRespawn);
+	}
+	
+	public boolean isEntityWaitingToRespawn(int id) {
+		for(EntityRespawn entity : entitiesToRespawn)
+			if(entity.getEntity().getId() == id)
+				return true;
+
+		return false;
 	}
 
 	@Override
@@ -341,6 +368,32 @@ public class World implements Runnable {
 
 		public int getY() {
 			return y;
+		}
+	}
+	
+	public class EntityRespawn {
+		private Entity entity;
+		private long timerStart;
+		
+		EntityRespawn(Entity entity, long timerStart) {
+			this.setEntity(entity);
+			this.setTimerStart(timerStart);
+		}
+		
+		public Entity getEntity() {
+			return entity;
+		}
+		
+		public void setEntity(Entity entity) {
+			this.entity = entity;
+		}
+		
+		public long getTimerStart() {
+			return timerStart;
+		}
+		
+		public void setTimerStart(long timerStart) {
+			this.timerStart = timerStart;
 		}
 	}
 }

@@ -82,14 +82,10 @@ public class Enemy extends Entity {
 	
 	public void resetEnemy() {
 		EnemyParameters temp = Save.getEnemyById(globalID);
+		
 		this.maxAttack = temp.getMaxAttack();
 		this.minAttack = temp.getMinAttack();
-		this.xpForKilling = temp.getXpForKilling();
-		this.reward = temp.getReward();
 		this.hp.SetMaxHP(temp.getHp());
-		super.setRespownInSec(temp.getRespownInSec());
-		this.setLevel(temp.getLevel());
-		super.setName(temp.getName());
 	}
 	
 	public Enemy(int id, EnemyParameters enemyParameters, Transform transform, String name) {
@@ -103,6 +99,7 @@ public class Enemy extends Entity {
 		
 		super.setIsStatic(false); // Non-static - default setting for Enemy
 		
+		this.globalID = enemyParameters.getGlobalEnemyID();
 		this.maxAttack = enemyParameters.getMaxAttack();
 		this.minAttack = enemyParameters.getMinAttack();
 		this.xpForKilling = enemyParameters.getXpForKilling();
@@ -111,7 +108,6 @@ public class Enemy extends Entity {
 		super.setRespownInSec(enemyParameters.getRespownInSec());
 		this.setLevel(enemyParameters.getLevel());
 		super.setName(name);
-		
 	}
 	
 	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, List<Item> items) {
@@ -194,7 +190,8 @@ public class Enemy extends Entity {
 
 	@Override
 	public boolean isClicked() {
-		return WorldRenderer.getClickedEntityId() == super.getId() ? true : false;
+		//System.out.println(super.getId());
+		return WorldRenderer.getClickedEntityId() == super.getObjectId() ? true : false;
 	}
 
 	public int getGlobalID() {

@@ -391,7 +391,7 @@ public class Player extends Entity {
 				this.money += enemy.getReward();
 				
 				//Last line (everything should be done before it)
-				world.removeEntity(enemy);
+				world.removeAndRespawn(enemy);
 			}else {
 				fightString.add("Player HP (before attack): " + this.getHP().GetHP());
 				int enemyAttcc = (enemy).GetRandomAttack();
