@@ -11,6 +11,7 @@ import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.save.EnemyParameters;
+import svarog.save.Save;
 import svarog.world.WorldRenderer;
 
 public class Enemy extends Entity {
@@ -79,16 +80,16 @@ public class Enemy extends Entity {
 		
 	}
 	
-	public void resetEnemy(EnemyParameters enemyParameters) {
-		this.globalID = enemyParameters.getGlobalEnemyID();
-		this.maxAttack = enemyParameters.getMaxAttack();
-		this.minAttack = enemyParameters.getMinAttack();
-		this.xpForKilling = enemyParameters.getXpForKilling();
-		this.reward = enemyParameters.getReward();
-		this.hp.SetMaxHP(enemyParameters.getHp());
-		super.setRespownInSec(enemyParameters.getRespownInSec());
-		this.setLevel(enemyParameters.getLevel());
-		super.setName(enemyParameters.getName());
+	public void resetEnemy() {
+		EnemyParameters temp = Save.getEnemyById(globalID);
+		this.maxAttack = temp.getMaxAttack();
+		this.minAttack = temp.getMinAttack();
+		this.xpForKilling = temp.getXpForKilling();
+		this.reward = temp.getReward();
+		this.hp.SetMaxHP(temp.getHp());
+		super.setRespownInSec(temp.getRespownInSec());
+		this.setLevel(temp.getLevel());
+		super.setName(temp.getName());
 	}
 	
 	public Enemy(int id, EnemyParameters enemyParameters, Transform transform, String name) {
