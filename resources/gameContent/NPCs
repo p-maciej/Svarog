@@ -29,7 +29,7 @@
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
 		<name>Rozenna</name>
-		<interactionsFile>Rozenna01.quest</interactionsFile>
+		<interactionsFile>Rozenna_dialog_1_pierwszy_dialog_w_grze.quest</interactionsFile>
 		<!--<interactionsFile>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
 	</npc>
