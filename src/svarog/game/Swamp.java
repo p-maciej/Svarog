@@ -12,6 +12,7 @@ public abstract class Swamp {
 	public static World getWorld(Player player, Camera camera, Window window) {
 		World world = new World(5,100,100);
 		world.loadMap("swamp.png", 32);
+		world.setSolidTilesFromMap("swamp_mask.png");
 		
 
 		world.addEntity(player);

@@ -21,7 +21,10 @@ public abstract class WorldLoader {
 			return IceCave.getWorld(player, camera, window);
 		else if(id == 5)
 			return Swamp.getWorld(player, camera, window);
+		else if(id == 6)
+			return RitualHill.getWorld(player, camera, window);
 		else  
+			
 			return null;
 	}
 	

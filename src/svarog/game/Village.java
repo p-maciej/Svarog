@@ -70,6 +70,16 @@ abstract class Village implements Runnable {
 		world.addDoor(new Door(5, 10, 89, 86, 1));
 		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 9, 89);
 		world.addDoor(new Door(5, 9, 89, 86, 1));
+		
+		
+		// door to ritualHill
+		
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 0, 40);
+		world.addDoor(new Door(6, 0, 40, 48, 40));
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 0, 41);
+		world.addDoor(new Door(6, 0, 41, 48, 41));
+		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 0, 42);
+		world.addDoor(new Door(6, 0, 42, 48, 42));
 
 		
 		
