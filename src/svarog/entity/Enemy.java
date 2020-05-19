@@ -28,7 +28,6 @@ public class Enemy extends Entity {
 	private int xpForKilling=0;
 	private int reward=0;
 	
-	private int respownInSec;
 	private int level;
 
 	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox) {
@@ -74,10 +73,22 @@ public class Enemy extends Entity {
 		this.xpForKilling = enemyParameters.getXpForKilling();
 		this.reward = enemyParameters.getReward();
 		this.hp.SetMaxHP(enemyParameters.getHp());
-		this.setRespownInSec(enemyParameters.getRespownInSec());
+		super.setRespownInSec(enemyParameters.getRespownInSec());
 		this.setLevel(enemyParameters.getLevel());
 		super.setName(enemyParameters.getName());
 		
+	}
+	
+	public void resetEnemy(EnemyParameters enemyParameters) {
+		this.globalID = enemyParameters.getGlobalEnemyID();
+		this.maxAttack = enemyParameters.getMaxAttack();
+		this.minAttack = enemyParameters.getMinAttack();
+		this.xpForKilling = enemyParameters.getXpForKilling();
+		this.reward = enemyParameters.getReward();
+		this.hp.SetMaxHP(enemyParameters.getHp());
+		super.setRespownInSec(enemyParameters.getRespownInSec());
+		this.setLevel(enemyParameters.getLevel());
+		super.setName(enemyParameters.getName());
 	}
 	
 	public Enemy(int id, EnemyParameters enemyParameters, Transform transform, String name) {
@@ -96,7 +107,7 @@ public class Enemy extends Entity {
 		this.xpForKilling = enemyParameters.getXpForKilling();
 		this.reward = enemyParameters.getReward();
 		this.hp.SetMaxHP(enemyParameters.getHp());
-		this.setRespownInSec(enemyParameters.getRespownInSec());
+		super.setRespownInSec(enemyParameters.getRespownInSec());
 		this.setLevel(enemyParameters.getLevel());
 		super.setName(name);
 		
@@ -172,12 +183,6 @@ public class Enemy extends Entity {
 	
 	public int getReward() {
 		return reward;
-	}
-	public int getRespownInSec() {
-		return respownInSec;
-	}
-	public void setRespownInSec(int respownInSec) {
-		this.respownInSec = respownInSec;
 	}
 	public int getLevel() {
 		return level;

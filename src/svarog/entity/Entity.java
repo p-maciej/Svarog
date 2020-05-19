@@ -40,6 +40,9 @@ public abstract class Entity implements MouseInteraction {
 	private boolean isMovable;
 	private boolean isOverable;
 	
+	//Data
+	private int respownInSec;
+	
 	public static enum Direction {
 		left,
 		right,
@@ -316,6 +319,12 @@ public abstract class Entity implements MouseInteraction {
 	
 	public boolean isEntityColliding() {
 		return(isColliding[0]||isColliding[1]);
+	}
+	public int getRespownInSec() {
+		return respownInSec;
+	}
+	public void setRespownInSec(int respownInSec) {
+		this.respownInSec = respownInSec;
 	}
 	
 	public abstract boolean isClicked();
