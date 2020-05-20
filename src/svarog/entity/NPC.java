@@ -11,7 +11,9 @@ import svarog.objects.ItemInfo;
 import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.EntityHolder;
 import svarog.save.NpcParameters;
+import svarog.save.Save;
 import svarog.world.WorldRenderer;
 
 public class NPC extends Entity{
@@ -72,6 +74,24 @@ public class NPC extends Entity{
 		this.globalNpcID = npcParams.getGlobalNpcID();
 		if(npcParams.getInteractionsPath()!=null && !(npcParams.getInteractionsPath().isEmpty())) {
 			this.setInteractions(new Interactions(npcParams.getInteractionsPath()));
+		}
+	}
+	
+	public NPC(EntityHolder entityHolder) {
+		super(entityHolder.getId(), Save.getNpcsByID(entityHolder.getTypeID()), new Transform().setPosition(entityHolder.getPosX(), entityHolder.getPosY()).setScale(entityHolder.getScaleX(), entityHolder.getScaleY()));
+		super.setOverable(true);
+		super.setClickable(entityHolder.isClickable());
+		
+		super.setIsStatic(true);
+		
+		if(entityHolder.getName() != null && !(entityHolder.getName().equals(""))) {
+			super.setName(entityHolder.getName());
+		}
+		
+		this.globalNpcID = (Save.getNpcsByID(entityHolder.getTypeID())).getGlobalNpcID();
+		
+		if((Save.getNpcsByID(entityHolder.getTypeID())).getInteractionsPath()!=null && !((Save.getNpcsByID(entityHolder.getTypeID())).getInteractionsPath().isEmpty())) {
+			this.setInteractions(new Interactions((Save.getNpcsByID(entityHolder.getTypeID())).getInteractionsPath()));
 		}
 	}
 	

@@ -39,6 +39,7 @@ public class Save {
 	private static List<EnemyParameters> enemies = new ArrayList<EnemyParameters>();
 	private static List<NpcParameters> npcs = new ArrayList<NpcParameters>();
 	private static List<EntityItemParameters> entityItemParam = new ArrayList<>();
+	private static List<EntityHolder> entityHolder01 = new ArrayList<>();
 	
 	public Save(String filename, Player player, World currentWorld) {
 		SaveAs(filename, player, currentWorld);
@@ -122,6 +123,59 @@ public class Save {
 			}
 		} catch (Exception e) {
 			System.out.println("ReadEntityItems :)");
+			e.printStackTrace();
+		}
+	}
+	
+	public static void ReadWorldEntities() {
+		try {
+			File inputFile = new File("resources/gameContent/world01");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+			//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			NodeList nList = doc.getElementsByTagName("entity");
+			//System.out.println("----------------------------");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				//System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					
+					
+					EntityHolder entityHold;
+					
+					String type = eElement.getElementsByTagName("type").item(0).getTextContent();
+					if(type.equals("npc")) {
+						entityHold = new EntityHolder(type,
+								Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("typeID").item(0).getTextContent()),
+								eElement.getElementsByTagName("name").item(0).getTextContent(),
+								Integer.parseInt(eElement.getElementsByTagName("posX").item(0).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("posY").item(0).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("scaleX").item(0).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("scaleY").item(0).getTextContent()),
+								Boolean.valueOf(eElement.getElementsByTagName("isClickable").item(0).getTextContent())
+								);
+					}else {
+						entityHold = new EntityHolder(type,
+								Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("typeID").item(0).getTextContent()),
+								eElement.getElementsByTagName("name").item(0).getTextContent(),
+								Integer.parseInt(eElement.getElementsByTagName("posX").item(0).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("posY").item(0).getTextContent())
+								);
+					}
+
+					entityHolder01.add(entityHold);
+					
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("ReadWorldEntities :)");
 			e.printStackTrace();
 		}
 	}
@@ -232,6 +286,7 @@ public class Save {
 	
 	public static void ReadFrom(String filename) {
 		ReadItems();
+		ReadWorldEntities();
 		ReadEntityItems();
 		ReadEnemies();
 		ReadNpc();
@@ -539,6 +594,14 @@ public class Save {
 		return null;
 	}
 	
+	public static EntityHolder getEntityHolder(int id) {
+		for(EntityHolder elem : entityHolder01) {
+			if(elem.getId() == id)
+				return elem;
+		}
+		return null;
+	}
+	
 	public static List<EnemyParameters> getEnemies() {
 		return enemies;
 	}
@@ -553,6 +616,14 @@ public class Save {
 
 	public static void setNpcs(List<NpcParameters> npcs) {
 		Save.npcs = npcs;
+	}
+
+	public static List<EntityHolder> getEntityHolder01() {
+		return entityHolder01;
+	}
+
+	public static void setEntityHolder01(List<EntityHolder> entityHolder01) {
+		Save.entityHolder01 = entityHolder01;
 	}
 	
 }

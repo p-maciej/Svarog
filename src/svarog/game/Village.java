@@ -25,7 +25,8 @@ abstract class Village implements Runnable {
 		world.setSolidTilesFromMap("village_mask.png");
 		
 		NPC ent1 = new NPC(1, Save.getNpcsByID(0), true);
-		NPC ent2 = new NPC(2, Save.getNpcsByID(0), new Transform().setPosition(46, 27), "Dawid", true);
+		//System.out.println((Save.getEntityHolder(2)).getTypeID());
+		NPC ent2 = new NPC(Save.getEntityHolder(2));
 		
 		Enemy ArchEnemy = new Enemy(3, Save.getEnemyById(7), new Transform().setPosition(46, 29), "Bandit");
 		ArchEnemy.setRespownInSec(3);
@@ -34,7 +35,7 @@ abstract class Village implements Runnable {
 		Enemy enemy2 = new Enemy(5, Save.getEnemyById(7), new Transform().setPosition(47, 29), "Andrzej");
 		enemy2.setRespownInSec(-1);
 		
-		NPC npc01 = new NPC(6, Save.getNpcsByID(1), new Transform().setPosition(46, 25), true);
+		NPC npc01 = new NPC(Save.getEntityHolder(6));
 		
 		NPC npc02 = new NPC(7, Save.getNpcsByID(2), new Transform().setPosition(48, 25).setScale(1, 1), true);
 		

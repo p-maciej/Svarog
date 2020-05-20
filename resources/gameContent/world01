@@ -7,8 +7,8 @@
 		<name>Dawid</name>
 		<posX>46</posX>
 		<posY>23</posY>
-		<scaleX></scaleX>
-		<scaleY></scaleY>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
 		<isClickable>true</isClickable>
 	</entity>
 	<entity>
@@ -18,10 +18,10 @@
 		<name>Maciej</name>
 		<posX>46</posX>
 		<posY>27</posY>
-		<scaleX></scaleX>
-		<scaleY></scaleY>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
 		<isClickable>true</isClickable>
-	</entity
+	</entity>
 	<entity>
 		<type>enemy</type>
 		<id>3</id>
@@ -53,8 +53,8 @@
 		<name></name>
 		<posX>46</posX>
 		<posY>25</posY>
-		<scaleX></scaleX>
-		<scaleY></scaleY>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
 		<isClickable>true</isClickable>
 	</entity>
 	<entity>
@@ -64,8 +64,8 @@
 		<name></name>
 		<posX>48</posX>
 		<posY>27</posY>
-		<scaleX></scaleX>
-		<scaleY></scaleY>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
 		<isClickable>true</isClickable>
 	</entity>
 	<entity>
@@ -83,7 +83,8 @@
 		<type>entityItem</type>
 		<id>9</id>
 		<typeID>0</typeID>
+		<name></name>
 		<posX>29</posX>
 		<posY>29</posY>
 	</entity>
-<class>
+</class>
