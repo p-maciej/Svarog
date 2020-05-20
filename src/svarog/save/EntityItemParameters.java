@@ -17,7 +17,6 @@ public class EntityItemParameters {
 	public EntityItemParameters(int entityItemTypeID, String texturePath, boolean fullBoundingBox,
 			String name, int respownInSec, List<ItemParameters> itemParam) {
 		super();
-		//System.out.println("WTF");
 		this.entityItemTypeID = entityItemTypeID;
 		this.texturePath = texturePath;
 		this.fullBoundingBox = fullBoundingBox;
