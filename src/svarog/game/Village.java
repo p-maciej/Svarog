@@ -44,7 +44,7 @@ abstract class Village implements Runnable {
 		EntityItem appleEntity = new EntityItem(9, appleTexture, new Transform().setPosition(29, 29), true);
 		appleEntity.setName("Jab³ko");
 		appleEntity.setRespownInSec(2);
-		appleEntity.addLoot(new Item(appleTexture, new ItemInfo(9, 0, 5, 0, 1, "Jab³ko", "Super", ItemType.consumable)));
+		appleEntity.addLoot(new Item(Save.getItemById(19)));
 		
 		world.addEntity(appleEntity);
 		world.addEntity(ent1);

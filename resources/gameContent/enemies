@@ -62,7 +62,10 @@
 		<name>ENEMYstriga</name>
 		<respownInSeconds>-1</respownInSeconds>
 		<level>11</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>1</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>5</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>4</globalID>

@@ -362,7 +362,7 @@ public class Player extends Entity {
 		Arena arena = new Arena(player, enemy);
 		List<TextBlock> log = new ArrayList<TextBlock>();
 		
-		for(String word: player.fightLogic((Enemy)enemy, world)) {
+		for(String word: player.fightLogic((Enemy)enemy, world, guiRenderer)) {
 			log.add(new TextBlock(250, new Vector2f(), font, word));
 		}
 		
@@ -376,7 +376,7 @@ public class Player extends Entity {
 		guiRenderer.getTileSheet().putItemFirstEmpty(this.getInventory().getItems().get(this.getInventory().getItems().size()-1), this);
 	}
 	
-	public ArrayList<String> fightLogic(Enemy enemy, World world) {
+	public ArrayList<String> fightLogic(Enemy enemy, World world, GuiRenderer guiRenderer) {
 		ArrayList<String> fightString = new ArrayList<>();
 		while((enemy).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
 			fightString.add("Enemy HP (before attack): " + (enemy).GetEnemyHP());
@@ -389,6 +389,10 @@ public class Player extends Entity {
 				//System.out.println(this.getXP().GetXP()+ " " + this.getXP().getXpmin() + " " + this.getXP().getXpmax());
 				
 				this.money += enemy.getReward();
+				
+				for(Item item : (enemy).getItems()) {
+					this.addItemToInventoryWithGUIupdate(new Item(item), guiRenderer);
+				}
 				
 				//Last line (everything should be done before it)
 				world.removeAndRespawn(enemy);

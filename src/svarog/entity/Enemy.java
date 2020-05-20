@@ -11,6 +11,7 @@ import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.save.EnemyParameters;
+import svarog.save.ItemParameters;
 import svarog.save.Save;
 import svarog.world.WorldRenderer;
 
@@ -78,6 +79,10 @@ public class Enemy extends Entity {
 		this.setLevel(enemyParameters.getLevel());
 		super.setName(enemyParameters.getName());
 		
+		for(ItemParameters i: enemyParameters.getItemParameters()) {
+			this.items.add(new Item(Save.getItemById(i.getItemGlobalID())));
+		}
+		
 	}
 	
 	public void resetEnemy() {
@@ -108,8 +113,20 @@ public class Enemy extends Entity {
 		super.setRespownInSec(enemyParameters.getRespownInSec());
 		this.setLevel(enemyParameters.getLevel());
 		super.setName(name);
+		
+		for(ItemParameters i: enemyParameters.getItemParameters()) {
+			this.items.add(new Item(Save.getItemById(i.getItemGlobalID())));
+		}
 	}
 	
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
 	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, List<Item> items) {
 		super(id, texture, transform, fullBoundingBox);
 		super.setClickable(true);
