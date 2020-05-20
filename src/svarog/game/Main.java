@@ -713,8 +713,11 @@ public class Main {
 						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(9)), guiRenderer);
 						//guiRenderer.addWindow(confirmWindow);
 					}
+					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1 ) {
+						System.out.println(worldRenderer.getMouseOverX()+" "+worldRenderer.getMouseOverY());
+					}
 					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1 && WorldRenderer.getMouseOverEntityId()==-1) {
-						pathFinder.stupidMover(worldRenderer, player);
+						//pathFinder.stupidMover(worldRenderer, player);
 					}
 					//System.out.println(window.getCursorPositionX() + "  " + window.getCursorPositionY());
 					//System.out.println(worldRenderer.getMouseOverX() + "  " + worldRenderer.getMouseOverY());
