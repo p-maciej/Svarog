@@ -291,12 +291,12 @@ public class World implements Runnable {
 	}
 	
 	
-	List<EntityRespawn> getEntitiesToRespawn() {
+	public List<EntityRespawn> getEntitiesToRespawn() {
 		return entitiesToRespawn;
 	}
 	
 
-	public void setEntitiesToRespawn(EntityRespawn entityRespawn) {
+	public void addEntitiesToRespawn(EntityRespawn entityRespawn) {
 		this.entitiesToRespawn.add(entityRespawn);
 	}
 	
@@ -375,7 +375,7 @@ public class World implements Runnable {
 		private Entity entity;
 		private long timerStart;
 		
-		EntityRespawn(Entity entity, long timerStart) {
+		public EntityRespawn(Entity entity, long timerStart) {
 			this.setEntity(entity);
 			this.setTimerStart(timerStart);
 		}
