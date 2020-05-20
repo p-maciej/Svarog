@@ -1,0 +1,14 @@
+<?xml version = "1.0"?>
+<class>
+	<entity>
+		<type>npc</type>
+		<id>1</id>
+		<typeID>0</typeID>
+		<name>Dawid</name>
+		<posX>46</posX>
+		<posY>23</posY>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
+		<isClickable>true</isClickable>
+	</entity>
+</class>

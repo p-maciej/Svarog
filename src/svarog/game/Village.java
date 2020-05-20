@@ -33,7 +33,7 @@ abstract class Village implements Runnable {
 			}else if(i.getType().equals("entityItem")){
 				world.addEntity(new EntityItem(i));
 			}else {
-				System.out.println("WTF???");
+				System.out.println("That kind of entity doesnt exist...");
 			}
 		}
 		
