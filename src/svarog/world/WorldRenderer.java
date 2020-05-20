@@ -83,7 +83,7 @@ public class WorldRenderer implements RenderProperties {
 			if(entity.isOverable()) {
 				if(isOverEntity(entity, camera, window)) {
 					if(mouseInteractionLock == false)
-						mouseOverEntityId = entity.getId();
+						mouseOverEntityId = entity.getObjectId();
 					
 					if(entity.isClickable())
 						if(window.getInput().isMouseButtonReleased(0))
