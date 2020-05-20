@@ -116,14 +116,12 @@ public class Interactions {
 			isEnded = false;
 		}
 
-		if(!guiRenderer.isDialogOpen()) {
+		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen())
 			guiRenderer.showDialog(dialog, language);
-		}
-
 		
-		if(dialog.clickedAnswer() != null) {
+		
+		if(dialog.clickedAnswer() != null)
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
-		}
 
 	}
 	public void interactionsHelper(WorldRenderer currentWorld, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
