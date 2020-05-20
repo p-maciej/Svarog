@@ -135,7 +135,7 @@ public class NPC extends Entity{
 
 	@Override
 	public boolean isClicked() {
-		return WorldRenderer.getClickedEntityId() == super.getId() ? true : false;
+		return WorldRenderer.getClickedEntityId() == super.getObjectId() ? true : false;
 	}
 
 	public int getGlobalNpcID() {
