@@ -24,24 +24,24 @@ abstract class Village implements Runnable {
 		world.loadMap("village.png", 32);
 		world.setSolidTilesFromMap("village_mask.png");
 		
-		NPC ent1 = new NPC(1, Save.getNpcsByID(0), true);
+		NPC ent1 = new NPC(Save.getEntityHolder(1));
 		//System.out.println((Save.getEntityHolder(2)).getTypeID());
 		NPC ent2 = new NPC(Save.getEntityHolder(2));
 		
-		Enemy ArchEnemy = new Enemy(3, Save.getEnemyById(7), new Transform().setPosition(46, 29), "Bandit");
+		Enemy ArchEnemy = new Enemy(Save.getEntityHolder(3));
 		ArchEnemy.setRespownInSec(3);
-		Enemy enemy1 = new Enemy(4, Save.getEnemyById(3), new Transform().setPosition(49, 15), "Strzyga");
+		Enemy enemy1 = new Enemy(Save.getEntityHolder(4));
 		enemy1.setRespownInSec(3);
-		Enemy enemy2 = new Enemy(5, Save.getEnemyById(7), new Transform().setPosition(47, 29), "Andrzej");
+		Enemy enemy2 = new Enemy(Save.getEntityHolder(5));
 		enemy2.setRespownInSec(-1);
 		
 		NPC npc01 = new NPC(Save.getEntityHolder(6));
 		
-		NPC npc02 = new NPC(7, Save.getNpcsByID(2), new Transform().setPosition(48, 25).setScale(1, 1), true);
+		NPC npc02 = new NPC(Save.getEntityHolder(7));
 		
-		NPC ninja = new NPC(8, Save.getNpcsByID(3), new Transform().setPosition(29, 28).setScale(1, 2), true);
+		NPC ninja = new NPC(Save.getEntityHolder(8));
 		
-		EntityItem appleEntity = new EntityItem(9, Save.getEntityItemParameters(0), new Transform().setPosition(29, 29));
+		EntityItem appleEntity = new EntityItem(Save.getEntityHolder(9));
 		
 		world.addEntity(appleEntity);
 		world.addEntity(ent1);

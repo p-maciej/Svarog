@@ -7,6 +7,7 @@ import svarog.objects.Item;
 import svarog.render.Animation;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.EntityHolder;
 import svarog.save.EntityItemParameters;
 import svarog.save.ItemParameters;
 import svarog.save.Save;
@@ -36,6 +37,24 @@ public class EntityItem extends Entity {
 		super.setClickable(true);
 		super.setOverable(true);
 		super.setName(entityItemParameters.getName());
+		super.setRespownInSec(entityItemParameters.getRespownInSec());
+		
+		for(ItemParameters i: entityItemParameters.getItemParam()) {
+			loot.add(new Item(Save.getItemById(i.getItemGlobalID())));
+		}
+	}
+	
+	public EntityItem(EntityHolder entityHolder) {
+		super(entityHolder.getId(), new Texture(Save.getEntityItemParameters(entityHolder.getTypeID()).getTexturePath()), new Transform().setPosition(entityHolder.getPosX(), entityHolder.getPosY()), Save.getEntityItemParameters(entityHolder.getTypeID()).isFullBoundingBox());
+		EntityItemParameters entityItemParameters = Save.getEntityItemParameters(entityHolder.getTypeID());
+		loot = new ArrayList<Item>();
+		super.setClickable(true);
+		super.setOverable(true);
+		if(entityHolder.getName() != null && !(entityHolder.getName().equals(""))) {
+			super.setName(entityHolder.getName());
+		}else {
+			super.setName(entityItemParameters.getName());
+		}
 		super.setRespownInSec(entityItemParameters.getRespownInSec());
 		
 		for(ItemParameters i: entityItemParameters.getItemParam()) {

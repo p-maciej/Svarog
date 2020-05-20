@@ -11,6 +11,7 @@ import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.save.EnemyParameters;
+import svarog.save.EntityHolder;
 import svarog.save.ItemParameters;
 import svarog.save.Save;
 import svarog.world.WorldRenderer;
@@ -56,6 +57,37 @@ public class Enemy extends Entity {
 		this.xpForKilling = xpForKilling;
 		this.reward = reward;
 		this.hp.SetMaxHP(hp);
+	}
+	
+	public Enemy(EntityHolder entityHolder) {
+		super(entityHolder.getId(), new Texture(Save.getEnemyById(entityHolder.getTypeID()).getTexture()),
+				new Transform().setPosition(entityHolder.getPosX(), entityHolder.getPosY()),
+				Save.getEnemyById(entityHolder.getTypeID()).isFullBoundingBox());
+		EnemyParameters enemyParameters = Save.getEnemyById(entityHolder.getTypeID());
+		super.setClickable(true);
+		super.setOverable(true);
+		//this.texturesPath = texturePath;
+		//this.fileName = filename;
+		
+		super.setIsStatic(false); // Non-static - default setting for Enemy
+		
+		this.globalID = enemyParameters.getGlobalEnemyID();
+		this.maxAttack = enemyParameters.getMaxAttack();
+		this.minAttack = enemyParameters.getMinAttack();
+		this.xpForKilling = enemyParameters.getXpForKilling();
+		this.reward = enemyParameters.getReward();
+		this.hp.SetMaxHP(enemyParameters.getHp());
+		super.setRespownInSec(enemyParameters.getRespownInSec());
+		this.setLevel(enemyParameters.getLevel());
+		if(entityHolder.getName() != null && !(entityHolder.getName().equals(""))) {
+			super.setName(entityHolder.getName());
+		}else {
+			super.setName(enemyParameters.getName());
+		}
+		for(ItemParameters i: enemyParameters.getItemParameters()) {
+			this.items.add(new Item(Save.getItemById(i.getItemGlobalID())));
+		}
+		
 	}
 	
 	public Enemy(int id, EnemyParameters enemyParameters) {
