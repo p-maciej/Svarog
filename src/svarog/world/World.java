@@ -152,7 +152,7 @@ public class World implements Runnable {
 	
 	public Entity getEntityById(int id) {
 		for(Entity entity : entities) {
-			if(entity.getObjectId() == id)
+			if(entity.getId() == id) // There should be id, instead of ObjectId if we want search by id from xml
 				return entity;
 		}
 		
