@@ -11,6 +11,7 @@ import svarog.objects.ItemProperties.ItemType;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.EntityHolder;
 import svarog.save.Save;
 import svarog.world.Door;
 import svarog.world.Tile;
@@ -24,34 +25,21 @@ abstract class Village implements Runnable {
 		world.loadMap("village.png", 32);
 		world.setSolidTilesFromMap("village_mask.png");
 		
-		NPC ent1 = new NPC(Save.getEntityHolder(1));
-		//System.out.println((Save.getEntityHolder(2)).getTypeID());
-		NPC ent2 = new NPC(Save.getEntityHolder(2));
+		for(EntityHolder i: Save.getEntityHolder01()) {
+			if(i.getType().equals("npc")) {
+				world.addEntity(new NPC(i));
+			}else if(i.getType().equals("enemy")) {
+				world.addEntity(new Enemy(i));
+			}else if(i.getType().equals("entityItem")){
+				world.addEntity(new EntityItem(i));
+			}else {
+				System.out.println("WTF???");
+			}
+		}
 		
-		Enemy ArchEnemy = new Enemy(Save.getEntityHolder(3));
-		ArchEnemy.setRespownInSec(3);
-		Enemy enemy1 = new Enemy(Save.getEntityHolder(4));
-		enemy1.setRespownInSec(3);
-		Enemy enemy2 = new Enemy(Save.getEntityHolder(5));
-		enemy2.setRespownInSec(-1);
+		world.getEntityById(4).setRespownInSec(3);
 		
-		NPC npc01 = new NPC(Save.getEntityHolder(6));
 		
-		NPC npc02 = new NPC(Save.getEntityHolder(7));
-		
-		NPC ninja = new NPC(Save.getEntityHolder(8));
-		
-		EntityItem appleEntity = new EntityItem(Save.getEntityHolder(9));
-		
-		world.addEntity(appleEntity);
-		world.addEntity(ent1);
-		world.addEntity(ent2);
-		world.addEntity(npc01);
-		world.addEntity(npc02);
-		world.addEntity(ArchEnemy);
-		world.addEntity(enemy1);
-		world.addEntity(enemy2);
-		world.addEntity(ninja);
 
 		world.addEntity(player); //We always should add player at the end, otherwise he will be rendered under entities ;)
 		
