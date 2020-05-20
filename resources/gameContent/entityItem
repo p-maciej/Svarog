@@ -1,0 +1,13 @@
+<?xml version = "1.0"?>
+<class>
+	<entityItem>
+		<entityItemTypeID>0</entityItemTypeID>
+   		<texturePath>textures/items/food/apple.png</texturePath>
+   		<fullBoundingBox>true</fullBoundingBox>
+   		<name>apple</name>
+   		<respownInSec>3</respownInSec>
+   		<howManyItems>1</howManyItems>
+		<itemGlobalID>19</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</entityItem>
+</class>

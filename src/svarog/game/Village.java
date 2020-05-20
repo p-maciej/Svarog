@@ -40,11 +40,11 @@ abstract class Village implements Runnable {
 		
 		NPC ninja = new NPC(8, Save.getNpcsByID(3), new Transform().setPosition(29, 28).setScale(1, 2), true);
 		
-		Texture appleTexture = new Texture("textures/items/food/apple.png");
-		EntityItem appleEntity = new EntityItem(9, appleTexture, new Transform().setPosition(29, 29), true);
-		appleEntity.setName("Jab³ko");
-		appleEntity.setRespownInSec(2);
-		appleEntity.addLoot(new Item(Save.getItemById(19)));
+		//Texture appleTexture = new Texture("textures/items/food/apple.png");
+		EntityItem appleEntity = new EntityItem(9, Save.getEntityItemParameters(0), new Transform().setPosition(29, 29));
+		//appleEntity.setName("Jab³ko");
+		//appleEntity.setRespownInSec(2);
+		//appleEntity.addLoot(new Item(Save.getItemById(19)));
 		
 		world.addEntity(appleEntity);
 		world.addEntity(ent1);

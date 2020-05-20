@@ -7,6 +7,9 @@ import svarog.objects.Item;
 import svarog.render.Animation;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.EntityItemParameters;
+import svarog.save.ItemParameters;
+import svarog.save.Save;
 import svarog.world.WorldRenderer;
 
 public class EntityItem extends Entity {
@@ -25,6 +28,19 @@ public class EntityItem extends Entity {
 		loot = new ArrayList<Item>();
 		super.setClickable(true);
 		super.setOverable(true);
+	}
+	
+	public EntityItem(int id, EntityItemParameters entityItemParameters, Transform transform) {
+		super(id, new Texture(entityItemParameters.getTexturePath()), transform, entityItemParameters.isFullBoundingBox());
+		loot = new ArrayList<Item>();
+		super.setClickable(true);
+		super.setOverable(true);
+		super.setName(entityItemParameters.getName());
+		super.setRespownInSec(entityItemParameters.getRespownInSec());
+		
+		for(ItemParameters i: entityItemParameters.getItemParam()) {
+			loot.add(new Item(Save.getItemById(i.getItemGlobalID())));
+		}
 	}
 	
 	public EntityItem(int id, Transform transform, String name) {

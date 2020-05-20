@@ -3,18 +3,30 @@ package svarog.save;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemEntityParameters {
+public class EntityItemParameters {
 	private int entityItemTypeID = -1;
 	private String texturePath;
 	private int posX=0;
 	private int posY=0;
-	private boolean fullBoundingBox;
+	private boolean fullBoundingBox = true;
 	private String name;
 	private int respownInSec=-1;
 	
 	List<ItemParameters> itemParam=new ArrayList<>();
 	
-	public ItemEntityParameters(int entityItemTypeID, String texturePath, int posX, int posY, boolean fullBoundingBox,
+	public EntityItemParameters(int entityItemTypeID, String texturePath, boolean fullBoundingBox,
+			String name, int respownInSec, List<ItemParameters> itemParam) {
+		super();
+		//System.out.println("WTF");
+		this.entityItemTypeID = entityItemTypeID;
+		this.texturePath = texturePath;
+		this.fullBoundingBox = fullBoundingBox;
+		this.name = name;
+		this.respownInSec = respownInSec;
+		this.itemParam = itemParam;
+	}
+	
+	public EntityItemParameters(int entityItemTypeID, String texturePath, int posX, int posY, boolean fullBoundingBox,
 			String name, int respownInSec, List<ItemParameters> itemParam) {
 		super();
 		this.entityItemTypeID = entityItemTypeID;
