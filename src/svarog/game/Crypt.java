@@ -1,6 +1,8 @@
 package svarog.game;
 
 
+import java.util.List;
+
 import svarog.entity.Enemy;
 import svarog.entity.EntityItem;
 import svarog.entity.NPC;
@@ -19,8 +21,10 @@ abstract class Crypt {
 		World world = new World(3, 60, 60);
 		world.loadMap("crypt.png", 32);
 		world.setSolidTilesFromMap("crypt_mask.png");
+
+		List<EntityHolder> temp = Save.ReadWorldEntities("world03");
 		
-		for(EntityHolder i: Save.getEntityHolder03()) {
+		for(EntityHolder i: temp) {
 			if(i.getType().equals("npc")) {
 				world.addEntity(new NPC(i));
 			}else if(i.getType().equals("enemy")) {

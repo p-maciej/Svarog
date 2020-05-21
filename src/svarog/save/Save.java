@@ -39,15 +39,7 @@ public class Save {
 	private static List<EnemyParameters> enemies = new ArrayList<EnemyParameters>();
 	private static List<NpcParameters> npcs = new ArrayList<NpcParameters>();
 	private static List<EntityItemParameters> entityItemParam = new ArrayList<>();
-	private static List<EntityHolder> entityHolder01 = new ArrayList<>();
-	private static List<EntityHolder> entityHolder02 = new ArrayList<>();
-	
 
-	private static List<EntityHolder> entityHolder03 = new ArrayList<>();
-	private static List<EntityHolder> entityHolder04 = new ArrayList<>();
-	private static List<EntityHolder> entityHolder05 = new ArrayList<>();
-	private static List<EntityHolder> entityHolder06 = new ArrayList<>();
-	private static List<EntityHolder> entityHolder07 = new ArrayList<>();
 	
 	public Save(String filename, Player player, World currentWorld) {
 		SaveAs(filename, player, currentWorld);
@@ -135,7 +127,8 @@ public class Save {
 		}
 	}
 	
-	public static void ReadWorldEntities(String filename, List<EntityHolder> entityHolder) {
+	public static List<EntityHolder> ReadWorldEntities(String filename) {
+		List<EntityHolder> entityHolder = new ArrayList<>();
 		try {
 			File inputFile = new File("resources/gameContent/"+filename);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -186,6 +179,7 @@ public class Save {
 			System.out.println("ReadWorldEntities :)");
 			e.printStackTrace();
 		}
+		return entityHolder;
 	}
 	
 	public static void ReadEnemies() {
@@ -294,13 +288,6 @@ public class Save {
 	
 	public static void ReadFrom(String filename) {
 		ReadItems();
-		ReadWorldEntities("world01", entityHolder01);
-		ReadWorldEntities("world02", entityHolder02);
-		ReadWorldEntities("world03", entityHolder03);
-		ReadWorldEntities("world04", entityHolder04);
-		ReadWorldEntities("world05", entityHolder05);
-		ReadWorldEntities("world06", entityHolder06);
-		ReadWorldEntities("world07", entityHolder07);
 		ReadEntityItems();
 		ReadEnemies();
 		ReadNpc();
@@ -608,58 +595,6 @@ public class Save {
 		return null;
 	}
 	
-	public static EntityHolder getEntityHolder01(int id) {
-		for(EntityHolder elem : entityHolder01) {
-			if(elem.getId() == id)
-				return elem;
-		}
-		return null;
-	}
-	public static EntityHolder getEntityHolder02(int id) {
-		for(EntityHolder elem : entityHolder02) {
-			if(elem.getId() == id)
-				return elem;
-		}
-		return null;
-	}
-	public static EntityHolder getEntityHolder03(int id) {
-		for(EntityHolder elem : entityHolder03) {
-			if(elem.getId() == id)
-				return elem;
-		}
-		return null;
-	}
-	public static EntityHolder getEntityHolder04(int id) {
-		for(EntityHolder elem : entityHolder04) {
-			if(elem.getId() == id)
-				return elem;
-		}
-		return null;
-	}
-	public static EntityHolder getEntityHolder05(int id) {
-		for(EntityHolder elem : entityHolder05) {
-			if(elem.getId() == id)
-				return elem;
-		}
-		return null;
-	}
-	public static EntityHolder getEntityHolder06(int id) {
-		for(EntityHolder elem : entityHolder06) {
-			if(elem.getId() == id)
-				return elem;
-		}
-		return null;
-	}
-	public static EntityHolder getEntityHolder07(int id) {
-		for(EntityHolder elem : entityHolder07) {
-			if(elem.getId() == id)
-				return elem;
-		}
-		return null;
-	}
-	
-	
-	
 	public static List<EnemyParameters> getEnemies() {
 		return enemies;
 	}
@@ -674,14 +609,6 @@ public class Save {
 
 	public static void setNpcs(List<NpcParameters> npcs) {
 		Save.npcs = npcs;
-	}
-
-	public static List<EntityHolder> getEntityHolder01() {
-		return entityHolder01;
-	}
-
-	public static void setEntityHolder01(List<EntityHolder> entityHolder01) {
-		Save.entityHolder01 = entityHolder01;
 	}
 	
 	public static List<Item> getItems() {
@@ -700,51 +627,4 @@ public class Save {
 		Save.entityItemParam = entityItemParam;
 	}
 
-	public static List<EntityHolder> getEntityHolder02() {
-		return entityHolder02;
-	}
-
-	public static void setEntityHolder02(List<EntityHolder> entityHolder02) {
-		Save.entityHolder02 = entityHolder02;
-	}
-
-	public static List<EntityHolder> getEntityHolder03() {
-		return entityHolder03;
-	}
-
-	public static void setEntityHolder03(List<EntityHolder> entityHolder03) {
-		Save.entityHolder03 = entityHolder03;
-	}
-
-	public static List<EntityHolder> getEntityHolder04() {
-		return entityHolder04;
-	}
-
-	public static void setEntityHolder04(List<EntityHolder> entityHolder04) {
-		Save.entityHolder04 = entityHolder04;
-	}
-
-	public static List<EntityHolder> getEntityHolder05() {
-		return entityHolder05;
-	}
-
-	public static void setEntityHolder05(List<EntityHolder> entityHolder05) {
-		Save.entityHolder05 = entityHolder05;
-	}
-
-	public static List<EntityHolder> getEntityHolder06() {
-		return entityHolder06;
-	}
-
-	public static void setEntityHolder06(List<EntityHolder> entityHolder06) {
-		Save.entityHolder06 = entityHolder06;
-	}
-
-	public static List<EntityHolder> getEntityHolder07() {
-		return entityHolder07;
-	}
-
-	public static void setEntityHolder07(List<EntityHolder> entityHolder07) {
-		Save.entityHolder07 = entityHolder07;
-	}
 }

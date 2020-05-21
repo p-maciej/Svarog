@@ -1,5 +1,7 @@
 package svarog.game;
 
+import java.util.List;
+
 import svarog.entity.Enemy;
 import svarog.entity.EntityItem;
 import svarog.entity.NPC;
@@ -18,8 +20,10 @@ abstract class IceCave {
 		World world = new World(4, 130, 130);
 		world.loadMap("iceCave.png", 32);
 		world.setSolidTilesFromMap("iceCave_mask.png");
+
+		List<EntityHolder> temp = Save.ReadWorldEntities("world04");
 		
-		for(EntityHolder i: Save.getEntityHolder04()) {
+		for(EntityHolder i: temp) {
 			if(i.getType().equals("npc")) {
 				world.addEntity(new NPC(i));
 			}else if(i.getType().equals("enemy")) {

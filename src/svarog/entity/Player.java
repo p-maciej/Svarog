@@ -14,9 +14,7 @@ import org.joml.Vector3f;
 
 import svarog.audio.Audio;
 import svarog.audio.Sound;
-import svarog.game.WorldLoader;
 import svarog.gui.Arena;
-import svarog.gui.ArenaContainer;
 import svarog.gui.GuiRenderer;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.PagedGuiWindow;
