@@ -661,10 +661,11 @@ public class Main {
 							} else if(entity instanceof EntityItem) {
 								currentWorld.removeAndRespawn(entity);
 								for(Item item : ((EntityItem)entity).getLoot()) {
+									System.out.println(item.getItemInfo().getGlobalID());
 									player.addItemToInventoryWithGUIupdate(new Item(item), guiRenderer);
 									for(Quest q1:player.getQuests()) {
 										for(Task t1:q1.getTasks()) {
-											if(t1.getState() == doState.talk) {
+											if(t1.getState() == doState.collect) {
 												if(t1.getDoItemID() == item.getItemInfo().getGlobalID()) {
 													t1.increaseHowMuchIsDone();
 												}
