@@ -653,15 +653,24 @@ public class Main {
 								guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 	
-							} else if(entity instanceof NPC && ((NPC)entity).getInteractions() != null) {
+							} else if(entity instanceof NPC) {
 								//System.out.println(((NPC)entity).getGlobalNpcID());
-								
-								((NPC)entity).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)entity).getGlobalNpcID(), language);
-								Interactions.setTalkingNPCid(i);
+								for(Quest q1:player.getQuests()) {
+									for(Task t1:q1.getTasks()) {
+										if(t1.getState() == doState.find) {
+											if(t1.getDoItemID() == ((NPC)entity).getGlobalNpcID()) {
+												t1.increaseHowMuchIsDone();
+											}
+										}
+									}
+								}
+								if(((NPC)entity).getInteractions() != null) {
+									((NPC)entity).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)entity).getGlobalNpcID(), language);
+									Interactions.setTalkingNPCid(i);
+								}
 							} else if(entity instanceof EntityItem) {
 								currentWorld.removeAndRespawn(entity);
 								for(Item item : ((EntityItem)entity).getLoot()) {
-									System.out.println(item.getItemInfo().getGlobalID());
 									player.addItemToInventoryWithGUIupdate(new Item(item), guiRenderer);
 									for(Quest q1:player.getQuests()) {
 										for(Task t1:q1.getTasks()) {
