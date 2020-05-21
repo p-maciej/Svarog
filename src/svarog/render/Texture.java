@@ -1,5 +1,6 @@
 package svarog.render;
 import static org.lwjgl.opengl.GL11.GL_NEAREST;
+import static org.lwjgl.opengl.GL11.GL_LINEAR;
 import static org.lwjgl.opengl.GL11.GL_RGBA;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_MAG_FILTER;
@@ -29,6 +30,8 @@ public class Texture {
 	private int width;
 	private int height;
 	private String filename;
+	
+	private int renderingMethod = GL_NEAREST;
 	
 	private ByteBuffer buffer;
 	
@@ -114,9 +117,9 @@ public class Texture {
 	private void textureInit(ByteBuffer buffer, int width, int height) {
 		id = glGenTextures();
 		glBindTexture(GL_TEXTURE_2D, id);
-				
+		
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, renderingMethod);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
@@ -158,5 +161,9 @@ public class Texture {
 
 	public int getHeight() {
 		return height;
+	}
+
+	public void setLinear() {
+		this.renderingMethod = GL_LINEAR;
 	}
 }

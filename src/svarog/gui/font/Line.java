@@ -50,7 +50,10 @@ public class Line extends TextureObject {
 
 		line.flip();
 		
-		super.setTexture(new Texture(line, lineWidth, lineHeight));
+		Texture str = new Texture(line, lineWidth, lineHeight);
+		str.setLinear();
+		
+		super.setTexture(str);
 		super.setSize(lineWidth, lineHeight);
 	}
 }
