@@ -5,7 +5,6 @@ import org.joml.Vector2f;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
-import svarog.gui.font.TextBlock;
 import svarog.render.Texture;
 
 public class GuiWindow {

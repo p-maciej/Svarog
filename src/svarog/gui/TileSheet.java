@@ -79,7 +79,7 @@ public class TileSheet {
 	
 	public Tile clickedTile() {
 		for(Group group : tileGroups) {
-			for(TextureObject tile : group.getTextureObjectList()) {
+			for(GuiObject tile : group.getTextureObjectList()) {
 				if(tile.getId() == GuiRenderer.getClickedTileId()) {
 					Tile temp = (Tile)tile;
 					return temp;
