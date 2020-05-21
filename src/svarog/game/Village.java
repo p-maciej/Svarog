@@ -25,6 +25,7 @@ abstract class Village implements Runnable {
 		world.loadMap("village.png", 32);
 		world.setSolidTilesFromMap("village_mask.png");
 		
+		System.out.println(Save.getEntityHolder01().size());
 		for(EntityHolder i: Save.getEntityHolder01()) {
 			if(i.getType().equals("npc")) {
 				world.addEntity(new NPC(i));

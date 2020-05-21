@@ -744,6 +744,8 @@ public class Main {
 						guiRenderer.addWindow(confirmWindow);
 					}
 					
+
+					
 					
 					for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
 						if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
@@ -755,6 +757,20 @@ public class Main {
 						} else {
 							WorldLoader.setNextFrameLoadWorld(0);
 						}
+					}
+					
+					if(ArenaContainer.isArenaClosing()) {
+						player.setMovementLock(false);
+						
+						if(player.getIsFightWin() == 2) {
+							player.setSetCamWithoutAnimation(true);
+							player.setPosition(Save.getPlayerParam().getPositionX(), Save.getPlayerParam().getPositionY());
+							if(WorldLoader.getLoadedWorldId() != 1) {
+								WorldLoader.setNextFrameLoadWorld(1);
+								WorldLoader.setWorldLoaded(false);
+							}
+						}
+						player.setIsFightWin(0);
 					}
 					
 					window.update();
