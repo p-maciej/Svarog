@@ -22,6 +22,7 @@ public class EntityItem extends Entity {
 		loot = new ArrayList<Item>();
 		super.setClickable(true);
 		super.setOverable(true);
+		super.setIsStatic(true);
 	}
 	
 	public EntityItem(int id, Texture texture, Transform transform, boolean fullBoundingBox) {
@@ -29,6 +30,7 @@ public class EntityItem extends Entity {
 		loot = new ArrayList<Item>();
 		super.setClickable(true);
 		super.setOverable(true);
+		super.setIsStatic(true);
 	}
 	
 	public EntityItem(int id, EntityItemParameters entityItemParameters, Transform transform) {
@@ -38,6 +40,7 @@ public class EntityItem extends Entity {
 		super.setOverable(true);
 		super.setName(entityItemParameters.getName());
 		super.setRespownInSec(entityItemParameters.getRespownInSec());
+		super.setIsStatic(true);
 		
 		for(ItemParameters i: entityItemParameters.getItemParam()) {
 			loot.add(new Item(Save.getItemById(i.getItemGlobalID())));
@@ -50,6 +53,8 @@ public class EntityItem extends Entity {
 		loot = new ArrayList<Item>();
 		super.setClickable(true);
 		super.setOverable(true);
+		super.setIsStatic(true);
+		
 		if(entityHolder.getName() != null && !(entityHolder.getName().equals(""))) {
 			super.setName(entityHolder.getName());
 		}else {
@@ -67,6 +72,7 @@ public class EntityItem extends Entity {
 		loot = new ArrayList<Item>();
 		super.setClickable(true);
 		super.setOverable(true);
+		super.setIsStatic(true);
 	}
 	
 	public void addLoot(Item item) {

@@ -38,10 +38,10 @@ public class Enemy extends Entity {
 		super(id, texture, transform, fullBoundingBox);
 		super.setClickable(true);
 		super.setOverable(true);
+		super.setIsStatic(true);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
-		super.setIsStatic(false); // Non-static - default setting for Enemy
 	}
 	
 	public Enemy(int id, Texture texture, Transform transform, boolean fullBoundingBox, int minAttack, int maxAttack, int xpForKilling, int hp, int reward) {
@@ -50,8 +50,7 @@ public class Enemy extends Entity {
 		super.setOverable(true);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
-		
-		super.setIsStatic(false); // Non-static - default setting for Enemy
+		super.setIsStatic(true);
 		
 		this.maxAttack = maxAttack;
 		this.minAttack = minAttack;
@@ -69,8 +68,7 @@ public class Enemy extends Entity {
 		super.setOverable(true);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
-		
-		super.setIsStatic(false); // Non-static - default setting for Enemy
+		super.setIsStatic(true);
 		
 		this.globalID = enemyParameters.getGlobalEnemyID();
 		this.maxAttack = enemyParameters.getMaxAttack();
@@ -80,6 +78,7 @@ public class Enemy extends Entity {
 		this.hp.SetMaxHP(enemyParameters.getHp());
 		super.setRespownInSec(enemyParameters.getRespownInSec());
 		this.setLevel(enemyParameters.getLevel());
+		super.setIsStatic(true);
 		if(entityHolder.getName() != null && !(entityHolder.getName().equals(""))) {
 			super.setName(entityHolder.getName());
 		}else {
@@ -100,8 +99,7 @@ public class Enemy extends Entity {
 		super.setOverable(true);
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
-		
-		super.setIsStatic(false); // Non-static - default setting for Enemy
+		super.setIsStatic(true);
 		
 		this.globalID = enemyParameters.getGlobalEnemyID();
 		this.maxAttack = enemyParameters.getMaxAttack();
@@ -137,7 +135,7 @@ public class Enemy extends Entity {
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
-		super.setIsStatic(false); // Non-static - default setting for Enemy
+		super.setIsStatic(true);
 		
 		this.globalID = enemyParameters.getGlobalEnemyID();
 		this.maxAttack = enemyParameters.getMaxAttack();
@@ -169,7 +167,7 @@ public class Enemy extends Entity {
 		//this.texturesPath = texturePath;
 		//this.fileName = filename;
 		
-		super.setIsStatic(false); // Non-static - default setting for player 
+		super.setIsStatic(true);
 		
 		this.maxAttack = maxAttack;
 		this.minAttack = minAttack;
