@@ -7,7 +7,6 @@ import svarog.collision.AABB;
 import svarog.collision.Collision;
 import svarog.io.Window;
 import svarog.objects.MouseInteraction;
-import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;

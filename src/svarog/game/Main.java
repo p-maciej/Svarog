@@ -629,7 +629,7 @@ public class Main {
 						
 						if(Timer.getDelay(startNanos, Timer.getNanoTime(), 0.4)) {
 							Line name = new Line(0, 0);
-							Entity ent = currentWorld.getEntityById(WorldRenderer.getMouseOverEntityId());
+							Entity ent = currentWorld.getEntityByObjectId(WorldRenderer.getMouseOverEntityId());
 							if(ent != null) {
 								name.setString(ent.getName(), roboto_15);
 							
@@ -743,8 +743,6 @@ public class Main {
 					if(tileSheet.itemToDelete() >= 0) {
 						guiRenderer.addWindow(confirmWindow);
 					}
-					
-
 					
 					
 					for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
