@@ -38,6 +38,9 @@ import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.interactions.Interactions;
 import svarog.interactions.PathFinder;
+import svarog.interactions.Quest;
+import svarog.interactions.Task;
+import svarog.interactions.Task.doState;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.language.InterfaceTranslations.languages;
@@ -659,6 +662,15 @@ public class Main {
 								currentWorld.removeAndRespawn(entity);
 								for(Item item : ((EntityItem)entity).getLoot()) {
 									player.addItemToInventoryWithGUIupdate(new Item(item), guiRenderer);
+									for(Quest q1:player.getQuests()) {
+										for(Task t1:q1.getTasks()) {
+											if(t1.getState() == doState.talk) {
+												if(t1.getDoItemID() == item.getItemInfo().getGlobalID()) {
+													t1.increaseHowMuchIsDone();
+												}
+											}
+										}
+									}
 								}
 							}
 						}
