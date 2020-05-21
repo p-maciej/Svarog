@@ -39,7 +39,7 @@
 <howManyTasks>1</howManyTasks>
 <getTaskID>0</getTaskID>
 <getToDo>1</getToDo>
-<getDoItemID>7</getDoItemID>
+<getDoItemID>2</getDoItemID>
 <getState>talk</getState>
 <getIsEnded>false</getIsEnded>
 <getHowMuchIsDone>0</getHowMuchIsDone>

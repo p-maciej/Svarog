@@ -111,6 +111,7 @@ public class Interactions {
 	}
 	
 	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
+		
 		if(isEnded || dialog == null) {
 			dialog = dialogs.get(0);
 			isEnded = false;
@@ -120,9 +121,9 @@ public class Interactions {
 			guiRenderer.showDialog(dialog, language);
 		
 		
-		if(dialog.clickedAnswer() != null)
+		if(dialog.clickedAnswer() != null) {
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
-
+		}
 	}
 	public void interactionsHelper(WorldRenderer currentWorld, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
 		for(int i = 0; i < dialog.getAnswers().size();i++) {

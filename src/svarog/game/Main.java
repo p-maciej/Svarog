@@ -651,7 +651,9 @@ public class Main {
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 	
 							} else if(entity instanceof NPC && ((NPC)entity).getInteractions() != null) {
-								((NPC)entity).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, entity.getId(), language);
+								//System.out.println(((NPC)entity).getGlobalNpcID());
+								
+								((NPC)entity).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)entity).getGlobalNpcID(), language);
 								Interactions.setTalkingNPCid(i);
 							} else if(entity instanceof EntityItem) {
 								currentWorld.removeAndRespawn(entity);
@@ -664,7 +666,7 @@ public class Main {
 
 					if(Interactions.getTalkingNPCid() != -1){
 						
-						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, currentWorld.getEntity(Interactions.getTalkingNPCid()).getId(), language);
+						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getGlobalNpcID(), language);
 					}
 					if(DialogContainer.isDialogClosing()) {
 						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().setEnded(true);
