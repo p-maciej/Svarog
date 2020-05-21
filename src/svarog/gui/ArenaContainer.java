@@ -50,7 +50,7 @@ public class ArenaContainer {
 				
 				TextureObject log = new TextureObject(new Texture(logBackground, arenaLogBackground.getWidth(), windowHeight-70));
 				log.setStickTo(stickTo.TopLeft);
-				group.addTextureObject(log);
+				group.addGuiObject(log);
 				
 				int tempHeight = 0;
 				int minIndex = 0;
@@ -68,7 +68,7 @@ public class ArenaContainer {
 					tempBlock.setStickTo(stickTo.TopLeft);
 					tempBlock.setPosition(10, -tempHeight);
 					tempHeight += tempBlock.getHeight();
-					group.addTextureObject(tempBlock);
+					group.addGuiObject(tempBlock);
 				}
 				/////////
 				
@@ -90,29 +90,29 @@ public class ArenaContainer {
 				TextureObject arenaBg = new TextureObject(new Texture(arenaBackground, arenaWidth, arenaHeight));
 				arenaBg.setStickTo(stickTo.TopLeft);
 				arenaBg.setPosition(arenaLogBackground.getWidth(), 0);
-				group.addTextureObject(arenaBg);
+				group.addGuiObject(arenaBg);
 				///////////////////////
 				
 				/// ARENA IMAGE ///
 				arenaImage.setPosition(-25, 70);
-				group.addTextureObject(arenaImage);
+				group.addGuiObject(arenaImage);
 				//////////////////
 				
 				/// PLAYER ///
 				arena.getPlayer().setPosition(-25, 0);
-				group.addTextureObject(arena.getPlayer());
+				group.addGuiObject(arena.getPlayer());
 				//////////////
 				
 				/// ENEMY ///
 				arena.getEnemy().setPosition(-25, 130);
-				group.addTextureObject(arena.getEnemy());
+				group.addGuiObject(arena.getEnemy());
 				////////////
 				
 				/// CLOSE BUTTON ///
 				Button closeArena = new Button(new Texture("images/dialog/close_dialog.png"), stickTo.TopRight);
 				closeArena.move(-360, 10);
 				closeArenaButton = closeArena;
-				group.addTextureObject(closeArena);
+				group.addGuiObject(closeArena);
 				///////////////////
 
 				

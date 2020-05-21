@@ -787,10 +787,6 @@ public class GuiRenderer implements RenderProperties {
 		objects.add(object.setState(state));
 	}
 	
-	/*public void addTextBlock(TextBlock textBlock) {
-		textBlocks.add(textBlock);
-	}*/
-	
 	public void addGroup(Group group) {
 		groups.add(group);
 	}

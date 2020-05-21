@@ -40,7 +40,7 @@ public class Group implements Comparable<Group> {
 		position = new Vector2f();
 	}
 	
-	public void addTextureObject(GuiObject textureObject) {
+	public void addGuiObject(GuiObject textureObject) {
 		textureObjects.add(textureObject);
 	}
 	

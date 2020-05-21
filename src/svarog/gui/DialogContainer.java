@@ -85,7 +85,7 @@ public class DialogContainer {
 				
 				TextureObject centerTexture = new TextureObject(new Texture(center, dialogTop.getWidth(), height));	
 				centerTexture.move(0, -height/2);
-				group.addTextureObject(centerTexture);
+				group.addGuiObject(centerTexture);
 			}
 	
 			content.move(left, top);
@@ -95,14 +95,14 @@ public class DialogContainer {
 			dialogButton = closeDialog;
 			
 			
-			group.addTextureObject(dialogTop);	
+			group.addGuiObject(dialogTop);	
 			
 			
 			for(TextBlockButton ans : answers)
-				group.addTextureObject(ans);
+				group.addGuiObject(ans);
 			
-			group.addTextureObject(content);
-			group.addTextureObject(closeDialog);
+			group.addGuiObject(content);
+			group.addGuiObject(closeDialog);
 			
 			this.dialog = group;
 			group.setStickTo(stickTo.Bottom);

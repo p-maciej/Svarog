@@ -66,7 +66,7 @@ public class GuiWindow {
 		
 		backgroundTexture.setOverable(true);
 		backgroundWindowId = backgroundTexture.getId();
-		elements.addTextureObject(backgroundTexture);
+		elements.addGuiObject(backgroundTexture);
 		
 		this.id = auto_increment++;
 		this.setWidth(backgroundTexture.getWidth());
@@ -84,7 +84,7 @@ public class GuiWindow {
 		
 		backgroundTexture.setOverable(true);
 		backgroundWindowId = backgroundTexture.getId();
-		elements.addTextureObject(backgroundTexture);
+		elements.addGuiObject(backgroundTexture);
 		
 		this.id = auto_increment++;
 		this.setWidth(backgroundTexture.getWidth());
@@ -100,11 +100,11 @@ public class GuiWindow {
 	private void addCloseButton() {
 		Button closeDialog = new Button(new Texture("images/dialog/close_window.png"), new Vector2f(getWidth()/2-15, getHeight()/2-15));
 		closeButton = closeDialog;
-		elements.addTextureObject(closeDialog);
+		elements.addGuiObject(closeDialog);
 	}
 	
 	public void addTextureObject(GuiObject object) {
-		elements.addTextureObject(object);
+		elements.addGuiObject(object);
 	}
 
 	public int getWidth() {
@@ -190,7 +190,7 @@ public class GuiWindow {
 		title_px.setMovable(true);
 		title_px.setClickable(true);
 		
-		elements.addTextureObject(title_px);
+		elements.addGuiObject(title_px);
 	}
 
 	public void setWindowFont(Font windowFont) {

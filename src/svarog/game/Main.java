@@ -180,8 +180,8 @@ public class Main {
 		XPtext.setString("XP:", roboto_18);
 		XPtext.move(75, -5);
 		
-		statsStatic.addTextureObject(XPtext);
-		statsStatic.addTextureObject(HPtext);
+		statsStatic.addGuiObject(XPtext);
+		statsStatic.addGuiObject(HPtext);
 		
 		Group playerStats = new Group();
 		playerStats.setStickTo(stickTo.TopRight);
@@ -203,10 +203,10 @@ public class Main {
 		defenseText.move(defenseText.getWidth()/2+11, 29);
 		
 		
-		playerStats.addTextureObject(statBackground);
-		playerStats.addTextureObject(attackText);
-		playerStats.addTextureObject(defenseText);
-		playerStats.addTextureObject(levelText);
+		playerStats.addGuiObject(statBackground);
+		playerStats.addGuiObject(attackText);
+		playerStats.addGuiObject(defenseText);
+		playerStats.addGuiObject(levelText);
 		
 		TextureObject bottomCorner1 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomLeft);	
 		TextureObject bottomCorner2 = new TextureObject(new Texture("images/corner.png"), GuiRenderer.stickTo.BottomRight);	
@@ -288,11 +288,11 @@ public class Main {
 		Tile gloves = new Tile(tileId++, tileGlovesTexture, tileGlovesTexture_hover, (byte)0, 50, 0);
 		gloves.setPuttableItemTypes(Arrays.asList(ItemType.gloves));
 		
-		tileGroup3.addTextureObject(helmet);
-		tileGroup3.addTextureObject(armor);
-		tileGroup3.addTextureObject(boots);
-		tileGroup3.addTextureObject(gloves);
-		tileGroup3.addTextureObject(sword);
+		tileGroup3.addGuiObject(helmet);
+		tileGroup3.addGuiObject(armor);
+		tileGroup3.addGuiObject(boots);
+		tileGroup3.addGuiObject(gloves);
+		tileGroup3.addGuiObject(sword);
 		
 		tileSheet.addTileGroup(tileGroup3);
 		
@@ -304,7 +304,7 @@ public class Main {
 		Tile trash = new Tile(tileId++, tileTrashTexture, tileTrashTexture, (byte)0, 0, 0);
 		trash.setPuttableItemTypes(Arrays.asList(ItemType.trash));
 		
-		trashG.addTextureObject(trash);
+		trashG.addGuiObject(trash);
 		
 		tileSheet.addTileGroup(trashG);
 		//////////////////
@@ -316,7 +316,7 @@ public class Main {
 				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, j*50, -i*50);
 				tile.setPuttableItemTypes(puttables);
 				
-				tileGroup.addTextureObject(tile);
+				tileGroup.addGuiObject(tile);
 			}
 		}
 
@@ -331,7 +331,7 @@ public class Main {
 		for(int i = 0; i < 6; i++) {
 				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, i*50, 0);
 				tile.setPuttableItemTypes(puttables); // bottom bar tiles - idk what there should be
-				tileGroup2.addTextureObject(tile);
+				tileGroup2.addGuiObject(tile);
 		}
 		
 		tileSheet.addTileGroup(tileGroup2);

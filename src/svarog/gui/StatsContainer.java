@@ -66,7 +66,7 @@ public class StatsContainer {
 			TextureObject hpTexture = new TextureObject(new Texture(HPbuffer, width, height));
 			hpTexture.setStickTo(stickTo.BottomLeft);
 			hpTexture.move(120, -42);
-			this.playerStats.addTextureObject(hpTexture);
+			this.playerStats.addGuiObject(hpTexture);
 			
 			Color xpGained = new Color((byte)255, (byte)255, (byte)0);
 			Color xpRemaining = new Color((byte)150, (byte)150, (byte)0);
@@ -97,13 +97,13 @@ public class StatsContainer {
 			TextureObject xpTexture = new TextureObject(new Texture(XPbuffer, width, height));
 			xpTexture.setStickTo(stickTo.BottomLeft);
 			xpTexture.move(120, -14);
-			this.playerStats.addTextureObject(xpTexture);
+			this.playerStats.addGuiObject(xpTexture);
 			
 			Line level = new Line(stickTo.TopRight);
 			level.setString(Integer.toString(player.getXP().GetLevel()), smallFont);
 			level.move(-160-level.getWidth()/2, 21);
 			
-			this.playerStats.addTextureObject(level);
+			this.playerStats.addGuiObject(level);
 			
 			guiRenderer.addGroup(this.playerStats);
 			
@@ -129,8 +129,8 @@ public class StatsContainer {
 				defense.setString(Integer.toString(player.getPlayerDefense()), smallFont);
 				defense.move(-165-defense.getWidth()/2, 97);
 				
-				this.playerProperties.addTextureObject(attack);
-				this.playerProperties.addTextureObject(defense);
+				this.playerProperties.addGuiObject(attack);
+				this.playerProperties.addGuiObject(defense);
 				
 				guiRenderer.addGroup(playerProperties);
 				
@@ -150,7 +150,7 @@ public class StatsContainer {
 				money.setString(Integer.toString(player.getMoney()), smallFont);
 				money.move(-165-money.getWidth()/2, 130);
 				
-				this.playerInventory.addTextureObject(money);
+				this.playerInventory.addGuiObject(money);
 				
 				guiRenderer.addGroup(playerInventory);
 				
