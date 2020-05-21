@@ -107,4 +107,36 @@
 		<scaleY>1</scaleY>
 		<isClickable>true</isClickable>
 	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>14</id>
+		<typeID>5</typeID>
+		<name></name>
+		<posX>20</posX>
+		<posY>39</posY>
+	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>15</id>
+		<typeID>6</typeID>
+		<name></name>
+		<posX>7</posX>
+		<posY>4</posY>
+	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>16</id>
+		<typeID>3</typeID>
+		<name></name>
+		<posX>45</posX>
+		<posY>10</posY>
+	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>17</id>
+		<typeID>2</typeID>
+		<name></name>
+		<posX>29</posX>
+		<posY>19</posY>
+	</entity>
 </class>
