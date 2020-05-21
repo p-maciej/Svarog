@@ -166,4 +166,24 @@
 		<itemGlobalID>27</itemGlobalID>
 		<itemTileID>-1</itemTileID>
 	</entityItem>
+	<entityItem>
+		<entityItemTypeID>16</entityItemTypeID>
+   		<texturePath>textures/items/quest/iceCup.png</texturePath>
+   		<fullBoundingBox>true</fullBoundingBox>
+   		<name>iceCup</name>
+   		<respownInSec>-1</respownInSec>
+   		<howManyItems>1</howManyItems>
+		<itemGlobalID>12</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</entityItem>
+	<entityItem>
+		<entityItemTypeID>17</entityItemTypeID>
+   		<texturePath>textures/chestB.png</texturePath>
+   		<fullBoundingBox>true</fullBoundingBox>
+   		<name>iceCupChest</name>
+   		<respownInSec>-1</respownInSec>
+   		<howManyItems>1</howManyItems>
+		<itemGlobalID>12</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</entityItem>
 </class>
