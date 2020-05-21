@@ -376,7 +376,7 @@ public class Player extends Entity {
 			fightString.add("Enemy HP (before attack): " + (enemy).GetEnemyHP());
 			(enemy).DecreaseEnemyHP(this.getRandomAttack()+getPlayerAttackBonus());
 			fightString.add("Enemy HP:  (after attack): " + (enemy).GetEnemyHP());
-			if((enemy).GetEnemyHP()<0) {
+			if((enemy).GetEnemyHP()<=0) {
 				fightString.add("Enemy "+ (enemy).getName() + " died, you WON!!!");
 				//Adding XP and money reward
 				this.AddPlayerXP(enemy.GetXpForKilling());
