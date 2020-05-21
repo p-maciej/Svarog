@@ -73,7 +73,6 @@ public class GuiRenderer implements RenderProperties {
 	private int worldYOffset;
 	
 	boolean update = false;
-	boolean worldLock = false;
 
 	private int marginRight;
 	private int marginBottom;
@@ -313,7 +312,6 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		
-		worldLock = false;
 		update = false;
 		
 		for(GuiWindow item : windows) {	
@@ -324,9 +322,6 @@ public class GuiRenderer implements RenderProperties {
 				
 				if(!update && updateT)
 					update = true;
-				
-				if(mouseOverObjectId == item.getBackgroundWindowId())
-					worldLock = true;
 
 				
 				if(object instanceof Button && item instanceof PagedGuiWindow) {
@@ -350,18 +345,15 @@ public class GuiRenderer implements RenderProperties {
 			if(item.getCloseButton() != null) {
 				if(item.getCloseButton().isClicked()) {
 					windowToRemove = item.getId();
-					worldLock = false;
 				}
 			}
 			
 
 		}
 		
-		dialogContainer.checkWorldLock(this);
-		
-		if(WorldRenderer.isMouseInteractionLocked() && !worldLock)
+		if(WorldRenderer.isMouseInteractionLocked() && mouseOverObjectId < 0)
 			WorldRenderer.setMouseInteractionLock(false);
-		else if(!WorldRenderer.isMouseInteractionLocked() && worldLock)
+		else if(!WorldRenderer.isMouseInteractionLocked() && mouseOverObjectId >= 0)
 			WorldRenderer.setMouseInteractionLock(true);
 		
 		if(update)
@@ -474,7 +466,6 @@ public class GuiRenderer implements RenderProperties {
 			}
 			
 			if((mouseOverObjectId == object.getId() && draggingWindowId == -1) || (draggingWindowId >= 0 && draggingWindowId == item.getId())) {
-				worldLock = true;
 				if(window.getInput().isMouseButtonDown(0)) {
 					draggingWindowId = item.getId();
 					if(item.getStickTo() != null && item.getId() == draggingWindowId) {
@@ -923,13 +914,5 @@ public class GuiRenderer implements RenderProperties {
 	public void setWorldYOffset(int worldYOffset) {
 		dialogContainer.setDialogYOffset(worldYOffset);
 		this.worldYOffset = worldYOffset;
-	}
-
-	void setWorldLock(boolean worldLock) {
-		this.worldLock = worldLock;
-	}
-	
-	boolean getWorldLock() {
-		return worldLock;
 	}
 }

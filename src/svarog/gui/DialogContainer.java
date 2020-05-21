@@ -126,19 +126,6 @@ public class DialogContainer {
 		}
 	}
 	
-	void checkWorldLock(GuiRenderer renderer) {
-		if(dialog != null) {
-			boolean lock = false;
-			for(GuiObject object : dialog.getObjects()) {
-				if(GuiRenderer.getMouseOverObjectId() == object.getId())
-					lock = true;
-			}
-			
-			if(lock == true)
-				renderer.setWorldLock(true);
-		}
-	}
-	
 	public boolean isDialogOpen() {
 		if(this.dialog !=  null)
 			return true;

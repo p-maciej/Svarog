@@ -756,6 +756,7 @@ public class Main {
 							WorldLoader.setNextFrameLoadWorld(0);
 						}
 					}
+
 					
 					if(ArenaContainer.isArenaClosing()) {
 						player.setMovementLock(false);
