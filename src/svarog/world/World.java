@@ -159,6 +159,15 @@ public class World implements Runnable {
 		return null;
 	}
 	
+	public Entity getEntityByObjectId(int id) {
+		for(Entity entity : entities) {
+			if(entity.getObjectId() == id) // There should be id, instead of ObjectId if we want search by id from xml
+				return entity;
+		}
+		
+		return null;
+	}
+	
 	public void addEntity(Entity entity) {
 		if(entity.getTexture() != null)
 			entity.getTexture().prepare();
