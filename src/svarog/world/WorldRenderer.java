@@ -229,7 +229,7 @@ public class WorldRenderer implements RenderProperties {
 		int y = ((int)((camera.getPosition().y)) - (int)(window.getHeight()/2) + (int)(worldOffset.y/2) + (int)scale + (int)window.getCursorPositionY());
 		
 
-		if(posX < x && (posX+entity.getTransform().getScale().x*scale*2) > x && (posY-entity.getTransform().getScale().y*scale+entity.getTransform().getOffset()) < y && posY+scale*2+entity.getTransform().getOffset() > y) {
+		if(posX-entity.getTransform().getOffsetX() < x && (posX+entity.getTransform().getScale().x*scale*2-entity.getTransform().getOffsetX()) > x && (posY-entity.getTransform().getScale().y*scale+entity.getTransform().getOffsetY()) < y && posY+scale*2+entity.getTransform().getOffsetY() > y) {
 			return true;
 		}
 		
