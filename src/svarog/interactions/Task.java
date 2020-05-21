@@ -1,5 +1,7 @@
 package svarog.interactions;
 
+import svarog.language.LanguageLoader;
+
 public class Task {
 
     public enum doState{
@@ -87,16 +89,16 @@ public class Task {
     
     public String progress(){
         if(state == doState.kill){
-            return "Kill " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+            return LanguageLoader.getLanguageLoader().getValue("taskKillJG")+" " + String.valueOf(doItemID)+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         if(state == doState.collect){
-            return "Collect " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+            return LanguageLoader.getLanguageLoader().getValue("taskCollectJG")+" " + String.valueOf(doItemID)+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         if(state == doState.find){
-            return "Find " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+            return LanguageLoader.getLanguageLoader().getValue("taskFindJG")+" " + String.valueOf(doItemID)+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         if(state == doState.talk) {
-        	return "Talk to " + String.valueOf(doItemID) + " done: "+ String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+        	return LanguageLoader.getLanguageLoader().getValue("taskTalkJG")+" " + String.valueOf(doItemID)+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         return "Sorry our programmers don't think about that yet";
     }

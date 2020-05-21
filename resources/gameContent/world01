@@ -358,7 +358,7 @@
 		<type>npc</type>
 		<id>40</id>
 		<typeID>2</typeID>
-		<name>Rozenna</name>
+		<name>NPCRozenna</name>
 		<posX>51</posX>
 		<posY>14</posY>
 		<scaleX>1</scaleX>

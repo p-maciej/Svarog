@@ -2,6 +2,26 @@
 <file>
 <!--Items-->
     <variable>
+        <key>taskKillJG</key>
+        <translation>Zabij </translation>
+    </variable>
+	<variable>
+        <key>taskCollectJG</key>
+        <translation>Zbierz </translation>
+    </variable>
+	<variable>
+        <key>taskFindJG</key>
+        <translation>Znajdź </translation>
+    </variable>
+	<variable>
+        <key>taskTalkJG</key>
+        <translation>Pogadaj z </translation>
+    </variable>
+	<variable>
+        <key>taskDoneJG</key>
+        <translation> ukończono: </translation>
+    </variable>
+    <variable>
         <key>wolfSkin</key>
         <translation>Skóra wilka</translation>
     </variable>
