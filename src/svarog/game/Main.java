@@ -752,8 +752,9 @@ public class Main {
 							WorldLoader.setNextFrameLoadWorld(currentWorld.getDoor(i).getWorldIdDestination());
 							WorldLoader.setWorldLoaded(false);
 							break;
-						} else {}
-							//WorldLoader.setNextFrameLoadWorld(0);
+						} else {
+							WorldLoader.setNextFrameLoadWorld(0);
+						}
 					}
 					
 					window.update();
