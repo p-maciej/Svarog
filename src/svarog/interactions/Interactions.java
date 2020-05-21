@@ -132,6 +132,7 @@ public class Interactions {
 					
 					if(dialog.clickedAnswer().getLeadsTo() == -1) {
 						isEnded = true;
+						//TALK TO TASK TALK TASK
 						for(Quest q1:player.getQuests()) {
 							for(Task t1:q1.getTasks()) {
 								if(t1.getState() == doState.talk) {

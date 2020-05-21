@@ -3,6 +3,8 @@ package svarog.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import svarog.language.InterfaceTranslations.languages;
+import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.render.Animation;
 import svarog.render.Texture;
@@ -56,9 +58,9 @@ public class EntityItem extends Entity {
 		super.setIsStatic(true);
 		
 		if(entityHolder.getName() != null && !(entityHolder.getName().equals(""))) {
-			super.setName(entityHolder.getName());
+			super.setName(LanguageLoader.getLanguageLoader().getValue(entityHolder.getName()));
 		}else {
-			super.setName(entityItemParameters.getName());
+			super.setName(LanguageLoader.getLanguageLoader().getValue(entityItemParameters.getName()));
 		}
 		super.setRespownInSec(entityItemParameters.getRespownInSec());
 		

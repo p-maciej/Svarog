@@ -23,4 +23,8 @@ public class LanguageLoader {
     public String getKey(String value) {
         return interfaceTranslations.getKey(value);
     }
+    
+    public static LanguageLoader getLanguageLoader() {
+    	return languageLoader;
+    }
 }

@@ -654,7 +654,7 @@ public class Main {
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 	
 							} else if(entity instanceof NPC) {
-								//System.out.println(((NPC)entity).getGlobalNpcID());
+								//FIND TASK
 								for(Quest q1:player.getQuests()) {
 									for(Task t1:q1.getTasks()) {
 										if(t1.getState() == doState.find) {
@@ -672,6 +672,7 @@ public class Main {
 								currentWorld.removeAndRespawn(entity);
 								for(Item item : ((EntityItem)entity).getLoot()) {
 									player.addItemToInventoryWithGUIupdate(new Item(item), guiRenderer);
+									//COLLECT TASK
 									for(Quest q1:player.getQuests()) {
 										for(Task t1:q1.getTasks()) {
 											if(t1.getState() == doState.collect) {

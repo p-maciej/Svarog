@@ -6,11 +6,13 @@ import java.util.List;
 import org.joml.Vector2f;
 
 import svarog.interactions.Interactions;
+import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.objects.ItemInfo;
 import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.EnemyParameters;
 import svarog.save.EntityHolder;
 import svarog.save.NpcParameters;
 import svarog.save.Save;
@@ -84,8 +86,12 @@ public class NPC extends Entity{
 		
 		super.setIsStatic(true);
 		
+		NpcParameters npcParameters = Save.getNpcsByID(entityHolder.getTypeID());
+		
 		if(entityHolder.getName() != null && !(entityHolder.getName().equals(""))) {
-			super.setName(entityHolder.getName());
+			super.setName(LanguageLoader.getLanguageLoader().getValue(entityHolder.getName()));
+		}else {
+			super.setName(LanguageLoader.getLanguageLoader().getValue(npcParameters.getName()));
 		}
 		
 		this.globalNpcID = (Save.getNpcsByID(entityHolder.getTypeID())).getGlobalNpcID();

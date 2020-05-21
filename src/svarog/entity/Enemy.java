@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.joml.Vector2f;
 
+import svarog.language.InterfaceTranslations;
+import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.objects.ItemInfo;
 import static svarog.objects.ItemInfo.ItemType;
@@ -80,9 +82,9 @@ public class Enemy extends Entity {
 		this.setLevel(enemyParameters.getLevel());
 		super.setIsStatic(true);
 		if(entityHolder.getName() != null && !(entityHolder.getName().equals(""))) {
-			super.setName(entityHolder.getName());
+			super.setName(LanguageLoader.getLanguageLoader().getValue(entityHolder.getName()));
 		}else {
-			super.setName(enemyParameters.getName());
+			super.setName(LanguageLoader.getLanguageLoader().getValue(enemyParameters.getName()));
 		}
 		for(ItemParameters i: enemyParameters.getItemParameters()) {
 			this.items.add(new Item(Save.getItemById(i.getItemGlobalID())));
