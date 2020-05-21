@@ -394,7 +394,17 @@ public class Player extends Entity {
 						}
 					}
 				}
-
+				
+				//TASK KILL
+				for(Quest q1: this.getQuests()) {
+					for(Task t1:q1.getTasks()) {
+						if(t1.getState() == doState.kill) {
+							if(t1.getDoItemID() == enemy.getGlobalID()) {
+								t1.increaseHowMuchIsDone();
+							}
+						}
+					}
+				}
 				
 				//Last line (everything should be done before it)
 				world.removeAndRespawn(enemy);
