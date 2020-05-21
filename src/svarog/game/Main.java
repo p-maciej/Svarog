@@ -739,13 +739,11 @@ public class Main {
 						//guiRenderer.addWindow(confirmWindow);
 					}
 					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1 ) {
-						System.out.println(worldRenderer.getMouseOverX()+" "+worldRenderer.getMouseOverY());
+						System.out.println(worldRenderer.getMouseOverX()+" "+worldRenderer.getMouseOverY()); //holder dla Patryka 
 					}
 					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1 && WorldRenderer.getMouseOverEntityId()==-1) {
 						//pathFinder.stupidMover(worldRenderer, player);
 					}
-					//System.out.println(window.getCursorPositionX() + "  " + window.getCursorPositionY());
-					//System.out.println(worldRenderer.getMouseOverX() + "  " + worldRenderer.getMouseOverY());
 					if(pathFinder.getIsWorking()==1) {
 						pathFinder.movePlayer(player);
 					}

@@ -3,7 +3,6 @@ package svarog.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import svarog.language.InterfaceTranslations.languages;
 import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.render.Animation;

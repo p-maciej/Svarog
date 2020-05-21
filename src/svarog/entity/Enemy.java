@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.joml.Vector2f;
 
-import svarog.language.InterfaceTranslations;
 import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.objects.ItemInfo;

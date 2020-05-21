@@ -12,7 +12,6 @@ import svarog.objects.ItemInfo;
 import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
-import svarog.save.EnemyParameters;
 import svarog.save.EntityHolder;
 import svarog.save.NpcParameters;
 import svarog.save.Save;
