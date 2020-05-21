@@ -538,7 +538,7 @@
     </variable>
 	<variable>
         <key>MavandGus_dialog3_line1</key>
-        <translation>[Guślarz] - Zapalę, jeszcze poświęcę...</translation>
+        <translation>[Guślarz] - Zapalę, jeszcze poświęcę.</translation>
     </variable>
 	<variable>
         <key>MavandGus_dialog3_line2</key>
@@ -578,7 +578,7 @@
     </variable>
 	<variable>
         <key>MavandGus_dialog3_line11</key>
-        <translation>[Guślarz] - Gdzie my z nią, on za nią wszędzie...</translation>
+        <translation>[Guślarz] - Gdzie my z nią, on za nią wszędzie.</translation>
     </variable>
 	<variable>
         <key>MavandGus_dialog3_line12</key>
@@ -853,7 +853,7 @@
     </variable>
 	<variable>
         <key>KubandMav_dialog1_line9</key>
-        <translation>[Mavak] - …</translation>
+        <translation>[Mavak] - .</translation>
     </variable>
 	<variable>
         <key>KubandMav_dialog1_line10</key>
@@ -881,7 +881,7 @@
     </variable>
 	<variable>
         <key>KubandMav_dialog1_line16</key>
-        <translation>[Mavak] – Dobr…</translation>
+        <translation>[Mavak] – No dobra.</translation>
     </variable>
 	<variable>
         <key>QuestID3_KillBandits_Title</key>
@@ -893,7 +893,7 @@
     </variable>
 	<variable>
         <key>KubandMav_dialog1_line17</key>
-        <translation>[Kupiec] – Dobra dobra, idź już.</translation>
+        <translation>[Kupiec] – No tak, dobra dobra, idź już.</translation>
     </variable>
 	<variable>
         <key>KubandMav_dialog1_line18</key>
@@ -930,7 +930,7 @@
     </variable>
 	<variable>
         <key>KupandMav_dialog2_line7</key>
-        <translation>[Kupiec] – A w jaki sposób mam wiedzieć że to moj…</translation>
+        <translation>[Kupiec] – A w jaki sposób mam wiedzieć że to moje złoto?</translation>
     </variable>
 	<variable>
         <key>KupandMav_dialog2_line8</key>
@@ -942,7 +942,7 @@
     </variable>
 	<variable>
         <key>KupandMav_dialog2_line10</key>
-        <translation>[Kupiec] – *przestraszony* Nie, myślę że to nie będz…</translation>
+        <translation>[Kupiec] – *przestraszony* Nie, myślę że to nie będzie konieczne.</translation>
     </variable>
 	<variable>
         <key>KupandMav_dialog2_line11</key>
@@ -1147,7 +1147,7 @@
     </variable>
 	<variable>
         <key>MojmandMav_dialog3_line2</key>
-        <translation>[Mavak] – Ehmmm tak aleee…</translation>
+        <translation>[Mavak] – Ehmmm tak alee.</translation>
     </variable>
 	<variable>
         <key>MojmandMav_dialog3_line3</key>
@@ -1340,15 +1340,15 @@
     </variable>
 	<variable>
         <key>PratandMav_dialog1_line36</key>
-        <translation>[Prata] - …</translation>
+        <translation>[Prata] - hmmm</translation>
     </variable>
 	<variable>
         <key>PratandMav_dialog1_line37</key>
-        <translation>[Prata] - …</translation>
+        <translation>[Prata] - hmmm</translation>
     </variable>
 	<variable>
         <key>PratandMav_dialog1_line38</key>
-        <translation>[Prata] - …</translation>
+        <translation>[Prata] - hmmm</translation>
     </variable>
 	<variable>
         <key>PratandMav_dialog1_line39</key>
@@ -1400,11 +1400,11 @@
     </variable>
 	<variable>
         <key>PratandMav_dialog1_line49</key>
-        <translation>[Prata] – No cóż wiele lat temu kiedy nasza wioska została dopiero założona, władzę w niej przejął mój ojciec – Strzebor.</translation>
+        <translation>[Prata] – No cóż wiele lat temu kiedy nasza wioska została dopiero założona, władzę w niej przejął mój ojciec, Strzebor.</translation>
     </variable>
 	<variable>
         <key>PratandMav_dialog1_line50</key>
-        <translation>[Prata] – Był on w posiadaniu pewnej książki kupionej od tajemniczego kupca, który przedstawiał się jako: „człowiek z lądu na zachodzie gdzie słońce wiecznie świeci i gdzie żaden człowiek nie postawi swej nogi przez następne tysiąc lat.”</translation>
+        <translation>[Prata] – Był on w posiadaniu pewnej książki kupionej od tajemniczego kupca, który przedstawiał się jako: człowiek z lądu na zachodzie gdzie słońce wiecznie świeci i gdzie żaden człowiek nie postawi swej nogi przez następne tysiąc lat.</translation>
     </variable>
 	<variable>
         <key>PratandMav_dialog1_line51</key>
@@ -1412,7 +1412,7 @@
     </variable>
 	<variable>
         <key>PratandMav_dialog1_line52</key>
-        <translation>[Prata] – Zawsze mi mówił że: „Ta książka została napisana przez kogoś kto ewidentnie nie chce aby czytelnik cokolwiek z niej zrozumiał, słowa oraz znaki w niej zawarte nie są przeznaczone dla naszych oczu.”</translation>
+        <translation>[Prata] – Zawsze mi mówił że: Ta książka została napisana przez kogoś kto ewidentnie nie chce aby czytelnik cokolwiek z niej zrozumiał, słowa oraz znaki w niej zawarte nie są przeznaczone dla naszych oczu.</translation>
     </variable>
 	<variable>
         <key>PratandMav_dialog1_line53</key>
@@ -1662,7 +1662,7 @@
     </variable>
 	<variable>
         <key>RodandMav_dialog1_line40</key>
-        <translation>...</translation>
+        <translation>.</translation>
     </variable>
 	<variable>
         <key>RodandMav_dialog1_line40_ans1</key>

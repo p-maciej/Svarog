@@ -372,7 +372,7 @@
       <answer>RodandMav_dialog1_line40_ans1</answer>
       <id>0</id>
       <leadsTo>10</leadsTo>
-      <answer>RodandMav_dialog1_line40_ans2?</answer>
+      <answer>RodandMav_dialog1_line40_ans2</answer>
       <id>1</id>
       <leadsTo>41</leadsTo>
       <answer>RodandMav_dialog1_line40_ans3</answer>
