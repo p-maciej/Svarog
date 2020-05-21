@@ -19,11 +19,12 @@ import svarog.world.WorldRenderer;
 public class Enemy extends Entity {
 	
 	private List<Item> items = new ArrayList<Item>();
+	private List<Integer> propability = new ArrayList<>();
 	
 	//Animacja potem siê ogarnie
 	//private String texturesPath;
 	//private String fileName;
-	
+
 	private int globalID =-1;
 	private HP hp = new HP(20);
 	private int maxAttack=0;
@@ -86,6 +87,7 @@ public class Enemy extends Entity {
 		}
 		for(ItemParameters i: enemyParameters.getItemParameters()) {
 			this.items.add(new Item(Save.getItemById(i.getItemGlobalID())));
+			this.propability.add(i.getItemPropability());
 		}
 		
 	}
@@ -113,6 +115,7 @@ public class Enemy extends Entity {
 		
 		for(ItemParameters i: enemyParameters.getItemParameters()) {
 			this.items.add(new Item(Save.getItemById(i.getItemGlobalID())));
+			this.propability.add(i.getItemPropability());
 		}
 		
 	}
@@ -235,6 +238,14 @@ public class Enemy extends Entity {
 	}
 	public void setLevel(int level) {
 		this.level = level;
+	}
+	
+	public List<Integer> getPropability() {
+		return propability;
+	}
+
+	public void setPropability(List<Integer> propability) {
+		this.propability = propability;
 	}
 
 	@Override

@@ -384,9 +384,17 @@ public class Player extends Entity {
 				
 				this.money += enemy.getReward();
 				
-				for(Item item : (enemy).getItems()) {
-					this.addItemToInventoryWithGUIupdate(new Item(item), guiRenderer);
+				for(int iter = 0; iter<enemy.getItems().size();iter++) {
+					if(enemy.getPropability().get(iter)==1) {
+						this.addItemToInventoryWithGUIupdate(new Item(enemy.getItems().get(iter)), guiRenderer);
+					}else {
+						int propability = (int)((enemy.getPropability().get(iter))*Math.random() + 1);
+						if(propability==1) {
+							this.addItemToInventoryWithGUIupdate(new Item(enemy.getItems().get(iter)), guiRenderer);
+						}
+					}
 				}
+
 				
 				//Last line (everything should be done before it)
 				world.removeAndRespawn(enemy);
