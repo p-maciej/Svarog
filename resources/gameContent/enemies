@@ -14,7 +14,16 @@
 		<name>ENEMYWolf</name>
 		<respownInSeconds>300</respownInSeconds>
 		<level>1</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>3</howManyItems>
+		<itemGlobalID>0</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
+		<itemGlobalID>2</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>3</itemPropability>
+		<itemGlobalID>6</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>2</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>1</globalID>
@@ -30,7 +39,16 @@
 		<name>ENEMYwarg</name>
 		<respownInSeconds>90</respownInSeconds>
 		<level>6</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>3</howManyItems>
+		<itemGlobalID>1</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
+		<itemGlobalID>2</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>3</itemPropability>
+		<itemGlobalID>6</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>2</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>2</globalID>
@@ -46,7 +64,10 @@
 		<name>ENEMYpixie</name>
 		<respownInSeconds>240</respownInSeconds>
 		<level>11</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>5</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>4</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>3</globalID>
@@ -63,9 +84,9 @@
 		<respownInSeconds>-1</respownInSeconds>
 		<level>11</level>
 		<howManyItems>1</howManyItems>
-		<itemGlobalID>1</itemGlobalID>
+		<itemGlobalID>4</itemGlobalID>
 		<itemTileID>-1</itemTileID>
-		<itemPropability>5</itemPropability>
+		<itemPropability>1</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>4</globalID>
@@ -81,7 +102,10 @@
 		<name>ENEMYrusalka</name>
 		<respownInSeconds>180</respownInSeconds>
 		<level>5</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>8</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>4</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>5</globalID>
@@ -97,7 +121,10 @@
 		<name>ENEMYleszy</name>
 		<respownInSeconds>-1</respownInSeconds>
 		<level>14</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>9</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>6</globalID>
@@ -113,7 +140,13 @@
 		<name>ENEMYbandit</name>
 		<respownInSeconds>-1</respownInSeconds>
 		<level>2</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>2</howManyItems>
+		<itemGlobalID>16</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
+		<itemGlobalID>23</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>3</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>7</globalID>
@@ -129,7 +162,16 @@
 		<name>ENEMYbanditLeader</name>
 		<respownInSeconds>-1</respownInSeconds>
 		<level>5</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>3</howManyItems>
+		<itemGlobalID>17</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
+		<itemGlobalID>23</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
+		<itemGlobalID>11</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>8</globalID>
@@ -145,7 +187,10 @@
 		<name>ENEMYMarzanna</name>
 		<respownInSeconds>-1</respownInSeconds>
 		<level>13</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>25</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>9</globalID>
@@ -161,7 +206,10 @@
 		<name>ENEMYghul</name>
 		<respownInSeconds>300</respownInSeconds>
 		<level>7</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>3</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>6</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>10</globalID>
@@ -177,7 +225,16 @@
 		<name>ENEMYwarewolf</name>
 		<respownInSeconds>300</respownInSeconds>
 		<level>13</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>3</howManyItems>
+		<itemGlobalID>7</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
+		<itemGlobalID>2</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>3</itemPropability>
+		<itemGlobalID>6</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>3</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>11</globalID>
@@ -193,7 +250,10 @@
 		<name>ENEMYizbor</name>
 		<respownInSeconds>-1</respownInSeconds>
 		<level>9</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>18</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>12</globalID>
@@ -209,6 +269,9 @@
 		<name>ENEMYmalowoj</name>
 		<respownInSeconds>-1</respownInSeconds>
 		<level>9</level>
-		<howManyItems>0</howManyItems>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>18</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>1</itemPropability>
 	</enemy>
 </class>
