@@ -5,6 +5,7 @@ import java.nio.ByteBuffer;
 
 import org.lwjgl.BufferUtils;
 
+import svarog.game.WorldLoader;
 import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.font.Color;

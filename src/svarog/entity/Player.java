@@ -224,9 +224,14 @@ public class Player extends Entity {
 	@Override
 	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer) {
 		if(movementLock)
-			if(ArenaContainer.isArenaClosing())
+			if(ArenaContainer.isArenaClosing()) {
 				this.movementLock = false;
-				
+				System.out.println(isFightWin);
+				if(isFightWin == 2) {
+					WorldLoader.setNextFrameLoadWorld(1);
+					WorldLoader.setWorldLoaded(false);
+				}
+			}
 		if(movementLock == false) {		
 			///////////// WASD Player movement ////////////////////
 			
@@ -416,8 +421,6 @@ public class Player extends Entity {
 		//this.getHP().SetHP(this.getHP().getMaxHP());
 		Save.ReadFrom("MainSave.save");
 		this.setPosition(Save.getPlayerParam().getPositionX(), Save.getPlayerParam().getPositionY());
-		WorldLoader.setNextFrameLoadWorld(1);
-		WorldLoader.setWorldLoaded(false);
 		setIsFightWin(2);
 	}
 	
