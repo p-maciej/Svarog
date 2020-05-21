@@ -9,7 +9,7 @@ import svarog.objects.MouseInteraction;
 import svarog.render.Texture;
 import svarog.render.Transform;
 
-public abstract class GuiObject implements MouseInteraction {
+public abstract class GuiObject implements MouseInteraction, Comparable<GuiObject> {
 	private static int auto_increment = 0; // for the moment
 	
 	private int id;
@@ -181,5 +181,10 @@ public abstract class GuiObject implements MouseInteraction {
 			return true;
 		else
 			return false;
+	}
+	
+	@Override
+	public int compareTo(GuiObject o) {
+		return this.id - o.id;
 	}
 }

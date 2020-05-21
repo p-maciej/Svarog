@@ -5,7 +5,6 @@ import org.joml.Vector2f;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
-import svarog.gui.font.TextBlock;
 import svarog.render.Texture;
 
 public class GuiWindow {
@@ -67,7 +66,7 @@ public class GuiWindow {
 		
 		backgroundTexture.setOverable(true);
 		backgroundWindowId = backgroundTexture.getId();
-		elements.addTextureObject(backgroundTexture);
+		elements.addGuiObject(backgroundTexture);
 		
 		this.id = auto_increment++;
 		this.setWidth(backgroundTexture.getWidth());
@@ -85,7 +84,7 @@ public class GuiWindow {
 		
 		backgroundTexture.setOverable(true);
 		backgroundWindowId = backgroundTexture.getId();
-		elements.addTextureObject(backgroundTexture);
+		elements.addGuiObject(backgroundTexture);
 		
 		this.id = auto_increment++;
 		this.setWidth(backgroundTexture.getWidth());
@@ -101,15 +100,11 @@ public class GuiWindow {
 	private void addCloseButton() {
 		Button closeDialog = new Button(new Texture("images/dialog/close_window.png"), new Vector2f(getWidth()/2-15, getHeight()/2-15));
 		closeButton = closeDialog;
-		elements.addTextureObject(closeDialog);
+		elements.addGuiObject(closeDialog);
 	}
 	
-	public void addTextureObject(TextureObject object) {
-		elements.addTextureObject(object);
-	}
-	
-	public void addTextBlock(TextBlock object) {
-		elements.addTextBlock(object);
+	public void addTextureObject(GuiObject object) {
+		elements.addGuiObject(object);
 	}
 
 	public int getWidth() {
@@ -195,7 +190,7 @@ public class GuiWindow {
 		title_px.setMovable(true);
 		title_px.setClickable(true);
 		
-		elements.addTextureObject(title_px);
+		elements.addGuiObject(title_px);
 	}
 
 	public void setWindowFont(Font windowFont) {

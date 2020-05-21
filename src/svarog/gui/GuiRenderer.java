@@ -48,7 +48,6 @@ public class GuiRenderer implements RenderProperties {
 	private int windowHeight;
 	
 	private List<GuiObject> objects;
-	private List<TextBlock> textBlocks;
 	private List<Group> groups;
 	private List<GuiWindow> windows; 
 	private BubbleContainer bubbleContainer;
@@ -83,7 +82,6 @@ public class GuiRenderer implements RenderProperties {
 	
 	public GuiRenderer(Window window) {
 		this.objects = new ArrayList<GuiObject>();
-		this.textBlocks = new ArrayList<TextBlock>();
 		this.groups = new ArrayList<Group>();
 		this.tileSheet = new TileSheet();
 		this.windows = new ArrayList<GuiWindow>();
@@ -128,20 +126,20 @@ public class GuiRenderer implements RenderProperties {
 			}
 			
 			for(GuiObject object : group.getTextureObjectList()) {
-				if(object.getStickTo() != null) {
-					setObjectStickTo(object);
-					object.getTransform().getPosition().add(object.getPosition().x+group.getTransform().x, object.getPosition().y+group.getTransform().y, 0);
+				if(!(object instanceof TextBlock)) {
+					if(object.getStickTo() != null) {
+						setObjectStickTo(object);
+						object.getTransform().getPosition().add(object.getPosition().x+group.getTransform().x, object.getPosition().y+group.getTransform().y, 0);
+					} else {
+						object.getTransform().getPosition().set(object.getPosition().x+group.getTransform().x, object.getPosition().y+group.getTransform().y, 0);
+					}
 				} else {
-					object.getTransform().getPosition().set(object.getPosition().x+group.getTransform().x, object.getPosition().y+group.getTransform().y, 0);
-				}
-			}
-			
-			for(TextBlock textBlock : group.getTextBlockList()) {
-				if(textBlock.getStickTo() != null) {
-					setTextBlockStickTo(textBlock);
-					textBlock.getTransform().getPosition().add(textBlock.getPosition().x+group.getTransform().x, textBlock.getPosition().y+group.getTransform().y, 0);
-				} else {
-					textBlock.getTransform().getPosition().set(textBlock.getPosition().x+group.getTransform().x, textBlock.getPosition().y+group.getTransform().y, 0);
+					if(object.getStickTo() != null) {
+						setTextBlockStickTo(object);
+						object.getTransform().getPosition().add(object.getPosition().x+group.getTransform().x, object.getPosition().y+group.getTransform().y, 0);
+					} else {
+						object.getTransform().getPosition().set(object.getPosition().x+group.getTransform().x, object.getPosition().y+group.getTransform().y, 0);
+					}
 				}
 			}
 		}
@@ -180,23 +178,23 @@ public class GuiRenderer implements RenderProperties {
 			}
 			
 			for(GuiObject object : item.getElements().getTextureObjectList()) {
-				if(object.getStickTo() != null) {
-					setObjectStickTo(object);
-					object.getTransform().getPosition().add(object.getPosition().x+item.getElements().getTransform().x, object.getPosition().y+item.getElements().getTransform().y, 0);
+				if(!(object instanceof TextBlock)) {
+					if(object.getStickTo() != null) {
+						setObjectStickTo(object);
+						object.getTransform().getPosition().add(object.getPosition().x+item.getElements().getTransform().x, object.getPosition().y+item.getElements().getTransform().y, 0);
+					} else {
+						object.getTransform().getPosition().set(object.getPosition().x+item.getElements().getTransform().x, object.getPosition().y+item.getElements().getTransform().y, 0);
+					}
 				} else {
-					object.getTransform().getPosition().set(object.getPosition().x+item.getElements().getTransform().x, object.getPosition().y+item.getElements().getTransform().y, 0);
+					if(object.getStickTo() != null) {
+						setTextBlockStickTo(object);
+						object.getTransform().getPosition().add(object.getPosition().x+item.getElements().getTransform().x, object.getPosition().y+item.getElements().getTransform().y, 0);
+					} else {
+						object.getTransform().getPosition().set(object.getPosition().x+item.getElements().getTransform().x, object.getPosition().y+item.getElements().getTransform().y, 0);
+					}
 				}
 			}
-			
-			for(TextBlock textBlock : item.getElements().getTextBlockList()) {
-				if(textBlock.getStickTo() != null) {
-					setTextBlockStickTo(textBlock);
-					textBlock.getTransform().getPosition().add(textBlock.getPosition().x+item.getElements().getTransform().x, textBlock.getPosition().y+item.getElements().getTransform().y, 0);
-				} else {
-					textBlock.getTransform().getPosition().set(textBlock.getPosition().x+item.getElements().getTransform().x, textBlock.getPosition().y+item.getElements().getTransform().y, 0);
-				}
-			}
-			
+
 			if(item instanceof PagedGuiWindow) {
 				for(WindowTextType textBlock : ((PagedGuiWindow) item).getTextBlocks()) {
 					if(textBlock.getBlock().getStickTo() != null) {
@@ -212,24 +210,16 @@ public class GuiRenderer implements RenderProperties {
 		//// ORDINARY OBJECTS///////////////////
 		for(GuiObject object : objects) {
 			if(object.getStickTo() != null) {
-				setObjectStickTo(object);
+				if(!(object instanceof TextBlock))
+					setObjectStickTo(object);
+				else
+					setTextBlockStickTo((TextBlock)object);
 				object.getTransform().getPosition().add(object.getPosition().x, object.getPosition().y, 0);
 			} else {
 				object.getTransform().getPosition().set(object.getPosition().x, object.getPosition().y, 0);
 			}	
 		}
 		//////////////////////////////////////
-		
-		//////// TEXTBLOCKS ////////////////////////
-		for(TextBlock textBlock : textBlocks) {
-			if(textBlock.getStickTo() != null) {
-				setTextBlockStickTo(textBlock);
-				textBlock.getTransform().getPosition().add(textBlock.getPosition().x, textBlock.getPosition().y, 0);
-			} else {
-				textBlock.getTransform().getPosition().set(textBlock.getPosition().y, textBlock.getPosition().y, 0);
-			}	
-		}
-		///////////////////////////////////////////
 	}
 	
 	public void renderGuiObjects(Shader shader, Window window, Player player) {
@@ -254,31 +244,19 @@ public class GuiRenderer implements RenderProperties {
 			mouseInteraction(object, window);
 		}
 		
-		// After that textBlocks, they supposed to cover textures
-		for(TextBlock block : textBlocks) {
-			mouseInteraction(block, window);
-		}
-		
 		// Then render groups, they usually will be moving or not windows inside the game
 		for(Group group : groups) {		
-			for(TextureObject object : group.getTextureObjectList()) {
+			for(GuiObject object : group.getTextureObjectList()) {
 				mouseInteraction(object, window);
-			}
-			
-			for(TextBlock block : group.getTextBlockList()) {
-				mouseInteraction(block, window);
 			}
 		}
 
 		
 		for(GuiWindow item : windows) {	
-			for(TextureObject object : item.getElements().getTextureObjectList()) {
+			for(GuiObject object : item.getElements().getTextureObjectList()) {
 				mouseInteraction(object, window);
 				
-				for(TextBlock block : item.getElements().getTextBlockList()) {
-					mouseInteraction(block, window);
-				}
-				
+
 				if(item instanceof PagedGuiWindow) {
 					for(WindowTextType block : ((PagedGuiWindow) item).getTextBlocks()) {
 						mouseInteraction(block.getBlock(), window);
@@ -289,7 +267,7 @@ public class GuiRenderer implements RenderProperties {
 		
 		// And groups of tiles
 		for(Group group : tileSheet.getTileGroupsList()) {
-			for(TextureObject object : group.getTextureObjectList()) {
+			for(GuiObject object : group.getTextureObjectList()) {
 				mouseInteraction(object, window);
 				Item temp = ((Tile)object).getPuttedItem();
 				if(temp != null) 
@@ -318,25 +296,16 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		
-		// After that textBlocks, they supposed to cover textures
-		for(TextBlock block : textBlocks) {
-			renderTextBlock(block, shader, window);
-		}
-		
 		// Then render groups, they usually will be moving or not windows inside the game
 		for(Group group : groups) {		
-			for(TextureObject object : group.getTextureObjectList()) {
+			for(GuiObject object : group.getTextureObjectList()) {
 				renderGuiObject(object, shader, window);
-			}
-			
-			for(TextBlock block : group.getTextBlockList()) {
-				renderTextBlock(block, shader, window);
 			}
 		}
 		
 		// And groups of tiles
 		for(Group group : tileSheet.getTileGroupsList()) {
-			for(TextureObject object : group.getTextureObjectList()) {
+			for(GuiObject object : group.getTextureObjectList()) {
 				renderGuiObject(object, shader, window);
 				Item temp = ((Tile)object).getPuttedItem();
 				if(temp != null) 
@@ -348,7 +317,7 @@ public class GuiRenderer implements RenderProperties {
 		update = false;
 		
 		for(GuiWindow item : windows) {	
-			for(TextureObject object : item.getElements().getTextureObjectList()) {
+			for(GuiObject object : item.getElements().getTextureObjectList()) {
 				renderGuiObject(object, shader, window);
 				
 				boolean updateT = windowInteraction(item, object, window);
@@ -372,13 +341,9 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}	
 			
-			for(TextBlock block : item.getElements().getTextBlockList()) {
-				renderTextBlock(block, shader, window);
-			}
-			
 			if(item instanceof PagedGuiWindow) {
 				for(WindowTextType block : ((PagedGuiWindow) item).getTextBlocks()) {
-					renderTextBlock(block.getBlock(), shader, window);
+					renderGuiObject(block.getBlock(), shader, window);
 				}
 			}
 			
@@ -416,7 +381,7 @@ public class GuiRenderer implements RenderProperties {
 		
 		// Render items
 		for(Group group : tileSheet.getTileGroupsList()) {
-			for(TextureObject object : group.getTextureObjectList()) {
+			for(GuiObject object : group.getTextureObjectList()) {
 				Item temp = ((Tile)object).getPuttedItem();
 				if(temp != null)  {
 					renderGuiObject(temp, shader, window);
@@ -426,7 +391,7 @@ public class GuiRenderer implements RenderProperties {
 		
 		// Drag and drop for groups
 		for(Group group : tileSheet.getTileGroupsList()) {
-			for(TextureObject object : group.getTextureObjectList()) {
+			for(GuiObject object : group.getTextureObjectList()) {
 				dragAndDrop((Tile)object, window, player);
 			}
 		}
@@ -436,7 +401,7 @@ public class GuiRenderer implements RenderProperties {
 		
 		for(Group group : tileSheet.getTileGroupsList()) {
 			int index = 0;
-			for(TextureObject object : group.getTextureObjectList()) {
+			for(GuiObject object : group.getTextureObjectList()) {
 				dragAndDrop((Tile)object, window, player);
 				
 				if(draggingFromObjectId >= 0 && object.getId() == draggingFromObjectId) {
@@ -477,7 +442,7 @@ public class GuiRenderer implements RenderProperties {
 			this.removeWindow(windowToRemove);
 	}
 	
-	private boolean windowInteraction(GuiWindow item, TextureObject object, Window window) {
+	private boolean windowInteraction(GuiWindow item, GuiObject object, Window window) {
 		boolean update = false;
 		if(object.isOverable() && object.isMovable() && draggingFromObjectId == -1) {
 			if(draggingWindowId == item.getId()) {
@@ -550,26 +515,9 @@ public class GuiRenderer implements RenderProperties {
 				setPointer = true;
 		}
 	}
-
-	private void renderTextBlock(TextBlock block, Shader shader, Window window) {
-		block.update();
-		
-		for(int i = 0; i < block.getLines().size(); i++) {
-			Matrix4f projection = camera.getProjection();
-			Line line = block.getLines().get(i);
-					
-			line.getTransform().getPosition().x = block.getTransform().getPosition().x + line.getWidth()/2;
-			line.getTransform().getPosition().y = block.getTransform().getPosition().y + -i*line.getHeight();
-					
-			line.getTexture().bind(0);
-			shader.bind();
-			shader.setUniform("sampler", 0);
-			shader.setUniform("projection", line.getTransform().getProjection(projection));
-			model.render();
-		}
-	}
 	
 	private void renderGuiObject(GuiObject object, Shader shader, Window window) {
+		if(!(object instanceof TextBlock)) {
 			Matrix4f projection = camera.getProjection();
 			
 			object.update();
@@ -581,6 +529,24 @@ public class GuiRenderer implements RenderProperties {
 			shader.setUniform("sampler", 0);
 			shader.setUniform("projection", object.getTransform().getProjection(projection));
 			model.render();	
+		} else {
+			TextBlock block = (TextBlock)object;
+			block.update();
+			
+			for(int i = 0; i < block.getLines().size(); i++) {
+				Matrix4f projection = camera.getProjection();
+				Line line = block.getLines().get(i);
+						
+				line.getTransform().getPosition().x = block.getTransform().getPosition().x + line.getWidth()/2;
+				line.getTransform().getPosition().y = block.getTransform().getPosition().y + -i*line.getHeight();
+						
+				line.getTexture().bind(0);
+				shader.bind();
+				shader.setUniform("sampler", 0);
+				shader.setUniform("projection", line.getTransform().getProjection(projection));
+				model.render();
+			}
+		}
 	}
 	
 	private void dragAndDrop(Tile object, Window window, Player player) {
@@ -762,7 +728,7 @@ public class GuiRenderer implements RenderProperties {
 		}
 	}
 	
-	private void setTextBlockStickTo(TextBlock object) {
+	private void setTextBlockStickTo(GuiObject object) {
 		switch(object.getStickTo()) {
 			case Top:
 				object.setTranformPosition(0, getTop() - 10);
@@ -819,10 +785,6 @@ public class GuiRenderer implements RenderProperties {
 	
 	public void addGuiObject(GuiObject object, State state) {
 		objects.add(object.setState(state));
-	}
-	
-	public void addTextBlock(TextBlock textBlock) {
-		textBlocks.add(textBlock);
 	}
 	
 	public void addGroup(Group group) {

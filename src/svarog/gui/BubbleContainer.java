@@ -26,7 +26,7 @@ public class BubbleContainer {
 		if(bubbleLeft != null && bubbleRight != null && bubbleCenter != null) {
 			Group group = new Group(State.dynamicImage);
 			bubbleLeft.setPosition((float)posX+bubbleXoffest, (float)posY+bubbleYoffset);
-			group.addTextureObject(bubbleLeft);
+			group.addGuiObject(bubbleLeft);
 			
 			ByteBuffer contentBackground = BufferUtils.createByteBuffer((int)(bubbleCenter.getHeight()*line.getWidth()*4));
 			
@@ -42,13 +42,13 @@ public class BubbleContainer {
 			contentBackground.flip();
 			
 			TextureObject center = new TextureObject(new Texture(contentBackground, line.getWidth(), bubbleCenter.getHeight()), (float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest), (float)(posY+bubbleYoffset));
-			group.addTextureObject(center);
+			group.addGuiObject(center);
 			
 			line.setPosition((float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest)-2, (float)(posY+bubbleYoffset-bubbleCenter.getHeight()/2 +line.getHeight()/2+4));
-			group.addTextureObject(line);
+			group.addGuiObject(line);
 			
 			bubbleRight.setPosition((float)posX+bubbleXoffest+line.getWidth()+bubbleLeft.getWidth()-3, (float)posY+bubbleYoffset);
-			group.addTextureObject(bubbleRight);
+			group.addGuiObject(bubbleRight);
 			
 			return group;
 		} else 

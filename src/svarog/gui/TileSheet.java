@@ -29,7 +29,7 @@ public class TileSheet {
 	/// For saves, data etc ///
 	public Tile getTile(int tileId) {
 		for(Group group : tileGroups) {
-			for(TextureObject tile : group.getObjects()) {
+			for(GuiObject tile : group.getObjects()) {
 				if(((Tile)tile).getTileId() == tileId)
 					return (Tile)tile;
 			}
@@ -41,7 +41,7 @@ public class TileSheet {
 	/// For mouse interaction etc ////
 	public Tile getTileByObjectId(int id) {
 		for(Group group : tileGroups) {
-			for(TextureObject tile : group.getObjects()) {
+			for(GuiObject tile : group.getObjects()) {
 				if(tile.getId() == id)
 					return (Tile)tile;
 			}
@@ -58,7 +58,7 @@ public class TileSheet {
 		for(Group group : tileGroups) {
 			Collections.sort(group.getObjects());
 			
-			for(TextureObject tile : group.getObjects()) {
+			for(GuiObject tile : group.getObjects()) {
 				if(tile instanceof Tile) {
 					Tile temp = (Tile)tile;
 					if(temp.getPuttableItemTypes().size() > 1) {
@@ -79,7 +79,7 @@ public class TileSheet {
 	
 	public Tile clickedTile() {
 		for(Group group : tileGroups) {
-			for(TextureObject tile : group.getTextureObjectList()) {
+			for(GuiObject tile : group.getTextureObjectList()) {
 				if(tile.getId() == GuiRenderer.getClickedTileId()) {
 					Tile temp = (Tile)tile;
 					return temp;

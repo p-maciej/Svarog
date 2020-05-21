@@ -2,6 +2,8 @@ package svarog.gui;
 
 import java.awt.image.BufferedImage;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
@@ -51,6 +53,8 @@ public class DialogContainer {
 			int left = -dialogTop.getWidth()/2+15;
 			
 			
+			List<TextBlockButton> answers = new ArrayList<TextBlockButton>();
+			
 			for(int i = dialog.getAnswers().size()-1; i >= 0; i--) {
 				Answer answer = dialog.getAnswers().get(i);
 				
@@ -60,7 +64,7 @@ public class DialogContainer {
 				height += ans.getHeight()+interspace;
 				ans.move(left+15, top);
 				answer.setObjectId(ans.getId());
-				group.addTextBlock(ans);
+				answers.add(ans);
 			}
 	
 			top -= content.getHeight()+interspace;
@@ -81,7 +85,7 @@ public class DialogContainer {
 				
 				TextureObject centerTexture = new TextureObject(new Texture(center, dialogTop.getWidth(), height));	
 				centerTexture.move(0, -height/2);
-				group.addTextureObject(centerTexture);
+				group.addGuiObject(centerTexture);
 			}
 	
 			content.move(left, top);
@@ -91,10 +95,14 @@ public class DialogContainer {
 			dialogButton = closeDialog;
 			
 			
-			group.addTextureObject(dialogTop);	
+			group.addGuiObject(dialogTop);	
 			
-			group.addTextBlock(content);
-			group.addTextureObject(closeDialog);
+			
+			for(TextBlockButton ans : answers)
+				group.addGuiObject(ans);
+			
+			group.addGuiObject(content);
+			group.addGuiObject(closeDialog);
 			
 			this.dialog = group;
 			group.setStickTo(stickTo.Bottom);
@@ -121,12 +129,7 @@ public class DialogContainer {
 	void checkWorldLock(GuiRenderer renderer) {
 		if(dialog != null) {
 			boolean lock = false;
-			for(TextureObject object : dialog.getObjects()) {
-				if(GuiRenderer.getMouseOverObjectId() == object.getId())
-					lock = true;
-			}
-			
-			for(TextBlock object : dialog.getTextBlockList()) {
+			for(GuiObject object : dialog.getObjects()) {
 				if(GuiRenderer.getMouseOverObjectId() == object.getId())
 					lock = true;
 			}
