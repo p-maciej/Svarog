@@ -472,7 +472,7 @@ public class Main {
 		long startNanos = 0;
 		boolean programInit = true;
 		long start = -1;
-		boolean worldLoaded = false;
+		WorldLoader.setWorldLoaded(false);
 		boolean joinThread = false;
 		GuiWindow itemInfo = null;
 		
@@ -562,13 +562,13 @@ public class Main {
 	            	window.swapBuffers(); 
 	            	
 	            	
-	            	if(worldLoaded == false) {            	
+	            	if(WorldLoader.isWorldLoaded() == false) {            	
 		            	currentWorld = WorldLoader.getWorld(WorldLoader.getNextFrameLoadWorld(), player, camera, window);
 		            	currentWorld.start();
 		            	worldRenderer.setWorld(currentWorld);
 		            	worldRenderer.calculateView(window);
 		            	camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
-		            	worldLoaded = true;
+		            	WorldLoader.setWorldLoaded(true);
 		            	joinThread = true;
 	            	}
 	            	
@@ -750,7 +750,7 @@ public class Main {
 							player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
 							player.setSetCamWithoutAnimation(true);
 							WorldLoader.setNextFrameLoadWorld(currentWorld.getDoor(i).getWorldIdDestination());
-							worldLoaded = false;
+							WorldLoader.setWorldLoaded(false);
 							break;
 						} else 
 							WorldLoader.setNextFrameLoadWorld(0);

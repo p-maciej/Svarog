@@ -417,6 +417,7 @@ public class Player extends Entity {
 		Save.ReadFrom("MainSave.save");
 		this.setPosition(Save.getPlayerParam().getPositionX(), Save.getPlayerParam().getPositionY());
 		WorldLoader.setNextFrameLoadWorld(1);
+		WorldLoader.setWorldLoaded(false);
 		setIsFightWin(2);
 	}
 	
