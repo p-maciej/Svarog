@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <class>
 <save id="0">
-<worldID>4</worldID>
-<getPositionX>65</getPositionX>
-<getPositionY>125</getPositionY>
+<worldID>1</worldID>
+<getPositionX>115</getPositionX>
+<getPositionY>14</getPositionY>
 <getId>0</getId>
 <getTexturesPath>player/mavak/</getTexturesPath>
 <getFileName>mavak</getFileName>
 <getFullBoundingBox>false</getFullBoundingBox>
 <isMovementLocked>false</isMovementLocked>
-<getHP>43</getHP>
+<getHP>100</getHP>
 <getMaxHP>100</getMaxHP>
-<getXP>630</getXP>
+<getXP>0</getXP>
 <getMinAttack>50</getMinAttack>
 <getMaxAttack>60</getMaxAttack>
-<getMoney>600</getMoney>
+<getMoney>0</getMoney>
 <getName>Ty</getName>
-<howManyItems>14</howManyItems>
+<howManyItems>9</howManyItems>
 <getGlobalID>29</getGlobalID>
-<getTileID>2</getTileID>
+<getTileID>6</getTileID>
 <getGlobalID>15</getGlobalID>
 <getTileID>7</getTileID>
 <getGlobalID>1</getGlobalID>
@@ -26,48 +26,16 @@
 <getGlobalID>9</getGlobalID>
 <getTileID>9</getTileID>
 <getGlobalID>16</getGlobalID>
-<getTileID>3</getTileID>
+<getTileID>10</getTileID>
+<getGlobalID>20</getGlobalID>
+<getTileID>11</getTileID>
 <getGlobalID>25</getGlobalID>
 <getTileID>12</getTileID>
 <getGlobalID>28</getGlobalID>
-<getTileID>4</getTileID>
+<getTileID>13</getTileID>
 <getGlobalID>12</getGlobalID>
 <getTileID>14</getTileID>
-<getGlobalID>0</getGlobalID>
-<getTileID>15</getTileID>
-<getGlobalID>3</getGlobalID>
-<getTileID>11</getTileID>
-<getGlobalID>1</getGlobalID>
-<getTileID>16</getTileID>
-<getGlobalID>2</getGlobalID>
-<getTileID>17</getTileID>
-<getGlobalID>6</getGlobalID>
-<getTileID>18</getTileID>
-<getGlobalID>3</getGlobalID>
-<getTileID>19</getTileID>
-<howManyQuests>3</howManyQuests>
-<howManyTasks>1</howManyTasks>
-<getTaskID>0</getTaskID>
-<getToDo>1</getToDo>
-<getDoItemID>7</getDoItemID>
-<getState>talk</getState>
-<getIsEnded>false</getIsEnded>
-<getHowMuchIsDone>0</getHowMuchIsDone>
-<getQuestID>-3</getQuestID>
-<getTitle>Pogadaj z Rozenna</getTitle>
-<getDescription>Idz do Rozenny, ona znajdzie dla wiecej tekstu dla PagedGuiWindow ciebie jakiegos questa</getDescription>
-<isEndedQuest>false</isEndedQuest>
-<howManyTasks>1</howManyTasks>
-<getTaskID>0</getTaskID>
-<getToDo>1</getToDo>
-<getDoItemID>7</getDoItemID>
-<getState>talk</getState>
-<getIsEnded>false</getIsEnded>
-<getHowMuchIsDone>0</getHowMuchIsDone>
-<getQuestID>-3</getQuestID>
-<getTitle>Pogadaj z Rozenna</getTitle>
-<getDescription>Idz do Rozenny, ona znajdzie dla wiecej tekstu dla PagedGuiWindow ciebie jakiegos questa</getDescription>
-<isEndedQuest>false</isEndedQuest>
+<howManyQuests>1</howManyQuests>
 <howManyTasks>1</howManyTasks>
 <getTaskID>0</getTaskID>
 <getToDo>1</getToDo>

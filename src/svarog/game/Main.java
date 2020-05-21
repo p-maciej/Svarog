@@ -710,7 +710,7 @@ public class Main {
 						pathFinder.setIsWorking(1);
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
-						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(9)), guiRenderer);
+						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(20)), guiRenderer);
 						//guiRenderer.addWindow(confirmWindow);
 					}
 					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1 ) {
