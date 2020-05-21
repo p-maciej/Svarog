@@ -7,7 +7,6 @@ import org.joml.Vector2f;
 
 import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
-import svarog.gui.font.TextBlock;
 
 public class Group implements Comparable<Group> {
 	private static int auto_increment = 0;
@@ -15,8 +14,7 @@ public class Group implements Comparable<Group> {
 	private Vector2f transform;
 	private Vector2f position;
 	
-	private List<TextureObject> textureObjects;
-	private List<TextBlock> textBlocks;
+	private List<GuiObject> textureObjects;
 	
 	private State state;
 	
@@ -28,8 +26,7 @@ public class Group implements Comparable<Group> {
 	public Group() {
 		id = auto_increment++;
 		
-		textureObjects = new ArrayList<TextureObject>();
-		textBlocks = new ArrayList<TextBlock>();
+		textureObjects = new ArrayList<GuiObject>();
 		transform = new Vector2f();
 		position = new Vector2f();
 	}
@@ -38,45 +35,32 @@ public class Group implements Comparable<Group> {
 		id = auto_increment++;
 		
 		this.state = state;
-		textureObjects = new ArrayList<TextureObject>();
-		textBlocks = new ArrayList<TextBlock>();
+		textureObjects = new ArrayList<GuiObject>();
 		transform = new Vector2f();
 		position = new Vector2f();
 	}
 	
-	public void addTextureObject(TextureObject textureObject) {
+	public void addTextureObject(GuiObject textureObject) {
 		textureObjects.add(textureObject);
 	}
 	
 	public void removeTextureObject(int id) {
-		for(TextureObject object : textureObjects) {
+		for(GuiObject object : textureObjects) {
 			if(object.getId() == id)
 				textureObjects.remove(object);
 		}
 	}
 	
-	public void addTextBlock(TextBlock textBlock) {
-		textBlocks.add(textBlock);
-	}
-	
-	public void removeTextureObject(TextureObject textureObject) {
+	public void removeTextureObject(GuiObject textureObject) {
 		textureObjects.remove(textureObject);
-	}
-	
-	public void removeTextBlock(TextBlock textBlock) {
-		textBlocks.remove(textBlock);
 	}
 
 	public int getId() {
 		return id;
 	}
 	
-	List<TextureObject> getTextureObjectList() {
+	List<GuiObject> getTextureObjectList() {
 		return textureObjects;
-	}
-	
-	List<TextBlock> getTextBlockList() {
-		return textBlocks;
 	}
 	
 	public void setTransformPosition(Vector2f position) {
@@ -123,7 +107,7 @@ public class Group implements Comparable<Group> {
 		
 		int minYValue = 10000000;
 		int maxYValue = 0;
-		for(TextureObject object : textureObjects) {
+		for(GuiObject object : textureObjects) {
 			int width = object.getWidth();
 			int height = object.getHeight();
 			float posX = object.getPosition().x;
@@ -160,7 +144,7 @@ public class Group implements Comparable<Group> {
 		this.stickTo = stickTo;
 	}
 	
-	List<TextureObject> getObjects() {
+	List<GuiObject> getObjects() {
 		return textureObjects;
 	}
 

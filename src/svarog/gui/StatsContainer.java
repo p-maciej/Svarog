@@ -172,7 +172,7 @@ public class StatsContainer {
 		TextBlock description = new TextBlock(itemInfo.getWidth()-30, new Vector2f());
 		description.setString(smallFont, language.getValue(item.getItemInfo().getDescription()));
 		description.move(-description.getWidth()/2-5, -itemInfo.getHeight()/2+50);
-		itemInfo.addTextBlock(description);
+		itemInfo.addTextureObject(description);
 		
 		yPos = (int)(description.getPosition().y - description.getHeight() - 20);
 		// Type

@@ -68,7 +68,7 @@ public class ArenaContainer {
 					tempBlock.setStickTo(stickTo.TopLeft);
 					tempBlock.setPosition(10, -tempHeight);
 					tempHeight += tempBlock.getHeight();
-					group.addTextBlock(tempBlock);
+					group.addTextureObject(tempBlock);
 				}
 				/////////
 				

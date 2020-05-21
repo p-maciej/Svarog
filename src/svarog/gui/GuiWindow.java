@@ -104,12 +104,8 @@ public class GuiWindow {
 		elements.addTextureObject(closeDialog);
 	}
 	
-	public void addTextureObject(TextureObject object) {
+	public void addTextureObject(GuiObject object) {
 		elements.addTextureObject(object);
-	}
-	
-	public void addTextBlock(TextBlock object) {
-		elements.addTextBlock(object);
 	}
 
 	public int getWidth() {
