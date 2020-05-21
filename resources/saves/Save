@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <class>
 <save id="0">
-<worldID>1</worldID>
-<getPositionX>43</getPositionX>
-<getPositionY>24</getPositionY>
+<worldID>5</worldID>
+<getPositionX>10</getPositionX>
+<getPositionY>35</getPositionY>
 <getId>0</getId>
 <getTexturesPath>player/mavak/</getTexturesPath>
 <getFileName>mavak</getFileName>
 <getFullBoundingBox>false</getFullBoundingBox>
 <isMovementLocked>false</isMovementLocked>
-<getHP>60</getHP>
+<getHP>53</getHP>
 <getMaxHP>100</getMaxHP>
 <getXP>50</getXP>
 <getMinAttack>50</getMinAttack>
 <getMaxAttack>60</getMaxAttack>
 <getMoney>250</getMoney>
 <getName>Ty</getName>
-<howManyItems>10</howManyItems>
+<howManyItems>12</howManyItems>
 <getGlobalID>29</getGlobalID>
 <getTileID>6</getTileID>
 <getGlobalID>15</getGlobalID>
@@ -35,8 +35,12 @@
 <getTileID>13</getTileID>
 <getGlobalID>12</getGlobalID>
 <getTileID>14</getTileID>
-<getGlobalID>19</getGlobalID>
+<getGlobalID>17</getGlobalID>
 <getTileID>15</getTileID>
+<getGlobalID>23</getGlobalID>
+<getTileID>16</getTileID>
+<getGlobalID>11</getGlobalID>
+<getTileID>17</getTileID>
 <howManyQuests>1</howManyQuests>
 <howManyTasks>1</howManyTasks>
 <getTaskID>0</getTaskID>

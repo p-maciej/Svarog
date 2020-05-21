@@ -1,16 +1,14 @@
 package svarog.game;
 
+import java.util.List;
+
 import svarog.entity.Enemy;
 import svarog.entity.EntityItem;
 import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.io.Window;
-import svarog.objects.Item;
-import svarog.objects.ItemInfo;
-import svarog.objects.ItemProperties.ItemType;
 import svarog.render.Camera;
 import svarog.render.Texture;
-import svarog.render.Transform;
 import svarog.save.EntityHolder;
 import svarog.save.Save;
 import svarog.world.Door;
@@ -25,7 +23,9 @@ abstract class Village implements Runnable {
 		world.loadMap("village.png", 32);
 		world.setSolidTilesFromMap("village_mask.png");
 		
-		for(EntityHolder i: Save.getEntityHolder01()) {
+		List<EntityHolder> temp = Save.ReadWorldEntities("world01");
+		
+		for(EntityHolder i: temp) {
 			if(i.getType().equals("npc")) {
 				world.addEntity(new NPC(i));
 			}else if(i.getType().equals("enemy")) {

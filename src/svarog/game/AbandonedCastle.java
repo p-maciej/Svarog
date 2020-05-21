@@ -1,6 +1,8 @@
 package svarog.game;
 
 
+import java.util.List;
+
 import svarog.entity.Enemy;
 import svarog.entity.EntityItem;
 import svarog.entity.NPC;
@@ -20,7 +22,9 @@ abstract class AbandonedCastle {
 		world.loadMap("abandonedCastle.png", 32);
 		world.setSolidTilesFromMap("abandonedCastle_mask.png");
 
-		for(EntityHolder i: Save.getEntityHolder02()) {
+		List<EntityHolder> temp = Save.ReadWorldEntities("world02");
+		
+		for(EntityHolder i: temp) {
 			if(i.getType().equals("npc")) {
 				world.addEntity(new NPC(i));
 			}else if(i.getType().equals("enemy")) {

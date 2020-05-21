@@ -916,7 +916,6 @@ public class GuiRenderer implements RenderProperties {
 		if(player.getIsFightWin()==2) {
 			player.getHP().SetMaxHP(player.getHP().getMaxHP());
 			statsContainer.updatePlayerStats(this, player);
-			player.setIsFightWin(0);
 		}
 		arenaContainer.closeArena(this);
 		WorldRenderer.setMouseInteractionLock(false);

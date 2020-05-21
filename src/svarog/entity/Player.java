@@ -14,9 +14,7 @@ import org.joml.Vector3f;
 
 import svarog.audio.Audio;
 import svarog.audio.Sound;
-import svarog.game.WorldLoader;
 import svarog.gui.Arena;
-import svarog.gui.ArenaContainer;
 import svarog.gui.GuiRenderer;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.PagedGuiWindow;
@@ -223,10 +221,6 @@ public class Player extends Entity {
 	
 	@Override
 	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer) {
-		if(movementLock)
-			if(ArenaContainer.isArenaClosing())
-				this.movementLock = false;
-				
 		if(movementLock == false) {		
 			///////////// WASD Player movement ////////////////////
 			
@@ -382,7 +376,7 @@ public class Player extends Entity {
 			fightString.add("Enemy HP (before attack): " + (enemy).GetEnemyHP());
 			(enemy).DecreaseEnemyHP(this.getRandomAttack()+getPlayerAttackBonus());
 			fightString.add("Enemy HP:  (after attack): " + (enemy).GetEnemyHP());
-			if((enemy).GetEnemyHP()<0) {
+			if((enemy).GetEnemyHP()<=0) {
 				fightString.add("Enemy "+ (enemy).getName() + " died, you WON!!!");
 				//Adding XP and money reward
 				this.AddPlayerXP(enemy.GetXpForKilling());
@@ -413,10 +407,7 @@ public class Player extends Entity {
 	}
 	
 	public void playerDead() {
-		//this.getHP().SetHP(this.getHP().getMaxHP());
 		Save.ReadFrom("MainSave.save");
-		this.setPosition(Save.getPlayerParam().getPositionX(), Save.getPlayerParam().getPositionY());
-		WorldLoader.setNextFrameLoadWorld(1);
 		setIsFightWin(2);
 	}
 	

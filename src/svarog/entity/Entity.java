@@ -7,7 +7,6 @@ import svarog.collision.AABB;
 import svarog.collision.Collision;
 import svarog.io.Window;
 import svarog.objects.MouseInteraction;
-import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
@@ -50,25 +49,6 @@ public abstract class Entity implements MouseInteraction {
 		up
 	}
 	
-	// Animation constructor
-	public Entity(int id, Animation animation, Transform transform, boolean fullBoundingBox) {	
-		this.objectId = auto_increment++;
-		this.setId(id);
-		this.setRespownInSec(0);
-		
-		this.entityName = new String();
-		//this.animation = animation;
-		this.transform = transform;
-		this.setFullBoundingBox(fullBoundingBox);
-		
-		float diff = (float)animation.getHeight() / (float)animation.getWidth();
-		if(animation.getHeight() > animation.getWidth())
-			transform.getScale().y = diff;
-		else
-			transform.getScale().x = diff;
-		
-		setEntityProperties();
-	}
 	
 	// Texture constructor
 	public Entity(int id, Texture texture, Transform transform, boolean fullBoundingBox) {		
@@ -82,10 +62,14 @@ public abstract class Entity implements MouseInteraction {
 		this.setFullBoundingBox(fullBoundingBox);
 		
 		float diff = (float)texture.getHeight() / (float)texture.getWidth();
-		if(texture.getHeight() > texture.getWidth())
+		if(texture.getHeight() > texture.getWidth()) {
 			transform.getScale().y = diff;
-		else
+		}
+		else if(texture.getWidth() > texture.getHeight()) {
+			diff = (float)texture.getWidth() / (float)texture.getHeight();
+			transform.setOffsetX((int)WorldRenderer.getScale());
 			transform.getScale().x = diff;
+		}
 		
 		setEntityProperties();	
 	}
@@ -111,10 +95,14 @@ public abstract class Entity implements MouseInteraction {
 			this.setFullBoundingBox(npcParameters.isFullBoundingBox());
 			
 			float diff = (float)texture.getHeight() / (float)texture.getWidth();
-			if(texture.getHeight() > texture.getWidth())
+			if(texture.getHeight() > texture.getWidth()) {
 				transform.getScale().y = diff;
-			else
+			}
+			else if(texture.getWidth() > texture.getHeight()) {
+				diff = (float)texture.getWidth() / (float)texture.getHeight();
+				transform.setOffsetX((int)WorldRenderer.getScale());
 				transform.getScale().x = diff;
+			}
 			
 			setEntityProperties();	
 		}
@@ -141,10 +129,14 @@ public abstract class Entity implements MouseInteraction {
 			this.setFullBoundingBox(npcParameters.isFullBoundingBox());
 			
 			float diff = (float)texture.getHeight() / (float)texture.getWidth();
-			if(texture.getHeight() > texture.getWidth())
+			if(texture.getHeight() > texture.getWidth()) {
 				transform.getScale().y = diff;
-			else
+			}
+			else if(texture.getWidth() > texture.getHeight()) {
+				diff = (float)texture.getWidth() / (float)texture.getHeight();
+				transform.setOffsetX((int)WorldRenderer.getScale());
 				transform.getScale().x = diff;
+			}
 			
 			setEntityProperties();	
 		}
@@ -171,7 +163,7 @@ public abstract class Entity implements MouseInteraction {
 		if(transform.getScale().y < 1)
 			transform.getScale().y = 1;	
 		
-		transform.setOffset((int)WorldRenderer.getScale());
+		transform.setOffsetY((int)WorldRenderer.getScale());
 		
 		float offset = 0;
 		if(fullBoundingBox == false)

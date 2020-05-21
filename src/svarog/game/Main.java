@@ -472,7 +472,7 @@ public class Main {
 		long startNanos = 0;
 		boolean programInit = true;
 		long start = -1;
-		boolean worldLoaded = false;
+		WorldLoader.setWorldLoaded(false);
 		boolean joinThread = false;
 		GuiWindow itemInfo = null;
 		
@@ -562,13 +562,13 @@ public class Main {
 	            	window.swapBuffers(); 
 	            	
 	            	
-	            	if(worldLoaded == false) {            	
+	            	if(WorldLoader.isWorldLoaded() == false) {            	
 		            	currentWorld = WorldLoader.getWorld(WorldLoader.getNextFrameLoadWorld(), player, camera, window);
 		            	currentWorld.start();
 		            	worldRenderer.setWorld(currentWorld);
 		            	worldRenderer.calculateView(window);
 		            	camera.setProjection(window.getWidth(), window.getHeight(), window, WorldRenderer.getScale(), currentWorld.getWidth(), currentWorld.getHeight(), worldRenderer.getWorldOffset());
-		            	worldLoaded = true;
+		            	WorldLoader.setWorldLoaded(true);
 		            	joinThread = true;
 	            	}
 	            	
@@ -629,7 +629,7 @@ public class Main {
 						
 						if(Timer.getDelay(startNanos, Timer.getNanoTime(), 0.4)) {
 							Line name = new Line(0, 0);
-							Entity ent = currentWorld.getEntityById(WorldRenderer.getMouseOverEntityId());
+							Entity ent = currentWorld.getEntityByObjectId(WorldRenderer.getMouseOverEntityId());
 							if(ent != null) {
 								name.setString(ent.getName(), roboto_15);
 							
@@ -710,7 +710,7 @@ public class Main {
 						pathFinder.setIsWorking(1);
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
-						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(9)), guiRenderer);
+						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(20)), guiRenderer);
 						//guiRenderer.addWindow(confirmWindow);
 					}
 					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1 ) {
@@ -750,10 +750,25 @@ public class Main {
 							player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
 							player.setSetCamWithoutAnimation(true);
 							WorldLoader.setNextFrameLoadWorld(currentWorld.getDoor(i).getWorldIdDestination());
-							worldLoaded = false;
+							WorldLoader.setWorldLoaded(false);
 							break;
-						} else 
+						} else {
 							WorldLoader.setNextFrameLoadWorld(0);
+						}
+					}
+					
+					if(ArenaContainer.isArenaClosing()) {
+						player.setMovementLock(false);
+						
+						if(player.getIsFightWin() == 2) {
+							player.setSetCamWithoutAnimation(true);
+							player.setPosition(Save.getPlayerParam().getPositionX(), Save.getPlayerParam().getPositionY());
+							if(WorldLoader.getLoadedWorldId() != 1) {
+								WorldLoader.setNextFrameLoadWorld(1);
+								WorldLoader.setWorldLoaded(false);
+							}
+						}
+						player.setIsFightWin(0);
 					}
 					
 					window.update();
