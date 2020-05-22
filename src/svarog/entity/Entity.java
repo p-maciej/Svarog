@@ -10,6 +10,7 @@ import svarog.objects.MouseInteraction;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.EntityItemParameters;
 import svarog.save.NpcParameters;
 import svarog.world.World;
 import svarog.world.WorldRenderer;
@@ -108,8 +109,42 @@ public abstract class Entity implements MouseInteraction {
 		}
 	}
 	
+	public Entity(int id, EntityItemParameters entityItemParameters, Transform transform) {
+		if(entityItemParameters.getTexturePath().isEmpty() || entityItemParameters.getTexturePath() == null) {
+			this.objectId = auto_increment++;
+			this.setId(id);
+			this.setRespownInSec(0);
+			
+			//this.setName(entityItemParameters.getName());
+			this.transform = transform;
+			this.transform.getPosition().x *= 2;
+			this.transform.getPosition().y *= 2;
+		}else {
+			this.objectId = auto_increment++;
+			this.setId(id);
+			this.setRespownInSec(0);
+			
+			//this.entityName = entityItemParameters.getName();
+			this.texture = new Texture(entityItemParameters.getTexturePath());
+			this.transform = transform;
+			this.setFullBoundingBox(entityItemParameters.isFullBoundingBox());
+			
+			float diff = (float)texture.getHeight() / (float)texture.getWidth();
+			if(texture.getHeight() > texture.getWidth()) {
+				transform.getScale().y = diff;
+			}
+			else if(texture.getWidth() > texture.getHeight()) {
+				diff = (float)texture.getWidth() / (float)texture.getHeight();
+				transform.setOffsetX((int)WorldRenderer.getScale());
+				transform.getScale().x = diff;
+			}
+			
+			setEntityProperties();	
+		}
+	}
+	
 	public Entity(int id, NpcParameters npcParameters, Transform transform) {
-		if(npcParameters.getTexturePath().isEmpty()) {
+		if(npcParameters.getTexturePath().isEmpty() || npcParameters.getTexturePath() == null) {
 			this.objectId = auto_increment++;
 			this.setId(id);
 			this.setRespownInSec(0);

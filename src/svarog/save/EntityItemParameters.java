@@ -8,6 +8,8 @@ public class EntityItemParameters {
 	private String texturePath;
 	private int posX=0;
 	private int posY=0;
+	private int scaleX=1;
+	private int scaleY=1;
 	private boolean fullBoundingBox = true;
 	private String name;
 	private int respownInSec=-1;
@@ -25,17 +27,18 @@ public class EntityItemParameters {
 		this.itemParam = itemParam;
 	}
 	
-	public EntityItemParameters(int entityItemTypeID, String texturePath, int posX, int posY, boolean fullBoundingBox,
+	
+	public EntityItemParameters(int entityItemTypeID, String texturePath, int scaleX, int scaleY, boolean fullBoundingBox,
 			String name, int respownInSec, List<ItemParameters> itemParam) {
 		super();
 		this.entityItemTypeID = entityItemTypeID;
 		this.texturePath = texturePath;
-		this.posX = posX;
-		this.posY = posY;
 		this.fullBoundingBox = fullBoundingBox;
 		this.name = name;
 		this.respownInSec = respownInSec;
 		this.itemParam = itemParam;
+		this.setScaleX(scaleX);
+		this.setScaleY(scaleY);
 	}
 
 	public int getEntityItemTypeID() {
@@ -100,6 +103,22 @@ public class EntityItemParameters {
 
 	public void setItemParam(List<ItemParameters> itemParam) {
 		this.itemParam = itemParam;
+	}
+
+	public int getScaleY() {
+		return scaleY;
+	}
+
+	public void setScaleY(int scaleY) {
+		this.scaleY = scaleY;
+	}
+
+	public int getScaleX() {
+		return scaleX;
+	}
+
+	public void setScaleX(int scaleX) {
+		this.scaleX = scaleX;
 	}
 	
 	

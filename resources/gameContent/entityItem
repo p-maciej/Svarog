@@ -6,6 +6,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>apple</name>
    		<respownInSec>500</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>19</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -16,6 +18,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>MavakChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
 		<itemGlobalID>21</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -28,6 +32,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SmallPotionChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>22</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -38,6 +44,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>BigPotionChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>23</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -48,6 +56,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>LeatherArmorChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
 		<itemGlobalID>30</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -60,6 +70,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>TrophyChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
 		<itemGlobalID>0</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -72,6 +84,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>EmptyChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>0</howManyItems>
 	</entityItem>
 	<entityItem>
@@ -80,6 +94,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SmallandBigPotionChestB</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
 		<itemGlobalID>22</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -92,6 +108,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>EmptyChestB</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>0</howManyItems>
 	</entityItem>
 	<entityItem>
@@ -100,6 +118,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SmallPotionChestB</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>22</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -110,6 +130,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>BigPotionChestB</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>23</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -120,6 +142,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SmallandBigPotionChestA</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
 		<itemGlobalID>22</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -132,6 +156,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>MagicHelmetChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>10</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -142,6 +168,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>MagicArmorChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>26</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -152,6 +180,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>gerwazyNecklace</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>13</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -162,6 +192,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SkotijkaChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>27</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -172,6 +204,8 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>iceCup</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>12</itemGlobalID>
 		<itemTileID>-1</itemTileID>
@@ -182,8 +216,22 @@
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>iceCupChest</name>
    		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>12</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</entityItem>
+	<entityItem>
+		<entityItemTypeID>18</entityItemTypeID>
+   		<texturePath></texturePath>
+   		<fullBoundingBox>true</fullBoundingBox>
+   		<name>tree</name>
+   		<respownInSec>2</respownInSec>
+   		<scaleX>3</scaleX>
+   		<scaleY>8</scaleY>
+   		<howManyItems>1</howManyItems>
+		<itemGlobalID>19</itemGlobalID>
 		<itemTileID>-1</itemTileID>
 	</entityItem>
 </class>

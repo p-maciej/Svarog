@@ -13,6 +13,8 @@ public class ItemInfo implements ItemProperties {
 	private String description;
 	private ItemType itemType;
 	
+	private int prize;
+	
 	public ItemInfo() {
 		this.globalID = -1;
 		this.defense = 0;
@@ -24,7 +26,7 @@ public class ItemInfo implements ItemProperties {
 		this.itemType = ItemType.none;
 	}
 
-	public ItemInfo(int globalID, int defense, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType) {
+	public ItemInfo(int globalID, int defense, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType, int prize) {
 		this.globalID = globalID;
 		this.defense = defense;
 		this.hpRegeneration = hpRegeneration;
@@ -33,6 +35,7 @@ public class ItemInfo implements ItemProperties {
 		this.name = name;
 		this.description = description;
 		this.itemType = itemType;
+		this.setPrize(prize);
 	}
 
 	public int getHpRegeneration() {
@@ -114,5 +117,13 @@ public class ItemInfo implements ItemProperties {
 
 	public void setDefense(int defense) {
 		this.defense = defense;
+	}
+
+	public int getPrize() {
+		return prize;
+	}
+
+	public void setPrize(int prize) {
+		this.prize = prize;
 	}
 }

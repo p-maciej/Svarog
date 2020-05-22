@@ -37,6 +37,18 @@ public class EntityHolder {
 		this.posX = posX;
 		this.posY = posY;
 	}
+	//entityItem
+	public EntityHolder(String type, int id, int typeID, String name, int posX, int posY, int scaleX, int scaleY) {
+		super();
+		this.type = type;
+		this.id = id;
+		this.typeID = typeID;
+		this.name = name;
+		this.posX = posX;
+		this.posY = posY;
+		this.scaleX = scaleX;
+		this.scaleY = scaleY;
+	}
 	
 	public String getType() {
 		return type;

@@ -566,4 +566,12 @@
 		<posX>15</posX>
 		<posY>46</posY>
 	</entity>
+		<entity>
+		<type>entityItem</type>
+		<id>65</id>
+		<typeID>18</typeID>
+		<name>Tree</name>
+		<posX>90</posX>
+		<posY>6</posY>
+	</entity>
 </class>
