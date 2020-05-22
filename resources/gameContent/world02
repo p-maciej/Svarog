@@ -662,4 +662,23 @@
 		<posX>75</posX>
 		<posY>17</posY>
 	</entity>
+	<entity>
+		<type>npc</type>
+		<id>83</id>
+		<typeID>7</typeID>
+		<name>NPCGerwazy</name>
+		<posX>11</posX>
+		<posY>2</posY>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
+		<isClickable>true</isClickable>
+	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>84</id>
+		<typeID>14</typeID>
+		<name></name>
+		<posX>11</posX>
+		<posY>3</posY>
+	</entity>
 </class>

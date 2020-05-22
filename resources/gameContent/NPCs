@@ -79,7 +79,7 @@
 	</npc>
 	<npc>
 		<globalID>7</globalID>
-		<texturePath>textures/npc/gerwazyBody.png</texturePath>
+		<texturePath></texturePath>
 		<posX>40</posX>
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
