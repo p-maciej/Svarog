@@ -507,7 +507,7 @@ public class Main {
             	
             	
             	if(menuStartButton.isClicked() || menuResumeButton.isClicked()) {
-            		Save.ResetEntityRespowns();
+            		//Save.ResetEntityRespowns(); // <-- maybe in future it need isWorldWasLoaded boolaean and more files-xml work to working blahblahblah ask JG
             		Save.ReadFrom("MainSave.save");
             		showMenu = false;
             	}
@@ -784,6 +784,7 @@ public class Main {
 					for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
 						if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
 							Save.SaveWorldEntityRespown(currentWorld);
+							Save.SaveAs("Save", player, currentWorld);
 							player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());
 							player.setSetCamWithoutAnimation(true);
 							WorldLoader.setNextFrameLoadWorld(currentWorld.getDoor(i).getWorldIdDestination());
