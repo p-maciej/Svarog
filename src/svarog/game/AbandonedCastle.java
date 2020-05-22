@@ -1,9 +1,11 @@
 package svarog.game;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import svarog.entity.Enemy;
+import svarog.entity.Entity;
 import svarog.entity.EntityItem;
 import svarog.entity.NPC;
 import svarog.entity.Player;
@@ -15,6 +17,7 @@ import svarog.save.Save;
 import svarog.world.Door;
 import svarog.world.Tile;
 import svarog.world.World;
+import svarog.world.World.EntityRespawn;
 
 abstract class AbandonedCastle {
 	public static World getWorld(Player player, Camera camera, Window window) {
@@ -23,17 +26,28 @@ abstract class AbandonedCastle {
 		world.setSolidTilesFromMap("abandonedCastle_mask.png");
 
 		List<EntityHolder> temp = Save.ReadWorldEntities("world02");
+		List<Entity> entityLocal = new ArrayList<Entity>();
 		
 		for(EntityHolder i: temp) {
 			if(i.getType().equals("npc")) {
-				world.addEntity(new NPC(i));
+				entityLocal.add((Entity) new NPC(i));
 			}else if(i.getType().equals("enemy")) {
-				world.addEntity(new Enemy(i));
+				entityLocal.add((Entity) new Enemy(i));
 			}else if(i.getType().equals("entityItem")){
-				world.addEntity(new EntityItem(i));
+				entityLocal.add((Entity) new EntityItem(i));
 			}else {
-				System.out.println("WTF???");
+				System.out.println("That kind of entity doesnt exist...");
 			}
+		}
+		
+		//Save.ReadEntityRespown(world.getId(), entityLocal, world);
+		for(EntityRespawn i: Save.ReadEntityRespown(world.getId(), entityLocal, world)) {
+			world.addEntitiesToRespawn(i);
+		}
+		
+		//Adding to World
+		for(Entity i: entityLocal) {
+			world.addEntity((svarog.entity.Entity) i);
 		}
 		
 		world.addEntity(player);

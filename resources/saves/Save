@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <class>
 <save id="0">
-<worldID>1</worldID>
-<getPositionX>22</getPositionX>
-<getPositionY>57</getPositionY>
+<worldID>2</worldID>
+<getPositionX>2</getPositionX>
+<getPositionY>40</getPositionY>
 <getId>0</getId>
 <getTexturesPath>player/mavak/</getTexturesPath>
 <getFileName>mavak</getFileName>
 <getFullBoundingBox>false</getFullBoundingBox>
 <isMovementLocked>false</isMovementLocked>
-<getHP>100</getHP>
+<getHP>53</getHP>
 <getMaxHP>100</getMaxHP>
-<getXP>0</getXP>
+<getXP>210</getXP>
 <getMinAttack>50</getMinAttack>
 <getMaxAttack>60</getMaxAttack>
-<getMoney>0</getMoney>
+<getMoney>250</getMoney>
 <getName>Ty</getName>
-<howManyItems>9</howManyItems>
+<howManyItems>15</howManyItems>
 <getGlobalID>29</getGlobalID>
 <getTileID>6</getTileID>
 <getGlobalID>15</getGlobalID>
@@ -35,7 +35,19 @@
 <getTileID>13</getTileID>
 <getGlobalID>12</getGlobalID>
 <getTileID>14</getTileID>
-<howManyQuests>2</howManyQuests>
+<getGlobalID>0</getGlobalID>
+<getTileID>15</getTileID>
+<getGlobalID>6</getGlobalID>
+<getTileID>16</getTileID>
+<getGlobalID>1</getGlobalID>
+<getTileID>17</getTileID>
+<getGlobalID>2</getGlobalID>
+<getTileID>18</getTileID>
+<getGlobalID>1</getGlobalID>
+<getTileID>19</getTileID>
+<getGlobalID>6</getGlobalID>
+<getTileID>20</getTileID>
+<howManyQuests>1</howManyQuests>
 <howManyTasks>1</howManyTasks>
 <getTaskID>0</getTaskID>
 <getToDo>1</getToDo>
@@ -46,23 +58,6 @@
 <getQuestID>-3</getQuestID>
 <getTitle>Pogadaj z Rozenna</getTitle>
 <getDescription>Idz do Rozenny, ona znajdzie dla wiecej tekstu dla PagedGuiWindow ciebie jakiegos questa</getDescription>
-<isEndedQuest>false</isEndedQuest>
-<howManyTasks>2</howManyTasks>
-<getTaskID>0</getTaskID>
-<getToDo>6</getToDo>
-<getDoItemID>6</getDoItemID>
-<getState>kill</getState>
-<getIsEnded>false</getIsEnded>
-<getHowMuchIsDone>0</getHowMuchIsDone>
-<getTaskID>1</getTaskID>
-<getToDo>1</getToDo>
-<getDoItemID>7</getDoItemID>
-<getState>kill</getState>
-<getIsEnded>false</getIsEnded>
-<getHowMuchIsDone>0</getHowMuchIsDone>
-<getQuestID>3</getQuestID>
-<getTitle>QuestID3_KillBandits_Title</getTitle>
-<getDescription>QuestID3_KillBandits_Desc</getDescription>
 <isEndedQuest>false</isEndedQuest>
 </save>
 </class>
