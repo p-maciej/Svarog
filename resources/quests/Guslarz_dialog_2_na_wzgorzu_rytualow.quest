@@ -219,7 +219,7 @@
 	  <description>QuestID4_HelpGuslarz_Desc</description>
 	  <t>1</t>
 	  <taskID>0</taskID>
-      <toDo>13</toDo>
+      <toDo>12</toDo>
       <doItemID>9</doItemID>
       <state>kill</state>
    </dialog>
