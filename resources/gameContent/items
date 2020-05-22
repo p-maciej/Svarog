@@ -10,6 +10,7 @@
    		<name>wolfSkin</name>
    		<description>wolfSkinDescription</description>
    		<itemType>trophy</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/wargSkin.png</TextureFileName>
@@ -21,6 +22,7 @@
    		<name>wargSkin</name>
    		<description>wargSkinDescription</description>
    		<itemType>trophy</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/fangs.png</TextureFileName>
@@ -32,6 +34,7 @@
    		<name>fangs</name>
    		<description>fangsDescription</description>
    		<itemType>trophy</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/ghoulBlood.png</TextureFileName>
@@ -43,6 +46,7 @@
    		<name>ghoulBlood</name>
    		<description>ghoulBloodDescription</description>
    		<itemType>trophy</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/strigoiHeart.png</TextureFileName>
@@ -54,6 +58,7 @@
    		<name>strigoiHeart</name>
    		<description>strigoiHeartDescription</description>
    		<itemType>trophy</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/nightHair.png</TextureFileName>
@@ -65,6 +70,7 @@
    		<name>nightHair</name>
    		<description>nightHairDescription</description>
    		<itemType>trophy</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/claws.png</TextureFileName>
@@ -76,6 +82,7 @@
    		<name>claws</name>
    		<description>clawsDescription</description>
    		<itemType>trophy</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/werewolfSkin.png</TextureFileName>
@@ -87,6 +94,7 @@
    		<name>werewolfSkin</name>
    		<description>werewolfSkinDescription</description>
    		<itemType>trophy</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/nixieTongue.png</TextureFileName>
@@ -98,6 +106,7 @@
    		<name>nixieTongue</name>
    		<description>nixieTongueDescription</description>
    		<itemType>trophy</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/artefacts/natureCrown.png</TextureFileName>
@@ -109,6 +118,7 @@
    		<name>natureCrown</name>
    		<description>natureCrownDescription</description>
    		<itemType>helm</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/magicHelmet.png</TextureFileName>
@@ -120,6 +130,7 @@
    		<name>magicHelmet</name>
    		<description>magicHelmetDescription</description>
    		<itemType>helm</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/quest/moneyBag.png</TextureFileName>
@@ -131,6 +142,7 @@
    		<name>moneyBag</name>
    		<description>moneyBagDescription</description>
    		<itemType>other</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/quest/iceCup.png</TextureFileName>
@@ -142,6 +154,7 @@
    		<name>iceCup</name>
    		<description>iceCupDescription</description>
    		<itemType>other</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/quest/gerwazyNecklace.png</TextureFileName>
@@ -153,6 +166,7 @@
    		<name>gerwazyNecklace</name>
    		<description>gerwazyNecklaceDescription</description>
    		<itemType>other</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/artefacts/poran.png</TextureFileName>
@@ -164,6 +178,7 @@
    		<name>poran</name>
    		<description>poranDescription</description>
    		<itemType>weapon</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/mavakFamilySword.png</TextureFileName>
@@ -175,6 +190,7 @@
    		<name>mavakFamilySword</name>
    		<description>mavakFamilySwordDescription</description>
    		<itemType>weapon</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/banditSword.png</TextureFileName>
@@ -186,6 +202,7 @@
    		<name>banditSword</name>
    		<description>banditSwordDescription</description>
    		<itemType>weapon</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/banditMorgenstern.png</TextureFileName>
@@ -197,6 +214,7 @@
    		<name>banditMorgenstern</name>
    		<description>banditMorgensternDescription</description>
    		<itemType>weapon</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/adventurerZweihander.png</TextureFileName>
@@ -208,6 +226,7 @@
    		<name>adventurerZweihander</name>
    		<description>adventurerZweihanderDescription</description>
    		<itemType>weapon</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/food/apple.png</TextureFileName>
@@ -219,6 +238,7 @@
    		<name>apple</name>
    		<description>appleDescription</description>
    		<itemType>consumable</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/food/goldenBerry.png</TextureFileName>
@@ -230,6 +250,7 @@
    		<name>goldenBerry</name>
    		<description>goldenBerryDescription</description>
    		<itemType>consumable</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/food/applePie.png</TextureFileName>
@@ -241,6 +262,7 @@
    		<name>applePie</name>
    		<description>applePieDescription</description>
    		<itemType>consumable</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/food/smallPotion.png</TextureFileName>
@@ -252,6 +274,7 @@
    		<name>smallPotion</name>
    		<description>smallPotionDescription</description>
    		<itemType>consumable</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/food/bigPotion.png</TextureFileName>
@@ -263,6 +286,7 @@
    		<name>bigPotion</name>
    		<description>bigPotionDescription</description>
    		<itemType>consumable</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/leatherBreastplate.png</TextureFileName>
@@ -274,6 +298,7 @@
    		<name>leatherBreastplate</name>
    		<description>leatherBreastplateDescription</description>
    		<itemType>armor</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/artefacts/deathComing.png</TextureFileName>
@@ -285,6 +310,7 @@
    		<name>deathComing</name>
    		<description>deathComingDescription</description>
    		<itemType>armor</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/magicArmor.png</TextureFileName>
@@ -296,6 +322,7 @@
    		<name>magicArmor</name>
    		<description>magicArmorDescription</description>
    		<itemType>armor</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/artefacts/skotijka.png</TextureFileName>
@@ -307,6 +334,7 @@
    		<name>skotijka</name>
    		<description>skotijkaDescription</description>
    		<itemType>gloves</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/leatherGloves.png</TextureFileName>
@@ -318,6 +346,7 @@
    		<name>leatherGloves</name>
    		<description>leatherGlovesDescription</description>
    		<itemType>gloves</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/onuce.png</TextureFileName>
@@ -329,6 +358,7 @@
    		<name>onuce</name>
    		<description>onuceDescription</description>
    		<itemType>shoes</itemType>
+   		<prize>1</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/equipment/leatherBoots.png</TextureFileName>
@@ -340,5 +370,6 @@
    		<name>leatherBoots</name>
    		<description>leatherBootsDescription</description>
    		<itemType>shoes</itemType>
+   		<prize>1</prize>
 	</item>
 </class>

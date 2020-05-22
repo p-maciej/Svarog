@@ -72,7 +72,8 @@ public class Save {
 									Integer.parseInt(eElement.getElementsByTagName("lvlRequired").item(0).getTextContent()),
 									eElement.getElementsByTagName("name").item(0).getTextContent(),
 									eElement.getElementsByTagName("description").item(0).getTextContent(), 
-									ItemType.valueOf(eElement.getElementsByTagName("itemType").item(0).getTextContent())
+									ItemType.valueOf(eElement.getElementsByTagName("itemType").item(0).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("prize").item(0).getTextContent())
 								));
 					items.add(item);
 				}
@@ -339,7 +340,8 @@ public class Save {
 										temporary.getItemInfo().getLvlRequired(),
 										temporary.getItemInfo().getName(),
 										temporary.getItemInfo().getDescription(),
-										temporary.getItemInfo().getItemType()));
+										temporary.getItemInfo().getItemType(),
+										temporary.getItemInfo().getPrize()));
 						item.getItemInfo().setTileID(Integer.parseInt(eElement.getElementsByTagName("getTileID").item(i).getTextContent()));
 						tempItem.add(item);
 					}
