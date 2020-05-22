@@ -443,12 +443,20 @@
       <leadsTo>-1</leadsTo>
       <q>1</q>
 	  <questID>0</questID>
-	  <title>Znajdż 4 boskie artefakty</title>
-	  <description>A więc to nie były zwykłe sny. To była przepowiednia tego co ma stać. Podczas poszukiwania jabłek przemówił do mnie sam Rod. Powiedział że jestem złączony jakimś Boskim Przeznaczeniem i teraz powinienem poszukać 4 artefaktów. Jeden już mam zostały jeszcze 3. Coś czuję że to będzie ciekawa i niebezpieczna przygoda.</description>
-	  <t>1</t>
+	  <title>QuestID0_MainQuest_Title</title>
+	  <description>QuestID0_MainQuest_Desc</description>
+	  <t>3</t>
 	  <taskID>0</taskID>
-      <toDo>4</toDo>
-      <doItemID>4</doItemID>
+      <toDo>1</toDo>
+      <doItemID>27</doItemID>
+      <state>collect</state>
+	  <taskID>1</taskID>
+      <toDo>1</toDo>
+      <doItemID>25</doItemID>
+      <state>collect</state>
+	  <taskID>2</taskID>
+      <toDo>1</toDo>
+      <doItemID>9</doItemID>
       <state>collect</state>
    </dialog>
 </class>

@@ -567,8 +567,8 @@
 	  <description>QuestID2_KillWolfes_Desc</description>
 	  <t>1</t>
 	  <taskID>0</taskID>
-      <toDo>6</toDo>
-      <doItemID>6</doItemID>
+      <toDo>5</toDo>
+      <doItemID>0</doItemID>
       <state>kill</state>
    </dialog>
    <dialog id = "62">

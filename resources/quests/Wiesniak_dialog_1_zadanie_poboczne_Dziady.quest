@@ -69,7 +69,14 @@
       <answer>End</answer>
       <id>0</id>
       <leadsTo>-1</leadsTo>
-      <q>0</q>
-      <t>0</t>
+      <q>1</q>
+	  <questID>8</questID>
+	  <title>QuestID8_TalkGuslarz_Title</title>
+	  <description>QuestID8_TalkGuslarz_Desc</description>
+	  <t>1</t>
+	  <taskID>0</taskID>
+      <toDo>1</toDo>
+      <doItemID>11</doItemID>
+      <state>talk</state>
    </dialog>
 </class>

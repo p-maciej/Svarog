@@ -154,11 +154,15 @@
 	  <questID>1</questID>
 	  <title>QuestID1_CollectApples_Title</title>
 	  <description>QuestID1_CollectApples_Desc</description>
-	  <t>1</t>
+	  <t>2</t>
 	  <taskID>0</taskID>
       <toDo>5</toDo>
       <doItemID>19</doItemID>
       <state>collect</state>
+	  <taskID>1</taskID>
+      <toDo>1</toDo>
+      <doItemID>10</doItemID>
+      <state>talk</state>
    </dialog>
    <dialog id = "17">
       <content>RozandMav_dialog1_line17</content>

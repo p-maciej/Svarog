@@ -138,7 +138,7 @@
 		<hp>150</hp>
 		<reward>75</reward>
 		<name>ENEMYbandit</name>
-		<respownInSeconds>-1</respownInSeconds>
+		<respownInSeconds>300</respownInSeconds>
 		<level>2</level>
 		<howManyItems>2</howManyItems>
 		<itemGlobalID>16</itemGlobalID>
@@ -160,7 +160,7 @@
 		<hp>200</hp>
 		<reward>250</reward>
 		<name>ENEMYbanditLeader</name>
-		<respownInSeconds>-1</respownInSeconds>
+		<respownInSeconds>300</respownInSeconds>
 		<level>5</level>
 		<howManyItems>3</howManyItems>
 		<itemGlobalID>17</itemGlobalID>

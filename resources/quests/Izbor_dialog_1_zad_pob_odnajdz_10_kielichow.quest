@@ -256,7 +256,7 @@
 	  <t>1</t>
 	  <taskID>0</taskID>
       <toDo>10</toDo>
-      <doItemID>10</doItemID>
+      <doItemID>12</doItemID>
       <state>collect</state>
    </dialog>
     <dialog id = "28">

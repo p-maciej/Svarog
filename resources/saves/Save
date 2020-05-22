@@ -2,8 +2,8 @@
 <class>
 <save id="0">
 <worldID>1</worldID>
-<getPositionX>34</getPositionX>
-<getPositionY>25</getPositionY>
+<getPositionX>22</getPositionX>
+<getPositionY>57</getPositionY>
 <getId>0</getId>
 <getTexturesPath>player/mavak/</getTexturesPath>
 <getFileName>mavak</getFileName>
@@ -35,7 +35,7 @@
 <getTileID>13</getTileID>
 <getGlobalID>12</getGlobalID>
 <getTileID>14</getTileID>
-<howManyQuests>1</howManyQuests>
+<howManyQuests>2</howManyQuests>
 <howManyTasks>1</howManyTasks>
 <getTaskID>0</getTaskID>
 <getToDo>1</getToDo>
@@ -46,6 +46,23 @@
 <getQuestID>-3</getQuestID>
 <getTitle>Pogadaj z Rozenna</getTitle>
 <getDescription>Idz do Rozenny, ona znajdzie dla wiecej tekstu dla PagedGuiWindow ciebie jakiegos questa</getDescription>
+<isEndedQuest>false</isEndedQuest>
+<howManyTasks>2</howManyTasks>
+<getTaskID>0</getTaskID>
+<getToDo>6</getToDo>
+<getDoItemID>6</getDoItemID>
+<getState>kill</getState>
+<getIsEnded>false</getIsEnded>
+<getHowMuchIsDone>0</getHowMuchIsDone>
+<getTaskID>1</getTaskID>
+<getToDo>1</getToDo>
+<getDoItemID>7</getDoItemID>
+<getState>kill</getState>
+<getIsEnded>false</getIsEnded>
+<getHowMuchIsDone>0</getHowMuchIsDone>
+<getQuestID>3</getQuestID>
+<getTitle>QuestID3_KillBandits_Title</getTitle>
+<getDescription>QuestID3_KillBandits_Desc</getDescription>
 <isEndedQuest>false</isEndedQuest>
 </save>
 </class>

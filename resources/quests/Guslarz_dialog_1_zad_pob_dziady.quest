@@ -219,8 +219,8 @@
 	  <description>QuestID4_HelpGuslarz_Desc</description>
 	  <t>1</t>
 	  <taskID>0</taskID>
-      <toDo>10</toDo>
-      <doItemID>10</doItemID>
-      <state>kill</state>
+      <toDo>1</toDo>
+      <doItemID>12</doItemID>
+      <state>talk</state>
    </dialog>
 </class>

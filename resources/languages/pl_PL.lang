@@ -1150,11 +1150,11 @@
     </variable>
 	<variable>
         <key>MojmandMav_dialog2_line2</key>
-        <translation>[Mavak] – Nie powienienem tego robić ale na znak dowodu wezmę ze sobą jego naszyjnik.</translation>
+        <translation>[Mavak] – Nie powienienem tego robić ale na znak dowodu wezmę ze sobą jego naszyjnik. Widzę że leży przy jego ciele.</translation>
     </variable>
 	<variable>
         <key>MojmandMav_dialog2_line3</key>
-        <translation>*Dodano do ekwipunku: Naszyjnik Gerwazego*</translation>
+        <translation>[Mavak] - Szykuje się cieżka rozmowa z Mojmirą.</translation>
     </variable>
 	<!--3 Dialog Mojmiry z Mavakiem-->
 	<variable>
@@ -1730,7 +1730,7 @@
     </variable>
 	<variable>
         <key>QuestID0_MainQuest_Desc</key>
-        <translation>A więc to nie były zwykłe sny. To była przepowiednia tego co ma stać. Podczas poszukiwania jabłek przemówił do mnie sam Rod. Powiedział że jestem złączony jakimś Boskim Przeznaczeniem i teraz powinienem poszukać 4 artefaktów. Jeden już mam zostały jeszcze 3. Coś czuję że to będzie ciekawa i niebezpieczna przygoda.</translation>
+        <translation>A więc to nie były zwykłe sny. To była przepowiednia tego co ma stać. Podczas poszukiwania jabłek przemówił do mnie sam Rod. Powiedział że jestem złączony jakimś Boskim Przeznaczeniem i teraz powinienem poszukać 4 artefaktów. Jeden już mam, jest to miecz Poran. Zostały jeszcze 3. Coś czuję że to będzie ciekawa i niebezpieczna przygoda.</translation>
     </variable>
 	<!--1 Dialog Rozenny z Mavakiem-->
 	<variable>
@@ -2124,5 +2124,17 @@
 	<variable>
         <key>iceCupChest</key>
         <translation>Skrzynia</translation>
+    </variable>
+	<variable>
+        <key>tree</key>
+        <translation>Jabłoń</translation>
+    </variable>
+	<variable>
+        <key>QuestID8_TalkGuslarz_Title</key>
+        <translation>Porozmawiaj z Guślarzem.</translation>
+    </variable>
+	<variable>
+        <key>QuestID8_TalkGuslarz_Desc</key>
+        <translation>Guślarz podobno czegoś ode mnie chce. Powinienem z nim porozmawiać.</translation>
     </variable>
 </file>

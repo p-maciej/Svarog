@@ -213,7 +213,14 @@
       <answer>End</answer>
       <id>0</id>
       <leadsTo>-1</leadsTo>
-      <q>0</q>
-      <t>0</t>
+      <q>1</q>
+	  <questID>4</questID>
+	  <title>QuestID4_HelpGuslarz_Title</title>
+	  <description>QuestID4_HelpGuslarz_Desc</description>
+	  <t>1</t>
+	  <taskID>0</taskID>
+      <toDo>13</toDo>
+      <doItemID>9</doItemID>
+      <state>kill</state>
    </dialog>
 </class>

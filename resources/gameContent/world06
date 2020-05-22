@@ -4,7 +4,7 @@
 		<type>enemy</type>
 		<id>1</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>14</posX>
 		<posY>41</posY>
 	</entity>
@@ -12,7 +12,7 @@
 		<type>enemy</type>
 		<id>2</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>10</posX>
 		<posY>40</posY>
 	</entity>
@@ -20,7 +20,7 @@
 		<type>enemy</type>
 		<id>3</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>10</posX>
 		<posY>34</posY>
 	</entity>
@@ -28,7 +28,7 @@
 		<type>enemy</type>
 		<id>4</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>10</posX>
 		<posY>28</posY>
 	</entity>
@@ -36,7 +36,7 @@
 		<type>enemy</type>
 		<id>5</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>10</posX>
 		<posY>22</posY>
 	</entity>
@@ -44,7 +44,7 @@
 		<type>enemy</type>
 		<id>6</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>10</posX>
 		<posY>18</posY>
 	</entity>
@@ -52,7 +52,7 @@
 		<type>enemy</type>
 		<id>7</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>11</posX>
 		<posY>13</posY>
 	</entity>
@@ -60,7 +60,7 @@
 		<type>enemy</type>
 		<id>8</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>6</posX>
 		<posY>39</posY>
 	</entity>
@@ -68,7 +68,7 @@
 		<type>enemy</type>
 		<id>9</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>6</posX>
 		<posY>33</posY>
 	</entity>
@@ -76,7 +76,7 @@
 		<type>enemy</type>
 		<id>10</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>5</posX>
 		<posY>26</posY>
 	</entity>
@@ -84,7 +84,7 @@
 		<type>enemy</type>
 		<id>11</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>4</posX>
 		<posY>22</posY>
 	</entity>
@@ -92,7 +92,7 @@
 		<type>enemy</type>
 		<id>12</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>1</posX>
 		<posY>23</posY>
 	</entity>
@@ -100,7 +100,7 @@
 		<type>npc</type>
 		<id>13</id>
 		<typeID>12</typeID>
-		<name>Guslarz</name>
+		<name>guslarzRitualHill</name>
 		<posX>25</posX>
 		<posY>24</posY>
 		<scaleX>1</scaleX>

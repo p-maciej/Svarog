@@ -234,4 +234,16 @@
 		<itemGlobalID>19</itemGlobalID>
 		<itemTileID>-1</itemTileID>
 	</entityItem>
+	<entityItem>
+		<entityItemTypeID>19</entityItemTypeID>
+   		<texturePath>textures/items/artefacts/poran.png</texturePath>
+   		<fullBoundingBox>true</fullBoundingBox>
+   		<name>poran</name>
+   		<respownInSec>-1</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
+   		<howManyItems>1</howManyItems>
+		<itemGlobalID>14</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</entityItem>
 </class>

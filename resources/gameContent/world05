@@ -4,7 +4,7 @@
 		<type>enemy</type>
 		<id>1</id>
 		<typeID>10</typeID>
-		<name>Wilkolak</name>
+		<name>ENEMYwarewolf</name>
 		<posX>78</posX>
 		<posY>52</posY>
 	</entity>
@@ -12,7 +12,7 @@
 		<type>enemy</type>
 		<id>2</id>
 		<typeID>10</typeID>
-		<name>Wilkolak</name>
+		<name>ENEMYwarewolf</name>
 		<posX>44</posX>
 		<posY>30</posY>
 	</entity>
@@ -20,7 +20,7 @@
 		<type>enemy</type>
 		<id>3</id>
 		<typeID>10</typeID>
-		<name>Wilkolak</name>
+		<name>ENEMYwarewolf</name>
 		<posX>44</posX>
 		<posY>6</posY>
 	</entity>
@@ -28,7 +28,7 @@
 		<type>enemy</type>
 		<id>4</id>
 		<typeID>10</typeID>
-		<name>Wilkolak</name>
+		<name>ENEMYwarewolf</name>
 		<posX>58</posX>
 		<posY>51</posY>
 	</entity>
@@ -36,7 +36,7 @@
 		<type>enemy</type>
 		<id>5</id>
 		<typeID>10</typeID>
-		<name>Wilkolak</name>
+		<name>ENEMYwarewolf</name>
 		<posX>19</posX>
 		<posY>39</posY>
 	</entity>
@@ -44,7 +44,7 @@
 		<type>enemy</type>
 		<id>6</id>
 		<typeID>10</typeID>
-		<name>Wilkolak</name>
+		<name>ENEMYwarewolf</name>
 		<posX>6</posX>
 		<posY>87</posY>
 	</entity>
@@ -52,7 +52,7 @@
 		<type>enemy</type>
 		<id>7</id>
 		<typeID>10</typeID>
-		<name>Wilkolak</name>
+		<name>ENEMYwarewolf</name>
 		<posX>31</posX>
 		<posY>93</posY>
 	</entity>
@@ -60,7 +60,7 @@
 		<type>enemy</type>
 		<id>8</id>
 		<typeID>10</typeID>
-		<name>Wilkolak</name>
+		<name>ENEMYwarewolf</name>
 		<posX>7</posX>
 		<posY>55</posY>
 	</entity>
@@ -68,7 +68,7 @@
 		<type>enemy</type>
 		<id>9</id>
 		<typeID>10</typeID>
-		<name>Wilkolak</name>
+		<name>ENEMYwarewolf</name>
 		<posX>14</posX>
 		<posY>22</posY>
 	</entity>
@@ -76,7 +76,7 @@
 		<type>enemy</type>
 		<id>10</id>
 		<typeID>5</typeID>
-		<name>Leszy</name>
+		<name>ENEMYleszy</name>
 		<posX>14</posX>
 		<posY>5</posY>
 	</entity>
@@ -84,7 +84,7 @@
 		<type>enemy</type>
 		<id>11</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>83</posX>
 		<posY>7</posY>
 	</entity>
@@ -92,7 +92,7 @@
 		<type>enemy</type>
 		<id>12</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>88</posX>
 		<posY>8</posY>
 	</entity>
@@ -100,7 +100,7 @@
 		<type>enemy</type>
 		<id>13</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>88</posX>
 		<posY>11</posY>
 	</entity>
@@ -108,7 +108,7 @@
 		<type>enemy</type>
 		<id>14</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>88</posX>
 		<posY>13</posY>
 	</entity>
@@ -116,7 +116,7 @@
 		<type>enemy</type>
 		<id>15</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>76</posX>
 		<posY>14</posY>
 	</entity>
@@ -124,7 +124,7 @@
 		<type>enemy</type>
 		<id>16</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>83</posX>
 		<posY>23</posY>
 	</entity>
@@ -132,7 +132,7 @@
 		<type>enemy</type>
 		<id>17</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>86</posX>
 		<posY>20</posY>
 	</entity>
@@ -140,7 +140,7 @@
 		<type>enemy</type>
 		<id>18</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>91</posX>
 		<posY>18</posY>
 	</entity>
@@ -148,7 +148,7 @@
 		<type>enemy</type>
 		<id>19</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>88</posX>
 		<posY>22</posY>
 	</entity>
@@ -156,7 +156,7 @@
 		<type>enemy</type>
 		<id>20</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>80</posX>
 		<posY>27</posY>
 	</entity>
@@ -164,7 +164,7 @@
 		<type>enemy</type>
 		<id>21</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>84</posX>
 		<posY>28</posY>
 	</entity>
@@ -172,7 +172,7 @@
 		<type>enemy</type>
 		<id>22</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>86</posX>
 		<posY>30</posY>
 	</entity>
@@ -180,7 +180,7 @@
 		<type>enemy</type>
 		<id>23</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>87</posX>
 		<posY>33</posY>
 	</entity>
@@ -188,7 +188,7 @@
 		<type>enemy</type>
 		<id>24</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>85</posX>
 		<posY>36</posY>
 	</entity>
@@ -196,7 +196,7 @@
 		<type>enemy</type>
 		<id>25</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>79</posX>
 		<posY>36</posY>
 	</entity>
@@ -204,7 +204,7 @@
 		<type>enemy</type>
 		<id>26</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>88</posX>
 		<posY>39</posY>
 	</entity>
@@ -212,7 +212,7 @@
 		<type>enemy</type>
 		<id>27</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>77</posX>
 		<posY>41</posY>
 	</entity>
@@ -220,7 +220,7 @@
 		<type>enemy</type>
 		<id>28</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>81</posX>
 		<posY>42</posY>
 	</entity>
@@ -228,7 +228,7 @@
 		<type>enemy</type>
 		<id>29</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>81</posX>
 		<posY>46</posY>
 	</entity>
@@ -236,7 +236,7 @@
 		<type>enemy</type>
 		<id>30</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>85</posX>
 		<posY>46</posY>
 	</entity>
@@ -244,7 +244,7 @@
 		<type>enemy</type>
 		<id>31</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>84</posX>
 		<posY>49</posY>
 	</entity>
@@ -252,7 +252,7 @@
 		<type>enemy</type>
 		<id>32</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>90</posX>
 		<posY>47</posY>
 	</entity>
@@ -260,7 +260,7 @@
 		<type>enemy</type>
 		<id>33</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>94</posX>
 		<posY>57</posY>
 	</entity>
@@ -268,7 +268,7 @@
 		<type>enemy</type>
 		<id>34</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>93</posX>
 		<posY>58</posY>
 	</entity>
@@ -276,7 +276,7 @@
 		<type>enemy</type>
 		<id>35</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>95</posX>
 		<posY>60</posY>
 	</entity>
@@ -284,7 +284,7 @@
 		<type>enemy</type>
 		<id>36</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>69</posX>
 		<posY>34</posY>
 	</entity>
@@ -292,7 +292,7 @@
 		<type>enemy</type>
 		<id>37</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>70</posX>
 		<posY>32</posY>
 	</entity>
@@ -300,7 +300,7 @@
 		<type>enemy</type>
 		<id>38</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>65</posX>
 		<posY>37</posY>
 	</entity>
@@ -308,7 +308,7 @@
 		<type>enemy</type>
 		<id>39</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>60</posX>
 		<posY>33</posY>
 	</entity>
@@ -316,7 +316,7 @@
 		<type>enemy</type>
 		<id>40</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>64</posX>
 		<posY>27</posY>
 	</entity>
@@ -324,7 +324,7 @@
 		<type>enemy</type>
 		<id>41</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>61</posX>
 		<posY>25</posY>
 	</entity>
@@ -332,7 +332,7 @@
 		<type>enemy</type>
 		<id>42</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>67</posX>
 		<posY>25</posY>
 	</entity>
@@ -340,7 +340,7 @@
 		<type>enemy</type>
 		<id>43</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>58</posX>
 		<posY>27</posY>
 	</entity>
@@ -348,7 +348,7 @@
 		<type>enemy</type>
 		<id>44</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>53</posX>
 		<posY>29</posY>
 	</entity>
@@ -356,7 +356,7 @@
 		<type>enemy</type>
 		<id>45</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>40</posX>
 		<posY>12</posY>
 	</entity>
@@ -364,7 +364,7 @@
 		<type>enemy</type>
 		<id>46</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>45</posX>
 		<posY>17</posY>
 	</entity>
@@ -372,7 +372,7 @@
 		<type>enemy</type>
 		<id>47</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>47</posX>
 		<posY>20</posY>
 	</entity>
@@ -380,7 +380,7 @@
 		<type>enemy</type>
 		<id>48</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>49</posX>
 		<posY>22</posY>
 	</entity>
@@ -388,7 +388,7 @@
 		<type>enemy</type>
 		<id>49</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>49</posX>
 		<posY>13</posY>
 	</entity>
@@ -396,7 +396,7 @@
 		<type>enemy</type>
 		<id>50</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>56</posX>
 		<posY>10</posY>
 	</entity>
@@ -404,7 +404,7 @@
 		<type>enemy</type>
 		<id>51</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>66</posX>
 		<posY>14</posY>
 	</entity>
@@ -412,7 +412,7 @@
 		<type>enemy</type>
 		<id>52</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>68</posX>
 		<posY>14</posY>
 	</entity>
@@ -420,7 +420,7 @@
 		<type>enemy</type>
 		<id>53</id>
 		<typeID>2</typeID>
-		<name>Polnocnica</name>
+		<name>ENEMYpixie</name>
 		<posX>94</posX>
 		<posY>85</posY>
 	</entity>
@@ -428,7 +428,7 @@
 		<type>enemy</type>
 		<id>54</id>
 		<typeID>2</typeID>
-		<name>Polnocnica</name>
+		<name>ENEMYpixie</name>
 		<posX>95</posX>
 		<posY>86</posY>
 	</entity>
@@ -436,7 +436,7 @@
 		<type>enemy</type>
 		<id>55</id>
 		<typeID>2</typeID>
-		<name>Polnocnica</name>
+		<name>ENEMYpixie</name>
 		<posX>90</posX>
 		<posY>89</posY>
 	</entity>
@@ -444,7 +444,7 @@
 		<type>enemy</type>
 		<id>56</id>
 		<typeID>2</typeID>
-		<name>Polnocnica</name>
+		<name>ENEMYpixie</name>
 		<posX>92</posX>
 		<posY>91</posY>
 	</entity>
@@ -452,7 +452,7 @@
 		<type>enemy</type>
 		<id>57</id>
 		<typeID>2</typeID>
-		<name>Polnocnica</name>
+		<name>ENEMYpixie</name>
 		<posX>91</posX>
 		<posY>79</posY>
 	</entity>
@@ -460,7 +460,7 @@
 		<type>enemy</type>
 		<id>58</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>71</posX>
 		<posY>96</posY>
 	</entity>
@@ -468,7 +468,7 @@
 		<type>enemy</type>
 		<id>59</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>69</posX>
 		<posY>88</posY>
 	</entity>
@@ -476,7 +476,7 @@
 		<type>enemy</type>
 		<id>60</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>71</posX>
 		<posY>80</posY>
 	</entity>
@@ -484,7 +484,7 @@
 		<type>enemy</type>
 		<id>61</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>73</posX>
 		<posY>70</posY>
 	</entity>
@@ -492,7 +492,7 @@
 		<type>enemy</type>
 		<id>62</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>74</posX>
 		<posY>60</posY>
 	</entity>
@@ -500,7 +500,7 @@
 		<type>enemy</type>
 		<id>63</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>42</posX>
 		<posY>38</posY>
 	</entity>
@@ -508,7 +508,7 @@
 		<type>enemy</type>
 		<id>64</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>36</posX>
 		<posY>40</posY>
 	</entity>
@@ -516,7 +516,7 @@
 		<type>enemy</type>
 		<id>65</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>40</posX>
 		<posY>50</posY>
 	</entity>
@@ -524,7 +524,7 @@
 		<type>enemy</type>
 		<id>66</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>38</posX>
 		<posY>53</posY>
 	</entity>
@@ -532,7 +532,7 @@
 		<type>enemy</type>
 		<id>67</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>40</posX>
 		<posY>55</posY>
 	</entity>
@@ -540,7 +540,7 @@
 		<type>enemy</type>
 		<id>68</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>43</posX>
 		<posY>53</posY>
 	</entity>
@@ -548,7 +548,7 @@
 		<type>enemy</type>
 		<id>69</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>53</posX>
 		<posY>58</posY>
 	</entity>
@@ -556,7 +556,7 @@
 		<type>enemy</type>
 		<id>70</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>47</posX>
 		<posY>64</posY>
 	</entity>
@@ -564,7 +564,7 @@
 		<type>enemy</type>
 		<id>71</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>30</posX>
 		<posY>61</posY>
 	</entity>
@@ -572,7 +572,7 @@
 		<type>enemy</type>
 		<id>72</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>37</posX>
 		<posY>69</posY>
 	</entity>
@@ -580,7 +580,7 @@
 		<type>enemy</type>
 		<id>73</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>63</posX>
 		<posY>64</posY>
 	</entity>
@@ -588,7 +588,7 @@
 		<type>enemy</type>
 		<id>74</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>55</posX>
 		<posY>71</posY>
 	</entity>
@@ -596,7 +596,7 @@
 		<type>enemy</type>
 		<id>75</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>58</posX>
 		<posY>75</posY>
 	</entity>
@@ -604,7 +604,7 @@
 		<type>enemy</type>
 		<id>76</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>52</posX>
 		<posY>79</posY>
 	</entity>
@@ -612,7 +612,7 @@
 		<type>enemy</type>
 		<id>77</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>47</posX>
 		<posY>86</posY>
 	</entity>
@@ -620,7 +620,7 @@
 		<type>enemy</type>
 		<id>78</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>51</posX>
 		<posY>87</posY>
 	</entity>
@@ -628,7 +628,7 @@
 		<type>enemy</type>
 		<id>79</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>46</posX>
 		<posY>89</posY>
 	</entity>
@@ -636,7 +636,7 @@
 		<type>enemy</type>
 		<id>80</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>8</posX>
 		<posY>33</posY>
 	</entity>
@@ -644,7 +644,7 @@
 		<type>enemy</type>
 		<id>81</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>14</posX>
 		<posY>36</posY>
 	</entity>
@@ -652,7 +652,7 @@
 		<type>enemy</type>
 		<id>82</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>5</posX>
 		<posY>42</posY>
 	</entity>
@@ -660,7 +660,7 @@
 		<type>enemy</type>
 		<id>83</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>5</posX>
 		<posY>46</posY>
 	</entity>
@@ -668,7 +668,7 @@
 		<type>enemy</type>
 		<id>84</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>12</posX>
 		<posY>45</posY>
 	</entity>
@@ -676,7 +676,7 @@
 		<type>enemy</type>
 		<id>85</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>12</posX>
 		<posY>61</posY>
 	</entity>
@@ -684,7 +684,7 @@
 		<type>enemy</type>
 		<id>86</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>16</posX>
 		<posY>63</posY>
 	</entity>
@@ -692,7 +692,7 @@
 		<type>enemy</type>
 		<id>87</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>18</posX>
 		<posY>66</posY>
 	</entity>
@@ -700,7 +700,7 @@
 		<type>enemy</type>
 		<id>88</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>24</posX>
 		<posY>72</posY>
 	</entity>
@@ -708,7 +708,7 @@
 		<type>enemy</type>
 		<id>89</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>27</posX>
 		<posY>73</posY>
 	</entity>
@@ -716,7 +716,7 @@
 		<type>enemy</type>
 		<id>90</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>28</posX>
 		<posY>78</posY>
 	</entity>
@@ -724,7 +724,7 @@
 		<type>enemy</type>
 		<id>91</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>17</posX>
 		<posY>76</posY>
 	</entity>
@@ -732,7 +732,7 @@
 		<type>enemy</type>
 		<id>92</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>12</posX>
 		<posY>82</posY>
 	</entity>
@@ -740,7 +740,7 @@
 		<type>enemy</type>
 		<id>93</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>19</posX>
 		<posY>84</posY>
 	</entity>
@@ -748,7 +748,7 @@
 		<type>enemy</type>
 		<id>94</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>22</posX>
 		<posY>84</posY>
 	</entity>
@@ -756,7 +756,7 @@
 		<type>enemy</type>
 		<id>95</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>30</posX>
 		<posY>85</posY>
 	</entity>
@@ -764,7 +764,7 @@
 		<type>enemy</type>
 		<id>96</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>11</posX>
 		<posY>91</posY>
 	</entity>
@@ -772,7 +772,7 @@
 		<type>enemy</type>
 		<id>97</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>14</posX>
 		<posY>91</posY>
 	</entity>
@@ -780,7 +780,7 @@
 		<type>enemy</type>
 		<id>98</id>
 		<typeID>9</typeID>
-		<name>Ghul</name>
+		<name>ENEMYghul</name>
 		<posX>14</posX>
 		<posY>93</posY>
 	</entity>

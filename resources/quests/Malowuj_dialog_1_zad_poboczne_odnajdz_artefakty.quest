@@ -109,10 +109,14 @@
 	  <questID>7</questID>
 	  <title>QuestID7_FindArtefactsinFort_Title</title>
 	  <description>QuestID7_FindArtefactsinFort_Desc</description>
-	  <t>1</t>
+	  <t>2</t>
 	  <taskID>0</taskID>
-      <toDo>2</toDo>
-      <doItemID>2</doItemID>
+      <toDo>1</toDo>
+      <doItemID>10</doItemID>
+      <state>collect</state>
+	  <taskID>1</taskID>
+      <toDo>1</toDo>
+      <doItemID>26</doItemID>
       <state>collect</state>
    </dialog>
     <dialog id = "12">

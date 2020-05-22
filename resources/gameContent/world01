@@ -4,7 +4,7 @@
 		<type>enemy</type>
 		<id>1</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>107</posX>
 		<posY>57</posY>
 	</entity>
@@ -12,7 +12,7 @@
 		<type>enemy</type>
 		<id>2</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>109</posX>
 		<posY>61</posY>
 	</entity>
@@ -20,7 +20,7 @@
 		<type>enemy</type>
 		<id>3</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>91</posX>
 		<posY>76</posY>
 	</entity>
@@ -28,7 +28,7 @@
 		<type>enemy</type>
 		<id>4</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>90</posX>
 		<posY>78</posY>
 	</entity>
@@ -36,7 +36,7 @@
 		<type>enemy</type>
 		<id>5</id>
 		<typeID>4</typeID>
-		<name>Rusalka</name>
+		<name>ENEMYrusalka</name>
 		<posX>87</posX>
 		<posY>80</posY>
 	</entity>
@@ -44,7 +44,7 @@
 		<type>enemy</type>
 		<id>6</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>60</posX>
 		<posY>73</posY>
 	</entity>
@@ -52,7 +52,7 @@
 		<type>enemy</type>
 		<id>7</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>62</posX>
 		<posY>74</posY>
 	</entity>
@@ -60,7 +60,7 @@
 		<type>enemy</type>
 		<id>8</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>63</posX>
 		<posY>76</posY>
 	</entity>
@@ -68,7 +68,7 @@
 		<type>enemy</type>
 		<id>9</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>62</posX>
 		<posY>79</posY>
 	</entity>
@@ -76,7 +76,7 @@
 		<type>enemy</type>
 		<id>10</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>52</posX>
 		<posY>73</posY>
 	</entity>
@@ -84,7 +84,7 @@
 		<type>enemy</type>
 		<id>11</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>51</posX>
 		<posY>75</posY>
 	</entity>
@@ -92,7 +92,7 @@
 		<type>enemy</type>
 		<id>12</id>
 		<typeID>1</typeID>
-		<name>Warg</name>
+		<name>ENEMYwarg</name>
 		<posX>52</posX>
 		<posY>77</posY>
 	</entity>
@@ -100,7 +100,7 @@
 		<type>enemy</type>
 		<id>13</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>81</posX>
 		<posY>45</posY>
 	</entity>
@@ -108,7 +108,7 @@
 		<type>enemy</type>
 		<id>14</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>80</posX>
 		<posY>47</posY>
 	</entity>
@@ -116,7 +116,7 @@
 		<type>enemy</type>
 		<id>15</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>47</posX>
 		<posY>43</posY>
 	</entity>
@@ -124,7 +124,7 @@
 		<type>enemy</type>
 		<id>16</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>48</posX>
 		<posY>45</posY>
 	</entity>
@@ -132,7 +132,7 @@
 		<type>enemy</type>
 		<id>17</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>50</posX>
 		<posY>48</posY>
 	</entity>
@@ -140,7 +140,7 @@
 		<type>enemy</type>
 		<id>18</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>43</posX>
 		<posY>41</posY>
 	</entity>
@@ -148,7 +148,7 @@
 		<type>enemy</type>
 		<id>19</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>41</posX>
 		<posY>41</posY>
 	</entity>
@@ -156,7 +156,7 @@
 		<type>enemy</type>
 		<id>20</id>
 		<typeID>6</typeID>
-		<name>Bandyta</name>
+		<name>ENEMYbandit</name>
 		<posX>20</posX>
 		<posY>48</posY>
 	</entity>
@@ -164,7 +164,7 @@
 		<type>enemy</type>
 		<id>21</id>
 		<typeID>6</typeID>
-		<name>Bandyta</name>
+		<name>ENEMYbandit</name>
 		<posX>21</posX>
 		<posY>51</posY>
 	</entity>
@@ -172,7 +172,7 @@
 		<type>enemy</type>
 		<id>22</id>
 		<typeID>6</typeID>
-		<name>Bandyta</name>
+		<name>ENEMYbandit</name>
 		<posX>19</posX>
 		<posY>52</posY>
 	</entity>
@@ -180,7 +180,7 @@
 		<type>enemy</type>
 		<id>23</id>
 		<typeID>6</typeID>
-		<name>Bandyta</name>
+		<name>ENEMYbandit</name>
 		<posX>17</posX>
 		<posY>53</posY>
 	</entity>
@@ -188,7 +188,7 @@
 		<type>enemy</type>
 		<id>24</id>
 		<typeID>6</typeID>
-		<name>Bandyta</name>
+		<name>ENEMYbandit</name>
 		<posX>15</posX>
 		<posY>53</posY>
 	</entity>
@@ -196,7 +196,7 @@
 		<type>enemy</type>
 		<id>25</id>
 		<typeID>7</typeID>
-		<name>Przywodca bandytow</name>
+		<name>ENEMYbanditLeader</name>
 		<posX>17</posX>
 		<posY>47</posY>
 	</entity>
@@ -204,7 +204,7 @@
 		<type>npc</type>
 		<id>26</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>94</posX>
 		<posY>32</posY>
 		<scaleX>1</scaleX>
@@ -215,7 +215,7 @@
 		<type>npc</type>
 		<id>27</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>92</posX>
 		<posY>36</posY>
 		<scaleX>1</scaleX>
@@ -226,7 +226,7 @@
 		<type>npc</type>
 		<id>28</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>87</posX>
 		<posY>31</posY>
 		<scaleX>1</scaleX>
@@ -237,7 +237,7 @@
 		<type>npc</type>
 		<id>29</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>84</posX>
 		<posY>37</posY>
 		<scaleX>1</scaleX>
@@ -248,7 +248,7 @@
 		<type>npc</type>
 		<id>30</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>81</posX>
 		<posY>32</posY>
 		<scaleX>1</scaleX>
@@ -259,7 +259,7 @@
 		<type>npc</type>
 		<id>31</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>76</posX>
 		<posY>35</posY>
 		<scaleX>1</scaleX>
@@ -270,7 +270,7 @@
 		<type>npc</type>
 		<id>32</id>
 		<typeID>13</typeID>
-		<name>Mojmira</name>
+		<name>NPCMojmira</name>
 		<posX>62</posX>
 		<posY>19</posY>
 		<scaleX>1</scaleX>
@@ -281,7 +281,7 @@
 		<type>npc</type>
 		<id>33</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>43</posX>
 		<posY>21</posY>
 		<scaleX>1</scaleX>
@@ -292,7 +292,7 @@
 		<type>npc</type>
 		<id>34</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>47</posX>
 		<posY>12</posY>
 		<scaleX>1</scaleX>
@@ -303,7 +303,7 @@
 		<type>npc</type>
 		<id>35</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>46</posX>
 		<posY>13</posY>
 		<scaleX>1</scaleX>
@@ -314,7 +314,7 @@
 		<type>npc</type>
 		<id>36</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>48</posX>
 		<posY>13</posY>
 		<scaleX>1</scaleX>
@@ -325,7 +325,7 @@
 		<type>npc</type>
 		<id>37</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>40</posX>
 		<posY>22</posY>
 		<scaleX>1</scaleX>
@@ -336,7 +336,7 @@
 		<type>npc</type>
 		<id>38</id>
 		<typeID>8</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillager</name>
 		<posX>41</posX>
 		<posY>19</posY>
 		<scaleX>1</scaleX>
@@ -347,7 +347,7 @@
 		<type>npc</type>
 		<id>39</id>
 		<typeID>9</typeID>
-		<name>Wiesniak</name>
+		<name>NPCVillagerQuest</name>
 		<posX>44</posX>
 		<posY>32</posY>
 		<scaleX>1</scaleX>
@@ -369,7 +369,7 @@
 		<type>npc</type>
 		<id>41</id>
 		<typeID>4</typeID>
-		<name>Prata</name>
+		<name>NPCPrata</name>
 		<posX>29</posX>
 		<posY>21</posY>
 		<scaleX>1</scaleX>
@@ -380,7 +380,7 @@
 		<type>npc</type>
 		<id>42</id>
 		<typeID>14</typeID>
-		<name>Kupiec</name>
+		<name>NPCTrader</name>
 		<posX>88</posX>
 		<posY>17</posY>
 		<scaleX>1</scaleX>
@@ -391,7 +391,7 @@
 		<type>npc</type>
 		<id>43</id>
 		<typeID>10</typeID>
-		<name>Dziwnie wygladajace drzewo</name>
+		<name>NPCGodTree</name>
 		<posX>101</posX>
 		<posY>7</posY>
 		<scaleX>1</scaleX>
@@ -402,7 +402,7 @@
 		<type>enemy</type>
 		<id>44</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>117</posX>
 		<posY>13</posY>
 	</entity>
@@ -410,7 +410,7 @@
 		<type>enemy</type>
 		<id>45</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>117</posX>
 		<posY>14</posY>
 	</entity>
@@ -418,7 +418,7 @@
 		<type>enemy</type>
 		<id>46</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>117</posX>
 		<posY>15</posY>
 	</entity>
@@ -426,7 +426,7 @@
 		<type>enemy</type>
 		<id>47</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>117</posX>
 		<posY>12</posY>
 	</entity>
@@ -434,7 +434,7 @@
 		<type>enemy</type>
 		<id>48</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>117</posX>
 		<posY>16</posY>
 	</entity>
@@ -442,7 +442,7 @@
 		<type>enemy</type>
 		<id>49</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>115</posX>
 		<posY>14</posY>
 	</entity>
@@ -450,7 +450,7 @@
 		<type>enemy</type>
 		<id>50</id>
 		<typeID>0</typeID>
-		<name>Wilk</name>
+		<name>ENEMYWolf</name>
 		<posX>115</posX>
 		<posY>15</posY>
 	</entity>
@@ -566,12 +566,44 @@
 		<posX>15</posX>
 		<posY>46</posY>
 	</entity>
-		<entity>
+	<entity>
 		<type>entityItem</type>
 		<id>65</id>
 		<typeID>18</typeID>
-		<name>Tree</name>
+		<name></name>
 		<posX>90</posX>
 		<posY>6</posY>
+	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>66</id>
+		<typeID>18</typeID>
+		<name></name>
+		<posX>98</posX>
+		<posY>9</posY>
+	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>67</id>
+		<typeID>18</typeID>
+		<name></name>
+		<posX>104</posX>
+		<posY>7</posY>
+	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>67</id>
+		<typeID>18</typeID>
+		<name></name>
+		<posX>103</posX>
+		<posY>15</posY>
+	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>68</id>
+		<typeID>19</typeID>
+		<name></name>
+		<posX>102</posX>
+		<posY>7</posY>
 	</entity>
 </class>
