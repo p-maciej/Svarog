@@ -113,6 +113,8 @@ public class Save {
 					entityItemParameters = new EntityItemParameters(
 							Integer.parseInt(eElement.getElementsByTagName("entityItemTypeID").item(0).getTextContent()),
 							eElement.getElementsByTagName("texturePath").item(0).getTextContent(),
+							Integer.parseInt(eElement.getElementsByTagName("scaleX").item(0).getTextContent()),
+							Integer.parseInt(eElement.getElementsByTagName("scaleY").item(0).getTextContent()),
 							Boolean.valueOf(eElement.getElementsByTagName("fullBoundingBox").item(0).getTextContent()),
 							eElement.getElementsByTagName("name").item(0).getTextContent(),
 							Integer.parseInt(eElement.getElementsByTagName("respownInSec").item(0).getTextContent()),

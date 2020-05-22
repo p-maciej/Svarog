@@ -49,7 +49,7 @@ public class EntityItem extends Entity {
 	}
 	
 	public EntityItem(EntityHolder entityHolder) {
-		super(entityHolder.getId(), new Texture(Save.getEntityItemParameters(entityHolder.getTypeID()).getTexturePath()), new Transform().setPosition(entityHolder.getPosX(), entityHolder.getPosY()), Save.getEntityItemParameters(entityHolder.getTypeID()).isFullBoundingBox());
+		super(entityHolder.getId(), Save.getEntityItemParameters(entityHolder.getTypeID()), new Transform().setPosition(entityHolder.getPosX(), entityHolder.getPosY()).setScale(Save.getEntityItemParameters(entityHolder.getTypeID()).getScaleX(), Save.getEntityItemParameters(entityHolder.getTypeID()).getScaleY()));
 		EntityItemParameters entityItemParameters = Save.getEntityItemParameters(entityHolder.getTypeID());
 		loot = new ArrayList<Item>();
 		super.setClickable(true);
@@ -68,6 +68,7 @@ public class EntityItem extends Entity {
 		}
 	}
 	
+	//#72
 	public EntityItem(int id, Transform transform, String name) {
 		super(id, transform, name);
 		loot = new ArrayList<Item>();
@@ -75,6 +76,8 @@ public class EntityItem extends Entity {
 		super.setOverable(true);
 		super.setIsStatic(true);
 	}
+	
+	
 	
 	public void addLoot(Item item) {
 		loot.add(item);
