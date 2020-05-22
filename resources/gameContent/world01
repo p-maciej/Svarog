@@ -507,7 +507,7 @@
 		<id>57</id>
 		<typeID>18</typeID>
 		<name></name>
-		<posX>98</posX>
+		<posX>97</posX>
 		<posY>9</posY>
 	</entity>
 	<entity>
@@ -515,7 +515,7 @@
 		<id>58</id>
 		<typeID>18</typeID>
 		<name></name>
-		<posX>104</posX>
+		<posX>103</posX>
 		<posY>7</posY>
 	</entity>
 	<entity>
@@ -523,7 +523,7 @@
 		<id>59</id>
 		<typeID>20</typeID>
 		<name></name>
-		<posX>103</posX>
+		<posX>102</posX>
 		<posY>15</posY>
 	</entity>
 	<entity>
