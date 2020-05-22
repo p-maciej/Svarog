@@ -222,4 +222,16 @@
 		<itemGlobalID>12</itemGlobalID>
 		<itemTileID>-1</itemTileID>
 	</entityItem>
+	<entityItem>
+		<entityItemTypeID>18</entityItemTypeID>
+   		<texturePath></texturePath>
+   		<fullBoundingBox>true</fullBoundingBox>
+   		<name>tree</name>
+   		<respownInSec>2</respownInSec>
+   		<scaleX>3</scaleX>
+   		<scaleY>8</scaleY>
+   		<howManyItems>1</howManyItems>
+		<itemGlobalID>19</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</entityItem>
 </class>
