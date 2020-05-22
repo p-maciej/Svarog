@@ -227,7 +227,7 @@
    		<texturePath></texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>tree</name>
-   		<respownInSec>2</respownInSec>
+   		<respownInSec>-1</respownInSec>
    		<scaleX>3</scaleX>
    		<scaleY>8</scaleY>
    		<howManyItems>1</howManyItems>
@@ -244,6 +244,20 @@
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
 		<itemGlobalID>14</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</entityItem>
+	<entityItem>
+		<entityItemTypeID>20</entityItemTypeID>
+   		<texturePath></texturePath>
+   		<fullBoundingBox>true</fullBoundingBox>
+   		<name>tree</name>
+   		<respownInSec>-1</respownInSec>
+   		<scaleX>3</scaleX>
+   		<scaleY>8</scaleY>
+   		<howManyItems>2</howManyItems>
+		<itemGlobalID>19</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemGlobalID>19</itemGlobalID>
 		<itemTileID>-1</itemTileID>
 	</entityItem>
 </class>

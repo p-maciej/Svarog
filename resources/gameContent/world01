@@ -457,78 +457,6 @@
 	<entity>
 		<type>entityItem</type>
 		<id>51</id>
-		<typeID>0</typeID>
-		<name></name>
-		<posX>89</posX>
-		<posY>6</posY>
-	</entity>
-	<entity>
-		<type>entityItem</type>
-		<id>52</id>
-		<typeID>0</typeID>
-		<name></name>
-		<posX>90</posX>
-		<posY>7</posY>
-	</entity>
-	<entity>
-		<type>entityItem</type>
-		<id>53</id>
-		<typeID>0</typeID>
-		<name></name>
-		<posX>91</posX>
-		<posY>7</posY>
-	</entity>
-	<entity>
-		<type>entityItem</type>
-		<id>54</id>
-		<typeID>0</typeID>
-		<name></name>
-		<posX>99</posX>
-		<posY>9</posY>
-	</entity>
-	<entity>
-		<type>entityItem</type>
-		<id>55</id>
-		<typeID>0</typeID>
-		<name></name>
-		<posX>100</posX>
-		<posY>8</posY>
-	</entity>
-	<entity>
-		<type>entityItem</type>
-		<id>56</id>
-		<typeID>0</typeID>
-		<name></name>
-		<posX>102</posX>
-		<posY>8</posY>
-	</entity>
-	<entity>
-		<type>entityItem</type>
-		<id>57</id>
-		<typeID>0</typeID>
-		<name></name>
-		<posX>104</posX>
-		<posY>8</posY>
-	</entity>
-	<entity>
-		<type>entityItem</type>
-		<id>58</id>
-		<typeID>0</typeID>
-		<name></name>
-		<posX>105</posX>
-		<posY>8</posY>
-	</entity>
-	<entity>
-		<type>entityItem</type>
-		<id>59</id>
-		<typeID>0</typeID>
-		<name></name>
-		<posX>106</posX>
-		<posY>6</posY>
-	</entity>
-	<entity>
-		<type>entityItem</type>
-		<id>60</id>
 		<typeID>1</typeID>
 		<name></name>
 		<posX>40</posX>
@@ -536,7 +464,7 @@
 	</entity>
 	<entity>
 		<type>entityItem</type>
-		<id>61</id>
+		<id>52</id>
 		<typeID>2</typeID>
 		<name></name>
 		<posX>20</posX>
@@ -544,7 +472,7 @@
 	</entity>
 	<entity>
 		<type>entityItem</type>
-		<id>62</id>
+		<id>53</id>
 		<typeID>2</typeID>
 		<name></name>
 		<posX>58</posX>
@@ -552,7 +480,7 @@
 	</entity>
 	<entity>
 		<type>entityItem</type>
-		<id>63</id>
+		<id>54</id>
 		<typeID>4</typeID>
 		<name></name>
 		<posX>19</posX>
@@ -560,7 +488,7 @@
 	</entity>
 	<entity>
 		<type>entityItem</type>
-		<id>64</id>
+		<id>55</id>
 		<typeID>3</typeID>
 		<name></name>
 		<posX>15</posX>
@@ -568,7 +496,7 @@
 	</entity>
 	<entity>
 		<type>entityItem</type>
-		<id>65</id>
+		<id>56</id>
 		<typeID>18</typeID>
 		<name></name>
 		<posX>90</posX>
@@ -576,7 +504,7 @@
 	</entity>
 	<entity>
 		<type>entityItem</type>
-		<id>66</id>
+		<id>57</id>
 		<typeID>18</typeID>
 		<name></name>
 		<posX>98</posX>
@@ -584,7 +512,7 @@
 	</entity>
 	<entity>
 		<type>entityItem</type>
-		<id>67</id>
+		<id>58</id>
 		<typeID>18</typeID>
 		<name></name>
 		<posX>104</posX>
@@ -592,15 +520,15 @@
 	</entity>
 	<entity>
 		<type>entityItem</type>
-		<id>67</id>
-		<typeID>18</typeID>
+		<id>59</id>
+		<typeID>20</typeID>
 		<name></name>
 		<posX>103</posX>
 		<posY>15</posY>
 	</entity>
 	<entity>
 		<type>entityItem</type>
-		<id>68</id>
+		<id>60</id>
 		<typeID>19</typeID>
 		<name></name>
 		<posX>102</posX>
