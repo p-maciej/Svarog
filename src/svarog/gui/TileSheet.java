@@ -77,6 +77,29 @@ public class TileSheet {
 		}
 	}
 	
+	void putItemFirstEmpty(Item item) {
+		boolean finished = false;
+		
+		for(Group group : tileGroups) {
+			for(GuiObject tile : group.getObjects()) {
+				if(tile instanceof Tile) {
+					Tile temp = (Tile)tile;
+					if(temp.getPuttableItemTypes().size() > 1) {
+						if(temp.getPuttedItem() == null) {
+							try {
+								temp.putItem(item);
+								finished = true;
+								break;
+							} catch (Exception e) {}
+						}		
+					}
+				}
+			}
+			if(finished)
+				break;
+		}
+	}
+	
 	public Tile clickedTile() {
 		for(Group group : tileGroups) {
 			for(GuiObject tile : group.getTextureObjectList()) {

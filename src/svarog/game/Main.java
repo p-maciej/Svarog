@@ -1,11 +1,11 @@
 package svarog.game;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 import static org.lwjgl.glfw.GLFW.glfwInit;
 import static org.lwjgl.glfw.GLFW.glfwTerminate;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glViewport;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,17 +22,17 @@ import svarog.entity.Player;
 import svarog.gui.ArenaContainer;
 import svarog.gui.BubbleContainer;
 import svarog.gui.Button;
-
 import svarog.gui.DialogContainer;
 import svarog.gui.Group;
 import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
+import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.GuiWindow;
 import svarog.gui.StatsContainer;
-import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
 import svarog.gui.TileSheet;
+import svarog.gui.Trade;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
@@ -46,7 +46,7 @@ import svarog.io.Window;
 import svarog.language.InterfaceTranslations.languages;
 import svarog.language.LanguageLoader;
 import svarog.objects.Item;
-import static svarog.objects.ItemInfo.ItemType;
+import svarog.objects.ItemProperties.ItemType;
 import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Shader;
@@ -245,6 +245,11 @@ public class Main {
 		tileSheet = new TileSheet();
 		Texture tileTexture = new Texture("images/guiTile.png");
 		Texture tileTexture_hover = new Texture("images/guiTile_hover.png");
+		
+		Trade.setTileTexture(tileTexture);
+		Trade.setTileTextureHover(tileTexture_hover);
+		Trade.setFont(roboto_15);
+		Trade.setBackgroundTexture(new TextureObject(new Texture("images/window4.png")));
 		
 		// Tiles to character EQ
 		Texture tileHelmetTexture = new Texture("images/eqTile/helmetTile.png");
@@ -726,13 +731,19 @@ public class Main {
 							guiRenderer.addWindow(questsWindow);
 						}
 					}
-					
+
 					if(healBtn.isClicked()) {
+						Trade trade = new Trade("trade");
+						trade.addProduct(100, new Item(Save.getItemById(7)));
+						guiRenderer.addWindow(trade);
+						
+						
+						
 						player.FullyRecoverHP();
 						//player.setMovement(player.movePlayer(65, true));
-						pathFinder.reset();
-						pathFinder.movePlayer(player);
-						pathFinder.setIsWorking(1);
+						//pathFinder.reset();
+						//pathFinder.movePlayer(player);
+						//pathFinder.setIsWorking(1);
 						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
 						guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(20)), guiRenderer);

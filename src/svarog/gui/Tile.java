@@ -159,6 +159,27 @@ public class Tile extends TextureObject implements ItemProperties {
 			throw new Exception("Cannot put item in this tile");
 		}
 	}
+	
+	void putItem(Item object) throws Exception {
+		boolean hasBeenPutted = false;
+		
+
+		if(puttedItem == null) {
+			for(ItemType type : puttableItemTypes) {
+				if(type == object.getItemType()) {
+					object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
+					this.puttedItem = object;
+					hasBeenPutted = true;
+					object.getItemInfo().setTileID(this.getTileId());
+					break;
+				}
+			}
+		}
+		
+		if(hasBeenPutted == false) {
+			throw new Exception("Cannot put item in this tile");
+		}
+	}
 
 	public Item getPuttedItem() {
 		return puttedItem;
@@ -178,16 +199,14 @@ public class Tile extends TextureObject implements ItemProperties {
 	
 	@Override
 	public void update() {
-		if(puttedItem != null) {
-			if(GuiRenderer.getMouseOverTileId() == super.getId() && hover == false) {
-				if((GuiRenderer.getDraggingFromObjectId() != -1 && puttedItem == null) || GuiRenderer.getDraggingFromObjectId() == -1 || GuiRenderer.getDraggingFromObjectId() == super.getId()) {
-					hover = true;
-					super.setTexture(this.hoverTexture);
-				}
-			} else if(GuiRenderer.getMouseOverTileId() != super.getId() && hover == true) {
-				hover = false;
-				super.setTexture(this.copy);
+		if(GuiRenderer.getMouseOverTileId() == super.getId() && hover == false) {
+			if((GuiRenderer.getDraggingFromObjectId() != -1 && puttedItem == null) || GuiRenderer.getDraggingFromObjectId() == -1 || GuiRenderer.getDraggingFromObjectId() == super.getId()) {
+				hover = true;
+				super.setTexture(this.hoverTexture);
 			}
+		} else if(GuiRenderer.getMouseOverTileId() != super.getId() && hover == true) {
+			hover = false;
+			super.setTexture(this.copy);
 		}
 	}
 }
