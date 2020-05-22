@@ -358,22 +358,22 @@ public class Save {
 					iterator = Integer.parseInt(eElement.getElementsByTagName("howManyQuests").item(0).getTextContent());
 					for(int i=0;i<iterator;i++) {
 						List<Task> tasks = new ArrayList<>();
-						int inter = Integer.parseInt(eElement.getElementsByTagName("howManyTasks").item(0).getTextContent());
+						int inter = Integer.parseInt(eElement.getElementsByTagName("howManyTasks").item(i).getTextContent());
 						for(int j=0;j<inter;j++) {
-							Task task = new Task(Integer.parseInt(eElement.getElementsByTagName("getTaskID").item(0).getTextContent()),
-									Integer.parseInt(eElement.getElementsByTagName("getToDo").item(0).getTextContent()),
-									Integer.parseInt(eElement.getElementsByTagName("getDoItemID").item(0).getTextContent()),
-									doState.valueOf(eElement.getElementsByTagName("getState").item(0).getTextContent())
+							Task task = new Task(Integer.parseInt(eElement.getElementsByTagName("getTaskID").item(j+i).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("getToDo").item(j+i).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("getDoItemID").item(j+i).getTextContent()),
+									doState.valueOf(eElement.getElementsByTagName("getState").item(j+i).getTextContent())
 									);
-							task.setEnded(Boolean.valueOf(eElement.getElementsByTagName("getIsEnded").item(0).getTextContent()));
-							task.setHowMuchIsDone(Integer.parseInt(eElement.getElementsByTagName("getHowMuchIsDone").item(0).getTextContent()));
+							task.setEnded(Boolean.valueOf(eElement.getElementsByTagName("getIsEnded").item(i+j).getTextContent()));
+							task.setHowMuchIsDone(Integer.parseInt(eElement.getElementsByTagName("getHowMuchIsDone").item(i+j).getTextContent()));
 							tasks.add(task);
 						}
-						Quest quest = new Quest(Integer.parseInt(eElement.getElementsByTagName("getQuestID").item(0).getTextContent()),
-								eElement.getElementsByTagName("getTitle").item(0).getTextContent(),
-								eElement.getElementsByTagName("getDescription").item(0).getTextContent(),
+						Quest quest = new Quest(Integer.parseInt(eElement.getElementsByTagName("getQuestID").item(i).getTextContent()),
+								eElement.getElementsByTagName("getTitle").item(i).getTextContent(),
+								eElement.getElementsByTagName("getDescription").item(i).getTextContent(),
 								tasks);
-						quest.setEndedQuest(Boolean.valueOf(eElement.getElementsByTagName("isEndedQuest").item(0).getTextContent()));
+						quest.setEndedQuest(Boolean.valueOf(eElement.getElementsByTagName("isEndedQuest").item(i).getTextContent()));
 						quests.add(quest);
 					}
 					playerParam.setQuests(quests);
@@ -560,7 +560,7 @@ public class Save {
 	            save.appendChild(getPositionX);
 	 
 	            Element getPositionY = document.createElement("getPositionY");
-	            getPositionY.appendChild(document.createTextNode(Integer.toString(player.getPositionY())));
+	            getPositionY.appendChild(document.createTextNode(Integer.toString(player.getPositionY()+1)));
 	            save.appendChild(getPositionY);
 	 
 	            Element getId = document.createElement("getId");
