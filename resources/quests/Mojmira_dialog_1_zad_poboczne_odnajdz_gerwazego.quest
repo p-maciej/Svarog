@@ -103,7 +103,7 @@
 	  <t>1</t>
 	  <taskID>0</taskID>
       <toDo>1</toDo>
-      <doItemID>13</doItemID>
+      <doItemID>7</doItemID>
       <state>find</state>
    </dialog>
    <dialog id = "11">

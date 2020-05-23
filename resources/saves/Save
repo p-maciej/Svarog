@@ -2,8 +2,8 @@
 <class>
 <save id="0">
 <worldID>1</worldID>
-<getPositionX>97</getPositionX>
-<getPositionY>11</getPositionY>
+<getPositionX>42</getPositionX>
+<getPositionY>25</getPositionY>
 <getId>0</getId>
 <getTexturesPath>player/mavak/</getTexturesPath>
 <getFileName>mavak</getFileName>
@@ -16,7 +16,7 @@
 <getMaxAttack>60</getMaxAttack>
 <getMoney>0</getMoney>
 <getName>Ty</getName>
-<howManyItems>10</howManyItems>
+<howManyItems>9</howManyItems>
 <getGlobalID>29</getGlobalID>
 <getTileID>6</getTileID>
 <getGlobalID>15</getGlobalID>
@@ -35,8 +35,6 @@
 <getTileID>13</getTileID>
 <getGlobalID>12</getGlobalID>
 <getTileID>14</getTileID>
-<getGlobalID>20</getGlobalID>
-<getTileID>15</getTileID>
 <howManyQuests>1</howManyQuests>
 <howManyTasks>1</howManyTasks>
 <getTaskID>0</getTaskID>

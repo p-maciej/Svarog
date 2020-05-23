@@ -20,6 +20,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import svarog.entity.Entity;
 import svarog.entity.Player;
 import svarog.game.WorldLoader;
 import svarog.interactions.Quest;
@@ -30,6 +31,7 @@ import svarog.objects.ItemInfo;
 import svarog.objects.ItemProperties.ItemType;
 import svarog.render.Texture;
 import svarog.world.World;
+import svarog.world.World.EntityRespawn;
 
 public class Save {
 	
@@ -356,22 +358,22 @@ public class Save {
 					iterator = Integer.parseInt(eElement.getElementsByTagName("howManyQuests").item(0).getTextContent());
 					for(int i=0;i<iterator;i++) {
 						List<Task> tasks = new ArrayList<>();
-						int inter = Integer.parseInt(eElement.getElementsByTagName("howManyTasks").item(0).getTextContent());
+						int inter = Integer.parseInt(eElement.getElementsByTagName("howManyTasks").item(i).getTextContent());
 						for(int j=0;j<inter;j++) {
-							Task task = new Task(Integer.parseInt(eElement.getElementsByTagName("getTaskID").item(0).getTextContent()),
-									Integer.parseInt(eElement.getElementsByTagName("getToDo").item(0).getTextContent()),
-									Integer.parseInt(eElement.getElementsByTagName("getDoItemID").item(0).getTextContent()),
-									doState.valueOf(eElement.getElementsByTagName("getState").item(0).getTextContent())
+							Task task = new Task(Integer.parseInt(eElement.getElementsByTagName("getTaskID").item(j+i).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("getToDo").item(j+i).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("getDoItemID").item(j+i).getTextContent()),
+									doState.valueOf(eElement.getElementsByTagName("getState").item(j+i).getTextContent())
 									);
-							task.setEnded(Boolean.valueOf(eElement.getElementsByTagName("getIsEnded").item(0).getTextContent()));
-							task.setHowMuchIsDone(Integer.parseInt(eElement.getElementsByTagName("getHowMuchIsDone").item(0).getTextContent()));
+							task.setEnded(Boolean.valueOf(eElement.getElementsByTagName("getIsEnded").item(i+j).getTextContent()));
+							task.setHowMuchIsDone(Integer.parseInt(eElement.getElementsByTagName("getHowMuchIsDone").item(i+j).getTextContent()));
 							tasks.add(task);
 						}
-						Quest quest = new Quest(Integer.parseInt(eElement.getElementsByTagName("getQuestID").item(0).getTextContent()),
-								eElement.getElementsByTagName("getTitle").item(0).getTextContent(),
-								eElement.getElementsByTagName("getDescription").item(0).getTextContent(),
+						Quest quest = new Quest(Integer.parseInt(eElement.getElementsByTagName("getQuestID").item(i).getTextContent()),
+								eElement.getElementsByTagName("getTitle").item(i).getTextContent(),
+								eElement.getElementsByTagName("getDescription").item(i).getTextContent(),
 								tasks);
-						quest.setEndedQuest(Boolean.valueOf(eElement.getElementsByTagName("isEndedQuest").item(0).getTextContent()));
+						quest.setEndedQuest(Boolean.valueOf(eElement.getElementsByTagName("isEndedQuest").item(i).getTextContent()));
 						quests.add(quest);
 					}
 					playerParam.setQuests(quests);
@@ -382,6 +384,145 @@ public class Save {
 			System.out.println("ReadFromFile :)");
 			e.printStackTrace();
 		}
+	}
+	
+	public static void ResetEntityRespowns() {
+		//NUMBER OF WORLDS GOES HERE
+		for(int i=1;i<=7;i++) {
+			try {
+				 
+	            DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+	 
+	            DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+	 
+	            Document document = documentBuilder.newDocument();
+	 
+	            // root element
+	            Element root = document.createElement("class");
+	            document.appendChild(root);
+	 
+	            // create the xml file
+	            //transform the DOM Object to an XML File
+	            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	            Transformer transformer = transformerFactory.newTransformer();
+	            DOMSource domSource = new DOMSource(document);
+	            StreamResult streamResult = new StreamResult(new File("resources/saves/entitiesRespown" + Integer.toString(i)));
+	 
+	            // If you use
+	            // StreamResult result = new StreamResult(System.out);
+	            // the output will be pushed to the standard output ...
+	            // You can use that for debugging 
+	            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	            transformer.transform(domSource, streamResult);
+	 
+	            //System.out.println("Done creating XML File");
+	 
+	        } catch (ParserConfigurationException pce) {
+	            pce.printStackTrace();
+	        } catch (TransformerException tfe) {
+	            tfe.printStackTrace();
+	        }
+		}
+	}
+	
+	public static List<EntityRespawn> ReadEntityRespown(int worldID, List<Entity> entities, World currentWorld) {
+		List<EntityRespawn> entityRespawn = new ArrayList<>();
+		try {
+			File inputFile = new File("resources/saves/entitiesRespown"+worldID);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+			//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			NodeList nList = doc.getElementsByTagName("entitiesRespown");
+			//System.out.println("----------------------------");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				//System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					
+					int index = Integer.parseInt(eElement.getElementsByTagName("getID").item(0).getTextContent());
+					long timerStart = Long.parseLong(eElement.getElementsByTagName("getTimerStart").item(0).getTextContent());
+					
+					for(Entity i:entities) {
+						if(i.getId()==index) {
+							entityRespawn.add(currentWorld.new EntityRespawn((Entity)i, timerStart));
+							break;
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("ReadEntityRespown :)");
+			e.printStackTrace();
+		}
+		return entityRespawn;
+	}
+	
+	public static void SaveWorldEntityRespown(World currentWorld) {
+		try {
+			 
+            DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+ 
+            DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+ 
+            Document document = documentBuilder.newDocument();
+ 
+            // root element
+            Element root = document.createElement("class");
+            document.appendChild(root);
+ 
+            for(int i=0;i<currentWorld.getEntitiesToRespawn().size();i++) {
+	            // employee element
+	            Element save = document.createElement("entitiesRespown");
+	 
+	            root.appendChild(save);
+	 
+	            // set an attribute to staff element
+	            Attr attr = document.createAttribute("id");
+	            attr.setValue(Integer.toString(i));
+	            save.setAttributeNode(attr);
+	 
+	            //you can also use staff.setAttribute("id", "1") for this
+	 
+	            //Element worldID = document.createElement("worldID");
+	            //worldID.appendChild(document.createTextNode(Integer.toString(currentWorld.getId())));
+	            //save.appendChild(worldID);
+	 
+	            
+	            Element getPositionX = document.createElement("getID");
+	            getPositionX.appendChild(document.createTextNode(Integer.toString(currentWorld.getEntitiesToRespawn().get(i).getEntity().getId())));
+	            save.appendChild(getPositionX);
+	 
+	            Element getPositionY = document.createElement("getTimerStart");
+	            getPositionY.appendChild(document.createTextNode(Long.toString(currentWorld.getEntitiesToRespawn().get(i).getTimerStart())));
+	            save.appendChild(getPositionY);
+            
+            }
+            // create the xml file
+            //transform the DOM Object to an XML File
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource domSource = new DOMSource(document);
+            StreamResult streamResult = new StreamResult(new File("resources/saves/entitiesRespown" + currentWorld.getId()));
+ 
+            // If you use
+            // StreamResult result = new StreamResult(System.out);
+            // the output will be pushed to the standard output ...
+            // You can use that for debugging 
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.transform(domSource, streamResult);
+ 
+            //System.out.println("Done creating XML File");
+ 
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
 	}
 	
 	public static void SaveAs(String filename, Player player, World currentWorld) {
@@ -419,7 +560,7 @@ public class Save {
 	            save.appendChild(getPositionX);
 	 
 	            Element getPositionY = document.createElement("getPositionY");
-	            getPositionY.appendChild(document.createTextNode(Integer.toString(player.getPositionY())));
+	            getPositionY.appendChild(document.createTextNode(Integer.toString(player.getPositionY()+1)));
 	            save.appendChild(getPositionY);
 	 
 	            Element getId = document.createElement("getId");
