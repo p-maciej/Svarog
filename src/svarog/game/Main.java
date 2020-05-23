@@ -738,6 +738,7 @@ public class Main {
 					if(healBtn.isClicked()) {
 						Trade trade = new Trade("trade");
 						trade.addProduct(100, new Item(Save.getItemById(7)));
+						trade.setPosition(-100, 0);
 						guiRenderer.addWindow(trade);
 						
 						
