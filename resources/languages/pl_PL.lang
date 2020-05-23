@@ -205,6 +205,10 @@
         <key>smallPotionDescription</key>
         <translation>Mała lecz potrafi uratować życie. Odnawia 40 HP.</translation>
     </variable>
+	<variable>
+        <key>tradeWindowWorth</key>
+        <translation>Wartość:</translation>
+    </variable>
 	 <variable>
         <key>bigPotion</key>
         <translation>Duża miktura lecznicza</translation>
