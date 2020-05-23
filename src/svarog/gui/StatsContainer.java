@@ -24,6 +24,10 @@ public class StatsContainer {
 
 	private boolean update;
 	
+	private static GuiWindow itemInfo = null;
+	private static TextureObject itemWindowBackground = null;
+	private static LanguageLoader language = null;
+	
 	public StatsContainer() {
 		this.update = false;
 	}
@@ -165,7 +169,7 @@ public class StatsContainer {
 		}	
 	}
 	
-	public GuiWindow createItemWindow(Item item, LanguageLoader language, TextureObject itemWindowBackground) {
+	public GuiWindow createItemWindow(Item item) {
 		int yPos = 0;
 		// Desc
 		GuiWindow itemInfo = new GuiWindow(language.getValue(item.getItemInfo().getName()), smallFont, itemWindowBackground);
@@ -255,5 +259,21 @@ public class StatsContainer {
 	
 	public static void setLargeFont(Font font) {
 		StatsContainer.largeFont = font;
+	}
+
+	public static GuiWindow getItemInfo() {
+		return itemInfo;
+	}
+
+	public static void setItemInfo(GuiWindow itemInfo) {
+		StatsContainer.itemInfo = itemInfo;
+	}
+
+	public static void setItemWindowBackground(TextureObject itemWindowBackground) {
+		StatsContainer.itemWindowBackground = itemWindowBackground;
+	}
+
+	public static void setLanguage(LanguageLoader language) {
+		StatsContainer.language = language;
 	}
 }

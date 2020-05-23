@@ -74,7 +74,6 @@ public class Main {
 	private static Audio audioPlayer;
 	private static GuiWindow questsWindow;
 	private static LanguageLoader language;
-	private static TextureObject itemWindowBackground;
 	
 	// Fonts
 	private static Font roboto_15;
@@ -139,7 +138,9 @@ public class Main {
 		
 		pathFinder = new PathFinder();
 		
-		itemWindowBackground = new TextureObject(new Texture("images/window2.png"));
+		
+		StatsContainer.setItemWindowBackground(new TextureObject(new Texture("images/window2.png")));
+		StatsContainer.setLanguage(language);
 		
 		/////// GUI  ////////////////////////////////////////////////////////////////////////
 		roboto_18 = new Font("roboto_18", new Color((byte)255, (byte)255, (byte)255));
@@ -482,7 +483,7 @@ public class Main {
 		long start = -1;
 		WorldLoader.setWorldLoaded(false);
 		boolean joinThread = false;
-		GuiWindow itemInfo = null;
+		
 		
 		boolean showMenu = true;
 		////////////////////////////////////////////////////////////////////////////////////
@@ -709,15 +710,15 @@ public class Main {
 					if(tempTile != null) {
 						Item tempItem = tempTile.getPuttedItem();
 						if(tempItem != null) {
-							if(itemInfo != null)
-								guiRenderer.removeWindow(itemInfo.getId());
+							if(StatsContainer.getItemInfo() != null)
+								guiRenderer.removeWindow(StatsContainer.getItemInfo().getId());
 							
 							
-							itemInfo = guiRenderer.getStatsContainer().createItemWindow(tempItem, language, itemWindowBackground);
+							StatsContainer.setItemInfo(guiRenderer.getStatsContainer().createItemWindow(tempItem));
 							
-							itemInfo.setStickTo(stickTo.BottomRight);
-							itemInfo.move(-530, 300);
-							guiRenderer.addWindow(itemInfo);
+							StatsContainer.getItemInfo().setStickTo(stickTo.BottomRight);
+							StatsContainer.getItemInfo().move(-530, 300);
+							guiRenderer.addWindow(StatsContainer.getItemInfo());
 						}
 					}
 					

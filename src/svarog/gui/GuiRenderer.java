@@ -66,7 +66,10 @@ public class GuiRenderer implements RenderProperties {
 	private static int draggingWindowId;
 	private static boolean setPointer;
 	private static int pressedObjectId;
+	private static int pressedObjId;
+	private static int setObjectId;
 	private static long clickedTime;
+	private static int clickCount;
 
 	private static int bubbleXoffest = 35; // I thing we can make setter for this to be customizable
 	private static int bubbleYoffset = 20;
@@ -112,6 +115,8 @@ public class GuiRenderer implements RenderProperties {
 		objectDraggedOut = false;
 		draggingWindowId = -1;
 		pressedObjectId = -1;
+		pressedObjId = -1;
+		setObjectId = -1;
 	}
 	
 	public void updatePositions() {
@@ -353,7 +358,8 @@ public class GuiRenderer implements RenderProperties {
 		
 		update = false;
 		
-		for(GuiWindow item : windows) {	
+		for(int i = 0; i < windows.size(); i++) {
+			GuiWindow item = windows.get(i);
 			for(GuiObject object : item.getElements().getTextureObjectList()) {
 				renderGuiObject(object, shader, window);
 				
@@ -602,23 +608,49 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	private void addToTileSheet(Tile object, Window window, TileSheet sheet) {
-		if(object.getId() == mouseOverTileId) {
+		if(object.getId() == mouseOverTileId && setObjectId == -1 || setObjectId == object.getId()) {
 			if(window.getInput().isMouseButtonPressed(0)) {
-				pressedObjectId = mouseOverTileId;
+				pressedObjId = mouseOverTileId;
 			}
 			if(window.getInput().isMouseButtonReleased(0)) {
-				if(mouseOverTileId == pressedObjectId) {
-					if(!Timer.getDelay(clickedTime, Timer.getNanoTime(), 0.3f)) {
-						sheet.putItemFirstEmpty(new Item(object.getPuttedItem()));
-					}
+				if(mouseOverTileId == pressedObjId) {
+					clickCount++;
 				}
 			}	
 			if(window.getInput().isMouseButtonDown(0)) {
-				if(((Tile) object).getPuttedItem() != null) {
+				if(((Tile) object).getPuttedItem() != null && setObjectId == -1) {
+					setObjectId = object.getId();
 					clickedTime = Timer.getNanoTime();
 				}
 			}
+			
+			if(Timer.getDelay(clickedTime, Timer.getNanoTime(), 0.3f) && mouseOverTileId == pressedObjId) {
+				if(clickCount == 2) {
+					sheet.putItemFirstEmpty(new Item(object.getPuttedItem()));
+					clickCount = 0;
+					setObjectId = -1;
+				} else if(clickCount == 1) {
+					if(StatsContainer.getItemInfo() != null)
+						this.removeWindow(StatsContainer.getItemInfo().getId());
+					
+					
+					StatsContainer.setItemInfo(this.getStatsContainer().createItemWindow(((Tile) object).getPuttedItem()));
+					
+					StatsContainer.getItemInfo().setStickTo(stickTo.BottomRight);
+					StatsContainer.getItemInfo().move(-530, 300);
+					this.addWindow(StatsContainer.getItemInfo());
+					clickCount = 0;
+					setObjectId = -1;
+				}
+			}
 		}
+		
+		if(mouseOverTileId != pressedObjId) {
+			clickCount = 0;
+		}
+		
+		if(window.getInput().isMouseButtonReleased(0) && setObjectId != -1 && clickCount == 0)
+			setObjectId = -1;
 	}
 	
 	private void dragAndDrop(Tile object, Window window, Player player) {
