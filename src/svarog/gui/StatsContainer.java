@@ -21,6 +21,9 @@ public class StatsContainer {
 	private Group playerInventory;
 	private static Font largeFont;	
 	private static Font smallFont;
+	
+	private static TextureObject XPframe;
+	private static TextureObject HPframe;
 
 	private boolean update;
 	
@@ -69,7 +72,7 @@ public class StatsContainer {
 			
 			TextureObject hpTexture = new TextureObject(new Texture(HPbuffer, width, height));
 			hpTexture.setStickTo(stickTo.BottomLeft);
-			hpTexture.move(120, -42);
+			hpTexture.move(90, -42);
 			this.playerStats.addGuiObject(hpTexture);
 			
 			Color xpGained = new Color((byte)255, (byte)255, (byte)0);
@@ -100,8 +103,18 @@ public class StatsContainer {
 			
 			TextureObject xpTexture = new TextureObject(new Texture(XPbuffer, width, height));
 			xpTexture.setStickTo(stickTo.BottomLeft);
-			xpTexture.move(120, -14);
+			xpTexture.move(90, -14);
 			this.playerStats.addGuiObject(xpTexture);
+			
+			XPframe.setStickTo(stickTo.BottomLeft);
+			HPframe.setStickTo(stickTo.BottomLeft);
+			
+			XPframe.setPosition(85, 10);
+			HPframe.setPosition(85, 38);
+			
+			
+			this.playerStats.addGuiObject(XPframe);
+			this.playerStats.addGuiObject(HPframe);
 			
 			Line level = new Line(stickTo.TopRight);
 			level.setString(Integer.toString(player.getXP().GetLevel()), smallFont);
@@ -275,5 +288,13 @@ public class StatsContainer {
 
 	public static void setLanguage(LanguageLoader language) {
 		StatsContainer.language = language;
+	}
+
+	public static void setXPframe(TextureObject xPframe) {
+		XPframe = xPframe;
+	}
+
+	public static void setHPframe(TextureObject healFrame) {
+		StatsContainer.HPframe = healFrame;
 	}
 }

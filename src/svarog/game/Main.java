@@ -140,6 +140,9 @@ public class Main {
 		
 		
 		StatsContainer.setItemWindowBackground(new TextureObject(new Texture("images/window2.png")));
+		StatsContainer.setXPframe(new TextureObject(new Texture("images/statsFrame.png")));
+		StatsContainer.setHPframe(new TextureObject(new Texture("images/statsFrame.png")));
+		
 		StatsContainer.setLanguage(language);
 		TradeWindow.setLanguage(language);
 		
@@ -175,18 +178,6 @@ public class Main {
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
 		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
 		panels.updateDynamicGuiElements(guiRenderer, window);
-		
-		Group statsStatic = new Group();
-		Line HPtext = new Line(GuiRenderer.stickTo.BottomLeft);
-		HPtext.setString("HP:", roboto_18);
-		HPtext.move(75, -35);
-
-		Line XPtext = new Line(GuiRenderer.stickTo.BottomLeft);
-		XPtext.setString("XP:", roboto_18);
-		XPtext.move(75, -5);
-		
-		statsStatic.addGuiObject(XPtext);
-		statsStatic.addGuiObject(HPtext);
 		
 		Group playerStats = new Group();
 		playerStats.setStickTo(stickTo.TopRight);
@@ -235,7 +226,6 @@ public class Main {
 		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addGuiObject(questsButton);
 		guiRenderer.addGuiObject(healBtn);
-		guiRenderer.addGroup(statsStatic);
 		guiRenderer.addGroup(playerStats);
 		
 	
