@@ -407,7 +407,7 @@ public class Player extends Entity {
 					}
 					if(q1.isEndedQuest() && !q1.isRewardedYet()) {
 						q1.sendReward(this, guiRenderer);
-						guiRenderer.getStatsContainer().updatePlayerProperties(guiRenderer, this);
+						guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, this);
 					}
 				}
 				
