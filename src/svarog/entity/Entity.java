@@ -298,6 +298,14 @@ public abstract class Entity implements MouseInteraction {
 		}
 	}
 	
+	public int getPositionX() {
+		return (int)(transform.getPosition().x/2);
+	}
+	
+	public int getPositionY() {
+		return (int)(transform.getPosition().y/2*(-1));
+	}
+	
 	public Entity setIsStatic(boolean state) {
 		this.isStatic = state;
 		return this;

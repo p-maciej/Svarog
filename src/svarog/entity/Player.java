@@ -477,14 +477,6 @@ public class Player extends Entity {
 	public void AddPlayerHP(int health) {
 		this.hp.AddHP(health);
 	}
-	
-	public int getPositionX() {
-		return (int)(transform.getPosition().x/2);
-	}
-	
-	public int getPositionY() {
-		return (int)(transform.getPosition().y/2*(-1));
-	}
 
 	public void setSetCamWithoutAnimation(boolean setCamWithoutAnimation) {
 		this.setCamWithoutAnimation = setCamWithoutAnimation;

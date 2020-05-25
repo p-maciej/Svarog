@@ -132,6 +132,8 @@ public class Main {
 		
 		worldRenderer = new WorldRenderer(currentWorld);
 		
+		WorldRenderer.setPlayer(player);
+		
 		Vector2f offset = new Vector2f(350, 70);
 		worldRenderer.setWorldOffset(offset);
 		/////////////////////////////////////////////////////////////////////////////////////
@@ -612,7 +614,6 @@ public class Main {
 					
 					guiRenderer.deleteDynamicGroups();
 					
-
 					worldRenderer.update((float)0.2, window, camera, audioPlayer);
 					worldRenderer.correctCamera(camera, window);							// This sets correct camera position on world
 	
