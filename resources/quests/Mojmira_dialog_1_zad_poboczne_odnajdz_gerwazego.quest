@@ -100,6 +100,8 @@
 	  <questID>5</questID>
 	  <title>QuestID5_FindGerwazy_Title</title>
 	  <description>QuestID5_FindGerwazy_Desc</description>
+	  <rewardMoney>10</rewardMoney>
+	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>1</t>
 	  <taskID>0</taskID>
       <toDo>1</toDo>

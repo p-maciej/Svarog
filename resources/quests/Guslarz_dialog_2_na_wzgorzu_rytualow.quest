@@ -217,6 +217,8 @@
 	  <questID>4</questID>
 	  <title>QuestID4_HelpGuslarz_Title</title>
 	  <description>QuestID4_HelpGuslarz_Desc</description>
+	  <rewardMoney>10</rewardMoney>
+	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>1</t>
 	  <taskID>0</taskID>
       <toDo>12</toDo>

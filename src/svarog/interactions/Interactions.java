@@ -21,6 +21,7 @@ import svarog.interactions.Task.doState;
 import svarog.io.Window;
 import svarog.language.LanguageLoader;
 import svarog.render.Camera;
+import svarog.save.ItemParameters;
 import svarog.world.WorldRenderer;
 
 public class Interactions {
@@ -70,6 +71,7 @@ public class Interactions {
 					Element eElement = (Element) nNode;
 					ArrayList<Answer> answers = new ArrayList<>();
 					ArrayList<Task> tasks = new ArrayList<>();
+					ArrayList<ItemParameters> itemParameters = new ArrayList<ItemParameters>();
 
 					for(int i = 0; i < Integer.parseInt(eElement.getElementsByTagName("ans").item(0).getTextContent());i++){
 						answers.add(new Answer(Integer.parseInt(eElement.getElementsByTagName("id").item(i).getTextContent()),
@@ -84,13 +86,20 @@ public class Interactions {
                                     Task.doState.valueOf(eElement.getElementsByTagName("state").item(i).getTextContent())
                             ));
                         }
+                        for(int i =0; i< Integer.parseInt(eElement.getElementsByTagName("rewardHowManyItems").item(0).getTextContent());i++) {
+                        	itemParameters.add(new ItemParameters(Integer.parseInt(eElement.getElementsByTagName("itemGlobalID").item(i).getTextContent()),
+    								Integer.parseInt(eElement.getElementsByTagName("itemTileID").item(i).getTextContent())
+    								));
+                        }
                     }
 
                     if(eElement.getElementsByTagName("questID").item(0) != null) {
                         quests.add(new Quest(Integer.parseInt(eElement.getElementsByTagName("questID").item(0).getTextContent()),
                                 eElement.getElementsByTagName("title").item(0).getTextContent(),
                                 eElement.getElementsByTagName("description").item(0).getTextContent(),
-                                tasks));
+                                tasks,
+                                itemParameters,
+                                Integer.parseInt(eElement.getElementsByTagName("rewardMoney").item(0).getTextContent())));
                     }
 					
                     if(eElement.getElementsByTagName("questID").item(0) != null) {

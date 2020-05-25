@@ -73,6 +73,10 @@
 	  <questID>8</questID>
 	  <title>QuestID8_TalkGuslarz_Title</title>
 	  <description>QuestID8_TalkGuslarz_Desc</description>
+	  <rewardMoney>10</rewardMoney>
+	  <rewardHowManyItems>1</rewardHowManyItems>
+	  <itemGlobalID>1</itemGlobalID>
+	  <itemTileID>-1</itemTileID>
 	  <t>1</t>
 	  <taskID>0</taskID>
       <toDo>1</toDo>
