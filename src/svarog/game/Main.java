@@ -663,6 +663,9 @@ public class Main {
 											}
 										}
 									}
+									if(q1.isEndedQuest() && !q1.isRewardedYet()) {
+										q1.sendReward(player, guiRenderer);
+									}
 								}
 								if(((NPC)entity).getInteractions() != null) {
 									((NPC)entity).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)entity).getGlobalNpcID(), language);
@@ -680,6 +683,9 @@ public class Main {
 													t1.increaseHowMuchIsDone();
 												}
 											}
+										}
+										if(q1.isEndedQuest() && !q1.isRewardedYet()) {
+											q1.sendReward(player, guiRenderer);
 										}
 									}
 								}

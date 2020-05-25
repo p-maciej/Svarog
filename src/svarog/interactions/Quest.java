@@ -4,6 +4,8 @@ package svarog.interactions;
 import java.util.ArrayList;
 import java.util.List;
 
+import svarog.entity.Player;
+import svarog.gui.GuiRenderer;
 import svarog.objects.Item;
 import svarog.save.ItemParameters;
 import svarog.save.Save;
@@ -15,11 +17,22 @@ public class Quest {
     private boolean isEndedQuest = false;
     private List<Item> rewardItem = new ArrayList<>();
     private int rewardMoney=0;
+    private boolean isRewardedYet = false;
 
-    public boolean isEndedQuest() {
+	public boolean isEndedQuest() {
     	setEndedQuest();
 		return isEndedQuest;
 	}
+    
+    public void sendReward(Player player, GuiRenderer guiRenderer) {
+    	if(!isRewardedYet && isEndedQuest) {
+    		for(Item i:rewardItem) {
+    			player.addItemToInventoryWithGUIupdate(i, guiRenderer);
+    		}
+    		player.addMoney(rewardMoney);
+    	}
+    	isRewardedYet = true;
+    }
 
 	private void setEndedQuest() {
 		for(Task t: tasks) {
@@ -114,5 +127,12 @@ public class Quest {
 
 	public void setRewardItem(List<Item> rewardItem) {
 		this.rewardItem = rewardItem;
+	}
+    public boolean isRewardedYet() {
+		return isRewardedYet;
+	}
+
+	public void setRewardedYet(boolean isRewardedYet) {
+		this.isRewardedYet = isRewardedYet;
 	}
 }

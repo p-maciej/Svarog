@@ -405,6 +405,9 @@ public class Player extends Entity {
 							}
 						}
 					}
+					if(q1.isEndedQuest() && !q1.isRewardedYet()) {
+						q1.sendReward(this, guiRenderer);
+					}
 				}
 				
 				//Last line (everything should be done before it)
@@ -453,6 +456,9 @@ public class Player extends Entity {
 		return attack;
 	}
 	
+	public void addMoney(int value) {
+		this.money+=value;
+	}
 	
 	private void setLastKeysPressed(int[] keysPressed) {
 		for(int i = 0; i < 4; i++) {
