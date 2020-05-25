@@ -382,7 +382,7 @@
     </variable>
 	<variable>
         <key>MavandGus_dialog1_line1</key>
-        <translation>[Guślarz] - …</translation>
+        <translation>[Guślarz] - *zamyślony*</translation>
     </variable>
 	<variable>
         <key>MavandGus_dialog1_line2</key>
