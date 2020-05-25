@@ -154,6 +154,8 @@
 	  <questID>1</questID>
 	  <title>Zbierz jablka dla Rozenny</title>
 	  <description>Te sny. Nie pozwalaja mi spac. Miecz, bagna, lod, smierc. Co to moze wszystko oznaczac? Jak dobrze ze jest Rozenna, ona zawsze potrafila mnie uspokoic swoim dobrym slowem. Ale tez ta slodka lisica zna moja slabosc do jej jablecznikow. Czas wybrac sie za wioske pozbierac dla niej jablka, oraz posluchac jej rady: nie myslec o mych snach.</description>
+	  <rewardMoney>10</rewardMoney>
+	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>1</t>
 	  <taskID>0</taskID>
       <toDo>5</toDo>
