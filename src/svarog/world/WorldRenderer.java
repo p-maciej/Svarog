@@ -90,7 +90,7 @@ public class WorldRenderer implements RenderProperties {
 					
 					if(entity.isClickable())
 						if(window.getInput().isMouseButtonReleased(0)) {
-							if(getDistance(player.getPositionX(), entity.getPositionX(), player.getPositionY(), entity.getPositionY()) < 3)
+							if(getDistance(player.getPositionX(), entity.getPositionX(), player.getPositionY(), entity.getPositionY()) <= 5)
 								clickedEntityId = mouseOverEntityId;}
 				}
 			}
