@@ -26,6 +26,7 @@ import svarog.interactions.Quest;
 import svarog.interactions.Task;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
+import svarog.language.InterfaceTranslations.languages;
 import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.render.Animation;
@@ -373,11 +374,11 @@ public class Player extends Entity {
 	public ArrayList<String> fightLogic(Enemy enemy, World world, GuiRenderer guiRenderer) {
 		ArrayList<String> fightString = new ArrayList<>();
 		while((enemy).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
-			fightString.add("Enemy HP (before attack): " + (enemy).GetEnemyHP());
+			fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpBefore")+" " + (enemy).GetEnemyHP());
 			(enemy).DecreaseEnemyHP(this.getRandomAttack()+getPlayerAttackBonus());
-			fightString.add("Enemy HP:  (after attack): " + (enemy).GetEnemyHP());
+			fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpAfter")+" " + (enemy).GetEnemyHP());
 			if((enemy).GetEnemyHP()<=0) {
-				fightString.add("Enemy "+ (enemy).getName() + " died, you WON!!!");
+				fightString.add((enemy).getName() + " "+LanguageLoader.getLanguageLoader().getValue("fightSystemPlayerWon"));
 				//Adding XP and money reward
 				this.AddPlayerXP(enemy.GetXpForKilling());
 				//System.out.println(this.getXP().GetXP()+ " " + this.getXP().getXpmin() + " " + this.getXP().getXpmax());
@@ -409,13 +410,14 @@ public class Player extends Entity {
 				//Last line (everything should be done before it)
 				world.removeAndRespawn(enemy);
 			}else {
-				fightString.add("Player HP (before attack): " + this.getHP().GetHP());
+				fightString.add(this.getName()+" "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpBefore")+" " + this.getHP().GetHP());
 				int enemyAttcc = (enemy).GetRandomAttack();
 				int attack = ((enemyAttcc-this.getPlayerDefense())>0)?(enemyAttcc-this.getPlayerDefense()):0;
 				this.DecreasePlayerHP(attack);
-				fightString.add("Player HP (after attack): " + this.getHP().GetHP());
+				fightString.add(this.getName()+" "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpAfter")+" " + this.getHP().GetHP());
 				if(this.getHP().GetHP()<0) {
-					fightString.add("Player died, " + (enemy).getName() + " was killing more people than ever.");
+					fightString.add(LanguageLoader.getLanguageLoader().getValue("fightSystemPlayerDefeat")+" "+
+							(enemy).getName() + " "+LanguageLoader.getLanguageLoader().getValue("fightSystemPlayerDefeat2"));
 					playerDead();
 					break;
 				}

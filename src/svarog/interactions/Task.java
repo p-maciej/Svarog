@@ -1,6 +1,7 @@
 package svarog.interactions;
 
 import svarog.language.LanguageLoader;
+import svarog.save.Save;
 
 public class Task {
 
@@ -89,16 +90,16 @@ public class Task {
     
     public String progress(){
         if(state == doState.kill){
-            return LanguageLoader.getLanguageLoader().getValue("taskKillJG")+" " + String.valueOf(doItemID)+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+            return LanguageLoader.getLanguageLoader().getValue("taskKillJG")+" " + LanguageLoader.getLanguageLoader().getValue(String.valueOf(Save.getEnemyById(doItemID).getName()))+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         if(state == doState.collect){
-            return LanguageLoader.getLanguageLoader().getValue("taskCollectJG")+" " + String.valueOf(doItemID)+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+            return LanguageLoader.getLanguageLoader().getValue("taskCollectJG")+" " + LanguageLoader.getLanguageLoader().getValue(String.valueOf(Save.getItemById(doItemID).getItemInfo().getName()))+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         if(state == doState.find){
-            return LanguageLoader.getLanguageLoader().getValue("taskFindJG")+" " + String.valueOf(doItemID)+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+            return LanguageLoader.getLanguageLoader().getValue("taskFindJG")+" " + LanguageLoader.getLanguageLoader().getValue(String.valueOf(Save.getNpcsByID(doItemID).getName()))+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         if(state == doState.talk) {
-        	return LanguageLoader.getLanguageLoader().getValue("taskTalkJG")+" " + String.valueOf(doItemID)+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
+        	return LanguageLoader.getLanguageLoader().getValue("taskTalkJG")+" " + LanguageLoader.getLanguageLoader().getValue(String.valueOf(Save.getNpcsByID(doItemID).getName()))+" " + LanguageLoader.getLanguageLoader().getValue("taskDoneJG")+" " + String.valueOf(howMuchIsDone)+"/"+String.valueOf(toDo);
         }
         return "Sorry our programmers don't think about that yet";
     }
