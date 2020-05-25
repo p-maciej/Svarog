@@ -32,7 +32,7 @@ import svarog.gui.StatsContainer;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
 import svarog.gui.TileSheet;
-import svarog.gui.Trade;
+import svarog.gui.TradeWindow;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
@@ -140,7 +140,11 @@ public class Main {
 		
 		
 		StatsContainer.setItemWindowBackground(new TextureObject(new Texture("images/window2.png")));
+		StatsContainer.setXPframe(new TextureObject(new Texture("images/statsFrame.png")));
+		StatsContainer.setHPframe(new TextureObject(new Texture("images/statsFrame.png")));
+		
 		StatsContainer.setLanguage(language);
+		TradeWindow.setLanguage(language);
 		
 		/////// GUI  ////////////////////////////////////////////////////////////////////////
 		roboto_18 = new Font("roboto_18", new Color((byte)255, (byte)255, (byte)255));
@@ -174,18 +178,6 @@ public class Main {
 		panels.addBottomPanel(Texture.getImageBuffer("images/bottom_panel.png"));
 		panels.addRightPanel(Texture.getImageBuffer("images/background_right_panel.png"));
 		panels.updateDynamicGuiElements(guiRenderer, window);
-		
-		Group statsStatic = new Group();
-		Line HPtext = new Line(GuiRenderer.stickTo.BottomLeft);
-		HPtext.setString("HP:", roboto_18);
-		HPtext.move(75, -35);
-
-		Line XPtext = new Line(GuiRenderer.stickTo.BottomLeft);
-		XPtext.setString("XP:", roboto_18);
-		XPtext.move(75, -5);
-		
-		statsStatic.addGuiObject(XPtext);
-		statsStatic.addGuiObject(HPtext);
 		
 		Group playerStats = new Group();
 		playerStats.setStickTo(stickTo.TopRight);
@@ -234,7 +226,6 @@ public class Main {
 		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addGuiObject(questsButton);
 		guiRenderer.addGuiObject(healBtn);
-		guiRenderer.addGroup(statsStatic);
 		guiRenderer.addGroup(playerStats);
 		
 	
@@ -247,10 +238,10 @@ public class Main {
 		Texture tileTexture = new Texture("images/guiTile.png");
 		Texture tileTexture_hover = new Texture("images/guiTile_hover.png");
 		
-		Trade.setTileTexture(tileTexture);
-		Trade.setTileTextureHover(tileTexture_hover);
-		Trade.setFont(roboto_15);
-		Trade.setBackgroundTexture(new TextureObject(new Texture("images/window4.png")));
+		TradeWindow.setTileTexture(tileTexture);
+		TradeWindow.setTileTextureHover(tileTexture_hover);
+		TradeWindow.setFont(roboto_15);
+		TradeWindow.setBackgroundTexture(new TextureObject(new Texture("images/window4.png")));
 		
 		// Tiles to character EQ
 		Texture tileHelmetTexture = new Texture("images/eqTile/helmetTile.png");
@@ -736,8 +727,9 @@ public class Main {
 					}
 
 					if(healBtn.isClicked()) {
-						Trade trade = new Trade("trade");
+						TradeWindow trade = new TradeWindow("trade");
 						trade.addProduct(100, new Item(Save.getItemById(7)));
+						trade.setPosition(-100, 0);
 						guiRenderer.addWindow(trade);
 						
 						

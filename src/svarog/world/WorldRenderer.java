@@ -153,6 +153,8 @@ public class WorldRenderer implements RenderProperties {
 			
 			if(entity.getFullBoundingBox() == false)
 				temp.getPosition().y += 1f; // This sets offset in texture rendering when entity should walk like on foots
+			else
+				temp.getPosition().y += 0.5f;
 				
 			shader.bind();
 			shader.setUniform("sampler", 0);

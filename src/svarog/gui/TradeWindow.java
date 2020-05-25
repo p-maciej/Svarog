@@ -3,22 +3,31 @@ package svarog.gui;
 import java.util.Arrays;
 import java.util.List;
 
+import org.joml.Vector2f;
+
 import svarog.gui.font.Font;
+import svarog.gui.font.Line;
+import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.objects.ItemProperties.ItemType;
 import svarog.render.Texture;
 
-public class Trade extends GuiWindow {
+public class TradeWindow extends GuiWindow {
 	private static Texture tileTexture;
 	private static Texture tileTextureHover;
 	private static Font font;
+	private static LanguageLoader language;
+
 	private static TextureObject backgroundTexture;
 	
 	private TileSheet[] products;
 	
-	private int sum;
+	private Button buy;
 	
-	public Trade(String title) {
+	private int sum;
+	private Line amount;
+	
+	public TradeWindow(String title) {
 		super(title, font, backgroundTexture);
 		products = new TileSheet[2];
 		
@@ -28,6 +37,7 @@ public class Trade extends GuiWindow {
 		this.sum = 0;
 		
 		createTileSheetProducts(tileTexture, tileTextureHover);
+		addStaticElements();
 	}
 	
 	private void createTileSheetProducts(Texture tileTexture, Texture tileTextureHover) {
@@ -65,12 +75,57 @@ public class Trade extends GuiWindow {
 		products[1].addTileGroup(tileGroup2);
 	}
 	
+	private void addStaticElements() {
+		Button buy = new Button(new Texture("images/buttonYes.png"), new Texture("images/buttonYes_hover.png"), new Vector2f());
+		buy.move(220, 120);
+		this.buy = buy;
+		
+		Line worth = new Line(-10, -125);
+		worth.setString(language.getValue("tradeWindowWorth"), font);
+		
+		amount = new Line(0, 0);
+		amount.setString("0", font);
+		amount.setPosition(30+amount.getWidth()/2, -125);
+		
+		super.addTextureObject(amount);
+		super.addTextureObject(worth);
+		super.addTextureObject(buy);
+	}
+	
+	private void calcWorth() {
+		this.sum = 0;
+		for(Group group : products[1].getTileGroupsList()) {
+			for(GuiObject object : group.getTextureObjectList()) {
+				Tile temp = (Tile)object;
+				
+				if(temp.getPuttedItem() != null)
+					this.sum += temp.getPuttedItem().getItemInfo().getPrize();
+			}
+		}
+	}
+	
+	void update() {
+		calcWorth();
+		amount.setString(Integer.toString(sum), font);
+		amount.setPosition(30+amount.getWidth()/2, -125);
+	}
+	
 	public void addProduct(int tileId, Item item) {
 		try {
 			products[0].getTile(tileId).putItem(item);
 		} catch (Exception e) {}
 	}
 	
+	public void buyItems() {
+		for(Group group : products[1].getTileGroupsList()) {
+			for(GuiObject object : group.getTextureObjectList()) {
+				Tile temp = (Tile)object;
+				
+				if(temp.getPuttedItem() != null)
+					temp.removePuttedItem();
+			}
+		}
+	}
 	
 	public int getExpanse() {
 		return sum;
@@ -80,19 +135,31 @@ public class Trade extends GuiWindow {
 		return products;
 	}
 	
+	public TileSheet getProductsToBuy() {
+		return products[1];
+	}
+	
 	public static void setTileTexture(Texture tileTexture) {
-		Trade.tileTexture = tileTexture;
+		TradeWindow.tileTexture = tileTexture;
 	}
 	
 	public static void setTileTextureHover(Texture tileTextureHover) {
-		Trade.tileTextureHover = tileTextureHover;
+		TradeWindow.tileTextureHover = tileTextureHover;
 	}
 	
 	public static void setFont(Font font) {
-		Trade.font = font;
+		TradeWindow.font = font;
 	}
 
 	public static void setBackgroundTexture(TextureObject backgroundTexture) {
-		Trade.backgroundTexture = backgroundTexture;
+		TradeWindow.backgroundTexture = backgroundTexture;
+	}
+
+	public Button getBuyButton() {
+		return buy;
+	}
+	
+	public static void setLanguage(LanguageLoader language) {
+		TradeWindow.language = language;
 	}
 }

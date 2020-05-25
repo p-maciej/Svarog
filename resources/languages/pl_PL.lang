@@ -1,26 +1,48 @@
 <?xml version="1.0"?>
 <file>
-<!--Items-->
+<!--FightSystem-->
+    <variable>
+        <key>fightSystemHpBefore</key>
+        <translation>HP (przed atakiem):</translation>
+    </variable>
+    <variable>
+        <key>fightSystemHpAfter</key>
+        <translation>HP: (po ataku):</translation>
+    </variable>
+    <variable>
+        <key>fightSystemPlayerWon</key>
+        <translation>umarł, wygrałeś!!!</translation>
+    </variable>
+	<variable>
+        <key>fightSystemPlayerDefeat</key>
+        <translation>Gracz przegrał,</translation>
+    </variable>
+	<variable>
+        <key>fightSystemPlayerDefeat2</key>
+        <translation>zabijał więcej ludzi niż kiedykolwiek.</translation>
+    </variable>
+<!--TasksSystem-->
     <variable>
         <key>taskKillJG</key>
-        <translation>Zabij </translation>
+        <translation>Zabij</translation>
     </variable>
 	<variable>
         <key>taskCollectJG</key>
-        <translation>Zbierz </translation>
+        <translation>Zbierz</translation>
     </variable>
 	<variable>
         <key>taskFindJG</key>
-        <translation>Znajdź </translation>
+        <translation>Znajdź</translation>
     </variable>
 	<variable>
         <key>taskTalkJG</key>
-        <translation>Pogadaj z </translation>
+        <translation>Pogadaj z</translation>
     </variable>
 	<variable>
         <key>taskDoneJG</key>
-        <translation> ukończono: </translation>
+        <translation>ukończono:</translation>
     </variable>
+<!--Items-->
     <variable>
         <key>wolfSkin</key>
         <translation>Skóra wilka</translation>
@@ -204,6 +226,10 @@
 	 <variable>
         <key>smallPotionDescription</key>
         <translation>Mała lecz potrafi uratować życie. Odnawia 40 HP.</translation>
+    </variable>
+	<variable>
+        <key>tradeWindowWorth</key>
+        <translation>Wartość:</translation>
     </variable>
 	 <variable>
         <key>bigPotion</key>

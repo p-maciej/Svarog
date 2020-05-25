@@ -3,7 +3,6 @@ package svarog.game;
 import svarog.entity.Player;
 import svarog.io.Window;
 import svarog.render.Camera;
-import svarog.save.Save;
 import svarog.world.World;
 
 public abstract class WorldLoader {	

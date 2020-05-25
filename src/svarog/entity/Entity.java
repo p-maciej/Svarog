@@ -198,7 +198,7 @@ public abstract class Entity implements MouseInteraction {
 		if(transform.getScale().y < 1)
 			transform.getScale().y = 1;	
 		
-		transform.setOffsetY((int)WorldRenderer.getScale());
+		//transform.setOffsetY((int)WorldRenderer.getScale());
 		
 		float offset = 0;
 		if(fullBoundingBox == false)

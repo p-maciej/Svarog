@@ -10,7 +10,7 @@
    		<name>wolfSkin</name>
    		<description>wolfSkinDescription</description>
    		<itemType>trophy</itemType>
-   		<prize>1</prize>
+   		<prize>10</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/wargSkin.png</TextureFileName>
@@ -94,7 +94,7 @@
    		<name>werewolfSkin</name>
    		<description>werewolfSkinDescription</description>
    		<itemType>trophy</itemType>
-   		<prize>1</prize>
+   		<prize>70</prize>
 	</item>
 	<item>
 		<TextureFileName>textures/items/trophies/nixieTongue.png</TextureFileName>

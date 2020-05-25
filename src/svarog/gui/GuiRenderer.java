@@ -211,8 +211,8 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 			
-			if(item instanceof Trade) {
-				for(TileSheet sheet : ((Trade)item).getProducts())  {
+			if(item instanceof TradeWindow) {
+				for(TileSheet sheet : ((TradeWindow)item).getProducts())  {
 					for(Group group : sheet.getTileGroupsList()) {		
 						group.getTransform().set(group.getPosition().x+item.getPosition().x, group.getPosition().y-item.getPosition().y);
 						
@@ -290,8 +290,8 @@ public class GuiRenderer implements RenderProperties {
 					}
 				}
 				
-				if(item instanceof Trade) {
-					for(TileSheet sheet : ((Trade)item).getProducts())  {
+				if(item instanceof TradeWindow) {
+					for(TileSheet sheet : ((TradeWindow)item).getProducts())  {
 						for(Group group : sheet.getTileGroupsList()) {
 							for(GuiObject obj : group.getTextureObjectList()) {
 								mouseInteraction(obj, window);
@@ -387,8 +387,8 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 			
-			if(item instanceof Trade) {
-				for(TileSheet sheet : ((Trade)item).getProducts())  {
+			if(item instanceof TradeWindow) {
+				for(TileSheet sheet : ((TradeWindow)item).getProducts())  {
 					for(Group group : sheet.getTileGroupsList()) {
 						for(GuiObject object : group.getTextureObjectList()) {
 							renderGuiObject(object, shader, window);
@@ -398,11 +398,14 @@ public class GuiRenderer implements RenderProperties {
 							
 							
 								if(((Tile)object).getTileId() < 200) {
-									addToTileSheet((Tile)object, window, ((Trade)item).getProducts()[1]);
+									addToTileSheet((TradeWindow)item, (Tile)object, window, ((TradeWindow)item).getProducts()[1]);
 								} else {					
 									if(window.getInput().isMouseButtonReleased(0))
-										if(mouseOverTileId == ((Tile)object).getId())
+										if(mouseOverTileId == ((Tile)object).getId()) {
 											((Tile)object).removePuttedItem();
+											((TradeWindow) item).update();
+											update = true;
+										}
 								}
 							}
 						}
@@ -607,7 +610,7 @@ public class GuiRenderer implements RenderProperties {
 		}
 	}
 	
-	private void addToTileSheet(Tile object, Window window, TileSheet sheet) {
+	private void addToTileSheet(TradeWindow current, Tile object, Window window, TileSheet sheet) {
 		if(object.getId() == mouseOverTileId && setObjectId == -1 || setObjectId == object.getId()) {
 			if(window.getInput().isMouseButtonPressed(0)) {
 				pressedObjId = mouseOverTileId;
@@ -624,9 +627,11 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 			
-			if(Timer.getDelay(clickedTime, Timer.getNanoTime(), 0.3f) && mouseOverTileId == pressedObjId) {
+			if(Timer.getDelay(clickedTime, Timer.getNanoTime(), 0.4f) && mouseOverTileId == pressedObjId) {
 				if(clickCount == 2) {
 					sheet.putItemFirstEmpty(new Item(object.getPuttedItem()));
+					current.update();
+					update = true;
 					clickCount = 0;
 					setObjectId = -1;
 				} else if(clickCount == 1) {
