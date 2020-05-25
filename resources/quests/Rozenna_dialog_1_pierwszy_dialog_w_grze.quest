@@ -154,7 +154,7 @@
 	  <questID>1</questID>
 	  <title>QuestID1_CollectApples_Title</title>
 	  <description>QuestID1_CollectApples_Desc</description>
-	  <rewardMoney>10</rewardMoney>
+	  <rewardMoney>100</rewardMoney>
 	  <rewardHowManyItems>1</rewardHowManyItems>
 	  <itemGlobalID>10</itemGlobalID>
 	  <itemTileID>-1</itemTileID>

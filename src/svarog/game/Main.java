@@ -665,6 +665,7 @@ public class Main {
 									}
 									if(q1.isEndedQuest() && !q1.isRewardedYet()) {
 										q1.sendReward(player, guiRenderer);
+										guiRenderer.getStatsContainer().updatePlayerProperties(guiRenderer, player);
 									}
 								}
 								if(((NPC)entity).getInteractions() != null) {
@@ -686,6 +687,7 @@ public class Main {
 										}
 										if(q1.isEndedQuest() && !q1.isRewardedYet()) {
 											q1.sendReward(player, guiRenderer);
+											guiRenderer.getStatsContainer().updatePlayerProperties(guiRenderer, player);
 										}
 									}
 								}
