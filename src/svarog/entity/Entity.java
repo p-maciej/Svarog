@@ -130,6 +130,7 @@ public abstract class Entity implements MouseInteraction {
 			this.setFullBoundingBox(entityItemParameters.isFullBoundingBox());
 			
 			float diff = (float)texture.getHeight() / (float)texture.getWidth();
+
 			if(texture.getHeight() > texture.getWidth()) {
 				transform.getScale().y = diff;
 			}

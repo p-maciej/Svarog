@@ -338,7 +338,6 @@ public class Main {
 		
 		tileSheet.addTileGroup(tileGroup2);
 		///////////////////
-	
 		
 		////////////////////////////////////////////
 		
