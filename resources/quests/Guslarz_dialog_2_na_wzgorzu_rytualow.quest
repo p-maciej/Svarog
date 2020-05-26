@@ -214,7 +214,7 @@
       <id>0</id>
       <leadsTo>-1</leadsTo>
       <q>1</q>
-	  <questID>4</questID>
+	  <questID>9</questID>
 	  <title>QuestID4_HelpGuslarz_Title</title>
 	  <description>QuestID4_HelpGuslarz_Desc</description>
 	  <rewardMoney>10</rewardMoney>
@@ -224,5 +224,8 @@
       <toDo>12</toDo>
       <doItemID>9</doItemID>
       <state>kill</state>
+	  <idNpc>12</idNpc>
+	  <isLast>0</isLast>
+      <nextInteraction>Guslarz_dialog_3_na_wzgorzu_rytualow_po_pokonaniu_potworow.quest</nextInteraction>
    </dialog>
 </class>

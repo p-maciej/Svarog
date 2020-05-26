@@ -222,7 +222,20 @@
       <answer>End</answer>
       <id>0</id>
       <leadsTo>-1</leadsTo>
-      <q>0</q>
-      <t>0</t>
+      <q>1</q>
+	  <questID>10</questID>
+	  <title>QuestID0_MainQuest_Title</title>
+	  <description>QuestID0_MainQuest_Desc</description>
+	  <rewardMoney>10</rewardMoney>
+	  <rewardHowManyItems>1</rewardHowManyItems>
+	  <itemGlobalID>10</itemGlobalID>
+	  <itemTileID>-1</itemTileID>
+	  <t>1</t>
+	  <taskID>0</taskID>
+      <toDo>1</toDo>
+      <doItemID>4</doItemID>
+      <state>find</state>
+	  <idNpc>4</idNpc>
+	  <isLast>1</isLast>
    </dialog>
 </class>

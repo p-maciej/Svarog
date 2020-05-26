@@ -152,7 +152,7 @@ public class Interactions {
 							}
 							if(q1.isEndedQuest() && !q1.isRewardedYet()) {
 								q1.sendReward(player, guiRenderer);
-								guiRenderer.getStatsContainer().updatePlayerProperties(guiRenderer, player);
+								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 							}
 						}
 						guiRenderer.closeDialog();

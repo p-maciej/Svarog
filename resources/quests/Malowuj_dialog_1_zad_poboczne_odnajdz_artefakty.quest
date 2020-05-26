@@ -120,6 +120,9 @@
       <toDo>1</toDo>
       <doItemID>26</doItemID>
       <state>collect</state>
+	  <idNpc>6</idNpc>
+	  <isLast>0</isLast>
+      <nextInteraction>Malowuj_dialog_2_zad_poboczne_odnajdz_artefakty.quest</nextInteraction>
    </dialog>
     <dialog id = "12">
       <content>MalandMav_dialog1_line12</content>

@@ -167,6 +167,9 @@
       <toDo>1</toDo>
       <doItemID>10</doItemID>
       <state>talk</state>
+	  <idNpc>2</idNpc>
+	  <isLast>0</isLast>
+      <nextInteraction>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</nextInteraction>
    </dialog>
    <dialog id = "17">
       <content>RozandMav_dialog1_line17</content>

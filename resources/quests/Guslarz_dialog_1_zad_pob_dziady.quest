@@ -224,5 +224,7 @@
       <toDo>1</toDo>
       <doItemID>12</doItemID>
       <state>talk</state>
+	  <idNpc>11</idNpc>
+	  <isLast>1</isLast>
    </dialog>
 </class>

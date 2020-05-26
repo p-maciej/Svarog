@@ -260,6 +260,9 @@
       <toDo>10</toDo>
       <doItemID>12</doItemID>
       <state>collect</state>
+	  <idNpc>5</idNpc>
+	  <isLast>0</isLast>
+      <nextInteraction>Izbor_dialog_2_zad_poboczne_odnajdz_10_kielichow.quest</nextInteraction>
    </dialog>
     <dialog id = "28">
       <content>IzborandMav_dialog1_line28</content>

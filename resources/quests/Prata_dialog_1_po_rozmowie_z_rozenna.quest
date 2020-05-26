@@ -572,6 +572,9 @@
       <toDo>5</toDo>
       <doItemID>0</doItemID>
       <state>kill</state>
+	  <idNpc>4</idNpc>
+	  <isLast>0</isLast>
+      <nextInteraction>Prata_dialog_2_po_zabiciu_wilkow.quest</nextInteraction>
    </dialog>
    <dialog id = "62">
       <content>PratandMav_dialog1_line62</content>
