@@ -227,7 +227,7 @@
    		<texturePath></texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>tree</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>300</respownInSec>
    		<scaleX>3</scaleX>
    		<scaleY>8</scaleY>
    		<howManyItems>1</howManyItems>
@@ -251,7 +251,7 @@
    		<texturePath></texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>tree</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>300</respownInSec>
    		<scaleX>3</scaleX>
    		<scaleY>8</scaleY>
    		<howManyItems>2</howManyItems>
