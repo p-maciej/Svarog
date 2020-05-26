@@ -150,7 +150,8 @@ public class Player extends Entity {
 				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, language.getValue(ques.getTitle())), Type.headline);
 				String tempowy = language.getValue(ques.getDescription());
 				for(Task tasks01: ques.getTasks()) {
-					tempowy+=Character.toChars(2);
+					tempowy+= TextBlock.lineBreak;
+					tempowy+= TextBlock.lineBreak;
 					tempowy+= tasks01.progress();
 				}
 				quests1.addTextBlock(new TextBlock(265, new Vector2f(), font2, tempowy), Type.content);

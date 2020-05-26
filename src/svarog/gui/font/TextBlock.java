@@ -18,6 +18,8 @@ public class TextBlock extends GuiObject {
 	protected String string;
 	protected int lineHeight;
 	
+	public static final char lineBreak = 2;
+	
 	public TextBlock(int maxWidth, Vector2f position) {
 		super(maxWidth, 0, position);
 		lines = new ArrayList<Line>();
@@ -81,7 +83,7 @@ public class TextBlock extends GuiObject {
 				lineWidth += word.getWordWidth();
 				lineChars += word.getWordLength();
 					
-				if(i == string.length()-1) {
+				if(i == string.length()-1 || word.isBreakLine() == true) {
 					lines.add(addLine(i+1, wordHeight, lineWidth, lineChars, font));
 				}
 			} else {
@@ -90,6 +92,11 @@ public class TextBlock extends GuiObject {
 				lineChars = 0;
 				lineWidth = 0;
 				i--;
+			}
+			
+			if(word.isBreakLine() == true) {
+				lineChars = 0;
+				lineWidth = 0;
 			}
 		}
 		
@@ -114,7 +121,7 @@ public class TextBlock extends GuiObject {
 		int wordWidth = 0;
 		int lastIndex = 0;
 		int wordLength = 0;
-
+		boolean breakLine = false;
 		for(int i = index; i < string.length(); i++) {
 			CharacterBuffer character = font.getCharacterBuffer(string.charAt(i));
 			if(string.charAt(i) != SPACE) {
@@ -122,8 +129,14 @@ public class TextBlock extends GuiObject {
 				if(character != null) {
 					wordWidth += character.getWidth();
 					lastIndex = i;
-				}				
-			} else {
+				}	
+
+				if(string.charAt(i) == lineBreak) {
+					breakLine = true;
+					break;
+				}
+				
+			} else { 
 				wordLength++;
 				if(character != null) {
 					wordWidth += character.getWidth();
@@ -135,9 +148,9 @@ public class TextBlock extends GuiObject {
 
 		if(wordWidth < super.getWidth())
 			if(lineWidth+wordWidth < super.getWidth())
-				return new Word(wordWidth, lastIndex, wordLength);
+				return new Word(wordWidth, lastIndex, wordLength, breakLine);
 			else 
-				return new Word(0, lastIndex, wordLength);
+				return new Word(0, lastIndex, wordLength, breakLine);
 		else
 			throw new IllegalStateException("Box is to small");
 	}
@@ -162,11 +175,13 @@ public class TextBlock extends GuiObject {
 		private int wordWidth;
 		private int wordLendth;
 		private int lastIndex;
+		private boolean breakLine;
 
-		private Word(int wordWidth, int lastIndex, int wordLength) {
+		private Word(int wordWidth, int lastIndex, int wordLength, boolean breakLine) {
 			this.wordWidth = wordWidth;
 			this.lastIndex = lastIndex;
 			this.wordLendth = wordLength;
+			this.breakLine = breakLine;
 		}
 		
 		private int getWordWidth() {
@@ -179,6 +194,10 @@ public class TextBlock extends GuiObject {
 
 		public int getWordLength() {
 			return wordLendth;
+		}
+
+		private boolean isBreakLine() {
+			return breakLine;
 		}
 	}
 	////////////////////////////////////////////

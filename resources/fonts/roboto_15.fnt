@@ -1,4 +1,5 @@
 char id=0       x=0    y=0    width=0    height=18   xoffset=0    yoffset=0    xadvance=-2   page=0    chnl=0 
+char id=2       x=0    y=100  width=1    height=18   xoffset=0    yoffset=0    xadvance=-2   page=0    chnl=0 
 char id=10      x=0    y=0    width=0    height=18   xoffset=0    yoffset=0    xadvance=-2   page=0    chnl=0 
 char id=32      x=0    y=100  width=6    height=18   xoffset=0    yoffset=0    xadvance=2    page=0    chnl=0 
 char id=33      x=165  y=18   width=4    height=18   xoffset=1    yoffset=0    xadvance=2    page=0    chnl=0 
