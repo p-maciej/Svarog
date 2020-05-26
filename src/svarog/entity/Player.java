@@ -267,7 +267,7 @@ public class Player extends Entity {
 				movement = movePlayer(direction, false);
 			
 			
-			if(movement.x == 0 && movement.y == 0) {
+			if((movement.x == 0 && movement.y == 0) || (super.isColliding[0] || super.isColliding[1])) {
 				if(audioPlayer.isPlaying(walk))
 					audioPlayer.stop(walk);
 			} else {
