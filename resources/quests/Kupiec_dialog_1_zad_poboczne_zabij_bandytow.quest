@@ -156,15 +156,22 @@
 	  <description>QuestID3_KillBandits_Desc</description>
 	  <rewardMoney>10</rewardMoney>
 	  <rewardHowManyItems>0</rewardHowManyItems>
-	  <t>2</t>
+	  <t>3</t>
 	  <taskID>0</taskID>
       <toDo>5</toDo>
       <doItemID>6</doItemID>
       <state>kill</state>
-	   <taskID>1</taskID>
+	  <taskID>1</taskID>
       <toDo>1</toDo>
       <doItemID>7</doItemID>
       <state>kill</state>
+	  <taskID>1</taskID>
+      <toDo>1</toDo>
+      <doItemID>11</doItemID>
+      <state>collect</state>
+	  <idNpc>14</idNpc>
+	  <isLast>0</isLast>
+      <nextInteraction>Kupiec_dialog_2_zad_poboczne_zabij_bandytow.quest</nextInteraction>
    </dialog>
    <dialog id = "17">
       <content>KubandMav_dialog1_line17</content>

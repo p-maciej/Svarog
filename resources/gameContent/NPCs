@@ -51,7 +51,8 @@
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
 		<name>NPCPrata</name>
-		<interactionsFile>Prata_dialog_1_po_rozmowie_z_rozenna.quest</interactionsFile>
+		<interactionsFile></interactionsFile>
+		<!--<interactionsFile>Prata_dialog_1_po_rozmowie_z_rozenna.quest</interactionsFile>-->
 		<!--<interactionsFile>Prata_dialog_2_po_zabiciu_wilkow.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
 	</npc>
