@@ -148,10 +148,12 @@ public class Player extends Entity {
 		for(Quest ques: this.getQuests()) {
 			if(ques.isEndedQuest() != true) {
 				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, language.getValue(ques.getTitle())), Type.headline);
-				quests1.addTextBlock(new TextBlock(265, new Vector2f(), font2, language.getValue(ques.getDescription())), Type.content);
+				String tempowy = language.getValue(ques.getDescription());
 				for(Task tasks01: ques.getTasks()) {
-					quests1.addTextBlock(new TextBlock(280, new Vector2f(), font3, tasks01.progress()), Type.normal);
+					tempowy+=Character.toChars(2);
+					tempowy+= tasks01.progress();
 				}
+				quests1.addTextBlock(new TextBlock(265, new Vector2f(), font2, tempowy), Type.content);
 			}
 		}
 
