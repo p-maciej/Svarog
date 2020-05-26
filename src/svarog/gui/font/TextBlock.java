@@ -98,8 +98,8 @@ public class TextBlock extends GuiObject {
 				lineChars = 0;
 				lineWidth = 0;
 			}
+			
 		}
-		
 		return lines;
 	}
 	
