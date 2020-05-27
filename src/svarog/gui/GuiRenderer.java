@@ -907,10 +907,22 @@ public class GuiRenderer implements RenderProperties {
 				add = false;
 		}
 		
+		if(window instanceof TradeWindow) {
+			add = !checkTradeWindows();
+		}
+		
 		if(add) {
 			windows.add(window);
 			updatePositions();
 		}
+	}
+	
+	private boolean checkTradeWindows() {
+		for(GuiWindow wind : windows) {
+			if(wind instanceof TradeWindow)
+				return true;
+		}
+		 return false;
 	}
 	
 	public void removeGuiObject(GuiObject object) {
