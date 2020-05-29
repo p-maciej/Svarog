@@ -3,23 +3,23 @@
 <!--FightSystem-->
     <variable>
         <key>fightSystemHpBefore</key>
-        <translation>HP (przed atakiem):</translation>
+        <translation>- HP przed atakiem:</translation>
     </variable>
     <variable>
         <key>fightSystemHpAfter</key>
-        <translation>HP: (po ataku):</translation>
+        <translation>- HP po ataku:</translation>
     </variable>
     <variable>
         <key>fightSystemPlayerWon</key>
-        <translation>umarł, wygrałeś!!!</translation>
+        <translation>nie żyje. Zwycięstwo!!!</translation>
     </variable>
 	<variable>
         <key>fightSystemPlayerDefeat</key>
-        <translation>Gracz przegrał,</translation>
+        <translation>Zawzięcie walczyłeś no ale tym razem się nie udało. Nie żyjesz.</translation>
     </variable>
 	<variable>
         <key>fightSystemPlayerDefeat2</key>
-        <translation>zabijał więcej ludzi niż kiedykolwiek.</translation>
+        <translation>Jest niepowstrzymany.</translation>
     </variable>
 <!--TasksSystem-->
     <variable>
@@ -382,7 +382,7 @@
     </variable>
 	<variable>
         <key>MavandGus_dialog1_line1</key>
-        <translation>[Guślarz] - …</translation>
+        <translation>[Guślarz] - *zamyślony*</translation>
     </variable>
 	<variable>
         <key>MavandGus_dialog1_line2</key>

@@ -145,7 +145,7 @@ public class PagedGuiWindow extends GuiWindow {
 		int tempPage = 1;
 		
 		int headlineRendered = -1;
-		
+
 		for(int i = 0; i < textBlocks.size(); i++) {
 			WindowTextType temp = textBlocks.get(i);
 			if(temp.getType() == Type.headline) {
@@ -159,11 +159,13 @@ public class PagedGuiWindow extends GuiWindow {
 			
 			if(tempHeight >= super.getHeight()) {
 				++tempPage;
+				
 				tempHeight = textBlockPaddingTop;
-				if(headlineRendered != i-1)
-					i = i-1;
-				else 
-					i = i-2;
+				if(temp.getBlock().getHeight() + textBlockSpacing + textBlockPaddingTop < super.getHeight())
+					if(headlineRendered != i-1)
+						i = i-1;
+					else 
+						i = i-2;
 			}
 			
 			if(i-1 == headlineRendered)
@@ -181,7 +183,7 @@ public class PagedGuiWindow extends GuiWindow {
 		int tempPage = 1;
 		
 		int headlineRendered = -1;
-
+		
 		if(currentPage > 1) {
 			for(int i = 0; i < textBlocks.size(); i++) {
 				WindowTextType temp = textBlocks.get(i);
@@ -196,6 +198,7 @@ public class PagedGuiWindow extends GuiWindow {
 				
 				if(tempHeight >= super.getHeight()) {
 					++tempPage;
+					
 					tempHeight = textBlockPaddingTop;
 					if(headlineRendered != i-1)
 						i = i-1;
@@ -211,6 +214,7 @@ public class PagedGuiWindow extends GuiWindow {
 				if(i-1 == headlineRendered)
 					headlineRendered = -1;
 			}
+
 			for(int i = lastRenderedIndex+1; i < textBlocks.size(); i++) {
 				WindowTextType temp = textBlocks.get(i);
 				if(temp.getType() == Type.headline) {
@@ -243,6 +247,7 @@ public class PagedGuiWindow extends GuiWindow {
 					height += temp.getBlock().getHeight() + textBlockSpacing;
 				} else
 					height += temp.getBlock().getHeight();
+
 				
 				if(height < super.getHeight()) {
 					toRender.add(temp);

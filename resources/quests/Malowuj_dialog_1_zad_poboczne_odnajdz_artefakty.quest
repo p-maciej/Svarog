@@ -109,6 +109,8 @@
 	  <questID>7</questID>
 	  <title>QuestID7_FindArtefactsinFort_Title</title>
 	  <description>QuestID7_FindArtefactsinFort_Desc</description>
+	  <rewardMoney>10</rewardMoney>
+	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>2</t>
 	  <taskID>0</taskID>
       <toDo>1</toDo>
@@ -118,6 +120,9 @@
       <toDo>1</toDo>
       <doItemID>26</doItemID>
       <state>collect</state>
+	  <idNpc>6</idNpc>
+	  <isLast>0</isLast>
+      <nextInteraction>Malowuj_dialog_2_zad_poboczne_odnajdz_artefakty.quest</nextInteraction>
    </dialog>
     <dialog id = "12">
       <content>MalandMav_dialog1_line12</content>

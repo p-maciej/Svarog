@@ -154,6 +154,10 @@
 	  <questID>1</questID>
 	  <title>QuestID1_CollectApples_Title</title>
 	  <description>QuestID1_CollectApples_Desc</description>
+	  <rewardMoney>100</rewardMoney>
+	  <rewardHowManyItems>1</rewardHowManyItems>
+	  <itemGlobalID>10</itemGlobalID>
+	  <itemTileID>-1</itemTileID>
 	  <t>2</t>
 	  <taskID>0</taskID>
       <toDo>5</toDo>
@@ -163,6 +167,9 @@
       <toDo>1</toDo>
       <doItemID>10</doItemID>
       <state>talk</state>
+	  <idNpc>2</idNpc>
+	  <isLast>0</isLast>
+      <nextInteraction>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</nextInteraction>
    </dialog>
    <dialog id = "17">
       <content>RozandMav_dialog1_line17</content>

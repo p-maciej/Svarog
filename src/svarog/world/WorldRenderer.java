@@ -9,6 +9,7 @@ import org.joml.Vector3f;
 import svarog.audio.Audio;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
+import svarog.entity.Player;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -37,6 +38,8 @@ public class WorldRenderer implements RenderProperties {
 	private static int mouseOverEntityId;
 	private static int clickedEntityId;
 	
+	private static Player player;
+	
 	private static boolean mouseInteractionLock = false;
 	
 	public WorldRenderer() {
@@ -61,9 +64,9 @@ public class WorldRenderer implements RenderProperties {
 		int posY = (int)(camera.getPosition().y / (scale*2));
 
 		//position of coursor on the World
-		int x = (-(int)((camera.getPosition().x)) - (int)window.getWidth()/2 + (int)(worldOffset.x/2) + (int)scale + (int)window.getCursorPositionX());
-		int y = ((int)((camera.getPosition().y)) - (int)window.getHeight()/2 + (int)(worldOffset.y/2) + (int)scale + (int)window.getCursorPositionY());
-
+		int x = (int)(-((camera.getPosition().x)) - (window.getWidth()/2) - (camera.getOffset().x) + scale + (float)window.getCursorPositionX());
+		int y = (int)(((camera.getPosition().y)) - (window.getHeight()/2) + (camera.getOffset().y) + scale + (float)window.getCursorPositionY());
+		
 		for(int i = 0; i < viewX; i++) {
 			for(int j = 0; j < viewY; j++) {
 				if(mouseInteractionLock == false) {
@@ -86,8 +89,9 @@ public class WorldRenderer implements RenderProperties {
 						mouseOverEntityId = entity.getObjectId();
 					
 					if(entity.isClickable())
-						if(window.getInput().isMouseButtonReleased(0))
-							clickedEntityId = mouseOverEntityId;
+						if(window.getInput().isMouseButtonReleased(0)) {
+							if(getDistance(player.getPositionX(), entity.getPositionX(), player.getPositionY(), entity.getPositionY()) <= 5)
+								clickedEntityId = mouseOverEntityId;}
 				}
 			}
 		}
@@ -153,8 +157,10 @@ public class WorldRenderer implements RenderProperties {
 			
 			if(entity.getFullBoundingBox() == false)
 				temp.getPosition().y += 1f; // This sets offset in texture rendering when entity should walk like on foots
-			else
-				temp.getPosition().y += 0.5f;
+			
+			if(entity.getTransform().getScale().y > 1) {
+				temp.getPosition().y += entity.getTransform().getScale().y-1;
+			}
 				
 			shader.bind();
 			shader.setUniform("sampler", 0);
@@ -212,6 +218,7 @@ public class WorldRenderer implements RenderProperties {
 		int w = (int)(-world.getWidth() * scale * 2);
 		int h = (int)(world.getHeight() * scale * 2);
 		
+		
 		if(position.x > -(window.getWidth()/2)+scale+worldOffset.x/2) // Left border - add higher value, more offset
 			position.x = -(window.getWidth()/2)+scale+worldOffset.x/2;
 		if(position.x < w + (window.getWidth()/2)+scale-worldOffset.x/2) // Right border - subtract
@@ -226,10 +233,10 @@ public class WorldRenderer implements RenderProperties {
 	public boolean isOverEntity(Entity entity, Camera camera, Window window) {
 		int posX = (int)(entity.getTransform().getPosition().x*scale);
 		int posY = (int)(-entity.getTransform().getPosition().y*scale);
+	
 		
-		int x = (-(int)((camera.getPosition().x)) - (int)(window.getWidth()/2) + (int)(worldOffset.x/2) + (int)scale + (int)window.getCursorPositionX());
-		int y = ((int)((camera.getPosition().y)) - (int)(window.getHeight()/2) + (int)(worldOffset.y/2) + (int)scale + (int)window.getCursorPositionY());
-		
+		int x = (int)(-((camera.getPosition().x)) - (window.getWidth()/2) - (camera.getOffset().x) + scale + (float)window.getCursorPositionX());
+		int y = (int)(((camera.getPosition().y)) - (window.getHeight()/2) + (camera.getOffset().y) + scale + (float)window.getCursorPositionY());
 
 		if(posX-entity.getTransform().getOffsetX() < x && (posX+entity.getTransform().getScale().x*scale*2-entity.getTransform().getOffsetX()) > x && (posY-entity.getTransform().getScale().y*scale+entity.getTransform().getOffsetY()) < y && posY+scale*2+entity.getTransform().getOffsetY() > y) {
 			return true;
@@ -273,6 +280,10 @@ public class WorldRenderer implements RenderProperties {
 	public static float getScale() {
 		return scale;
 	}
+	
+	private double getDistance(int x1, int x2, int y1, int y2) {
+		return Math.sqrt(Math.pow((x2-x1), 2) + Math.pow((y2-y1), 2));
+	}
 
 	public static boolean isMouseInteractionLocked() {
 		return mouseInteractionLock;
@@ -280,5 +291,9 @@ public class WorldRenderer implements RenderProperties {
 
 	public static void setMouseInteractionLock(boolean mouseInteractionLock) {
 		WorldRenderer.mouseInteractionLock = mouseInteractionLock;
+	}
+
+	public static void setPlayer(Player player) {
+		WorldRenderer.player = player;
 	}
 }

@@ -26,7 +26,6 @@ import svarog.interactions.Quest;
 import svarog.interactions.Task;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
-import svarog.language.InterfaceTranslations.languages;
 import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.render.Animation;
@@ -139,7 +138,7 @@ public class Player extends Entity {
 
 	}
 	
-	public PagedGuiWindow getQuestsPagedOnGUI(Font font, Font font2, Font font3, LanguageLoader language) {
+	public PagedGuiWindow getQuestsPagedOnGUI(Font font, Font font2, LanguageLoader language) {
 		/// Windows on GUI /////////////////////////
 		PagedGuiWindow quests1 = new PagedGuiWindow("Questy", font, new TextureObject(new Texture("images/window1.png")));
 		quests1.setStickTo(stickTo.TopRight);
@@ -148,10 +147,12 @@ public class Player extends Entity {
 		for(Quest ques: this.getQuests()) {
 			if(ques.isEndedQuest() != true) {
 				quests1.addTextBlock(new TextBlock(280, new Vector2f(), font, language.getValue(ques.getTitle())), Type.headline);
-				quests1.addTextBlock(new TextBlock(265, new Vector2f(), font2, language.getValue(ques.getDescription())), Type.content);
+				String tempowy = language.getValue(ques.getDescription());
 				for(Task tasks01: ques.getTasks()) {
-					quests1.addTextBlock(new TextBlock(280, new Vector2f(), font3, tasks01.progress()), Type.normal);
+					tempowy+= TextBlock.lineBreak;
+					tempowy+= tasks01.progress();
 				}
+				quests1.addTextBlock(new TextBlock(265, new Vector2f(), font2, tempowy), Type.content);
 			}
 		}
 
@@ -267,7 +268,7 @@ public class Player extends Entity {
 				movement = movePlayer(direction, false);
 			
 			
-			if(movement.x == 0 && movement.y == 0) {
+			if((movement.x == 0 && movement.y == 0) || (super.isColliding[0] || super.isColliding[1])) {
 				if(audioPlayer.isPlaying(walk))
 					audioPlayer.stop(walk);
 			} else {
@@ -405,6 +406,10 @@ public class Player extends Entity {
 							}
 						}
 					}
+					if(q1.isEndedQuest() && !q1.isRewardedYet()) {
+						q1.sendReward(this, guiRenderer);
+						guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, this);
+					}
 				}
 				
 				//Last line (everything should be done before it)
@@ -453,6 +458,9 @@ public class Player extends Entity {
 		return attack;
 	}
 	
+	public void addMoney(int value) {
+		this.money+=value;
+	}
 	
 	private void setLastKeysPressed(int[] keysPressed) {
 		for(int i = 0; i < 4; i++) {
@@ -478,14 +486,6 @@ public class Player extends Entity {
 	
 	public void AddPlayerHP(int health) {
 		this.hp.AddHP(health);
-	}
-	
-	public int getPositionX() {
-		return (int)(transform.getPosition().x/2);
-	}
-	
-	public int getPositionY() {
-		return (int)(transform.getPosition().y/2*(-1));
 	}
 
 	public void setSetCamWithoutAnimation(boolean setCamWithoutAnimation) {

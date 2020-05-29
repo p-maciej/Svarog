@@ -25,6 +25,8 @@
 	  <questID>-10</questID>
 	  <title>Pokonaj zbojcow</title>
 	  <description>Pod miastem kryja sie grozni zbuje, mozesz ich pokonac przy pomocy miecza wiecej tekstu dla PagedGuiWindow  wiecej tekstu dla PagedGuiWindow wiecej tekstu dla PagedGuiWindow</description>
+	  <rewardMoney>10</rewardMoney>
+	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>2</t>
 	  <taskID>0</taskID>
       <toDo>5</toDo>

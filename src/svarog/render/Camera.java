@@ -8,8 +8,8 @@ import svarog.io.Window;
 public class Camera {
 	private Vector3f position;
 	private Matrix4f projection;
-	
-	
+	private Vector2f offset;
+
 	public Camera() {
 		position = new Vector3f(0,0,0);
 	}
@@ -34,6 +34,14 @@ public class Camera {
 		return projection.translate(position, new Matrix4f());
 	}
 	
+	public Vector2f getOffset() {
+		return offset;
+	}
+
+	public void setOffset(Vector2f offset) {
+		this.offset = offset;
+	}
+	
 	public void setProjection(int width, int height) {
 		projection = new Matrix4f().setOrtho2D(-width/2, width/2, -height/2, height/2);
 	}
@@ -55,6 +63,7 @@ public class Camera {
 		else
 			offset.y += centerOffset.y/2;
 			
+		this.setOffset(new Vector2f(offset.x, offset.y));
 		
 		projection.translate(offset);
 		

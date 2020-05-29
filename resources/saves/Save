@@ -2,8 +2,8 @@
 <class>
 <save id="0">
 <worldID>1</worldID>
-<getPositionX>42</getPositionX>
-<getPositionY>25</getPositionY>
+<getPositionX>74</getPositionX>
+<getPositionY>45</getPositionY>
 <getId>0</getId>
 <getTexturesPath>player/mavak/</getTexturesPath>
 <getFileName>mavak</getFileName>

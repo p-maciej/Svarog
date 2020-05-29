@@ -8,7 +8,9 @@ import svarog.entity.Player;
 import svarog.world.WorldRenderer;
 
 public class PathFinder {
+	@SuppressWarnings("unused")
 	private AABB[][]coliders;
+	@SuppressWarnings("unused")
 	private Node[][]nodes;
 	
 	private int player_x=0;

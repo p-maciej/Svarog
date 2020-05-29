@@ -534,4 +534,15 @@
 		<posX>102</posX>
 		<posY>7</posY>
 	</entity>
+	<entity>
+		<type>npc</type>
+		<id>61</id>
+		<typeID>11</typeID>
+		<name>guslarzVillage</name>
+		<posX>13</posX>
+		<posY>77</posY>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
+		<isClickable>true</isClickable>
+	</entity>
 </class>
