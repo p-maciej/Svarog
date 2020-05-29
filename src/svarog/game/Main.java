@@ -527,8 +527,10 @@ public class Main {
             	window.update();
             	window.swapBuffers(); 
             	
-            	if(window.hasResized())
+            	if(window.hasResized()) {
+            		window.checkSize();
             		glViewport(0, 0, window.getWidth(), window.getHeight());
+            	}
             	
             } else if(showMenu == false) {
 	            if(WorldLoader.getNextFrameLoadWorld() != 0) {
@@ -580,8 +582,11 @@ public class Main {
 		            	start = -1;
 	            	}
 	            	
-	            	if(window.hasResized())
+	            	if(window.hasResized()) {
+	            		window.checkSize();
 	            		glViewport(0, 0, window.getWidth(), window.getHeight());
+	            	}
+	            		
 	            } else {
 	            	if(joinThread == true) {
 		        		try {
