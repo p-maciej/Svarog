@@ -26,7 +26,6 @@ import svarog.interactions.Quest;
 import svarog.interactions.Task;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
-import svarog.language.InterfaceTranslations.languages;
 import svarog.language.LanguageLoader;
 import svarog.objects.Item;
 import svarog.render.Animation;
@@ -139,7 +138,7 @@ public class Player extends Entity {
 
 	}
 	
-	public PagedGuiWindow getQuestsPagedOnGUI(Font font, Font font2, Font font3, LanguageLoader language) {
+	public PagedGuiWindow getQuestsPagedOnGUI(Font font, Font font2, LanguageLoader language) {
 		/// Windows on GUI /////////////////////////
 		PagedGuiWindow quests1 = new PagedGuiWindow("Questy", font, new TextureObject(new Texture("images/window1.png")));
 		quests1.setStickTo(stickTo.TopRight);

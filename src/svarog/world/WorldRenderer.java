@@ -9,7 +9,6 @@ import org.joml.Vector3f;
 import svarog.audio.Audio;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
-import svarog.entity.EntityItem;
 import svarog.entity.Player;
 import svarog.io.Timer;
 import svarog.io.Window;
