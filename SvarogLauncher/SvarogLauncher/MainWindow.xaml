@@ -6,11 +6,16 @@
         xmlns:local="clr-namespace:SvarogLauncher"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Svarog Launcher" Height="200" Width="300">
+        Title="Svarog Launcher" Height="250" Width="350" Icon="icons/logo32.png">
     <Grid>
-        <Button x:Name="runBtn" Content="Uruchom" Cursor="Hand" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Center" FontSize="18" Width="150" Height="75" Click="RunBtn_Click"/>
-        <TextBox x:Name="JVMparameters" HorizontalAlignment="Left" Height="23" Margin="72,138,0,0" TextWrapping="NoWrap" FontSize="11" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="212"/>
-        <TextBlock x:Name="JVMparametersBlock" HorizontalAlignment="Left" Margin="10,139,0,-112" TextWrapping="Wrap" Text="Parametry:" VerticalAlignment="Top"/>
+        <Button x:Name="runBtn" Content="Uruchom" Cursor="Hand" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Center" FontSize="18" Width="150" Height="35" Click="RunBtn_Click"/>
+        <Image x:Name="logo" Source="icons/logo64.png" HorizontalAlignment="Center" Height="64" Margin="0,6,0,0" VerticalAlignment="Top" Width="64"/>
 
+        <Expander Header="Zaawansowane" Width="300" Margin="0,0,0,10" Height="60" VerticalAlignment="Bottom" HorizontalAlignment="Center" ExpandDirection="Up">
+            <Grid>
+                <TextBox x:Name="JVMparameters" HorizontalAlignment="Left" Height="23" Margin="72,0,0,10" TextWrapping="NoWrap" FontSize="11" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Width="202"/>
+                <TextBlock x:Name="JVMparametersBlock" HorizontalAlignment="Left" Margin="10,0,0,13" TextWrapping="Wrap" Text="Parametry:" VerticalAlignment="Bottom"/>
+            </Grid>
+        </Expander>
     </Grid>
 </Window>
