@@ -16,6 +16,7 @@ import org.lwjgl.BufferUtils;
 
 import svarog.collision.AABB;
 import svarog.entity.Entity;
+import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.io.Timer;
 import svarog.render.Texture;
@@ -194,6 +195,17 @@ public class World implements Runnable {
 	
 	public void addDoor(Door door) {
 		this.doors.add(door);
+	}
+	
+	public NPC getNpcByNpcId(int npcId) {
+		for(Entity i: entities) {
+			if(i instanceof NPC) {
+				if(((NPC) i).getGlobalNpcID()==npcId) {
+					return ((NPC)i);
+				}
+			}
+		}
+		return null;
 	}
 	
 	public Player getPlayer() {

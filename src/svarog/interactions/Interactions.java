@@ -157,7 +157,7 @@ public class Interactions {
 								}
 							}
 							if(q1.isEndedQuest() && !q1.isRewardedYet()) {
-								q1.sendReward(player, guiRenderer);
+								q1.sendReward(player, guiRenderer, currentWorld.getWorld());
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 							}
 						}

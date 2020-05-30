@@ -9,6 +9,7 @@ import svarog.gui.GuiRenderer;
 import svarog.objects.Item;
 import svarog.save.ItemParameters;
 import svarog.save.Save;
+import svarog.world.World;
 
 public class Quest {
 
@@ -29,10 +30,13 @@ public class Quest {
 		return isEndedQuest;
 	}
     
-    public void sendReward(Player player, GuiRenderer guiRenderer) {
+    public void sendReward(Player player, GuiRenderer guiRenderer, World world) {
     	if(!isRewardedYet && isEndedQuest) {
     		for(Item i:rewardItem) {
     			player.addItemToInventoryWithGUIupdate(i, guiRenderer);
+    		}
+    		if(!isLast) {
+    			world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
     		}
     		player.addMoney(rewardMoney);
     	}
