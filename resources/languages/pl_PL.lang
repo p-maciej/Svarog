@@ -1765,87 +1765,87 @@
 	<!--1 Dialog Rozenny z Mavakiem-->
 	<variable>
         <key>RozandMav_dialog1_line0</key>
-        <translation>[Rozenna] - Mavak! Witaj moj drogi co u Ciebie slychac?</translation>
+        <translation>[Rozenna] - Mavak! Witaj mój drogi co u Ciebie słychać?</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line1</key>
-        <translation>[Mavak] - Witaj Rozenno. To nadal nie ustaje. Te sny. Od kilku nocy mam w glowie obrazy ktorych nie rozumiem:</translation>
+        <translation>[Mavak] - Witaj Rozenno. To nadal nie ustaje. Te sny. Od kilku nocy mam w głowie obrazy których nie rozumiem:</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line2</key>
-        <translation>[Mavak] - Miecz, bagna, lod, smierc. Co to wszystko moze oznaczac? Dlaczego mi sie to w ogole sni?</translation>
+        <translation>[Mavak] - Miecz, bagna, lód, śmierć. Co to wszystko może oznaczać? Dlaczego mi się to w ogóle śni?</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line3</key>
-        <translation>[Rozenna] -  Moze sami Bogowie chca Ci dac jakis znak? Zawsze Ci mowilam ze jestes zdolny do wielkich rzeczy, moze ktos na gorze to w koncu zauwazyl. *smiech*</translation>
+        <translation>[Rozenna] -  Może sami Bogowie chcą Ci dać jakiś znak? Zawsze Ci mówiłam że jesteś zdolny do wielkich rzeczy, może ktoś na górze to w końcu zauważył. *śmiech*</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line4</key>
-        <translation>[Mavak] - *smiech* Oj glupiutka. Naprawde myslisz ze Bogowie maja oko na to miejsce? Spojrz tylko na nasza okolice.</translation>
+        <translation>[Mavak] - *śmiech* Oj głupiutka. Naprawde myślisz że Bogowie mają oko na to miejsce? Spójrz tylko na naszą okolice.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line5</key>
-        <translation>[Mavak] - W okolo wioski pelno wilkow zdolnych pozrec wszystko co stanie im na drodze, za nasza wioska stacjonuja bandyci ktorzy napadaja i zabijaja praktycznie kazdego.</translation>
+        <translation>[Mavak] - W około wioski pełno wilków zdolnych pożreć wszystko co stanie im na drodze, za naszą wioską stacjonuja bandyci którzy napadają i zabijają praktycznie kazdego.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line6</key>
-        <translation>[Mavak] - Najblizsza wioska do ktorej sie mozemy udac jest ten przeklety grod na wschodzie ktory lata temu zostal napadniety przez armie nieumarlych.</translation>
+        <translation>[Mavak] - Najblizszą wioską do której się możemy udać jest ten przeklęty gród na wschodzie który lata temu został napadnięty przez armie nieumarłych.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line7</key>
-        <translation>[Mavak] - A o moczarach na poludniu nawet nie bede mowic. Sama przeciez slyszalas liczne legendy o istotach ktore podobno tam zamieszkuja.</translation>
+        <translation>[Mavak] - A o moczarach na południu nawet nie będę mówić. Sama przecież słyszałas liczne legendy o istotach które podobno tam zamieszkują.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line8</key>
-        <translation>[Mavak] - Ehhh powiedzmy sobie szczerze Bogowie dawno zapomnieli o tym miejscu i posagi znajdujace sie w naszej wiosce  raczej im o nas nie przypominaja.</translation>
+        <translation>[Mavak] - Ehhh powiedzmy sobie szczerze Bogowie dawno zapomnieli o tym miejscu i posągi znajdujace sie w naszej wiosce raczej im o nas nie przypominają.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line9</key>
-        <translation>[Rozenna] - Trudno Ci nie przyznac racji. Ale zastanow sie, Twoje sny nie moga brac sie znikad, moze naprawde cos jest na rzeczy.</translation>
+        <translation>[Rozenna] - Trudno Ci nie przyznać racji. Ale zastanów się, Twoje sny nie mogą brać sie znikąd, może naprawde coś jest na rzeczy.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line10</key>
-        <translation>[Mavak] - Hah, Rozenno mowilem Ci kiedys ze jestes uparta niewiasta?</translation>
+        <translation>[Mavak] - Hah, Rozenno mówilem Ci kiedyś ze jesteś upartą niewiastą?</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line11</key>
-        <translation>[Rozenna] - I to jest pierwszy powod dla ktorego tak mnie lubisz moj drogi.</translation>
+        <translation>[Rozenna] - I to jest pierwszy powód dla którego tak mnie lubisz mój drogi.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line12</key>
-        <translation>[Mavak] - A drugi powod toooo?</translation>
+        <translation>[Mavak] - A drugi pówod toooo?</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line13</key>
-        <translation>[Rozenna] - Jableczniki mojej roboty. *smiech*</translation>
+        <translation>[Rozenna] - Jabłeczniki mojej roboty. *śmiech*</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line14</key>
-        <translation>[Mavak] - Dobra, masz mnie! *smiech* Rozumiem, ze wspominasz o nich nie bez przyczyny i pewnie mam Ci poszukac ladnych jablek?</translation>
+        <translation>[Mavak] - Dobra, masz mnie! *śmiech* Rozumiem, ze wspominasz o nich nie bez przyczyny i pewnie mam Ci poszukać ladnych jablek?</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line15</key>
-        <translation>[Rozenna] - Wiedzialam ze sie zrozumiemy. Wyjdx przed wioske, mysle ze gdzies tam powinny jeszcze rosnac jakies jablka.</translation>
+        <translation>[Rozenna] - Wiedziałam ze się zrozumiemy. Wyjdź przed wioske, myśle że gdzieś tam powinny jeszcze rosnąć jakieś jabłka.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line16</key>
-        <translation>[Mavak] - Zajme sie tym natychmiast. Ale w zamian oczekuje ze w nagrode dostane wiecej twych cudownych jablecznikow niz zazwyczaj.</translation>
+        <translation>[Mavak] - Zajme sie tym natychmiast. Ale w zamian oczekuje że w nagrodę dostane więcej twych cudownych jabłecznikow niż zazwyczaj.</translation>
     </variable>
 	<variable>
         <key>QuestID1_CollectApples_Title</key>
-        <translation>Zbierz jablka dla Rozenny</translation>
+        <translation>Zbierz jabłka dla Rozenny</translation>
     </variable>
 	<variable>
         <key>QuestID1_CollectApples_Desc</key>
-        <translation>Te sny. Nie pozwalaja mi spac. Miecz, bagna, lod, smierc. Co to moze wszystko oznaczac? Jak dobrze ze jest Rozenna, ona zawsze potrafila mnie uspokoic swoim dobrym slowem. Ale tez ta slodka lisica zna moja slabosc do jej jablecznikow. Czas wybrac sie za wioske pozbierac dla niej jablka, oraz posluchac jej rady: nie myslec o mych snach.</translation>
+        <translation>Te sny. Nie pozwalają mi spać. Miecz, bagna, lód, śmierć. Co to może wszystko oznaczać? Jak dobrze ze jest Rozenna, ona zawsze potrafiła mnie uspokoić swym dobrym słowem. Ale też ta słodka lisica zna moją słabość do jej jabłeczników. Czas wybrać się za wioske pozbierać dla niej jabłka, oraz posluchać jej rady: nie myśleć o mych snach.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line17</key>
-        <translation>[Rozenna] - Dostaniesz 5 zarloku. A teraz idx. I prosze Cie. Podczas poszukiwan staraj sie nie myslec o tych Twoich snach, daj swojemu umyslowi odpoczac.</translation>
+        <translation>[Rozenna] - Dostaniesz 5 żarłoku. A teraz idź. I prosze Cię. Podczas poszukiwań staraj się nie myśleć o tych Twoich snach, daj swojemu umysłowi odpocząć.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line18</key>
-        <translation>[Mavak] - Postaram sie. Bywaj.</translation>
+        <translation>[Mavak] - Postaram się. Bywaj.</translation>
     </variable>
 	<!--2 Dialog Rozenny z Mavakiem-->
 	<variable>
@@ -2166,5 +2166,49 @@
 	<variable>
         <key>QuestID8_TalkGuslarz_Desc</key>
         <translation>Guślarz podobno czegoś ode mnie chce. Powinienem z nim porozmawiać.</translation>
+    </variable>
+	<variable>
+        <key>RodHuman</key>
+        <translation>Rod</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line0</key>
+        <translation>[Rod] – A więc dokonało się, znalazłeś wszystkie cztery boskie artefakty, wypełniłeś Boskie Przeznaczenie. Teraz jesteś godny dołączenia do naszego panteonu.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line1</key>
+        <translation>[Mavak] – Dlaczego wyglądasz tak jak ja i jak się tu znalazłeś?</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line2</key>
+        <translation>[Rod] – Mówiłem Ci już przecież. Jestem bóstwem, mogę przybrać każdą postać, nawet taką która będzie wyglądała tak samo jak Ty oraz mogę być gdziekolwiek zechce.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line3</key>
+        <translation>[Rod] – A teraz Mavaku powiedz teraz jakie chcesz przyjąć imię ponieważ od tego momentu Twoje życie osiąga nowy poziom, nieosiągalny dla innego śmiertelnika. Twoje nowe imię będzie wychwalane i ubóstwiane po wsze czasy, będziesz symbolem dla wszystkich śmiertelników.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line4</key>
+        <translation>[Mavak] – Nowe imię. Hmmmm</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line5</key>
+        <translation>[Mavak] – Przez lata mój ojciec powtarzał mi mantrę która przechodziła w mojej rodzinie z pokolenia na pokolenie, że w życiu trzeba kierować się żelazną wolą.  Że nie trzeba zwracać uwagi na przeciwności losu i brnąć przed siebie.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line6</key>
+        <translation>[Mavak] – Nasza wola powinna być na tyle mocna jak stal z której zrobiony jest najlepszy miecz. Nasze serce powinno być na tyle szlachetne jak ogień z najznamienitszej kuźni. A nasz umysł powinien być na tyle trzeźwy w działaniach jak dłoń rycerza brnącego do walki.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line7</key>
+        <translation>[Mavak] – Już wiem jakie imię przybiorę. Imię to będzie się kojarzyć ludziom z walecznością, wytrwałością oraz dobrocią.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line8</key>
+        <translation>[Mavak] – Moje nowe imię to.</translation>
+    </variable>
+	<variable>
+        <key>RodandMav_dialog2_line9</key>
+        <translation>SWARÓG!</translation>
     </variable>
 </file>

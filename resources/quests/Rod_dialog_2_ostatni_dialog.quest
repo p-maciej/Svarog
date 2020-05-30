@@ -1,0 +1,93 @@
+<?xml version = "1.0"?>
+<class>
+   <dialog id = "0">
+      <content>RodandMav_dialog2_line0</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "1">
+      <content>RodandMav_dialog2_line1</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>2</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "2">
+      <content>RodandMav_dialog2_line2</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>3</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "3">
+      <content>RodandMav_dialog2_line3</content>
+      <ans>1</ans>
+      <answer>End</answer>
+      <id>0</id>
+      <leadsTo>4</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "4">
+      <content>RodandMav_dialog2_line4</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>5</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "5">
+      <content>RodandMav_dialog2_line5</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>6</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "6">
+      <content>RodandMav_dialog2_line6</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>7</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "7">
+      <content>RodandMav_dialog2_line7</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>8</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "8">
+      <content>RodandMav_dialog2_line8</content>
+      <ans>1</ans>
+      <answer>NextWindow</answer>
+      <id>0</id>
+      <leadsTo>9</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "9">
+      <content>RodandMav_dialog2_line9</content>
+      <ans>1</ans>
+      <answer>End</answer>
+      <id>0</id>
+      <leadsTo>-1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+</class>

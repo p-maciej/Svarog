@@ -161,4 +161,14 @@
 		<!--<interactionsFile>Kupiec_dialog_2_zad_poboczne_zabij_bandytow.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
 	</npc>
+	<npc>
+		<globalID>15</globalID>
+		<texturePath>textures/npc/player.png</texturePath>
+		<posX>38</posX>
+		<posY>43</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>RodHuman</name>
+		<interactionsFile>Rod_dialog_2_ostatni_dialog.quest</interactionsFile>
+		<howManyItems>0</howManyItems>
+	</npc>
 </class>
