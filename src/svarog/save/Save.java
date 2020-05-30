@@ -316,11 +316,11 @@ public class Save {
 					WorldLoader.setNextFrameLoadWorld(Integer.parseInt(eElement.getElementsByTagName("worldID").item(0).getTextContent()));
 					playerParam.setPositionX(Integer.parseInt(eElement.getElementsByTagName("getPositionX").item(0).getTextContent()));
 					playerParam.setPositionY(Integer.parseInt(eElement.getElementsByTagName("getPositionY").item(0).getTextContent()));
-					playerParam.setPlayerID(Integer.parseInt(eElement.getElementsByTagName("getId").item(0).getTextContent()));//4
-					playerParam.setTexturesPath(eElement.getElementsByTagName("getTexturesPath").item(0).getTextContent());
-					playerParam.setFileName(eElement.getElementsByTagName("getFileName").item(0).getTextContent());//6
-					playerParam.setFullBoundingBox(Boolean.valueOf(eElement.getElementsByTagName("getFullBoundingBox").item(0).getTextContent()));
-					playerParam.setMovementLocked(Boolean.valueOf(eElement.getElementsByTagName("isMovementLocked").item(0).getTextContent()));//8
+					//playerParam.setPlayerID(Integer.parseInt(eElement.getElementsByTagName("getId").item(0).getTextContent()));//4
+					//playerParam.setTexturesPath(eElement.getElementsByTagName("getTexturesPath").item(0).getTextContent());
+					//playerParam.setFileName(eElement.getElementsByTagName("getFileName").item(0).getTextContent());//6
+					//playerParam.setFullBoundingBox(Boolean.valueOf(eElement.getElementsByTagName("getFullBoundingBox").item(0).getTextContent()));
+					//playerParam.setMovementLocked(Boolean.valueOf(eElement.getElementsByTagName("isMovementLocked").item(0).getTextContent()));//8
 					playerParam.setHP(Integer.parseInt(eElement.getElementsByTagName("getHP").item(0).getTextContent()));
 					playerParam.setMaxHP(Integer.parseInt(eElement.getElementsByTagName("getMaxHP").item(0).getTextContent()));//10
 					playerParam.setXp(Integer.parseInt(eElement.getElementsByTagName("getXP").item(0).getTextContent()));
@@ -563,25 +563,25 @@ public class Save {
 	            getPositionY.appendChild(document.createTextNode(Integer.toString(player.getPositionY()+1)));
 	            save.appendChild(getPositionY);
 	 
-	            Element getId = document.createElement("getId");
-	            getId.appendChild(document.createTextNode(Integer.toString(player.getId())));
-	            save.appendChild(getId);
-	            
-	            Element getTexturesPath = document.createElement("getTexturesPath");
-	            getTexturesPath.appendChild(document.createTextNode(player.getTexturesPath()));
-	            save.appendChild(getTexturesPath);
-	            
-	            Element getFileName = document.createElement("getFileName");
-	            getFileName.appendChild(document.createTextNode(player.getFileName()));
-	            save.appendChild(getFileName);
-	            
-	            Element getFullBoundingBox = document.createElement("getFullBoundingBox");
-	            getFullBoundingBox.appendChild(document.createTextNode(Boolean.toString(player.getFullBoundingBox())));
-	            save.appendChild(getFullBoundingBox);
-	            
-	            Element isMovementLocked = document.createElement("isMovementLocked");
-	            isMovementLocked.appendChild(document.createTextNode(Boolean.toString(player.isMovementLocked())));
-	            save.appendChild(isMovementLocked);
+//	            Element getId = document.createElement("getId");
+//	            getId.appendChild(document.createTextNode(Integer.toString(player.getId())));
+//	            save.appendChild(getId);
+//	            
+//	            Element getTexturesPath = document.createElement("getTexturesPath");
+//	            getTexturesPath.appendChild(document.createTextNode(player.getTexturesPath()));
+//	            save.appendChild(getTexturesPath);
+//	            
+//	            Element getFileName = document.createElement("getFileName");
+//	            getFileName.appendChild(document.createTextNode(player.getFileName()));
+//	            save.appendChild(getFileName);
+//	            
+//	            Element getFullBoundingBox = document.createElement("getFullBoundingBox");
+//	            getFullBoundingBox.appendChild(document.createTextNode(Boolean.toString(player.getFullBoundingBox())));
+//	            save.appendChild(getFullBoundingBox);
+//	            
+//	            Element isMovementLocked = document.createElement("isMovementLocked");
+//	            isMovementLocked.appendChild(document.createTextNode(Boolean.toString(player.isMovementLocked())));
+//	            save.appendChild(isMovementLocked);
 	            
 	            Element getHP = document.createElement("getHP");
 	            getHP.appendChild(document.createTextNode(Integer.toString(player.getHP().GetHP())));

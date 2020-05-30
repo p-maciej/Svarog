@@ -18,6 +18,11 @@ public class Quest {
     private List<Item> rewardItem = new ArrayList<>();
     private int rewardMoney=0;
     private boolean isRewardedYet = false;
+    
+    //obs³uga podmiany kolejnego dialogu XDD
+    private int idNpc=-1;
+    private boolean isLast=true;
+    private String nextInteraction;
 
 	public boolean isEndedQuest() {
     	setEndedQuest();
@@ -134,5 +139,29 @@ public class Quest {
 
 	public void setRewardedYet(boolean isRewardedYet) {
 		this.isRewardedYet = isRewardedYet;
+	}
+
+	public String getNextInteraction() {
+		return nextInteraction;
+	}
+
+	public void setNextInteraction(String nextInteraction) {
+		this.nextInteraction = nextInteraction;
+	}
+
+	public boolean isLast() {
+		return isLast;
+	}
+
+	public void setLast(boolean isLast) {
+		this.isLast = isLast;
+	}
+
+	public int getIdNpc() {
+		return idNpc;
+	}
+
+	public void setIdNpc(int idNpc) {
+		this.idNpc = idNpc;
 	}
 }

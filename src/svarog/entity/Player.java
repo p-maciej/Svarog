@@ -92,9 +92,9 @@ public class Player extends Entity {
 	}
 	
 	public Player(Sound walkSound, PlayerParameters playerParam) {
-		super(playerParam.getPlayerID(),
-				new Texture("textures/animations/" + playerParam.getTexturesPath() + "idle/down/" + playerParam.getFileName() + ".png"),
-				new Transform().setPosition(playerParam.getPositionX(), playerParam.getPositionY()), playerParam.isFullBoundingBox());
+		super(0,
+				new Texture("textures/animations/" + "player/mavak/" + "idle/down/" + "mavak" + ".png"),
+				new Transform().setPosition(playerParam.getPositionX(), playerParam.getPositionY()), false);
 		
 		this.setWalkSound(walkSound);
 		
