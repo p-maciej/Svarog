@@ -39,6 +39,9 @@ public class PagedGuiWindow extends GuiWindow {
 	private int textBlockPaddingTop;
 	private int textBlockIndent;
 	
+	private static Button left;
+	private static Button right;
+	
 	public PagedGuiWindow(String title, Font font, TextureObject backgroundTexture) {
 		super(title, font, backgroundTexture);
 		textBlocks = new ArrayList<WindowTextType>();
@@ -104,11 +107,17 @@ public class PagedGuiWindow extends GuiWindow {
 		int posRight = super.getWidth()/2-interfacePaddingRight;
 		int top = super.getHeight()/2-interfacePaddingTop;
 		
-		Button left = new Button(new Texture("images/window/left.png"), new Vector2f());
-		Button right = new Button(new Texture("images/window/right.png"), new Vector2f());
+		if(left == null) {
+			left = new Button(new Texture("images/window/left.png"), new Vector2f());
+			left.setPosition(posLeft, top);	
+		}
 		
-		left.setPosition(posLeft, top);
-		right.setPosition(posRight, top);
+		if(right == null) {
+			right = new Button(new Texture("images/window/right.png"), new Vector2f());
+			right.setPosition(posRight, top);
+		}
+		
+		
 		
 		this.pageLeft = left;
 		this.pageRight = right;

@@ -27,6 +27,8 @@ public class TradeWindow extends GuiWindow {
 	private int sum;
 	private Line amount;
 	
+	private static Button buyButton;
+	
 	public TradeWindow(String title) {
 		super(title, font, backgroundTexture);
 		products = new TileSheet[2];
@@ -76,9 +78,12 @@ public class TradeWindow extends GuiWindow {
 	}
 	
 	private void addStaticElements() {
-		Button buy = new Button(new Texture("images/buttonYes.png"), new Texture("images/buttonYes_hover.png"), new Vector2f());
-		buy.move(220, 120);
-		this.buy = buy;
+		if(buyButton == null) {
+			buyButton = new Button(new Texture("images/button_buy.png"), new Texture("images/button_buy_hover.png"), new Vector2f());
+			buyButton.move(220, 120);
+		}
+		
+		this.buy = buyButton;
 		
 		Line worth = new Line(-10, -125);
 		worth.setString(language.getValue("tradeWindowWorth"), font);

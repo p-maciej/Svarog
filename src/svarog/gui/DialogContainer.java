@@ -29,6 +29,8 @@ public class DialogContainer {
 	private int dialogYOffset;
 	
 	private static boolean isDialogClosing = false;
+	
+	private static Button closeButton;
 
 	DialogContainer(int dialogXOffset, int dialogYOffset) {
 		this.setDialogXOffset(dialogXOffset);
@@ -91,8 +93,14 @@ public class DialogContainer {
 			content.move(left, top);
 			
 			dialogTop.setPosition(0, height+dialogTop.getHeight()/2);
-			Button closeDialog = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(-left, -top+10));
-			dialogButton = closeDialog;
+			
+			if(closeButton == null)
+			 closeButton = new Button(new Texture("images/dialog/close_dialog.png"), new Vector2f(-left, -top+10));
+			
+			
+			closeButton.setPosition(-left, -top+10);
+			
+			dialogButton = closeButton;
 			
 			
 			group.addGuiObject(dialogTop);	
@@ -102,7 +110,7 @@ public class DialogContainer {
 				group.addGuiObject(ans);
 			
 			group.addGuiObject(content);
-			group.addGuiObject(closeDialog);
+			group.addGuiObject(closeButton);
 			
 			this.dialog = group;
 			group.setStickTo(stickTo.Bottom);
