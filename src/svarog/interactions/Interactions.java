@@ -94,12 +94,18 @@ public class Interactions {
                     }
 
                     if(eElement.getElementsByTagName("questID").item(0) != null) {
+                    	boolean isLast = Boolean.parseBoolean(eElement.getElementsByTagName("isLast").item(0).getTextContent());
                         quests.add(new Quest(Integer.parseInt(eElement.getElementsByTagName("questID").item(0).getTextContent()),
                                 eElement.getElementsByTagName("title").item(0).getTextContent(),
                                 eElement.getElementsByTagName("description").item(0).getTextContent(),
                                 tasks,
                                 itemParameters,
-                                Integer.parseInt(eElement.getElementsByTagName("rewardMoney").item(0).getTextContent())));
+                                Integer.parseInt(eElement.getElementsByTagName("rewardMoney").item(0).getTextContent()),
+                                isLast,
+                                Integer.parseInt(eElement.getElementsByTagName("idNpc").item(0).getTextContent())));
+                        if(!isLast) {
+                        	quests.get(quests.size()-1).setNextInteraction(eElement.getElementsByTagName("nextInteraction").item(0).getTextContent());
+                        }
                     }
 					
                     if(eElement.getElementsByTagName("questID").item(0) != null) {

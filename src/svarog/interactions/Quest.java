@@ -66,7 +66,7 @@ public class Quest {
         this.setDescription(description);
     }
     
-    public Quest(int questID, String title, String description, List<Task> tasks, List<ItemParameters> rewardItem, int rewardMoney){
+    public Quest(int questID, String title, String description, List<Task> tasks, List<ItemParameters> rewardItem, int rewardMoney, boolean isLast, int idNpc){
         this.setQuestID(questID);
         this.setTasks(tasks);
         this.setTitle(title);
@@ -75,6 +75,8 @@ public class Quest {
 			this.rewardItem.add(new Item(Save.getItemById(i.getItemGlobalID())));
 		}
         this.setRewardMoney(rewardMoney);
+        this.isLast = isLast;
+        this.idNpc = idNpc;
     }
 
     public int getQuestID() {

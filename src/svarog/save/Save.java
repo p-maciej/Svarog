@@ -376,12 +376,18 @@ public class Save {
     								Integer.parseInt(eElement.getElementsByTagName("itemTileID").item(j).getTextContent())
     								));
                         }
+						boolean isLast = Boolean.parseBoolean(eElement.getElementsByTagName("isLast").item(i).getTextContent());
 						Quest quest = new Quest(Integer.parseInt(eElement.getElementsByTagName("getQuestID").item(i).getTextContent()),
 								eElement.getElementsByTagName("getTitle").item(i).getTextContent(),
 								eElement.getElementsByTagName("getDescription").item(i).getTextContent(),
 								tasks,
 								itemQuests,
-								Integer.parseInt(eElement.getElementsByTagName("rewardMoney").item(i).getTextContent()));
+								Integer.parseInt(eElement.getElementsByTagName("rewardMoney").item(i).getTextContent()),
+								isLast,
+								Integer.parseInt(eElement.getElementsByTagName("idNpc").item(i).getTextContent()));
+						if(!isLast) {
+                        	quest.setNextInteraction(eElement.getElementsByTagName("nextInteraction").item(i).getTextContent());
+                        }
 						quest.setEndedQuest(Boolean.valueOf(eElement.getElementsByTagName("isEndedQuest").item(i).getTextContent()));
 						quests.add(quest);
 					}
@@ -695,7 +701,21 @@ public class Save {
 					Element getTitle = document.createElement("getTitle");
 					getTitle.appendChild(document.createTextNode(q.getTitle()));
 		            save.appendChild(getTitle);
+		            
+					Element idNpc = document.createElement("idNpc");
+					idNpc.appendChild(document.createTextNode(Integer.toString(q.getIdNpc())));
+		            save.appendChild(idNpc);
+		            
+					Element isLast = document.createElement("isLast");
+					isLast.appendChild(document.createTextNode(Boolean.toString(q.isLast())));
+		            save.appendChild(isLast);
 
+		            if(!q.isLast()) {
+		            	Element nextInteraction = document.createElement("nextInteraction");
+		            	nextInteraction.appendChild(document.createTextNode(q.getNextInteraction()));
+			            save.appendChild(nextInteraction);
+		            }
+		            
 					Element getDescription = document.createElement("getDescription");
 					getDescription.appendChild(document.createTextNode(q.getDescription()));
 		            save.appendChild(getDescription);

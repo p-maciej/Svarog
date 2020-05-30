@@ -44,5 +44,7 @@
 <isEndedQuest>false</isEndedQuest>
 <rewardMoney>10</rewardMoney>
 <rewardHowManyItems>0</rewardHowManyItems>
+<idNpc>2</idNpc>
+<isLast>1</isLast>
 </save>
 </class>
