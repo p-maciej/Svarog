@@ -369,10 +369,19 @@ public class Save {
 							task.setHowMuchIsDone(Integer.parseInt(eElement.getElementsByTagName("getHowMuchIsDone").item(i+j).getTextContent()));
 							tasks.add(task);
 						}
+						List<ItemParameters> itemQuests = new ArrayList<ItemParameters>();
+						int ite = Integer.parseInt(eElement.getElementsByTagName("rewardHowManyItems").item(i).getTextContent());
+						for(int j =0; j< ite;j++) {
+							itemQuests.add(new ItemParameters(Integer.parseInt(eElement.getElementsByTagName("itemGlobalID").item(j).getTextContent()),
+    								Integer.parseInt(eElement.getElementsByTagName("itemTileID").item(j).getTextContent())
+    								));
+                        }
 						Quest quest = new Quest(Integer.parseInt(eElement.getElementsByTagName("getQuestID").item(i).getTextContent()),
 								eElement.getElementsByTagName("getTitle").item(i).getTextContent(),
 								eElement.getElementsByTagName("getDescription").item(i).getTextContent(),
-								tasks);
+								tasks,
+								itemQuests,
+								Integer.parseInt(eElement.getElementsByTagName("rewardMoney").item(i).getTextContent()));
 						quest.setEndedQuest(Boolean.valueOf(eElement.getElementsByTagName("isEndedQuest").item(i).getTextContent()));
 						quests.add(quest);
 					}
@@ -630,6 +639,25 @@ public class Save {
 	            save.appendChild(howManyQuests);
 
 				for(Quest q:player.getQuests()) {
+					
+					Element rewardMoney = document.createElement("rewardMoney");
+					rewardMoney.appendChild(document.createTextNode(Integer.toString(q.getRewardMoney())));
+		            save.appendChild(rewardMoney);
+		            
+					Element rewardHowManyItems = document.createElement("rewardHowManyItems");
+					rewardHowManyItems.appendChild(document.createTextNode(Integer.toString(q.getRewardItem().size())));
+		            save.appendChild(rewardHowManyItems);
+		            
+		            for(Item i : q.getRewardItem()) {
+		            	Element itemGlobalID = document.createElement("itemGlobalID");
+		            	itemGlobalID.appendChild(document.createTextNode(Integer.toString(i.getItemInfo().getGlobalID())));
+			            save.appendChild(itemGlobalID);
+			            
+		            	Element itemTileID = document.createElement("itemTileID");
+		            	itemTileID.appendChild(document.createTextNode(Integer.toString(-1)));
+			            save.appendChild(itemTileID);
+		            }
+					
 					Element howManyTasks = document.createElement("howManyTasks");
 					howManyTasks.appendChild(document.createTextNode(Integer.toString(q.getTasks().size())));
 		            save.appendChild(howManyTasks);

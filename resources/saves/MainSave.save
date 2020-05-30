@@ -42,5 +42,7 @@
 <getTitle>Pogadaj z Rozenna</getTitle>
 <getDescription>Idz do Rozenny, ona znajdzie dla wiecej tekstu dla PagedGuiWindow ciebie jakiegos questa</getDescription>
 <isEndedQuest>false</isEndedQuest>
+<rewardMoney>10</rewardMoney>
+<rewardHowManyItems>0</rewardHowManyItems>
 </save>
 </class>
