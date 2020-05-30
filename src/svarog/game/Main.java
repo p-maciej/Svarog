@@ -106,6 +106,7 @@ public class Main {
 		window.setSize(1200, 700);
 		window.createWindow("Svarog"); 										// Creating window "Svarog"
 		window.glInit();
+		window.setIcon("icons/logo32.png", "icons/logo64.png");
 	}
 	
 	private static void worldInit() {	

@@ -101,7 +101,7 @@ public class Texture {
 		
 		this.width = image.getWidth();
 		this.height = image.getHeight();
-}
+	}
 	
 	public Texture(ByteBuffer pixels, int tileSize) {
 		this.buffer = pixels;
@@ -153,6 +153,23 @@ public class Texture {
 		}
 		
 		return null;
+	}
+	
+	public static ByteBuffer getByteBuffer(BufferedImage image) {
+		ByteBuffer buffer = BufferUtils.createByteBuffer(image.getWidth()*image.getHeight()*4);
+		
+		for(int i = 0; i < image.getWidth(); i++) {
+			for(int j = 0; j < image.getHeight(); j++) {
+				int pixel = image.getRGB(i, j);
+				buffer.put(((byte)((pixel >> 16) & 0xFF)));
+				buffer.put(((byte)((pixel >> 8) & 0xFF)));
+				buffer.put((byte)(pixel & 0xFF));
+				buffer.put(((byte)((pixel >> 24) & 0xFF)));
+			}
+		}
+		buffer.flip();
+		
+		return buffer; 
 	}
 	
 	public int getWidth() {

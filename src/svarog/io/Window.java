@@ -5,7 +5,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_HAND_CURSOR;
 import static org.lwjgl.glfw.GLFW.glfwCreateStandardCursor;
 import static org.lwjgl.glfw.GLFW.glfwCreateWindow;
 import static org.lwjgl.glfw.GLFW.glfwGetCursorPos;
-import static org.lwjgl.glfw.GLFW.glfwSetWindowSize;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowIcon;
 import static org.lwjgl.glfw.GLFW.glfwGetPrimaryMonitor;
 import static org.lwjgl.glfw.GLFW.glfwGetVideoMode;
 import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
@@ -13,12 +13,13 @@ import static org.lwjgl.glfw.GLFW.glfwPollEvents;
 import static org.lwjgl.glfw.GLFW.glfwSetCursor;
 import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
 import static org.lwjgl.glfw.GLFW.glfwSetWindowPos;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowShouldClose;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowSize;
 import static org.lwjgl.glfw.GLFW.glfwSetWindowSizeCallback;
 import static org.lwjgl.glfw.GLFW.glfwShowWindow;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
 import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
-import static org.lwjgl.glfw.GLFW.glfwSetWindowShouldClose;
 import static org.lwjgl.opengl.GL11.GL_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_BLEND;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
@@ -27,15 +28,20 @@ import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.glBlendFunc;
 import static org.lwjgl.opengl.GL11.glEnable;
 
+import java.awt.image.BufferedImage;
+import java.nio.ByteBuffer;
 import java.nio.DoubleBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.glfw.GLFWWindowSizeCallback;
 import org.lwjgl.opengl.GL;
+
+import svarog.render.Texture;
 
 public class Window {
 	private long window;
@@ -120,6 +126,23 @@ public class Window {
 		input = new Input(window);
 		
 		setLoacalCallbacks();
+	}
+	
+	public void setIcon(String icon16Path, String icon32Path){
+		ByteBuffer icon16,icon32;
+		
+		BufferedImage ic32 = Texture.getImageBuffer(icon32Path);
+		BufferedImage ic16 = Texture.getImageBuffer(icon16Path);
+		icon16 = Texture.getByteBuffer(ic16);
+		icon32 = Texture.getByteBuffer(ic32);
+			
+		GLFWImage.Buffer icons = GLFWImage.create(2);
+		GLFWImage ico32 = GLFWImage.create().set(ic32.getWidth(), ic32.getHeight(), icon32);
+		GLFWImage ico16 = GLFWImage.create().set(ic16.getWidth(), ic16.getHeight(), icon16);
+		icons.put(0, ico16);
+		icons.put(1, ico32);
+				
+		glfwSetWindowIcon(window, icons);
 	}
 	
 	public void glInit() {
