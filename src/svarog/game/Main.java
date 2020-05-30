@@ -101,6 +101,8 @@ public class Main {
 	//Path Finder
 	private static PathFinder pathFinder;
 	
+	public static final String VERSION = "0.1"; 
+	
 	private static void windowInit() {
 		window = new Window();
 		window.setSize(1200, 700);
@@ -397,8 +399,8 @@ public class Main {
 		menuResumeButton = new Button(new Texture("images/menu/resume.png"),new Texture("images/menu/resume_hover.png"), new Vector2f(0, 190));
 		menuSaveButton = new Button(new Texture("images/menu/save.png"),new Texture("images/menu/save_hover.png"), new Vector2f(0, 65));
 		menuLoadButton = new Button(new Texture("images/menu/load.png"),new Texture("images/menu/load_hover.png"), new Vector2f(0, 65));
-		menuExitButton = new Button(new Texture("images/menu/exit.png"),new Texture("images/menu/exit_hover.png"), new Vector2f(0, -60));
-		menuAuthorsButton = new Button(new Texture("images/menu/authors.png"),new Texture("images/menu/authors_hover.png"), new Vector2f(0, -185));
+		menuExitButton = new Button(new Texture("images/menu/exit.png"),new Texture("images/menu/exit_hover.png"), new Vector2f(0, -185));
+		menuAuthorsButton = new Button(new Texture("images/menu/authors.png"),new Texture("images/menu/authors_hover.png"), new Vector2f(0, -60));
 		
 		
 		authorsWindow = new GuiWindow("Autorzy", roboto_15, new TextureObject(new Texture("images/window4.png")));
@@ -432,12 +434,17 @@ public class Main {
 		line6.setString("Copyright 2020", roboto_15);
 		line6.move(-line6.getWidth()/2-10,  0);
 		
+		Line line7 = new Line(-authorsWindow.getWidth()/2, -authorsWindow.getHeight()/2+20);
+		line7.setString(language.getValue("version") + " " + VERSION, roboto_15);
+		line7.move(line7.getWidth()/2+10,  0);
+		
 		authorsWindow.addTextureObject(line1);
 		authorsWindow.addTextureObject(line2);
 		authorsWindow.addTextureObject(line3);
 		authorsWindow.addTextureObject(line4);
 		authorsWindow.addTextureObject(line5);
 		authorsWindow.addTextureObject(line6);
+		authorsWindow.addTextureObject(line7);
 		
 		menu.addGuiObject(menuBackground);
 		menu.addGuiObject(menuStartButton);

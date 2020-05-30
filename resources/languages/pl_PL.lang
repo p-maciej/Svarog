@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <file>
+    <variable>
+        <key>version</key>
+        <translation>Wersja:</translation>
+    </variable>
 <!--FightSystem-->
     <variable>
         <key>fightSystemHpBefore</key>
