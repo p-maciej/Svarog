@@ -45,6 +45,7 @@
 <rewardMoney>10</rewardMoney>
 <rewardHowManyItems>0</rewardHowManyItems>
 <idNpc>2</idNpc>
-<isLast>1</isLast>
+<isLast>true</isLast>
+<nextInteraction></nextInteraction>
 </save>
 </class>
