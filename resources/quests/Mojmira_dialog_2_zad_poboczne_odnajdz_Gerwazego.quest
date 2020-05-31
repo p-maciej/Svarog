@@ -24,8 +24,20 @@
       <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>3</leadsTo>
-      <q>0</q>
-      <t>0</t>
+      <q>1</q>
+	  <questID>11</questID>
+	  <title>QuestID10_FindGerwazyFinish_Title</title>
+	  <description>QuestID10_FindGerwazyFinish_Desc</description>
+	  <rewardMoney>0</rewardMoney>
+	  <rewardHowManyItems>0</rewardHowManyItems>
+	  <t>1</t>
+	  <taskID>0</taskID>
+      <toDo>1</toDo>
+      <doItemID>13</doItemID>
+      <state>find</state>
+	  <idNpc>13</idNpc>
+	  <isLast>false</isLast>
+      <nextInteraction>Mojmira_dialog_3_zad_poboczne_odnajdz_Gerwazego.quest</nextInteraction>
    </dialog>
    <dialog id = "3">
       <content>MojmandMav_dialog2_line3</content>

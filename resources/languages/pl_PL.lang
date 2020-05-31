@@ -2211,4 +2211,12 @@
         <key>RodandMav_dialog2_line9</key>
         <translation>SWARÓG!</translation>
     </variable>
+	<variable>
+        <key>QuestID10_FindGerwazyFinish_Title</key>
+        <translation>Przekaż Mojmirze złe wieści o Gerwazym</translation>
+    </variable>
+	<variable>
+        <key>QuestID10_FindGerwazyFinish_Desc</key>
+        <translation>Niestety ale podczas przemierzania opuszczonego grodu natrafiłem się na ciało Gerwazego - okolicznego drwala. Jego wyprawa po wyjątkowe drewno skończyła się dla niego tragicznie, został zamordowany przez tutejsze Ghule. Ehhhh jako dowód wezmę naszyjnik co leży obok niego i pójdę zanieść złe wieści Mojmirze</translation>
+    </variable>
 </file>

@@ -85,7 +85,8 @@
 		<posY>45</posY>
 		<fullBoundingBox>true</fullBoundingBox>
 		<name>NPCGerwazy</name>
-		<interactionsFile>Mojmira_dialog_2_zad_poboczne_odnajdz_Gerwazego.quest</interactionsFile>
+		<interactionsFile></interactionsFile>
+		<!--<interactionsFile>Mojmira_dialog_2_zad_poboczne_odnajdz_Gerwazego.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
 	</npc>
 	<npc>
@@ -135,7 +136,8 @@
 		<posY>43</posY>
 		<fullBoundingBox>true</fullBoundingBox>
 		<name>guslarzRitualHill</name>
-		<interactionsFile>Guslarz_dialog_2_na_wzgorzu_rytualow.quest</interactionsFile>
+		<interactionsFile></interactionsFile>
+		<!--<interactionsFile>Guslarz_dialog_2_na_wzgorzu_rytualow.quest</interactionsFile>-->
 		<!--<interactionsFile>Guslarz_dialog_3_na_wzgorzu_rytualow_po_pokonaniu_potworow.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
 	</npc>

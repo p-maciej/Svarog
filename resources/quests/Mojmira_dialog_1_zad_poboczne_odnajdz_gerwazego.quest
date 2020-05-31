@@ -107,9 +107,9 @@
       <toDo>1</toDo>
       <doItemID>7</doItemID>
       <state>find</state>
-	  <idNpc>13</idNpc>
+	  <idNpc>7</idNpc>
 	  <isLast>false</isLast>
-      <nextInteraction>Mojmira_dialog_3_zad_poboczne_odnajdz_Gerwazego.quest</nextInteraction>
+      <nextInteraction>Mojmira_dialog_2_zad_poboczne_odnajdz_Gerwazego.quest</nextInteraction>
    </dialog>
    <dialog id = "11">
       <content>MojmandMav_dialog1_line11</content>
