@@ -386,7 +386,10 @@ public class Save {
 								isLast,
 								Integer.parseInt(eElement.getElementsByTagName("idNpc").item(i).getTextContent()));
 						if(!isLast) {
-                        	quest.setNextInteraction(eElement.getElementsByTagName("nextInteraction").item(i).getTextContent());
+							System.out.println(isLast);
+							String abc = eElement.getElementsByTagName("nextInteraction").item(0).getTextContent();
+							System.out.println(abc);
+                        	quest.setNextInteraction(abc);
                         }
 						quest.setEndedQuest(Boolean.valueOf(eElement.getElementsByTagName("isEndedQuest").item(i).getTextContent()));
 						quests.add(quest);
@@ -702,6 +705,14 @@ public class Save {
 					getTitle.appendChild(document.createTextNode(q.getTitle()));
 		            save.appendChild(getTitle);
 		            
+					Element getDescription = document.createElement("getDescription");
+					getDescription.appendChild(document.createTextNode(q.getDescription()));
+		            save.appendChild(getDescription);
+
+					Element isEndedQuest = document.createElement("isEndedQuest");
+					isEndedQuest.appendChild(document.createTextNode(Boolean.toString(q.isEndedQuest())));
+		            save.appendChild(isEndedQuest);
+		            
 					Element idNpc = document.createElement("idNpc");
 					idNpc.appendChild(document.createTextNode(Integer.toString(q.getIdNpc())));
 		            save.appendChild(idNpc);
@@ -715,14 +726,6 @@ public class Save {
 		            	nextInteraction.appendChild(document.createTextNode(q.getNextInteraction()));
 			            save.appendChild(nextInteraction);
 		            }
-		            
-					Element getDescription = document.createElement("getDescription");
-					getDescription.appendChild(document.createTextNode(q.getDescription()));
-		            save.appendChild(getDescription);
-
-					Element isEndedQuest = document.createElement("isEndedQuest");
-					isEndedQuest.appendChild(document.createTextNode(Boolean.toString(q.isEndedQuest())));
-		            save.appendChild(isEndedQuest);
 				}
 
 	            // create the xml file
