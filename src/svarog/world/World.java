@@ -208,6 +208,16 @@ public class World implements Runnable {
 		return null;
 	}
 	
+	public ArrayList<NPC> getNPCs(){
+		ArrayList<NPC> temp = new ArrayList<>();
+		for(Entity i: entities) {
+			if(i instanceof NPC) {
+				temp.add(((NPC)(i)));
+			}
+		}
+		return temp;
+	}
+	
 	public Player getPlayer() {
 		for(Entity i: entities) {
 			if(i instanceof Player) {

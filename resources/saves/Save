@@ -3,7 +3,7 @@
 <save id="0">
 <worldID>1</worldID>
 <getPositionX>48</getPositionX>
-<getPositionY>15</getPositionY>
+<getPositionY>16</getPositionY>
 <getHP>100</getHP>
 <getMaxHP>100</getMaxHP>
 <getXP>0</getXP>
@@ -42,10 +42,11 @@
 <getHowMuchIsDone>1</getHowMuchIsDone>
 <getQuestID>-3</getQuestID>
 <getTitle>Pogadaj z Rozenna</getTitle>
-<idNpc>2</idNpc>
-<isLast>true</isLast>
 <getDescription>Idz do Rozenny, ona znajdzie dla wiecej tekstu dla PagedGuiWindow ciebie jakiegos questa</getDescription>
 <isEndedQuest>true</isEndedQuest>
+<idNpc>2</idNpc>
+<isLast>true</isLast>
+<numberOfInteractionsGone>0</numberOfInteractionsGone>
 <rewardMoney>100</rewardMoney>
 <rewardHowManyItems>1</rewardHowManyItems>
 <itemGlobalID>10</itemGlobalID>
@@ -65,10 +66,11 @@
 <getHowMuchIsDone>0</getHowMuchIsDone>
 <getQuestID>1</getQuestID>
 <getTitle>QuestID1_CollectApples_Title</getTitle>
+<getDescription>QuestID1_CollectApples_Desc</getDescription>
+<isEndedQuest>false</isEndedQuest>
 <idNpc>2</idNpc>
 <isLast>false</isLast>
 <nextInteraction>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</nextInteraction>
-<getDescription>QuestID1_CollectApples_Desc</getDescription>
-<isEndedQuest>false</isEndedQuest>
+<numberOfInteractionsGone>0</numberOfInteractionsGone>
 </save>
 </class>

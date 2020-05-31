@@ -21,6 +21,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import svarog.entity.Entity;
+import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.game.WorldLoader;
 import svarog.interactions.Quest;
@@ -388,16 +389,25 @@ public class Save {
 								isLast,
 								Integer.parseInt(eElement.getElementsByTagName("idNpc").item(i).getTextContent()));
 						if(!isLast) {
-							System.out.println(isLast);
+							//System.out.println(isLast);
 							String abc = eElement.getElementsByTagName("nextInteraction").item(0).getTextContent();
-							System.out.println(abc);
+							//System.out.println(abc);
                         	quest.setNextInteraction(abc);
                         }
 						quest.setEndedQuest(Boolean.valueOf(eElement.getElementsByTagName("isEndedQuest").item(i).getTextContent()));
 						quests.add(quest);
 					}
 					playerParam.setQuests(quests);
+					int tempowyInt = Integer.parseInt(eElement.getElementsByTagName("numberOfInteractionsGone").item(0).getTextContent());
+					for(int h=0;h<tempowyInt;h++) {
+						NpcInteractions npcInteraction = new NpcInteractions(
+								eElement.getElementsByTagName("file").item(0).getTextContent(),
+								Integer.parseInt(eElement.getElementsByTagName("isUsed").item(0).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("npcGlobalID").item(0).getTextContent()));
+						npcInteractions.add(npcInteraction);
+					}
 
+					
 				}
 			}
 		} catch (Exception e) {
@@ -730,6 +740,25 @@ public class Save {
 		            	nextInteraction.appendChild(document.createTextNode(q.getNextInteraction()));
 			            save.appendChild(nextInteraction);
 		            }
+		            
+					Element numberOfInteractionsGone = document.createElement("numberOfInteractionsGone");
+					numberOfInteractionsGone.appendChild(document.createTextNode(Integer.toString(npcInteractions.size())));
+		            save.appendChild(numberOfInteractionsGone);
+		            
+		            for(int i =0;i<npcInteractions.size();i++) {
+						Element npcGlobalID = document.createElement("npcGlobalID");
+						npcGlobalID.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(i).getNpcGlobalID())));
+			            save.appendChild(npcGlobalID);
+			            
+						Element isUsed = document.createElement("isUsed");
+						isUsed.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(i).getIsUsed())));
+			            save.appendChild(isUsed);
+			            
+						Element file = document.createElement("file");
+						file.appendChild(document.createTextNode(npcInteractions.get(i).getFile()));
+			            save.appendChild(file);
+		            }
+		            
 				}
 
 	            // create the xml file
@@ -793,6 +822,33 @@ public class Save {
 				return elem;
 		}
 		return null;
+	}
+	
+	public static void addNpcInteractions(NPC npc) {
+		int temp = 0;
+		for(NpcInteractions i: npcInteractions) {
+			if(i.getNpcGlobalID()==npc.getGlobalNpcID()) {
+				i.setIsUsed(npc.getInteractions().getIsUsed());
+				if(i.getIsUsed()==0) {
+					i.setFile(npc.getInteractions().getFile());
+					temp++;
+					break;
+				}
+
+			}
+		}
+		if(temp!=0) {
+			if(npc.getInteractions().getIsUsed()==0) {
+				npcInteractions.add(new NpcInteractions(
+						npc.getInteractions().getFile(),
+						npc.getInteractions().getIsUsed(),
+						npc.getGlobalNpcID()));
+			}else {
+				npcInteractions.add(new NpcInteractions(
+						npc.getInteractions().getIsUsed(),
+						npc.getGlobalNpcID()));
+			}
+		}
 	}
 	
 	public static List<EnemyParameters> getEnemies() {

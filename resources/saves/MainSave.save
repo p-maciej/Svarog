@@ -47,5 +47,6 @@
 <idNpc>2</idNpc>
 <isLast>true</isLast>
 <nextInteraction></nextInteraction>
+<numberOfInteractionsGone>0</numberOfInteractionsGone>
 </save>
 </class>

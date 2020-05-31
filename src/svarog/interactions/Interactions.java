@@ -30,6 +30,11 @@ public class Interactions {
 	private Dialog dialog;
 	private boolean isEnded = true;
 	
+	//nowe elementy dla aktualnego stanu Interactions
+	private String file;
+	private int isUsed=0; //czy nie zosta³ u¿yty
+	private int isQuestSend=0; //local variable to set isUsed
+	
 	private static int talkingNPCid = -1;
 	
 	public boolean isEnded() {
@@ -43,12 +48,20 @@ public class Interactions {
 	private static final String path = "resources/quests/";
 	
 	public Interactions(String file) {
+		this.file = file;
 		Reader(file);
+		isUsed=0;
+	}
+	
+	public void clearInteractions() {
+		dialogs.clear();
+		quests.clear();
 	}
 	
 	public void setNew(String file) {
-		dialogs.clear();
-		quests.clear();
+		this.file = file;
+		isUsed=0;
+		clearInteractions();
 		Reader(file);
 	}
 	
@@ -208,5 +221,21 @@ public class Interactions {
 
 	public static void setTalkingNPCid(int talkingNPCid) {
 		Interactions.talkingNPCid = talkingNPCid;
+	}
+
+	public int getIsUsed() {
+		return isUsed;
+	}
+
+	public void setIsUsed(int isUsed) {
+		this.isUsed = isUsed;
+	}
+
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
 	}	
 }
