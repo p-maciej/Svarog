@@ -8,6 +8,7 @@ import svarog.entity.Player;
 import svarog.gui.GuiRenderer;
 import svarog.objects.Item;
 import svarog.save.ItemParameters;
+import svarog.save.NpcInteractions;
 import svarog.save.Save;
 import svarog.world.World;
 
@@ -37,6 +38,9 @@ public class Quest {
     		}
     		if(!isLast) {
     			world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
+    			Save.addNpcInteractions(new NpcInteractions(nextInteraction, 0, idNpc));
+    			//System.out.println("quest");
+    			//System.out.println(nextInteraction + " "+ 0 + " "+ idNpc);
     		}
     		player.addMoney(rewardMoney);
     	}

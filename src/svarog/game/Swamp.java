@@ -58,7 +58,7 @@ public abstract class Swamp {
 		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 86, 0);
 		world.addDoor(new Door(1, 86, 0, 11, 88));
 	
-
+		Save.UpdateInteractions(world.getNPCs());
 		
 		return world;
 }

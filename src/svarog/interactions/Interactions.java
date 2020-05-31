@@ -22,6 +22,8 @@ import svarog.io.Window;
 import svarog.language.LanguageLoader;
 import svarog.render.Camera;
 import svarog.save.ItemParameters;
+import svarog.save.NpcInteractions;
+import svarog.save.Save;
 import svarog.world.WorldRenderer;
 
 public class Interactions {
@@ -145,12 +147,11 @@ public class Interactions {
 			isEnded = false;
 		}
 
-		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed ==0) {
+		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed == 0) {
 			guiRenderer.showDialog(dialog, language);
-			System.out.println("Hiszpañska inkwizycja");
+			//System.out.println("Hiszpañska inkwizycja");
 		}
-		
-		if(dialog.clickedAnswer() != null && isUsed == 0) {
+		if(isUsed == 0 && dialog.clickedAnswer() != null) {
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
 		}
 	}
@@ -178,8 +179,10 @@ public class Interactions {
 						guiRenderer.closeDialog();
 						setTalkingNPCid(-1);
 						if(isQuestSend==1) {
-							clearInteractions();
+							//System.out.println("interaction");
 							isUsed = 1;
+							Save.addNpcInteractions(new NpcInteractions(file, isUsed, NPCid));
+							clearInteractions();
 							isQuestSend = 0;
 						}
 						break;
@@ -194,6 +197,8 @@ public class Interactions {
 					if(dialog.getQuestID()!=-1) {
 						player.addNewQuestNoRepeating(getQuestByID(dialog.getQuestID()));
 						this.isQuestSend = 1;
+						
+						//System.out.println(file + " "+ isUsed + " "+ NPCid);
 					}
 				}
 			}

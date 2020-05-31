@@ -59,6 +59,7 @@ abstract class IceCave {
 		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 66, 129);
 		world.addDoor(new Door(3, 66, 129, 50, 21));
 	
+		Save.UpdateInteractions(world.getNPCs());
 
 		return world;
 	}

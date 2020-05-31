@@ -69,6 +69,8 @@ abstract class Crypt {
 		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 48, 22);
 		world.addDoor(new Door(4, 48, 22, 65, 128));
 		
+		Save.UpdateInteractions(world.getNPCs());
+		
 		return world;
 	}
 }

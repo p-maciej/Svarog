@@ -94,7 +94,7 @@ abstract class Village implements Runnable {
 		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 0, 42);
 		world.addDoor(new Door(6, 0, 42, 48, 42));
 
-		
+		Save.UpdateInteractions(world.getNPCs());
 		
 		return world;
 	}

@@ -70,6 +70,8 @@ abstract class AbandonedCastle {
 		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 86, 41);
 		world.addDoor(new Door(3, 86, 41, 1, 53));
 		
+		Save.UpdateInteractions(world.getNPCs());
+		
 		return world;
 	}
 }

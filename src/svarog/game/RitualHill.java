@@ -60,7 +60,7 @@ public abstract class RitualHill {
 		world.addTile((new Tile().setTexture(new Texture("textures/door.png"), (byte)1)), 49, 42);
 		world.addDoor(new Door(1, 49, 42, 1, 42));
 	
-
+		Save.UpdateInteractions(world.getNPCs());
 		
 		return world;
 }

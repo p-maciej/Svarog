@@ -745,6 +745,8 @@ public class Save {
 					numberOfInteractionsGone.appendChild(document.createTextNode(Integer.toString(npcInteractions.size())));
 		            save.appendChild(numberOfInteractionsGone);
 		            
+		            //System.out.println(Integer.toString(npcInteractions.size()));
+		            
 		            for(int i =0;i<npcInteractions.size();i++) {
 						Element npcGlobalID = document.createElement("npcGlobalID");
 						npcGlobalID.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(i).getNpcGlobalID())));
@@ -824,29 +826,42 @@ public class Save {
 		return null;
 	}
 	
-	public static void addNpcInteractions(NPC npc) {
+	public static void addNpcInteractions(NpcInteractions npcInteract) {
 		int temp = 0;
+		//System.out.println("Hello there");
 		for(NpcInteractions i: npcInteractions) {
-			if(i.getNpcGlobalID()==npc.getGlobalNpcID()) {
-				i.setIsUsed(npc.getInteractions().getIsUsed());
+			if(i.getNpcGlobalID()==npcInteract.getNpcGlobalID()) {
+				i.setIsUsed(npcInteract.getIsUsed());
 				if(i.getIsUsed()==0) {
-					i.setFile(npc.getInteractions().getFile());
+					i.setFile(npcInteract.getFile());
 					temp++;
 					break;
 				}
 
 			}
 		}
-		if(temp!=0) {
-			if(npc.getInteractions().getIsUsed()==0) {
+		if(temp==0) {
+			if(npcInteract.getIsUsed()==0) {
 				npcInteractions.add(new NpcInteractions(
-						npc.getInteractions().getFile(),
-						npc.getInteractions().getIsUsed(),
-						npc.getGlobalNpcID()));
+						npcInteract.getFile(),
+						npcInteract.getIsUsed(),
+						npcInteract.getNpcGlobalID()));
 			}else {
 				npcInteractions.add(new NpcInteractions(
-						npc.getInteractions().getIsUsed(),
-						npc.getGlobalNpcID()));
+						npcInteract.getIsUsed(),
+						npcInteract.getNpcGlobalID()));
+			}
+		}
+		//System.out.println(temp);
+	}
+	
+	public static void UpdateInteractions(ArrayList<NPC> NPCs) {
+		for(NPC npc : NPCs) {
+			for(NpcInteractions npcInter: npcInteractions) {
+				if(npc.getGlobalNpcID()==npcInter.getNpcGlobalID()) {
+					npc.getInteractions().setIsUsed(npcInter.getIsUsed());
+					npc.getInteractions().setFile(npcInter.getFile());
+				}
 			}
 		}
 	}
