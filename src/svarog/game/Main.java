@@ -506,7 +506,7 @@ public class Main {
             	
             	
             	if(menuStartButton.isClicked() || menuResumeButton.isClicked()) {
-            		//Save.ResetEntityRespowns(); // <-- maybe in future it need isWorldWasLoaded boolaean and more files-xml work to working blahblahblah ask JG
+            		Save.setIsOldGame(0);
             		Save.ReadFrom("MainSave.save");
             		showMenu = false;
             	}

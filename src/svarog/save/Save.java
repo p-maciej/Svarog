@@ -41,7 +41,9 @@ public class Save {
 	private static List<EnemyParameters> enemies = new ArrayList<EnemyParameters>();
 	private static List<NpcParameters> npcs = new ArrayList<NpcParameters>();
 	private static List<EntityItemParameters> entityItemParam = new ArrayList<>();
-
+	private static List<NpcInteractions> npcInteractions = new ArrayList<>();
+	
+	private static int isOldGame = 1;
 	
 	public Save(String filename, Player player, World currentWorld) {
 		SaveAs(filename, player, currentWorld);
@@ -445,37 +447,39 @@ public class Save {
 	
 	public static List<EntityRespawn> ReadEntityRespown(int worldID, List<Entity> entities, World currentWorld) {
 		List<EntityRespawn> entityRespawn = new ArrayList<>();
-		try {
-			File inputFile = new File("resources/saves/entitiesRespown"+worldID);
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputFile);
-			doc.getDocumentElement().normalize();
-			//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-			NodeList nList = doc.getElementsByTagName("entitiesRespown");
-			//System.out.println("----------------------------");
-
-			for (int temp = 0; temp < nList.getLength(); temp++) {
-				Node nNode = nList.item(temp);
-				//System.out.println("\nCurrent Element :" + nNode.getNodeName());
-
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
-					
-					int index = Integer.parseInt(eElement.getElementsByTagName("getID").item(0).getTextContent());
-					long timerStart = Long.parseLong(eElement.getElementsByTagName("getTimerStart").item(0).getTextContent());
-					
-					for(Entity i:entities) {
-						if(i.getId()==index) {
-							entityRespawn.add(currentWorld.new EntityRespawn((Entity)i, timerStart));
-							break;
+		if(isOldGame==1) {
+			try {
+				File inputFile = new File("resources/saves/entitiesRespown"+worldID);
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(inputFile);
+				doc.getDocumentElement().normalize();
+				//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+				NodeList nList = doc.getElementsByTagName("entitiesRespown");
+				//System.out.println("----------------------------");
+	
+				for (int temp = 0; temp < nList.getLength(); temp++) {
+					Node nNode = nList.item(temp);
+					//System.out.println("\nCurrent Element :" + nNode.getNodeName());
+	
+					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element eElement = (Element) nNode;
+						
+						int index = Integer.parseInt(eElement.getElementsByTagName("getID").item(0).getTextContent());
+						long timerStart = Long.parseLong(eElement.getElementsByTagName("getTimerStart").item(0).getTextContent());
+						
+						for(Entity i:entities) {
+							if(i.getId()==index) {
+								entityRespawn.add(currentWorld.new EntityRespawn((Entity)i, timerStart));
+								break;
+							}
 						}
 					}
 				}
+			} catch (Exception e) {
+				System.out.println("ReadEntityRespown :)");
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			System.out.println("ReadEntityRespown :)");
-			e.printStackTrace();
 		}
 		return entityRespawn;
 	}
@@ -823,4 +827,19 @@ public class Save {
 		Save.entityItemParam = entityItemParam;
 	}
 
+	public static List<NpcInteractions> getNpcInteractions() {
+		return npcInteractions;
+	}
+
+	public static void setNpcInteractions(List<NpcInteractions> npcInteractions) {
+		Save.npcInteractions = npcInteractions;
+	}
+
+	public static int getIsOldGame() {
+		return isOldGame;
+	}
+
+	public static void setIsOldGame(int isOldGame) {
+		Save.isOldGame = isOldGame;
+	}
 }
