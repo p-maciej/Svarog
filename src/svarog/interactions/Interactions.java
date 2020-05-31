@@ -140,16 +140,17 @@ public class Interactions {
 	
 	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
 		
-		if(isEnded || dialog == null) {
+		if((isEnded || dialog == null) && isUsed ==0) {
 			dialog = dialogs.get(0);
 			isEnded = false;
 		}
 
-		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen())
+		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed ==0) {
 			guiRenderer.showDialog(dialog, language);
+			System.out.println("Hiszpañska inkwizycja");
+		}
 		
-		
-		if(dialog.clickedAnswer() != null) {
+		if(dialog.clickedAnswer() != null && isUsed == 0) {
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
 		}
 	}
@@ -176,6 +177,11 @@ public class Interactions {
 						}
 						guiRenderer.closeDialog();
 						setTalkingNPCid(-1);
+						if(isQuestSend==1) {
+							clearInteractions();
+							isUsed = 1;
+							isQuestSend = 0;
+						}
 						break;
 					}
 					guiRenderer.closeDialog();
@@ -187,6 +193,7 @@ public class Interactions {
 					guiRenderer.showDialog(dialog, language);
 					if(dialog.getQuestID()!=-1) {
 						player.addNewQuestNoRepeating(getQuestByID(dialog.getQuestID()));
+						this.isQuestSend = 1;
 					}
 				}
 			}
