@@ -236,6 +236,7 @@
       <doItemID>4</doItemID>
       <state>find</state>
 	  <idNpc>4</idNpc>
-	  <isLast>1</isLast>
+	  <isLast>false</isLast>
+	  <nextInteraction>Prata_dialog_1_po_rozmowie_z_rozenna.quest</nextInteraction>
    </dialog>
 </class>

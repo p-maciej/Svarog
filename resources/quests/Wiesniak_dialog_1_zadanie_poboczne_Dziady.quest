@@ -83,6 +83,7 @@
       <doItemID>11</doItemID>
       <state>talk</state>
 	  <idNpc>9</idNpc>
-	  <isLast>1</isLast>
+	  <isLast>true</isLast>
+	  <nextInteraction></nextInteraction>
    </dialog>
 </class>

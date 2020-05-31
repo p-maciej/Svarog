@@ -460,5 +460,8 @@
       <toDo>1</toDo>
       <doItemID>9</doItemID>
       <state>collect</state>
+	  <idNpc>15</idNpc>
+	  <isLast>false</isLast>
+      <nextInteraction>Rod_dialog_2_ostatni_dialog.quest</nextInteraction>
    </dialog>
 </class>

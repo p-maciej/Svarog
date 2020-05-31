@@ -225,7 +225,7 @@
       <doItemID>9</doItemID>
       <state>kill</state>
 	  <idNpc>12</idNpc>
-	  <isLast>0</isLast>
+	  <isLast>false</isLast>
       <nextInteraction>Guslarz_dialog_3_na_wzgorzu_rytualow_po_pokonaniu_potworow.quest</nextInteraction>
    </dialog>
 </class>

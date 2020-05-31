@@ -168,7 +168,7 @@
       <doItemID>10</doItemID>
       <state>talk</state>
 	  <idNpc>2</idNpc>
-	  <isLast>0</isLast>
+	  <isLast>false</isLast>
       <nextInteraction>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</nextInteraction>
    </dialog>
    <dialog id = "17">
