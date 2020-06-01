@@ -44,9 +44,9 @@
 <isEndedQuest>false</isEndedQuest>
 <rewardMoney>10</rewardMoney>
 <rewardHowManyItems>0</rewardHowManyItems>
-<idNpc>2</idNpc>
-<isLast>true</isLast>
-<nextInteraction></nextInteraction>
+<idNpc>10</idNpc>
+<isLast>false</isLast>
+<nextInteraction>Rod_1_dialog_po_wyciagnieciu_miecza_z_drzewa.quest</nextInteraction>
 <numberOfInteractionsGone>0</numberOfInteractionsGone>
 </save>
 </class>
