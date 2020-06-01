@@ -151,7 +151,7 @@ public class NPC extends Entity{
 		this.globalNpcID = globalNpcID;
 	}
 	
-	public int isUsed() {
+	public int isQuestWaiting() {
 		return this.interactions.getIsUsed();
 	}
 }
