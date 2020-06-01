@@ -708,7 +708,7 @@ public class Main {
 					}
 
 					if(Interactions.getTalkingNPCid() != -1){
-						if((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())!=null && ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().getIsUsed()!=1) {
+						if(currentWorld.getEntity(Interactions.getTalkingNPCid()) instanceof NPC &&(NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())!=null && ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().getIsUsed()!=1) {
 							((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getGlobalNpcID(), language);
 						}
 					}
