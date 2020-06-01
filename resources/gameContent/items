@@ -135,7 +135,7 @@
 	<item>
 		<TextureFileName>textures/items/quest/moneyBag.png</TextureFileName>
    		<globalID>11</globalID>
-   		<defense>0</defense>ad
+   		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>1</lvlRequired>
