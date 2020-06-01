@@ -708,7 +708,6 @@ public class Main {
 					}
 
 					if(Interactions.getTalkingNPCid() != -1){
-						
 						if((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())!=null && ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().getIsUsed()!=1) {
 							((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getGlobalNpcID(), language);
 						}
@@ -800,6 +799,11 @@ public class Main {
 					
 					for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
 						if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {
+							if(guiRenderer.isDialogOpen()) {
+								DialogContainer.setDialogClosing(true);
+								guiRenderer.closeDialog();
+								Interactions.setTalkingNPCid(-1);
+							}
 							Save.SaveWorldEntityRespown(currentWorld);
 							Save.SaveAs("Save", player, currentWorld);
 							player.setPosition(currentWorld.getDoor(i).getDestinationX(), currentWorld.getDoor(i).getDestinationY());

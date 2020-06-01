@@ -127,7 +127,6 @@ public class WorldRenderer implements RenderProperties {
 			temp.getScale().x = 1;
 			temp.getScale().y = 1;
 			temp.getPosition().y += entity.getTransform().getScale().y + temp.getScale().y + 0.5f;
-			
 			shader.bind();
 			shader.setUniform("sampler", 0);
 			shader.setUniform("projection", temp.getProjection(target));
