@@ -12,6 +12,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
@@ -154,6 +155,10 @@ public class Interactions {
 		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed == 0) {
 			guiRenderer.showDialog(dialog, language);
 			//System.out.println("Hiszpañska inkwizycja");
+			if(!quests.isEmpty() && quests.get(0).getIdNpc()!=NPCid) {
+				Save.addNpcInteractions(new NpcInteractions(quests.get(0).getNextInteraction(), 0, quests.get(0).getIdNpc()));
+			}
+			//System.out.println(((NPC)currentWorld.getWorld().getNpcByNpcId(quests.get(0).getIdNpc())).getName()+ " "+quests.get(0).getNextInteraction());
 		}
 		if(isUsed == 0 && dialog.clickedAnswer() != null) {
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
@@ -182,10 +187,11 @@ public class Interactions {
 						}
 						guiRenderer.closeDialog();
 						setTalkingNPCid(-1);
-						if(isQuestSend==1) {
+						if(isQuestSend==1 || quests.isEmpty()) {
 							//System.out.println("interaction");
 							isUsed = 1;
 							Save.addNpcInteractions(new NpcInteractions(file, isUsed, NPCid));
+							System.out.println(((NPC)currentWorld.getWorld().getNpcByNpcId(NPCid)).getName() + " " + file);
 							clearInteractions();
 							isQuestSend = 0;
 						}

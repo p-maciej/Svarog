@@ -675,7 +675,7 @@ public class Main {
 											}
 										}
 									}
-									if(q1.isEndedQuest() && !q1.isRewardedYet()) {
+									if(q1.isEndedQuest() && !q1.isRewardedYet() ) {
 										q1.sendReward(player, guiRenderer, currentWorld);
 										guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 									}

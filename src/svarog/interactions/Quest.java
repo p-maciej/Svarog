@@ -4,6 +4,7 @@ package svarog.interactions;
 import java.util.ArrayList;
 import java.util.List;
 
+import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.gui.GuiRenderer;
 import svarog.objects.Item;
@@ -14,12 +15,12 @@ import svarog.world.World;
 
 public class Quest {
 
-    private int questID;
+    private int questID=-1;
     private List<Task> tasks;
     private boolean isEndedQuest = false;
     private List<Item> rewardItem = new ArrayList<>();
     private int rewardMoney=0;
-    private boolean isRewardedYet = false;
+    private boolean isRewardedYet = true;
     
     //obs³uga podmiany kolejnego dialogu XDD
     private int idNpc=-1;
@@ -36,11 +37,11 @@ public class Quest {
     		for(Item i:rewardItem) {
     			player.addItemToInventoryWithGUIupdate(i, guiRenderer);
     		}
-    		if(!isLast) {
+    		if(!isLast && questID!=-1) {
     			world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
     			Save.addNpcInteractions(new NpcInteractions(nextInteraction, 0, idNpc));
     			//System.out.println("quest");
-    			//System.out.println(nextInteraction + " "+ 0 + " "+ idNpc);
+    			//System.out.println(((NPC)world.getNpcByNpcId(idNpc)).getName()+ " "+nextInteraction);
     		}
     		player.addMoney(rewardMoney);
     	}
@@ -65,6 +66,7 @@ public class Quest {
         this.setTasks(new ArrayList<Task>());
         this.setTitle(title);
         this.setDescription(description);
+        isRewardedYet = false;
     }
 
     public Quest(int questID, String title, String description, List<Task> tasks){
@@ -72,6 +74,7 @@ public class Quest {
         this.setTasks(tasks);
         this.setTitle(title);
         this.setDescription(description);
+        isRewardedYet = false;
     }
     
     public Quest(int questID, String title, String description, List<Task> tasks, List<ItemParameters> rewardItem, int rewardMoney, boolean isLast, int idNpc){
@@ -85,6 +88,7 @@ public class Quest {
         this.setRewardMoney(rewardMoney);
         this.isLast = isLast;
         this.idNpc = idNpc;
+        isRewardedYet = false;
     }
 
     public int getQuestID() {
