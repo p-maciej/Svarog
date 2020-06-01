@@ -20,7 +20,7 @@ import svarog.world.WorldRenderer;
 public class NPC extends Entity{
 
 	private int globalNpcID = -1;
-	private Interactions interactions;
+	private Interactions interactions = new Interactions();
 	
 	//Animacja potem siê ogarnie
 	//private String texturesPath;

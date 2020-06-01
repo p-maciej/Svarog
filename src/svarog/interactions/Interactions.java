@@ -49,6 +49,10 @@ public class Interactions {
 
 	private static final String path = "resources/quests/";
 	
+	public Interactions() {
+		
+	}
+	
 	public Interactions(String file) {
 		this.file = file;
 		Reader(file);
