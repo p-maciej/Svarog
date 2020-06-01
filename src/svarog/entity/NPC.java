@@ -150,5 +150,9 @@ public class NPC extends Entity{
 	public void setGlobalNpcID(int globalNpcID) {
 		this.globalNpcID = globalNpcID;
 	}
+	
+	public int isUsed() {
+		return this.interactions.getIsUsed();
+	}
 }
 

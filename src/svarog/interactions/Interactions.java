@@ -34,7 +34,7 @@ public class Interactions {
 	
 	//nowe elementy dla aktualnego stanu Interactions
 	private String file;
-	private int isUsed=0; //czy nie zosta³ u¿yty
+	private int isUsed=1; //czy nie zosta³ u¿yty
 	private int isQuestSend=0; //local variable to set isUsed
 	
 	private static int talkingNPCid = -1;
