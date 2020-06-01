@@ -358,19 +358,24 @@ public class Save {
 					//Integer.parseInt(eElement.getElementsByTagName("attackBonus").item(0).getTextContent());
 					//Boolean.valueOf(eElement.getElementsByTagName("attackBonus").item(0).getTextContent());
 					/////////////////////////////////////////////////////////////////////////////////////////
-					iterator = Integer.parseInt(eElement.getElementsByTagName("howManyQuests").item(0).getTextContent());
-					for(int i=0;i<iterator;i++) {
+					int iterator2 = Integer.parseInt(eElement.getElementsByTagName("howManyQuests").item(0).getTextContent());
+					int taskKeeper=0;
+					System.out.println(iterator2);
+					for(int i=0;i<iterator2;i++) {
 						List<Task> tasks = new ArrayList<>();
 						int inter = Integer.parseInt(eElement.getElementsByTagName("howManyTasks").item(i).getTextContent());
+						
 						for(int j=0;j<inter;j++) {
-							Task task = new Task(Integer.parseInt(eElement.getElementsByTagName("getTaskID").item(j+i).getTextContent()),
-									Integer.parseInt(eElement.getElementsByTagName("getToDo").item(j+i).getTextContent()),
-									Integer.parseInt(eElement.getElementsByTagName("getDoItemID").item(j+i).getTextContent()),
-									doState.valueOf(eElement.getElementsByTagName("getState").item(j+i).getTextContent())
+							System.out.println(inter + " " + taskKeeper);
+							Task task = new Task(Integer.parseInt(eElement.getElementsByTagName("getTaskID").item(taskKeeper).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("getToDo").item(taskKeeper).getTextContent()),
+									Integer.parseInt(eElement.getElementsByTagName("getDoItemID").item(taskKeeper).getTextContent()),
+									doState.valueOf(eElement.getElementsByTagName("getState").item(taskKeeper).getTextContent())
 									);
-							task.setEnded(Boolean.valueOf(eElement.getElementsByTagName("getIsEnded").item(i+j).getTextContent()));
-							task.setHowMuchIsDone(Integer.parseInt(eElement.getElementsByTagName("getHowMuchIsDone").item(i+j).getTextContent()));
+							task.setEnded(Boolean.valueOf(eElement.getElementsByTagName("getIsEnded").item(taskKeeper).getTextContent()));
+							task.setHowMuchIsDone(Integer.parseInt(eElement.getElementsByTagName("getHowMuchIsDone").item(taskKeeper).getTextContent()));
 							tasks.add(task);
+							taskKeeper++;
 						}
 						List<ItemParameters> itemQuests = new ArrayList<ItemParameters>();
 						int ite = Integer.parseInt(eElement.getElementsByTagName("rewardHowManyItems").item(i).getTextContent());
@@ -747,21 +752,20 @@ public class Save {
 		            
 		            //System.out.println(Integer.toString(npcInteractions.size()));
 		            
-		            for(int i =0;i<npcInteractions.size();i++) {
-						Element npcGlobalID = document.createElement("npcGlobalID");
-						npcGlobalID.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(i).getNpcGlobalID())));
-			            save.appendChild(npcGlobalID);
-			            
-						Element isUsed = document.createElement("isUsed");
-						isUsed.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(i).getIsUsed())));
-			            save.appendChild(isUsed);
-			            
-						Element file = document.createElement("file");
-						file.appendChild(document.createTextNode(npcInteractions.get(i).getFile()));
-			            save.appendChild(file);
-		            }
-		            
 				}
+	            for(int i =0;i<npcInteractions.size();i++) {
+					Element npcGlobalID = document.createElement("npcGlobalID");
+					npcGlobalID.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(i).getNpcGlobalID())));
+		            save.appendChild(npcGlobalID);
+		            
+					Element isUsed = document.createElement("isUsed");
+					isUsed.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(i).getIsUsed())));
+		            save.appendChild(isUsed);
+		            
+					Element file = document.createElement("file");
+					file.appendChild(document.createTextNode(npcInteractions.get(i).getFile()));
+		            save.appendChild(file);
+	            }
 
 	            // create the xml file
 	            //transform the DOM Object to an XML File
