@@ -253,7 +253,7 @@
 	  <questID>6</questID>
 	  <title>QuestID6_Find10IceCup_Title</title>
 	  <description>QuestID6_Find10IceCup_Desc</description>
-	  <rewardMoney>10</rewardMoney>
+	  <rewardMoney>500</rewardMoney>
 	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>1</t>
 	  <taskID>0</taskID>

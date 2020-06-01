@@ -170,7 +170,8 @@
 		<posY>43</posY>
 		<fullBoundingBox>true</fullBoundingBox>
 		<name>RodHuman</name>
-		<interactionsFile>Rod_dialog_2_ostatni_dialog.quest</interactionsFile>
+		<interactionsFile></interactionsFile>
+		<!--<interactionsFile>Rod_dialog_2_ostatni_dialog.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
 	</npc>
 </class>

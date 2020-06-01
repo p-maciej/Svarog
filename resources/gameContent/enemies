@@ -17,13 +17,13 @@
 		<howManyItems>3</howManyItems>
 		<itemGlobalID>0</itemGlobalID>
 		<itemTileID>-1</itemTileID>
-		<itemPropability>1</itemPropability>
+		<itemPropability>3</itemPropability>
 		<itemGlobalID>2</itemGlobalID>
 		<itemTileID>-1</itemTileID>
-		<itemPropability>3</itemPropability>
+		<itemPropability>4</itemPropability>
 		<itemGlobalID>6</itemGlobalID>
 		<itemTileID>-1</itemTileID>
-		<itemPropability>2</itemPropability>
+		<itemPropability>5</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>1</globalID>
@@ -42,13 +42,13 @@
 		<howManyItems>3</howManyItems>
 		<itemGlobalID>1</itemGlobalID>
 		<itemTileID>-1</itemTileID>
-		<itemPropability>1</itemPropability>
+		<itemPropability>3</itemPropability>
 		<itemGlobalID>2</itemGlobalID>
 		<itemTileID>-1</itemTileID>
-		<itemPropability>3</itemPropability>
+		<itemPropability>4</itemPropability>
 		<itemGlobalID>6</itemGlobalID>
 		<itemTileID>-1</itemTileID>
-		<itemPropability>2</itemPropability>
+		<itemPropability>5</itemPropability>
 	</enemy>
 	<enemy>
 		<globalID>2</globalID>
@@ -143,7 +143,7 @@
 		<howManyItems>2</howManyItems>
 		<itemGlobalID>16</itemGlobalID>
 		<itemTileID>-1</itemTileID>
-		<itemPropability>1</itemPropability>
+		<itemPropability>3</itemPropability>
 		<itemGlobalID>23</itemGlobalID>
 		<itemTileID>-1</itemTileID>
 		<itemPropability>3</itemPropability>

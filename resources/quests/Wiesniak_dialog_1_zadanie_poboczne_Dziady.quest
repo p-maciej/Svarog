@@ -74,9 +74,7 @@
 	  <title>QuestID8_TalkGuslarz_Title</title>
 	  <description>QuestID8_TalkGuslarz_Desc</description>
 	  <rewardMoney>10</rewardMoney>
-	  <rewardHowManyItems>1</rewardHowManyItems>
-	  <itemGlobalID>10</itemGlobalID>
-	  <itemTileID>-1</itemTileID>
+	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>1</t>
 	  <taskID>0</taskID>
       <toDo>1</toDo>

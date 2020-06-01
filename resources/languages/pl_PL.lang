@@ -1000,11 +1000,11 @@
     </variable>
 	<variable>
         <key>KupandMav_dialog2_line12</key>
-        <translation>[Kupiec] – NIE NIE, dobra wierzę Ci, dziękuje już dziękuje. </translation>
+        <translation>[Kupiec] – NIE NIE, dobra wierzę Ci, dziękuje już dziękuje. W ramach nagrody weź sobie połowe zawartości mej sakiewki. </translation>
     </variable>
 	<variable>
         <key>KupandMav_dialog2_line13</key>
-        <translation>[Mavak] – Bierz to złoto, i jeżeli nie masz w naszej wiosce nic do załatwienia to wynoś się z niej i nie wracaj.</translation>
+        <translation>[Mavak] – Bierz resztę tego złota, i jeżeli nie masz w naszej wiosce nic do załatwienia to wynoś się z niej i nie wracaj.</translation>
     </variable>
 	<variable>
         <key>KupandMav_dialog2_line14</key>
@@ -1523,7 +1523,7 @@
     </variable>
 	<variable>
         <key>PratandMav_dialog2_line2</key>
-        <translation>*Dodano do ekwipunku: ZŁOTE JAGODY: ilość:5*</translation>
+        <translation>*Dodano do ekwipunku: ZŁOTE JAGODY*</translation>
     </variable>
 	<variable>
         <key>PratandMav_dialog2_line3</key>
@@ -1841,7 +1841,7 @@
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line17</key>
-        <translation>[Rozenna] - Dostaniesz 5 żarłoku. A teraz idź. I prosze Cię. Podczas poszukiwań staraj się nie myśleć o tych Twoich snach, daj swojemu umysłowi odpocząć.</translation>
+        <translation>[Rozenna] - Dostaniesz 3 żarłoku. A teraz idź. I prosze Cię. Podczas poszukiwań staraj się nie myśleć o tych Twoich snach, daj swojemu umysłowi odpocząć.</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog1_line18</key>
@@ -1862,7 +1862,7 @@
     </variable>
 	<variable>
         <key>RozandMav_dialog2_line3</key>
-        <translation>[Mavak] – *Otrzymałeś 5 jabłeczników. Zostają one dodane do ekwipunku*</translation>
+        <translation>[Mavak] – *Otrzymałeś 3 jabłeczniki.*</translation>
     </variable>
 	<variable>
         <key>RozandMav_dialog2_line4</key>
