@@ -707,8 +707,11 @@ public class Main {
 
 					if(Interactions.getTalkingNPCid() != -1){
 						
-						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getGlobalNpcID(), language);
+						if((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())!=null && ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().getIsUsed()!=1) {
+							((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getGlobalNpcID(), language);
+						}
 					}
+						
 					if(DialogContainer.isDialogClosing()) {
 						((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().setEnded(true);
 						Interactions.setTalkingNPCid(-1);

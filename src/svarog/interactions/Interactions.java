@@ -50,7 +50,7 @@ public class Interactions {
 	private static final String path = "resources/quests/";
 	
 	public Interactions() {
-		
+		isUsed=1;
 	}
 	
 	public Interactions(String file) {
