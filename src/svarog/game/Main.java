@@ -143,6 +143,8 @@ public class Main {
 		pathFinder = new PathFinder();
 		
 		
+		NPC.setQuestTexture(new Texture("textures/quest.png"));
+		
 		StatsContainer.setItemWindowBackground(new TextureObject(new Texture("images/window2.png")));
 		StatsContainer.setXPframe(new TextureObject(new Texture("images/statsFrame.png")));
 		StatsContainer.setHPframe(new TextureObject(new Texture("images/statsFrame.png")));

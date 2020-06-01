@@ -22,6 +22,7 @@ public class NPC extends Entity{
 	private int globalNpcID = -1;
 	private Interactions interactions = new Interactions();
 	
+	private static Texture  QuestTexture; 
 	//Animacja potem siê ogarnie
 	//private String texturesPath;
 	//private String fileName;
@@ -153,6 +154,15 @@ public class NPC extends Entity{
 	
 	public int isQuestWaiting() {
 		return this.interactions.getIsUsed();
+	}
+
+	public static Texture getQuestTexture() {
+		return QuestTexture;
+	}
+
+	public static void setQuestTexture(Texture questTexture) {
+		questTexture.prepare();
+		QuestTexture = questTexture;
 	}
 }
 

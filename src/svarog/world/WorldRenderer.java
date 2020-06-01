@@ -9,6 +9,7 @@ import org.joml.Vector3f;
 import svarog.audio.Audio;
 import svarog.entity.Enemy;
 import svarog.entity.Entity;
+import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.io.Timer;
 import svarog.io.Window;
@@ -96,6 +97,14 @@ public class WorldRenderer implements RenderProperties {
 			}
 		}
 		
+		for(Entity entity : world.getEntities()) {
+			if(entity instanceof NPC) {
+				if(((NPC)entity).isQuestWaiting() == 0) {
+					renderEntityTextures(entity, shader, camera, world);
+				}
+			}
+		}
+		
 		for(int i = 0; i < viewX; i++) {
 			for(int j = 0; j < viewY; j++) {
 				Tile t = world.getTile(i-posX-(viewX/2)+1, j+posY-(viewY/2));
@@ -106,6 +115,27 @@ public class WorldRenderer implements RenderProperties {
 		
 		if(mouseOverEntityId >= 0)
 			window.requestCursor(Window.Cursor.Pointer);
+	}
+	
+	public void renderEntityTextures(Entity entity, Shader shader, Camera camera, World world) {
+		if(NPC.getQuestTexture() != null) {
+			Matrix4f target = camera.getProjection();
+			target.mul(world.getWorld());
+			
+			Transform temp = new Transform().set(entity.getTransform());
+				
+			temp.getScale().x = 1;
+			temp.getScale().y = 1;
+			temp.getPosition().y += entity.getTransform().getScale().y + temp.getScale().y + 0.5f;
+			
+			shader.bind();
+			shader.setUniform("sampler", 0);
+			shader.setUniform("projection", temp.getProjection(target));
+			shader.setUniform("sharpness", 1.0f);
+			
+			NPC.getQuestTexture().bind(0);
+			this.model.render();
+		}
 	}
 	
 	public void renderTile(Tile tile, int x, int y, Shader shader, Matrix4f world, Camera camera, boolean topLayer) {
