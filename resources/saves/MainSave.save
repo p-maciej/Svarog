@@ -39,8 +39,8 @@
 <getIsEnded>false</getIsEnded>
 <getHowMuchIsDone>0</getHowMuchIsDone>
 <getQuestID>-3</getQuestID>
-<getTitle>Pogadaj z Rozenna</getTitle>
-<getDescription>Idz do Rozenny, ona znajdzie dla wiecej tekstu dla PagedGuiWindow ciebie jakiegos questa</getDescription>
+<getTitle>StartQuest_Title</getTitle>
+<getDescription>StartQuest_Desc</getDescription>
 <isEndedQuest>false</isEndedQuest>
 <rewardMoney>10</rewardMoney>
 <rewardHowManyItems>0</rewardHowManyItems>

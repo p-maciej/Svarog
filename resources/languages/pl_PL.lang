@@ -2219,4 +2219,12 @@
         <key>QuestID10_FindGerwazyFinish_Desc</key>
         <translation>Niestety ale podczas przemierzania opuszczonego grodu natrafiłem się na ciało Gerwazego - okolicznego drwala. Jego wyprawa po wyjątkowe drewno skończyła się dla niego tragicznie, został zamordowany przez tutejsze Ghule. Ehhhh jako dowód wezmę naszyjnik co leży obok niego i pójdę zanieść złe wieści Mojmirze</translation>
     </variable>
+	<variable>
+        <key>StartQuest_Title</key>
+        <translation>Porozmawiaj z Rozenną</translation>
+    </variable>
+	<variable>
+        <key>StartQuest_Desc</key>
+        <translation>Idź do Rozenny. Masz jej coś do powiedzenia.</translation>
+    </variable>
 </file>
