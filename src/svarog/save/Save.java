@@ -496,6 +496,7 @@ public class Save {
 				e.printStackTrace();
 			}
 		}
+		setIsOldGame(1);
 		return entityRespawn;
 	}
 	
