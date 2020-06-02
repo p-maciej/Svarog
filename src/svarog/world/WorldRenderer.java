@@ -122,17 +122,17 @@ public class WorldRenderer implements RenderProperties {
 			Matrix4f target = camera.getProjection();
 			target.mul(world.getWorld());
 			
-			Transform temp = new Transform().set(entity.getTransform());
+			Transform temp = new Transform().set(NPC.getQuestTexture().getTransform());
 				
-			temp.getScale().x = 1;
-			temp.getScale().y = 1;
-			temp.getPosition().y += entity.getTransform().getScale().y + temp.getScale().y + 0.5f;
+			temp.getPosition().y = entity.getTransform().getPosition().y + entity.getTransform().getScale().y + temp.getScale().y + 0.5f;
+			temp.getPosition().x = entity.getTransform().getPosition().x;
+			
 			shader.bind();
 			shader.setUniform("sampler", 0);
 			shader.setUniform("projection", temp.getProjection(target));
 			shader.setUniform("sharpness", 1.0f);
 			
-			NPC.getQuestTexture().bind(0);
+			NPC.getQuestTexture().getTexture().bind(0);
 			this.model.render();
 		}
 	}
