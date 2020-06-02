@@ -58,7 +58,7 @@ public class EntityItem extends Entity {
 		
 		if(entityHolder.getName() != null && !(entityHolder.getName().equals(""))) {
 			super.setName(LanguageLoader.getLanguageLoader().getValue(entityHolder.getName()));
-		}else {
+		} else {
 			super.setName(LanguageLoader.getLanguageLoader().getValue(entityItemParameters.getName()));
 		}
 		super.setRespownInSec(entityItemParameters.getRespownInSec());

@@ -22,10 +22,7 @@ public class NPC extends Entity{
 	private int globalNpcID = -1;
 	private Interactions interactions = new Interactions();
 	
-	private static Texture  QuestTexture; 
-	//Animacja potem siê ogarnie
-	//private String texturesPath;
-	//private String fileName;
+	private static WorldObject questTexture;
 
 	private List<Item> items = new ArrayList<Item>();
 
@@ -33,8 +30,6 @@ public class NPC extends Entity{
 		super(id, texture, transform, fullBoundingBox);
 		super.setOverable(true);
 		super.setClickable(true);
-		//this.texturesPath = texturePath;
-		//this.fileName = filename;
 		
 		super.setIsStatic(true); // static - default setting for NPC  
 	}
@@ -43,9 +38,6 @@ public class NPC extends Entity{
 		super(id, texture, transform, fullBoundingBox);
 		super.setOverable(true);
 		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
-		//this.texturesPath = texturePath;
-		//this.fileName = filename;
-		
 		super.setIsStatic(true); // static - default setting for NPC 
 		
 		this.items = items;
@@ -156,13 +148,13 @@ public class NPC extends Entity{
 		return this.interactions.getIsUsed();
 	}
 
-	public static Texture getQuestTexture() {
-		return QuestTexture;
+	public static WorldObject getQuestTexture() {
+		return questTexture;
 	}
 
-	public static void setQuestTexture(Texture questTexture) {
-		questTexture.prepare();
-		QuestTexture = questTexture;
+	public static void setQuestTexture(WorldObject questTexture) {
+		NPC.questTexture = questTexture;
+		NPC.questTexture.getTexture().prepare();
 	}
 }
 

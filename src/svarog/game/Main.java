@@ -19,6 +19,7 @@ import svarog.entity.Entity;
 import svarog.entity.EntityItem;
 import svarog.entity.NPC;
 import svarog.entity.Player;
+import svarog.entity.WorldObject;
 import svarog.gui.ArenaContainer;
 import svarog.gui.BubbleContainer;
 import svarog.gui.Button;
@@ -51,6 +52,7 @@ import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
+import svarog.render.Transform;
 import svarog.save.Save;
 import svarog.world.World;
 import svarog.world.WorldRenderer;
@@ -143,7 +145,7 @@ public class Main {
 		pathFinder = new PathFinder();
 		
 		
-		NPC.setQuestTexture(new Texture("textures/quest.png"));
+		NPC.setQuestTexture(new WorldObject(new Texture("textures/quest.png"), new Transform()));
 		
 		StatsContainer.setItemWindowBackground(new TextureObject(new Texture("images/window2.png")));
 		StatsContainer.setXPframe(new TextureObject(new Texture("images/statsFrame.png")));
