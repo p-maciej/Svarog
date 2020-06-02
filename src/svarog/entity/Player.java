@@ -68,6 +68,9 @@ public class Player extends Entity {
 	private List<Quest> quests = new ArrayList<>();
 	
 	private boolean autoMovement = false;
+	
+	private Vector2f lastPosition = new Vector2f();
+	private int textureType = 1;
 
 	public Player(int id, String texturePath, String filename, Sound walkSound, Transform transform, boolean fullBoundingBox) {
 		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
@@ -162,6 +165,10 @@ public class Player extends Entity {
 		return quests1;
 	}
 	
+	private boolean isPlayerMoved() {
+		return !(lastPosition.x == super.getTransform().getPosition().x && lastPosition.y == super.getTransform().getPosition().y);
+	}
+	
 	public Vector2f movePlayer(int direction, boolean auto) {
 		movement = new Vector2f();
 		
@@ -171,36 +178,54 @@ public class Player extends Entity {
 		if(direction == 65) {
 			movement.add(-1*speed, 0);
 			
-			if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1]))
-				setTexture(Direction.left);
-			else
-				if(super.currentDirection != Direction.left || lastPressedKey == 0)
-					setAnimation(Direction.left);
+			if(super.currentDirection == Direction.left && (super.isColliding[0] || super.isColliding[1])) {
+				if(textureType != 1)
+					setTexture(Direction.left);
+			}
+			else  {
+				if(super.currentDirection != Direction.left || isPlayerMoved()) {
+					if(textureType != 2 || super.currentDirection != Direction.left)
+						setAnimation(Direction.left);
+				}
+			}
 			
 		} else if(direction == 68) {
 			movement.add(1*speed, 0);
 			
-			if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1]))
-				setTexture(Direction.right);
-			else
-				if(super.currentDirection != Direction.right || lastPressedKey == 0)
-					setAnimation(Direction.right);
+			if(super.currentDirection == Direction.right && (super.isColliding[0] || super.isColliding[1])) {
+				if(textureType != 1)
+					setTexture(Direction.right);
+			}
+			else {
+				if(super.currentDirection != Direction.right || isPlayerMoved())
+					if(textureType != 2 || super.currentDirection != Direction.right)
+						setAnimation(Direction.right);
+			}
 		} else if(direction == 87) {
 			movement.add(0, 1*speed);
 			
-			if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1]))
-				setTexture(Direction.up);
-			else
-				if(super.currentDirection != Direction.up || lastPressedKey == 0)
-					setAnimation(Direction.up);
+			if(super.currentDirection == Direction.up && (super.isColliding[0] || super.isColliding[1])) {
+				if(textureType != 1)
+					setTexture(Direction.up);
+			}
+			else {
+				if(super.currentDirection != Direction.up || isPlayerMoved())
+					if(textureType != 2 || super.currentDirection != Direction.up)
+						setAnimation(Direction.up);
+			}
 		} else if(direction == 83) {
 			movement.add(0, -1*speed);
 			
-			if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1]))
-				setTexture(Direction.down);
-			else
-				if(super.currentDirection != Direction.down || lastPressedKey == 0)
-					setAnimation(Direction.down);
+			if(super.currentDirection == Direction.down && (super.isColliding[0] || super.isColliding[1])) {
+				if(textureType != 1)
+					setTexture(Direction.down);
+			}
+			else {
+				if(super.currentDirection != Direction.down || isPlayerMoved()) {
+					if(textureType != 2 || super.currentDirection != Direction.down)
+						setAnimation(Direction.down);
+				}
+			}
 		} else if(direction == 0) {
 			if(super.currentDirection == Direction.left) {
 				setTexture(Direction.left);
@@ -217,6 +242,8 @@ public class Player extends Entity {
 		}
 		
 		lastPressedKey = direction;
+		
+		this.lastPosition = new Vector2f(super.getTransform().getPosition().x, super.getTransform().getPosition().y);
 		
 		return movement;
 	}
@@ -301,6 +328,8 @@ public class Player extends Entity {
 		} else 	if(direction == Direction.down) {
 			super.setTexture(Direction.down, new Animation(4, 8, this.texturesPath + "walking/down/" + this.fileName));
 		}
+		
+		textureType = 2;
 	}
 	
 	private void setTexture(Direction direction) {
@@ -313,6 +342,8 @@ public class Player extends Entity {
 		} else if(direction == Direction.down) {
 			super.setTexture(Direction.down, new Texture("textures/animations/" + this.texturesPath + "idle/down/" + this.fileName + ".png"));
 		}
+		
+		textureType = 1;
 	}
 	
 	public Texture getPlayerTexture(Direction direction) {
