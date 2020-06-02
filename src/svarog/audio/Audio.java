@@ -45,7 +45,7 @@ public class Audio {
 	}
 	
 	public void play(Sound sound) {
-		if(this.volume != sound.getVolume())
+		if(this.volume < sound.getVolume())
 			sound.setVolume(this.volume);
 		
 		alSourcePlay(sound.getPointer());

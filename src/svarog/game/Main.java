@@ -127,7 +127,7 @@ public class Main {
 		
 		try {
 			audioBackgroundSound = new Sound("svarogBackground.ogg", true);
-			audioBackgroundSound.setVolume(0.1f);
+			audioBackgroundSound.setVolume(0.5f);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
