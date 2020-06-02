@@ -75,6 +75,10 @@ public class Main {
 	private static GuiWindow questsWindow;
 	private static LanguageLoader language;
 	
+	// Music
+	
+	private static Sound audioBackgroundSound; 
+	
 	// Fonts
 	private static Font roboto_15;
 	private static Font roboto_15_gray;
@@ -116,7 +120,22 @@ public class Main {
 		shader = new Shader("shader");
 		camera = new Camera();
 
+		
 		audioPlayer = new Audio();
+		
+		try {
+			audioBackgroundSound = new Sound("svarogBackground.ogg", true);
+			audioBackgroundSound.setVolume(0.1f);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		audioPlayer.play(audioBackgroundSound);
+		
+	
+		
+		
+		
 		
 		Sound walk = null;
 		try {
@@ -129,6 +148,7 @@ public class Main {
 			player = new Player(walk, Save.getPlayerParam());
 			player.setSpeed(0.2f);
 		}
+		
 		
 		currentWorld = new World(1, 0, 0);
 		
@@ -311,6 +331,9 @@ public class Main {
 		Tile trash = new Tile(tileId++, tileTrashTexture, tileTrashTexture, (byte)0, 0, 0);
 		trash.setPuttableItemTypes(Arrays.asList(ItemType.trash));
 		
+		
+		
+		
 		trashG.addGuiObject(trash);
 		
 		tileSheet.addTileGroup(trashG);
@@ -373,9 +396,9 @@ public class Main {
 		////////////////////////////////////////////////////////////////////////////////////
 	}
 
-	private static void loadingScreen() {
-		guiShader = new Shader("shader");
 	
+	private static void loadingScreen() {
+		guiShader = new Shader("shader");	
 		////////// LOADING SCREEN //////////////////////////////////////////////////////////
 		loadingScreen = new GuiRenderer(window);
 		
@@ -750,6 +773,7 @@ public class Main {
 					}
 
 					if(healBtn.isClicked()) {
+						
 						TradeWindow trade = new TradeWindow("trade");
 						trade.addProduct(100, new Item(Save.getItemById(7)));
 						trade.setPosition(-100, 0);
