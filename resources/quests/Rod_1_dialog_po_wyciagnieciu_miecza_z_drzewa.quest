@@ -445,7 +445,7 @@
 	  <questID>0</questID>
 	  <title>QuestID0_MainQuest_Title</title>
 	  <description>QuestID0_MainQuest_Desc</description>
-	  <rewardMoney>5000</rewardMoney>
+	  <rewardMoney>500</rewardMoney>
 	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>3</t>
 	  <taskID>0</taskID>

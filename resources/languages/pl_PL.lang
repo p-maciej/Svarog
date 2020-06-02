@@ -2227,4 +2227,12 @@
         <key>StartQuest_Desc</key>
         <translation>Idź do Rozenny. Masz jej coś do powiedzenia.</translation>
     </variable>
+	<variable>
+        <key>QuestID10_TalkPrata_Title</key>
+        <translation>Porozmawiaj z Pratą o tym czego doświadczyłeś.</translation>
+    </variable>
+	<variable>
+        <key>QuestID10_TalkPrata_Desc</key>
+        <translation>Pomyślałem że zwierzenie się Rozennie z tego co zobaczyłem będzie dobrym pomysłem. Powiedziałem jej o spotkaniu z Rodem, o Boskim Przeznaczeniu oraz mojej misji odnalezienia artefaktów. Na początku mi nie uwierzyła ale bardzo szybko się zorientowała że byłem śmiertelnie poważny. Poleciła mi porozmawiać z naszym starszym wioski Pratą. Pewnie znajdę go przed jego chatą.</translation>
+    </variable>
 </file>

@@ -109,7 +109,7 @@
 	  <questID>7</questID>
 	  <title>QuestID7_FindArtefactsinFort_Title</title>
 	  <description>QuestID7_FindArtefactsinFort_Desc</description>
-	  <rewardMoney>400</rewardMoney>
+	  <rewardMoney>170</rewardMoney>
 	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>2</t>
 	  <taskID>0</taskID>

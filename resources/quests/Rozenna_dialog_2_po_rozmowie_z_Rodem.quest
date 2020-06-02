@@ -224,8 +224,8 @@
       <leadsTo>-1</leadsTo>
       <q>1</q>
 	  <questID>10</questID>
-	  <title>QuestID0_MainQuest_Title</title>
-	  <description>QuestID0_MainQuest_Desc</description>
+	  <title>QuestID10_TalkPrata_Title</title>
+	  <description>QuestID10_TalkPrata_Desc</description>
 	  <rewardMoney>10</rewardMoney>
 	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>1</t>

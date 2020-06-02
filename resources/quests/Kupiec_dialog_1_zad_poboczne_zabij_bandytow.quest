@@ -154,7 +154,7 @@
 	  <questID>3</questID>
 	  <title>QuestID3_KillBandits_Title</title>
 	  <description>QuestID3_KillBandits_Desc</description>
-	  <rewardMoney>300</rewardMoney>
+	  <rewardMoney>250</rewardMoney>
 	  <rewardHowManyItems>0</rewardHowManyItems>
 	  <t>2</t>
 	  <taskID>0</taskID>

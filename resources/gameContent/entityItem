@@ -17,7 +17,7 @@
    		<texturePath>textures/chestA.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>MavakChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
@@ -31,7 +31,7 @@
    		<texturePath>textures/chestA.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SmallPotionChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
@@ -43,7 +43,7 @@
    		<texturePath>textures/chestA.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>BigPotionChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
@@ -55,7 +55,7 @@
    		<texturePath>textures/chestA.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>LeatherArmorChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
@@ -69,7 +69,7 @@
    		<texturePath>textures/chestA.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>TrophyChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
@@ -83,7 +83,7 @@
    		<texturePath>textures/chestA.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>EmptyChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>0</howManyItems>
@@ -93,7 +93,7 @@
    		<texturePath>textures/chestB.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SmallandBigPotionChestB</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
@@ -107,7 +107,7 @@
    		<texturePath>textures/chestB.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>EmptyChestB</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>0</howManyItems>
@@ -117,7 +117,7 @@
    		<texturePath>textures/chestB.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SmallPotionChestB</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
@@ -129,7 +129,7 @@
    		<texturePath>textures/chestB.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>BigPotionChestB</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
@@ -141,7 +141,7 @@
    		<texturePath>textures/chestA.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SmallandBigPotionChestA</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>2</howManyItems>
@@ -155,7 +155,7 @@
    		<texturePath>textures/chestB.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>MagicHelmetChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
@@ -167,7 +167,7 @@
    		<texturePath>textures/chestB.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>MagicArmorChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
@@ -179,7 +179,7 @@
    		<texturePath>textures/items/quest/gerwazyNecklace.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>gerwazyNecklace</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
@@ -191,7 +191,7 @@
    		<texturePath>textures/chestB.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>SkotijkaChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
@@ -203,7 +203,7 @@
    		<texturePath>textures/items/quest/iceCup.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>iceCup</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>
@@ -215,7 +215,7 @@
    		<texturePath>textures/chestB.png</texturePath>
    		<fullBoundingBox>true</fullBoundingBox>
    		<name>iceCupChest</name>
-   		<respownInSec>-1</respownInSec>
+   		<respownInSec>1200</respownInSec>
    		<scaleX>1</scaleX>
    		<scaleY>1</scaleY>
    		<howManyItems>1</howManyItems>

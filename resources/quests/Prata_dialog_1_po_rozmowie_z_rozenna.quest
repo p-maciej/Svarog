@@ -565,7 +565,7 @@
 	  <questID>2</questID>
 	  <title>QuestID2_KillWolfes_Title</title>
 	  <description>QuestID2_KillWolfes_Desc</description>
-	  <rewardMoney>300</rewardMoney>
+	  <rewardMoney>100</rewardMoney>
 	  <rewardHowManyItems>1</rewardHowManyItems>
 	  <itemGlobalID>20</itemGlobalID>
 	  <itemTileID>-1</itemTileID>
