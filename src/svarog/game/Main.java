@@ -133,11 +133,7 @@ public class Main {
 		}
 		
 		audioPlayer.play(audioBackgroundSound);
-		
-	
-		
-		
-		
+
 		
 		Sound walk = null;
 		try {
@@ -165,7 +161,7 @@ public class Main {
 		pathFinder = new PathFinder();
 		
 		
-		NPC.setQuestTexture(new WorldObject(new Texture("textures/quest.png"), new Transform()));
+		NPC.setQuestTexture(new WorldObject(new Animation(7, 4, "quest/quest"), new Transform()));
 		
 		StatsContainer.setItemWindowBackground(new TextureObject(new Texture("images/window2.png")));
 		StatsContainer.setXPframe(new TextureObject(new Texture("images/statsFrame.png")));
