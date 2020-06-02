@@ -78,7 +78,8 @@ public class Main {
 	private static LanguageLoader language;
 	
 	// Music
-	
+	private static Thread audioLoad;
+	private static boolean audioBackgroundLoaded;
 	private static Sound audioBackgroundSound; 
 	
 	// Fonts
@@ -125,14 +126,18 @@ public class Main {
 		
 		audioPlayer = new Audio();
 		
-		try {
-			audioBackgroundSound = new Sound("svarogBackground.ogg", true);
-			audioBackgroundSound.setVolume(0.5f);
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
+		audioBackgroundLoaded = false;
 		
-		audioPlayer.play(audioBackgroundSound);
+		audioLoad = new Thread(new Runnable() {
+			  public void run() {
+			    try {
+			    	audioBackgroundSound = new Sound("svarogBackground.ogg", true);
+			    } catch(Exception t) {
+			    }
+			  }
+		});
+		
+		audioLoad.start();
 
 		
 		Sound walk = null;
@@ -567,6 +572,7 @@ public class Main {
 	            if(WorldLoader.getNextFrameLoadWorld() != 0) {
 	            	glClear(GL_COLOR_BUFFER_BIT);
 	            	glClearColor(0f, 0f, 0f, 1f);
+	            
 	            	
 	              	if(player != null && audioPlayer != null)
 	            		if(audioPlayer.isPlaying(player.getWalkSound()))
@@ -595,7 +601,9 @@ public class Main {
 	            	window.update();
 	            	window.swapBuffers(); 
 	            	
-	            	
+
+
+	              	
 	            	if(WorldLoader.isWorldLoaded() == false) {            	
 		            	currentWorld = WorldLoader.getWorld(WorldLoader.getNextFrameLoadWorld(), player, camera, window);
 		            	currentWorld.start();
@@ -620,6 +628,23 @@ public class Main {
 	            		
 	            } else {
 	            	if(joinThread == true) {
+		              	if(!audioBackgroundLoaded) {
+		              		try {
+								audioLoad.join();
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+		              		audioBackgroundLoaded = true;
+		              		
+			              	if(audioPlayer != null) {
+			              		if(!audioPlayer.isPlaying(audioBackgroundSound)) {
+			              			audioBackgroundSound.setVolume(0.5f);
+			              			audioPlayer.play(audioBackgroundSound);
+			              		}
+			              	}
+		              	}
+		              	
+		              	
 		        		try {
 		        			currentWorld.join(worldRenderer);
 		        		} catch (InterruptedException e) {
