@@ -121,8 +121,8 @@ public abstract class GuiObject implements MouseInteraction, Comparable<GuiObjec
 	
 	private void configureTransform() {
 		transform.setScale(scale*2, scale*2);
-		this.transform.getScale().x = (float)((float)(getWidth())/2 * (scale/16));
-		this.transform.getScale().y = (float)((float)(getHeight())/2 * (scale/16));
+		this.transform.getScale().x = (float)Math.floor((float)(getWidth())/2 * (scale/16) * 2f) / 2f;
+		this.transform.getScale().y = (float)Math.floor((float)(getHeight())/2 * (scale/16) * 2f) / 2f;
 	}
 
 	public stickTo getStickTo() {
