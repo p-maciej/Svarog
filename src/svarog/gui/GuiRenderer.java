@@ -598,7 +598,7 @@ public class GuiRenderer implements RenderProperties {
 				Matrix4f projection = camera.getProjection();
 				Line line = block.getLines().get(i);
 						
-				line.getTransform().getPosition().x = block.getTransform().getPosition().x + line.getWidth()/2;
+				line.getTransform().getPosition().x = block.getTransform().getPosition().x + (float)(line.getWidth())/2;
 				line.getTransform().getPosition().y = block.getTransform().getPosition().y + -i*line.getHeight();
 						
 				line.getTexture().bind(0);
