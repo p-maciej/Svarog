@@ -655,6 +655,7 @@ public class Main {
 	            	}
 	        		
 	            	
+	            	
 					glClearColor(0.2f, 0.2f, 0.2f, 1f);
 					if(window.hasResized()) {
 						window.checkSize();
@@ -668,7 +669,6 @@ public class Main {
 						glViewport(0, 0, window.getWidth(), window.getHeight());
 					}
 					glClear(GL_COLOR_BUFFER_BIT);
-					
 					
 					guiRenderer.deleteDynamicGroups();
 					
@@ -842,7 +842,6 @@ public class Main {
 					if(tileSheet.itemToDelete() >= 0) {
 						guiRenderer.addWindow(confirmWindow);
 					}
-					
 					
 					for(int i = 0; i < currentWorld.numberOfDoors(); i++) {
 						if(currentWorld.getPlayer().getPositionX() == currentWorld.getDoor(i).getPositionX() && currentWorld.getPlayer().getPositionY() == currentWorld.getDoor(i).getPositionY()) {

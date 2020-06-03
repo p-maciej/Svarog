@@ -563,6 +563,7 @@ public class GuiRenderer implements RenderProperties {
 	private void mouseInteraction(GuiObject object, Window window) {
 		if(object.isMouseOver(window, window.getCursorPositionX(), window.getCursorPositionY())) {
 			setPointer = false;
+
 			mouseOverObjectId = object.getId();
 			
 			if(object instanceof Tile)
@@ -893,7 +894,10 @@ public class GuiRenderer implements RenderProperties {
 	}
 	
 	public void addGuiObject(GuiObject object, State state) {
-		objects.add(object.setState(state));
+		if(state == State.guiPanel)
+			objects.add(0, object);
+		else
+			objects.add(object.setState(state));
 	}
 	
 	public void addGroup(Group group) {
