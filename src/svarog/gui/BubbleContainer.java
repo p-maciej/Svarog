@@ -41,7 +41,7 @@ public class BubbleContainer {
 			}
 			contentBackground.flip();
 			
-			TextureObject center = new TextureObject(new Texture(contentBackground, line.getWidth(), bubbleCenter.getHeight()), (float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest), (float)(posY+bubbleYoffset));
+			TextureObject center = new TextureObject(new Texture(contentBackground, (int)line.getWidth(), bubbleCenter.getHeight()), (float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest), (float)(posY+bubbleYoffset));
 			group.addGuiObject(center);
 			
 			line.setPosition((float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest)-2, (float)(posY+bubbleYoffset-bubbleCenter.getHeight()/2 +line.getHeight()/2+4));

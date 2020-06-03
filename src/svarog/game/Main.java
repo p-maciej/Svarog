@@ -247,7 +247,7 @@ public class Main {
 		healBtn.move(-25, 70);
 		
 		
-		guiRenderer.setMarginRight(bottomBorderRightPanel.getWidth());
+		guiRenderer.setMarginRight((int)bottomBorderRightPanel.getWidth());
 		guiRenderer.setMarginBottom(70);
 		
 		guiRenderer.addGuiObject(bottomCorner1);

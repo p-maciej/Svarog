@@ -47,12 +47,12 @@ public class DialogContainer {
 			TextBlock content = new TextBlock(550, new Vector2f());
 			content.setString(dialogFont, language.getValue(dialog.getContent()));
 
-			int height = content.getHeight()-dialogTop.getHeight()+yOffset;
+			int height = (int)content.getHeight()-(int)dialogTop.getHeight()+yOffset;
 			if(height < 0)
 				height = 0;
 			
 			int top = 0;
-			int left = -dialogTop.getWidth()/2+15;
+			int left = (int)-dialogTop.getWidth()/2+15;
 			
 			
 			List<TextBlockButton> answers = new ArrayList<TextBlockButton>();
@@ -72,7 +72,7 @@ public class DialogContainer {
 			top -= content.getHeight()+interspace;
 			
 			if(height*dialogTop.getWidth()*4 > 0) {
-				ByteBuffer center = BufferUtils.createByteBuffer(height*dialogTop.getWidth()*4);
+				ByteBuffer center = BufferUtils.createByteBuffer(height*(int)dialogTop.getWidth()*4);
 			
 				for(int j = 0; j < dialogTop.getWidth(); j++) {
 					for(int i = 0; i < height; i++) {
@@ -85,7 +85,7 @@ public class DialogContainer {
 				}
 				center.flip();
 				
-				TextureObject centerTexture = new TextureObject(new Texture(center, dialogTop.getWidth(), height));	
+				TextureObject centerTexture = new TextureObject(new Texture(center, (int)dialogTop.getWidth(), height));	
 				centerTexture.move(0, -height/2);
 				group.addGuiObject(centerTexture);
 			}

@@ -69,8 +69,8 @@ public class GuiWindow {
 		elements.addGuiObject(backgroundTexture);
 		
 		this.id = auto_increment++;
-		this.setWidth(backgroundTexture.getWidth());
-		this.setHeight(backgroundTexture.getHeight());
+		this.setWidth((int)backgroundTexture.getWidth());
+		this.setHeight((int)backgroundTexture.getHeight());
 		this.setWindowFont(font);
 		this.setTitle(title);
 		this.setClosed(false);
@@ -87,8 +87,8 @@ public class GuiWindow {
 		elements.addGuiObject(backgroundTexture);
 		
 		this.id = auto_increment++;
-		this.setWidth(backgroundTexture.getWidth());
-		this.setHeight(backgroundTexture.getHeight());
+		this.setWidth((int)backgroundTexture.getWidth());
+		this.setHeight((int)backgroundTexture.getHeight());
 		this.setWindowFont(font);
 		this.setTitle(title);
 		this.setClosed(false);

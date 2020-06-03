@@ -108,8 +108,8 @@ public class Group implements Comparable<Group> {
 		int minYValue = 10000000;
 		int maxYValue = 0;
 		for(GuiObject object : textureObjects) {
-			int width = object.getWidth();
-			int height = object.getHeight();
+			int width = (int)object.getWidth();
+			int height = (int)object.getHeight();
 			float posX = object.getPosition().x;
 			float posY = object.getPosition().y;
 			
