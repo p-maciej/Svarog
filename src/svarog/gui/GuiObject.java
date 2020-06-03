@@ -86,19 +86,19 @@ public abstract class GuiObject implements MouseInteraction, Comparable<GuiObjec
 	}
 
 	public void setPosition(Vector2f position) {
-		this.position.x = position.x;
-		this.position.y = position.y;
+		this.position.x = position.x*(scale/16);
+		this.position.y = position.y*(scale/16);
 		setTransformPosition(position);
 	}
 	
 	public void setTransformPosition(Vector2f position) {
-		this.transform.getPosition().x = position.x;
-		this.transform.getPosition().y = position.y;
+		this.transform.getPosition().x = position.x*(scale/16);
+		this.transform.getPosition().y = position.y*(scale/16);
 	}
 	
 	public void setPosition(float X, float Y) {
-		this.position.x = X;
-		this.position.y = Y;
+		this.position.x = X*(scale/16);
+		this.position.y = Y*(scale/16);
 		setTranformPosition(X, Y);
 	}
 	
@@ -108,11 +108,11 @@ public abstract class GuiObject implements MouseInteraction, Comparable<GuiObjec
 	}
 	
 	public void move(Vector2f direction) {
-		this.position.add(direction.x, -direction.y);
+		this.position.add(direction.x*(scale/16), -direction.y*(scale/16));
 	}
 	
 	public void move(float X, float Y) {
-		this.position.add(X, -Y);
+		this.position.add(X*(scale/16), -Y*(scale/16));
 	}
 
 	public static float getScale() {

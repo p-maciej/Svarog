@@ -23,6 +23,8 @@ public class Group implements Comparable<Group> {
 	
 	private stickTo stickTo;
 	
+	private static final float scale = 16f;
+	
 	public Group() {
 		id = auto_increment++;
 		
@@ -64,7 +66,7 @@ public class Group implements Comparable<Group> {
 	}
 	
 	public void setTransformPosition(Vector2f position) {
-		this.position.set(position.x, -position.y);
+		this.position.set(position.x*(scale/16), -position.y*(scale/16));
 	}
 	
 	public void setTransformPosition(float X, float Y) {
@@ -72,21 +74,21 @@ public class Group implements Comparable<Group> {
 	}
 	
 	public void setPosition(Vector2f direction) {
-		this.position.set(direction.x, -direction.y);
+		this.position.set(direction.x*(scale/16), -direction.y*(scale/16));
 		setTransformPosition(direction);
 	}
 	
 	public void setPosition(float X, float Y) {
-		this.position.set(X, -Y);
-		setTransformPosition(X, Y);
+		this.position.set(X*(scale/16), -Y*(scale/16));
+		setTransformPosition(X*(scale/16), Y*(scale/16));
 	}
 	
 	public void move(Vector2f direction) {
-		this.position.add(direction.x, direction.y);
+		this.position.add(direction.x*(scale/16), direction.y*(scale/16));
 	}
 	
 	public void move(float X, float Y) {
-		this.position.add(X, Y);
+		this.position.add(X*(scale/16), Y*(scale/16));
 	}
 	
 	public Vector2f getTransform() {
