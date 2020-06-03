@@ -51,7 +51,7 @@ abstract class Village implements Runnable {
 			world.addEntity((svarog.entity.Entity) i);
 		}
 		
-		world.getEntityById(4).setRespownInSec(3);
+		//world.getEntityById(4).setRespownInSec(3);
 		
 		
 

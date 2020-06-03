@@ -147,7 +147,7 @@ public class Interactions {
 	
 	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
 		
-		if((isEnded || dialog == null) && isUsed ==0) {
+		if((isEnded || dialog == null)  && isUsed ==0) {
 			dialog = dialogs.get(0);
 			isEnded = false;
 		}
@@ -156,14 +156,24 @@ public class Interactions {
 			guiRenderer.showDialog(dialog, language);
 			//System.out.println("Hiszpañska inkwizycja");
 			if(!quests.isEmpty() && quests.get(0).getIdNpc()!=NPCid) {
-				Save.addNpcInteractions(new NpcInteractions(quests.get(0).getNextInteraction(), 0, quests.get(0).getIdNpc()));
+				//Save.addNpcInteractions(new NpcInteractions(quests.get(0).getNextInteraction(), 1, quests.get(0).getIdNpc()));
+				//System.out.println(quests.get(0).getTitle());
+				//System.out.println(Save.getNpcsByID(NPCid).getName()+ " "+quests.get(0).getNextInteraction()+" interaction 1");
+
 			}
-			//System.out.println(((NPC)currentWorld.getWorld().getNpcByNpcId(quests.get(0).getIdNpc())).getName()+ " "+quests.get(0).getNextInteraction());
 		}
 		if(isUsed == 0 && dialog.clickedAnswer() != null) {
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
 		}
 	}
+	public int getIsQuestSend() {
+		return isQuestSend;
+	}
+
+	public void setIsQuestSend(int isQuestSend) {
+		this.isQuestSend = isQuestSend;
+	}
+
 	public void interactionsHelper(WorldRenderer currentWorld, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
 		for(int i = 0; i < dialog.getAnswers().size();i++) {
 			if(dialog.clickedAnswer() != null) {
@@ -181,17 +191,40 @@ public class Interactions {
 								}
 							}
 							if(q1.isEndedQuest() && !q1.isRewardedYet()) {
-								q1.sendReward(player, guiRenderer, currentWorld.getWorld());
+								System.out.println("Zjeb");
+								q1.sendReward(player, guiRenderer, currentWorld.getWorld(), isUsed);
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 							}
 						}
 						guiRenderer.closeDialog();
 						setTalkingNPCid(-1);
-						if(isQuestSend==1 || quests.isEmpty()) {
+						
+						if(quests.isEmpty()) {
+							isUsed = 1;
+							Save.addNpcInteractions(new NpcInteractions(file, isUsed, NPCid));
+							System.out.println(Save.getNpcsByID(NPCid).getName()+" "+isUsed + " "+file+" interaction 1");
+							Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
+						}
+						if(isQuestSend==1) {
 							//System.out.println("interaction");
 							isUsed = 1;
 							Save.addNpcInteractions(new NpcInteractions(file, isUsed, NPCid));
-							System.out.println(((NPC)currentWorld.getWorld().getNpcByNpcId(NPCid)).getName() + " " + file);
+							System.out.println(Save.getNpcsByID(NPCid).getName()+ " "+isUsed + " "+file+" interaction 2"); //wy³¹cza questy okok
+							Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
+							for(Quest q :quests) {
+								for(Task t: q.getTasks()) {
+									if(t.getState()==doState.find) {
+										
+										//(currentWorld.getWorld().getNpcByNpcId(q.getIdNpc())).setInteractions(new Interactions(q.getNextInteraction()));
+										Save.addNpcInteractions(new NpcInteractions(q.getNextInteraction(), 0, q.getIdNpc()));
+										System.out.println(Save.getNpcsByID(q.getIdNpc()).getName()+" "+0 + " "+file+" interaction 3");
+										Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
+										break;
+									}
+								}
+							}
+							
+							//System.out.println(((NPC)currentWorld.getWorld().getNpcByNpcId(NPCid)).getName() + " " + file);
 							clearInteractions();
 							isQuestSend = 0;
 						}

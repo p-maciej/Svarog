@@ -404,11 +404,12 @@ public class Save {
 					}
 					playerParam.setQuests(quests);
 					int tempowyInt = Integer.parseInt(eElement.getElementsByTagName("numberOfInteractionsGone").item(0).getTextContent());
+					NpcInteractions npcInteraction;
 					for(int h=0;h<tempowyInt;h++) {
-						NpcInteractions npcInteraction = new NpcInteractions(
-								eElement.getElementsByTagName("file").item(0).getTextContent(),
-								Integer.parseInt(eElement.getElementsByTagName("isUsed").item(0).getTextContent()),
-								Integer.parseInt(eElement.getElementsByTagName("npcGlobalID").item(0).getTextContent()));
+						npcInteraction = new NpcInteractions(
+								eElement.getElementsByTagName("file").item(h).getTextContent(),
+								Integer.parseInt(eElement.getElementsByTagName("isUsed").item(h).getTextContent()),
+								Integer.parseInt(eElement.getElementsByTagName("npcGlobalID").item(h).getTextContent()));
 						npcInteractions.add(npcInteraction);
 					}
 
@@ -754,17 +755,17 @@ public class Save {
 		            //System.out.println(Integer.toString(npcInteractions.size()));
 		            
 				}
-	            for(int i =0;i<npcInteractions.size();i++) {
+	            for(int ni =0;ni<npcInteractions.size();ni++) {
 					Element npcGlobalID = document.createElement("npcGlobalID");
-					npcGlobalID.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(i).getNpcGlobalID())));
+					npcGlobalID.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(ni).getNpcGlobalID())));
 		            save.appendChild(npcGlobalID);
 		            
 					Element isUsed = document.createElement("isUsed");
-					isUsed.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(i).getIsUsed())));
+					isUsed.appendChild(document.createTextNode(Integer.toString(npcInteractions.get(ni).getIsUsed())));
 		            save.appendChild(isUsed);
 		            
 					Element file = document.createElement("file");
-					file.appendChild(document.createTextNode(npcInteractions.get(i).getFile()));
+					file.appendChild(document.createTextNode(npcInteractions.get(ni).getFile()));
 		            save.appendChild(file);
 	            }
 
@@ -837,25 +838,26 @@ public class Save {
 		for(NpcInteractions i: npcInteractions) {
 			if(i.getNpcGlobalID()==npcInteract.getNpcGlobalID()) {
 				i.setIsUsed(npcInteract.getIsUsed());
-				if(i.getIsUsed()==0) {
+				//if(i.getIsUsed()==0) {
 					i.setFile(npcInteract.getFile());
-					temp++;
-					break;
-				}
-
+				//}
+				System.out.println("Zmieniony");
+				temp++;
+				break;
 			}
 		}
 		if(temp==0) {
-			if(npcInteract.getIsUsed()==0) {
+			System.out.println("Dodany");
+			//if(npcInteract.getIsUsed()==0) {
 				npcInteractions.add(new NpcInteractions(
 						npcInteract.getFile(),
 						npcInteract.getIsUsed(),
 						npcInteract.getNpcGlobalID()));
-			}else {
-				npcInteractions.add(new NpcInteractions(
-						npcInteract.getIsUsed(),
-						npcInteract.getNpcGlobalID()));
-			}
+			//}else {
+			//	npcInteractions.add(new NpcInteractions(
+			//			npcInteract.getIsUsed(),
+			//			npcInteract.getNpcGlobalID()));
+			//}
 		}
 		//System.out.println(temp);
 	}
@@ -866,6 +868,15 @@ public class Save {
 				if(npc.getGlobalNpcID()==npcInter.getNpcGlobalID()) {
 					npc.getInteractions().setIsUsed(npcInter.getIsUsed());
 					npc.getInteractions().setFile(npcInter.getFile());
+					
+					System.out.println(npc.getName()+" "+npc.getInteractions().getIsUsed()+" "+npc.getInteractions().getFile());
+					
+					if(npcInter.getIsUsed()==1 && !npc.getInteractions().getQuests().isEmpty()) {
+						npc.getInteractions().setEnded(true);
+						npc.getInteractions().getQuests().get(0).setEndedQuest(true);
+						npc.getInteractions().setIsQuestSend(1);
+						//npc.getInteractions().getQuests().get(0).setRewardedYet(true);
+					}
 				}
 			}
 		}

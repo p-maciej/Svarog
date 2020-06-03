@@ -722,7 +722,16 @@ public class Main {
 										}
 									}
 									if(q1.isEndedQuest() && !q1.isRewardedYet() ) {
-										q1.sendReward(player, guiRenderer, currentWorld);
+										int tempIsUsed =0;
+										for(NPC npc: currentWorld.getNPCs()) {
+											if(npc.getInteractions()!=null && !npc.getInteractions().getQuests().isEmpty() && npc.getInteractions().getQuests().get(0).getQuestID() ==q1.getQuestID()) {
+												if(npc.getInteractions().getQuests().get(0).getQuestID() == q1.getQuestID()) {
+													tempIsUsed = npc.getInteractions().isEnded()?1:0;
+												}
+											}
+										}
+										System.out.println("tempIsUsed "+tempIsUsed);
+										q1.sendReward(player, guiRenderer, currentWorld, tempIsUsed);
 										guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 									}
 								}
@@ -744,7 +753,8 @@ public class Main {
 											}
 										}
 										if(q1.isEndedQuest() && !q1.isRewardedYet()) {
-											q1.sendReward(player, guiRenderer, currentWorld);
+											System.out.println("Yo wtf???");
+											q1.sendReward(player, guiRenderer, currentWorld, 0);
 											guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 										}
 									}

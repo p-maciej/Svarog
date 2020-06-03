@@ -438,7 +438,8 @@ public class Player extends Entity {
 						}
 					}
 					if(q1.isEndedQuest() && !q1.isRewardedYet()) {
-						q1.sendReward(this, guiRenderer, world);
+						System.out.println("Killin great?");
+						q1.sendReward(this, guiRenderer, world, 0);
 						guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, this);
 					}
 				}

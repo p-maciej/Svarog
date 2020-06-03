@@ -32,16 +32,18 @@ public class Quest {
 		return isEndedQuest;
 	}
     
-    public void sendReward(Player player, GuiRenderer guiRenderer, World world) {
+    public void sendReward(Player player, GuiRenderer guiRenderer, World world, int isUsed) {
     	if(!isRewardedYet && isEndedQuest) {
     		for(Item i:rewardItem) {
     			player.addItemToInventoryWithGUIupdate(i, guiRenderer);
     		}
-    		if(!isLast && questID!=-1) {
+    		if(!isLast && questID!=-1 && isUsed==0) {
     			world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
     			Save.addNpcInteractions(new NpcInteractions(nextInteraction, 0, idNpc));
+    			Save.UpdateInteractions(world.getNPCs());
     			//System.out.println("quest");
-    			//System.out.println(((NPC)world.getNpcByNpcId(idNpc)).getName()+ " "+nextInteraction);
+    			System.out.println(Save.getNpcsByID(idNpc).getName()+" " + 0 + " "+getNextInteraction()+" Quest AAAAAAAAAA");
+
     		}
     		player.addMoney(rewardMoney);
     	}
