@@ -42,6 +42,7 @@
 <getTitle>StartQuest_Title</getTitle>
 <getDescription>StartQuest_Desc</getDescription>
 <isEndedQuest>false</isEndedQuest>
+<isRewardedYet>false</isRewardedYet>
 <rewardMoney>10</rewardMoney>
 <rewardHowManyItems>0</rewardHowManyItems>
 <idNpc>10</idNpc>

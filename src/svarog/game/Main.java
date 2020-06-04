@@ -711,7 +711,7 @@ public class Main {
 								guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 	
-							} else if(entity instanceof NPC) {
+							} else if(entity instanceof NPC && ((NPC)entity).getInteractions().getIsUsed()==0) {
 								//FIND TASK
 								for(Quest q1:player.getQuests()) {
 									for(Task t1:q1.getTasks()) {
@@ -722,14 +722,20 @@ public class Main {
 										}
 									}
 									if(q1.isEndedQuest() && !q1.isRewardedYet() ) {
-										int tempIsUsed =0;
-										for(NPC npc: currentWorld.getNPCs()) {
-											if(npc.getInteractions()!=null && !npc.getInteractions().getQuests().isEmpty() && npc.getInteractions().getQuests().get(0).getQuestID() ==q1.getQuestID()) {
+										int tempIsUsed = 1;
+										//int noInteraction = 0;
+										/*for(NPC npc: currentWorld.getNPCs()) {
+											if(npc.getInteractions()!=null && !npc.getInteractions().getQuests().isEmpty()) {
 												if(npc.getInteractions().getQuests().get(0).getQuestID() == q1.getQuestID()) {
-													tempIsUsed = npc.getInteractions().isEnded()?1:0;
+													tempIsUsed = 1;
+													System.out.println("tempIsUsed npcName "+npc.getName());
+													//noInteraction = npc.getInteractions().getIsUsed();
+												}else {
+													tempIsUsed = 0;
 												}
 											}
-										}
+										}*/
+										if(((NPC)entity).getInteractions().getIsUsed()==0) {tempIsUsed=1;}
 										System.out.println("tempIsUsed "+tempIsUsed);
 										q1.sendReward(player, guiRenderer, currentWorld, tempIsUsed);
 										guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
@@ -753,7 +759,7 @@ public class Main {
 											}
 										}
 										if(q1.isEndedQuest() && !q1.isRewardedYet()) {
-											System.out.println("Yo wtf???");
+											System.out.println("Collected em all!s");
 											q1.sendReward(player, guiRenderer, currentWorld, 0);
 											guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 										}

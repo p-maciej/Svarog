@@ -400,6 +400,7 @@ public class Save {
                         	quest.setNextInteraction(abc);
                         }
 						quest.setEndedQuest(Boolean.valueOf(eElement.getElementsByTagName("isEndedQuest").item(i).getTextContent()));
+						quest.setRewardedYet(Boolean.valueOf(eElement.getElementsByTagName("isRewardedYet").item(i).getTextContent()));
 						quests.add(quest);
 					}
 					playerParam.setQuests(quests);
@@ -734,6 +735,10 @@ public class Save {
 					isEndedQuest.appendChild(document.createTextNode(Boolean.toString(q.isEndedQuest())));
 		            save.appendChild(isEndedQuest);
 		            
+					Element isRewardedYet = document.createElement("isRewardedYet");
+					isRewardedYet.appendChild(document.createTextNode(Boolean.toString(q.isRewardedYet())));
+		            save.appendChild(isRewardedYet);
+		            
 					Element idNpc = document.createElement("idNpc");
 					idNpc.appendChild(document.createTextNode(Integer.toString(q.getIdNpc())));
 		            save.appendChild(idNpc);
@@ -863,11 +868,13 @@ public class Save {
 	}
 	
 	public static void UpdateInteractions(ArrayList<NPC> NPCs) {
+		System.out.println("Update BEGIN");
 		for(NPC npc : NPCs) {
 			for(NpcInteractions npcInter: npcInteractions) {
 				if(npc.getGlobalNpcID()==npcInter.getNpcGlobalID()) {
-					npc.getInteractions().setIsUsed(npcInter.getIsUsed());
+					npc.getInteractions().setNew(npcInter.getFile());
 					npc.getInteractions().setFile(npcInter.getFile());
+					npc.getInteractions().setIsUsed(npcInter.getIsUsed());
 					
 					System.out.println(npc.getName()+" "+npc.getInteractions().getIsUsed()+" "+npc.getInteractions().getFile());
 					
@@ -880,6 +887,7 @@ public class Save {
 				}
 			}
 		}
+		System.out.println("Update ENDE");
 	}
 	
 	public static List<EnemyParameters> getEnemies() {

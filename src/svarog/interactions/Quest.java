@@ -38,7 +38,7 @@ public class Quest {
     			player.addItemToInventoryWithGUIupdate(i, guiRenderer);
     		}
     		if(!isLast && questID!=-1 && isUsed==0) {
-    			world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
+    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
     			Save.addNpcInteractions(new NpcInteractions(nextInteraction, 0, idNpc));
     			Save.UpdateInteractions(world.getNPCs());
     			//System.out.println("quest");
