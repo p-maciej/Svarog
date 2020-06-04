@@ -30,6 +30,7 @@ import svarog.gui.GuiRenderer;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.GuiWindow;
 import svarog.gui.StatsContainer;
+import svarog.gui.Switch;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
 import svarog.gui.TileSheet;
@@ -70,6 +71,7 @@ public class Main {
 	private static TileSheet tileSheet;
 	private static GuiRenderer loadingScreen;
 	private static Button questsButton;
+	private static Switch soundStateButton;
 	private static Button healBtn;
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
@@ -243,8 +245,14 @@ public class Main {
 		questsButton = new Button(new Texture("images/gui/button_quest.png"), new Texture("images/gui/button_quest_hover.png"), stickTo.TopRight);
 		questsButton.move(-25, 10);
 		
+		Button soundOnButton = new Button(new Texture("images/gui/soundOnButton.png"));
+		Button soundOffButton = new Button(new Texture("images/gui/soundOffButton.png"));
+		
+		soundStateButton = new Switch(soundOffButton, soundOnButton, stickTo.TopRight).setIsOn(true);
+		soundStateButton.move(-25, 70);
+		
 		healBtn =  new Button(new Texture("images/gui/button_heal.png"), new Texture("images/gui/button_heal_hover.png"), stickTo.TopRight);
-		healBtn.move(-25, 70);
+		healBtn.move(-25, 130);
 		
 		
 		guiRenderer.setMarginRight((int)bottomBorderRightPanel.getWidth());
@@ -255,6 +263,7 @@ public class Main {
 		guiRenderer.addGuiObject(bottomBorderRightPanel);
 		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addGuiObject(questsButton);
+		guiRenderer.addGuiObject(soundStateButton);
 		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(playerStats);
 		
@@ -816,6 +825,13 @@ public class Main {
 							questsWindow = player.getQuestsPagedOnGUI(roboto_15, roboto_15_gray, language);
 							guiRenderer.addWindow(questsWindow);
 						}
+					}
+					
+					if(soundStateButton.isClicked()) {
+						if(!audioPlayer.isPlaying(audioBackgroundSound))
+							audioPlayer.play(audioBackgroundSound);
+						else
+							audioPlayer.pause(audioBackgroundSound);
 					}
 
 					if(healBtn.isClicked()) {
