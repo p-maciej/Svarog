@@ -690,9 +690,16 @@ public class Main {
 						
 						if(Timer.getDelay(startNanos, Timer.getNanoTime(), 0.4)) {
 							Line name = new Line(0, 0);
+							String bubbleString = "";
 							Entity ent = currentWorld.getEntityByObjectId(WorldRenderer.getMouseOverEntityId());
+								
 							if(ent != null) {
-								name.setString(ent.getName(), roboto_15);
+								bubbleString += ent.getName();
+								
+								if(ent instanceof Enemy)
+									bubbleString += " lv." + ((Enemy)ent).getLevel();
+								
+								name.setString(bubbleString, roboto_15);
 							
 								guiRenderer.showBubble(name, window.getRelativePositionCursorX(), window.getRelativePositionCursorY());
 							}

@@ -47,7 +47,7 @@ public class BubbleContainer {
 			line.setPosition((float)(posX+line.getWidth()/2+bubbleLeft.getWidth()/2+bubbleXoffest)-2, (float)(posY+bubbleYoffset-bubbleCenter.getHeight()/2 +line.getHeight()/2+4));
 			group.addGuiObject(line);
 			
-			bubbleRight.setPosition((float)posX+bubbleXoffest+line.getWidth()+bubbleLeft.getWidth()-3, (float)posY+bubbleYoffset);
+			bubbleRight.setPosition((float)posX+bubbleXoffest+line.getWidth()+bubbleLeft.getWidth(), (float)posY+bubbleYoffset);
 			group.addGuiObject(bubbleRight);
 			
 			return group;
