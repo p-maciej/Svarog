@@ -35,6 +35,8 @@ public class WorldRenderer implements RenderProperties {
 	
 	private int viewX;
 	private int viewY;
+	private int posX;
+	private int posY;
 	
 	private static int mouseOverEntityId;
 	private static int clickedEntityId;
@@ -61,8 +63,8 @@ public class WorldRenderer implements RenderProperties {
 		mouseOverEntityId = -1;
 		clickedEntityId = -1;
 		
-		int posX = (int)(camera.getPosition().x / (scale*2));
-		int posY = (int)(camera.getPosition().y / (scale*2));
+		posX = (int)(camera.getPosition().x / (scale*2));
+		posY = (int)(camera.getPosition().y / (scale*2));
 
 		//position of coursor on the World
 		int x = (int)(-((camera.getPosition().x)) - (window.getWidth()/2) - (camera.getOffset().x) + scale + (float)window.getCursorPositionX());
@@ -83,16 +85,19 @@ public class WorldRenderer implements RenderProperties {
 		}	
 		
 		for(Entity entity : world.getEntities()) {
-			renderEntity(entity, shader, camera, world); // Entities rendering
-			if(entity.isOverable()) {
-				if(isOverEntity(entity, camera, window)) {
-					if(mouseInteractionLock == false)
-						mouseOverEntityId = entity.getObjectId();
-					
-					if(entity.isClickable())
-						if(window.getInput().isMouseButtonReleased(0)) {
-							if(getDistance(player.getPositionX(), entity.getPositionX(), player.getPositionY(), entity.getPositionY()) <= 5)
-								clickedEntityId = mouseOverEntityId;}
+			if((-posX)-((int)viewX/2)-1 < entity.getPositionX() && (-posX)+((int)viewX/2)+1 > entity.getPositionX() && posY-((int)viewY/2)-1 < entity.getPositionY() && posY+((int)viewY/2)+1 > entity.getPositionY()) {
+				renderEntity(entity, shader, camera, world); // Entities rendering
+			
+				if(entity.isOverable()) {
+					if(isOverEntity(entity, camera, window)) {
+						if(mouseInteractionLock == false)
+							mouseOverEntityId = entity.getObjectId();
+						
+						if(entity.isClickable())
+							if(window.getInput().isMouseButtonReleased(0)) {
+								if(getDistance(player.getPositionX(), entity.getPositionX(), player.getPositionY(), entity.getPositionY()) <= 5)
+									clickedEntityId = mouseOverEntityId;}
+					}
 				}
 			}
 		}
@@ -100,7 +105,8 @@ public class WorldRenderer implements RenderProperties {
 		for(Entity entity : world.getEntities()) {
 			if(entity instanceof NPC) {
 				if(((NPC)entity).isQuestWaiting() == 0) {
-					renderEntityTextures(entity, shader, camera, world);
+					if((-posX)-((int)viewX/2)-1 < entity.getPositionX() && (-posX)+((int)viewX/2)+1 > entity.getPositionX() && posY-((int)viewY/2)-1 < entity.getPositionY() && posY+((int)viewY/2)+1 > entity.getPositionY())
+						renderEntityTextures(entity, shader, camera, world);
 				}
 			}
 		}
@@ -232,8 +238,10 @@ public class WorldRenderer implements RenderProperties {
 		
 		for(Entity entity : world.getEntities()) {
 			entity.update(delta, window, camera, this, audioPlayer);
-			entity.collideWithTiles(world);
-			entity.collideWithEntities(world);
+			if((-posX)-((int)viewX/2)-1 < entity.getPositionX() && (-posX)+((int)viewX/2)+1 > entity.getPositionX() && posY-((int)viewY/2)-1 < entity.getPositionY() && posY+((int)viewY/2)+1 > entity.getPositionY()) {
+				entity.collideWithTiles(world);
+				entity.collideWithEntities(world);
+			}
 		}
 	}
 	

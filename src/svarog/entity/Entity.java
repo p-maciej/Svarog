@@ -226,10 +226,10 @@ public abstract class Entity implements MouseInteraction {
 	public void collideWithTiles(World world) {	
 		isColliding[0] = false;
 		if(!this.isStatic()) {
-			for(int x = 0; x < world.getWidth(); x++) {
-				for(int y = 0; y < world.getHeight(); y++) {
+			for(int x = this.getPositionX()-2; x < this.getPositionX()+2; x++) {
+				for(int y = this.getPositionY()-2; y < this.getPositionY()+2; y++) {
 					AABB box = world.getTileBoundingBox(x, y);
-					
+
 					if(box != null) {
 						Collision collision = box.getCollision(bounding_box);
 						
@@ -250,27 +250,30 @@ public abstract class Entity implements MouseInteraction {
 		isColliding[1] = false;
 		if(!this.isStatic()) { 
 			for(int i = 0; i < world.numberOfEntities(); i++) {
-				if(world.getEntity(i).id != this.id) {		
-					if(world.getEntity(i).getBoduningBox() != null) {
-						Collision collision = bounding_box.getCollision(world.getEntity(i).getBoduningBox());
-						
-						if(collision.isIntersecting()) {
-							if(world.getEntity(i).isStatic == false) {
-								collision.getDistance().x /= 2;
-								collision.getDistance().y /= 2;
-							}
+				Entity tEntity = world.getEntity(i);
+				if(tEntity.id != this.id) {	
+					if(tEntity.getPositionX()-2 < this.getPositionX() && tEntity.getPositionX()+2 > this.getPositionX() && tEntity.getPositionY()-2 < this.getPositionY() && tEntity.getPositionY()+2 > this.getPositionY()) {
+						if(tEntity.getBoduningBox() != null) {
+							Collision collision = bounding_box.getCollision(tEntity.getBoduningBox());
 							
-							bounding_box.correctPosition(world.getEntity(i).getBoduningBox(), collision);
-							transform.getPosition().set(bounding_box.getCenter(), 0);
-							
-							
-							
-							if(world.getEntity(i).isStatic == false) {
-								isColliding[1] = false;
-								world.getEntity(i).bounding_box.correctPosition(bounding_box, collision);
-								world.getEntity(i).transform.getPosition().set(world.getEntity(i).bounding_box.getCenter().x, world.getEntity(i).bounding_box.getCenter().y, 0);
-							} else {
-								isColliding[1] = true;
+							if(collision.isIntersecting()) {
+								if(tEntity.isStatic == false) {
+									collision.getDistance().x /= 2;
+									collision.getDistance().y /= 2;
+								}
+								
+								bounding_box.correctPosition(tEntity.getBoduningBox(), collision);
+								transform.getPosition().set(bounding_box.getCenter(), 0);
+								
+								
+								
+								if(tEntity.isStatic == false) {
+									isColliding[1] = false;
+									tEntity.bounding_box.correctPosition(bounding_box, collision);
+									tEntity.transform.getPosition().set(tEntity.bounding_box.getCenter().x, tEntity.bounding_box.getCenter().y, 0);
+								} else {
+									isColliding[1] = true;
+								}
 							}
 						}
 					}
