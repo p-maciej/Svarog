@@ -367,7 +367,7 @@
       <t>0</t>
    </dialog>
    <dialog id = "40">
-      <content>...</content>
+      <content>RodandMav_dialog1_line48</content>
        <ans>3</ans>
       <answer>RodandMav_dialog1_line40_ans1</answer>
       <id>0</id>

@@ -1755,6 +1755,10 @@
         <translation>[Rod] – Wyruszaj więc. Przeznaczenie doprowadzi Cię do celu.</translation>
     </variable>
 	<variable>
+        <key>RodandMav_dialog1_line48</key>
+        <translation>. . .</translation>
+    </variable>
+	<variable>
         <key>QuestID0_MainQuest_Title</key>
         <translation>Znajdż 4 boskie artefakty</translation>
     </variable>
