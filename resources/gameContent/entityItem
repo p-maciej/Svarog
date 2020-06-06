@@ -260,4 +260,28 @@
 		<itemGlobalID>19</itemGlobalID>
 		<itemTileID>-1</itemTileID>
 	</entityItem>
+	<entityItem>
+		<entityItemTypeID>21</entityItemTypeID>
+   		<texturePath>textures/items/artefacts/deathComing.png</texturePath>
+   		<fullBoundingBox>true</fullBoundingBox>
+   		<name>DeathComingChest</name>
+   		<respownInSec>1200</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
+   		<howManyItems>1</howManyItems>
+		<itemGlobalID>25</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</entityItem>
+	<entityItem>
+		<entityItemTypeID>22</entityItemTypeID>
+   		<texturePath>textures/items/artefacts/natureCrown.png</texturePath>
+   		<fullBoundingBox>true</fullBoundingBox>
+   		<name>NatureCrownChest</name>
+   		<respownInSec>1200</respownInSec>
+   		<scaleX>1</scaleX>
+   		<scaleY>1</scaleY>
+   		<howManyItems>1</howManyItems>
+		<itemGlobalID>9</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+	</entityItem>
 </class>

@@ -1512,4 +1512,12 @@
 		<posX>7</posX>
 		<posY>59</posY>
 	</entity>
+	<entity>
+		<type>entityItem</type>
+		<id>190</id>
+		<typeID>21</typeID>
+		<name></name>
+		<posX>7</posX>
+		<posY>4</posY>
+	</entity>
 </class>

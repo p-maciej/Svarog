@@ -78,7 +78,7 @@
 		<minAttack>10</minAttack>
 		<maxAttack>35</maxAttack>
 		<xpForKilling>3500</xpForKilling>
-		<hp>400</hp>
+		<hp>300</hp>
 		<reward>100</reward>
 		<name>ENEMYstriga</name>
 		<respownInSeconds>600</respownInSeconds>
@@ -116,15 +116,12 @@
 		<minAttack>10</minAttack>
 		<maxAttack>40</maxAttack>
 		<xpForKilling>66000</xpForKilling>
-		<hp>900</hp>
+		<hp>340</hp>
 		<reward>500</reward>
 		<name>ENEMYleszy</name>
 		<respownInSeconds>600</respownInSeconds>
 		<level>14</level>
-		<howManyItems>1</howManyItems>
-		<itemGlobalID>9</itemGlobalID>
-		<itemTileID>-1</itemTileID>
-		<itemPropability>1</itemPropability>
+		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
 		<globalID>6</globalID>
@@ -182,15 +179,12 @@
 		<minAttack>10</minAttack>
 		<maxAttack>40</maxAttack>
 		<xpForKilling>40000</xpForKilling>
-		<hp>600</hp>
+		<hp>340</hp>
 		<reward>300</reward>
 		<name>ENEMYMarzanna</name>
 		<respownInSeconds>600</respownInSeconds>
 		<level>13</level>
-		<howManyItems>1</howManyItems>
-		<itemGlobalID>25</itemGlobalID>
-		<itemTileID>-1</itemTileID>
-		<itemPropability>1</itemPropability>
+		<howManyItems>0</howManyItems>
 	</enemy>
 	<enemy>
 		<globalID>9</globalID>
@@ -273,5 +267,49 @@
 		<itemGlobalID>18</itemGlobalID>
 		<itemTileID>-1</itemTileID>
 		<itemPropability>1</itemPropability>
+	</enemy>
+	<enemy>
+		<globalID>13</globalID>
+		<texture>textures/enemy/ghul.png</texture>
+		<posX>42</posX>
+		<posY>27</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>7</minAttack>
+		<maxAttack>17</maxAttack>
+		<xpForKilling>200</xpForKilling>
+		<hp>210</hp>
+		<reward>25</reward>
+		<name>ENEMYghul</name>
+		<respownInSeconds>600</respownInSeconds>
+		<level>7</level>
+		<howManyItems>1</howManyItems>
+		<itemGlobalID>3</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>6</itemPropability>
+	</enemy>
+	<enemy>
+		<globalID>14</globalID>
+		<texture>textures/enemy/warg.png</texture>
+		<posX>42</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<minAttack>10</minAttack>
+		<maxAttack>18</maxAttack>
+		<xpForKilling>100</xpForKilling>
+		<hp>190</hp>
+		<reward>20</reward>
+		<name>ENEMYwarg</name>
+		<respownInSeconds>600</respownInSeconds>
+		<level>6</level>
+		<howManyItems>3</howManyItems>
+		<itemGlobalID>1</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>4</itemPropability>
+		<itemGlobalID>2</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>5</itemPropability>
+		<itemGlobalID>6</itemGlobalID>
+		<itemTileID>-1</itemTileID>
+		<itemPropability>6</itemPropability>
 	</enemy>
 </class>

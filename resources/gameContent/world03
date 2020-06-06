@@ -19,7 +19,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>3</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>16</posX>
 		<posY>51</posY>
@@ -27,7 +27,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>4</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>19</posX>
 		<posY>51</posY>
@@ -35,7 +35,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>5</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>10</posX>
 		<posY>40</posY>
@@ -43,7 +43,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>6</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>10</posX>
 		<posY>43</posY>
@@ -51,7 +51,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>7</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>7</posX>
 		<posY>43</posY>
@@ -59,7 +59,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>8</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>6</posX>
 		<posY>40</posY>
@@ -67,7 +67,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>9</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>4</posX>
 		<posY>42</posY>
@@ -75,7 +75,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>10</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>24</posX>
 		<posY>44</posY>
@@ -83,7 +83,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>11</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>32</posX>
 		<posY>45</posY>
@@ -91,7 +91,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>11</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>41</posX>
 		<posY>54</posY>
@@ -99,7 +99,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>12</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>41</posX>
 		<posY>46</posY>
@@ -107,7 +107,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>13</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>42</posX>
 		<posY>34</posY>
@@ -115,7 +115,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>14</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>41</posX>
 		<posY>31</posY>
@@ -123,7 +123,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>15</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>31</posX>
 		<posY>37</posY>
@@ -131,7 +131,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>16</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>50</posX>
 		<posY>44</posY>
@@ -139,7 +139,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>17</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>51</posX>
 		<posY>42</posY>
@@ -147,7 +147,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>18</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>53</posX>
 		<posY>40</posY>
@@ -155,7 +155,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>19</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>54</posX>
 		<posY>41</posY>
@@ -163,7 +163,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>20</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>53</posX>
 		<posY>45</posY>
@@ -171,7 +171,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>21</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>16</posX>
 		<posY>34</posY>
@@ -179,7 +179,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>22</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>10</posX>
 		<posY>29</posY>
@@ -187,7 +187,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>23</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>16</posX>
 		<posY>23</posY>
@@ -195,7 +195,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>24</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>17</posX>
 		<posY>14</posY>
@@ -203,7 +203,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>25</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>26</posX>
 		<posY>20</posY>
@@ -211,7 +211,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>26</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>29</posX>
 		<posY>19</posY>
@@ -219,7 +219,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>27</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>30</posX>
 		<posY>23</posY>
@@ -227,7 +227,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>28</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>31</posX>
 		<posY>13</posY>
@@ -235,7 +235,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>29</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>7</posX>
 		<posY>19</posY>
@@ -243,7 +243,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>30</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>5</posX>
 		<posY>9</posY>
@@ -251,7 +251,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>31</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>6</posX>
 		<posY>5</posY>
@@ -259,7 +259,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>32</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>5</posX>
 		<posY>3</posY>
@@ -267,7 +267,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>33</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>11</posX>
 		<posY>5</posY>
@@ -275,7 +275,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>34</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>16</posX>
 		<posY>4</posY>
@@ -283,7 +283,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>35</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>20</posX>
 		<posY>4</posY>
@@ -291,7 +291,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>36</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>25</posX>
 		<posY>5</posY>
@@ -299,7 +299,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>37</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>32</posX>
 		<posY>4</posY>
@@ -307,7 +307,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>38</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>37</posX>
 		<posY>5</posY>
@@ -315,7 +315,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>39</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>41</posX>
 		<posY>6</posY>
@@ -323,7 +323,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>40</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>43</posX>
 		<posY>5</posY>
@@ -331,7 +331,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>41</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>47</posX>
 		<posY>5</posY>
@@ -339,7 +339,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>42</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>45</posX>
 		<posY>3</posY>
@@ -347,7 +347,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>43</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>52</posX>
 		<posY>5</posY>
@@ -355,7 +355,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>44</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>55</posX>
 		<posY>7</posY>
@@ -363,7 +363,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>45</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>54</posX>
 		<posY>10</posY>
@@ -371,7 +371,7 @@
 	<entity>
 		<type>enemy</type>
 		<id>46</id>
-		<typeID>9</typeID>
+		<typeID>13</typeID>
 		<name>ENEMYghul</name>
 		<posX>55</posX>
 		<posY>5</posY>

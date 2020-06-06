@@ -7,8 +7,8 @@
 <getHP>100</getHP>
 <getMaxHP>100</getMaxHP>
 <getXP>0</getXP>
-<getMinAttack>50</getMinAttack>
-<getMaxAttack>60</getMaxAttack>
+<getMinAttack>10</getMinAttack>
+<getMaxAttack>20</getMaxAttack>
 <getMoney>0</getMoney>
 <getName>Ty</getName>
 <howManyItems>2</howManyItems>

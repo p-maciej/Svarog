@@ -3,24 +3,24 @@
 	<entity>
 		<type>enemy</type>
 		<id>1</id>
-		<typeID>0</typeID>
-		<name>ENEMYWolf</name>
+		<typeID>1</typeID>
+		<name>ENEMYwarg</name>
 		<posX>33</posX>
 		<posY>43</posY>
 	</entity>
 	<entity>
 		<type>enemy</type>
 		<id>2</id>
-		<typeID>0</typeID>
-		<name>ENEMYWolf</name>
+		<typeID>1</typeID>
+		<name>ENEMYwarg</name>
 		<posX>37</posX>
 		<posY>42</posY>
 	</entity>
 	<entity>
 		<type>enemy</type>
 		<id>3</id>
-		<typeID>0</typeID>
-		<name>ENEMYWolf</name>
+		<typeID>1</typeID>
+		<name>ENEMYwarg</name>
 		<posX>39</posX>
 		<posY>44</posY>
 	</entity>

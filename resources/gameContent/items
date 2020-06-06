@@ -111,7 +111,7 @@
 	<item>
 		<TextureFileName>textures/items/artefacts/natureCrown.png</TextureFileName>
    		<globalID>9</globalID>
-   		<defense>50</defense>
+   		<defense>20</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>14</lvlRequired>
@@ -291,7 +291,7 @@
 	<item>
 		<TextureFileName>textures/items/equipment/leatherBreastplate.png</TextureFileName>
    		<globalID>24</globalID>
-   		<defense>10</defense>
+   		<defense>6</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>4</lvlRequired>
@@ -303,7 +303,7 @@
 	<item>
 		<TextureFileName>textures/items/artefacts/deathComing.png</TextureFileName>
    		<globalID>25</globalID>
-   		<defense>25</defense>
+   		<defense>8</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>13</lvlRequired>
@@ -315,7 +315,7 @@
 	<item>
 		<TextureFileName>textures/items/equipment/magicArmor.png</TextureFileName>
    		<globalID>26</globalID>
-   		<defense>15</defense>
+   		<defense>7</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>10</lvlRequired>
@@ -327,7 +327,7 @@
 	<item>
 		<TextureFileName>textures/items/artefacts/skotijka.png</TextureFileName>
    		<globalID>27</globalID>
-   		<defense>5</defense>
+   		<defense>3</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>10</lvlRequired>
@@ -339,7 +339,7 @@
 	<item>
 		<TextureFileName>textures/items/equipment/leatherGloves.png</TextureFileName>
    		<globalID>28</globalID>
-   		<defense>2</defense>
+   		<defense>1</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>2</lvlRequired>
@@ -351,7 +351,7 @@
 	<item>
 		<TextureFileName>textures/items/equipment/onuce.png</TextureFileName>
    		<globalID>29</globalID>
-   		<defense>1</defense>
+   		<defense>0</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>1</lvlRequired>
@@ -363,7 +363,7 @@
 	<item>
 		<TextureFileName>textures/items/equipment/leatherBoots.png</TextureFileName>
    		<globalID>30</globalID>
-   		<defense>3</defense>
+   		<defense>1</defense>
    		<hpRegeneration>0</hpRegeneration>
    		<attackBonus>0</attackBonus>
    		<lvlRequired>2</lvlRequired>

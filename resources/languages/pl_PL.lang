@@ -854,15 +854,15 @@
     </variable>
 	<variable>
         <key>IzborandMav_dialog_2_line9</key>
-        <translation>[Izbor] – One nie są bezużyteczne i zaraz się o tym przekonasz. Małowuj dobieraj miecza.</translation>
+        <translation>[Izbor] – One nie są bezużyteczne i niedługo się o tym przekonasz. Wiemy gdzie zmierzasz, nie pytaj skąd to wiemy ale wiedz jedno, będziemy tam na Ciebie czekać.</translation>
     </variable>
 	<variable>
         <key>IzborandMav_dialog_2_line10</key>
-        <translation>[Izbor] – Ten oszust jest osłabiony po bitwach. Zabicie go to będzie pestka. Przy okazji położymy łapki na jego ekwipunku.</translation>
+        <translation>[Izbor] – A gdy Cię tam zobaczymy to zadbamy o to abyś nie opuścił tego miejsca żywy.</translation>
     </variable>
 	<variable>
         <key>IzborandMav_dialog_2_line11</key>
-        <translation>[Mavak] – Ehhhh skoro tak się sprawy mają. Duet idiotów, jeden głupszy od drugiego.</translation>
+        <translation>[Mavak] – To się jeszcze okaże. Ehhhh Duet idiotów, jeden głupszy od drugiego.</translation>
     </variable>
 	<!--1 Dialog Kupca z Mavakiem-->
 	<variable>
@@ -2238,5 +2238,13 @@
 	<variable>
         <key>QuestID10_TalkPrata_Desc</key>
         <translation>Pomyślałem że zwierzenie się Rozennie z tego co zobaczyłem będzie dobrym pomysłem. Powiedziałem jej o spotkaniu z Rodem, o Boskim Przeznaczeniu oraz mojej misji odnalezienia artefaktów. Na początku mi nie uwierzyła ale bardzo szybko się zorientowała że byłem śmiertelnie poważny. Poleciła mi porozmawiać z naszym starszym wioski Pratą. Pewnie znajdę go przed jego chatą.</translation>
+    </variable>
+	<variable>
+        <key>DeathComingChest</key>
+        <translation>Zwiastun Śmierci</translation>
+    </variable>
+	<variable>
+        <key>NatureCrownChest</key>
+        <translation>Korona Natury</translation>
     </variable>
 </file>
