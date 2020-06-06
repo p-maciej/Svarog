@@ -252,7 +252,7 @@ public abstract class Entity implements MouseInteraction {
 			for(int i = 0; i < world.numberOfEntities(); i++) {
 				Entity tEntity = world.getEntity(i);
 				if(tEntity.id != this.id) {	
-					if(tEntity.getPositionX()-2 < this.getPositionX() && tEntity.getPositionX()+2 > this.getPositionX() && tEntity.getPositionY()-2 < this.getPositionY() && tEntity.getPositionY()+2 > this.getPositionY()) {
+					if(tEntity.getPositionX()-3 < this.getPositionX() && tEntity.getPositionX()+3 > this.getPositionX() && tEntity.getPositionY()-3 < this.getPositionY() && tEntity.getPositionY()+3 > this.getPositionY()) {
 						if(tEntity.getBoduningBox() != null) {
 							Collision collision = bounding_box.getCollision(tEntity.getBoduningBox());
 							
