@@ -54,6 +54,7 @@ import svarog.render.Camera;
 import svarog.render.Shader;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.NpcInteractions;
 import svarog.save.Save;
 import svarog.world.World;
 import svarog.world.WorldRenderer;
@@ -756,6 +757,22 @@ public class Main {
 											System.out.println("tempIsUsed "+tempIsUsed);
 											q1.sendReward(player, guiRenderer, currentWorld, tempIsUsed);
 											guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
+											for(NPC n:currentWorld.getNPCs()) {
+												if(n.getInteractions().getQuests().size()>0) {
+													if(q1.getQuestID() == n.getInteractions().getQuests().get(0).getQuestID()) {
+														Quest temp = n.getInteractions().getQuests().get(0);
+														System.out.println(temp.isLast() +" "+ temp.getQuestID() +" "+ n.getInteractions().getIsUsed());
+														if(!temp.isLast() && temp.getQuestID()!=-1 && n.getInteractions().getIsUsed()==1) {
+											    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
+											    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
+											    			Save.UpdateInteractions(currentWorld.getNPCs());
+											    			//System.out.println("quest");
+											    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" NEXT MAINENMAIN");
+
+											    		}
+													}
+												}
+											}
 										}
 									}
 								}//errors from here
@@ -780,6 +797,22 @@ public class Main {
 											System.out.println("Collected em all!s");
 											q1.sendReward(player, guiRenderer, currentWorld, 0);
 											guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
+											for(NPC n:currentWorld.getNPCs()) {
+												if(n.getInteractions().getQuests().size()>0) {
+													if(q1.getQuestID() == n.getInteractions().getQuests().get(0).getQuestID()) {
+														Quest temp = n.getInteractions().getQuests().get(0);
+														System.out.println(temp.isLast() +" "+ temp.getQuestID() +" "+ n.getInteractions().getIsUsed());
+														if(!temp.isLast() && temp.getQuestID()!=-1 && n.getInteractions().getIsUsed()==1) {
+											    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
+											    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
+											    			Save.UpdateInteractions(currentWorld.getNPCs());
+											    			//System.out.println("quest");
+											    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" NEXT MAINENMAIN");
+
+											    		}
+													}
+												}
+											}
 										}
 									}
 								}

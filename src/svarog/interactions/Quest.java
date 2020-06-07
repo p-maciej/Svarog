@@ -36,17 +36,21 @@ public class Quest {
     		for(Item i:rewardItem) {
     			player.addItemToInventoryWithGUIupdate(i, guiRenderer);
     		}
+    		player.addMoney(rewardMoney);
+    	}
+    	isRewardedYet = true;
+    }
+    
+    public void sendTalkToNpc(Player player, GuiRenderer guiRenderer, World world, int isUsed) {
+    	if(!isRewardedYet && isEndedQuest) {
     		if(!isLast && questID!=-1 && isUsed==0) {
     			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
     			Save.addNpcInteractions(new NpcInteractions(nextInteraction, 0, idNpc));
     			Save.UpdateInteractions(world.getNPCs());
     			//System.out.println("quest");
     			System.out.println(Save.getNpcsByID(idNpc).getName()+" " + 0 + " "+getNextInteraction()+" Quest AAAAAAAAAA");
-
     		}
-    		player.addMoney(rewardMoney);
     	}
-    	isRewardedYet = true;
     }
 
 	private void setEndedQuest() {

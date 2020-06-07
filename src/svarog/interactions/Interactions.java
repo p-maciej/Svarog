@@ -12,6 +12,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
@@ -197,7 +198,7 @@ public class Interactions {
 			guiRenderer.showDialog(dialog, language);
 		}
 
-		if(isUsed == 1 && dialog.clickedAnswer() != null) {
+		if(isUsed == 1 && isTrade == 1 && dialog.clickedAnswer() != null) {
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
 		}
 
@@ -241,8 +242,26 @@ public class Interactions {
 								}
 							}
 							if(q1.isEndedQuest() && !q1.isRewardedYet()) {
-								System.out.println("Zjeb");
+								System.out.println("ZJEBBBBBB");
+								q1.sendTalkToNpc(player, guiRenderer, currentWorld.getWorld(), isUsed);
 								q1.sendReward(player, guiRenderer, currentWorld.getWorld(), isUsed);
+								for(NPC n:currentWorld.getWorld().getNPCs()) {
+									if(n.getInteractions().getQuests().size()>0) {
+										if(q1.getQuestID() == n.getInteractions().getQuests().get(0).getQuestID()) {
+											System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+											Quest temp = n.getInteractions().getQuests().get(0);
+											System.out.println(temp.isLast() +" "+ temp.getQuestID() +" "+ n.getInteractions().getIsUsed());
+											if(!temp.isLast() && temp.getQuestID()!=-1 && n.getInteractions().getIsUsed()==1) {
+								    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
+								    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
+								    			Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
+								    			//System.out.println("quest");
+								    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" interaction01");
+
+								    		}
+										}
+									}
+								}
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 							}
 						}
