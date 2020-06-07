@@ -31,6 +31,10 @@ import svarog.world.WorldRenderer;
 
 public class Interactions {
 	private List<Dialog> dialogs = new ArrayList<>();
+	public List<Dialog> getDialogs() {
+		return dialogs;
+	}
+
 	private List<Quest> quests = new ArrayList<>();
 	private Dialog dialog;
 	private boolean isEnded = true;
@@ -174,7 +178,7 @@ public class Interactions {
 					//tem.setLeadsTo(-2);
 					temp.add(tem);
 					//temp.add(new Answer(0, "trade", -2));
-					dialog = new Dialog(0, "coœtam ", temp);
+					dialog = new Dialog(0, dialogs.get(0).getContent(), temp);
 					isEnded = false;
 					isTrade = 1;
 					break;
@@ -184,7 +188,7 @@ public class Interactions {
 
 		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed == 0) {
 			guiRenderer.showDialog(dialog, language);
-			System.out.println("asdfgfghdsdadSAFGHFHDFS 12345     "+dialog.getAnswers().get(0).getObjectId() + " "+dialog.getAnswers().get(0).getId() + " "+dialog.getAnswers().get(0).getLeadsTo());
+			//System.out.println("asdfgfghdsdadSAFGHFHDFS 12345     "+dialog.getAnswers().get(0).getObjectId() + " "+dialog.getAnswers().get(0).getId() + " "+dialog.getAnswers().get(0).getLeadsTo());
 			//System.out.println("Hiszpañska inkwizycja");
 			//if(!quests.isEmpty() && quests.get(0).getIdNpc()!=NPCid) {
 				//Save.addNpcInteractions(new NpcInteractions(quests.get(0).getNextInteraction(), 1, quests.get(0).getIdNpc()));
