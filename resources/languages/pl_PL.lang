@@ -4,6 +4,11 @@
         <key>version</key>
         <translation>Wersja:</translation>
     </variable>
+<!--TradeSystem-->
+    <variable>
+        <key>youDontHaveEnoughMoney</key>
+        <translation>Nie masz wystarczającej ilości gotówki!</translation>
+    </variable>youDontHaveEnoughMoney
 <!--FightSystem-->
     <variable>
         <key>fightSystemHpBefore</key>

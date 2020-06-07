@@ -5,6 +5,7 @@ import org.joml.Vector3f;
 import svarog.audio.Audio;
 import svarog.collision.AABB;
 import svarog.collision.Collision;
+import svarog.gui.GuiRenderer;
 import svarog.io.Window;
 import svarog.objects.MouseInteraction;
 import svarog.render.Camera;
@@ -283,7 +284,7 @@ public abstract class Entity implements MouseInteraction {
 		world = null;
 	}
 	
-	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer) {	
+	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer, GuiRenderer guiRenderer) {	
 		if(!this.isStatic()) {
 			////////// Blocking player to go outside of the map ///////////
 			if(transform.getPosition().x < 1)

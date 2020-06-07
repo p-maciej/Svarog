@@ -15,11 +15,15 @@ import org.joml.Vector3f;
 import svarog.audio.Audio;
 import svarog.audio.Sound;
 import svarog.gui.Arena;
+import svarog.gui.Button;
 import svarog.gui.GuiRenderer;
+import svarog.gui.GuiWindow;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.PagedGuiWindow;
 import svarog.gui.PagedGuiWindow.Type;
 import svarog.gui.TextureObject;
+import svarog.gui.Tile;
+import svarog.gui.TradeWindow;
 import svarog.gui.font.Font;
 import svarog.gui.font.TextBlock;
 import svarog.interactions.Quest;
@@ -32,6 +36,7 @@ import svarog.render.Animation;
 import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
+import svarog.save.ItemParameters;
 import svarog.save.PlayerParameters;
 import svarog.save.Save;
 import svarog.world.World;
@@ -51,6 +56,10 @@ public class Player extends Entity {
 	private String texturesPath;
 	private String fileName;
 	
+	//Confirm in trade window
+	private static GuiWindow confirmWindow;
+	private static Button applyButton;
+	
 	private boolean movementLock;
 
 	private Sound walk;
@@ -64,6 +73,10 @@ public class Player extends Entity {
 	//Money, Inventory //
 	private int money = 0;
 	private Inventory inventory;
+	
+	//Trade window
+	private int isTradeOn=0;
+	private TradeWindow trade;
 
 	private List<Quest> quests = new ArrayList<>();
 	
@@ -94,7 +107,7 @@ public class Player extends Entity {
 		super.setIsStatic(false); // Non-static - default setting for player 
 	}
 	
-	public Player(Sound walkSound, PlayerParameters playerParam) {
+	public Player(Sound walkSound, PlayerParameters playerParam, Font font) {
 		super(0,
 				new Texture("textures/animations/" + "player/mavak/" + "idle/down/" + "mavak" + ".png"),
 				new Transform().setPosition(playerParam.getPositionX(), playerParam.getPositionY()), false);
@@ -116,9 +129,14 @@ public class Player extends Entity {
 		
 		this.setMovementLock(false);
 		super.setIsStatic(false); // Non-static - default setting for player
+		
+		confirmWindow = new GuiWindow(LanguageLoader.getLanguageLoader().getValue("youDontHaveEnoughMoney"), font, new TextureObject(new Texture("images/window3.png")), false);
+		applyButton = new Button(new Texture("images/buttonYes.png"),new Texture("images/buttonYes_hover.png"), new Vector2f(0, -15));
+
+		confirmWindow.addTextureObject(applyButton);
 	}
 	
-	public Player(int id, String texturePath, String filename, Sound walkSound, Transform transform, boolean fullBoundingBox, Inventory inventory) {
+	public Player(int id, String texturePath, String filename, Sound walkSound, Transform transform, boolean fullBoundingBox, Inventory inventory, Font font) {
 		super(id, new Texture("textures/animations/" + texturePath + "idle/down/" + filename + ".png"), transform, fullBoundingBox);
 		setInventory(inventory);
 		this.setWalkSound(walkSound);
@@ -139,6 +157,10 @@ public class Player extends Entity {
 		this.setMovementLock(false);
 		super.setIsStatic(false); // Non-static - default setting for player 
 
+		confirmWindow = new GuiWindow(LanguageLoader.getLanguageLoader().getValue("youDontHaveEnoughMoney"), font, new TextureObject(new Texture("images/window3.png")), false);
+		applyButton = new Button(new Texture("images/buttonYes.png"),new Texture("images/buttonYes_hover.png"), new Vector2f(0, -15));
+
+		confirmWindow.addTextureObject(applyButton);
 	}
 	
 	public PagedGuiWindow getQuestsPagedOnGUI(Font font, Font font2, LanguageLoader language) {
@@ -163,6 +185,19 @@ public class Player extends Entity {
 		
 		////////////////////////////////////////////
 		return quests1;
+	}
+	
+	public void tradeWithPlayer(WorldRenderer currentWorld, GuiRenderer guiRenderer, int NPCid) {
+		isTradeOn=1;
+		trade = new TradeWindow("trade");
+		
+		List<ItemParameters> items = new ArrayList<>();
+		items = currentWorld.getWorld().getNpcByNpcId(NPCid).getItems();
+		for(ItemParameters itemPa: items) {
+			trade.addProduct(itemPa.getItemTileID(), new Item(Save.getItemById(itemPa.getItemGlobalID())));
+		}
+		trade.setPosition(-100, 0);
+		guiRenderer.addWindow(trade);
 	}
 	
 	private boolean isPlayerMoved() {
@@ -249,7 +284,31 @@ public class Player extends Entity {
 	}
 	
 	@Override
-	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer) {
+	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer, GuiRenderer guiRenderer) {
+		
+		if(isTradeOn==1) {
+			if(trade.getBuyButton().isClicked()) {
+				if(trade.getExpanse()>0) {
+					if(trade.getExpanse()<=this.money) {
+						trade.buyItems(this, guiRenderer);
+						this.setMoney(getMoney()-trade.getExpanse());
+						guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, this);
+					}
+					else {
+						guiRenderer.addWindow(confirmWindow);
+					}
+				}
+			}
+			if(applyButton.isClicked()) {
+
+					guiRenderer.removeWindow(confirmWindow.getId());
+
+			}
+			if(trade.isClosed()) {
+				isTradeOn=0;
+			}
+		}
+		
 		if(movementLock == false) {		
 			///////////// WASD Player movement ////////////////////
 			
@@ -313,7 +372,7 @@ public class Player extends Entity {
 				camera.getPosition().lerp(transform.getPosition().mul(-WorldRenderer.getScale(), new Vector3f()), 0.6f); // Camera movement
 			}
 			
-			super.update(delta, window, camera, world, audioPlayer);
+			super.update(delta, window, camera, world, audioPlayer, guiRenderer);
 			/////////////////////////////////////////////////////////
 		}
 	}

@@ -150,7 +150,7 @@ public class Main {
 		}
 		
 		if(walk != null) {
-			player = new Player(walk, Save.getPlayerParam());
+			player = new Player(walk, Save.getPlayerParam(), roboto_15);
 			player.setSpeed(0.2f);
 		}
 		
@@ -681,7 +681,7 @@ public class Main {
 					
 					guiRenderer.deleteDynamicGroups();
 					
-					worldRenderer.update((float)0.2, window, camera, audioPlayer);
+					worldRenderer.update((float)0.2, window, camera, audioPlayer, guiRenderer);
 					worldRenderer.correctCamera(camera, window);							// This sets correct camera position on world
 	
 					

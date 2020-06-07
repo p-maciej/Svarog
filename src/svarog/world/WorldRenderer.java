@@ -11,6 +11,7 @@ import svarog.entity.Enemy;
 import svarog.entity.Entity;
 import svarog.entity.NPC;
 import svarog.entity.Player;
+import svarog.gui.GuiRenderer;
 import svarog.io.Timer;
 import svarog.io.Window;
 import svarog.render.Camera;
@@ -221,7 +222,7 @@ public class WorldRenderer implements RenderProperties {
 		}
 	}
 	
-	public void update(float delta, Window window, Camera camera, Audio audioPlayer) { // World update
+	public void update(float delta, Window window, Camera camera, Audio audioPlayer, GuiRenderer guiRenderer) { // World update
 		for(int i = 0; i < world.getEntitiesToRespawn().size(); i++) {
 			EntityRespawn temp =  world.getEntitiesToRespawn().get(i);
 			if(temp.getEntity().getRespownInSec() != -1) {
@@ -237,7 +238,7 @@ public class WorldRenderer implements RenderProperties {
 		}
 		
 		for(Entity entity : world.getEntities()) {
-			entity.update(delta, window, camera, this, audioPlayer);
+			entity.update(delta, window, camera, this, audioPlayer,guiRenderer);
 			if((-posX)-((int)viewX/2)-1 < entity.getPositionX() && (-posX)+((int)viewX/2)+1 > entity.getPositionX() && posY-((int)viewY/2)-1 < entity.getPositionY() && posY+((int)viewY/2)+1 > entity.getPositionY()) {
 				entity.collideWithTiles(world);
 				entity.collideWithEntities(world);

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.joml.Vector2f;
 
+import svarog.entity.Player;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.language.LanguageLoader;
@@ -121,7 +122,16 @@ public class TradeWindow extends GuiWindow {
 		} catch (Exception e) {}
 	}
 	
-	public void buyItems() {
+	public void buyItems(Player player, GuiRenderer guiRenderer) {
+		for(Group grp:products[1].getTileGroupsList()) {
+			for(GuiObject object:grp.getTextureObjectList()) {
+				Tile temp = (Tile)(object);
+				
+				if(temp.getPuttedItem() != null) {
+					player.addItemToInventoryWithGUIupdate(temp.getPuttedItem(), guiRenderer);
+				}
+			}
+		}
 		for(Group group : products[1].getTileGroupsList()) {
 			for(GuiObject object : group.getTextureObjectList()) {
 				Tile temp = (Tile)object;
@@ -130,6 +140,8 @@ public class TradeWindow extends GuiWindow {
 					temp.removePuttedItem();
 			}
 		}
+		
+		
 	}
 	
 	public int getExpanse() {

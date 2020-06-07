@@ -41,7 +41,7 @@ public class NPC extends Entity{
 		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
 		super.setIsStatic(true); // static - default setting for NPC 
 		
-		this.items = items;
+		this.setItems(items);
 	}
 	
 	public NPC(int id, NpcParameters npcParams, Transform transform, boolean isClickable) {
@@ -90,7 +90,7 @@ public class NPC extends Entity{
 		this.globalNpcID = (Save.getNpcsByID(entityHolder.getTypeID())).getGlobalNpcID();
 		
 		if(!npcParameters.getItems().isEmpty()) {
-			this.items=npcParameters.getItems();
+			this.setItems(npcParameters.getItems());
 		}
 		
 		if((Save.getNpcsByID(entityHolder.getTypeID())).getInteractionsPath()!=null && !((Save.getNpcsByID(entityHolder.getTypeID())).getInteractionsPath().isEmpty())) {
@@ -110,6 +110,10 @@ public class NPC extends Entity{
 		if(npcParams.getInteractionsPath()!=null && !(npcParams.getInteractionsPath().isEmpty())) {
 			System.out.println("-"+npcParams.getInteractionsPath()+"-");
 			this.setInteractions(new Interactions(npcParams.getInteractionsPath()));
+		}
+		
+		if(!npcParams.getItems().isEmpty()) {
+			this.setItems(npcParams.getItems());
 		}
 	}
 	
@@ -160,6 +164,14 @@ public class NPC extends Entity{
 	public static void setQuestTexture(WorldObject questTexture) {
 		NPC.questTexture = questTexture;
 		NPC.questTexture.getTexture().prepare();
+	}
+
+	public List<ItemParameters> getItems() {
+		return items;
+	}
+
+	public void setItems(List<ItemParameters> items) {
+		this.items = items;
 	}
 }
 

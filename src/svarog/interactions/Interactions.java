@@ -211,27 +211,23 @@ public class Interactions {
 	}
 
 	public void interactionsHelper(WorldRenderer currentWorld, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
-		System.out.println("HELPER");
+		//System.out.println("HELPER");
 		
 		for(int i = 0; i < dialog.getAnswers().size();i++) {
 			Answer answerT = dialog.clickedAnswer();
 			
-			System.out.println(answerT.getLeadsTo());
+			//System.out.println(answerT.getLeadsTo());
 				if(answerT.getId() == i) {
 					///////////////////////////////////////////////////////////////////////////////////////////// TRADE
 					if(answerT.getLeadsTo() == -2) {
-						System.out.println("trade wdergthyjujyhtrewrgtyu");
 						isEnded = true;
 						
 						guiRenderer.closeDialog();
 						setTalkingNPCid(-1);
 						
-						TradeWindow trade = new TradeWindow("trade");
-						trade.addProduct(100, new Item(Save.getItemById(7)));
-						trade.setPosition(-100, 0);
-						guiRenderer.addWindow(trade);
+						player.tradeWithPlayer(currentWorld, guiRenderer, NPCid);
 						
-						System.out.println("you trade with: "+ currentWorld.getWorld().getNpcByNpcId(NPCid).getName());
+					//	System.out.println("you trade with: "+ currentWorld.getWorld().getNpcByNpcId(NPCid).getName());
 						
 						break;
 					}////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
