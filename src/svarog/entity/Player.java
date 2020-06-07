@@ -189,12 +189,16 @@ public class Player extends Entity {
 	
 	public void tradeWithPlayer(WorldRenderer currentWorld, GuiRenderer guiRenderer, int NPCid) {
 		isTradeOn=1;
-		trade = new TradeWindow("trade");
+		trade = new TradeWindow(currentWorld.getWorld().getNpcByNpcId(NPCid).getName());
 		
 		List<ItemParameters> items = new ArrayList<>();
 		items = currentWorld.getWorld().getNpcByNpcId(NPCid).getItems();
 		for(ItemParameters itemPa: items) {
-			trade.addProduct(itemPa.getItemTileID(), new Item(Save.getItemById(itemPa.getItemGlobalID())));
+			if(itemPa.getItemTileID()>=100 &&itemPa.getItemTileID()<=119) {
+				trade.addProduct(itemPa.getItemTileID(), new Item(Save.getItemById(itemPa.getItemGlobalID())));
+			}else {
+				throw new IllegalStateException("TileNumberOutOfRange");
+			}
 		}
 		trade.setPosition(-100, 0);
 		guiRenderer.addWindow(trade);

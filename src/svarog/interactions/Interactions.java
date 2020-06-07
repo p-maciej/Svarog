@@ -152,6 +152,13 @@ public class Interactions {
 		
 		if((isEnded || dialog == null)  && isUsed ==0  && !dialogs.isEmpty()) {
 			dialog = dialogs.get(0);
+			for(int i =0;i<dialogs.get(0).getAnswers().size();i++) {
+
+					if(dialogs.get(0).getAnswers().get(i).getLeadsTo()==-2) {
+						isTrade = 1;
+						break;
+					}
+				}
 			isEnded = false;
 		}
 		//System.out.println(this.dialogs.size());
@@ -169,7 +176,7 @@ public class Interactions {
 					//temp.add(new Answer(0, "trade", -2));
 					dialog = new Dialog(0, "coœtam ", temp);
 					isEnded = false;
-					isTrade =1;
+					isTrade = 1;
 					break;
 				}
 			}
@@ -219,7 +226,7 @@ public class Interactions {
 			//System.out.println(answerT.getLeadsTo());
 				if(answerT!=null && answerT.getId() == i) {
 					///////////////////////////////////////////////////////////////////////////////////////////// TRADE
-					if(answerT.getLeadsTo() == -2 && isTrade == 1) {
+					if( isTrade == 1 && answerT.getLeadsTo()==-2) {
 						isEnded = true;
 						
 						guiRenderer.closeDialog();
@@ -227,7 +234,7 @@ public class Interactions {
 						
 						player.tradeWithPlayer(currentWorld, guiRenderer, NPCid);
 						
-					//	System.out.println("you trade with: "+ currentWorld.getWorld().getNpcByNpcId(NPCid).getName());
+						System.out.println("you trade with: "+ currentWorld.getWorld().getNpcByNpcId(NPCid).getName());
 						
 						break;
 					}////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -282,6 +289,7 @@ public class Interactions {
 						}
 						break;
 					}
+					if(answerT.getLeadsTo()>=0) {
 					guiRenderer.closeDialog();
 					dialog = new Dialog(dialogs.get(answerT.getLeadsTo()).getId(),
 							dialogs.get(answerT.getLeadsTo()).getContent(),
@@ -294,7 +302,7 @@ public class Interactions {
 						this.isQuestSend = 1;
 						
 						//System.out.println(file + " "+ isUsed + " "+ NPCid);
-					}
+					}}
 				}
 		}
 	}
