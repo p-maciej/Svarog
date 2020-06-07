@@ -31,6 +31,10 @@ import svarog.world.WorldRenderer;
 
 public class Interactions {
 	private List<Dialog> dialogs = new ArrayList<>();
+	public List<Dialog> getDialogs() {
+		return dialogs;
+	}
+
 	private List<Quest> quests = new ArrayList<>();
 	private Dialog dialog;
 	private boolean isEnded = true;

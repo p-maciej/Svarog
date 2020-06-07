@@ -759,7 +759,7 @@ public class Main {
 										}
 									}
 								}//errors from here
-								if(((NPC)entity).getInteractions() != null ) {
+								if(((NPC)entity).getInteractions() != null  && ((NPC)entity).getInteractions().getDialogs()!= null && ((NPC)entity).getInteractions().getDialogs().size()!=0) {
 									((NPC)entity).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)entity).getGlobalNpcID(), language);
 									Interactions.setTalkingNPCid(i);
 								}
