@@ -531,7 +531,7 @@ public class Player extends Entity {
 				int attack = ((enemyAttcc-this.getPlayerDefense())>0)?(enemyAttcc-this.getPlayerDefense()):0;
 				this.DecreasePlayerHP(attack);
 				fightString.add(this.getName()+" "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpAfter")+" " + this.getHP().GetHP());
-				if(this.getHP().GetHP()<0) {
+				if(this.getHP().GetHP()<=0) {
 					fightString.add(LanguageLoader.getLanguageLoader().getValue("fightSystemPlayerDefeat")+" "+
 							(enemy).getName() + " "+LanguageLoader.getLanguageLoader().getValue("fightSystemPlayerDefeat2"));
 					playerDead();
