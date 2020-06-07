@@ -2,7 +2,7 @@
 <class>
    <dialog id = "0">
       <content>RozandMav_dialog2_line0</content>
-      <ans>2</ans>
+      <ans>1</ans>
       <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>1</leadsTo>
