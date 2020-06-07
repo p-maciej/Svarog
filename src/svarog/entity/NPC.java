@@ -3,13 +3,8 @@ package svarog.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.joml.Vector2f;
-
 import svarog.interactions.Interactions;
 import svarog.language.LanguageLoader;
-import svarog.objects.Item;
-import svarog.objects.ItemInfo;
-import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.save.EntityHolder;
@@ -123,14 +118,6 @@ public class NPC extends Entity{
 		super.setClickable(true); 
 		super.setIsStatic(true); 
 	}
-	
-//	public void AddItem(Item item) {
-//		items.add(item);
-//	}
-//	
-//	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType, int prize) {
-//		items.add(new Item(texture, position, itemInfo, globalID, localID, hpRegeneration, attackBonus, lvlRequired, name, description, itemType, prize));
-//	}
 	
 	public Interactions getInteractions() {
 		return interactions;

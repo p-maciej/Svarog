@@ -22,7 +22,6 @@ import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.PagedGuiWindow;
 import svarog.gui.PagedGuiWindow.Type;
 import svarog.gui.TextureObject;
-import svarog.gui.Tile;
 import svarog.gui.TradeWindow;
 import svarog.gui.font.Font;
 import svarog.gui.font.TextBlock;

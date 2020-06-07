@@ -4,7 +4,6 @@ package svarog.interactions;
 import java.util.ArrayList;
 import java.util.List;
 
-import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.gui.GuiRenderer;
 import svarog.objects.Item;

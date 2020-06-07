@@ -12,17 +12,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.gui.Answer;
 import svarog.gui.Dialog;
 
 import svarog.gui.GuiRenderer;
-import svarog.gui.TradeWindow;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
 import svarog.language.LanguageLoader;
-import svarog.objects.Item;
 import svarog.render.Camera;
 import svarog.save.ItemParameters;
 import svarog.save.NpcInteractions;
@@ -165,19 +162,15 @@ public class Interactions {
 				}
 			isEnded = false;
 		}
-		//System.out.println(this.dialogs.size());
+		
 		if((isEnded || dialog == null) && isUsed ==1 && !dialogs.isEmpty()) {
 			for(int i =0;i<dialogs.get(0).getAnswers().size();i++) {
-			//for(Answer i:dialogs.get(0).getAnswers()) {
-				//if(i.getLeadsTo()==-2) {
 				if(dialogs.get(0).getAnswers().get(i).getLeadsTo()==-2) {
 					
 					List<Answer> temp = new ArrayList<Answer>();
 					Answer tem = dialogs.get(0).getAnswers().get(i);
 					tem.setId(0);
-					//tem.setLeadsTo(-2);
 					temp.add(tem);
-					//temp.add(new Answer(0, "trade", -2));
 					dialog = new Dialog(0, dialogs.get(0).getContent(), temp);
 					isEnded = false;
 					isTrade = 1;
@@ -188,8 +181,7 @@ public class Interactions {
 
 		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed == 0) {
 			guiRenderer.showDialog(dialog, language);
-			//System.out.println("asdfgfghdsdadSAFGHFHDFS 12345     "+dialog.getAnswers().get(0).getObjectId() + " "+dialog.getAnswers().get(0).getId() + " "+dialog.getAnswers().get(0).getLeadsTo());
-			//System.out.println("Hiszpañska inkwizycja");
+			
 			//if(!quests.isEmpty() && quests.get(0).getIdNpc()!=NPCid) {
 				//Save.addNpcInteractions(new NpcInteractions(quests.get(0).getNextInteraction(), 1, quests.get(0).getIdNpc()));
 				//System.out.println(quests.get(0).getTitle());
@@ -197,15 +189,12 @@ public class Interactions {
 
 			//}
 		}
-		//System.out.println(isUsed+" "+isTrade+" "+dialog.clickedAnswer());
 		if(isUsed == 0 && dialog.clickedAnswer() != null) {
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
 		}
 
 		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed == 1 && isTrade == 1) {
 			guiRenderer.showDialog(dialog, language);
-			System.out.println("asdfgfghdsdadSAFGHFHDFS 12345     "+dialog.getAnswers().get(0).getObjectId() + " "+dialog.getAnswers().get(0).getId() + " "+dialog.getAnswers().get(0).getLeadsTo());
-			
 		}
 
 		if(isUsed == 1 && dialog.clickedAnswer() != null) {
@@ -222,12 +211,10 @@ public class Interactions {
 	}
 
 	public void interactionsHelper(WorldRenderer currentWorld, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
-		//System.out.println("HELPER");
-		
+
 		for(int i = 0; i < dialog.getAnswers().size();i++) {
 			Answer answerT = dialog.clickedAnswer();
-			
-			//System.out.println(answerT.getLeadsTo());
+
 				if(answerT!=null && answerT.getId() == i) {
 					///////////////////////////////////////////////////////////////////////////////////////////// TRADE
 					if( isTrade == 1 && answerT.getLeadsTo()==-2) {
@@ -269,7 +256,6 @@ public class Interactions {
 							Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
 						}
 						if(isQuestSend==1) {
-							//System.out.println("interaction");
 							isUsed = 1;
 							Save.addNpcInteractions(new NpcInteractions(file, isUsed, NPCid));
 							System.out.println(Save.getNpcsByID(NPCid).getName()+ " "+isUsed + " "+file+" interaction 2"); //wy³¹cza questy okok
@@ -278,7 +264,6 @@ public class Interactions {
 								for(Task t: q.getTasks()) {
 									if(t.getState()==doState.find) {
 										
-										//(currentWorld.getWorld().getNpcByNpcId(q.getIdNpc())).setInteractions(new Interactions(q.getNextInteraction()));
 										Save.addNpcInteractions(new NpcInteractions(q.getNextInteraction(), 0, q.getIdNpc()));
 										System.out.println(Save.getNpcsByID(q.getIdNpc()).getName()+" "+0 + " "+file+" interaction 3");
 										Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
@@ -286,9 +271,6 @@ public class Interactions {
 									}
 								}
 							}
-							
-							//System.out.println(((NPC)currentWorld.getWorld().getNpcByNpcId(NPCid)).getName() + " " + file);
-							//clearInteractions();
 							isQuestSend = 0;
 						}
 						break;
@@ -304,8 +286,6 @@ public class Interactions {
 					if(dialog.getQuestID()!=-1) {
 						player.addNewQuestNoRepeating(getQuestByID(dialog.getQuestID()));
 						this.isQuestSend = 1;
-						
-						//System.out.println(file + " "+ isUsed + " "+ NPCid);
 					}}
 				}
 		}
