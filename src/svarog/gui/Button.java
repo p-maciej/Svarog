@@ -44,6 +44,15 @@ public class Button extends TextureObject implements MouseInteraction {
 		this.hover = false;
 	}
 	
+	public Button(Texture texture, Texture hoverTexture) {
+		super(texture, new Vector2f());
+		super.setClickable(true);
+		super.setOverable(true);
+		this.copy = texture;
+		this.hoverTexture = hoverTexture;
+		this.hover = false;
+	}
+	
 	public Button(Texture texture, Texture hoverTexture, Vector2f position) {
 		super(texture, position);
 		super.setClickable(true);

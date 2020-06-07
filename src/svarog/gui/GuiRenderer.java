@@ -628,8 +628,8 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 			
-			if(Timer.getDelay(clickedTime, Timer.getNanoTime(), 0.4f) && mouseOverTileId == pressedObjId) {
-				if(clickCount == 2) {
+			if(Timer.getDelay(clickedTime, Timer.getNanoTime(), 0.3f) && mouseOverTileId == pressedObjId) {
+				if(clickCount >= 2) {
 					sheet.putItemFirstEmpty(new Item(object.getPuttedItem()));
 					current.update();
 					update = true;

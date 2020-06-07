@@ -22,7 +22,6 @@ import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.PagedGuiWindow;
 import svarog.gui.PagedGuiWindow.Type;
 import svarog.gui.TextureObject;
-import svarog.gui.Tile;
 import svarog.gui.TradeWindow;
 import svarog.gui.font.Font;
 import svarog.gui.font.TextBlock;
@@ -37,6 +36,7 @@ import svarog.render.Camera;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.save.ItemParameters;
+import svarog.save.NpcInteractions;
 import svarog.save.PlayerParameters;
 import svarog.save.Save;
 import svarog.world.World;
@@ -131,7 +131,7 @@ public class Player extends Entity {
 		super.setIsStatic(false); // Non-static - default setting for player
 		
 		confirmWindow = new GuiWindow(LanguageLoader.getLanguageLoader().getValue("youDontHaveEnoughMoney"), font, new TextureObject(new Texture("images/window3.png")), false);
-		applyButton = new Button(new Texture("images/buttonYes.png"),new Texture("images/buttonYes_hover.png"), new Vector2f(0, -15));
+		applyButton = new Button(new Texture("images/okButton.png"),new Texture("images/okButton_hover.png"), new Vector2f(0, -15));
 
 		confirmWindow.addTextureObject(applyButton);
 	}
@@ -452,7 +452,7 @@ public class Player extends Entity {
 		Arena arena = new Arena(player, enemy);
 		List<TextBlock> log = new ArrayList<TextBlock>();
 		
-		for(String word: player.fightLogic((Enemy)enemy, world, guiRenderer)) {
+		for(String word: player.fightLogic((Enemy)enemy, world, guiRenderer, world)) {
 			log.add(new TextBlock(250, new Vector2f(), font, word));
 		}
 		
@@ -466,7 +466,7 @@ public class Player extends Entity {
 		guiRenderer.getTileSheet().putItemFirstEmpty(this.getInventory().getItems().get(this.getInventory().getItems().size()-1), this);
 	}
 	
-	public ArrayList<String> fightLogic(Enemy enemy, World world, GuiRenderer guiRenderer) {
+	public ArrayList<String> fightLogic(Enemy enemy, World world, GuiRenderer guiRenderer, World currentWorld) {
 		ArrayList<String> fightString = new ArrayList<>();
 		while((enemy).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
 			fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpBefore")+" " + (enemy).GetEnemyHP());
@@ -503,6 +503,22 @@ public class Player extends Entity {
 					if(q1.isEndedQuest() && !q1.isRewardedYet()) {
 						System.out.println("Killin great?");
 						q1.sendReward(this, guiRenderer, world, 0);
+						for(NPC n:currentWorld.getNPCs()) {
+							if(n.getInteractions().getQuests().size()>0) {
+								if(q1.getQuestID() == n.getInteractions().getQuests().get(0).getQuestID()) {
+									Quest temp = n.getInteractions().getQuests().get(0);
+									System.out.println(temp.isLast() +" "+ temp.getQuestID() +" "+ n.getInteractions().getIsUsed());
+									if(!temp.isLast() && temp.getQuestID()!=-1 && n.getInteractions().getIsUsed()==1) {
+						    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
+						    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
+						    			Save.UpdateInteractions(currentWorld.getNPCs());
+						    			//System.out.println("quest");
+						    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" NEXT MAINENMAIN");
+
+						    		}
+								}
+							}
+						}
 						guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, this);
 					}
 				}
