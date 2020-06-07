@@ -245,8 +245,8 @@ public class Main {
 		questsButton = new Button(new Texture("images/gui/button_quest.png"), new Texture("images/gui/button_quest_hover.png"), stickTo.TopRight);
 		questsButton.move(-25, 10);
 		
-		Button soundOnButton = new Button(new Texture("images/gui/soundOnButton.png"));
-		Button soundOffButton = new Button(new Texture("images/gui/soundOffButton.png"));
+		Button soundOnButton = new Button(new Texture("images/gui/soundOnButton.png"), new Texture("images/gui/soundOnButton_hover.png"));
+		Button soundOffButton = new Button(new Texture("images/gui/soundOffButton.png"), new Texture("images/gui/soundOffButton_hover.png"));
 		
 		soundStateButton = new Switch(soundOffButton, soundOnButton, stickTo.TopRight).setIsOn(true);
 		soundStateButton.move(-25, 70);

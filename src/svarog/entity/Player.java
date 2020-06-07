@@ -131,7 +131,7 @@ public class Player extends Entity {
 		super.setIsStatic(false); // Non-static - default setting for player
 		
 		confirmWindow = new GuiWindow(LanguageLoader.getLanguageLoader().getValue("youDontHaveEnoughMoney"), font, new TextureObject(new Texture("images/window3.png")), false);
-		applyButton = new Button(new Texture("images/buttonYes.png"),new Texture("images/buttonYes_hover.png"), new Vector2f(0, -15));
+		applyButton = new Button(new Texture("images/okButton.png"),new Texture("images/okButton_hover.png"), new Vector2f(0, -15));
 
 		confirmWindow.addTextureObject(applyButton);
 	}
