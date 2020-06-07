@@ -18,9 +18,11 @@ import svarog.gui.Answer;
 import svarog.gui.Dialog;
 
 import svarog.gui.GuiRenderer;
+import svarog.gui.TradeWindow;
 import svarog.interactions.Task.doState;
 import svarog.io.Window;
 import svarog.language.LanguageLoader;
+import svarog.objects.Item;
 import svarog.render.Camera;
 import svarog.save.ItemParameters;
 import svarog.save.NpcInteractions;
@@ -32,7 +34,7 @@ public class Interactions {
 	private List<Quest> quests = new ArrayList<>();
 	private Dialog dialog;
 	private boolean isEnded = true;
-	
+	private int isTrade;
 	//nowe elementy dla aktualnego stanu Interactions
 	private String file;
 	private int isUsed=1; //czy nie zosta³ u¿yty
@@ -61,18 +63,19 @@ public class Interactions {
 	}
 	
 	public void clearInteractions() {
-		dialogs.clear();
+		//dialogs.clear();
 		quests.clear();
 	}
 	
 	public void setNew(String file) {
+		clearInteractions();
 		this.file = file;
 		isUsed=0;
-		clearInteractions();
 		Reader(file);
 	}
 	
 	public void Reader(String file) {
+		this.dialogs.clear();
 		try {
 			File inputFile = new File(path + file);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -147,24 +150,57 @@ public class Interactions {
 	
 	public void ChceckInteractions(WorldRenderer currentWorld, Camera camera, Window window, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
 		
-		if((isEnded || dialog == null)  && isUsed ==0) {
+		if((isEnded || dialog == null)  && isUsed ==0  && !dialogs.isEmpty()) {
 			dialog = dialogs.get(0);
 			isEnded = false;
+		}
+		//System.out.println(this.dialogs.size());
+		if((isEnded || dialog == null) && isUsed ==1 && !dialogs.isEmpty()) {
+			for(int i =0;i<dialogs.get(0).getAnswers().size();i++) {
+			//for(Answer i:dialogs.get(0).getAnswers()) {
+				//if(i.getLeadsTo()==-2) {
+				if(dialogs.get(0).getAnswers().get(i).getLeadsTo()==-2) {
+					
+					List<Answer> temp = new ArrayList<Answer>();
+					Answer tem = dialogs.get(0).getAnswers().get(i);
+					tem.setId(0);
+					//tem.setLeadsTo(-2);
+					temp.add(tem);
+					//temp.add(new Answer(0, "trade", -2));
+					dialog = new Dialog(0, "coœtam ", temp);
+					isEnded = false;
+					isTrade =1;
+					break;
+				}
+			}
 		}
 
 		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed == 0) {
 			guiRenderer.showDialog(dialog, language);
+			System.out.println("asdfgfghdsdadSAFGHFHDFS 12345     "+dialog.getAnswers().get(0).getObjectId() + " "+dialog.getAnswers().get(0).getId() + " "+dialog.getAnswers().get(0).getLeadsTo());
 			//System.out.println("Hiszpañska inkwizycja");
-			if(!quests.isEmpty() && quests.get(0).getIdNpc()!=NPCid) {
+			//if(!quests.isEmpty() && quests.get(0).getIdNpc()!=NPCid) {
 				//Save.addNpcInteractions(new NpcInteractions(quests.get(0).getNextInteraction(), 1, quests.get(0).getIdNpc()));
 				//System.out.println(quests.get(0).getTitle());
 				//System.out.println(Save.getNpcsByID(NPCid).getName()+ " "+quests.get(0).getNextInteraction()+" interaction 1");
 
-			}
+			//}
 		}
+		//System.out.println(isUsed+" "+isTrade+" "+dialog.clickedAnswer());
 		if(isUsed == 0 && dialog.clickedAnswer() != null) {
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
 		}
+
+		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed == 1 && isTrade == 1) {
+			guiRenderer.showDialog(dialog, language);
+			System.out.println("asdfgfghdsdadSAFGHFHDFS 12345     "+dialog.getAnswers().get(0).getObjectId() + " "+dialog.getAnswers().get(0).getId() + " "+dialog.getAnswers().get(0).getLeadsTo());
+			
+		}
+
+		if(isUsed == 1 && dialog.clickedAnswer() != null) {
+			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
+		}
+
 	}
 	public int getIsQuestSend() {
 		return isQuestSend;
@@ -175,11 +211,31 @@ public class Interactions {
 	}
 
 	public void interactionsHelper(WorldRenderer currentWorld, GuiRenderer guiRenderer, Player player, int NPCid, LanguageLoader language) {
+		System.out.println("HELPER");
+		
 		for(int i = 0; i < dialog.getAnswers().size();i++) {
-			if(dialog.clickedAnswer() != null) {
-				if(dialog.clickedAnswer().getId() == i) {
-					
-					if(dialog.clickedAnswer().getLeadsTo() == -1) {
+			Answer answerT = dialog.clickedAnswer();
+			
+			System.out.println(answerT.getLeadsTo());
+				if(answerT.getId() == i) {
+					///////////////////////////////////////////////////////////////////////////////////////////// TRADE
+					if(answerT.getLeadsTo() == -2) {
+						System.out.println("trade wdergthyjujyhtrewrgtyu");
+						isEnded = true;
+						
+						guiRenderer.closeDialog();
+						setTalkingNPCid(-1);
+						
+						TradeWindow trade = new TradeWindow("trade");
+						trade.addProduct(100, new Item(Save.getItemById(7)));
+						trade.setPosition(-100, 0);
+						guiRenderer.addWindow(trade);
+						
+						System.out.println("you trade with: "+ currentWorld.getWorld().getNpcByNpcId(NPCid).getName());
+						
+						break;
+					}////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					if(answerT.getLeadsTo() == -1) {
 						isEnded = true;
 						//TALK TO TASK TALK TASK
 						for(Quest q1:player.getQuests()) {
@@ -225,16 +281,16 @@ public class Interactions {
 							}
 							
 							//System.out.println(((NPC)currentWorld.getWorld().getNpcByNpcId(NPCid)).getName() + " " + file);
-							clearInteractions();
+							//clearInteractions();
 							isQuestSend = 0;
 						}
 						break;
 					}
 					guiRenderer.closeDialog();
-					dialog = new Dialog(dialogs.get(dialog.clickedAnswer().getLeadsTo()).getId(),
-							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getContent(),
-							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getAnswers(),
-							dialogs.get(dialog.clickedAnswer().getLeadsTo()).getQuestID()
+					dialog = new Dialog(dialogs.get(answerT.getLeadsTo()).getId(),
+							dialogs.get(answerT.getLeadsTo()).getContent(),
+							dialogs.get(answerT.getLeadsTo()).getAnswers(),
+							dialogs.get(answerT.getLeadsTo()).getQuestID()
 							);
 					guiRenderer.showDialog(dialog, language);
 					if(dialog.getQuestID()!=-1) {
@@ -244,7 +300,6 @@ public class Interactions {
 						//System.out.println(file + " "+ isUsed + " "+ NPCid);
 					}
 				}
-			}
 		}
 	}
 

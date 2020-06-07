@@ -45,10 +45,11 @@ public class Dialog {
 	} 
 	
 	public Answer clickedAnswer() {
-		for(Answer answer : answers)
-			if(answer.getObjectId() == GuiRenderer.getClickedObjectId())
+		for(Answer answer : answers) {
+			if(answer.getObjectId() == GuiRenderer.getClickedObjectId()) {
 				return answer;
-		
+			}
+		}
 		return null;
 	}
 

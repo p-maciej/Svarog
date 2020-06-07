@@ -727,37 +727,39 @@ public class Main {
 								guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
 								guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 	
-							} else if(entity instanceof NPC && ((NPC)entity).getInteractions().getIsUsed()==0) {
-								//FIND TASK
-								for(Quest q1:player.getQuests()) {
-									for(Task t1:q1.getTasks()) {
-										if(t1.getState() == doState.find) {
-											if(t1.getDoItemID() == ((NPC)entity).getGlobalNpcID()) {
-												t1.increaseHowMuchIsDone();
-											}
-										}
-									}
-									if(q1.isEndedQuest() && !q1.isRewardedYet() ) {
-										int tempIsUsed = 1;
-										//int noInteraction = 0;
-										/*for(NPC npc: currentWorld.getNPCs()) {
-											if(npc.getInteractions()!=null && !npc.getInteractions().getQuests().isEmpty()) {
-												if(npc.getInteractions().getQuests().get(0).getQuestID() == q1.getQuestID()) {
-													tempIsUsed = 1;
-													System.out.println("tempIsUsed npcName "+npc.getName());
-													//noInteraction = npc.getInteractions().getIsUsed();
-												}else {
-													tempIsUsed = 0;
+							} else if(entity instanceof NPC) {
+								if( ((NPC)entity).getInteractions().getIsUsed()==0) {
+									//FIND TASK
+									for(Quest q1:player.getQuests()) {
+										for(Task t1:q1.getTasks()) {
+											if(t1.getState() == doState.find) {
+												if(t1.getDoItemID() == ((NPC)entity).getGlobalNpcID()) {
+													t1.increaseHowMuchIsDone();
 												}
 											}
-										}*/
-										if(((NPC)entity).getInteractions().getIsUsed()==0) {tempIsUsed=1;}
-										System.out.println("tempIsUsed "+tempIsUsed);
-										q1.sendReward(player, guiRenderer, currentWorld, tempIsUsed);
-										guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
+										}
+										if(q1.isEndedQuest() && !q1.isRewardedYet() ) {
+											int tempIsUsed = 1;
+											//int noInteraction = 0;
+											/*for(NPC npc: currentWorld.getNPCs()) {
+												if(npc.getInteractions()!=null && !npc.getInteractions().getQuests().isEmpty()) {
+													if(npc.getInteractions().getQuests().get(0).getQuestID() == q1.getQuestID()) {
+														tempIsUsed = 1;
+														System.out.println("tempIsUsed npcName "+npc.getName());
+														//noInteraction = npc.getInteractions().getIsUsed();
+													}else {
+														tempIsUsed = 0;
+													}
+												}
+											}*/
+											if(((NPC)entity).getInteractions().getIsUsed()==0) {tempIsUsed=1;}
+											System.out.println("tempIsUsed "+tempIsUsed);
+											q1.sendReward(player, guiRenderer, currentWorld, tempIsUsed);
+											guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
+										}
 									}
-								}
-								if(((NPC)entity).getInteractions() != null) {
+								}//errors from here
+								if(((NPC)entity).getInteractions() != null ) {
 									((NPC)entity).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)entity).getGlobalNpcID(), language);
 									Interactions.setTalkingNPCid(i);
 								}
@@ -786,7 +788,9 @@ public class Main {
 					}
 
 					if(Interactions.getTalkingNPCid() != -1){
-						if(currentWorld.getEntity(Interactions.getTalkingNPCid()) instanceof NPC &&(NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())!=null && ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().getIsUsed()!=1) {
+						
+						if(currentWorld.getEntity(Interactions.getTalkingNPCid()) instanceof NPC /*((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().getIsUsed()!=1*/) {
+							//System.out.println(guiRenderer.getClickedObjectId());
 							((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getGlobalNpcID(), language);
 						}
 					}

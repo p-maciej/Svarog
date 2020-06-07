@@ -13,6 +13,7 @@ import static svarog.objects.ItemInfo.ItemType;
 import svarog.render.Texture;
 import svarog.render.Transform;
 import svarog.save.EntityHolder;
+import svarog.save.ItemParameters;
 import svarog.save.NpcParameters;
 import svarog.save.Save;
 import svarog.world.WorldRenderer;
@@ -24,7 +25,7 @@ public class NPC extends Entity{
 	
 	private static WorldObject questTexture;
 
-	private List<Item> items = new ArrayList<Item>();
+	private List<ItemParameters> items = new ArrayList<ItemParameters>();
 
 	public NPC(int id, Texture texture, Transform transform, boolean fullBoundingBox) {
 		super(id, texture, transform, fullBoundingBox);
@@ -34,7 +35,7 @@ public class NPC extends Entity{
 		super.setIsStatic(true); // static - default setting for NPC  
 	}
 	
-	public NPC(int id, Texture texture, Transform transform, boolean fullBoundingBox, List<Item> items) {
+	public NPC(int id, Texture texture, Transform transform, boolean fullBoundingBox, List<ItemParameters> items) {
 		super(id, texture, transform, fullBoundingBox);
 		super.setOverable(true);
 		super.setClickable(true); // we should add explicit constructor for this functionality < -----------------------------------------
@@ -88,6 +89,10 @@ public class NPC extends Entity{
 		
 		this.globalNpcID = (Save.getNpcsByID(entityHolder.getTypeID())).getGlobalNpcID();
 		
+		if(!npcParameters.getItems().isEmpty()) {
+			this.items=npcParameters.getItems();
+		}
+		
 		if((Save.getNpcsByID(entityHolder.getTypeID())).getInteractionsPath()!=null && !((Save.getNpcsByID(entityHolder.getTypeID())).getInteractionsPath().isEmpty())) {
 			this.setInteractions(new Interactions((Save.getNpcsByID(entityHolder.getTypeID())).getInteractionsPath()));
 		}
@@ -115,13 +120,13 @@ public class NPC extends Entity{
 		super.setIsStatic(true); 
 	}
 	
-	public void AddItem(Item item) {
-		items.add(item);
-	}
-	
-	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType, int prize) {
-		items.add(new Item(texture, position, itemInfo, globalID, localID, hpRegeneration, attackBonus, lvlRequired, name, description, itemType, prize));
-	}
+//	public void AddItem(Item item) {
+//		items.add(item);
+//	}
+//	
+//	public void AddItem(Texture texture, Vector2f position, ItemInfo itemInfo, int globalID, int localID, int hpRegeneration, int attackBonus, int lvlRequired, String name, String description, ItemType itemType, int prize) {
+//		items.add(new Item(texture, position, itemInfo, globalID, localID, hpRegeneration, attackBonus, lvlRequired, name, description, itemType, prize));
+//	}
 	
 	public Interactions getInteractions() {
 		return interactions;

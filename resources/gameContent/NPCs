@@ -31,7 +31,13 @@
 		<name>NPCRozenna</name>
 		<interactionsFile>Rozenna_dialog_1_pierwszy_dialog_w_grze.quest</interactionsFile>
 		<!--<interactionsFile>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</interactionsFile>-->
-		<howManyItems>0</howManyItems>
+		<howManyItems>3</howManyItems>
+		<itemGlobalID>2</itemGlobalID>
+		<itemTileID>101</itemTileID>
+		<itemGlobalID>3</itemGlobalID>
+		<itemTileID>102</itemTileID>
+		<itemGlobalID>4</itemGlobalID>
+		<itemTileID>103</itemTileID>
 	</npc>
 	<npc>
 		<globalID>3</globalID>

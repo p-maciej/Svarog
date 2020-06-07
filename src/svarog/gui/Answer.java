@@ -48,7 +48,7 @@ public class Answer {
 		return objectId;
 	}
 
-	public void setObjectId(int objectId) {
+	void setObjectId(int objectId) {
 		this.objectId = objectId;
 	}
 }
