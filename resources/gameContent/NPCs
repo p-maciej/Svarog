@@ -31,13 +31,7 @@
 		<name>NPCRozenna</name>
 		<interactionsFile>Rozenna_dialog_1_pierwszy_dialog_w_grze.quest</interactionsFile>
 		<!--<interactionsFile>Rozenna_dialog_2_po_rozmowie_z_Rodem.quest</interactionsFile>-->
-		<howManyItems>3</howManyItems>
-		<itemGlobalID>2</itemGlobalID>
-		<itemTileID>101</itemTileID>
-		<itemGlobalID>3</itemGlobalID>
-		<itemTileID>102</itemTileID>
-		<itemGlobalID>4</itemGlobalID>
-		<itemTileID>103</itemTileID>
+		<howManyItems>0</howManyItems>
 	</npc>
 	<npc>
 		<globalID>3</globalID>
@@ -180,5 +174,47 @@
 		<interactionsFile></interactionsFile>
 		<!--<interactionsFile>Rod_dialog_2_ostatni_dialog.quest</interactionsFile>-->
 		<howManyItems>0</howManyItems>
+	</npc>
+	<npc>
+		<globalID>16</globalID>
+		<texturePath>textures/npc/shopkeeper.png</texturePath>
+		<posX>48</posX>
+		<posY>25</posY>
+		<fullBoundingBox>true</fullBoundingBox>
+		<name>NPCShopkeeper</name>
+		<interactionsFile>Shopkeeper_dialog.quest</interactionsFile>
+		<howManyItems>16</howManyItems>
+		<itemGlobalID>22</itemGlobalID>
+		<itemTileID>100</itemTileID>
+		<itemGlobalID>23</itemGlobalID>
+		<itemTileID>101</itemTileID>
+		<itemGlobalID>20</itemGlobalID>
+		<itemTileID>102</itemTileID>
+		<itemGlobalID>21</itemGlobalID>
+		<itemTileID>103</itemTileID>
+		<itemGlobalID>19</itemGlobalID>
+		<itemTileID>104</itemTileID>
+		<itemGlobalID>16</itemGlobalID>
+		<itemTileID>105</itemTileID>
+		<itemGlobalID>17</itemGlobalID>
+		<itemTileID>106</itemTileID>
+		<itemGlobalID>18</itemGlobalID>
+		<itemTileID>107</itemTileID>
+		<itemGlobalID>30</itemGlobalID>
+		<itemTileID>108</itemTileID>
+		<itemGlobalID>29</itemGlobalID>
+		<itemTileID>109</itemTileID>
+		<itemGlobalID>28</itemGlobalID>
+		<itemTileID>110</itemTileID>
+		<itemGlobalID>24</itemGlobalID>
+		<itemTileID>111</itemTileID>
+		<itemGlobalID>0</itemGlobalID>
+		<itemTileID>112</itemTileID>
+		<itemGlobalID>1</itemGlobalID>
+		<itemTileID>113</itemTileID>
+		<itemGlobalID>2</itemGlobalID>
+		<itemTileID>114</itemTileID>
+		<itemGlobalID>6</itemGlobalID>
+		<itemTileID>115</itemTileID>
 	</npc>
 </class>

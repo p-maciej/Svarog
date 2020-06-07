@@ -2252,4 +2252,20 @@
         <key>NatureCrownChest</key>
         <translation>Korona Natury</translation>
     </variable>
+	<variable>
+        <key>NPCShopkeeper</key>
+        <translation>Domażyr - miejscowy kupiec.</translation>
+    </variable>
+	<variable>
+        <key>ShopandMav_dialog_line0</key>
+        <translation>[Domażyr] - Mavak! Witaj. Czy zechcesz może spojrzeć na mój skład towarów różnych?</translation>
+    </variable>
+	<variable>
+        <key>ShopandMav_dialog_line_goto_Trade</key>
+        <translation>Chętnie. Pokaż mi swoje towary.</translation>
+    </variable>
+	<variable>
+        <key>End_Trade</key>
+        <translation>Dziękuje, lecz nie tym razem. Bywaj.</translation>
+    </variable>
 </file>

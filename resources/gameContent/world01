@@ -545,4 +545,15 @@
 		<scaleY>1</scaleY>
 		<isClickable>true</isClickable>
 	</entity>
+	<entity>
+		<type>npc</type>
+		<id>62</id>
+		<typeID>16</typeID>
+		<name>NPCShopkeeper</name>
+		<posX>55</posX>
+		<posY>27</posY>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
+		<isClickable>true</isClickable>
+	</entity>
 </class>
