@@ -8,6 +8,15 @@
       <leadsTo>-2</leadsTo>
 	  <answer>End_Trade</answer>
       <id>1</id>
+      <leadsTo>1</leadsTo>
+      <q>0</q>
+      <t>0</t>
+   </dialog>
+   <dialog id = "1">
+      <content>ShopandMav_dialog_line0</content>
+      <ans>1</ans>
+      <answer>End</answer>
+      <id>0</id>
       <leadsTo>-1</leadsTo>
       <q>0</q>
       <t>0</t>
