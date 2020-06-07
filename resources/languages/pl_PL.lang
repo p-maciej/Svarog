@@ -2268,4 +2268,8 @@
         <key>End_Trade</key>
         <translation>Dziękuje, lecz nie tym razem. Bywaj.</translation>
     </variable>
+	<variable>
+        <key>ShopandMav_dialog_line0</key>
+        <translation>[Domażyr] - Jak sobie chcesz. Bywaj więc.</translation>
+    </variable>
 </file>
