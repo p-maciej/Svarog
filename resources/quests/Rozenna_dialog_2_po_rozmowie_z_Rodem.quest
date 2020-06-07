@@ -209,10 +209,13 @@
    </dialog>
     <dialog id = "23">
       <content>RozandMav_dialog2_line23</content>
-      <ans>1</ans>
+      <ans>2</ans>
       <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>24</leadsTo>
+	  <answer>Wanna trade?</answer>
+      <id>1</id>
+      <leadsTo>-2</leadsTo>
       <q>0</q>
       <t>0</t>
    </dialog>

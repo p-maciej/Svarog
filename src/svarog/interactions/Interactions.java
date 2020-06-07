@@ -217,9 +217,9 @@ public class Interactions {
 			Answer answerT = dialog.clickedAnswer();
 			
 			//System.out.println(answerT.getLeadsTo());
-				if(answerT.getId() == i) {
+				if(answerT!=null && answerT.getId() == i) {
 					///////////////////////////////////////////////////////////////////////////////////////////// TRADE
-					if(answerT.getLeadsTo() == -2) {
+					if(answerT.getLeadsTo() == -2 && isTrade == 1) {
 						isEnded = true;
 						
 						guiRenderer.closeDialog();
