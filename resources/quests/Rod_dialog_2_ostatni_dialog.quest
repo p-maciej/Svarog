@@ -30,7 +30,7 @@
    <dialog id = "3">
       <content>RodandMav_dialog2_line3</content>
       <ans>1</ans>
-      <answer>End</answer>
+      <answer>NextWindow</answer>
       <id>0</id>
       <leadsTo>4</leadsTo>
       <q>0</q>
