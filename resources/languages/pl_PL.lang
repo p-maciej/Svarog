@@ -8,7 +8,11 @@
     <variable>
         <key>youDontHaveEnoughMoney</key>
         <translation>Nie masz wystarczającej ilości gotówki!</translation>
-    </variable>youDontHaveEnoughMoney
+    </variable>
+	<variable>
+        <key>youDontHaveEnoughSpace</key>
+        <translation>Za mało miejsca w ekwipunku!</translation>
+    </variable>
 <!--FightSystem-->
     <variable>
         <key>fightSystemHpBefore</key>
