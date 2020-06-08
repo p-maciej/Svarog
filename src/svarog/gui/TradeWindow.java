@@ -122,6 +122,20 @@ public class TradeWindow extends GuiWindow implements GroupProperties {
 		} catch (Exception e) {}
 	}
 	
+	public int itemsInBuySection() {
+		int temp_=0;
+		for(Group grp:products[1].getTileGroupsList()) {
+			for(GuiObject object:grp.getTextureObjectList()) {
+				Tile temp = (Tile)(object);
+				
+				if(temp.getPuttedItem() != null) {
+					temp_++;
+				}
+			}
+		}
+		return temp_;
+	}
+	
 	public void buyItems(Player player, GuiRenderer guiRenderer) {
 		for(Group grp:products[1].getTileGroupsList()) {
 			for(GuiObject object:grp.getTextureObjectList()) {
@@ -140,8 +154,7 @@ public class TradeWindow extends GuiWindow implements GroupProperties {
 					temp.removePuttedItem();
 			}
 		}
-		
-		
+		update();
 	}
 	
 	public int getExpanse() {

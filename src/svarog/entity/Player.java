@@ -68,6 +68,9 @@ public class Player extends Entity {
 	private static GuiWindow confirmWindow;
 	private static Button applyButton;
 	
+	//Not enough space in trade window
+	private static GuiWindow notEnoughSpaceWindow;
+	
 	private boolean movementLock;
 
 	private Sound walk;
@@ -139,9 +142,11 @@ public class Player extends Entity {
 		super.setIsStatic(false); // Non-static - default setting for player
 		
 		confirmWindow = new GuiWindow(LanguageLoader.getLanguageLoader().getValue("youDontHaveEnoughMoney"), font, new TextureObject(new Texture("images/window3.png")), false);
+		notEnoughSpaceWindow = new GuiWindow(LanguageLoader.getLanguageLoader().getValue("youDontHaveEnoughSpace"), font, new TextureObject(new Texture("images/window3.png")), false);
 		applyButton = new Button(new Texture("images/okButton.png"),new Texture("images/okButton_hover.png"), new Vector2f(0, -15));
 
 		confirmWindow.addTextureObject(applyButton);
+		notEnoughSpaceWindow.addTextureObject(applyButton);
 		if(itemWindowPlayer==null) {
 			itemWindowPlayer = new ItemWindow(LanguageLoader.getLanguageLoader().getValue("reward"));
 		}
@@ -169,9 +174,11 @@ public class Player extends Entity {
 		super.setIsStatic(false); // Non-static - default setting for player 
 
 		confirmWindow = new GuiWindow(LanguageLoader.getLanguageLoader().getValue("youDontHaveEnoughMoney"), font, new TextureObject(new Texture("images/window3.png")), false);
+		notEnoughSpaceWindow = new GuiWindow(LanguageLoader.getLanguageLoader().getValue("youDontHaveEnoughSpace"), font, new TextureObject(new Texture("images/window3.png")), false);
 		applyButton = new Button(new Texture("images/buttonYes.png"),new Texture("images/buttonYes_hover.png"), new Vector2f(0, -15));
 
 		confirmWindow.addTextureObject(applyButton);
+		notEnoughSpaceWindow.addTextureObject(applyButton);
 	}
 	
 	public PagedGuiWindow getQuestsPagedOnGUI(Font font, Font font2, LanguageLoader language) {
@@ -308,12 +315,15 @@ public class Player extends Entity {
 		if(isTradeOn==1) {
 			if(trade.getBuyButton().isClicked()) {
 				if(trade.getExpanse()>0) {
-					if(trade.getExpanse()<=this.money) {
+					if(trade.itemsInBuySection()>guiRenderer.getTileSheet().size()-this.getInventory().getItems().size()) {
+						guiRenderer.addWindow(notEnoughSpaceWindow);
+					}
+					else if(trade.getExpanse()<=this.money) {
 						trade.buyItems(this, guiRenderer);
 						this.setMoney(getMoney()-trade.getExpanse());
 						guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, this);
-					}
-					else {
+					}else 
+					{
 						guiRenderer.addWindow(confirmWindow);
 					}
 				}
@@ -321,9 +331,15 @@ public class Player extends Entity {
 			if(applyButton.isClicked()) {
 
 					guiRenderer.removeWindow(confirmWindow.getId());
+					guiRenderer.removeWindow(notEnoughSpaceWindow.getId());
 
 			}
-			if(trade.isClosed()) {
+			if(trade.getCloseButton().isClicked()) {
+				
+
+				guiRenderer.removeWindow(confirmWindow.getId());
+				guiRenderer.removeWindow(notEnoughSpaceWindow.getId());
+				
 				isTradeOn=0;
 			}
 		}
