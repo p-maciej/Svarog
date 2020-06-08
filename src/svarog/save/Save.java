@@ -837,6 +837,7 @@ public class Save {
 		return null;
 	}
 	
+	
 	public static void addNpcInteractions(NpcInteractions npcInteract) {
 		int temp = 0;
 		//System.out.println("Hello there");

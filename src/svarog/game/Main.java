@@ -813,8 +813,10 @@ public class Main {
 										}
 										if(q1.isEndedQuest() && !q1.isRewardedYet()) {
 											System.out.println("Collected em all!s");
+											
 											q1.sendReward(player, guiRenderer, currentWorld, 0);
 											guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
+											int temporaryAmInew=0;
 											for(NpcParameters n:Save.getNpcs()) {
 												if(n.getInterQ() != null && n.getInterQ().getQuests().size()>0) {
 													if(q1.getQuestID() == n.getInterQ().getQuests().get(0).getQuestID()) {
@@ -825,11 +827,20 @@ public class Main {
 											    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
 											    			Save.UpdateInteractions(currentWorld.getNPCs());
 											    			//System.out.println("quest");
+											    			temporaryAmInew++;
 											    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" NEXT MAINENMAIN");
 
 											    		}
 													}
 												}
+											}
+											if(temporaryAmInew==0) {
+
+									    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
+									    			Save.addNpcInteractions(new NpcInteractions(q1.getNextInteraction(), 0, q1.getIdNpc()));
+									    			Save.UpdateInteractions(currentWorld.getNPCs());
+									    			System.out.println(Save.getNpcsByID(q1.getIdNpc()).getName()+" " + 0 + " "+q1.getNextInteraction()+" colectable second option I am fucking good here");
+
 											}
 										}
 									}
