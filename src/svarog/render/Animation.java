@@ -35,6 +35,11 @@ public class Animation extends Texture {
 	
 	@Override
 	public void bind(int sampler) {
+		if(elapsedTime >= fps*2) {
+			resetLastTime();
+			elapsedTime = 0;
+		}
+		
 		this.currentTime = Timer.getTime();
 		this.elapsedTime += currentTime - lastTime;
 

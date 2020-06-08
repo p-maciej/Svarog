@@ -19,7 +19,6 @@ import svarog.entity.Entity;
 import svarog.entity.NPC;
 import svarog.entity.Player;
 import svarog.io.Timer;
-import svarog.render.Animation;
 import svarog.render.Texture;
 
 import svarog.world.Tile;
@@ -63,9 +62,6 @@ public class World implements Runnable {
 		
 		tiles = new Tile[width][height];
 		bounding_boxes = new AABB[width][height];
-		
-		if(NPC.getQuestTexture() != null)
-			((Animation)NPC.getQuestTexture().getTexture()).resetLastTime();
 		
 		world = new Matrix4f().setTranslation(new Vector3f(0));
 		world.scale(WorldRenderer.scale);
