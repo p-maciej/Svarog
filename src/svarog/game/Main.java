@@ -133,6 +133,8 @@ public class Main {
 		
 		audioBackgroundLoaded = false;
 		
+		
+		
 		audioLoad = new Thread(new Runnable() {
 			  public void run() {
 			    try {
@@ -151,6 +153,9 @@ public class Main {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
+		
+		ItemWindow.setFont(roboto_15);
+		ItemWindow.setBackgroundTexture(new TextureObject(new Texture("images/window3.png")));
 		
 		if(walk != null) {
 			player = new Player(walk, Save.getPlayerParam(), roboto_15);
@@ -281,8 +286,7 @@ public class Main {
 		TradeWindow.setFont(roboto_15);
 		TradeWindow.setBackgroundTexture(new TextureObject(new Texture("images/window4.png")));
 		
-		ItemWindow.setFont(roboto_15);
-		ItemWindow.setBackgroundTexture(new TextureObject(new Texture("images/window3.png")));
+
 		
 		// Tiles to character EQ
 		Texture tileHelmetTexture = new Texture("images/eqTile/helmetTile.png");

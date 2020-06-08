@@ -33,8 +33,14 @@ public class Quest {
     
     public void sendReward(Player player, GuiRenderer guiRenderer, World world, int isUsed) {
     	if(!isRewardedYet && isEndedQuest) {
+    		int itemsAdded=0;
     		for(Item i:rewardItem) {
-    			player.addItemToInventoryWithGUIupdate(i, guiRenderer);
+    			Player.getItemWindowPlayer().addRewardItem(i);
+    			itemsAdded++;
+    			//player.addItemToInventoryWithGUIupdate(i, guiRenderer);
+    		}
+    		if(itemsAdded>0) {
+    			guiRenderer.addWindow(Player.getItemWindowPlayer());
     		}
     		player.addMoney(rewardMoney);
     	}

@@ -18,6 +18,7 @@ import svarog.gui.Arena;
 import svarog.gui.Button;
 import svarog.gui.GuiRenderer;
 import svarog.gui.GuiWindow;
+import svarog.gui.ItemWindow;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.PagedGuiWindow;
 import svarog.gui.PagedGuiWindow.Type;
@@ -44,6 +45,13 @@ import svarog.world.WorldRenderer;
 
 public class Player extends Entity {
 	
+	private static ItemWindow itemWindowPlayer;
+	
+	
+	public static ItemWindow getItemWindowPlayer() {
+		return itemWindowPlayer;
+	}
+
 	private int isFightWin = 0; //0==no fight, 1 == win, 2 == lost
 	
 	private boolean setCamWithoutAnimation;
@@ -134,6 +142,9 @@ public class Player extends Entity {
 		applyButton = new Button(new Texture("images/okButton.png"),new Texture("images/okButton_hover.png"), new Vector2f(0, -15));
 
 		confirmWindow.addTextureObject(applyButton);
+		if(itemWindowPlayer==null) {
+			itemWindowPlayer = new ItemWindow(LanguageLoader.getLanguageLoader().getValue("reward"));
+		}
 	}
 	
 	public Player(int id, String texturePath, String filename, Sound walkSound, Transform transform, boolean fullBoundingBox, Inventory inventory, Font font) {
@@ -289,6 +300,10 @@ public class Player extends Entity {
 	
 	@Override
 	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer, GuiRenderer guiRenderer) {
+		
+		if(itemWindowPlayer.getCloseButton().isClicked()) {
+			itemWindowPlayer.clear();
+		}
 		
 		if(isTradeOn==1) {
 			if(trade.getBuyButton().isClicked()) {
@@ -463,9 +478,9 @@ public class Player extends Entity {
 	
 	public void addItemToInventoryWithGUIupdate(Item item, GuiRenderer guiRenderer) {
 		if(this.getInventory().getItems().size()<=guiRenderer.getTileSheet().size()) {
-			
-			guiRenderer.getTileSheet().putItemFirstEmpty(this.getInventory().getItems().get(this.getInventory().getItems().size()-1), this);
 			this.getInventory().getItems().add(item);
+			guiRenderer.getTileSheet().putItemFirstEmpty(item, this);
+
 		}
 	}
 
@@ -488,16 +503,25 @@ public class Player extends Entity {
 				this.AddPlayerXP(enemy.GetXpForKilling());
 				
 				this.money += enemy.getReward();
-				
+				int itemsAdded=0;
 				for(int iter = 0; iter<enemy.getItems().size();iter++) {
 					if(enemy.getPropability().get(iter)==1) {
-						this.addItemToInventoryWithGUIupdate(new Item(enemy.getItems().get(iter)), guiRenderer);
+						itemWindowPlayer.addRewardItem(new Item(enemy.getItems().get(iter)));
+						itemsAdded++;
+
+						//this.addItemToInventoryWithGUIupdate(new Item(enemy.getItems().get(iter)), guiRenderer);
 					}else {
 						int propability = (int)((enemy.getPropability().get(iter))*Math.random() + 1);
 						if(propability==1) {
-							this.addItemToInventoryWithGUIupdate(new Item(enemy.getItems().get(iter)), guiRenderer);
+							itemWindowPlayer.addRewardItem(new Item(enemy.getItems().get(iter)));
+							//this.addItemToInventoryWithGUIupdate(new Item(enemy.getItems().get(iter)), guiRenderer);
+
+							itemsAdded++;
 						}
 					}
+				}
+				if(itemsAdded>0) {
+					guiRenderer.addWindow(itemWindowPlayer);
 				}
 				
 				//TASK KILL
