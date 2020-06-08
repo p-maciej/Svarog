@@ -357,7 +357,7 @@ public class Main {
 		tileSheet.addTileGroup(trashG, groupType.other);
 		//////////////////
 		
-		List<ItemType> puttables = Arrays.asList(ItemType.values()); // main eq - there should be every item type
+		List<ItemType> puttables = Arrays.asList(ItemType.trophy, ItemType.helm, ItemType.other, ItemType.weapon, ItemType.consumable, ItemType.armor, ItemType.gloves, ItemType.shoes); // main eq - there should be every item type
 
 		for(int i = 0; i < 6; i++) {
 			for(int j = 0; j < 5; j++) {
@@ -391,7 +391,7 @@ public class Main {
 		tileGroup4.setType(groupType.swap);
 		for(int i = 0; i < 5; i++) {
 				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, i*50, 0);
-				tile.setPuttableItemTypes(puttables);
+				tile.setPuttableItemTypes(Arrays.asList(ItemType.swap));
 				tileGroup4.addGuiObject(tile);
 		}
 		
@@ -800,7 +800,7 @@ public class Main {
 								currentWorld.removeAndRespawn(entity);
 								int loot = 0;
 								for(Item item : ((EntityItem)entity).getLoot()) {
-									Player.getItemWindowPlayer().addRewardItem(item);
+									Player.getItemWindowPlayer().addRewardItem(new Item(item));
 									loot++;
 									//COLLECT TASK
 									for(Quest q1:player.getQuests()) {

@@ -326,6 +326,17 @@ public class GuiRenderer implements RenderProperties {
 						}
 					}
 				}
+				
+				if(item instanceof ItemWindow) {
+					for(Group group : ((ItemWindow)item).getTileSheet().getTileGroupsList()) {
+						for(GuiObject obj : group.getTextureObjectList()) {
+							mouseInteraction(obj, window);
+							Item temp = ((Tile)obj).getPuttedItem();
+							if(temp != null) 
+								mouseInteraction(temp, window);
+						}
+					}
+				}
 			}
 		}
 		
@@ -731,6 +742,10 @@ public class GuiRenderer implements RenderProperties {
 							try {
 								tile.putItem(object.getPuttedItem(), player);
 								tile.getPuttedItem().setPosition(tile.getTransform().getPosition().x, tile.getTransform().getPosition().y);
+								
+								if(object.isSwap() && !tile.isSwap())
+									player.getInventory().getItems().add(tile.getPuttedItem());
+								
 								object.removePuttedItem();
 								
 								if(tile.getPuttableItemTypes().size() == 1 && (tile.getPuttableItemTypes().get(0) == ItemType.armor || tile.getPuttableItemTypes().get(0) == ItemType.gloves || tile.getPuttableItemTypes().get(0) == ItemType.helm || tile.getPuttableItemTypes().get(0) == ItemType.weapon || tile.getPuttableItemTypes().get(0) == ItemType.shoes)) {

@@ -480,7 +480,6 @@ public class Player extends Entity {
 		if(this.getInventory().getItems().size()<=guiRenderer.getTileSheet().size()) {
 			this.getInventory().getItems().add(item);
 			guiRenderer.getTileSheet().putItemFirstEmpty(item, this);
-
 		}
 	}
 

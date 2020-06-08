@@ -166,7 +166,8 @@ public class Tile extends TextureObject implements ItemProperties {
 
 		if(puttedItem == null) {
 			for(ItemType type : puttableItemTypes) {
-				if(type == object.getItemType()) {
+				if(type == object.getItemType() || type == ItemType.swap) {
+					System.out.println("add");
 					object.setPosition(this.getTransform().getPosition().x, this.getTransform().getPosition().y);
 					this.puttedItem = object;
 					hasBeenPutted = true;
@@ -179,6 +180,14 @@ public class Tile extends TextureObject implements ItemProperties {
 		if(hasBeenPutted == false) {
 			throw new Exception("Cannot put item in this tile");
 		}
+	}
+	
+	boolean isSwap() {
+		for(ItemType type : puttableItemTypes)
+			if(type == ItemType.swap)
+				return true;
+		
+		return false;
 	}
 
 	public Item getPuttedItem() {

@@ -44,14 +44,12 @@ public class ItemWindow extends GuiWindow {
 				for(GuiObject tile : group.getObjects()) {
 					if(tile instanceof Tile) {
 						Tile temp = (Tile)tile;
-						if(temp.getPuttableItemTypes().size() > 1) {
-							if(temp.getPuttedItem() == null) {
-								try {
-									temp.putItem(item);
-									finished = true;
-									break;
-								} catch (Exception e) {}
-							}		
+						if(temp.getPuttedItem() == null) {
+							try {
+								temp.putItem(item);
+								finished = true;
+								break;
+							} catch (Exception e) {}		
 						}
 					}
 				}

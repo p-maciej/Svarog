@@ -11,6 +11,7 @@ public interface ItemProperties {
 		gloves,
 		shoes,
 		trash,
+		swap,
 		none
 	}
 }
