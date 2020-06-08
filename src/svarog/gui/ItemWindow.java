@@ -1,5 +1,7 @@
 package svarog.gui;
 
+import java.util.Collections;
+
 import svarog.gui.GroupProperties.groupType;
 import svarog.gui.font.Font;
 import svarog.objects.Item;
@@ -33,8 +35,11 @@ public class ItemWindow extends GuiWindow {
 	
 	public void addRewardItem(Item item) {
 		boolean finished = false;
-			
+		
+		Collections.sort(tileSheet.getTileGroupsList());
+		
 		for(Group group : tileSheet.getTileGroupsList()) {
+			Collections.sort(group.getObjects());
 			if(group.getType() == groupType.swap) {
 				for(GuiObject tile : group.getObjects()) {
 					if(tile instanceof Tile) {

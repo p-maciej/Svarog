@@ -57,6 +57,10 @@
     </variable>
 <!--Items-->
     <variable>
+        <key>reward</key>
+        <translation>Nagroda</translation>
+    </variable>
+    <variable>
         <key>wolfSkin</key>
         <translation>Skóra wilka</translation>
     </variable>
