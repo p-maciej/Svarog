@@ -468,17 +468,7 @@ public class Player extends Entity {
 			this.getInventory().getItems().add(item);
 		}
 	}
-	
-	public int PlayerItemSize() {
-		int tempSize=0;
-		for(Item i: this.inventory.getItems()) {
-			if(i.getItemInfo().getTileID()>4 && i.getItemInfo().getTileID()<41) {
-				tempSize++;
-			}
-		}
-		return tempSize;
-	}
-	
+
 	public ArrayList<String> fightLogic(Enemy enemy, World world, GuiRenderer guiRenderer, World currentWorld) {
 		ArrayList<String> fightString = new ArrayList<>();
 		int hpDisplay;
