@@ -307,7 +307,6 @@ public class Player extends Entity {
 	
 	@Override
 	public void update(float delta, Window window, Camera camera, WorldRenderer world, Audio audioPlayer, GuiRenderer guiRenderer) {
-		
 		if(itemWindowPlayer.getCloseButton().isClicked()) {
 			itemWindowPlayer.clear();
 		}
@@ -320,7 +319,6 @@ public class Player extends Entity {
 					}
 					else if(trade.getExpanse()<=this.money) {
 						trade.buyItems(this, guiRenderer);
-						this.setMoney(getMoney()-trade.getExpanse());
 						guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, this);
 					} else {
 						guiRenderer.addWindow(confirmWindow);

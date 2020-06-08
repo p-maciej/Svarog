@@ -154,6 +154,7 @@ public class TradeWindow extends GuiWindow implements GroupProperties {
 					temp.removePuttedItem();
 			}
 		}
+		player.setMoney(player.getMoney()-this.getExpanse());
 		update();
 	}
 	
