@@ -35,7 +35,7 @@ public class Quest {
     	if(!isRewardedYet && isEndedQuest) {
     		int itemsAdded=0;
     		for(Item i:rewardItem) {
-    			Player.getItemWindowPlayer().addRewardItem(i);
+    			Player.getItemWindowPlayer().addRewardItem(new Item(i));
     			itemsAdded++;
     			//player.addItemToInventoryWithGUIupdate(i, guiRenderer);
     		}

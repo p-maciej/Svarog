@@ -357,7 +357,7 @@ public class Main {
 		tileSheet.addTileGroup(trashG, groupType.other);
 		//////////////////
 		
-		List<ItemType> puttables = Arrays.asList(ItemType.trophy, ItemType.helm, ItemType.other, ItemType.weapon, ItemType.consumable, ItemType.armor, ItemType.gloves, ItemType.shoes); // main eq - there should be every item type
+		List<ItemType> puttables = Arrays.asList(ItemType.trophy, ItemType.helm, ItemType.other, ItemType.weapon, ItemType.consumable, ItemType.armor, ItemType.gloves, ItemType.shoes, ItemType.none); // main eq - there should be every item type
 
 		for(int i = 0; i < 6; i++) {
 			for(int j = 0; j < 5; j++) {
@@ -411,7 +411,7 @@ public class Main {
 				try {
 					guiRenderer.getTileSheet().getTile(itemT.getItemInfo().getTileID()).putItem(itemT, player);
 				} catch (Exception e) {
-					e.printStackTrace();
+					guiRenderer.getTileSheet().putItemFirstEmpty(itemT, player);
 				}
 			}else {
 				guiRenderer.getTileSheet().putItemFirstEmpty(itemT, player);
