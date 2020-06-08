@@ -12,11 +12,15 @@
 <!--FightSystem-->
     <variable>
         <key>fightSystemHpBefore</key>
-        <translation>- HP przed atakiem:</translation>
+        <translation>- życie przed atakiem:</translation>
+    </variable>
+    <variable>
+        <key>fightSystemHpStart</key>
+        <translation>- ilość życia:</translation>
     </variable>
     <variable>
         <key>fightSystemHpAfter</key>
-        <translation>- HP po ataku:</translation>
+        <translation>- życie po ataku:</translation>
     </variable>
     <variable>
         <key>fightSystemPlayerWon</key>

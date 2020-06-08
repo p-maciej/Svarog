@@ -465,23 +465,26 @@ public class Player extends Entity {
 		if(this.getInventory().getItems().size()<36) {
 			this.getInventory().getItems().add(item);
 			guiRenderer.getTileSheet().putItemFirstEmpty(this.getInventory().getItems().get(this.getInventory().getItems().size()-1), this);
-		}else {
-			System.out.println("Koniec miejsca lol");
 		}
 	}
 	
 	public ArrayList<String> fightLogic(Enemy enemy, World world, GuiRenderer guiRenderer, World currentWorld) {
 		ArrayList<String> fightString = new ArrayList<>();
-		
+		int hpDisplay;
+		fightString.add(this.getName()+" "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpStart")+" " + this.getHP().GetHP());
+		fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpStart")+" " + (enemy).GetEnemyHP());
 		while((enemy).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
-			//fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpBefore")+" " + (enemy).GetEnemyHP());
 			(enemy).DecreaseEnemyHP(this.getRandomAttack()+getPlayerAttackBonus());
-			fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpAfter")+" " + (enemy).GetEnemyHP());
+			
+			hpDisplay = 0;
+			if((enemy).GetEnemyHP() > 0)
+				hpDisplay = (enemy).GetEnemyHP();
+			
+			fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpAfter")+" " + hpDisplay);
 			if((enemy).GetEnemyHP()<=0) {
 				fightString.add((enemy).getName() + " "+LanguageLoader.getLanguageLoader().getValue("fightSystemPlayerWon"));
 				//Adding XP and money reward
 				this.AddPlayerXP(enemy.GetXpForKilling());
-				//System.out.println(this.getXP().GetXP()+ " " + this.getXP().getXpmin() + " " + this.getXP().getXpmax());
 				
 				this.money += enemy.getReward();
 				
@@ -511,14 +514,9 @@ public class Player extends Entity {
 							if(n.getInteractions().getQuests().size()>0) {
 								if(q1.getQuestID() == n.getInteractions().getQuests().get(0).getQuestID()) {
 									Quest temp = n.getInteractions().getQuests().get(0);
-									System.out.println(temp.isLast() +" "+ temp.getQuestID() +" "+ n.getInteractions().getIsUsed());
 									if(!temp.isLast() && temp.getQuestID()!=-1 && n.getInteractions().getIsUsed()==1) {
-						    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
 						    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
 						    			Save.UpdateInteractions(currentWorld.getNPCs());
-						    			//System.out.println("quest");
-						    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" NEXT MAINENMAIN");
-
 						    		}
 								}
 							}
@@ -530,11 +528,15 @@ public class Player extends Entity {
 				//Last line (everything should be done before it)
 				world.removeAndRespawn(enemy);
 			}else {
-				//fightString.add(this.getName()+" "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpBefore")+" " + this.getHP().GetHP());
 				int enemyAttcc = (enemy).GetRandomAttack();
 				int attack = ((enemyAttcc-this.getPlayerDefense())>0)?(enemyAttcc-this.getPlayerDefense()):0;
 				this.DecreasePlayerHP(attack);
-				fightString.add(this.getName()+" "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpAfter")+" " + this.getHP().GetHP());
+				
+				hpDisplay = 0;
+				if(this.getHP().GetHP() > 0)
+					hpDisplay = this.getHP().GetHP();
+				
+				fightString.add(this.getName()+" "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpAfter")+" " + hpDisplay);
 				if(this.getHP().GetHP()<=0) {
 					fightString.add(LanguageLoader.getLanguageLoader().getValue("fightSystemPlayerDefeat")+" "+
 							(enemy).getName() + " "+LanguageLoader.getLanguageLoader().getValue("fightSystemPlayerDefeat2"));
