@@ -798,8 +798,10 @@ public class Main {
 								}
 							} else if(entity instanceof EntityItem) {
 								currentWorld.removeAndRespawn(entity);
+								int loot = 0;
 								for(Item item : ((EntityItem)entity).getLoot()) {
-									player.addItemToInventoryWithGUIupdate(new Item(item), guiRenderer);
+									Player.getItemWindowPlayer().addRewardItem(item);
+									loot++;
 									//COLLECT TASK
 									for(Quest q1:player.getQuests()) {
 										for(Task t1:q1.getTasks()) {
@@ -832,6 +834,8 @@ public class Main {
 										}
 									}
 								}
+								if(loot > 0)
+									guiRenderer.addWindow(Player.getItemWindowPlayer());
 							}
 						}
 					}
