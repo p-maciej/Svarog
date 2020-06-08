@@ -3,6 +3,8 @@ package svarog.save;
 import java.util.ArrayList;
 import java.util.List;
 
+import svarog.interactions.Interactions;
+
 public class NpcParameters {
 	private int globalNpcID=-1;
 	private String texturePath = null;
@@ -12,6 +14,7 @@ public class NpcParameters {
 	private String name = null;
 
 	private String interactionsFile = null;
+	private Interactions interQ;
 	private List<ItemParameters> items = new ArrayList<>();
 	
 	public NpcParameters(int globalNpcID, String texturePath, int posX, int posY, boolean fullBoundingBox, String name,
@@ -24,6 +27,9 @@ public class NpcParameters {
 		this.fullBoundingBox = fullBoundingBox;
 		this.name = name;
 		this.interactionsFile = interactionsPath;
+		if(interactionsPath != null && interactionsPath!="") {
+			this.setInterQ(new Interactions(interactionsPath));
+		}
 		this.items = items;
 	}
 	
@@ -74,6 +80,14 @@ public class NpcParameters {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Interactions getInterQ() {
+		return interQ;
+	}
+
+	public void setInterQ(Interactions interQ) {
+		this.interQ = interQ;
 	}
 	
 }
