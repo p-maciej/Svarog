@@ -63,6 +63,7 @@ public class GuiRenderer implements RenderProperties {
 	private static int mouseOverTileId;
 	private static int clickedTileId;
 	private static int draggingFromObjectId;
+	private static int draggingItemId;
 	private static boolean objectDraggedOut;
 	private static int draggingWindowId;
 	private static boolean setPointer;
@@ -118,6 +119,7 @@ public class GuiRenderer implements RenderProperties {
 		pressedObjectId = -1;
 		pressedObjId = -1;
 		setObjectId = -1;
+		draggingItemId = -1;
 	}
 	
 	public void updatePositions() {
@@ -382,11 +384,17 @@ public class GuiRenderer implements RenderProperties {
 			}
 		}
 		
-
+		// And groups of tiles
+		for(Group group : tileSheet.getTileGroupsList()) {
+			if(group.getType() != groupType.swap) {
+				for(GuiObject object : group.getTextureObjectList()) {
+					renderGuiObject(object, shader, window);
+				}
+			}
+		}
 		
 		int outerIndex = 0;
 		int draggingIndex = -1;
-		boolean renderSwap = false;
 		
 		update = false;
 		
@@ -448,7 +456,13 @@ public class GuiRenderer implements RenderProperties {
 			if(item instanceof ItemWindow) {
 				for(Group group : ((ItemWindow) item).getTileSheet().getTileGroupsList()) {
 					if(group.getType() == groupType.swap) {
-						renderSwap = true;
+						for(GuiObject object : group.getTextureObjectList()) {
+							renderGuiObject(object, shader, window);
+							Item temp = ((Tile)object).getPuttedItem();
+							if(temp != null && temp.getId() != draggingItemId)  {
+								renderGuiObject(temp, shader, window);
+							}
+						}
 					}
 				}
 			}
@@ -470,14 +484,7 @@ public class GuiRenderer implements RenderProperties {
 		if(update)
 			updatePositions();
 		
-		// And groups of tiles
-		for(Group group : tileSheet.getTileGroupsList()) {
-			if(group.getType() != groupType.swap || renderSwap == true) {
-				for(GuiObject object : group.getTextureObjectList()) {
-					renderGuiObject(object, shader, window);
-				}
-			}
-		}
+		
 		
 		if(draggingWindowId >= 0) {
 			if(windows.get(windows.size()-1).getId() != draggingWindowId) {
@@ -491,11 +498,24 @@ public class GuiRenderer implements RenderProperties {
 		
 		// Render items
 		for(Group group : tileSheet.getTileGroupsList()) {
-			if(group.getType() != groupType.swap || renderSwap == true) {
+			if(group.getType() != groupType.swap) {
 				for(GuiObject object : group.getTextureObjectList()) {
 					Item temp = ((Tile)object).getPuttedItem();
 					if(temp != null)  {
 						renderGuiObject(temp, shader, window);
+					}
+				}
+			}
+		}
+		
+		for(GuiWindow item : windows) {
+			for(Group group : ((ItemWindow) item).getTileSheet().getTileGroupsList()) {
+				if(group.getType() == groupType.swap) {
+					for(GuiObject object : group.getTextureObjectList()) {
+						Item temp = ((Tile)object).getPuttedItem();
+						if(temp != null && temp.getId() == draggingItemId)  {
+							renderGuiObject(temp, shader, window);
+						}
 					}
 				}
 			}
@@ -726,6 +746,9 @@ public class GuiRenderer implements RenderProperties {
 					if(((Tile) object).getPuttedItem() != null) {
 						if(draggingFromObjectId == -1) {
 							draggingFromObjectId = object.getId();
+							if(object.getPuttedItem() != null)
+								draggingItemId = object.getPuttedItem().getId();
+							
 							clickedTime = Timer.getNanoTime();
 						}
 						
@@ -774,6 +797,7 @@ public class GuiRenderer implements RenderProperties {
 						object.getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
 					}
 					draggingFromObjectId = -1;
+					draggingItemId = -1;
 					objectDraggedOut = false;
 				}
 			}
