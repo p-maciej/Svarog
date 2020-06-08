@@ -329,11 +329,13 @@ public class GuiRenderer implements RenderProperties {
 				
 				if(item instanceof ItemWindow) {
 					for(Group group : ((ItemWindow)item).getTileSheet().getTileGroupsList()) {
-						for(GuiObject obj : group.getTextureObjectList()) {
-							mouseInteraction(obj, window);
-							Item temp = ((Tile)obj).getPuttedItem();
-							if(temp != null) 
-								mouseInteraction(temp, window);
+						if(group.getType() == groupType.swap) { 
+							for(GuiObject obj : group.getTextureObjectList()) {
+								mouseInteraction(obj, window);
+								Item temp = ((Tile)obj).getPuttedItem();
+								if(temp != null) 
+									mouseInteraction(temp, window);
+							}
 						}
 					}
 				}
@@ -342,11 +344,13 @@ public class GuiRenderer implements RenderProperties {
 		
 		// And groups of tiles
 		for(Group group : tileSheet.getTileGroupsList()) {
-			for(GuiObject object : group.getTextureObjectList()) {
-				mouseInteraction(object, window);
-				Item temp = ((Tile)object).getPuttedItem();
-				if(temp != null) 
-					mouseInteraction(temp, window);
+			if(group.getType() != groupType.swap) { 
+				for(GuiObject object : group.getTextureObjectList()) {
+					mouseInteraction(object, window);
+					Item temp = ((Tile)object).getPuttedItem();
+					if(temp != null) 
+						mouseInteraction(temp, window);
+				}
 			}
 		}
 		////////////////////////////////////////
