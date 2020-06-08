@@ -696,6 +696,14 @@ public class GuiRenderer implements RenderProperties {
 			if(window.getInput().isMouseButtonReleased(0)) {
 				if(mouseOverTileId == pressedObjId) {
 					clickCount++;
+					
+					if(clickCount >= 2) {
+						sheet.putItemFirstEmpty(new Item(object.getPuttedItem()));
+						current.update();
+						update = true;
+						clickCount = 0;
+						setObjectId = -1;
+					}
 				}
 			}	
 			if(window.getInput().isMouseButtonDown(0)) {
@@ -706,13 +714,7 @@ public class GuiRenderer implements RenderProperties {
 			}
 			
 			if(Timer.getDelay(clickedTime, Timer.getNanoTime(), 0.3f) && mouseOverTileId == pressedObjId) {
-				if(clickCount >= 2) {
-					sheet.putItemFirstEmpty(new Item(object.getPuttedItem()));
-					current.update();
-					update = true;
-					clickCount = 0;
-					setObjectId = -1;
-				} else if(clickCount == 1) {
+				if(clickCount == 1) {
 					if(StatsContainer.getItemInfo() != null)
 						this.removeWindow(StatsContainer.getItemInfo().getId());
 					
