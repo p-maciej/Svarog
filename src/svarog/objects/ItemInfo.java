@@ -85,14 +85,6 @@ public class ItemInfo implements ItemProperties {
 	public void setItemType(ItemType itemType) {
 		this.itemType = itemType;
 	}
-	
-	//public int getLocalID() {
-	//	return localID;
-	//}
-
-	//public void setLocalID(int localID) {
-	//	this.localID = localID;
-	//}
 
 	public int getGlobalID() {
 		return globalID;

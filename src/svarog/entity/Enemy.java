@@ -23,8 +23,7 @@ public class Enemy extends Entity {
 	private List<Integer> propability = new ArrayList<>();
 	
 	//Animacja potem siê ogarnie
-	//private String texturesPath;
-	//private String fileName;
+
 
 	private int globalID =-1;
 	private HP hp = new HP(20);
@@ -40,8 +39,6 @@ public class Enemy extends Entity {
 		super.setClickable(true);
 		super.setOverable(true);
 		super.setIsStatic(true);
-		//this.texturesPath = texturePath;
-		//this.fileName = filename;
 		
 	}
 	
@@ -49,8 +46,6 @@ public class Enemy extends Entity {
 		super(id, texture, transform, fullBoundingBox);
 		super.setClickable(true);
 		super.setOverable(true);
-		//this.texturesPath = texturePath;
-		//this.fileName = filename;
 		super.setIsStatic(true);
 		
 		this.maxAttack = maxAttack;
@@ -67,8 +62,6 @@ public class Enemy extends Entity {
 		EnemyParameters enemyParameters = Save.getEnemyById(entityHolder.getTypeID());
 		super.setClickable(true);
 		super.setOverable(true);
-		//this.texturesPath = texturePath;
-		//this.fileName = filename;
 		super.setIsStatic(true);
 		
 		this.globalID = enemyParameters.getGlobalEnemyID();
@@ -98,8 +91,6 @@ public class Enemy extends Entity {
 				enemyParameters.isFullBoundingBox());
 		super.setClickable(true);
 		super.setOverable(true);
-		//this.texturesPath = texturePath;
-		//this.fileName = filename;
 		super.setIsStatic(true);
 		
 		this.globalID = enemyParameters.getGlobalEnemyID();
@@ -133,8 +124,6 @@ public class Enemy extends Entity {
 				enemyParameters.isFullBoundingBox());
 		super.setClickable(true);
 		super.setOverable(true);
-		//this.texturesPath = texturePath;
-		//this.fileName = filename;
 		
 		super.setIsStatic(true);
 		
@@ -165,8 +154,6 @@ public class Enemy extends Entity {
 		super(id, texture, transform, fullBoundingBox);
 		super.setClickable(true);
 		super.setOverable(true);
-		//this.texturesPath = texturePath;
-		//this.fileName = filename;
 		
 		super.setIsStatic(true);
 		

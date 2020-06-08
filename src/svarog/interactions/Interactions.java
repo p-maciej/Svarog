@@ -37,6 +37,7 @@ public class Interactions {
 	private Dialog dialog;
 	private boolean isEnded = true;
 	private int isTrade;
+	
 	//nowe elementy dla aktualnego stanu Interactions
 	private String file;
 	private int isUsed=1; //czy nie zosta³ u¿yty
@@ -182,13 +183,7 @@ public class Interactions {
 
 		if(window.getInput().isMouseButtonReleased(0) && !guiRenderer.isDialogOpen() && isUsed == 0) {
 			guiRenderer.showDialog(dialog, language);
-			
-			//if(!quests.isEmpty() && quests.get(0).getIdNpc()!=NPCid) {
-				//Save.addNpcInteractions(new NpcInteractions(quests.get(0).getNextInteraction(), 1, quests.get(0).getIdNpc()));
-				//System.out.println(quests.get(0).getTitle());
-				//System.out.println(Save.getNpcsByID(NPCid).getName()+ " "+quests.get(0).getNextInteraction()+" interaction 1");
 
-			//}
 		}
 		if(isUsed == 0 && dialog.clickedAnswer() != null) {
 			interactionsHelper(currentWorld, guiRenderer, player, NPCid, language);
@@ -226,8 +221,6 @@ public class Interactions {
 						
 						player.tradeWithPlayer(currentWorld, guiRenderer, NPCid);
 						
-						System.out.println("you trade with: "+ currentWorld.getWorld().getNpcByNpcId(NPCid).getName());
-						
 						break;
 					}////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					if(answerT.getLeadsTo() == -1) {
@@ -242,22 +235,15 @@ public class Interactions {
 								}
 							}
 							if(q1.isEndedQuest() && !q1.isRewardedYet()) {
-								System.out.println("ZJEBBBBBB");
 								q1.sendTalkToNpc(player, guiRenderer, currentWorld.getWorld(), isUsed);
 								q1.sendReward(player, guiRenderer, currentWorld.getWorld(), isUsed);
 								for(NPC n:currentWorld.getWorld().getNPCs()) {
 									if(n.getInteractions().getQuests().size()>0) {
 										if(q1.getQuestID() == n.getInteractions().getQuests().get(0).getQuestID()) {
-											System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 											Quest temp = n.getInteractions().getQuests().get(0);
-											System.out.println(temp.isLast() +" "+ temp.getQuestID() +" "+ n.getInteractions().getIsUsed());
 											if(!temp.isLast() && temp.getQuestID()!=-1 && n.getInteractions().getIsUsed()==1) {
-								    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
 								    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
 								    			Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
-								    			//System.out.println("quest");
-								    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" interaction01");
-
 								    		}
 										}
 									}
@@ -271,20 +257,16 @@ public class Interactions {
 						if(quests.isEmpty()) {
 							isUsed = 1;
 							Save.addNpcInteractions(new NpcInteractions(file, isUsed, NPCid));
-							System.out.println(Save.getNpcsByID(NPCid).getName()+" "+isUsed + " "+file+" interaction 1");
 							Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
 						}
 						if(isQuestSend==1) {
 							isUsed = 1;
 							Save.addNpcInteractions(new NpcInteractions(file, isUsed, NPCid));
-							System.out.println(Save.getNpcsByID(NPCid).getName()+ " "+isUsed + " "+file+" interaction 2"); //wy³¹cza questy okok
 							Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
 							for(Quest q :quests) {
 								for(Task t: q.getTasks()) {
 									if(t.getState()==doState.find) {
-										
 										Save.addNpcInteractions(new NpcInteractions(q.getNextInteraction(), 0, q.getIdNpc()));
-										System.out.println(Save.getNpcsByID(q.getIdNpc()).getName()+" "+0 + " "+file+" interaction 3");
 										Save.UpdateInteractions(currentWorld.getWorld().getNPCs());
 										break;
 									}

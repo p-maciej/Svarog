@@ -56,17 +56,6 @@ public class XP {
 		}
 	}
 	
-//	public int PointsToNextLvl() {
-//		int toNextLvl=0;
-//		for(int i = 20; ; i = i*2 ) {
-//			if(xp < i){
-//				toNextLvl = i - xp;
-//				break;
-//			}
-//		}
-//		return toNextLvl;
-//	}
-	
 	public float getXPpercentage() {
 		CheckLvlStatus();
 		return (float)((float)(xp-xpmin)/(float)(xpmax-xpmin));

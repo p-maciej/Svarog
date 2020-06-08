@@ -758,33 +758,19 @@ public class Main {
 										}
 										if(q1.isEndedQuest() && !q1.isRewardedYet() ) {
 											int tempIsUsed = 1;
-											//int noInteraction = 0;
-											/*for(NPC npc: currentWorld.getNPCs()) {
-												if(npc.getInteractions()!=null && !npc.getInteractions().getQuests().isEmpty()) {
-													if(npc.getInteractions().getQuests().get(0).getQuestID() == q1.getQuestID()) {
-														tempIsUsed = 1;
-														System.out.println("tempIsUsed npcName "+npc.getName());
-														//noInteraction = npc.getInteractions().getIsUsed();
-													}else {
-														tempIsUsed = 0;
-													}
-												}
-											}*/
+
 											if(((NPC)entity).getInteractions().getIsUsed()==0) {tempIsUsed=1;}
-											System.out.println("tempIsUsed "+tempIsUsed);
+											
 											q1.sendReward(player, guiRenderer, currentWorld, tempIsUsed);
 											guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
 											for(NPC n:currentWorld.getNPCs()) {
 												if(n.getInteractions().getQuests().size()>0) {
 													if(q1.getQuestID() == n.getInteractions().getQuests().get(0).getQuestID()) {
 														Quest temp = n.getInteractions().getQuests().get(0);
-														System.out.println(temp.isLast() +" "+ temp.getQuestID() +" "+ n.getInteractions().getIsUsed());
 														if(!temp.isLast() && temp.getQuestID()!=-1 && n.getInteractions().getIsUsed()==1) {
-											    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
 											    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
 											    			Save.UpdateInteractions(currentWorld.getNPCs());
-											    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" NEXT MAINENMAIN");
-
+											    			
 											    		}
 													}
 												}
@@ -812,7 +798,6 @@ public class Main {
 											}
 										}
 										if(q1.isEndedQuest() && !q1.isRewardedYet()) {
-											System.out.println("Collected em all!s");
 											
 											q1.sendReward(player, guiRenderer, currentWorld, 0);
 											guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, player);
@@ -821,26 +806,20 @@ public class Main {
 												if(n.getInterQ() != null && n.getInterQ().getQuests().size()>0) {
 													if(q1.getQuestID() == n.getInterQ().getQuests().get(0).getQuestID()) {
 														Quest temp = n.getInterQ().getQuests().get(0);
-														System.out.println(temp.isLast() +" "+ temp.getQuestID() +" "+ n.getInterQ().getIsUsed());
-														if(!temp.isLast() && temp.getQuestID()!=-1 /*&& n.getInterQ().getIsUsed()==1*/) {
-											    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
+														if(!temp.isLast() && temp.getQuestID()!=-1) {
 											    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
 											    			Save.UpdateInteractions(currentWorld.getNPCs());
-											    			//System.out.println("quest");
 											    			temporaryAmInew++;
-											    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" NEXT MAINENMAIN");
-
+											    			
 											    		}
 													}
 												}
 											}
 											if(temporaryAmInew==0) {
 
-									    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
 									    			Save.addNpcInteractions(new NpcInteractions(q1.getNextInteraction(), 0, q1.getIdNpc()));
 									    			Save.UpdateInteractions(currentWorld.getNPCs());
-									    			System.out.println(Save.getNpcsByID(q1.getIdNpc()).getName()+" " + 0 + " "+q1.getNextInteraction()+" colectable second option I am fucking good here");
-
+									    			
 											}
 										}
 									}
@@ -853,8 +832,7 @@ public class Main {
 					
 					if(Interactions.getTalkingNPCid() != -1){
 						
-						if(currentWorld.getEntity(Interactions.getTalkingNPCid()) instanceof NPC /*((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().getIsUsed()!=1*/) {
-							//System.out.println(guiRenderer.getClickedObjectId());
+						if(currentWorld.getEntity(Interactions.getTalkingNPCid()) instanceof NPC) {
 							((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().ChceckInteractions(worldRenderer, camera, window, guiRenderer, player, ((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getGlobalNpcID(), language);
 						}
 					}
@@ -903,7 +881,7 @@ public class Main {
 					}
 
 					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1 ) {
-						System.out.println(worldRenderer.getMouseOverX()+" "+worldRenderer.getMouseOverY()); //holder dla Patryka 
+						//System.out.println(worldRenderer.getMouseOverX()+" "+worldRenderer.getMouseOverY()); //holder dla Patryka 
 					}
 
 					if(pathFinder.getIsWorking()==1) {

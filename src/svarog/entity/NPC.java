@@ -103,7 +103,6 @@ public class NPC extends Entity{
 		
 		this.globalNpcID = npcParams.getGlobalNpcID();
 		if(npcParams.getInteractionsPath()!=null && !(npcParams.getInteractionsPath().isEmpty())) {
-			System.out.println("-"+npcParams.getInteractionsPath()+"-");
 			this.setInteractions(new Interactions(npcParams.getInteractionsPath()));
 		}
 		

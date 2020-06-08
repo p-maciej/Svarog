@@ -84,7 +84,6 @@ public class Save {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("ReadItems :)");
 			e.printStackTrace();
 		}
 	}
@@ -130,7 +129,6 @@ public class Save {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("ReadEntityItems :)");
 			e.printStackTrace();
 		}
 	}
@@ -184,7 +182,6 @@ public class Save {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("ReadWorldEntities :)");
 			e.printStackTrace();
 		}
 		return entityHolder;
@@ -240,7 +237,6 @@ public class Save {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("ReadEnemies :)");
 			e.printStackTrace();
 		}
 	}
@@ -288,7 +284,6 @@ public class Save {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("ReadNPCs :)");
 			e.printStackTrace();
 		}
 	}
@@ -360,13 +355,11 @@ public class Save {
 					/////////////////////////////////////////////////////////////////////////////////////////
 					int iterator2 = Integer.parseInt(eElement.getElementsByTagName("howManyQuests").item(0).getTextContent());
 					int taskKeeper=0;
-					System.out.println(iterator2);
 					for(int i=0;i<iterator2;i++) {
 						List<Task> tasks = new ArrayList<>();
 						int inter = Integer.parseInt(eElement.getElementsByTagName("howManyTasks").item(i).getTextContent());
 						
 						for(int j=0;j<inter;j++) {
-							System.out.println(inter + " " + taskKeeper);
 							Task task = new Task(Integer.parseInt(eElement.getElementsByTagName("getTaskID").item(taskKeeper).getTextContent()),
 									Integer.parseInt(eElement.getElementsByTagName("getToDo").item(taskKeeper).getTextContent()),
 									Integer.parseInt(eElement.getElementsByTagName("getDoItemID").item(taskKeeper).getTextContent()),
@@ -418,7 +411,6 @@ public class Save {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("ReadFromFile :)");
 			e.printStackTrace();
 		}
 	}
@@ -494,7 +486,6 @@ public class Save {
 					}
 				}
 			} catch (Exception e) {
-				System.out.println("ReadEntityRespown :)");
 				e.printStackTrace();
 			}
 		}
@@ -840,36 +831,25 @@ public class Save {
 	
 	public static void addNpcInteractions(NpcInteractions npcInteract) {
 		int temp = 0;
-		//System.out.println("Hello there");
 		for(NpcInteractions i: npcInteractions) {
 			if(i.getNpcGlobalID()==npcInteract.getNpcGlobalID()) {
 				i.setIsUsed(npcInteract.getIsUsed());
-				//if(i.getIsUsed()==0) {
-					i.setFile(npcInteract.getFile());
-				//}
-				System.out.println("Zmieniony");
+				i.setFile(npcInteract.getFile());
 				temp++;
 				break;
 			}
 		}
 		if(temp==0) {
-			System.out.println("Dodany");
-			//if(npcInteract.getIsUsed()==0) {
-				npcInteractions.add(new NpcInteractions(
-						npcInteract.getFile(),
-						npcInteract.getIsUsed(),
-						npcInteract.getNpcGlobalID()));
-			//}else {
-			//	npcInteractions.add(new NpcInteractions(
-			//			npcInteract.getIsUsed(),
-			//			npcInteract.getNpcGlobalID()));
-			//}
+			npcInteractions.add(new NpcInteractions(
+				npcInteract.getFile(),
+				npcInteract.getIsUsed(),
+				npcInteract.getNpcGlobalID()));
+
 		}
-		//System.out.println(temp);
+
 	}
 	
 	public static void UpdateInteractions(ArrayList<NPC> NPCs) {
-		System.out.println("Update BEGIN");
 		for(NPC npc : NPCs) {
 			for(NpcInteractions npcInter: npcInteractions) {
 				if(npc.getGlobalNpcID()==npcInter.getNpcGlobalID()) {
@@ -877,18 +857,16 @@ public class Save {
 					npc.getInteractions().setFile(npcInter.getFile());
 					npc.getInteractions().setIsUsed(npcInter.getIsUsed());
 					
-					System.out.println(npc.getName()+" "+npc.getInteractions().getIsUsed()+" "+npc.getInteractions().getFile());
-					
+										
 					if(npcInter.getIsUsed()==1 && !npc.getInteractions().getQuests().isEmpty()) {
 						npc.getInteractions().setEnded(true);
 						npc.getInteractions().getQuests().get(0).setEndedQuest(true);
 						npc.getInteractions().setIsQuestSend(1);
-						//npc.getInteractions().getQuests().get(0).setRewardedYet(true);
+						
 					}
 				}
 			}
 		}
-		System.out.println("Update ENDE");
 	}
 	
 	public static List<EnemyParameters> getEnemies() {

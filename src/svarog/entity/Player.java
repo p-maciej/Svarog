@@ -524,12 +524,10 @@ public class Player extends Entity {
 						itemWindowPlayer.addRewardItem(new Item(enemy.getItems().get(iter)));
 						itemsAdded++;
 
-						//this.addItemToInventoryWithGUIupdate(new Item(enemy.getItems().get(iter)), guiRenderer);
 					}else {
 						int propability = (int)((enemy.getPropability().get(iter))*Math.random() + 1);
 						if(propability==1) {
 							itemWindowPlayer.addRewardItem(new Item(enemy.getItems().get(iter)));
-							//this.addItemToInventoryWithGUIupdate(new Item(enemy.getItems().get(iter)), guiRenderer);
 
 							itemsAdded++;
 						}
