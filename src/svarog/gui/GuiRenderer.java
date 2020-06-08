@@ -742,7 +742,7 @@ public class GuiRenderer implements RenderProperties {
 				} else if(window.getInput().isMouseButtonReleased(0) && draggingFromObjectId != -1) {
 					if(mouseOverTileId != draggingFromObjectId) {
 						Tile tile = tileSheet.getTileByObjectId(mouseOverTileId);
-						if(tile != null) {
+						if(tile != null && !tile.isSwap()) {
 							try {
 								tile.putItem(object.getPuttedItem(), player);
 								tile.getPuttedItem().setPosition(tile.getTransform().getPosition().x, tile.getTransform().getPosition().y);
