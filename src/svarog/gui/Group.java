@@ -8,7 +8,7 @@ import org.joml.Vector2f;
 import svarog.gui.GuiRenderer.State;
 import svarog.gui.GuiRenderer.stickTo;
 
-public class Group implements Comparable<Group> {
+public class Group implements GroupProperties, Comparable<Group> {
 	private static int auto_increment = 0;
 	private int id;
 	private Vector2f transform;
@@ -22,6 +22,7 @@ public class Group implements Comparable<Group> {
 	private int groupHeight;
 	
 	private stickTo stickTo;
+	private groupType type;
 	
 	private static final float scale = 16f;
 	
@@ -31,6 +32,8 @@ public class Group implements Comparable<Group> {
 		textureObjects = new ArrayList<GuiObject>();
 		transform = new Vector2f();
 		position = new Vector2f();
+		
+		this.type = groupType.other;
 	}
 	
 	public Group(State state) {
@@ -40,6 +43,8 @@ public class Group implements Comparable<Group> {
 		textureObjects = new ArrayList<GuiObject>();
 		transform = new Vector2f();
 		position = new Vector2f();
+		
+		this.type = groupType.other;
 	}
 	
 	public void addGuiObject(GuiObject textureObject) {
@@ -153,5 +158,13 @@ public class Group implements Comparable<Group> {
 	@Override
 	public int compareTo(Group o) {
 		return id - o.id;
+	}
+
+	public groupType getType() {
+		return type;
+	}
+
+	public void setType(groupType type) {
+		this.type = type;
 	}
 }

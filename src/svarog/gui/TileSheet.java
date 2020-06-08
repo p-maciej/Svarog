@@ -7,30 +7,25 @@ import java.util.List;
 import svarog.entity.Player;
 import svarog.objects.Item;
 
-public class TileSheet {
+public class TileSheet implements GroupProperties {
 	private List<Group> tileGroups;
 	
 	private int requestDeleteItem;
 	
-	public static enum tileGroupType {
-		inventory,
-		other
-	}
-	
-	public int inventorySize;
-	
 	public TileSheet() {
 		this.tileGroups = new ArrayList<Group>();
-		this.inventorySize = 0;
 		requestDeleteItem(-1);
 	}
 	
-	public void addTileGroup(Group group, tileGroupType type) {
+	public void addTileGroup(Group group, groupType type) {
 		group.getGroupSize();
+		group.setType(type);	
 		
-		if(type == tileGroupType.inventory) {
-			inventorySize += group.getObjects().size();
-		}
+		tileGroups.add(group);
+	}
+	
+	public void addTileGroup(Group group) {
+		group.getGroupSize();	
 		
 		tileGroups.add(group);
 	}
@@ -114,7 +109,29 @@ public class TileSheet {
 	}
 	
 	public int size() {
-		return inventorySize;
+		int size = 0;
+		for(Group group : tileGroups) {
+			if(group.getType() == groupType.inventory)
+				size += group.getObjects().size();
+		}
+		
+		return size;
+	}
+	
+	public int emptyTilesAmount() {
+		int size = 0;
+		for(Group group : tileGroups) {
+			if(group.getType() == groupType.inventory) {
+				for(GuiObject object : group.getObjects()) {
+					if(object instanceof Tile) {
+						if(((Tile)object).getPuttedItem() == null)
+							size++;
+					}
+				}
+			}
+		}
+		
+		return size;
 	}
 	
 	public Tile clickedTile() {

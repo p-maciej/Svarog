@@ -6,7 +6,6 @@ import java.util.List;
 import org.joml.Vector2f;
 
 import svarog.entity.Player;
-import svarog.gui.TileSheet.tileGroupType;
 import svarog.gui.font.Font;
 import svarog.gui.font.Line;
 import svarog.language.LanguageLoader;
@@ -14,7 +13,7 @@ import svarog.objects.Item;
 import svarog.objects.ItemProperties.ItemType;
 import svarog.render.Texture;
 
-public class TradeWindow extends GuiWindow {
+public class TradeWindow extends GuiWindow implements GroupProperties {
 	private static Texture tileTexture;
 	private static Texture tileTextureHover;
 	private static Font font;
@@ -62,7 +61,7 @@ public class TradeWindow extends GuiWindow {
 
 		tileGroup.move(-230, 85);
 		
-		products[0].addTileGroup(tileGroup, tileGroupType.other);
+		products[0].addTileGroup(tileGroup);
 		
 		
 		Group tileGroup2 = new Group();
@@ -76,7 +75,7 @@ public class TradeWindow extends GuiWindow {
 		}
 		
 		tileGroup2.move(0, 85);
-		products[1].addTileGroup(tileGroup2, tileGroupType.other);
+		products[1].addTileGroup(tileGroup2);
 	}
 	
 	private void addStaticElements() {

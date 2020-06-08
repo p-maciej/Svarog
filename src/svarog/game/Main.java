@@ -34,7 +34,7 @@ import svarog.gui.Switch;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
 import svarog.gui.TileSheet;
-import svarog.gui.TileSheet.tileGroupType;
+import static svarog.gui.TileSheet.groupType;
 import svarog.gui.TradeWindow;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
@@ -331,7 +331,7 @@ public class Main {
 		tileGroup3.addGuiObject(gloves);
 		tileGroup3.addGuiObject(sword);
 		
-		tileSheet.addTileGroup(tileGroup3, tileGroupType.other);
+		tileSheet.addTileGroup(tileGroup3, groupType.other);
 		
 		// Trash //
 		Group trashG = new Group();
@@ -346,7 +346,7 @@ public class Main {
 		
 		trashG.addGuiObject(trash);
 		
-		tileSheet.addTileGroup(trashG, tileGroupType.other);
+		tileSheet.addTileGroup(trashG, groupType.other);
 		//////////////////
 		
 		List<ItemType> puttables = Arrays.asList(ItemType.values()); // main eq - there should be every item type
@@ -360,7 +360,7 @@ public class Main {
 			}
 		}
 
-		tileSheet.addTileGroup(tileGroup, tileGroupType.inventory);
+		tileSheet.addTileGroup(tileGroup, groupType.inventory);
 		////////////
 		
 		
@@ -374,7 +374,7 @@ public class Main {
 				tileGroup2.addGuiObject(tile);
 		}
 		
-		tileSheet.addTileGroup(tileGroup2, tileGroupType.inventory);
+		tileSheet.addTileGroup(tileGroup2, groupType.inventory);
 		///////////////////
 		
 		////////////////////////////////////////////
@@ -715,7 +715,6 @@ public class Main {
 						if(currentEntityId != -1)
 							currentEntityId = -1;
 					}
-					
 
 					for(int i=0; i < currentWorld.numberOfEntities() ; i++) { // this is nicer implementation. I've added methods to world to remove entity.
 						Entity entity = currentWorld.getEntity(i);
