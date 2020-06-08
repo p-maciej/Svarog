@@ -333,6 +333,10 @@
         <translation>Kategoria:</translation>
     </variable>
 	<variable>
+        <key>worthItem</key>
+        <translation>Wartość:</translation>
+    </variable>
+	<variable>
         <key>trophy</key>
         <translation>Trofeum</translation>
     </variable>

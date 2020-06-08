@@ -258,6 +258,18 @@ public class StatsContainer {
 			itemInfo.addTextureObject(hp);
 		}
 		
+		yPos -= 20;
+		// HP
+		Line pre_worth = new Line(-itemInfo.getWidth()/2, yPos);
+		pre_worth.setString(language.getValue("worthItem"), smallFont);
+		pre_worth.move(pre_worth.getWidth()/2+10, 0);
+		itemInfo.addTextureObject(pre_worth);
+		
+		Line worth = new Line(-50, (int)pre_worth.getPosition().y);
+		worth.setString(Integer.toString(item.getItemInfo().getPrize()), smallFont);
+		worth.move(worth.getWidth()/2, 0);
+		itemInfo.addTextureObject(worth);
+		
 		return itemInfo;
 	}
 	
