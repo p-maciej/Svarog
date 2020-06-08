@@ -472,8 +472,9 @@ public class Player extends Entity {
 	
 	public ArrayList<String> fightLogic(Enemy enemy, World world, GuiRenderer guiRenderer, World currentWorld) {
 		ArrayList<String> fightString = new ArrayList<>();
+		
 		while((enemy).GetEnemyHP()>0) { // This is too "smart". You should make method like "attack" and make all of this statements and returning different results.
-			fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpBefore")+" " + (enemy).GetEnemyHP());
+			//fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpBefore")+" " + (enemy).GetEnemyHP());
 			(enemy).DecreaseEnemyHP(this.getRandomAttack()+getPlayerAttackBonus());
 			fightString.add(enemy.getName()+ " "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpAfter")+" " + (enemy).GetEnemyHP());
 			if((enemy).GetEnemyHP()<=0) {
@@ -505,7 +506,6 @@ public class Player extends Entity {
 						}
 					}
 					if(q1.isEndedQuest() && !q1.isRewardedYet()) {
-						System.out.println("Killin great?");
 						q1.sendReward(this, guiRenderer, world, 0);
 						for(NPC n:currentWorld.getNPCs()) {
 							if(n.getInteractions().getQuests().size()>0) {
@@ -530,7 +530,7 @@ public class Player extends Entity {
 				//Last line (everything should be done before it)
 				world.removeAndRespawn(enemy);
 			}else {
-				fightString.add(this.getName()+" "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpBefore")+" " + this.getHP().GetHP());
+				//fightString.add(this.getName()+" "+LanguageLoader.getLanguageLoader().getValue("fightSystemHpBefore")+" " + this.getHP().GetHP());
 				int enemyAttcc = (enemy).GetRandomAttack();
 				int attack = ((enemyAttcc-this.getPlayerDefense())>0)?(enemyAttcc-this.getPlayerDefense()):0;
 				this.DecreasePlayerHP(attack);

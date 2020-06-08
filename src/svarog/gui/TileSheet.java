@@ -12,13 +12,26 @@ public class TileSheet {
 	
 	private int requestDeleteItem;
 	
+	public static enum tileGroupType {
+		inventory,
+		other
+	}
+	
+	public int inventorySize;
+	
 	public TileSheet() {
 		this.tileGroups = new ArrayList<Group>();
+		this.inventorySize = 0;
 		requestDeleteItem(-1);
 	}
 	
-	public void addTileGroup(Group group) {
+	public void addTileGroup(Group group, tileGroupType type) {
 		group.getGroupSize();
+		
+		if(type == tileGroupType.inventory) {
+			inventorySize += group.getObjects().size();
+		}
+		
 		tileGroups.add(group);
 	}
 	
@@ -98,6 +111,10 @@ public class TileSheet {
 			if(finished)
 				break;
 		}
+	}
+	
+	public int size() {
+		return inventorySize;
 	}
 	
 	public Tile clickedTile() {

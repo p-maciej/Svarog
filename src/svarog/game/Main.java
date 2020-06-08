@@ -34,6 +34,7 @@ import svarog.gui.Switch;
 import svarog.gui.TextureObject;
 import svarog.gui.Tile;
 import svarog.gui.TileSheet;
+import svarog.gui.TileSheet.tileGroupType;
 import svarog.gui.TradeWindow;
 import svarog.gui.font.Color;
 import svarog.gui.font.Font;
@@ -334,7 +335,7 @@ public class Main {
 		tileGroup3.addGuiObject(gloves);
 		tileGroup3.addGuiObject(sword);
 		
-		tileSheet.addTileGroup(tileGroup3);
+		tileSheet.addTileGroup(tileGroup3, tileGroupType.other);
 		
 		// Trash //
 		Group trashG = new Group();
@@ -349,7 +350,7 @@ public class Main {
 		
 		trashG.addGuiObject(trash);
 		
-		tileSheet.addTileGroup(trashG);
+		tileSheet.addTileGroup(trashG, tileGroupType.other);
 		//////////////////
 		
 		List<ItemType> puttables = Arrays.asList(ItemType.values()); // main eq - there should be every item type
@@ -363,7 +364,7 @@ public class Main {
 			}
 		}
 
-		tileSheet.addTileGroup(tileGroup);
+		tileSheet.addTileGroup(tileGroup, tileGroupType.inventory);
 		////////////
 		
 		
@@ -377,7 +378,7 @@ public class Main {
 				tileGroup2.addGuiObject(tile);
 		}
 		
-		tileSheet.addTileGroup(tileGroup2);
+		tileSheet.addTileGroup(tileGroup2, tileGroupType.inventory);
 		///////////////////
 		
 		////////////////////////////////////////////
@@ -819,7 +820,7 @@ public class Main {
 							}
 						}
 					}
-
+					
 					if(Interactions.getTalkingNPCid() != -1){
 						
 						if(currentWorld.getEntity(Interactions.getTalkingNPCid()) instanceof NPC /*((NPC)currentWorld.getEntity(Interactions.getTalkingNPCid())).getInteractions().getIsUsed()!=1*/) {
