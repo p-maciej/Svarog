@@ -74,7 +74,6 @@ public class Main {
 	private static GuiRenderer loadingScreen;
 	private static Button questsButton;
 	private static Switch soundStateButton;
-	private static Button healBtn;
 	private static WorldRenderer worldRenderer;
 	private static TextureObject loading_text;
 	private static Audio audioPlayer;
@@ -253,9 +252,6 @@ public class Main {
 		soundStateButton = new Switch(soundOffButton, soundOnButton, stickTo.TopRight).setIsOn(true);
 		soundStateButton.move(-25, 70);
 		
-		healBtn =  new Button(new Texture("images/gui/button_heal.png"), new Texture("images/gui/button_heal_hover.png"), stickTo.TopRight);
-		healBtn.move(-25, 130);
-		
 		
 		guiRenderer.setMarginRight((int)bottomBorderRightPanel.getWidth());
 		guiRenderer.setMarginBottom(70);
@@ -266,7 +262,6 @@ public class Main {
 		guiRenderer.addGuiObject(topBorderRightPanel);
 		guiRenderer.addGuiObject(questsButton);
 		guiRenderer.addGuiObject(soundStateButton);
-		guiRenderer.addGuiObject(healBtn);
 		guiRenderer.addGroup(playerStats);
 		
 	
@@ -767,7 +762,6 @@ public class Main {
 											    			//world.getNpcByNpcId(idNpc).setInteractions(new Interactions(nextInteraction));
 											    			Save.addNpcInteractions(new NpcInteractions(temp.getNextInteraction(), 0, temp.getIdNpc()));
 											    			Save.UpdateInteractions(currentWorld.getNPCs());
-											    			//System.out.println("quest");
 											    			System.out.println(Save.getNpcsByID(temp.getIdNpc()).getName()+" " + 0 + " "+temp.getNextInteraction()+" NEXT MAINENMAIN");
 
 											    		}
@@ -872,31 +866,10 @@ public class Main {
 							audioPlayer.pause(audioBackgroundSound);
 					}
 
-					if(healBtn.isClicked()) {
-						
-						TradeWindow trade = new TradeWindow("trade");
-						trade.addProduct(100, new Item(Save.getItemById(7)));
-						trade.setPosition(-100, 0);
-						guiRenderer.addWindow(trade);
-						
-						
-						
-						player.FullyRecoverHP();
-						//player.setMovement(player.movePlayer(65, true));
-						//pathFinder.reset();
-						//pathFinder.movePlayer(player);
-						//pathFinder.setIsWorking(1);
-						System.out.println("Health of player was fully recovered: " + player.getHP().GetHP() + "hp.");
-						guiRenderer.getStatsContainer().updatePlayerStats(guiRenderer, player);
-						player.addItemToInventoryWithGUIupdate(new Item(Save.getItemById(20)), guiRenderer);
-						//guiRenderer.addWindow(confirmWindow);
-					}
 					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1 ) {
 						System.out.println(worldRenderer.getMouseOverX()+" "+worldRenderer.getMouseOverY()); //holder dla Patryka 
 					}
-					if(window.getInput().isMouseButtonReleased(0) && GuiRenderer.getMouseOverObjectId() == -1 && WorldRenderer.getMouseOverEntityId()==-1) {
-						//pathFinder.stupidMover(worldRenderer, player);
-					}
+
 					if(pathFinder.getIsWorking()==1) {
 						pathFinder.movePlayer(player);
 					}
