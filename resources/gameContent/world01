@@ -548,7 +548,7 @@
 	<entity>
 		<type>npc</type>
 		<id>62</id>
-		<typeID>16</typeID>
+		<typeID>1</typeID>
 		<name>NPCShopkeeper</name>
 		<posX>55</posX>
 		<posY>27</posY>
