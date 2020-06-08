@@ -198,7 +198,7 @@
 	</npc>
 	<npc>
 		<globalID>15</globalID>
-		<texturePath>textures/npc/player.png</texturePath>
+		<texturePath>textures/npc/rod.png</texturePath>
 		<posX>38</posX>
 		<posY>43</posY>
 		<fullBoundingBox>true</fullBoundingBox>
