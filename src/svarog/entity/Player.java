@@ -462,12 +462,13 @@ public class Player extends Entity {
 	}
 	
 	public void addItemToInventoryWithGUIupdate(Item item, GuiRenderer guiRenderer) {
-		if(this.getInventory().getItems().size()<36) {
-			this.getInventory().getItems().add(item);
+		if(this.getInventory().getItems().size()<=guiRenderer.getTileSheet().size()) {
+			
 			guiRenderer.getTileSheet().putItemFirstEmpty(this.getInventory().getItems().get(this.getInventory().getItems().size()-1), this);
+			this.getInventory().getItems().add(item);
 		}
 	}
-	
+
 	public ArrayList<String> fightLogic(Enemy enemy, World world, GuiRenderer guiRenderer, World currentWorld) {
 		ArrayList<String> fightString = new ArrayList<>();
 		int hpDisplay;
