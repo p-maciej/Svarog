@@ -509,12 +509,14 @@ public class GuiRenderer implements RenderProperties {
 		}
 		
 		for(GuiWindow item : windows) {
-			for(Group group : ((ItemWindow) item).getTileSheet().getTileGroupsList()) {
-				if(group.getType() == groupType.swap) {
-					for(GuiObject object : group.getTextureObjectList()) {
-						Item temp = ((Tile)object).getPuttedItem();
-						if(temp != null && temp.getId() == draggingItemId)  {
-							renderGuiObject(temp, shader, window);
+			if(item instanceof ItemWindow) {
+				for(Group group : ((ItemWindow) item).getTileSheet().getTileGroupsList()) {
+					if(group.getType() == groupType.swap) {
+						for(GuiObject object : group.getTextureObjectList()) {
+							Item temp = ((Tile)object).getPuttedItem();
+							if(temp != null && temp.getId() == draggingItemId)  {
+								renderGuiObject(temp, shader, window);
+							}
 						}
 					}
 				}
