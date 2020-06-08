@@ -71,7 +71,7 @@ public class Group implements GroupProperties, Comparable<Group> {
 	}
 	
 	public void setTransformPosition(Vector2f position) {
-		this.position.set(position.x*(scale/16), -position.y*(scale/16));
+		this.transform.set(position.x*(scale/16), -position.y*(scale/16));
 	}
 	
 	public void setTransformPosition(float X, float Y) {

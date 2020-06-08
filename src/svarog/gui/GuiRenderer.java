@@ -7,6 +7,7 @@ import java.util.List;
 import org.joml.Matrix4f;
 
 import svarog.entity.Player;
+import svarog.gui.GroupProperties.groupType;
 import svarog.gui.PagedGuiWindow.WindowTextType;
 import svarog.gui.font.Line;
 import svarog.gui.font.TextBlock;
@@ -150,30 +151,6 @@ public class GuiRenderer implements RenderProperties {
 		}
 		////////////////////
 		
-		////// GROUPS FROM TILESHEET /////////////
-		for(Group group : tileSheet.getTileGroupsList()) {			
-			if(group.getStickTo() != null) {
-				setGroupStickTo(group);
-				group.getTransform().add(group.getPosition().x, group.getPosition().y);
-			} else {
-				group.getTransform().set(group.getPosition().x, group.getPosition().y);
-			}
-			
-			for(GuiObject object : group.getTextureObjectList()) {
-				if(object.getStickTo() != null) {
-					setObjectStickTo(object);
-					object.getTransform().getPosition().add(object.getPosition().x +group.getTransform().x, object.getPosition().y +group.getTransform().y, 0);
-				} else {
-					object.getTransform().getPosition().set(object.getPosition().x +group.getTransform().x, object.getPosition().y +group.getTransform().y, 0);
-				}
-				
-				if(((Tile)object).getPuttedItem() != null) {
-					((Tile)object).getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
-				}
-			}
-		}
-		/////////////////////////////////////////
-		
 		for(GuiWindow item : windows) {
 			if(item.getElements().getStickTo() != null) {
 				setGroupStickTo(item.getElements());
@@ -232,7 +209,54 @@ public class GuiRenderer implements RenderProperties {
 					}
 				}
 			}
+			
+			if(item instanceof ItemWindow) {
+				for(Group group : ((ItemWindow) item).getTileSheet().getTileGroupsList()) {
+					if(group.getType() == groupType.swap) {
+						group.getTransform().set(group.getPosition().x+item.getPosition().x, group.getPosition().y-item.getPosition().y);
+					
+						for(GuiObject object : group.getTextureObjectList()) {
+							if(object.getStickTo() != null) {
+								setObjectStickTo(object);
+								object.getTransform().getPosition().add(object.getPosition().x +group.getTransform().x, object.getPosition().y +group.getTransform().y, 0);
+							} else {
+								object.getTransform().getPosition().set(object.getPosition().x +group.getTransform().x, object.getPosition().y +group.getTransform().y, 0);
+							}
+							
+							if(((Tile)object).getPuttedItem() != null) {
+								((Tile)object).getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+							}
+						}
+					}
+				}
+			}
 		}
+		
+		////// GROUPS FROM TILESHEET /////////////
+		for(Group group : tileSheet.getTileGroupsList()) {		
+			if(group.getType() != groupType.swap) {
+				if(group.getStickTo() != null) {
+					setGroupStickTo(group);
+					group.getTransform().add(group.getPosition().x, group.getPosition().y);
+				} else {
+					group.getTransform().set(group.getPosition().x, group.getPosition().y);
+				}
+				
+				for(GuiObject object : group.getTextureObjectList()) {
+					if(object.getStickTo() != null) {
+						setObjectStickTo(object);
+						object.getTransform().getPosition().add(object.getPosition().x +group.getTransform().x, object.getPosition().y +group.getTransform().y, 0);
+					} else {
+						object.getTransform().getPosition().set(object.getPosition().x +group.getTransform().x, object.getPosition().y +group.getTransform().y, 0);
+					}
+					
+					if(((Tile)object).getPuttedItem() != null) {
+						((Tile)object).getPuttedItem().setPosition(object.getTransform().getPosition().x, object.getTransform().getPosition().y);
+					}
+				}
+			}
+		}
+		/////////////////////////////////////////
 		
 		//// ORDINARY OBJECTS///////////////////
 		for(GuiObject object : objects) {
@@ -345,11 +369,10 @@ public class GuiRenderer implements RenderProperties {
 		
 		// And groups of tiles
 		for(Group group : tileSheet.getTileGroupsList()) {
-			for(GuiObject object : group.getTextureObjectList()) {
-				renderGuiObject(object, shader, window);
-				//Item temp = ((Tile)object).getPuttedItem();
-				//if(temp != null) 
-					//renderGuiObject(temp, shader, window);
+			if(group.getType() != groupType.swap) {
+				for(GuiObject object : group.getTextureObjectList()) {
+					renderGuiObject(object, shader, window);
+				}
 			}
 		}
 		
@@ -413,6 +436,20 @@ public class GuiRenderer implements RenderProperties {
 				}
 			}
 			
+			if(item instanceof ItemWindow) {
+				for(Group group : ((ItemWindow) item).getTileSheet().getTileGroupsList()) {
+					if(group.getType() == groupType.swap) {
+						for(GuiObject object : group.getTextureObjectList()) {
+							renderGuiObject(object, shader, window);
+							Item temp = ((Tile)object).getPuttedItem();
+							if(temp != null)  {
+								renderGuiObject(temp, shader, window);
+							}
+						}
+					}
+				}
+			}
+			
 			if(item.getCloseButton() != null) {
 				if(item.getCloseButton().isClicked()) {
 					windowToRemove = item.getId();
@@ -444,10 +481,12 @@ public class GuiRenderer implements RenderProperties {
 		
 		// Render items
 		for(Group group : tileSheet.getTileGroupsList()) {
-			for(GuiObject object : group.getTextureObjectList()) {
-				Item temp = ((Tile)object).getPuttedItem();
-				if(temp != null)  {
-					renderGuiObject(temp, shader, window);
+			if(group.getType() != groupType.swap) {
+				for(GuiObject object : group.getTextureObjectList()) {
+					Item temp = ((Tile)object).getPuttedItem();
+					if(temp != null)  {
+						renderGuiObject(temp, shader, window);
+					}
 				}
 			}
 		}

@@ -29,6 +29,7 @@ import svarog.gui.GuiPanels;
 import svarog.gui.GuiRenderer;
 import svarog.gui.GuiRenderer.stickTo;
 import svarog.gui.GuiWindow;
+import svarog.gui.ItemWindow;
 import svarog.gui.StatsContainer;
 import svarog.gui.Switch;
 import svarog.gui.TextureObject;
@@ -280,6 +281,9 @@ public class Main {
 		TradeWindow.setFont(roboto_15);
 		TradeWindow.setBackgroundTexture(new TextureObject(new Texture("images/window4.png")));
 		
+		ItemWindow.setFont(roboto_15);
+		ItemWindow.setBackgroundTexture(new TextureObject(new Texture("images/window3.png")));
+		
 		// Tiles to character EQ
 		Texture tileHelmetTexture = new Texture("images/eqTile/helmetTile.png");
 		Texture tileHelmetTexture_hover = new Texture("images/eqTile/helmetTile_hover.png");
@@ -377,12 +381,24 @@ public class Main {
 		tileSheet.addTileGroup(tileGroup2, groupType.inventory);
 		///////////////////
 		
+		// Bottom bar eq //
+		Group tileGroup4 = new Group();
+		tileGroup4.move(-100, -15);
+		tileGroup4.setType(groupType.swap);
+		for(int i = 0; i < 5; i++) {
+				Tile tile = new Tile(tileId++, tileTexture, tileTexture_hover, (byte)0, i*50, 0);
+				tile.setPuttableItemTypes(puttables);
+				tileGroup4.addGuiObject(tile);
+		}
+		
+		tileSheet.addTileGroup(tileGroup4);
+		///////////////////
+		
 		////////////////////////////////////////////
 		
 		guiRenderer.setTileSheet(tileSheet);
 		
 		guiRenderer.updatePositions();
-		
 		
 
 		for(Item itemT: player.getInventory().getItems()) {
