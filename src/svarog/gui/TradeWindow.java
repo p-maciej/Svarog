@@ -142,7 +142,7 @@ public class TradeWindow extends GuiWindow implements GroupProperties {
 				Tile temp = (Tile)(object);
 				
 				if(temp.getPuttedItem() != null) {
-					player.addItemToInventoryWithGUIupdate(temp.getPuttedItem(), guiRenderer);
+					player.addItemToInventoryWithGUIupdate(new Item(temp.getPuttedItem()), guiRenderer);
 				}
 			}
 		}
