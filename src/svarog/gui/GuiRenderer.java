@@ -66,6 +66,7 @@ public class GuiRenderer implements RenderProperties {
 	private static int draggingItemId;
 	private static boolean objectDraggedOut;
 	private static int draggingWindowId;
+	private static GuiWindow draggingWindow;
 	private static boolean setPointer;
 	private static int pressedObjectId;
 	private static int pressedObjId;
@@ -119,6 +120,7 @@ public class GuiRenderer implements RenderProperties {
 		pressedObjectId = -1;
 		pressedObjId = -1;
 		setObjectId = -1;
+		draggingWindow = null;
 		draggingItemId = -1;
 	}
 	
@@ -489,7 +491,8 @@ public class GuiRenderer implements RenderProperties {
 		if(draggingWindowId >= 0) {
 			if(windows.get(windows.size()-1).getId() != draggingWindowId) {
 				if(windows.size() > 1) {
-					Collections.swap(windows, windows.size()-1, windows.size()-2);
+					removeWindow(draggingWindowId);
+					addWindow(draggingWindow);
 				}
 			}
 		}
@@ -609,6 +612,7 @@ public class GuiRenderer implements RenderProperties {
 			if((mouseOverObjectId == object.getId() && draggingWindowId == -1) || (draggingWindowId >= 0 && draggingWindowId == item.getId())) {
 				if(window.getInput().isMouseButtonDown(0)) {
 					draggingWindowId = item.getId();
+					draggingWindow = item;
 					if(item.getStickTo() != null && item.getId() == draggingWindowId) {
 						item.setStickTo(null);
 						item.setPosition((float)window.getRelativePositionCursorX(), -((float)window.getRelativePositionCursorY()-item.getHeight()/2+15));
@@ -623,9 +627,11 @@ public class GuiRenderer implements RenderProperties {
 			}
 			if(draggingWindowId >= 0 && window.getInput().isMouseButtonReleased(0)) {
 				draggingWindowId = -1;
+				draggingWindow = null;
 			}
 		} else if(!window.getInput().isMouseButtonDown(0) && draggingWindowId >= 0) {
 			draggingWindowId = -1;
+			draggingWindow = null;
 		}
 		
 		return update;

@@ -322,8 +322,7 @@ public class Player extends Entity {
 						trade.buyItems(this, guiRenderer);
 						this.setMoney(getMoney()-trade.getExpanse());
 						guiRenderer.getStatsContainer().updatePlayerInventory(guiRenderer, this);
-					}else 
-					{
+					} else {
 						guiRenderer.addWindow(confirmWindow);
 					}
 				}
