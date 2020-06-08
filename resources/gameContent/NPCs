@@ -19,7 +19,7 @@
 		<posY>25</posY>
 		<fullBoundingBox>true</fullBoundingBox>
 		<name>Shopkeeper</name>
-		<interactionsFile>quest01.quest</interactionsFile>
+		<interactionsFile></interactionsFile>
 		<howManyItems>0</howManyItems>
 	</npc>
 	<npc>
