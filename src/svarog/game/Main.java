@@ -396,6 +396,7 @@ public class Main {
 		
 		////////////////////////////////////////////
 		
+		ItemWindow.setTileSheet(tileSheet);
 		guiRenderer.setTileSheet(tileSheet);
 		
 		guiRenderer.updatePositions();

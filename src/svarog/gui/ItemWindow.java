@@ -9,12 +9,10 @@ public class ItemWindow extends GuiWindow {
 	private static Font font;
 	private static TextureObject backgroundTexture;
 	
-	private TileSheet tileSheet;
+	private static TileSheet tileSheet;
 	
-	public ItemWindow(String title, TileSheet sheet) {
+	public ItemWindow(String title) {
 		super(title, font, backgroundTexture);
-		
-		this.setTileSheet(sheet);
 	}
 	
 	public static void setFont(Font font) {
@@ -29,8 +27,8 @@ public class ItemWindow extends GuiWindow {
 		return tileSheet;
 	}
 
-	public void setTileSheet(TileSheet tileSheet) {
-		this.tileSheet = tileSheet;
+	public static void setTileSheet(TileSheet tileSheet) {
+		ItemWindow.tileSheet = tileSheet;
 	}
 	
 	public void addRewardItem(Item item) {
