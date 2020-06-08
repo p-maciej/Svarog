@@ -130,7 +130,7 @@
     </variable>
 	 <variable>
         <key>natureCrownDescription</key>
-        <translation>Ostatni z Boskich Artefaktów. Zdobyłem go z Leszego Dodaje 50 pkt. do obrony.</translation>
+        <translation>Ostatni z Boskich Artefaktów. Zdobyłem go z Leszego Dodaje 20 pkt. do obrony.</translation>
     </variable>
 	 <variable>
         <key>magicHelmet</key>
@@ -254,7 +254,7 @@
     </variable>
 	 <variable>
         <key>leatherBreastplateDescription</key>
-        <translation>Podstawowa zbroja zapewniająca podstawową ochronę. Dodaje 10 pkt. do obrony.</translation>
+        <translation>Podstawowa zbroja zapewniająca podstawową ochronę. Dodaje 6 pkt. do obrony.</translation>
     </variable>
 	 <variable>
         <key>deathComing</key>
@@ -262,7 +262,7 @@
     </variable>
 	 <variable>
         <key>deathComingDescription</key>
-        <translation>Trzeci Boski Artefakt, wydobyłem go z ciała Marzanny. Emanuje złowrogą lecz potężną energią. Dodaje 25 pkt do obrony.</translation>
+        <translation>Trzeci Boski Artefakt, wydobyłem go z ciała Marzanny. Emanuje złowrogą lecz potężną energią. Dodaje 8 pkt do obrony.</translation>
     </variable>
 	 <variable>
         <key>magicArmor</key>
@@ -270,7 +270,7 @@
     </variable>
 	 <variable>
         <key>magicArmorDescription</key>
-        <translation>Emanuje magiczną energią. Małowuj mnie prosił abym go zdobył. Dodaje 15 pkt do obrony.</translation>
+        <translation>Emanuje magiczną energią. Małowuj mnie prosił abym go zdobył. Dodaje 7 pkt do obrony.</translation>
     </variable>
 	 <variable>
         <key>skotijka</key>
@@ -278,7 +278,7 @@
     </variable>
 	 <variable>
         <key>skotijkaDescription</key>
-        <translation>Drugi Boski Artefakt. Rękawice Słowiańskiego boga magii i klątw Welesa. Dodaje 5 pkt. do obrony.</translation>
+        <translation>Drugi Boski Artefakt. Rękawice Słowiańskiego boga magii i klątw Welesa. Dodaje 3 pkt. do obrony.</translation>
     </variable>
 	 <variable>
         <key>leatherGloves</key>
@@ -286,7 +286,7 @@
     </variable>
 	 <variable>
         <key>leatherGlovesDescription</key>
-        <translation>Trochę znoszone ale potrafią jeszcze ochronić i ogrzać dłonie. Dodaje 2 pkt. do obrony.</translation>
+        <translation>Trochę znoszone ale potrafią jeszcze ochronić i ogrzać dłonie. Dodaje 1 pkt. do obrony.</translation>
     </variable>
 	 <variable>
         <key>onuce</key>
@@ -294,7 +294,7 @@
     </variable>
 	 <variable>
         <key>onuceDescription</key>
-        <translation>Kawałek szmatki owinięty wokół stopy. Dodaje 1 pkt. do obrony.</translation>
+        <translation>Kawałek szmatki owinięty wokół stopy.</translation>
     </variable>
 	 <variable>
         <key>leatherBoots</key>
@@ -302,7 +302,7 @@
     </variable>
 	<variable>
         <key>leatherBootsDescription</key>
-        <translation>Porządna ochrona dla mych stóp. Dodaje 3 pkt. do obrony.</translation>
+        <translation>Porządna ochrona dla mych stóp. Dodaje 1 pkt. do obrony.</translation>
     </variable>
 	<variable>
         <key>categoryItem</key>
